@@ -2017,14 +2017,16 @@ function defaultState(){
 }
 
 
+const LOCAL_SAVE_KEYS = [
+    "FLYYYY_UPDATE12_SAVE",
+    "FLYYYY_UPDATE11_SAVE",
+    "flyyyy_save"
+];
+
+
 function loadState(){
 
-    const keys = [
-
-        "FLYYYY_UPDATE12_SAVE",
-        "FLYYYY_UPDATE11_SAVE",
-        "flyyyy_save"
-    ];
+    const keys = LOCAL_SAVE_KEYS;
 
     let raw = null;
 
@@ -2120,11 +2122,25 @@ let state =
 
 function saveState(){
 
-    localStorage.setItem(
-        "FLYYYY_UPDATE12_SAVE",
+    const payload =
         JSON.stringify(
             state
-        )
+        );
+
+    /*
+       Wichtig:
+       Der Spielstand bleibt auf dem jeweiligen Gerät erhalten,
+       auch wenn das Update einen neuen Speicher-Key bekommt.
+       Deshalb schreiben wir den gleichen Verlauf nicht nur in den
+       aktuellen Key, sondern auch in die bisherigen lokalen Keys.
+    */
+
+    LOCAL_SAVE_KEYS.forEach(
+        key =>
+            localStorage.setItem(
+                key,
+                payload
+            )
     );
 }
 
@@ -2295,6 +2311,61 @@ function loadPlayerName(){
 }
 
 
+async function ensurePlayerLeaderboardEntry(name){
+
+    if(
+        !firebaseReady ||
+        !currentUser ||
+        !db
+    ){
+        return false;
+    }
+
+    try{
+
+        const databaseModule =
+            await import(
+                "https://www.gstatic.com/firebasejs/12.16.0/firebase-database.js"
+            );
+
+        const playerRef =
+            databaseModule.ref(
+                db,
+                "leaderboard/" +
+                currentUser.uid
+            );
+
+        await databaseModule.runTransaction(
+            playerRef,
+            current => {
+
+                const existing =
+                    current || {};
+
+                return {
+                    name:name,
+                    score:Number(
+                        existing.score || 0
+                    ),
+                    updatedAt:Date.now()
+                };
+            }
+        );
+
+        return true;
+
+    }catch(error){
+
+        console.error(
+            "Leaderboard-Eintrag konnte nicht erstellt werden:",
+            error
+        );
+
+        return false;
+    }
+}
+
+
 async function savePlayerName(){
 
     let name =
@@ -2330,9 +2401,25 @@ async function savePlayerName(){
         name
     );
 
-    setLeaderboardStatus(
-        `Name gespeichert: ${name}`
-    );
+    const synced =
+        await ensurePlayerLeaderboardEntry(
+            name
+        );
+
+    if(
+        synced
+    ){
+
+        setLeaderboardStatus(
+            `🟢 Name gespeichert: ${name}`
+        );
+
+    }else{
+
+        setLeaderboardStatus(
+            `💾 Name lokal gespeichert: ${name}`
+        );
+    }
 }
 
 
@@ -2570,8 +2657,13 @@ async function submitHighscore(
 
     try{
 
+        const databaseModule =
+            await import(
+                "https://www.gstatic.com/firebasejs/12.16.0/firebase-database.js"
+            );
+
         const playerRef =
-            ref(
+            databaseModule.ref(
                 db,
                 "leaderboard/" +
                 currentUser.uid
