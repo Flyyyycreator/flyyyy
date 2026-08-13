@@ -9,7 +9,6 @@
 <style>
 :root{
     --bg:#0d1430;
-    --panel:#121a3d;
     --text:#fff;
     --muted:#b9c5ef;
 }
@@ -26,7 +25,7 @@ html,body{
     overflow:hidden;
     font-family:Arial,Helvetica,sans-serif;
     background:var(--bg);
-    color:white;
+    color:#fff;
 }
 
 body{
@@ -73,10 +72,14 @@ button{
 }
 
 .menu{
-    width:min(900px,94vw);
+    width:min(950px,94vw);
     max-height:92vh;
     overflow:auto;
-    background:linear-gradient(180deg,rgba(15,23,55,.97),rgba(18,28,67,.97));
+    background:linear-gradient(
+        180deg,
+        rgba(15,23,55,.97),
+        rgba(18,28,67,.97)
+    );
     border:1px solid rgba(255,255,255,.14);
     border-radius:28px;
     padding:26px;
@@ -90,7 +93,9 @@ button{
     line-height:.9;
     font-weight:1000;
     letter-spacing:.08em;
-    text-shadow:0 8px 0 rgba(0,0,0,.15),0 0 35px rgba(94,231,255,.3);
+    text-shadow:
+        0 8px 0 rgba(0,0,0,.15),
+        0 0 35px rgba(94,231,255,.3);
 }
 
 .subtitle{
@@ -129,7 +134,9 @@ button{
     font-weight:900;
     color:#111;
     background:linear-gradient(180deg,#ffe570,#ffc82c);
-    box-shadow:0 7px 0 #c99415,0 12px 22px rgba(0,0,0,.18);
+    box-shadow:
+        0 7px 0 #c99415,
+        0 12px 22px rgba(0,0,0,.18);
     transition:.12s;
 }
 
@@ -189,7 +196,7 @@ button{
     white-space:nowrap;
     border:1px solid rgba(255,255,255,.12);
     background:rgba(255,255,255,.06);
-    color:white;
+    color:#fff;
     border-radius:999px;
     padding:10px 15px;
     font-weight:900;
@@ -197,7 +204,7 @@ button{
 }
 
 .tab.active{
-    background:white;
+    background:#fff;
     color:#17204a;
 }
 
@@ -208,11 +215,16 @@ button{
 }
 
 .card{
-    background:linear-gradient(180deg,rgba(255,255,255,.095),rgba(255,255,255,.04));
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.095),
+            rgba(255,255,255,.04)
+        );
     border:1px solid rgba(255,255,255,.12);
     border-radius:22px;
     padding:14px;
-    min-height:215px;
+    min-height:225px;
     display:flex;
     flex-direction:column;
     gap:10px;
@@ -223,18 +235,30 @@ button{
     font-size:18px;
 }
 
+/* Nicht verzerrte Vorschau */
 .preview{
-    height:110px;
+    width:100%;
+    height:145px;
     border-radius:17px;
     overflow:hidden;
-    background:linear-gradient(135deg,rgba(255,255,255,.11),rgba(255,255,255,.035));
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.11),
+            rgba(255,255,255,.035)
+        );
     border:1px solid rgba(255,255,255,.08);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:10px;
 }
 
 .preview canvas{
+    display:block;
     width:100%;
     height:100%;
-    display:block;
+    object-fit:contain;
 }
 
 .price{
@@ -268,19 +292,6 @@ button{
     cursor:not-allowed;
 }
 
-.soundPreviewBox{
-    height:110px;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    gap:7px;
-}
-
-.soundIcon{
-    font-size:42px;
-}
-
 .soundButtons{
     display:grid;
     grid-template-columns:1fr 1fr;
@@ -290,6 +301,24 @@ button{
 
 .soundButtons .smallbtn{
     margin-top:0;
+}
+
+.soundPreview{
+    height:145px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    gap:8px;
+}
+
+.soundIcon{
+    font-size:44px;
+}
+
+.musicText{
+    font-size:13px;
+    color:var(--muted);
 }
 
 #gameHud{
@@ -307,6 +336,7 @@ button{
     display:flex;
     gap:10px;
     align-items:center;
+    flex-wrap:wrap;
 }
 
 .hud-left{
@@ -397,6 +427,7 @@ button{
 }
 
 @media(max-width:600px){
+
     .menu{
         padding:20px;
         border-radius:22px;
@@ -404,6 +435,10 @@ button{
 
     .title{
         font-size:58px;
+    }
+
+    .preview{
+        height:125px;
     }
 
     .hud-pill{
@@ -425,8 +460,10 @@ button{
 
 <canvas id="gameCanvas"></canvas>
 
-<!-- LOBBY -->
+<!-- ================= LOBBY ================= -->
+
 <div id="lobby" class="screen active">
+
 <div class="menu">
 
 <div class="title">FLYYYY</div>
@@ -461,8 +498,8 @@ START
 🎒 INVENTAR
 </button>
 
-<button class="btn dark" id="musicBtn">
-🔊 Musik: AN
+<button class="btn dark" id="musicToggleBtn">
+🎵 Musik: AN
 </button>
 
 <button class="btn dark" id="onlineBtn">
@@ -472,22 +509,29 @@ START
 </div>
 
 <div class="tiny" style="text-align:center;margin-top:15px">
-Alle 5 erfolgreich überflogenen Hindernisse = +5 Coins
+Alle 5 erfolgreich überflogenen Hindernisse = +10 Coins
 </div>
 
 </div>
 </div>
 
 
-<!-- SHOP -->
+<!-- ================= SHOP ================= -->
+
 <div id="shop" class="screen">
+
 <div class="menu">
 
 <div class="topbar">
 
 <div>
+
 <h2>🛒 Shop</h2>
-<div class="tiny">🪙 <span id="shopCoins">0</span> Coins</div>
+
+<div class="tiny">
+🪙 <span id="shopCoins">0</span> Coins
+</div>
+
 </div>
 
 <button class="btn dark" id="shopBack">
@@ -504,15 +548,22 @@ Alle 5 erfolgreich überflogenen Hindernisse = +5 Coins
 </div>
 
 
-<!-- INVENTAR -->
+<!-- ================= INVENTAR ================= -->
+
 <div id="inventory" class="screen">
+
 <div class="menu">
 
 <div class="topbar">
 
 <div>
+
 <h2>🎒 Inventar</h2>
-<div class="tiny">Wähle deine Figur, Welt und deinen Sound aus.</div>
+
+<div class="tiny">
+Figur, Welt, Sound und Musik ausrüsten.
+</div>
+
 </div>
 
 <button class="btn dark" id="inventoryBack">
@@ -529,7 +580,8 @@ Alle 5 erfolgreich überflogenen Hindernisse = +5 Coins
 </div>
 
 
-<!-- HUD -->
+<!-- ================= HUD ================= -->
+
 <div id="gameHud">
 
 <div class="hud-left">
@@ -554,6 +606,10 @@ Alle 5 erfolgreich überflogenen Hindernisse = +5 Coins
 🌍 <span id="worldHud">Gizeh</span>
 </div>
 
+<div class="hud-pill">
+🎵 <span id="musicHud">Classic</span>
+</div>
+
 <button class="pause-btn" id="pauseBtn">
 Ⅱ Pause
 </button>
@@ -567,8 +623,10 @@ Klicken / Tippen / Leertaste = Fliegen
 </div>
 
 
-<!-- PAUSE -->
+<!-- ================= PAUSE ================= -->
+
 <div id="pauseOverlay" class="overlay">
+
 <div class="dialog">
 
 <h2>PAUSE</h2>
@@ -593,8 +651,10 @@ Dein Lauf wurde angehalten.
 </div>
 
 
-<!-- GAME OVER -->
+<!-- ================= GAME OVER ================= -->
+
 <div id="gameOverOverlay" class="overlay">
+
 <div class="dialog">
 
 <h2>GAME OVER</h2>
@@ -638,8 +698,10 @@ Dein Lauf ist vorbei.
 </div>
 
 
-<!-- ONLINE -->
+<!-- ================= ONLINE ================= -->
+
 <div id="onlineOverlay" class="overlay">
+
 <div class="dialog">
 
 <h2>🌐 ONLINE</h2>
@@ -665,11 +727,8 @@ OK
    CANVAS
 ========================================================= */
 
-const canvas =
-document.getElementById("gameCanvas");
-
-const ctx =
-canvas.getContext("2d");
+const canvas = document.getElementById("gameCanvas");
+const ctx = canvas.getContext("2d");
 
 let W = innerWidth;
 let H = innerHeight;
@@ -680,35 +739,23 @@ function resizeCanvas(){
     W = innerWidth;
     H = innerHeight;
 
-    DPR =
-        Math.min(
-            devicePixelRatio || 1,
-            2
-        );
+    DPR = Math.min(
+        devicePixelRatio || 1,
+        2
+    );
 
-    canvas.width =
-        W * DPR;
+    canvas.width = W * DPR;
+    canvas.height = H * DPR;
 
-    canvas.height =
-        H * DPR;
-
-    canvas.style.width =
-        W + "px";
-
-    canvas.style.height =
-        H + "px";
+    canvas.style.width = W + "px";
+    canvas.style.height = H + "px";
 
     ctx.setTransform(
-        DPR,
-        0,
-        0,
-        DPR,
-        0,
-        0
+        DPR,0,0,DPR,0,0
     );
 }
 
-window.addEventListener(
+addEventListener(
     "resize",
     resizeCanvas
 );
@@ -828,7 +875,7 @@ const skins = [
 
 
 /* =========================================================
-   SOUNDS
+   JUMP-SOUNDS
 ========================================================= */
 
 const sounds = [
@@ -876,7 +923,123 @@ const sounds = [
 
 
 /* =========================================================
-   SPEICHER
+   HINTERGRUNDMUSIK
+========================================================= */
+
+const musicTracks = [
+
+{
+    id:"classicMusic",
+    name:"Classic",
+    price:0,
+    icon:"🎵",
+    melody:[
+        261.63,329.63,392.00,523.25,
+        392.00,329.63,293.66,349.23,
+        440.00,523.25,440.00,349.23,
+        392.00,329.63,261.63,293.66
+    ],
+    bass:[
+        130.81,130.81,164.81,164.81,
+        146.83,146.83,174.61,174.61
+    ],
+    tempo:380
+},
+
+{
+    id:"arcadeMusic",
+    name:"Arcade",
+    price:50,
+    icon:"👾",
+    melody:[
+        392.00,392.00,523.25,659.25,
+        523.25,392.00,329.63,392.00,
+        440.00,523.25,659.25,783.99,
+        659.25,523.25,440.00,392.00
+    ],
+    bass:[
+        196,196,261.63,261.63,
+        220,220,174.61,196
+    ],
+    tempo:300
+},
+
+{
+    id:"speedMusic",
+    name:"Speed",
+    price:100,
+    icon:"⚡",
+    melody:[
+        329.63,392.00,493.88,659.25,
+        493.88,392.00,329.63,493.88,
+        392.00,493.88,587.33,783.99,
+        587.33,493.88,392.00,329.63
+    ],
+    bass:[
+        164.81,196,164.81,196,
+        146.83,174.61,164.81,196
+    ],
+    tempo:250
+},
+
+{
+    id:"spaceMusic",
+    name:"Space",
+    price:150,
+    icon:"🚀",
+    melody:[
+        220,261.63,329.63,392.00,
+        493.88,392.00,329.63,261.63,
+        246.94,293.66,369.99,440.00,
+        554.37,440.00,369.99,293.66
+    ],
+    bass:[
+        110,110,130.81,130.81,
+        146.83,146.83,123.47,123.47
+    ],
+    tempo:420
+},
+
+{
+    id:"chillMusic",
+    name:"Chill",
+    price:200,
+    icon:"🌙",
+    melody:[
+        261.63,329.63,392.00,329.63,
+        293.66,349.23,440.00,349.23,
+        261.63,329.63,392.00,493.88,
+        440.00,392.00,329.63,293.66
+    ],
+    bass:[
+        130.81,130.81,146.83,146.83,
+        110,110,123.47,123.47
+    ],
+    tempo:500
+},
+
+{
+    id:"finalMusic",
+    name:"Final Boss",
+    price:250,
+    icon:"🔥",
+    melody:[
+        196,246.94,293.66,392.00,
+        293.66,246.94,220,329.63,
+        261.63,329.63,392.00,523.25,
+        392.00,329.63,293.66,246.94
+    ],
+    bass:[
+        98,98,123.47,123.47,
+        110,110,146.83,146.83
+    ],
+    tempo:280
+}
+];
+
+
+/* =========================================================
+   SAVE
 ========================================================= */
 
 const defaultState = {
@@ -887,13 +1050,15 @@ const defaultState = {
     ownedWorlds:["giza"],
     ownedSkins:["bird"],
     ownedSounds:["classic"],
+    ownedMusic:["classicMusic"],
 
     selectedWorld:"giza",
     selectedSkin:"bird",
     selectedSound:"classic",
+    selectedMusic:"classicMusic",
 
-    music:true,
-    sfx:true
+    musicEnabled:true,
+    sfxEnabled:true
 };
 
 function loadState(){
@@ -902,32 +1067,56 @@ function loadState(){
 
         const raw =
             localStorage.getItem(
-                "FLYYYY_SAVE_FINAL"
+                "FLYYYY_PUBLIC_SAVE"
             );
 
         if(!raw){
-            return structuredClone(defaultState);
+            return {
+                ...defaultState,
+                ownedWorlds:[...defaultState.ownedWorlds],
+                ownedSkins:[...defaultState.ownedSkins],
+                ownedSounds:[...defaultState.ownedSounds],
+                ownedMusic:[...defaultState.ownedMusic]
+            };
         }
 
+        const saved = JSON.parse(raw);
+
         return {
-            ...structuredClone(defaultState),
-            ...JSON.parse(raw)
+            ...defaultState,
+            ...saved,
+            ownedWorlds:Array.isArray(saved.ownedWorlds)
+                ? saved.ownedWorlds
+                : [...defaultState.ownedWorlds],
+            ownedSkins:Array.isArray(saved.ownedSkins)
+                ? saved.ownedSkins
+                : [...defaultState.ownedSkins],
+            ownedSounds:Array.isArray(saved.ownedSounds)
+                ? saved.ownedSounds
+                : [...defaultState.ownedSounds],
+            ownedMusic:Array.isArray(saved.ownedMusic)
+                ? saved.ownedMusic
+                : [...defaultState.ownedMusic]
         };
 
     }catch{
 
-        return structuredClone(defaultState);
-
+        return {
+            ...defaultState,
+            ownedWorlds:[...defaultState.ownedWorlds],
+            ownedSkins:[...defaultState.ownedSkins],
+            ownedSounds:[...defaultState.ownedSounds],
+            ownedMusic:[...defaultState.ownedMusic]
+        };
     }
 }
 
-let state =
-loadState();
+let state = loadState();
 
 function saveState(){
 
     localStorage.setItem(
-        "FLYYYY_SAVE_FINAL",
+        "FLYYYY_PUBLIC_SAVE",
         JSON.stringify(state)
     );
 }
@@ -941,31 +1130,15 @@ let audioContext = null;
 let musicTimer = null;
 let musicStep = 0;
 
-const melody = [
-    261.63,329.63,392.00,523.25,
-    392.00,329.63,293.66,349.23,
-    440.00,523.25,440.00,349.23,
-    392.00,329.63,261.63,293.66
-];
-
-const bass = [
-    130.81,130.81,164.81,164.81,
-    146.83,146.83,174.61,174.61
-];
-
 function initAudio(){
 
-    if(audioContext){
-        return;
-    }
+    if(audioContext) return;
 
     const AC =
         window.AudioContext ||
         window.webkitAudioContext;
 
-    if(!AC){
-        return;
-    }
+    if(!AC) return;
 
     audioContext =
         new AC();
@@ -978,9 +1151,7 @@ function rawTone(
     type
 ){
 
-    if(!audioContext){
-        return;
-    }
+    if(!audioContext) return;
 
     const oscillator =
         audioContext.createOscillator();
@@ -988,11 +1159,8 @@ function rawTone(
     const gain =
         audioContext.createGain();
 
-    oscillator.type =
-        type;
-
-    oscillator.frequency.value =
-        frequency;
+    oscillator.type = type;
+    oscillator.frequency.value = frequency;
 
     gain.gain.setValueAtTime(
         0.0001,
@@ -1021,30 +1189,33 @@ function rawTone(
     );
 }
 
-function playSound(type){
+
+/* =========================================================
+   JUMP SOUNDS
+========================================================= */
+
+function playJumpSound(type){
+
+    if(!state.sfxEnabled) return;
 
     initAudio();
 
-    if(!audioContext){
-        return;
-    }
+    if(!audioContext) return;
 
     if(
-        audioContext.state ===
-        "suspended"
+        audioContext.state === "suspended"
     ){
         audioContext.resume();
     }
 
-    if(type === "classic"){
+    if(type==="classic"){
 
         rawTone(
             520,.08,.065,"square"
         );
-
     }
 
-    if(type === "arcade"){
+    if(type==="arcade"){
 
         rawTone(
             440,.06,.055,"square"
@@ -1052,14 +1223,14 @@ function playSound(type){
 
         setTimeout(
             () =>
-                rawTone(
-                    660,.07,.05,"square"
-                ),
+            rawTone(
+                660,.07,.05,"square"
+            ),
             45
         );
     }
 
-    if(type === "laser"){
+    if(type==="laser"){
 
         rawTone(
             900,.12,.055,"sawtooth"
@@ -1067,14 +1238,14 @@ function playSound(type){
 
         setTimeout(
             () =>
-                rawTone(
-                    1400,.09,.035,"sawtooth"
-                ),
+            rawTone(
+                1400,.09,.035,"sawtooth"
+            ),
             45
         );
     }
 
-    if(type === "bubble"){
+    if(type==="bubble"){
 
         rawTone(
             300,.08,.045,"sine"
@@ -1082,14 +1253,14 @@ function playSound(type){
 
         setTimeout(
             () =>
-                rawTone(
-                    650,.12,.045,"sine"
-                ),
+            rawTone(
+                650,.12,.045,"sine"
+            ),
             60
         );
     }
 
-    if(type === "power"){
+    if(type==="power"){
 
         rawTone(
             220,.13,.055,"sawtooth"
@@ -1097,109 +1268,132 @@ function playSound(type){
 
         setTimeout(
             () =>
-                rawTone(
-                    520,.08,.06,"square"
-                ),
+            rawTone(
+                520,.08,.06,"square"
+            ),
             65
         );
 
         setTimeout(
             () =>
-                rawTone(
-                    820,.1,.05,"triangle"
-                ),
+            rawTone(
+                820,.10,.05,"triangle"
+            ),
             120
         );
     }
 }
 
-function jumpSound(){
 
-    if(!state.sfx){
-        return;
-    }
+/* =========================================================
+   OTHER SOUNDS
+========================================================= */
 
-    const sound =
-        sounds.find(
-            s => s.id ===
-            state.selectedSound
-        ) || sounds[0];
+function coinSound(){
 
-    playSound(
-        sound.type
-    );
-}
-
-function musicTick(){
-
-    if(
-        !state.music ||
-        !audioContext
-    ){
-        stopMusic();
-        return;
-    }
-
-    rawTone(
-        melody[
-            musicStep %
-            melody.length
-        ],
-        .30,
-        .025,
-        "triangle"
-    );
-
-    if(
-        musicStep % 2 === 0
-    ){
-
-        rawTone(
-            bass[
-                musicStep %
-                bass.length
-            ],
-            .45,
-            .012,
-            "sine"
-        );
-    }
-
-    musicStep++;
-}
-
-function startMusic(){
-
-    if(!state.music){
-        return;
-    }
+    if(!state.sfxEnabled) return;
 
     initAudio();
 
-    if(!audioContext){
-        return;
-    }
+    if(!audioContext) return;
 
-    if(
-        audioContext.state ===
-        "suspended"
-    ){
-        audioContext.resume();
-    }
+    rawTone(
+        783.99,
+        .08,
+        .05,
+        "triangle"
+    );
 
-    if(musicTimer){
-        return;
-    }
+    setTimeout(
+        () =>
+        rawTone(
+            1046.50,
+            .12,
+            .05,
+            "triangle"
+        ),
+        70
+    );
+}
 
-    musicStep = 0;
+function scoreSound(){
 
-    musicTick();
+    if(!state.sfxEnabled) return;
 
-    musicTimer =
-        setInterval(
-            musicTick,
-            380
-        );
+    initAudio();
+
+    rawTone(
+        760,
+        .04,
+        .03,
+        "triangle"
+    );
+}
+
+function purchaseSound(){
+
+    initAudio();
+
+    if(!audioContext) return;
+
+    rawTone(
+        523.25,
+        .08,
+        .045,
+        "triangle"
+    );
+
+    setTimeout(
+        () =>
+        rawTone(
+            783.99,
+            .12,
+            .045,
+            "triangle"
+        ),
+        70
+    );
+}
+
+function gameOverSound(){
+
+    if(!state.sfxEnabled) return;
+
+    initAudio();
+
+    if(!audioContext) return;
+
+    rawTone(
+        300,
+        .15,
+        .05,
+        "sawtooth"
+    );
+
+    setTimeout(
+        () =>
+        rawTone(
+            210,
+            .22,
+            .045,
+            "sawtooth"
+        ),
+        130
+    );
+}
+
+
+/* =========================================================
+   MUSIC
+========================================================= */
+
+function selectedMusic(){
+
+    return musicTracks.find(
+        music =>
+            music.id ===
+            state.selectedMusic
+    ) || musicTracks[0];
 }
 
 function stopMusic(){
@@ -1214,31 +1408,128 @@ function stopMusic(){
     }
 }
 
-function playCoinSound(){
+function musicTick(){
 
-    initAudio();
+    if(
+        !state.musicEnabled ||
+        !audioContext
+    ){
 
-    if(!audioContext){
+        stopMusic();
         return;
     }
 
+    const music =
+        selectedMusic();
+
+    const note =
+        music.melody[
+            musicStep %
+            music.melody.length
+        ];
+
+    const bass =
+        music.bass[
+            musicStep %
+            music.bass.length
+        ];
+
     rawTone(
-        783.99,
-        .08,
-        .05,
+        note,
+        .30,
+        .025,
         "triangle"
     );
 
-    setTimeout(
-        () =>
-            rawTone(
-                1046.50,
-                .12,
-                .05,
-                "triangle"
-            ),
-        70
-    );
+    if(
+        musicStep % 2 === 0
+    ){
+
+        rawTone(
+            bass,
+            .45,
+            .012,
+            "sine"
+        );
+    }
+
+    musicStep++;
+}
+
+function startMusic(){
+
+    if(!state.musicEnabled) return;
+
+    initAudio();
+
+    if(!audioContext) return;
+
+    if(
+        audioContext.state ===
+        "suspended"
+    ){
+        audioContext.resume();
+    }
+
+    stopMusic();
+
+    musicStep = 0;
+
+    musicTick();
+
+    const music =
+        selectedMusic();
+
+    musicTimer =
+        setInterval(
+            musicTick,
+            music.tempo
+        );
+}
+
+function previewMusic(music){
+
+    initAudio();
+
+    if(!audioContext) return;
+
+    stopMusic();
+
+    let step = 0;
+
+    const timer =
+        setInterval(
+            () => {
+
+                if(
+                    step >=
+                    music.melody.length
+                ){
+
+                    clearInterval(timer);
+
+                    if(
+                        state.musicEnabled &&
+                        game.running
+                    ){
+                        startMusic();
+                    }
+
+                    return;
+                }
+
+                rawTone(
+                    music.melody[step],
+                    .28,
+                    .035,
+                    "triangle"
+                );
+
+                step++;
+
+            },
+            music.tempo
+        );
 }
 
 
@@ -1253,14 +1544,11 @@ const game = {
     over:false,
 
     score:0,
-
     runCoins:0,
-
     jumpCount:0,
 
     speed:165,
-
-    spawnTimer:0,
+    spawnTimer:.9,
 
     obstacles:[],
 
@@ -1273,7 +1561,6 @@ const game = {
     },
 
     world:null,
-
     lastTime:0
 };
 
@@ -1285,31 +1572,67 @@ const game = {
 function showScreen(id){
 
     document
-        .querySelectorAll(".screen")
-        .forEach(
-            s =>
-                s.classList.remove(
-                    "active"
-                )
-        );
+    .querySelectorAll(".screen")
+    .forEach(
+        screen =>
+            screen.classList.remove(
+                "active"
+            )
+    );
 
     document
-        .getElementById(id)
-        .classList.add(
-            "active"
-        );
+    .getElementById(id)
+    .classList.add(
+        "active"
+    );
 }
 
 function hideScreens(){
 
     document
-        .querySelectorAll(".screen")
-        .forEach(
-            s =>
-                s.classList.remove(
-                    "active"
-                )
-        );
+    .querySelectorAll(".screen")
+    .forEach(
+        screen =>
+            screen.classList.remove(
+                "active"
+            )
+    );
+}
+
+
+/* =========================================================
+   MESSAGE
+========================================================= */
+
+function showMessage(text){
+
+    const el =
+        document.createElement("div");
+
+    el.textContent = text;
+
+    el.style.cssText =
+    `
+        position:fixed;
+        left:50%;
+        top:18%;
+        transform:translate(-50%,-50%);
+        z-index:9999;
+        background:rgba(8,12,30,.96);
+        border:1px solid rgba(255,255,255,.15);
+        padding:13px 18px;
+        border-radius:999px;
+        color:white;
+        font-weight:900;
+        box-shadow:0 15px 40px rgba(0,0,0,.3);
+    `;
+
+    document.body.appendChild(el);
+
+    setTimeout(
+        () => el.remove(),
+        1400
+    );
 }
 
 
@@ -1330,50 +1653,11 @@ function updateLobby(){
         state.best;
 
     document.getElementById(
-        "musicBtn"
+        "musicToggleBtn"
     ).textContent =
-        state.music
-            ? "🔊 Musik: AN"
-            : "🔇 Musik: AUS";
-}
-
-
-/* =========================================================
-   MESSAGE
-========================================================= */
-
-function showMessage(text){
-
-    const el =
-        document.createElement(
-            "div"
-        );
-
-    el.textContent =
-        text;
-
-    el.style.cssText =
-        `
-        position:fixed;
-        left:50%;
-        top:18%;
-        transform:translate(-50%,-50%);
-        z-index:9999;
-        background:rgba(8,12,30,.95);
-        border:1px solid rgba(255,255,255,.15);
-        color:white;
-        padding:13px 18px;
-        border-radius:999px;
-        font-weight:900;
-        box-shadow:0 15px 40px rgba(0,0,0,.3);
-        `;
-
-    document.body.appendChild(el);
-
-    setTimeout(
-        () => el.remove(),
-        1400
-    );
+        state.musicEnabled
+        ? "🎵 Musik: AN"
+        : "🔇 Musik: AUS";
 }
 
 
@@ -1401,10 +1685,9 @@ function createTabs(
             button.className =
                 "tab" +
                 (
-                    item.id ===
-                    active
-                        ? " active"
-                        : ""
+                    item.id === active
+                    ? " active"
+                    : ""
                 );
 
             button.textContent =
@@ -1412,9 +1695,9 @@ function createTabs(
 
             button.onclick =
                 () =>
-                    callback(
-                        item.id
-                    );
+                callback(
+                    item.id
+                );
 
             container.appendChild(
                 button
@@ -1455,6 +1738,10 @@ function renderShop(){
             {
                 id:"sounds",
                 name:"🔊 Sounds"
+            },
+            {
+                id:"music",
+                name:"🎵 Musik"
             }
         ],
 
@@ -1462,10 +1749,9 @@ function renderShop(){
 
         id => {
 
-            shopTab =
-                id;
-
+            shopTab = id;
             renderShop();
+
         }
     );
 
@@ -1481,24 +1767,28 @@ function renderShop(){
         "sounds"
     ){
 
-        renderSoundShop(
-            container
-        );
+        renderSoundShop(container);
+        return;
+    }
 
+    if(
+        shopTab ===
+        "music"
+    ){
+
+        renderMusicShop(container);
         return;
     }
 
     const items =
-        shopTab ===
-        "skins"
-            ? skins
-            : worlds;
+        shopTab === "skins"
+        ? skins
+        : worlds;
 
     const owned =
-        shopTab ===
-        "skins"
-            ? state.ownedSkins
-            : state.ownedWorlds;
+        shopTab === "skins"
+        ? state.ownedSkins
+        : state.ownedWorlds;
 
     items.forEach(
         item => {
@@ -1519,18 +1809,16 @@ function renderShop(){
             preview.className =
                 "preview";
 
-            const c =
+            const previewCanvas =
                 document.createElement(
                     "canvas"
                 );
 
-            c.width = 220;
-            c.height = 110;
+            previewCanvas.width = 240;
+            previewCanvas.height = 140;
 
             const pctx =
-                c.getContext(
-                    "2d"
-                );
+                previewCanvas.getContext("2d");
 
             if(
                 shopTab ===
@@ -1540,9 +1828,9 @@ function renderShop(){
                 drawSkin(
                     pctx,
                     item.type,
-                    110,
-                    55,
-                    25
+                    120,
+                    70,
+                    28
                 );
 
             }else{
@@ -1550,13 +1838,18 @@ function renderShop(){
                 drawWorldPreview(
                     pctx,
                     item,
-                    220,
-                    110
+                    240,
+                    140
                 );
             }
 
-            preview.appendChild(c);
-            card.appendChild(preview);
+            preview.appendChild(
+                previewCanvas
+            );
+
+            card.appendChild(
+                preview
+            );
 
             const title =
                 document.createElement(
@@ -1578,8 +1871,8 @@ function renderShop(){
 
             price.textContent =
                 item.price === 0
-                    ? "Kostenlos"
-                    : `🪙 ${item.price} Coins`;
+                ? "Kostenlos"
+                : `🪙 ${item.price} Coins`;
 
             card.appendChild(price);
 
@@ -1591,53 +1884,51 @@ function renderShop(){
             button.className =
                 "smallbtn";
 
-            if(
+            const isOwned =
                 owned.includes(
                     item.id
-                )
-            ){
+                );
+
+            if(isOwned){
 
                 button.textContent =
                     "✓ Im Besitz";
 
-                button.disabled =
-                    true;
+                button.disabled = true;
 
             }else{
 
                 button.textContent =
                     "Kaufen";
 
-                button.onclick =
-                    () => {
+                button.onclick = () => {
 
-                        if(
-                            state.coins <
-                            item.price
-                        ){
+                    if(
+                        state.coins <
+                        item.price
+                    ){
 
-                            showMessage(
-                                "Nicht genug Coins!"
-                            );
-
-                            return;
-                        }
-
-                        state.coins -=
-                            item.price;
-
-                        owned.push(
-                            item.id
+                        showMessage(
+                            "Nicht genug Coins!"
                         );
 
-                        saveState();
+                        return;
+                    }
 
-                        renderShop();
+                    state.coins -=
+                        item.price;
 
-                        updateLobby();
+                    owned.push(
+                        item.id
+                    );
 
-                        playPurchaseSound();
-                    };
+                    saveState();
+
+                    renderShop();
+                    updateLobby();
+
+                    purchaseSound();
+                };
             }
 
             card.appendChild(button);
@@ -1652,9 +1943,7 @@ function renderShop(){
    SOUND SHOP
 ========================================================= */
 
-function renderSoundShop(
-    container
-){
+function renderSoundShop(container){
 
     sounds.forEach(
         sound => {
@@ -1681,7 +1970,7 @@ function renderSoundShop(
                 );
 
             box.className =
-                "soundPreviewBox";
+                "soundPreview";
 
             const icon =
                 document.createElement(
@@ -1694,21 +1983,9 @@ function renderSoundShop(
             icon.textContent =
                 sound.icon;
 
-            const text =
-                document.createElement(
-                    "div"
-                );
-
-            text.className =
-                "tiny";
-
-            text.textContent =
-                "Vor dem Kauf anhören";
-
             box.appendChild(icon);
-            box.appendChild(text);
-
             preview.appendChild(box);
+
             card.appendChild(preview);
 
             const title =
@@ -1731,8 +2008,177 @@ function renderSoundShop(
 
             price.textContent =
                 sound.price === 0
-                    ? "Kostenlos"
-                    : `🪙 ${sound.price} Coins`;
+                ? "Kostenlos"
+                : `🪙 ${sound.price} Coins`;
+
+            card.appendChild(price);
+
+            const listen =
+                document.createElement(
+                    "button"
+                );
+
+            listen.className =
+                "smallbtn blue";
+
+            listen.textContent =
+                "▶ ANHÖREN";
+
+            listen.onclick =
+                () =>
+                playJumpSound(
+                    sound.type
+                );
+
+            card.appendChild(listen);
+
+            const buy =
+                document.createElement(
+                    "button"
+                );
+
+            buy.className =
+                "smallbtn";
+
+            const owned =
+                state.ownedSounds.includes(
+                    sound.id
+                );
+
+            if(owned){
+
+                buy.textContent =
+                    "✓ Im Besitz";
+
+                buy.disabled =
+                    true;
+
+            }else{
+
+                buy.textContent =
+                    "Kaufen";
+
+                buy.onclick = () => {
+
+                    if(
+                        state.coins <
+                        sound.price
+                    ){
+
+                        showMessage(
+                            "Nicht genug Coins!"
+                        );
+
+                        return;
+                    }
+
+                    state.coins -=
+                        sound.price;
+
+                    state.ownedSounds.push(
+                        sound.id
+                    );
+
+                    saveState();
+
+                    renderShop();
+                    updateLobby();
+
+                    purchaseSound();
+                };
+            }
+
+            card.appendChild(buy);
+
+            container.appendChild(card);
+        }
+    );
+}
+
+
+/* =========================================================
+   MUSIK SHOP
+========================================================= */
+
+function renderMusicShop(container){
+
+    musicTracks.forEach(
+        music => {
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+            card.className =
+                "card";
+
+            const preview =
+                document.createElement(
+                    "div"
+                );
+
+            preview.className =
+                "preview";
+
+            const box =
+                document.createElement(
+                    "div"
+                );
+
+            box.className =
+                "soundPreview";
+
+            const icon =
+                document.createElement(
+                    "div"
+                );
+
+            icon.className =
+                "soundIcon";
+
+            icon.textContent =
+                music.icon;
+
+            const text =
+                document.createElement(
+                    "div"
+                );
+
+            text.className =
+                "musicText";
+
+            text.textContent =
+                "Hintergrundmelodie";
+
+            box.appendChild(icon);
+            box.appendChild(text);
+
+            preview.appendChild(box);
+            card.appendChild(preview);
+
+            const title =
+                document.createElement(
+                    "h3"
+                );
+
+            title.textContent =
+                music.name;
+
+            card.appendChild(title);
+
+            const price =
+                document.createElement(
+                    "div"
+                );
+
+            price.className =
+                "price";
+
+            price.textContent =
+                music.price === 0
+                ? "Kostenlos"
+                : `🪙 ${music.price} Coins`;
 
             card.appendChild(price);
 
@@ -1744,89 +2190,83 @@ function renderSoundShop(
             buttons.className =
                 "soundButtons";
 
-            const previewBtn =
+            const listen =
                 document.createElement(
                     "button"
                 );
 
-            previewBtn.className =
+            listen.className =
                 "smallbtn blue";
 
-            previewBtn.textContent =
+            listen.textContent =
                 "▶ Anhören";
 
-            previewBtn.onclick =
+            listen.onclick =
                 () =>
-                    playSound(
-                        sound.type
-                    );
+                previewMusic(
+                    music
+                );
 
             buttons.appendChild(
-                previewBtn
+                listen
             );
 
-            const buyBtn =
+            const buy =
                 document.createElement(
                     "button"
                 );
 
-            buyBtn.className =
+            buy.className =
                 "smallbtn";
 
             const owned =
-                state.ownedSounds.includes(
-                    sound.id
+                state.ownedMusic.includes(
+                    music.id
                 );
 
             if(owned){
 
-                buyBtn.textContent =
+                buy.textContent =
                     "✓ Im Besitz";
 
-                buyBtn.disabled =
-                    true;
+                buy.disabled = true;
 
             }else{
 
-                buyBtn.textContent =
+                buy.textContent =
                     "Kaufen";
 
-                buyBtn.onclick =
-                    () => {
+                buy.onclick = () => {
 
-                        if(
-                            state.coins <
-                            sound.price
-                        ){
+                    if(
+                        state.coins <
+                        music.price
+                    ){
 
-                            showMessage(
-                                "Nicht genug Coins!"
-                            );
-
-                            return;
-                        }
-
-                        state.coins -=
-                            sound.price;
-
-                        state.ownedSounds.push(
-                            sound.id
+                        showMessage(
+                            "Nicht genug Coins!"
                         );
 
-                        saveState();
+                        return;
+                    }
 
-                        renderShop();
+                    state.coins -=
+                        music.price;
 
-                        updateLobby();
+                    state.ownedMusic.push(
+                        music.id
+                    );
 
-                        playPurchaseSound();
-                    };
+                    saveState();
+
+                    renderShop();
+                    updateLobby();
+
+                    purchaseSound();
+                };
             }
 
-            buttons.appendChild(
-                buyBtn
-            );
-
+            buttons.appendChild(buy);
             card.appendChild(buttons);
 
             container.appendChild(card);
@@ -1839,7 +2279,8 @@ function renderSoundShop(
    INVENTAR
 ========================================================= */
 
-let inventoryTab = "skins";
+let inventoryTab =
+    "skins";
 
 function renderInventory(){
 
@@ -1861,6 +2302,10 @@ function renderInventory(){
             {
                 id:"sounds",
                 name:"🔊 Sounds"
+            },
+            {
+                id:"music",
+                name:"🎵 Musik"
             }
         ],
 
@@ -1868,10 +2313,9 @@ function renderInventory(){
 
         id => {
 
-            inventoryTab =
-                id;
-
+            inventoryTab = id;
             renderInventory();
+
         }
     );
 
@@ -1887,30 +2331,34 @@ function renderInventory(){
         "sounds"
     ){
 
-        renderSoundInventory(
-            container
-        );
+        renderSoundInventory(container);
+        return;
+    }
 
+    if(
+        inventoryTab ===
+        "music"
+    ){
+
+        renderMusicInventory(container);
         return;
     }
 
     const items =
         inventoryTab ===
         "skins"
-
-            ? skins.filter(
-                item =>
-                    state.ownedSkins.includes(
-                        item.id
-                    )
-            )
-
-            : worlds.filter(
-                item =>
-                    state.ownedWorlds.includes(
-                        item.id
-                    )
-            );
+        ? skins.filter(
+            item =>
+                state.ownedSkins.includes(
+                    item.id
+                )
+          )
+        : worlds.filter(
+            item =>
+                state.ownedWorlds.includes(
+                    item.id
+                )
+          );
 
     items.forEach(
         item => {
@@ -1931,16 +2379,16 @@ function renderInventory(){
             preview.className =
                 "preview";
 
-            const c =
+            const previewCanvas =
                 document.createElement(
                     "canvas"
                 );
 
-            c.width = 220;
-            c.height = 110;
+            previewCanvas.width = 240;
+            previewCanvas.height = 140;
 
             const pctx =
-                c.getContext(
+                previewCanvas.getContext(
                     "2d"
                 );
 
@@ -1952,9 +2400,9 @@ function renderInventory(){
                 drawSkin(
                     pctx,
                     item.type,
-                    110,
-                    55,
-                    25
+                    120,
+                    70,
+                    28
                 );
 
             }else{
@@ -1962,12 +2410,15 @@ function renderInventory(){
                 drawWorldPreview(
                     pctx,
                     item,
-                    220,
-                    110
+                    240,
+                    140
                 );
             }
 
-            preview.appendChild(c);
+            preview.appendChild(
+                previewCanvas
+            );
+
             card.appendChild(preview);
 
             const title =
@@ -1983,32 +2434,28 @@ function renderInventory(){
             const selected =
                 inventoryTab ===
                 "skins"
+                ? state.selectedSkin === item.id
+                : state.selectedWorld === item.id;
 
-                    ? state.selectedSkin ===
-                      item.id
-
-                    : state.selectedWorld ===
-                      item.id;
-
-            const button =
+            const equip =
                 document.createElement(
                     "button"
                 );
 
-            button.className =
+            equip.className =
                 "smallbtn" +
                 (
                     selected
-                        ? " selected"
-                        : ""
+                    ? " selected"
+                    : ""
                 );
 
-            button.textContent =
+            equip.textContent =
                 selected
-                    ? "✓ AUSGERÜSTET"
-                    : "AUSRÜSTEN";
+                ? "✓ AUSGERÜSTET"
+                : "AUSRÜSTEN";
 
-            button.onclick =
+            equip.onclick =
                 () => {
 
                     if(
@@ -2028,9 +2475,11 @@ function renderInventory(){
                     saveState();
 
                     renderInventory();
+
+                    updateLobby();
                 };
 
-            card.appendChild(button);
+            card.appendChild(equip);
 
             container.appendChild(card);
         }
@@ -2042,157 +2491,273 @@ function renderInventory(){
    SOUND INVENTAR
 ========================================================= */
 
-function renderSoundInventory(
-    container
-){
+function renderSoundInventory(container){
 
     sounds
-        .filter(
-            sound =>
-                state.ownedSounds.includes(
-                    sound.id
-                )
-        )
-        .forEach(
-            sound => {
+    .filter(
+        sound =>
+            state.ownedSounds.includes(
+                sound.id
+            )
+    )
+    .forEach(
+        sound => {
 
-                const card =
-                    document.createElement(
-                        "div"
-                    );
+            const card =
+                document.createElement(
+                    "div"
+                );
 
-                card.className =
-                    "card";
+            card.className =
+                "card";
 
-                const preview =
-                    document.createElement(
-                        "div"
-                    );
+            const preview =
+                document.createElement(
+                    "div"
+                );
 
-                preview.className =
-                    "preview";
+            preview.className =
+                "preview";
 
-                const box =
-                    document.createElement(
-                        "div"
-                    );
+            const box =
+                document.createElement(
+                    "div"
+                );
 
-                box.className =
-                    "soundPreviewBox";
+            box.className =
+                "soundPreview";
 
-                const icon =
-                    document.createElement(
-                        "div"
-                    );
+            const icon =
+                document.createElement(
+                    "div"
+                );
 
-                icon.className =
-                    "soundIcon";
+            icon.className =
+                "soundIcon";
 
-                icon.textContent =
-                    sound.icon;
+            icon.textContent =
+                sound.icon;
 
-                box.appendChild(icon);
-                preview.appendChild(box);
-                card.appendChild(preview);
+            box.appendChild(icon);
+            preview.appendChild(box);
 
-                const title =
-                    document.createElement(
-                        "h3"
-                    );
+            card.appendChild(preview);
 
-                title.textContent =
-                    sound.name;
+            const title =
+                document.createElement(
+                    "h3"
+                );
 
-                card.appendChild(title);
+            title.textContent =
+                sound.name;
 
-                const test =
-                    document.createElement(
-                        "button"
-                    );
+            card.appendChild(title);
 
-                test.className =
-                    "smallbtn blue";
+            const test =
+                document.createElement(
+                    "button"
+                );
 
-                test.textContent =
-                    "▶ TESTEN";
+            test.className =
+                "smallbtn blue";
 
-                test.onclick =
-                    () =>
-                        playSound(
-                            sound.type
-                        );
+            test.textContent =
+                "▶ TESTEN";
 
-                card.appendChild(test);
+            test.onclick =
+                () =>
+                playJumpSound(
+                    sound.type
+                );
 
-                const selected =
-                    state.selectedSound ===
-                    sound.id;
+            card.appendChild(test);
 
-                const button =
-                    document.createElement(
-                        "button"
-                    );
+            const selected =
+                state.selectedSound ===
+                sound.id;
 
-                button.className =
-                    "smallbtn" +
-                    (
-                        selected
-                            ? " selected"
-                            : ""
-                    );
+            const equip =
+                document.createElement(
+                    "button"
+                );
 
-                button.textContent =
+            equip.className =
+                "smallbtn" +
+                (
                     selected
-                        ? "✓ AUSGERÜSTET"
-                        : "AUSRÜSTEN";
+                    ? " selected"
+                    : ""
+                );
 
-                button.onclick =
-                    () => {
+            equip.textContent =
+                selected
+                ? "✓ AUSGERÜSTET"
+                : "AUSRÜSTEN";
 
-                        state.selectedSound =
-                            sound.id;
+            equip.onclick =
+                () => {
 
-                        saveState();
+                    state.selectedSound =
+                        sound.id;
 
-                        renderInventory();
-                    };
+                    saveState();
 
-                card.appendChild(button);
+                    renderInventory();
+                };
 
-                container.appendChild(card);
-            }
-        );
+            card.appendChild(equip);
+
+            container.appendChild(card);
+        }
+    );
 }
 
 
 /* =========================================================
-   KAUFSOUND
+   MUSIK INVENTAR
 ========================================================= */
 
-function playPurchaseSound(){
+function renderMusicInventory(container){
 
-    initAudio();
+    musicTracks
+    .filter(
+        music =>
+            state.ownedMusic.includes(
+                music.id
+            )
+    )
+    .forEach(
+        music => {
 
-    if(!audioContext){
-        return;
-    }
+            const card =
+                document.createElement(
+                    "div"
+                );
 
-    rawTone(
-        523.25,
-        .08,
-        .045,
-        "triangle"
-    );
+            card.className =
+                "card";
 
-    setTimeout(
-        () =>
-            rawTone(
-                783.99,
-                .12,
-                .045,
-                "triangle"
-            ),
-        70
+            const preview =
+                document.createElement(
+                    "div"
+                );
+
+            preview.className =
+                "preview";
+
+            const box =
+                document.createElement(
+                    "div"
+                );
+
+            box.className =
+                "soundPreview";
+
+            const icon =
+                document.createElement(
+                    "div"
+                );
+
+            icon.className =
+                "soundIcon";
+
+            icon.textContent =
+                music.icon;
+
+            const text =
+                document.createElement(
+                    "div"
+                );
+
+            text.className =
+                "musicText";
+
+            text.textContent =
+                "Hintergrundmusik";
+
+            box.appendChild(icon);
+            box.appendChild(text);
+
+            preview.appendChild(box);
+            card.appendChild(preview);
+
+            const title =
+                document.createElement(
+                    "h3"
+                );
+
+            title.textContent =
+                music.name;
+
+            card.appendChild(title);
+
+            const listen =
+                document.createElement(
+                    "button"
+                );
+
+            listen.className =
+                "smallbtn blue";
+
+            listen.textContent =
+                "▶ ANHÖREN";
+
+            listen.onclick =
+                () =>
+                previewMusic(
+                    music
+                );
+
+            card.appendChild(listen);
+
+            const selected =
+                state.selectedMusic ===
+                music.id;
+
+            const equip =
+                document.createElement(
+                    "button"
+                );
+
+            equip.className =
+                "smallbtn" +
+                (
+                    selected
+                    ? " selected"
+                    : ""
+                );
+
+            equip.textContent =
+                selected
+                ? "✓ AUSGERÜSTET"
+                : "AUSRÜSTEN";
+
+            equip.onclick =
+                () => {
+
+                    state.selectedMusic =
+                        music.id;
+
+                    saveState();
+
+                    renderMusicInventory(
+                        container
+                    );
+
+                    document.getElementById(
+                        "musicHud"
+                    ).textContent =
+                        music.name;
+
+                    if(game.running){
+                        startMusic();
+                    }
+                };
+
+            card.appendChild(equip);
+
+            container.appendChild(card);
+        }
     );
 }
 
@@ -2237,53 +2802,29 @@ function startGame(){
         "active"
     );
 
-    game.running =
-        true;
+    game.running = true;
+    game.paused = false;
+    game.over = false;
 
-    game.paused =
-        false;
+    game.score = 0;
+    game.runCoins = 0;
+    game.jumpCount = 0;
 
-    game.over =
-        false;
+    /* Sehr leichter Start */
+    game.speed = 165;
 
-    game.score =
-        0;
+    game.spawnTimer = .9;
 
-    game.runCoins =
-        0;
-
-    game.jumpCount =
-        0;
-
-    /*
-        SEHR LEICHTER START
-    */
-
-    game.speed =
-        165;
-
-    game.spawnTimer =
-        0.9;
-
-    game.obstacles =
-        [];
+    game.obstacles = [];
 
     game.player = {
 
-        x:
-            W * .24,
+        x:W * .24,
+        y:H * .45,
+        vy:0,
+        r:22,
+        rot:0
 
-        y:
-            H * .45,
-
-        vy:
-            0,
-
-        r:
-            22,
-
-        rot:
-            0
     };
 
     game.world =
@@ -2298,15 +2839,17 @@ function startGame(){
     ).textContent =
         game.world.name;
 
+    document.getElementById(
+        "musicHud"
+    ).textContent =
+        selectedMusic().name;
+
     updateHUD();
 
     game.lastTime =
         performance.now();
 
-    /*
-        Startsprung zählt als Jump.
-    */
-
+    /* Start-Jump zählt */
     flap();
 
     requestAnimationFrame(
@@ -2356,14 +2899,18 @@ function flap(){
     game.player.vy =
         -405;
 
-    /*
-       Nur der Jump-Zähler
-       wird hier erhöht.
-    */
-
     game.jumpCount++;
 
-    jumpSound();
+    const sound =
+        sounds.find(
+            item =>
+                item.id ===
+                state.selectedSound
+        ) || sounds[0];
+
+    playJumpSound(
+        sound.type
+    );
 
     updateHUD();
 }
@@ -2373,16 +2920,14 @@ function flap(){
    UPDATE
 ========================================================= */
 
-function updateGame(
-    dt
-){
+function updateGame(dt){
 
     const p =
         game.player;
 
     /*
-       Langsam beginnen,
-       später extrem schwer.
+       Start sehr leicht.
+       Später immer schneller.
     */
 
     game.speed =
@@ -2391,10 +2936,6 @@ function updateGame(
             255,
             game.score * 2.5
         );
-
-    /*
-       Gravitation steigt langsam.
-    */
 
     const gravity =
         1080 +
@@ -2420,7 +2961,7 @@ function updateGame(
 
     /*
        Große Lücke am Anfang.
-       Später immer kleiner.
+       Langsam schwieriger.
     */
 
     const gapHeight =
@@ -2430,12 +2971,10 @@ function updateGame(
             game.score * .62
         );
 
-    game.spawnTimer -=
-        dt;
+    game.spawnTimer -= dt;
 
     if(
-        game.spawnTimer <=
-        0
+        game.spawnTimer <= 0
     ){
 
         const topMargin =
@@ -2476,20 +3015,12 @@ function updateGame(
 
         game.obstacles.push({
 
-            x:
-                W + 30,
+            x:W + 30,
+            width,
+            gapY,
+            gapH:gapHeight,
+            passed:false
 
-            width:
-                width,
-
-            gapY:
-                gapY,
-
-            gapH:
-                gapHeight,
-
-            passed:
-                false
         });
 
         game.spawnTimer =
@@ -2501,7 +3032,7 @@ function updateGame(
     }
 
     /*
-       HINDERNISSE
+       Hindernisse
     */
 
     for(
@@ -2513,8 +3044,7 @@ function updateGame(
             game.speed * dt;
 
         /*
-           Ein Hindernis erfolgreich überflogen
-           = 1 Punkt.
+           Erfolgreich überflogen
         */
 
         if(
@@ -2530,26 +3060,24 @@ function updateGame(
 
             game.score++;
 
-            playScoreSound();
+            scoreSound();
 
             /*
-               JEDES 5. HINDERNIS
-               = +5 COINS
+               ALLE 5 HINDERNISSE:
+               +10 COINS
             */
 
             if(
-                game.score % 5 ===
-                0
+                game.score % 5 === 0
             ){
 
-                game.runCoins +=
-                    5;
+                game.runCoins += 10;
 
                 showMessage(
-                    "🪙 +5 Coins!"
+                    "🪙 +10 Coins!"
                 );
 
-                playCoinSound();
+                coinSound();
             }
         }
 
@@ -2579,7 +3107,7 @@ function updateGame(
         );
 
     /*
-       Decke/Boden
+       Decke
     */
 
     if(
@@ -2589,9 +3117,12 @@ function updateGame(
     ){
 
         endGame();
-
         return;
     }
+
+    /*
+       Boden
+    */
 
     if(
         p.y +
@@ -2600,8 +3131,22 @@ function updateGame(
     ){
 
         endGame();
-
         return;
+    }
+
+    /*
+       Rekord laufend speichern
+    */
+
+    if(
+        game.score >
+        state.best
+    ){
+
+        state.best =
+            game.score;
+
+        saveState();
     }
 
     updateHUD();
@@ -2626,16 +3171,14 @@ function obstacleCollision(
         obstacle.gapH / 2;
 
     if(
-        p.x +
-        p.r <
+        p.x + p.r <
         obstacle.x
     ){
         return false;
     }
 
     if(
-        p.x -
-        p.r >
+        p.x - p.r >
         obstacle.x +
         obstacle.width
     ){
@@ -2643,43 +3186,20 @@ function obstacleCollision(
     }
 
     if(
-        p.y -
-        p.r <
+        p.y - p.r <
         top
     ){
         return true;
     }
 
     if(
-        p.y +
-        p.r >
+        p.y + p.r >
         bottom
     ){
         return true;
     }
 
     return false;
-}
-
-
-/* =========================================================
-   SCORE SOUND
-========================================================= */
-
-function playScoreSound(){
-
-    if(!state.sfx){
-        return;
-    }
-
-    initAudio();
-
-    rawTone(
-        760,
-        .04,
-        .03,
-        "triangle"
-    );
 }
 
 
@@ -2693,32 +3213,21 @@ function endGame(){
         return;
     }
 
-    game.over =
-        true;
-
-    game.running =
-        false;
+    game.over = true;
+    game.running = false;
 
     /*
-       Die verdienten Coins werden
-       genau einmal gespeichert.
+       Die während des Laufs verdienten
+       Coins werden EINMAL gespeichert.
     */
-
-    const earned =
-        game.runCoins;
 
     state.coins +=
-        earned;
-
-    /*
-       Rekord bleibt gespeichert.
-    */
+        game.runCoins;
 
     if(
         game.score >
         state.best
     ){
-
         state.best =
             game.score;
     }
@@ -2733,7 +3242,7 @@ function endGame(){
     document.getElementById(
         "earnedCoins"
     ).textContent =
-        earned;
+        game.runCoins;
 
     document.getElementById(
         "bestScore"
@@ -2751,51 +3260,20 @@ function endGame(){
         "active"
     );
 
-    playGameOverSound();
+    gameOverSound();
 }
 
 
 /* =========================================================
-   GAMEOVER SOUND
+   GAME LOOP
 ========================================================= */
 
-function playGameOverSound(){
+function gameLoop(time){
 
-    initAudio();
+    if(
+        !game.running
+    ){
 
-    if(!audioContext){
-        return;
-    }
-
-    rawTone(
-        300,
-        .15,
-        .05,
-        "sawtooth"
-    );
-
-    setTimeout(
-        () =>
-            rawTone(
-                210,
-                .22,
-                .045,
-                "sawtooth"
-            ),
-        130
-    );
-}
-
-
-/* =========================================================
-   LOOP
-========================================================= */
-
-function gameLoop(
-    time
-){
-
-    if(!game.running){
         draw();
         return;
     }
@@ -2804,8 +3282,7 @@ function gameLoop(
         Math.min(
             .033,
             (time -
-             game.lastTime) /
-            1000
+            game.lastTime) / 1000
         );
 
     game.lastTime =
@@ -2830,65 +3307,7 @@ function gameLoop(
 
 
 /* =========================================================
-   BACKGROUND DRAWING
-========================================================= */
-
-function drawBackground(){
-
-    const world =
-        game.world ||
-        worlds[0];
-
-    const gradient =
-        ctx.createLinearGradient(
-            0,
-            0,
-            0,
-            H
-        );
-
-    gradient.addColorStop(
-        0,
-        world.sky1
-    );
-
-    gradient.addColorStop(
-        1,
-        world.sky2
-    );
-
-    ctx.fillStyle =
-        gradient;
-
-    ctx.fillRect(
-        0,
-        0,
-        W,
-        H
-    );
-
-    if(world.id === "giza")
-        drawGiza();
-
-    if(world.id === "mountains")
-        drawMountains();
-
-    if(world.id === "ocean")
-        drawOcean();
-
-    if(world.id === "jungle")
-        drawJungle();
-
-    if(world.id === "space")
-        drawSpace();
-
-    if(world.id === "ice")
-        drawIce();
-}
-
-
-/* =========================================================
-   GIZEH
+   BACKGROUNDS
 ========================================================= */
 
 function drawGiza(){
@@ -2918,20 +3337,19 @@ function drawGiza(){
         0,
         horizon,
         W,
-        H -
-        horizon
+        H-horizon
     );
 
     drawPyramid(
-        W * .57,
+        W*.57,
         horizon,
         200,
         130
     );
 
     drawPyramid(
-        W * .75,
-        horizon + 12,
+        W*.75,
+        horizon+12,
         110,
         78
     );
@@ -2951,19 +3369,16 @@ function drawPyramid(
 
     ctx.moveTo(
         cx,
-        base -
-        height
+        base-height
     );
 
     ctx.lineTo(
-        cx -
-        width / 2,
+        cx-width/2,
         base
     );
 
     ctx.lineTo(
-        cx +
-        width / 2,
+        cx+width/2,
         base
     );
 
@@ -2971,11 +3386,6 @@ function drawPyramid(
 
     ctx.fill();
 }
-
-
-/* =========================================================
-   BERGE
-========================================================= */
 
 function drawMountains(){
 
@@ -2986,32 +3396,32 @@ function drawMountains(){
 
     ctx.moveTo(
         0,
-        H * .72
+        H*.72
     );
 
     ctx.lineTo(
-        W * .18,
-        H * .43
+        W*.18,
+        H*.43
     );
 
     ctx.lineTo(
-        W * .38,
-        H * .7
+        W*.38,
+        H*.70
     );
 
     ctx.lineTo(
-        W * .57,
-        H * .32
+        W*.57,
+        H*.32
     );
 
     ctx.lineTo(
-        W * .78,
-        H * .67
+        W*.78,
+        H*.67
     );
 
     ctx.lineTo(
         W,
-        H * .4
+        H*.4
     );
 
     ctx.lineTo(
@@ -3033,16 +3443,11 @@ function drawMountains(){
 
     ctx.fillRect(
         0,
-        H * .79,
+        H*.79,
         W,
-        H * .21
+        H*.21
     );
 }
-
-
-/* =========================================================
-   OZEAN
-========================================================= */
 
 function drawOcean(){
 
@@ -3053,17 +3458,17 @@ function drawOcean(){
         2;
 
     for(
-        let y = 90;
-        y < H * .85;
-        y += 80
+        let y=90;
+        y<H*.85;
+        y+=80
     ){
 
         ctx.beginPath();
 
         for(
-            let x = 0;
-            x < W;
-            x += 45
+            let x=0;
+            x<W;
+            x+=45
         ){
 
             ctx.moveTo(
@@ -3072,9 +3477,9 @@ function drawOcean(){
             );
 
             ctx.quadraticCurveTo(
-                x + 12,
-                y - 10,
-                x + 24,
+                x+12,
+                y-10,
+                x+24,
                 y
             );
         }
@@ -3087,16 +3492,11 @@ function drawOcean(){
 
     ctx.fillRect(
         0,
-        H * .88,
+        H*.88,
         W,
-        H * .12
+        H*.12
     );
 }
-
-
-/* =========================================================
-   DSCHUNGEL
-========================================================= */
 
 function drawJungle(){
 
@@ -3105,34 +3505,31 @@ function drawJungle(){
 
     ctx.fillRect(
         0,
-        H * .78,
+        H*.78,
         W,
-        H * .22
+        H*.22
     );
 
     for(
-        let i = 0;
-        i < 18;
+        let i=0;
+        i<18;
         i++
     ){
 
         const x =
-            (i * 97) %
-            W;
+            (i*97)%W;
 
         const height =
-            100 +
-            (i % 4) * 35;
+            100+(i%4)*35;
 
         ctx.fillStyle =
-            i % 2
-                ? "#1c5a31"
-                : "#348746";
+            i%2
+            ? "#1c5a31"
+            : "#348746";
 
         ctx.fillRect(
             x,
-            H * .78 -
-            height,
+            H*.78-height,
             20,
             height
         );
@@ -3140,22 +3537,16 @@ function drawJungle(){
         ctx.beginPath();
 
         ctx.arc(
-            x + 10,
-            H * .78 -
-            height,
+            x+10,
+            H*.78-height,
             38,
             Math.PI,
-            Math.PI * 2
+            Math.PI*2
         );
 
         ctx.fill();
     }
 }
-
-
-/* =========================================================
-   WELTRAUM
-========================================================= */
 
 function drawSpace(){
 
@@ -3163,22 +3554,19 @@ function drawSpace(){
         "white";
 
     for(
-        let i = 0;
-        i < 100;
+        let i=0;
+        i<100;
         i++
     ){
 
         const x =
-            (i * 83) %
-            W;
+            (i*83)%W;
 
         const y =
-            (i * 47) %
-            H;
+            (i*47)%H;
 
         ctx.globalAlpha =
-            .25 +
-            (i % 5) * .1;
+            .25+(i%5)*.1;
 
         ctx.fillRect(
             x,
@@ -3200,11 +3588,11 @@ function drawSpace(){
     ctx.beginPath();
 
     ctx.arc(
-        W * .78,
-        H * .25,
+        W*.78,
+        H*.25,
         120,
         0,
-        Math.PI * 2
+        Math.PI*2
     );
 
     ctx.fill();
@@ -3213,40 +3601,35 @@ function drawSpace(){
         1;
 }
 
-
-/* =========================================================
-   EIS
-========================================================= */
-
 function drawIce(){
 
     ctx.fillStyle =
         "rgba(255,255,255,.45)";
 
     for(
-        let i = 0;
-        i < 8;
+        let i=0;
+        i<8;
         i++
     ){
 
         const x =
-            i * 190;
+            i*190;
 
         ctx.beginPath();
 
         ctx.moveTo(
             x,
-            H * .82
+            H*.82
         );
 
         ctx.lineTo(
-            x + 80,
-            H * .25
+            x+80,
+            H*.25
         );
 
         ctx.lineTo(
-            x + 150,
-            H * .82
+            x+150,
+            H*.82
         );
 
         ctx.closePath();
@@ -3259,9 +3642,9 @@ function drawIce(){
 
     ctx.fillRect(
         0,
-        H * .82,
+        H*.82,
         W,
-        H * .18
+        H*.18
     );
 }
 
@@ -3285,33 +3668,25 @@ function drawSkin(
         y
     );
 
-    if(type === "bird")
+    if(type==="bird")
         drawBird(c,r);
 
-    if(type === "dino")
+    if(type==="dino")
         drawDino(c,r);
 
-    if(type === "pen")
+    if(type==="pen")
         drawPen(c,r);
 
-    if(type === "carrot")
+    if(type==="carrot")
         drawCarrot(c,r);
 
-    if(type === "apple")
+    if(type==="apple")
         drawApple(c,r);
 
     c.restore();
 }
 
-
-/* =========================================================
-   VOGEL
-========================================================= */
-
-function drawBird(
-    c,
-    r
-){
+function drawBird(c,r){
 
     c.fillStyle =
         "#ffd13b";
@@ -3321,11 +3696,11 @@ function drawBird(
     c.ellipse(
         0,
         0,
-        r * 1.05,
-        r * .82,
+        r*1.05,
+        r*.82,
         0,
         0,
-        Math.PI * 2
+        Math.PI*2
     );
 
     c.fill();
@@ -3336,11 +3711,11 @@ function drawBird(
     c.beginPath();
 
     c.arc(
-        r * .35,
-        -r * .3,
-        r * .21,
+        r*.35,
+        -r*.3,
+        r*.21,
         0,
-        Math.PI * 2
+        Math.PI*2
     );
 
     c.fill();
@@ -3351,11 +3726,11 @@ function drawBird(
     c.beginPath();
 
     c.arc(
-        r * .4,
-        -r * .3,
-        r * .08,
+        r*.4,
+        -r*.3,
+        r*.08,
         0,
-        Math.PI * 2
+        Math.PI*2
     );
 
     c.fill();
@@ -3366,18 +3741,18 @@ function drawBird(
     c.beginPath();
 
     c.moveTo(
-        r * .9,
-        -r * .05
+        r*.9,
+        -r*.05
     );
 
     c.lineTo(
-        r * 1.45,
-        r * .1
+        r*1.45,
+        r*.1
     );
 
     c.lineTo(
-        r * .9,
-        r * .28
+        r*.9,
+        r*.28
     );
 
     c.closePath();
@@ -3390,27 +3765,19 @@ function drawBird(
     c.beginPath();
 
     c.ellipse(
-        -r * .25,
-        r * .4,
-        r * .55,
-        r * .18,
+        -r*.25,
+        r*.4,
+        r*.55,
+        r*.18,
         -.3,
         0,
-        Math.PI * 2
+        Math.PI*2
     );
 
     c.fill();
 }
 
-
-/* =========================================================
-   DINO
-========================================================= */
-
-function drawDino(
-    c,
-    r
-){
+function drawDino(c,r){
 
     c.fillStyle =
         "#58d26b";
@@ -3420,11 +3787,11 @@ function drawDino(
     c.ellipse(
         0,
         0,
-        r * 1.05,
-        r * .72,
+        r*1.05,
+        r*.72,
         0,
         0,
-        Math.PI * 2
+        Math.PI*2
     );
 
     c.fill();
@@ -3435,18 +3802,18 @@ function drawDino(
     c.beginPath();
 
     c.moveTo(
-        -r * .7,
-        -r * .25
+        -r*.7,
+        -r*.25
     );
 
     c.lineTo(
-        -r * 1.4,
-        -r * .05
+        -r*1.4,
+        -r*.05
     );
 
     c.lineTo(
-        -r * .8,
-        r * .3
+        -r*.8,
+        r*.3
     );
 
     c.closePath();
@@ -3459,11 +3826,11 @@ function drawDino(
     c.beginPath();
 
     c.arc(
-        r * .4,
-        -r * .2,
-        r * .2,
+        r*.4,
+        -r*.2,
+        r*.2,
         0,
-        Math.PI * 2
+        Math.PI*2
     );
 
     c.fill();
@@ -3474,25 +3841,17 @@ function drawDino(
     c.beginPath();
 
     c.arc(
-        r * .45,
-        -r * .2,
-        r * .08,
+        r*.45,
+        -r*.2,
+        r*.08,
         0,
-        Math.PI * 2
+        Math.PI*2
     );
 
     c.fill();
 }
 
-
-/* =========================================================
-   STIFT
-========================================================= */
-
-function drawPen(
-    c,
-    r
-){
+function drawPen(c,r){
 
     c.rotate(-.35);
 
@@ -3500,20 +3859,20 @@ function drawPen(
         "#ffdf4e";
 
     c.fillRect(
-        -r * .25,
-        -r * 1.1,
-        r * .5,
-        r * 1.6
+        -r*.25,
+        -r*1.1,
+        r*.5,
+        r*1.6
     );
 
     c.fillStyle =
         "#4d75ff";
 
     c.fillRect(
-        -r * .25,
-        -r * 1.1,
-        r * .5,
-        r * .35
+        -r*.25,
+        -r*1.1,
+        r*.5,
+        r*.35
     );
 
     c.fillStyle =
@@ -3522,18 +3881,18 @@ function drawPen(
     c.beginPath();
 
     c.moveTo(
-        -r * .25,
-        r * .5
+        -r*.25,
+        r*.5
     );
 
     c.lineTo(
         0,
-        r * 1.05
+        r*1.05
     );
 
     c.lineTo(
-        r * .25,
-        r * .5
+        r*.25,
+        r*.5
     );
 
     c.closePath();
@@ -3541,15 +3900,7 @@ function drawPen(
     c.fill();
 }
 
-
-/* =========================================================
-   KAROTTE
-========================================================= */
-
-function drawCarrot(
-    c,
-    r
-){
+function drawCarrot(c,r){
 
     c.fillStyle =
         "#62d976";
@@ -3557,23 +3908,23 @@ function drawCarrot(
     c.beginPath();
 
     c.ellipse(
-        -r * .2,
-        -r * .75,
-        r * .25,
-        r * .55,
+        -r*.2,
+        -r*.75,
+        r*.25,
+        r*.55,
         -.5,
         0,
-        Math.PI * 2
+        Math.PI*2
     );
 
     c.ellipse(
-        r * .2,
-        -r * .75,
-        r * .25,
-        r * .55,
+        r*.2,
+        -r*.75,
+        r*.25,
+        r*.55,
         .5,
         0,
-        Math.PI * 2
+        Math.PI*2
     );
 
     c.fill();
@@ -3584,22 +3935,22 @@ function drawCarrot(
     c.beginPath();
 
     c.moveTo(
-        -r * .65,
-        -r * .25
+        -r*.65,
+        -r*.25
     );
 
     c.quadraticCurveTo(
         0,
-        r * .75,
+        r*.75,
         0,
-        r * 1.05
+        r*1.05
     );
 
     c.quadraticCurveTo(
         0,
-        r * .75,
-        r * .65,
-        -r * .25
+        r*.75,
+        r*.65,
+        -r*.25
     );
 
     c.closePath();
@@ -3607,15 +3958,7 @@ function drawCarrot(
     c.fill();
 }
 
-
-/* =========================================================
-   APFEL
-========================================================= */
-
-function drawApple(
-    c,
-    r
-){
+function drawApple(c,r){
 
     c.fillStyle =
         "#f14848";
@@ -3623,19 +3966,19 @@ function drawApple(
     c.beginPath();
 
     c.arc(
-        -r * .3,
+        -r*.3,
         0,
-        r * .65,
+        r*.65,
         0,
-        Math.PI * 2
+        Math.PI*2
     );
 
     c.arc(
-        r * .3,
+        r*.3,
         0,
-        r * .65,
+        r*.65,
         0,
-        Math.PI * 2
+        Math.PI*2
     );
 
     c.fill();
@@ -3650,12 +3993,12 @@ function drawApple(
 
     c.moveTo(
         0,
-        -r * .45
+        -r*.45
     );
 
     c.lineTo(
-        r * .1,
-        -r * .95
+        r*.1,
+        -r*.95
     );
 
     c.stroke();
@@ -3666,13 +4009,13 @@ function drawApple(
     c.beginPath();
 
     c.ellipse(
-        r * .35,
-        -r * .75,
-        r * .35,
-        r * .16,
+        r*.35,
+        -r*.75,
+        r*.35,
+        r*.16,
         -.4,
         0,
-        Math.PI * 2
+        Math.PI*2
     );
 
     c.fill();
@@ -3719,7 +4062,7 @@ function drawWorldPreview(
     );
 
     if(
-        world.id === "giza"
+        world.id==="giza"
     ){
 
         c.fillStyle =
@@ -3727,9 +4070,9 @@ function drawWorldPreview(
 
         c.fillRect(
             0,
-            height * .72,
+            height*.72,
             width,
-            height * .28
+            height*.28
         );
 
         c.fillStyle =
@@ -3738,18 +4081,18 @@ function drawWorldPreview(
         c.beginPath();
 
         c.moveTo(
-            width * .48,
-            height * .2
+            width*.48,
+            height*.2
         );
 
         c.lineTo(
-            width * .23,
-            height * .72
+            width*.23,
+            height*.72
         );
 
         c.lineTo(
-            width * .73,
-            height * .72
+            width*.73,
+            height*.72
         );
 
         c.closePath();
@@ -3758,8 +4101,7 @@ function drawWorldPreview(
     }
 
     if(
-        world.id ===
-        "mountains"
+        world.id==="mountains"
     ){
 
         c.fillStyle =
@@ -3773,18 +4115,18 @@ function drawWorldPreview(
         );
 
         c.lineTo(
-            width * .22,
-            height * .3
+            width*.22,
+            height*.3
         );
 
         c.lineTo(
-            width * .44,
+            width*.44,
             height
         );
 
         c.lineTo(
-            width * .63,
-            height * .22
+            width*.63,
+            height*.22
         );
 
         c.lineTo(
@@ -3798,25 +4140,24 @@ function drawWorldPreview(
     }
 
     if(
-        world.id ===
-        "ocean"
+        world.id==="ocean"
     ){
 
-        c.fillStyle =
-            "rgba(255,255,255,.14)";
+        c.strokeStyle =
+            "rgba(255,255,255,.16)";
 
         for(
-            let y = 25;
-            y < height;
-            y += 28
+            let y=25;
+            y<height;
+            y+=28
         ){
 
             c.beginPath();
 
             for(
-                let x = 0;
-                x <= width;
-                x += 22
+                let x=0;
+                x<=width;
+                x+=22
             ){
 
                 c.moveTo(
@@ -3825,9 +4166,9 @@ function drawWorldPreview(
                 );
 
                 c.quadraticCurveTo(
-                    x + 7,
-                    y - 5,
-                    x + 14,
+                    x+7,
+                    y-5,
+                    x+14,
                     y
                 );
             }
@@ -3837,8 +4178,7 @@ function drawWorldPreview(
     }
 
     if(
-        world.id ===
-        "jungle"
+        world.id==="jungle"
     ){
 
         c.fillStyle =
@@ -3846,29 +4186,28 @@ function drawWorldPreview(
 
         c.fillRect(
             0,
-            height * .76,
+            height*.76,
             width,
-            height * .24
+            height*.24
         );
     }
 
     if(
-        world.id ===
-        "space"
+        world.id==="space"
     ){
 
         c.fillStyle =
             "white";
 
         for(
-            let i = 0;
-            i < 30;
+            let i=0;
+            i<30;
             i++
         ){
 
             c.fillRect(
-                (i * 37) % width,
-                (i * 19) % height,
+                (i*37)%width,
+                (i*19)%height,
                 2,
                 2
             );
@@ -3876,8 +4215,7 @@ function drawWorldPreview(
     }
 
     if(
-        world.id ===
-        "ice"
+        world.id==="ice"
     ){
 
         c.fillStyle =
@@ -3891,18 +4229,18 @@ function drawWorldPreview(
         );
 
         c.lineTo(
-            width * .24,
-            height * .25
+            width*.24,
+            height*.25
         );
 
         c.lineTo(
-            width * .45,
+            width*.45,
             height
         );
 
         c.lineTo(
-            width * .65,
-            height * .2
+            width*.65,
+            height*.2
         );
 
         c.lineTo(
@@ -3918,7 +4256,7 @@ function drawWorldPreview(
 
 
 /* =========================================================
-   DRAW GAME
+   DRAW
 ========================================================= */
 
 function draw(){
@@ -3955,27 +4293,25 @@ function draw(){
         H
     );
 
-    if(world.id === "giza")
+    if(world.id==="giza")
         drawGiza();
 
-    if(world.id === "mountains")
+    if(world.id==="mountains")
         drawMountains();
 
-    if(world.id === "ocean")
+    if(world.id==="ocean")
         drawOcean();
 
-    if(world.id === "jungle")
+    if(world.id==="jungle")
         drawJungle();
 
-    if(world.id === "space")
+    if(world.id==="space")
         drawSpace();
 
-    if(world.id === "ice")
+    if(world.id==="ice")
         drawIce();
 
-    /*
-       HINDERNISSE
-    */
+    /* Hindernisse */
 
     for(
         const obstacle
@@ -3984,11 +4320,11 @@ function draw(){
 
         const top =
             obstacle.gapY -
-            obstacle.gapH / 2;
+            obstacle.gapH/2;
 
         const bottom =
             obstacle.gapY +
-            obstacle.gapH / 2;
+            obstacle.gapH/2;
 
         ctx.fillStyle =
             world.obstacle;
@@ -4004,7 +4340,7 @@ function draw(){
             obstacle.x,
             bottom,
             obstacle.width,
-            H - bottom
+            H-bottom
         );
 
         ctx.beginPath();
@@ -4015,13 +4351,13 @@ function draw(){
         );
 
         ctx.lineTo(
-            obstacle.x +
-            obstacle.width / 2,
-            top + 24
+            obstacle.x+
+            obstacle.width/2,
+            top+24
         );
 
         ctx.lineTo(
-            obstacle.x +
+            obstacle.x+
             obstacle.width,
             top
         );
@@ -4038,13 +4374,13 @@ function draw(){
         );
 
         ctx.lineTo(
-            obstacle.x +
-            obstacle.width / 2,
-            bottom - 24
+            obstacle.x+
+            obstacle.width/2,
+            bottom-24
         );
 
         ctx.lineTo(
-            obstacle.x +
+            obstacle.x+
             obstacle.width,
             bottom
         );
@@ -4054,14 +4390,12 @@ function draw(){
         ctx.fill();
     }
 
-    /*
-       SPIELER
-    */
+    /* Spieler */
 
     const skin =
         skins.find(
-            s =>
-                s.id ===
+            item =>
+                item.id ===
                 state.selectedSkin
         ) || skins[0];
 
@@ -4104,14 +4438,18 @@ function togglePause(){
     game.paused =
         !game.paused;
 
-    document.getElementById(
-        "pauseOverlay"
-    ).classList.toggle(
-        "active",
-        game.paused
-    );
+    document
+        .getElementById(
+            "pauseOverlay"
+        )
+        .classList.toggle(
+            "active",
+            game.paused
+        );
 
-    if(!game.paused){
+    if(
+        !game.paused
+    ){
 
         game.lastTime =
             performance.now();
@@ -4201,28 +4539,32 @@ document.getElementById(
     "shopBack"
 ).onclick =
     () =>
-        showScreen("lobby");
+        showScreen(
+            "lobby"
+        );
 
 
 document.getElementById(
     "inventoryBack"
 ).onclick =
     () =>
-        showScreen("lobby");
+        showScreen(
+            "lobby"
+        );
 
 
 document.getElementById(
-    "musicBtn"
+    "musicToggleBtn"
 ).onclick =
     () => {
 
-        state.music =
-            !state.music;
+        state.musicEnabled =
+            !state.musicEnabled;
 
         saveState();
 
         if(
-            state.music
+            state.musicEnabled
         ){
 
             initAudio();
@@ -4241,22 +4583,26 @@ document.getElementById(
     "onlineBtn"
 ).onclick =
     () =>
-        document.getElementById(
-            "onlineOverlay"
-        ).classList.add(
-            "active"
-        );
+        document
+            .getElementById(
+                "onlineOverlay"
+            )
+            .classList.add(
+                "active"
+            );
 
 
 document.getElementById(
     "closeOnlineBtn"
 ).onclick =
     () =>
-        document.getElementById(
-            "onlineOverlay"
-        ).classList.remove(
-            "active"
-        );
+        document
+            .getElementById(
+                "onlineOverlay"
+            )
+            .classList.remove(
+                "active"
+            );
 
 
 document.getElementById(
