@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <meta name="theme-color" content="#0d1430">
 <title>FLYYYY 1.3</title>
 
@@ -21,26 +21,17 @@
 *{
     box-sizing:border-box;
     -webkit-tap-highlight-color:transparent;
+    margin:0;
+    padding:0;
 }
 
 html,body{
     width:100%;
     height:100%;
-    margin:0;
     overflow:hidden;
     font-family:Arial,Helvetica,sans-serif;
     background:var(--bg);
     color:white;
-}
-
-button,input{
-    font:inherit;
-}
-
-button{
-    cursor:pointer;
-    border:none;
-    outline:none;
 }
 
 #app{
@@ -48,10 +39,10 @@ button{
     width:100vw;
     height:100vh;
     overflow:hidden;
-    background:#10162f;
+    background:var(--bg);
 }
 
-/* FIX: Canvas hat jetzt die richtige Sichtbarkeit und Position */
+/* Das Spielfeld liegt sauber im Hintergrund */
 #gameCanvas{
     position:absolute;
     top:0;
@@ -60,22 +51,22 @@ button{
     height:100%;
     display:block;
     z-index:1;
-    touch-action:none;
 }
 
 /* =========================
-   SCREENS
+   SCREENS & OVERLAYS
 ========================= */
 
 .screen{
     position:absolute;
     inset:0;
-    z-index:20;
+    z-index:10;
     display:none;
     align-items:center;
     justify-content:center;
-    padding:18px;
-    background:rgba(13, 20, 48, 0.85); /* Halbtransparenter Hintergrund über dem Spiel */
+    padding:20px;
+    background:rgba(13, 20, 48, 0.85);
+    pointer-events:auto;
 }
 
 .screen.active{
@@ -83,105 +74,88 @@ button{
 }
 
 .menu{
-    width:min(1000px,94vw);
-    max-height:92vh;
-    overflow:auto;
-    padding:35px;
+    width:min(450px,90vw);
+    padding:40px 30px;
     text-align:center;
-
-    background:
-        linear-gradient(
-            180deg,
-            rgba(15,23,55,.97),
-            rgba(18,28,67,.97)
-        );
-
-    border:1px solid rgba(255,255,255,.14);
+    background:linear-gradient(180deg, #0f1737, #121c43);
+    border:2px solid rgba(255,255,255,0.1);
     border-radius:28px;
-    box-shadow:0 20px 60px rgba(0,0,0,.5);
+    box-shadow:0 20px 60px rgba(0,0,0,0.6);
 }
 
 /* =========================
-   TEXT
+   TEXT / UI ELEMENTS
 ========================= */
 
 .title{
-    text-align:center;
-    line-height:.9;
-    font-size:clamp(55px,10vw,110px);
-    font-weight:1000;
+    font-size:65px;
+    font-weight:900;
     letter-spacing:.08em;
     color:var(--text);
-    text-shadow:
-        0 8px 0 rgba(0,0,0,.15),
-        0 0 35px rgba(94,231,255,.3);
+    text-shadow:0 0 35px rgba(94,231,255,0.4);
+    line-height:1;
+    margin-bottom:5px;
 }
 
 .version{
-    width:max-content;
-    margin:14px auto;
-    padding:8px 16px;
+    display:inline-block;
+    padding:6px 16px;
     border-radius:999px;
-    background:rgba(94,231,255,.12);
+    background:rgba(94,231,255,0.15);
     color:var(--blue);
     font-weight:bold;
     font-size:14px;
+    margin-bottom:25px;
 }
 
 .score-display{
-    font-size:24px;
+    font-size:26px;
     color:var(--yellow);
     margin:20px 0;
+    font-weight:bold;
 }
-
-/* =========================
-   BUTTONS
-========================= */
 
 .btn {
     display:inline-block;
-    padding:16px 40px;
-    font-size:20px;
+    padding:16px 45px;
+    font-size:22px;
     font-weight:bold;
-    color:var(--bg);
+    color:#0d1430;
     background:var(--yellow);
+    border:none;
     border-radius:50px;
-    box-shadow:0 6px 0 #ccaa39, 0 10px 20px rgba(0,0,0,0.4);
-    transition:transform 0.1s, box-shadow 0.1s;
+    box-shadow:0 6px 0 #ccaa39;
+    cursor:pointer;
     text-transform:uppercase;
-    margin-top:20px;
+    transition:transform 0.05s;
 }
 
 .btn:active {
     transform:translateY(4px);
-    box-shadow:0 2px 0 #ccaa39, 0 5px 10px rgba(0,0,0,0.4);
+    box-shadow:0 2px 0 #ccaa39;
 }
-
-/* =========================
-   UI HUD
-========================= */
 
 #hud {
     position:absolute;
-    top:20px;
-    left:20px;
-    z-index:10;
-    font-size:28px;
-    font-weight:bold;
+    top:25px;
+    left:25px;
+    z-index:5;
+    font-size:32px;
+    font-weight:900;
     color:var(--text);
     display:none;
     pointer-events:none;
-    text-shadow:2px 2px 4px rgba(0,0,0,0.8);
+    text-shadow:2px 2px 4px rgba(0,0,0,0.6);
 }
 </style>
 </head>
 <body>
 
 <div id="app">
-    <!-- UI HUD während des Spiels -->
+    <!-- HUD Punkteanzeige während des Spiels -->
     <div id="hud">SCORE: <span id="hudScore">0</span></div>
 
-    <!-- Canvas für das Gameplay -->
+    <!-- Gameplay Render-Fläche -->
     <canvas id="gameCanvas"></canvas>
 
     <!-- Startbildschirm -->
@@ -189,7 +163,7 @@ button{
         <div class="menu">
             <div class="title">FLYYYY</div>
             <div class="version">v1.3</div>
-            <button class="btn" onclick="startGame()">Starten</button>
+            <button class="btn" onclick="startGame(event)">Starten</button>
         </div>
     </div>
 
@@ -197,8 +171,8 @@ button{
     <div id="gameOverScreen" class="screen">
         <div class="menu">
             <div class="title" style="color:var(--red);">GAME OVER</div>
-            <div class="score-display">Deine Punktzahl: <span id="finalScore">0</span></div>
-            <button class="btn" onclick="startGame()">Nochmal</button>
+            <div class="score-display">PUNKTE: <span id="finalScore">0</span></div>
+            <button class="btn" onclick="startGame(event)">Nochmal</button>
         </div>
     </div>
 </div>
@@ -212,61 +186,29 @@ const startScreen = document.getElementById('startScreen');
 const gameOverScreen = document.getElementById('gameOverScreen');
 const finalScore = document.getElementById('finalScore');
 
-// Spielvariablen
+// Globale Spiel-Variablen
 let gameActive = false;
 let score = 0;
 let player = {};
 let obstacles = [];
-let animationId;
+let animationId = null;
 let gameSpeed = 4;
 let spawnTimer = 0;
 
-// Canvas-Größe anpassen
+// Ausfallsichere Canvas-Größenanpassung
 function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    // Wenn das Spiel läuft, direkt neu zeichnen, um Flackern zu verhindern
-    if(gameActive) drawEverything();
-}
-window.addEventListener('resize', resizeCanvas);
-resizeCanvas();
-
-// Steuerung (Klick / Touch / Leertaste)
-function playerJump(e) {
-    if (!gameActive) return;
-    if (e) e.preventDefault(); // Verhindert Zoom auf Handys beim Tippen
-    player.velocity = player.jumpStrength;
+    canvas.width = window.innerWidth || document.documentElement.clientWidth || 800;
+    canvas.height = window.innerHeight || document.documentElement.clientHeight || 600;
+    
+    // Falls das Spiel im Hintergrund pausiert ist, zeichnen wir den Start-Zustand vorab
+    if (!gameActive && obstacles.length === 0) {
+        initPlayerFallback();
+        drawEverything();
+    }
 }
 
-window.addEventListener('keydown', (e) => { 
-    if (e.code === 'Space') {
-        playerJump();
-    }
-});
-// Event-Listener auf das gesamte Fenster/App für besseres Gameplay
-window.addEventListener('pointerdown', (e) => {
-    // Verhindert das Springen, wenn man auf den Start-Button klickt
-    if (!e.target.classList.contains('btn')) {
-        playerJump(e);
-    }
-});
-
-// Spiel starten
-function startGame() {
-    // Screens wechseln
-    startScreen.classList.remove('active');
-    gameOverScreen.classList.remove('active');
-    hud.style.display = 'block';
-
-    // Variablen zurücksetzen
-    gameActive = true;
-    score = 0;
-    gameSpeed = 4;
-    spawnTimer = 80; // Erstes Hindernis spawnt schneller
-    hudScore.innerText = score;
-    obstacles = [];
-
-    // Spieler-Initialisierung (Gelber Ball)
+// Hilfsfunktion für die initiale Vorschau-Positionierung des Spielers
+function initPlayerFallback() {
     player = {
         x: canvas.width * 0.25,
         y: canvas.height / 2,
@@ -275,8 +217,58 @@ function startGame() {
         velocity: 0,
         jumpStrength: -8.5
     };
+}
 
-    // Loop starten
+window.addEventListener('resize', resizeCanvas);
+
+// Flug-Steuerung (Sprung auslösen)
+function playerJump() {
+    if (!gameActive) return;
+    player.velocity = player.jumpStrength;
+}
+
+// Tastatur-Steuerung (Leertaste)
+window.addEventListener('keydown', (e) => { 
+    if (e.code === 'Space') {
+        e.preventDefault();
+        playerJump();
+    }
+});
+
+// Touch- und Klick-Steuerung für den gesamten Bildschirm
+window.addEventListener('pointerdown', (e) => {
+    // Verhindert das Springen, wenn ein Menü-Button geklickt wird
+    if (e.target.classList.contains('btn')) return;
+    playerJump();
+});
+
+// Spiel initialisieren und starten
+function startGame(e) {
+    if (e) {
+        e.stopPropagation();
+        e.preventDefault();
+    }
+
+    // Canvas-Größe vorm Start exakt synchronisieren
+    resizeCanvas();
+
+    // UI-Wechsel
+    startScreen.classList.remove('active');
+    gameOverScreen.classList.remove('active');
+    hud.style.display = 'block';
+
+    // Zustand zurücksetzen
+    gameActive = true;
+    score = 0;
+    gameSpeed = 4.5;
+    spawnTimer = 100; // Erstes Hindernis erscheint sofort
+    hudScore.innerText = score;
+    obstacles = [];
+
+    // Spieler-Setup
+    initPlayerFallback();
+
+    // Eventuell laufenden Loop stoppen und neu starten
     if (animationId) cancelAnimationFrame(animationId);
     gameLoop();
 }
@@ -284,67 +276,71 @@ function startGame() {
 // Spiel beenden
 function gameOver() {
     gameActive = false;
+    if (animationId) cancelAnimationFrame(animationId);
+    
     hud.style.display = 'none';
     finalScore.innerText = score;
     gameOverScreen.classList.add('active');
 }
 
-// Hindernis erstellen
+// Neue Röhren generieren
 function spawnObstacle() {
-    const gap = 170; // Lücke zwischen den Röhren
+    const gap = 180; // Größe der Lücke zum Durchfliegen
     const minHeight = 60;
     const maxHeight = canvas.height - gap - minHeight;
     const topHeight = Math.floor(Math.random() * (maxHeight - minHeight + 1)) + minHeight;
 
     obstacles.push({
         x: canvas.width,
-        width: 70,
+        width: 75,
         topHeight: topHeight,
         bottomY: topHeight + gap,
         passed: false
     });
 }
 
-// Hilfsfunktion zum Zeichnen
+// Zeichen-Routine für alle Objekte
 function drawEverything() {
-    // Hintergrundfarbe im Canvas zeichnen
-    ctx.fillStyle = '#0d1430'; // var(--bg)
+    // 1. Hintergrund leeren & färben
+    ctx.fillStyle = '#0d1430'; 
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // Röhren zeichnen
+    // 2. Hindernisse zeichnen (Grüne Röhren)
+    ctx.fillStyle = '#6df5a3'; 
     for (let obs of obstacles) {
-        ctx.fillStyle = '#6df5a3'; // var(--green)
         // Obere Röhre
         ctx.fillRect(obs.x, 0, obs.width, obs.topHeight);
         // Untere Röhre
         ctx.fillRect(obs.x, obs.bottomY, obs.width, canvas.height - obs.bottomY);
     }
 
-    // Spieler zeichnen
-    ctx.beginPath();
-    ctx.arc(player.x, player.y, player.radius, 0, Math.PI * 2);
-    ctx.fillStyle = '#ffd447'; // var(--yellow)
-    ctx.fill();
-    ctx.closePath();
+    // 3. Spieler zeichnen (Gelber Kreis)
+    if (player && player.x) {
+        ctx.beginPath();
+        ctx.arc(player.x, player.y, player.radius, 0, Math.PI * 2);
+        ctx.fillStyle = '#ffd447'; 
+        ctx.fill();
+        ctx.closePath();
+    }
 }
 
-// Hauptschleife
+// Haupt-Game-Loop (Herzschlag des Spiels)
 function gameLoop() {
     if (!gameActive) return;
 
-    // 1. SPIELER UPDATE
+    // 1. PHYSIK & POSITION DES SPIELERS UPDATE
     player.velocity += player.gravity;
     player.y += player.velocity;
 
-    // Decken- und Bodenkollision
+    // Kollision mit Decke oder Boden
     if (player.y + player.radius > canvas.height || player.y - player.radius < 0) {
         gameOver();
         return;
     }
 
-    // 2. HINDERNISSE UPDATE
+    // 2. HINDERNISSE GENERIEREN & BEWEGEN
     spawnTimer++;
-    if (spawnTimer > 110) {
+    if (spawnTimer > 110) { // Timing-Abstand zwischen Röhren
         spawnObstacle();
         spawnTimer = 0;
     }
@@ -353,39 +349,42 @@ function gameLoop() {
         let obs = obstacles[i];
         obs.x -= gameSpeed;
 
-        // Kollisionsprüfung (AABB vs Kreis)
-        let playerLeft = player.x - player.radius;
-        let playerRight = player.x + player.radius;
-        let playerTop = player.y - player.radius;
-        let playerBottom = player.y + player.radius;
+        // Präzise Kollisionsprüfung (AABB vs Kreis)
+        let closestX = Math.max(obs.x, Math.min(player.x, obs.x + obs.width));
+        
+        // Obere Röhre Kollision
+        let closestYTop = Math.max(0, Math.min(player.y, obs.topHeight));
+        let distanceXTop = player.x - closestX;
+        let distanceYTop = player.y - closestYTop;
+        let distanceSquaredTop = (distanceXTop * distanceXTop) + (distanceYTop * distanceYTop);
 
-        if (playerRight > obs.x && playerLeft < obs.x + obs.width) {
-            if (playerTop < obs.topHeight || playerBottom > obs.bottomY) {
-                gameOver();
-                return;
-            }
+        // Untere Röhre Kollision
+        let closestYBottom = Math.max(obs.bottomY, Math.min(player.y, canvas.height));
+        let distanceXBottom = player.x - closestX;
+        let distanceYBottom = player.y - closestYBottom;
+        let distanceSquaredBottom = (distanceXBottom * distanceXBottom) + (distanceYBottom * distanceYBottom);
+
+        // Wenn der Radius die Box schneidet -> Game Over
+        if (distanceSquaredTop < player.radius * player.radius || distanceSquaredBottom < player.radius * player.radius) {
+            gameOver();
+            return;
         }
 
-        // Punktzahl erhöhen
+        // Punkte zählen, wenn die Röhre erfolgreich passiert wurde
         if (!obs.passed && obs.x + obs.width < player.x) {
             score++;
             obs.passed = true;
             hudScore.innerText = score;
-            gameSpeed += 0.15; // Wird mit jedem Hindernis schneller
+            gameSpeed += 0.15; // Spiel wird kontinuierlich etwas schneller
         }
 
-        // Aus dem Bildschirm gelaufene Objekte entfernen
+        // Röhre aus dem Speicher löschen, wenn sie links aus dem Bild läuft
         if (obs.x + obs.width < 0) {
             obstacles.splice(i, 1);
         }
     }
 
-    // Alles auf das Canvas rendern
+    // 3. ALLES RENDERN
     drawEverything();
 
-    animationId = requestAnimationFrame(gameLoop);
-}
-</script>
-
-</body>
-</html>
+    // Nächsten Frame anfordern
