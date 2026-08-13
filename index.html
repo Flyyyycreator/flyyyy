@@ -1,0 +1,4353 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#0d1430">
+<title>FLYYYY</title>
+
+<style>
+:root{
+    --bg:#0d1430;
+    --panel:#121a3d;
+    --text:#fff;
+    --muted:#b9c5ef;
+}
+
+*{
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+    margin:0;
+    overflow:hidden;
+    font-family:Arial,Helvetica,sans-serif;
+    background:var(--bg);
+    color:white;
+}
+
+body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+button{
+    font:inherit;
+}
+
+#app{
+    position:relative;
+    width:100vw;
+    height:100vh;
+    overflow:hidden;
+    background:#10162f;
+}
+
+#gameCanvas{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    display:none;
+    z-index:1;
+    cursor:pointer;
+    touch-action:none;
+}
+
+.screen{
+    position:absolute;
+    inset:0;
+    z-index:20;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    padding:18px;
+}
+
+.screen.active{
+    display:flex;
+}
+
+.menu{
+    width:min(900px,94vw);
+    max-height:92vh;
+    overflow:auto;
+    background:linear-gradient(180deg,rgba(15,23,55,.97),rgba(18,28,67,.97));
+    border:1px solid rgba(255,255,255,.14);
+    border-radius:28px;
+    padding:26px;
+    box-shadow:0 20px 60px rgba(0,0,0,.4);
+    backdrop-filter:blur(14px);
+}
+
+.title{
+    font-size:clamp(55px,10vw,110px);
+    text-align:center;
+    line-height:.9;
+    font-weight:1000;
+    letter-spacing:.08em;
+    text-shadow:0 8px 0 rgba(0,0,0,.15),0 0 35px rgba(94,231,255,.3);
+}
+
+.subtitle{
+    text-align:center;
+    color:var(--muted);
+    margin:13px 0 22px;
+    font-size:16px;
+}
+
+.credits{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-bottom:22px;
+}
+
+.badge{
+    padding:10px 16px;
+    border-radius:999px;
+    background:rgba(255,212,71,.12);
+    border:1px solid rgba(255,212,71,.3);
+    font-weight:900;
+}
+
+.button-grid{
+    display:grid;
+    gap:12px;
+}
+
+.btn{
+    border:0;
+    border-radius:17px;
+    padding:15px 18px;
+    cursor:pointer;
+    font-weight:900;
+    color:#111;
+    background:linear-gradient(180deg,#ffe570,#ffc82c);
+    box-shadow:0 7px 0 #c99415,0 12px 22px rgba(0,0,0,.18);
+    transition:.12s;
+}
+
+.btn:hover{
+    filter:brightness(1.06);
+}
+
+.btn:active{
+    transform:translateY(5px);
+    box-shadow:0 2px 0 #c99415;
+}
+
+.btn.blue{
+    background:linear-gradient(180deg,#6ceeff,#39c9ea);
+    box-shadow:0 7px 0 #1b8aa7;
+}
+
+.btn.dark{
+    color:white;
+    background:rgba(255,255,255,.08);
+    box-shadow:none;
+    border:1px solid rgba(255,255,255,.13);
+}
+
+.btn.green{
+    background:linear-gradient(180deg,#86ffbd,#4de89b);
+    box-shadow:0 7px 0 #239a60;
+}
+
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    margin-bottom:18px;
+}
+
+.topbar h2{
+    margin:0;
+    font-size:32px;
+}
+
+.tiny{
+    color:var(--muted);
+    font-size:13px;
+}
+
+.tabs{
+    display:flex;
+    gap:8px;
+    overflow:auto;
+    margin-bottom:15px;
+    padding-bottom:6px;
+}
+
+.tab{
+    white-space:nowrap;
+    border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.06);
+    color:white;
+    border-radius:999px;
+    padding:10px 15px;
+    font-weight:900;
+    cursor:pointer;
+}
+
+.tab.active{
+    background:white;
+    color:#17204a;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:14px;
+}
+
+.card{
+    background:linear-gradient(180deg,rgba(255,255,255,.095),rgba(255,255,255,.04));
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:22px;
+    padding:14px;
+    min-height:215px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.card h3{
+    margin:0;
+    font-size:18px;
+}
+
+.preview{
+    height:110px;
+    border-radius:17px;
+    overflow:hidden;
+    background:linear-gradient(135deg,rgba(255,255,255,.11),rgba(255,255,255,.035));
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.preview canvas{
+    width:100%;
+    height:100%;
+    display:block;
+}
+
+.price{
+    color:#ffe27b;
+    font-size:13px;
+    font-weight:900;
+}
+
+.smallbtn{
+    margin-top:auto;
+    border:0;
+    border-radius:12px;
+    padding:10px 12px;
+    cursor:pointer;
+    font-weight:950;
+    background:linear-gradient(180deg,#fff,#e9efff);
+    color:#17204a;
+}
+
+.smallbtn.blue{
+    background:linear-gradient(180deg,#6ceeff,#39c9ea);
+}
+
+.smallbtn.selected{
+    background:linear-gradient(180deg,#83ffc0,#4de89b);
+    color:#0b3423;
+}
+
+.smallbtn:disabled{
+    opacity:.55;
+    cursor:not-allowed;
+}
+
+.soundPreviewBox{
+    height:110px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:7px;
+}
+
+.soundIcon{
+    font-size:42px;
+}
+
+.soundButtons{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:7px;
+    margin-top:auto;
+}
+
+.soundButtons .smallbtn{
+    margin-top:0;
+}
+
+#gameHud{
+    position:absolute;
+    inset:0;
+    z-index:30;
+    display:none;
+    pointer-events:none;
+}
+
+.hud-left,
+.hud-right{
+    position:absolute;
+    top:15px;
+    display:flex;
+    gap:10px;
+    align-items:center;
+}
+
+.hud-left{
+    left:15px;
+}
+
+.hud-right{
+    right:15px;
+}
+
+.hud-pill{
+    background:rgba(12,19,46,.72);
+    border:1px solid rgba(255,255,255,.15);
+    padding:10px 14px;
+    border-radius:999px;
+    font-weight:900;
+    backdrop-filter:blur(8px);
+}
+
+.pause-btn{
+    pointer-events:auto;
+    border:1px solid rgba(255,255,255,.15);
+    color:white;
+    background:rgba(12,19,46,.72);
+    border-radius:999px;
+    padding:10px 14px;
+    font-weight:900;
+    cursor:pointer;
+}
+
+.tip{
+    position:absolute;
+    left:50%;
+    bottom:16px;
+    transform:translateX(-50%);
+    background:rgba(12,19,46,.6);
+    padding:9px 14px;
+    border-radius:999px;
+    font-size:13px;
+}
+
+.overlay{
+    position:absolute;
+    inset:0;
+    z-index:100;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    background:rgba(5,8,22,.55);
+    backdrop-filter:blur(6px);
+}
+
+.overlay.active{
+    display:flex;
+}
+
+.dialog{
+    width:min(540px,92vw);
+    background:linear-gradient(180deg,#101837,#18234d);
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:28px;
+    padding:28px;
+    text-align:center;
+    box-shadow:0 20px 60px rgba(0,0,0,.45);
+}
+
+.dialog h2{
+    margin:0 0 10px;
+    font-size:clamp(40px,8vw,70px);
+}
+
+.dialog p{
+    color:var(--muted);
+}
+
+.stats{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:25px;
+    flex-wrap:wrap;
+    margin:20px 0;
+}
+
+.stat strong{
+    display:block;
+    font-size:28px;
+}
+
+@media(max-width:600px){
+    .menu{
+        padding:20px;
+        border-radius:22px;
+    }
+
+    .title{
+        font-size:58px;
+    }
+
+    .hud-pill{
+        padding:8px 10px;
+        font-size:13px;
+    }
+
+    .tip{
+        font-size:12px;
+        bottom:10px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div id="app">
+
+<canvas id="gameCanvas"></canvas>
+
+<!-- LOBBY -->
+<div id="lobby" class="screen active">
+<div class="menu">
+
+<div class="title">FLYYYY</div>
+
+<div class="subtitle">
+Fly weiter. Überfliege Hindernisse. Sammle Coins und schalte neue Sachen frei.
+</div>
+
+<div class="credits">
+
+<div class="badge">
+🪙 <span id="lobbyCoins">0</span> Coins
+</div>
+
+<div class="badge">
+🏆 Rekord: <span id="lobbyBest">0</span>
+</div>
+
+</div>
+
+<div class="button-grid">
+
+<button class="btn" id="startBtn">
+START
+</button>
+
+<button class="btn blue" id="shopBtn">
+🛒 SHOP
+</button>
+
+<button class="btn blue" id="inventoryBtn">
+🎒 INVENTAR
+</button>
+
+<button class="btn dark" id="musicBtn">
+🔊 Musik: AN
+</button>
+
+<button class="btn dark" id="onlineBtn">
+🌐 ONLINE / FREUNDE
+</button>
+
+</div>
+
+<div class="tiny" style="text-align:center;margin-top:15px">
+Alle 5 erfolgreich überflogenen Hindernisse = +5 Coins
+</div>
+
+</div>
+</div>
+
+
+<!-- SHOP -->
+<div id="shop" class="screen">
+<div class="menu">
+
+<div class="topbar">
+
+<div>
+<h2>🛒 Shop</h2>
+<div class="tiny">🪙 <span id="shopCoins">0</span> Coins</div>
+</div>
+
+<button class="btn dark" id="shopBack">
+← Zurück
+</button>
+
+</div>
+
+<div class="tabs" id="shopTabs"></div>
+
+<div class="cards" id="shopCards"></div>
+
+</div>
+</div>
+
+
+<!-- INVENTAR -->
+<div id="inventory" class="screen">
+<div class="menu">
+
+<div class="topbar">
+
+<div>
+<h2>🎒 Inventar</h2>
+<div class="tiny">Wähle deine Figur, Welt und deinen Sound aus.</div>
+</div>
+
+<button class="btn dark" id="inventoryBack">
+← Zurück
+</button>
+
+</div>
+
+<div class="tabs" id="inventoryTabs"></div>
+
+<div class="cards" id="inventoryCards"></div>
+
+</div>
+</div>
+
+
+<!-- HUD -->
+<div id="gameHud">
+
+<div class="hud-left">
+
+<div class="hud-pill">
+⭐ <span id="scoreHud">0</span>
+</div>
+
+<div class="hud-pill">
+🪙 <span id="coinsHud">0</span>
+</div>
+
+<div class="hud-pill">
+🪽 Jumps: <span id="jumpHud">0</span>
+</div>
+
+</div>
+
+<div class="hud-right">
+
+<div class="hud-pill">
+🌍 <span id="worldHud">Gizeh</span>
+</div>
+
+<button class="pause-btn" id="pauseBtn">
+Ⅱ Pause
+</button>
+
+</div>
+
+<div class="tip">
+Klicken / Tippen / Leertaste = Fliegen
+</div>
+
+</div>
+
+
+<!-- PAUSE -->
+<div id="pauseOverlay" class="overlay">
+<div class="dialog">
+
+<h2>PAUSE</h2>
+
+<p>
+Dein Lauf wurde angehalten.
+</p>
+
+<div class="button-grid">
+
+<button class="btn" id="resumeBtn">
+▶ WEITER
+</button>
+
+<button class="btn dark" id="pauseLobbyBtn">
+🏠 ZUR LOBBY
+</button>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- GAME OVER -->
+<div id="gameOverOverlay" class="overlay">
+<div class="dialog">
+
+<h2>GAME OVER</h2>
+
+<p>
+Dein Lauf ist vorbei.
+</p>
+
+<div class="stats">
+
+<div class="stat">
+<div class="tiny">Punkte</div>
+<strong id="finalScore">0</strong>
+</div>
+
+<div class="stat">
+<div class="tiny">Coins</div>
+<strong id="earnedCoins">0</strong>
+</div>
+
+<div class="stat">
+<div class="tiny">Rekord</div>
+<strong id="bestScore">0</strong>
+</div>
+
+</div>
+
+<div class="button-grid">
+
+<button class="btn green" id="retryBtn">
+🔄 NOCHMAL
+</button>
+
+<button class="btn blue" id="returnLobbyBtn">
+🏠 ZUR LOBBY
+</button>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- ONLINE -->
+<div id="onlineOverlay" class="overlay">
+<div class="dialog">
+
+<h2>🌐 ONLINE</h2>
+
+<p>
+Der Online-Modus ist vorbereitet. Für echte Freundes-Spiele wird später ein Server benötigt.
+</p>
+
+<button class="btn" id="closeOnlineBtn">
+OK
+</button>
+
+</div>
+</div>
+
+</div>
+
+
+<script>
+"use strict";
+
+/* =========================================================
+   CANVAS
+========================================================= */
+
+const canvas =
+document.getElementById("gameCanvas");
+
+const ctx =
+canvas.getContext("2d");
+
+let W = innerWidth;
+let H = innerHeight;
+let DPR = Math.min(devicePixelRatio || 1,2);
+
+function resizeCanvas(){
+
+    W = innerWidth;
+    H = innerHeight;
+
+    DPR =
+        Math.min(
+            devicePixelRatio || 1,
+            2
+        );
+
+    canvas.width =
+        W * DPR;
+
+    canvas.height =
+        H * DPR;
+
+    canvas.style.width =
+        W + "px";
+
+    canvas.style.height =
+        H + "px";
+
+    ctx.setTransform(
+        DPR,
+        0,
+        0,
+        DPR,
+        0,
+        0
+    );
+}
+
+window.addEventListener(
+    "resize",
+    resizeCanvas
+);
+
+resizeCanvas();
+
+
+/* =========================================================
+   WELTEN
+========================================================= */
+
+const worlds = [
+
+{
+    id:"giza",
+    name:"Gizeh",
+    price:0,
+    sky1:"#f8c875",
+    sky2:"#69c6d8",
+    ground:"#d48b3b",
+    obstacle:"#8f5a33"
+},
+
+{
+    id:"mountains",
+    name:"Berge",
+    price:50,
+    sky1:"#8ad8ff",
+    sky2:"#5469c8",
+    ground:"#527951",
+    obstacle:"#365c4b"
+},
+
+{
+    id:"ocean",
+    name:"Unterwasser",
+    price:100,
+    sky1:"#29d6e5",
+    sky2:"#174b9e",
+    ground:"#157c86",
+    obstacle:"#17566e"
+},
+
+{
+    id:"jungle",
+    name:"Dschungel",
+    price:150,
+    sky1:"#8ae17c",
+    sky2:"#1f6e53",
+    ground:"#244f2a",
+    obstacle:"#2f7339"
+},
+
+{
+    id:"space",
+    name:"Weltraum",
+    price:200,
+    sky1:"#22103f",
+    sky2:"#090d27",
+    ground:"#20183e",
+    obstacle:"#3a2b61"
+},
+
+{
+    id:"ice",
+    name:"Eiswelt",
+    price:250,
+    sky1:"#c9f6ff",
+    sky2:"#5da9d4",
+    ground:"#b3e5ff",
+    obstacle:"#72b1d2"
+}
+];
+
+
+/* =========================================================
+   FIGUREN
+========================================================= */
+
+const skins = [
+
+{
+    id:"bird",
+    name:"Vogel",
+    price:0,
+    type:"bird"
+},
+
+{
+    id:"dino",
+    name:"Fliegender Dino",
+    price:50,
+    type:"dino"
+},
+
+{
+    id:"pen",
+    name:"Stift",
+    price:100,
+    type:"pen"
+},
+
+{
+    id:"carrot",
+    name:"Karotte",
+    price:150,
+    type:"carrot"
+},
+
+{
+    id:"apple",
+    name:"Apfel",
+    price:200,
+    type:"apple"
+}
+];
+
+
+/* =========================================================
+   SOUNDS
+========================================================= */
+
+const sounds = [
+
+{
+    id:"classic",
+    name:"Classic",
+    price:0,
+    icon:"🔔",
+    type:"classic"
+},
+
+{
+    id:"arcade",
+    name:"Arcade",
+    price:50,
+    icon:"👾",
+    type:"arcade"
+},
+
+{
+    id:"laser",
+    name:"Laser",
+    price:100,
+    icon:"⚡",
+    type:"laser"
+},
+
+{
+    id:"bubble",
+    name:"Bubble",
+    price:150,
+    icon:"🫧",
+    type:"bubble"
+},
+
+{
+    id:"power",
+    name:"Power",
+    price:200,
+    icon:"🔥",
+    type:"power"
+}
+];
+
+
+/* =========================================================
+   SPEICHER
+========================================================= */
+
+const defaultState = {
+
+    coins:0,
+    best:0,
+
+    ownedWorlds:["giza"],
+    ownedSkins:["bird"],
+    ownedSounds:["classic"],
+
+    selectedWorld:"giza",
+    selectedSkin:"bird",
+    selectedSound:"classic",
+
+    music:true,
+    sfx:true
+};
+
+function loadState(){
+
+    try{
+
+        const raw =
+            localStorage.getItem(
+                "FLYYYY_SAVE_FINAL"
+            );
+
+        if(!raw){
+            return structuredClone(defaultState);
+        }
+
+        return {
+            ...structuredClone(defaultState),
+            ...JSON.parse(raw)
+        };
+
+    }catch{
+
+        return structuredClone(defaultState);
+
+    }
+}
+
+let state =
+loadState();
+
+function saveState(){
+
+    localStorage.setItem(
+        "FLYYYY_SAVE_FINAL",
+        JSON.stringify(state)
+    );
+}
+
+
+/* =========================================================
+   AUDIO
+========================================================= */
+
+let audioContext = null;
+let musicTimer = null;
+let musicStep = 0;
+
+const melody = [
+    261.63,329.63,392.00,523.25,
+    392.00,329.63,293.66,349.23,
+    440.00,523.25,440.00,349.23,
+    392.00,329.63,261.63,293.66
+];
+
+const bass = [
+    130.81,130.81,164.81,164.81,
+    146.83,146.83,174.61,174.61
+];
+
+function initAudio(){
+
+    if(audioContext){
+        return;
+    }
+
+    const AC =
+        window.AudioContext ||
+        window.webkitAudioContext;
+
+    if(!AC){
+        return;
+    }
+
+    audioContext =
+        new AC();
+}
+
+function rawTone(
+    frequency,
+    duration,
+    volume,
+    type
+){
+
+    if(!audioContext){
+        return;
+    }
+
+    const oscillator =
+        audioContext.createOscillator();
+
+    const gain =
+        audioContext.createGain();
+
+    oscillator.type =
+        type;
+
+    oscillator.frequency.value =
+        frequency;
+
+    gain.gain.setValueAtTime(
+        0.0001,
+        audioContext.currentTime
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+        volume,
+        audioContext.currentTime + .02
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+        0.0001,
+        audioContext.currentTime + duration
+    );
+
+    oscillator.connect(gain);
+    gain.connect(audioContext.destination);
+
+    oscillator.start();
+
+    oscillator.stop(
+        audioContext.currentTime +
+        duration +
+        .02
+    );
+}
+
+function playSound(type){
+
+    initAudio();
+
+    if(!audioContext){
+        return;
+    }
+
+    if(
+        audioContext.state ===
+        "suspended"
+    ){
+        audioContext.resume();
+    }
+
+    if(type === "classic"){
+
+        rawTone(
+            520,.08,.065,"square"
+        );
+
+    }
+
+    if(type === "arcade"){
+
+        rawTone(
+            440,.06,.055,"square"
+        );
+
+        setTimeout(
+            () =>
+                rawTone(
+                    660,.07,.05,"square"
+                ),
+            45
+        );
+    }
+
+    if(type === "laser"){
+
+        rawTone(
+            900,.12,.055,"sawtooth"
+        );
+
+        setTimeout(
+            () =>
+                rawTone(
+                    1400,.09,.035,"sawtooth"
+                ),
+            45
+        );
+    }
+
+    if(type === "bubble"){
+
+        rawTone(
+            300,.08,.045,"sine"
+        );
+
+        setTimeout(
+            () =>
+                rawTone(
+                    650,.12,.045,"sine"
+                ),
+            60
+        );
+    }
+
+    if(type === "power"){
+
+        rawTone(
+            220,.13,.055,"sawtooth"
+        );
+
+        setTimeout(
+            () =>
+                rawTone(
+                    520,.08,.06,"square"
+                ),
+            65
+        );
+
+        setTimeout(
+            () =>
+                rawTone(
+                    820,.1,.05,"triangle"
+                ),
+            120
+        );
+    }
+}
+
+function jumpSound(){
+
+    if(!state.sfx){
+        return;
+    }
+
+    const sound =
+        sounds.find(
+            s => s.id ===
+            state.selectedSound
+        ) || sounds[0];
+
+    playSound(
+        sound.type
+    );
+}
+
+function musicTick(){
+
+    if(
+        !state.music ||
+        !audioContext
+    ){
+        stopMusic();
+        return;
+    }
+
+    rawTone(
+        melody[
+            musicStep %
+            melody.length
+        ],
+        .30,
+        .025,
+        "triangle"
+    );
+
+    if(
+        musicStep % 2 === 0
+    ){
+
+        rawTone(
+            bass[
+                musicStep %
+                bass.length
+            ],
+            .45,
+            .012,
+            "sine"
+        );
+    }
+
+    musicStep++;
+}
+
+function startMusic(){
+
+    if(!state.music){
+        return;
+    }
+
+    initAudio();
+
+    if(!audioContext){
+        return;
+    }
+
+    if(
+        audioContext.state ===
+        "suspended"
+    ){
+        audioContext.resume();
+    }
+
+    if(musicTimer){
+        return;
+    }
+
+    musicStep = 0;
+
+    musicTick();
+
+    musicTimer =
+        setInterval(
+            musicTick,
+            380
+        );
+}
+
+function stopMusic(){
+
+    if(musicTimer){
+
+        clearInterval(
+            musicTimer
+        );
+
+        musicTimer = null;
+    }
+}
+
+function playCoinSound(){
+
+    initAudio();
+
+    if(!audioContext){
+        return;
+    }
+
+    rawTone(
+        783.99,
+        .08,
+        .05,
+        "triangle"
+    );
+
+    setTimeout(
+        () =>
+            rawTone(
+                1046.50,
+                .12,
+                .05,
+                "triangle"
+            ),
+        70
+    );
+}
+
+
+/* =========================================================
+   GAME
+========================================================= */
+
+const game = {
+
+    running:false,
+    paused:false,
+    over:false,
+
+    score:0,
+
+    runCoins:0,
+
+    jumpCount:0,
+
+    speed:165,
+
+    spawnTimer:0,
+
+    obstacles:[],
+
+    player:{
+        x:0,
+        y:0,
+        vy:0,
+        r:22,
+        rot:0
+    },
+
+    world:null,
+
+    lastTime:0
+};
+
+
+/* =========================================================
+   SCREEN
+========================================================= */
+
+function showScreen(id){
+
+    document
+        .querySelectorAll(".screen")
+        .forEach(
+            s =>
+                s.classList.remove(
+                    "active"
+                )
+        );
+
+    document
+        .getElementById(id)
+        .classList.add(
+            "active"
+        );
+}
+
+function hideScreens(){
+
+    document
+        .querySelectorAll(".screen")
+        .forEach(
+            s =>
+                s.classList.remove(
+                    "active"
+                )
+        );
+}
+
+
+/* =========================================================
+   LOBBY
+========================================================= */
+
+function updateLobby(){
+
+    document.getElementById(
+        "lobbyCoins"
+    ).textContent =
+        state.coins;
+
+    document.getElementById(
+        "lobbyBest"
+    ).textContent =
+        state.best;
+
+    document.getElementById(
+        "musicBtn"
+    ).textContent =
+        state.music
+            ? "🔊 Musik: AN"
+            : "🔇 Musik: AUS";
+}
+
+
+/* =========================================================
+   MESSAGE
+========================================================= */
+
+function showMessage(text){
+
+    const el =
+        document.createElement(
+            "div"
+        );
+
+    el.textContent =
+        text;
+
+    el.style.cssText =
+        `
+        position:fixed;
+        left:50%;
+        top:18%;
+        transform:translate(-50%,-50%);
+        z-index:9999;
+        background:rgba(8,12,30,.95);
+        border:1px solid rgba(255,255,255,.15);
+        color:white;
+        padding:13px 18px;
+        border-radius:999px;
+        font-weight:900;
+        box-shadow:0 15px 40px rgba(0,0,0,.3);
+        `;
+
+    document.body.appendChild(el);
+
+    setTimeout(
+        () => el.remove(),
+        1400
+    );
+}
+
+
+/* =========================================================
+   TABS
+========================================================= */
+
+function createTabs(
+    container,
+    items,
+    active,
+    callback
+){
+
+    container.innerHTML = "";
+
+    items.forEach(
+        item => {
+
+            const button =
+                document.createElement(
+                    "button"
+                );
+
+            button.className =
+                "tab" +
+                (
+                    item.id ===
+                    active
+                        ? " active"
+                        : ""
+                );
+
+            button.textContent =
+                item.name;
+
+            button.onclick =
+                () =>
+                    callback(
+                        item.id
+                    );
+
+            container.appendChild(
+                button
+            );
+        }
+    );
+}
+
+
+/* =========================================================
+   SHOP
+========================================================= */
+
+let shopTab = "skins";
+
+function renderShop(){
+
+    document.getElementById(
+        "shopCoins"
+    ).textContent =
+        state.coins;
+
+    createTabs(
+
+        document.getElementById(
+            "shopTabs"
+        ),
+
+        [
+            {
+                id:"skins",
+                name:"🪽 Figuren"
+            },
+            {
+                id:"worlds",
+                name:"🌍 Hintergründe"
+            },
+            {
+                id:"sounds",
+                name:"🔊 Sounds"
+            }
+        ],
+
+        shopTab,
+
+        id => {
+
+            shopTab =
+                id;
+
+            renderShop();
+        }
+    );
+
+    const container =
+        document.getElementById(
+            "shopCards"
+        );
+
+    container.innerHTML = "";
+
+    if(
+        shopTab ===
+        "sounds"
+    ){
+
+        renderSoundShop(
+            container
+        );
+
+        return;
+    }
+
+    const items =
+        shopTab ===
+        "skins"
+            ? skins
+            : worlds;
+
+    const owned =
+        shopTab ===
+        "skins"
+            ? state.ownedSkins
+            : state.ownedWorlds;
+
+    items.forEach(
+        item => {
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+            card.className =
+                "card";
+
+            const preview =
+                document.createElement(
+                    "div"
+                );
+
+            preview.className =
+                "preview";
+
+            const c =
+                document.createElement(
+                    "canvas"
+                );
+
+            c.width = 220;
+            c.height = 110;
+
+            const pctx =
+                c.getContext(
+                    "2d"
+                );
+
+            if(
+                shopTab ===
+                "skins"
+            ){
+
+                drawSkin(
+                    pctx,
+                    item.type,
+                    110,
+                    55,
+                    25
+                );
+
+            }else{
+
+                drawWorldPreview(
+                    pctx,
+                    item,
+                    220,
+                    110
+                );
+            }
+
+            preview.appendChild(c);
+            card.appendChild(preview);
+
+            const title =
+                document.createElement(
+                    "h3"
+                );
+
+            title.textContent =
+                item.name;
+
+            card.appendChild(title);
+
+            const price =
+                document.createElement(
+                    "div"
+                );
+
+            price.className =
+                "price";
+
+            price.textContent =
+                item.price === 0
+                    ? "Kostenlos"
+                    : `🪙 ${item.price} Coins`;
+
+            card.appendChild(price);
+
+            const button =
+                document.createElement(
+                    "button"
+                );
+
+            button.className =
+                "smallbtn";
+
+            if(
+                owned.includes(
+                    item.id
+                )
+            ){
+
+                button.textContent =
+                    "✓ Im Besitz";
+
+                button.disabled =
+                    true;
+
+            }else{
+
+                button.textContent =
+                    "Kaufen";
+
+                button.onclick =
+                    () => {
+
+                        if(
+                            state.coins <
+                            item.price
+                        ){
+
+                            showMessage(
+                                "Nicht genug Coins!"
+                            );
+
+                            return;
+                        }
+
+                        state.coins -=
+                            item.price;
+
+                        owned.push(
+                            item.id
+                        );
+
+                        saveState();
+
+                        renderShop();
+
+                        updateLobby();
+
+                        playPurchaseSound();
+                    };
+            }
+
+            card.appendChild(button);
+
+            container.appendChild(card);
+        }
+    );
+}
+
+
+/* =========================================================
+   SOUND SHOP
+========================================================= */
+
+function renderSoundShop(
+    container
+){
+
+    sounds.forEach(
+        sound => {
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+            card.className =
+                "card";
+
+            const preview =
+                document.createElement(
+                    "div"
+                );
+
+            preview.className =
+                "preview";
+
+            const box =
+                document.createElement(
+                    "div"
+                );
+
+            box.className =
+                "soundPreviewBox";
+
+            const icon =
+                document.createElement(
+                    "div"
+                );
+
+            icon.className =
+                "soundIcon";
+
+            icon.textContent =
+                sound.icon;
+
+            const text =
+                document.createElement(
+                    "div"
+                );
+
+            text.className =
+                "tiny";
+
+            text.textContent =
+                "Vor dem Kauf anhören";
+
+            box.appendChild(icon);
+            box.appendChild(text);
+
+            preview.appendChild(box);
+            card.appendChild(preview);
+
+            const title =
+                document.createElement(
+                    "h3"
+                );
+
+            title.textContent =
+                sound.name;
+
+            card.appendChild(title);
+
+            const price =
+                document.createElement(
+                    "div"
+                );
+
+            price.className =
+                "price";
+
+            price.textContent =
+                sound.price === 0
+                    ? "Kostenlos"
+                    : `🪙 ${sound.price} Coins`;
+
+            card.appendChild(price);
+
+            const buttons =
+                document.createElement(
+                    "div"
+                );
+
+            buttons.className =
+                "soundButtons";
+
+            const previewBtn =
+                document.createElement(
+                    "button"
+                );
+
+            previewBtn.className =
+                "smallbtn blue";
+
+            previewBtn.textContent =
+                "▶ Anhören";
+
+            previewBtn.onclick =
+                () =>
+                    playSound(
+                        sound.type
+                    );
+
+            buttons.appendChild(
+                previewBtn
+            );
+
+            const buyBtn =
+                document.createElement(
+                    "button"
+                );
+
+            buyBtn.className =
+                "smallbtn";
+
+            const owned =
+                state.ownedSounds.includes(
+                    sound.id
+                );
+
+            if(owned){
+
+                buyBtn.textContent =
+                    "✓ Im Besitz";
+
+                buyBtn.disabled =
+                    true;
+
+            }else{
+
+                buyBtn.textContent =
+                    "Kaufen";
+
+                buyBtn.onclick =
+                    () => {
+
+                        if(
+                            state.coins <
+                            sound.price
+                        ){
+
+                            showMessage(
+                                "Nicht genug Coins!"
+                            );
+
+                            return;
+                        }
+
+                        state.coins -=
+                            sound.price;
+
+                        state.ownedSounds.push(
+                            sound.id
+                        );
+
+                        saveState();
+
+                        renderShop();
+
+                        updateLobby();
+
+                        playPurchaseSound();
+                    };
+            }
+
+            buttons.appendChild(
+                buyBtn
+            );
+
+            card.appendChild(buttons);
+
+            container.appendChild(card);
+        }
+    );
+}
+
+
+/* =========================================================
+   INVENTAR
+========================================================= */
+
+let inventoryTab = "skins";
+
+function renderInventory(){
+
+    createTabs(
+
+        document.getElementById(
+            "inventoryTabs"
+        ),
+
+        [
+            {
+                id:"skins",
+                name:"🪽 Figuren"
+            },
+            {
+                id:"worlds",
+                name:"🌍 Hintergründe"
+            },
+            {
+                id:"sounds",
+                name:"🔊 Sounds"
+            }
+        ],
+
+        inventoryTab,
+
+        id => {
+
+            inventoryTab =
+                id;
+
+            renderInventory();
+        }
+    );
+
+    const container =
+        document.getElementById(
+            "inventoryCards"
+        );
+
+    container.innerHTML = "";
+
+    if(
+        inventoryTab ===
+        "sounds"
+    ){
+
+        renderSoundInventory(
+            container
+        );
+
+        return;
+    }
+
+    const items =
+        inventoryTab ===
+        "skins"
+
+            ? skins.filter(
+                item =>
+                    state.ownedSkins.includes(
+                        item.id
+                    )
+            )
+
+            : worlds.filter(
+                item =>
+                    state.ownedWorlds.includes(
+                        item.id
+                    )
+            );
+
+    items.forEach(
+        item => {
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+            card.className =
+                "card";
+
+            const preview =
+                document.createElement(
+                    "div"
+                );
+
+            preview.className =
+                "preview";
+
+            const c =
+                document.createElement(
+                    "canvas"
+                );
+
+            c.width = 220;
+            c.height = 110;
+
+            const pctx =
+                c.getContext(
+                    "2d"
+                );
+
+            if(
+                inventoryTab ===
+                "skins"
+            ){
+
+                drawSkin(
+                    pctx,
+                    item.type,
+                    110,
+                    55,
+                    25
+                );
+
+            }else{
+
+                drawWorldPreview(
+                    pctx,
+                    item,
+                    220,
+                    110
+                );
+            }
+
+            preview.appendChild(c);
+            card.appendChild(preview);
+
+            const title =
+                document.createElement(
+                    "h3"
+                );
+
+            title.textContent =
+                item.name;
+
+            card.appendChild(title);
+
+            const selected =
+                inventoryTab ===
+                "skins"
+
+                    ? state.selectedSkin ===
+                      item.id
+
+                    : state.selectedWorld ===
+                      item.id;
+
+            const button =
+                document.createElement(
+                    "button"
+                );
+
+            button.className =
+                "smallbtn" +
+                (
+                    selected
+                        ? " selected"
+                        : ""
+                );
+
+            button.textContent =
+                selected
+                    ? "✓ AUSGERÜSTET"
+                    : "AUSRÜSTEN";
+
+            button.onclick =
+                () => {
+
+                    if(
+                        inventoryTab ===
+                        "skins"
+                    ){
+
+                        state.selectedSkin =
+                            item.id;
+
+                    }else{
+
+                        state.selectedWorld =
+                            item.id;
+                    }
+
+                    saveState();
+
+                    renderInventory();
+                };
+
+            card.appendChild(button);
+
+            container.appendChild(card);
+        }
+    );
+}
+
+
+/* =========================================================
+   SOUND INVENTAR
+========================================================= */
+
+function renderSoundInventory(
+    container
+){
+
+    sounds
+        .filter(
+            sound =>
+                state.ownedSounds.includes(
+                    sound.id
+                )
+        )
+        .forEach(
+            sound => {
+
+                const card =
+                    document.createElement(
+                        "div"
+                    );
+
+                card.className =
+                    "card";
+
+                const preview =
+                    document.createElement(
+                        "div"
+                    );
+
+                preview.className =
+                    "preview";
+
+                const box =
+                    document.createElement(
+                        "div"
+                    );
+
+                box.className =
+                    "soundPreviewBox";
+
+                const icon =
+                    document.createElement(
+                        "div"
+                    );
+
+                icon.className =
+                    "soundIcon";
+
+                icon.textContent =
+                    sound.icon;
+
+                box.appendChild(icon);
+                preview.appendChild(box);
+                card.appendChild(preview);
+
+                const title =
+                    document.createElement(
+                        "h3"
+                    );
+
+                title.textContent =
+                    sound.name;
+
+                card.appendChild(title);
+
+                const test =
+                    document.createElement(
+                        "button"
+                    );
+
+                test.className =
+                    "smallbtn blue";
+
+                test.textContent =
+                    "▶ TESTEN";
+
+                test.onclick =
+                    () =>
+                        playSound(
+                            sound.type
+                        );
+
+                card.appendChild(test);
+
+                const selected =
+                    state.selectedSound ===
+                    sound.id;
+
+                const button =
+                    document.createElement(
+                        "button"
+                    );
+
+                button.className =
+                    "smallbtn" +
+                    (
+                        selected
+                            ? " selected"
+                            : ""
+                    );
+
+                button.textContent =
+                    selected
+                        ? "✓ AUSGERÜSTET"
+                        : "AUSRÜSTEN";
+
+                button.onclick =
+                    () => {
+
+                        state.selectedSound =
+                            sound.id;
+
+                        saveState();
+
+                        renderInventory();
+                    };
+
+                card.appendChild(button);
+
+                container.appendChild(card);
+            }
+        );
+}
+
+
+/* =========================================================
+   KAUFSOUND
+========================================================= */
+
+function playPurchaseSound(){
+
+    initAudio();
+
+    if(!audioContext){
+        return;
+    }
+
+    rawTone(
+        523.25,
+        .08,
+        .045,
+        "triangle"
+    );
+
+    setTimeout(
+        () =>
+            rawTone(
+                783.99,
+                .12,
+                .045,
+                "triangle"
+            ),
+        70
+    );
+}
+
+
+/* =========================================================
+   GAME START
+========================================================= */
+
+function startGame(){
+
+    initAudio();
+
+    if(
+        audioContext &&
+        audioContext.state ===
+        "suspended"
+    ){
+        audioContext.resume();
+    }
+
+    startMusic();
+
+    hideScreens();
+
+    canvas.style.display =
+        "block";
+
+    document.getElementById(
+        "gameHud"
+    ).style.display =
+        "block";
+
+    document.getElementById(
+        "pauseOverlay"
+    ).classList.remove(
+        "active"
+    );
+
+    document.getElementById(
+        "gameOverOverlay"
+    ).classList.remove(
+        "active"
+    );
+
+    game.running =
+        true;
+
+    game.paused =
+        false;
+
+    game.over =
+        false;
+
+    game.score =
+        0;
+
+    game.runCoins =
+        0;
+
+    game.jumpCount =
+        0;
+
+    /*
+        SEHR LEICHTER START
+    */
+
+    game.speed =
+        165;
+
+    game.spawnTimer =
+        0.9;
+
+    game.obstacles =
+        [];
+
+    game.player = {
+
+        x:
+            W * .24,
+
+        y:
+            H * .45,
+
+        vy:
+            0,
+
+        r:
+            22,
+
+        rot:
+            0
+    };
+
+    game.world =
+        worlds.find(
+            world =>
+                world.id ===
+                state.selectedWorld
+        ) || worlds[0];
+
+    document.getElementById(
+        "worldHud"
+    ).textContent =
+        game.world.name;
+
+    updateHUD();
+
+    game.lastTime =
+        performance.now();
+
+    /*
+        Startsprung zählt als Jump.
+    */
+
+    flap();
+
+    requestAnimationFrame(
+        gameLoop
+    );
+}
+
+
+/* =========================================================
+   HUD
+========================================================= */
+
+function updateHUD(){
+
+    document.getElementById(
+        "scoreHud"
+    ).textContent =
+        game.score;
+
+    document.getElementById(
+        "coinsHud"
+    ).textContent =
+        state.coins +
+        game.runCoins;
+
+    document.getElementById(
+        "jumpHud"
+    ).textContent =
+        game.jumpCount;
+}
+
+
+/* =========================================================
+   JUMP
+========================================================= */
+
+function flap(){
+
+    if(
+        !game.running ||
+        game.paused ||
+        game.over
+    ){
+        return;
+    }
+
+    game.player.vy =
+        -405;
+
+    /*
+       Nur der Jump-Zähler
+       wird hier erhöht.
+    */
+
+    game.jumpCount++;
+
+    jumpSound();
+
+    updateHUD();
+}
+
+
+/* =========================================================
+   UPDATE
+========================================================= */
+
+function updateGame(
+    dt
+){
+
+    const p =
+        game.player;
+
+    /*
+       Langsam beginnen,
+       später extrem schwer.
+    */
+
+    game.speed =
+        165 +
+        Math.min(
+            255,
+            game.score * 2.5
+        );
+
+    /*
+       Gravitation steigt langsam.
+    */
+
+    const gravity =
+        1080 +
+        Math.min(
+            260,
+            game.score * 1.5
+        );
+
+    p.vy +=
+        gravity * dt;
+
+    p.y +=
+        p.vy * dt;
+
+    p.rot =
+        Math.max(
+            -.55,
+            Math.min(
+                1,
+                p.vy / 700
+            )
+        );
+
+    /*
+       Große Lücke am Anfang.
+       Später immer kleiner.
+    */
+
+    const gapHeight =
+        Math.max(
+            150,
+            H * .34 -
+            game.score * .62
+        );
+
+    game.spawnTimer -=
+        dt;
+
+    if(
+        game.spawnTimer <=
+        0
+    ){
+
+        const topMargin =
+            Math.max(
+                75,
+                H * .11
+            );
+
+        const bottomMargin =
+            Math.max(
+                75,
+                H * .12
+            );
+
+        const minGap =
+            topMargin +
+            gapHeight / 2;
+
+        const maxGap =
+            H -
+            bottomMargin -
+            gapHeight / 2;
+
+        const gapY =
+            minGap +
+            Math.random() *
+            Math.max(
+                1,
+                maxGap -
+                minGap
+            );
+
+        const width =
+            Math.max(
+                70,
+                W * .075
+            );
+
+        game.obstacles.push({
+
+            x:
+                W + 30,
+
+            width:
+                width,
+
+            gapY:
+                gapY,
+
+            gapH:
+                gapHeight,
+
+            passed:
+                false
+        });
+
+        game.spawnTimer =
+            Math.max(
+                .88,
+                1.62 -
+                game.score * .005
+            );
+    }
+
+    /*
+       HINDERNISSE
+    */
+
+    for(
+        const obstacle
+        of game.obstacles
+    ){
+
+        obstacle.x -=
+            game.speed * dt;
+
+        /*
+           Ein Hindernis erfolgreich überflogen
+           = 1 Punkt.
+        */
+
+        if(
+            !obstacle.passed &&
+            obstacle.x +
+            obstacle.width <
+            p.x -
+            p.r
+        ){
+
+            obstacle.passed =
+                true;
+
+            game.score++;
+
+            playScoreSound();
+
+            /*
+               JEDES 5. HINDERNIS
+               = +5 COINS
+            */
+
+            if(
+                game.score % 5 ===
+                0
+            ){
+
+                game.runCoins +=
+                    5;
+
+                showMessage(
+                    "🪙 +5 Coins!"
+                );
+
+                playCoinSound();
+            }
+        }
+
+        /*
+           Kollision
+        */
+
+        if(
+            obstacleCollision(
+                p,
+                obstacle
+            )
+        ){
+
+            endGame();
+
+            return;
+        }
+    }
+
+    game.obstacles =
+        game.obstacles.filter(
+            obstacle =>
+                obstacle.x +
+                obstacle.width >
+                -100
+        );
+
+    /*
+       Decke/Boden
+    */
+
+    if(
+        p.y -
+        p.r <
+        0
+    ){
+
+        endGame();
+
+        return;
+    }
+
+    if(
+        p.y +
+        p.r >
+        H
+    ){
+
+        endGame();
+
+        return;
+    }
+
+    updateHUD();
+}
+
+
+/* =========================================================
+   KOLLISION
+========================================================= */
+
+function obstacleCollision(
+    p,
+    obstacle
+){
+
+    const top =
+        obstacle.gapY -
+        obstacle.gapH / 2;
+
+    const bottom =
+        obstacle.gapY +
+        obstacle.gapH / 2;
+
+    if(
+        p.x +
+        p.r <
+        obstacle.x
+    ){
+        return false;
+    }
+
+    if(
+        p.x -
+        p.r >
+        obstacle.x +
+        obstacle.width
+    ){
+        return false;
+    }
+
+    if(
+        p.y -
+        p.r <
+        top
+    ){
+        return true;
+    }
+
+    if(
+        p.y +
+        p.r >
+        bottom
+    ){
+        return true;
+    }
+
+    return false;
+}
+
+
+/* =========================================================
+   SCORE SOUND
+========================================================= */
+
+function playScoreSound(){
+
+    if(!state.sfx){
+        return;
+    }
+
+    initAudio();
+
+    rawTone(
+        760,
+        .04,
+        .03,
+        "triangle"
+    );
+}
+
+
+/* =========================================================
+   GAME OVER
+========================================================= */
+
+function endGame(){
+
+    if(game.over){
+        return;
+    }
+
+    game.over =
+        true;
+
+    game.running =
+        false;
+
+    /*
+       Die verdienten Coins werden
+       genau einmal gespeichert.
+    */
+
+    const earned =
+        game.runCoins;
+
+    state.coins +=
+        earned;
+
+    /*
+       Rekord bleibt gespeichert.
+    */
+
+    if(
+        game.score >
+        state.best
+    ){
+
+        state.best =
+            game.score;
+    }
+
+    saveState();
+
+    document.getElementById(
+        "finalScore"
+    ).textContent =
+        game.score;
+
+    document.getElementById(
+        "earnedCoins"
+    ).textContent =
+        earned;
+
+    document.getElementById(
+        "bestScore"
+    ).textContent =
+        state.best;
+
+    document.getElementById(
+        "gameHud"
+    ).style.display =
+        "none";
+
+    document.getElementById(
+        "gameOverOverlay"
+    ).classList.add(
+        "active"
+    );
+
+    playGameOverSound();
+}
+
+
+/* =========================================================
+   GAMEOVER SOUND
+========================================================= */
+
+function playGameOverSound(){
+
+    initAudio();
+
+    if(!audioContext){
+        return;
+    }
+
+    rawTone(
+        300,
+        .15,
+        .05,
+        "sawtooth"
+    );
+
+    setTimeout(
+        () =>
+            rawTone(
+                210,
+                .22,
+                .045,
+                "sawtooth"
+            ),
+        130
+    );
+}
+
+
+/* =========================================================
+   LOOP
+========================================================= */
+
+function gameLoop(
+    time
+){
+
+    if(!game.running){
+        draw();
+        return;
+    }
+
+    const dt =
+        Math.min(
+            .033,
+            (time -
+             game.lastTime) /
+            1000
+        );
+
+    game.lastTime =
+        time;
+
+    if(
+        !game.paused
+    ){
+
+        updateGame(dt);
+    }
+
+    draw();
+
+    if(game.running){
+
+        requestAnimationFrame(
+            gameLoop
+        );
+    }
+}
+
+
+/* =========================================================
+   BACKGROUND DRAWING
+========================================================= */
+
+function drawBackground(){
+
+    const world =
+        game.world ||
+        worlds[0];
+
+    const gradient =
+        ctx.createLinearGradient(
+            0,
+            0,
+            0,
+            H
+        );
+
+    gradient.addColorStop(
+        0,
+        world.sky1
+    );
+
+    gradient.addColorStop(
+        1,
+        world.sky2
+    );
+
+    ctx.fillStyle =
+        gradient;
+
+    ctx.fillRect(
+        0,
+        0,
+        W,
+        H
+    );
+
+    if(world.id === "giza")
+        drawGiza();
+
+    if(world.id === "mountains")
+        drawMountains();
+
+    if(world.id === "ocean")
+        drawOcean();
+
+    if(world.id === "jungle")
+        drawJungle();
+
+    if(world.id === "space")
+        drawSpace();
+
+    if(world.id === "ice")
+        drawIce();
+}
+
+
+/* =========================================================
+   GIZEH
+========================================================= */
+
+function drawGiza(){
+
+    const horizon =
+        H * .69;
+
+    ctx.fillStyle =
+        "rgba(255,225,150,.25)";
+
+    ctx.beginPath();
+
+    ctx.arc(
+        W * .82,
+        H * .18,
+        85,
+        0,
+        Math.PI * 2
+    );
+
+    ctx.fill();
+
+    ctx.fillStyle =
+        "#d9a35a";
+
+    ctx.fillRect(
+        0,
+        horizon,
+        W,
+        H -
+        horizon
+    );
+
+    drawPyramid(
+        W * .57,
+        horizon,
+        200,
+        130
+    );
+
+    drawPyramid(
+        W * .75,
+        horizon + 12,
+        110,
+        78
+    );
+}
+
+function drawPyramid(
+    cx,
+    base,
+    width,
+    height
+){
+
+    ctx.fillStyle =
+        "#d5a05a";
+
+    ctx.beginPath();
+
+    ctx.moveTo(
+        cx,
+        base -
+        height
+    );
+
+    ctx.lineTo(
+        cx -
+        width / 2,
+        base
+    );
+
+    ctx.lineTo(
+        cx +
+        width / 2,
+        base
+    );
+
+    ctx.closePath();
+
+    ctx.fill();
+}
+
+
+/* =========================================================
+   BERGE
+========================================================= */
+
+function drawMountains(){
+
+    ctx.fillStyle =
+        "#5b70aa";
+
+    ctx.beginPath();
+
+    ctx.moveTo(
+        0,
+        H * .72
+    );
+
+    ctx.lineTo(
+        W * .18,
+        H * .43
+    );
+
+    ctx.lineTo(
+        W * .38,
+        H * .7
+    );
+
+    ctx.lineTo(
+        W * .57,
+        H * .32
+    );
+
+    ctx.lineTo(
+        W * .78,
+        H * .67
+    );
+
+    ctx.lineTo(
+        W,
+        H * .4
+    );
+
+    ctx.lineTo(
+        W,
+        H
+    );
+
+    ctx.lineTo(
+        0,
+        H
+    );
+
+    ctx.closePath();
+
+    ctx.fill();
+
+    ctx.fillStyle =
+        "#527951";
+
+    ctx.fillRect(
+        0,
+        H * .79,
+        W,
+        H * .21
+    );
+}
+
+
+/* =========================================================
+   OZEAN
+========================================================= */
+
+function drawOcean(){
+
+    ctx.strokeStyle =
+        "rgba(255,255,255,.14)";
+
+    ctx.lineWidth =
+        2;
+
+    for(
+        let y = 90;
+        y < H * .85;
+        y += 80
+    ){
+
+        ctx.beginPath();
+
+        for(
+            let x = 0;
+            x < W;
+            x += 45
+        ){
+
+            ctx.moveTo(
+                x,
+                y
+            );
+
+            ctx.quadraticCurveTo(
+                x + 12,
+                y - 10,
+                x + 24,
+                y
+            );
+        }
+
+        ctx.stroke();
+    }
+
+    ctx.fillStyle =
+        "#157c86";
+
+    ctx.fillRect(
+        0,
+        H * .88,
+        W,
+        H * .12
+    );
+}
+
+
+/* =========================================================
+   DSCHUNGEL
+========================================================= */
+
+function drawJungle(){
+
+    ctx.fillStyle =
+        "#2b753d";
+
+    ctx.fillRect(
+        0,
+        H * .78,
+        W,
+        H * .22
+    );
+
+    for(
+        let i = 0;
+        i < 18;
+        i++
+    ){
+
+        const x =
+            (i * 97) %
+            W;
+
+        const height =
+            100 +
+            (i % 4) * 35;
+
+        ctx.fillStyle =
+            i % 2
+                ? "#1c5a31"
+                : "#348746";
+
+        ctx.fillRect(
+            x,
+            H * .78 -
+            height,
+            20,
+            height
+        );
+
+        ctx.beginPath();
+
+        ctx.arc(
+            x + 10,
+            H * .78 -
+            height,
+            38,
+            Math.PI,
+            Math.PI * 2
+        );
+
+        ctx.fill();
+    }
+}
+
+
+/* =========================================================
+   WELTRAUM
+========================================================= */
+
+function drawSpace(){
+
+    ctx.fillStyle =
+        "white";
+
+    for(
+        let i = 0;
+        i < 100;
+        i++
+    ){
+
+        const x =
+            (i * 83) %
+            W;
+
+        const y =
+            (i * 47) %
+            H;
+
+        ctx.globalAlpha =
+            .25 +
+            (i % 5) * .1;
+
+        ctx.fillRect(
+            x,
+            y,
+            2,
+            2
+        );
+    }
+
+    ctx.globalAlpha =
+        1;
+
+    ctx.fillStyle =
+        "#9b63dc";
+
+    ctx.globalAlpha =
+        .25;
+
+    ctx.beginPath();
+
+    ctx.arc(
+        W * .78,
+        H * .25,
+        120,
+        0,
+        Math.PI * 2
+    );
+
+    ctx.fill();
+
+    ctx.globalAlpha =
+        1;
+}
+
+
+/* =========================================================
+   EIS
+========================================================= */
+
+function drawIce(){
+
+    ctx.fillStyle =
+        "rgba(255,255,255,.45)";
+
+    for(
+        let i = 0;
+        i < 8;
+        i++
+    ){
+
+        const x =
+            i * 190;
+
+        ctx.beginPath();
+
+        ctx.moveTo(
+            x,
+            H * .82
+        );
+
+        ctx.lineTo(
+            x + 80,
+            H * .25
+        );
+
+        ctx.lineTo(
+            x + 150,
+            H * .82
+        );
+
+        ctx.closePath();
+
+        ctx.fill();
+    }
+
+    ctx.fillStyle =
+        "#a7deef";
+
+    ctx.fillRect(
+        0,
+        H * .82,
+        W,
+        H * .18
+    );
+}
+
+
+/* =========================================================
+   FIGUREN
+========================================================= */
+
+function drawSkin(
+    c,
+    type,
+    x,
+    y,
+    r
+){
+
+    c.save();
+
+    c.translate(
+        x,
+        y
+    );
+
+    if(type === "bird")
+        drawBird(c,r);
+
+    if(type === "dino")
+        drawDino(c,r);
+
+    if(type === "pen")
+        drawPen(c,r);
+
+    if(type === "carrot")
+        drawCarrot(c,r);
+
+    if(type === "apple")
+        drawApple(c,r);
+
+    c.restore();
+}
+
+
+/* =========================================================
+   VOGEL
+========================================================= */
+
+function drawBird(
+    c,
+    r
+){
+
+    c.fillStyle =
+        "#ffd13b";
+
+    c.beginPath();
+
+    c.ellipse(
+        0,
+        0,
+        r * 1.05,
+        r * .82,
+        0,
+        0,
+        Math.PI * 2
+    );
+
+    c.fill();
+
+    c.fillStyle =
+        "#fff";
+
+    c.beginPath();
+
+    c.arc(
+        r * .35,
+        -r * .3,
+        r * .21,
+        0,
+        Math.PI * 2
+    );
+
+    c.fill();
+
+    c.fillStyle =
+        "#17204a";
+
+    c.beginPath();
+
+    c.arc(
+        r * .4,
+        -r * .3,
+        r * .08,
+        0,
+        Math.PI * 2
+    );
+
+    c.fill();
+
+    c.fillStyle =
+        "#ff7733";
+
+    c.beginPath();
+
+    c.moveTo(
+        r * .9,
+        -r * .05
+    );
+
+    c.lineTo(
+        r * 1.45,
+        r * .1
+    );
+
+    c.lineTo(
+        r * .9,
+        r * .28
+    );
+
+    c.closePath();
+
+    c.fill();
+
+    c.fillStyle =
+        "#ef9d20";
+
+    c.beginPath();
+
+    c.ellipse(
+        -r * .25,
+        r * .4,
+        r * .55,
+        r * .18,
+        -.3,
+        0,
+        Math.PI * 2
+    );
+
+    c.fill();
+}
+
+
+/* =========================================================
+   DINO
+========================================================= */
+
+function drawDino(
+    c,
+    r
+){
+
+    c.fillStyle =
+        "#58d26b";
+
+    c.beginPath();
+
+    c.ellipse(
+        0,
+        0,
+        r * 1.05,
+        r * .72,
+        0,
+        0,
+        Math.PI * 2
+    );
+
+    c.fill();
+
+    c.fillStyle =
+        "#4baa59";
+
+    c.beginPath();
+
+    c.moveTo(
+        -r * .7,
+        -r * .25
+    );
+
+    c.lineTo(
+        -r * 1.4,
+        -r * .05
+    );
+
+    c.lineTo(
+        -r * .8,
+        r * .3
+    );
+
+    c.closePath();
+
+    c.fill();
+
+    c.fillStyle =
+        "#fff";
+
+    c.beginPath();
+
+    c.arc(
+        r * .4,
+        -r * .2,
+        r * .2,
+        0,
+        Math.PI * 2
+    );
+
+    c.fill();
+
+    c.fillStyle =
+        "#17204a";
+
+    c.beginPath();
+
+    c.arc(
+        r * .45,
+        -r * .2,
+        r * .08,
+        0,
+        Math.PI * 2
+    );
+
+    c.fill();
+}
+
+
+/* =========================================================
+   STIFT
+========================================================= */
+
+function drawPen(
+    c,
+    r
+){
+
+    c.rotate(-.35);
+
+    c.fillStyle =
+        "#ffdf4e";
+
+    c.fillRect(
+        -r * .25,
+        -r * 1.1,
+        r * .5,
+        r * 1.6
+    );
+
+    c.fillStyle =
+        "#4d75ff";
+
+    c.fillRect(
+        -r * .25,
+        -r * 1.1,
+        r * .5,
+        r * .35
+    );
+
+    c.fillStyle =
+        "#e9bd91";
+
+    c.beginPath();
+
+    c.moveTo(
+        -r * .25,
+        r * .5
+    );
+
+    c.lineTo(
+        0,
+        r * 1.05
+    );
+
+    c.lineTo(
+        r * .25,
+        r * .5
+    );
+
+    c.closePath();
+
+    c.fill();
+}
+
+
+/* =========================================================
+   KAROTTE
+========================================================= */
+
+function drawCarrot(
+    c,
+    r
+){
+
+    c.fillStyle =
+        "#62d976";
+
+    c.beginPath();
+
+    c.ellipse(
+        -r * .2,
+        -r * .75,
+        r * .25,
+        r * .55,
+        -.5,
+        0,
+        Math.PI * 2
+    );
+
+    c.ellipse(
+        r * .2,
+        -r * .75,
+        r * .25,
+        r * .55,
+        .5,
+        0,
+        Math.PI * 2
+    );
+
+    c.fill();
+
+    c.fillStyle =
+        "#ff8b28";
+
+    c.beginPath();
+
+    c.moveTo(
+        -r * .65,
+        -r * .25
+    );
+
+    c.quadraticCurveTo(
+        0,
+        r * .75,
+        0,
+        r * 1.05
+    );
+
+    c.quadraticCurveTo(
+        0,
+        r * .75,
+        r * .65,
+        -r * .25
+    );
+
+    c.closePath();
+
+    c.fill();
+}
+
+
+/* =========================================================
+   APFEL
+========================================================= */
+
+function drawApple(
+    c,
+    r
+){
+
+    c.fillStyle =
+        "#f14848";
+
+    c.beginPath();
+
+    c.arc(
+        -r * .3,
+        0,
+        r * .65,
+        0,
+        Math.PI * 2
+    );
+
+    c.arc(
+        r * .3,
+        0,
+        r * .65,
+        0,
+        Math.PI * 2
+    );
+
+    c.fill();
+
+    c.strokeStyle =
+        "#69472b";
+
+    c.lineWidth =
+        4;
+
+    c.beginPath();
+
+    c.moveTo(
+        0,
+        -r * .45
+    );
+
+    c.lineTo(
+        r * .1,
+        -r * .95
+    );
+
+    c.stroke();
+
+    c.fillStyle =
+        "#63d878";
+
+    c.beginPath();
+
+    c.ellipse(
+        r * .35,
+        -r * .75,
+        r * .35,
+        r * .16,
+        -.4,
+        0,
+        Math.PI * 2
+    );
+
+    c.fill();
+}
+
+
+/* =========================================================
+   WORLD PREVIEW
+========================================================= */
+
+function drawWorldPreview(
+    c,
+    world,
+    width,
+    height
+){
+
+    const gradient =
+        c.createLinearGradient(
+            0,
+            0,
+            0,
+            height
+        );
+
+    gradient.addColorStop(
+        0,
+        world.sky1
+    );
+
+    gradient.addColorStop(
+        1,
+        world.sky2
+    );
+
+    c.fillStyle =
+        gradient;
+
+    c.fillRect(
+        0,
+        0,
+        width,
+        height
+    );
+
+    if(
+        world.id === "giza"
+    ){
+
+        c.fillStyle =
+            world.ground;
+
+        c.fillRect(
+            0,
+            height * .72,
+            width,
+            height * .28
+        );
+
+        c.fillStyle =
+            "#d6a05c";
+
+        c.beginPath();
+
+        c.moveTo(
+            width * .48,
+            height * .2
+        );
+
+        c.lineTo(
+            width * .23,
+            height * .72
+        );
+
+        c.lineTo(
+            width * .73,
+            height * .72
+        );
+
+        c.closePath();
+
+        c.fill();
+    }
+
+    if(
+        world.id ===
+        "mountains"
+    ){
+
+        c.fillStyle =
+            world.obstacle;
+
+        c.beginPath();
+
+        c.moveTo(
+            0,
+            height
+        );
+
+        c.lineTo(
+            width * .22,
+            height * .3
+        );
+
+        c.lineTo(
+            width * .44,
+            height
+        );
+
+        c.lineTo(
+            width * .63,
+            height * .22
+        );
+
+        c.lineTo(
+            width,
+            height
+        );
+
+        c.closePath();
+
+        c.fill();
+    }
+
+    if(
+        world.id ===
+        "ocean"
+    ){
+
+        c.fillStyle =
+            "rgba(255,255,255,.14)";
+
+        for(
+            let y = 25;
+            y < height;
+            y += 28
+        ){
+
+            c.beginPath();
+
+            for(
+                let x = 0;
+                x <= width;
+                x += 22
+            ){
+
+                c.moveTo(
+                    x,
+                    y
+                );
+
+                c.quadraticCurveTo(
+                    x + 7,
+                    y - 5,
+                    x + 14,
+                    y
+                );
+            }
+
+            c.stroke();
+        }
+    }
+
+    if(
+        world.id ===
+        "jungle"
+    ){
+
+        c.fillStyle =
+            world.ground;
+
+        c.fillRect(
+            0,
+            height * .76,
+            width,
+            height * .24
+        );
+    }
+
+    if(
+        world.id ===
+        "space"
+    ){
+
+        c.fillStyle =
+            "white";
+
+        for(
+            let i = 0;
+            i < 30;
+            i++
+        ){
+
+            c.fillRect(
+                (i * 37) % width,
+                (i * 19) % height,
+                2,
+                2
+            );
+        }
+    }
+
+    if(
+        world.id ===
+        "ice"
+    ){
+
+        c.fillStyle =
+            "#eefcff";
+
+        c.beginPath();
+
+        c.moveTo(
+            0,
+            height
+        );
+
+        c.lineTo(
+            width * .24,
+            height * .25
+        );
+
+        c.lineTo(
+            width * .45,
+            height
+        );
+
+        c.lineTo(
+            width * .65,
+            height * .2
+        );
+
+        c.lineTo(
+            width,
+            height
+        );
+
+        c.closePath();
+
+        c.fill();
+    }
+}
+
+
+/* =========================================================
+   DRAW GAME
+========================================================= */
+
+function draw(){
+
+    const world =
+        game.world ||
+        worlds[0];
+
+    const gradient =
+        ctx.createLinearGradient(
+            0,
+            0,
+            0,
+            H
+        );
+
+    gradient.addColorStop(
+        0,
+        world.sky1
+    );
+
+    gradient.addColorStop(
+        1,
+        world.sky2
+    );
+
+    ctx.fillStyle =
+        gradient;
+
+    ctx.fillRect(
+        0,
+        0,
+        W,
+        H
+    );
+
+    if(world.id === "giza")
+        drawGiza();
+
+    if(world.id === "mountains")
+        drawMountains();
+
+    if(world.id === "ocean")
+        drawOcean();
+
+    if(world.id === "jungle")
+        drawJungle();
+
+    if(world.id === "space")
+        drawSpace();
+
+    if(world.id === "ice")
+        drawIce();
+
+    /*
+       HINDERNISSE
+    */
+
+    for(
+        const obstacle
+        of game.obstacles
+    ){
+
+        const top =
+            obstacle.gapY -
+            obstacle.gapH / 2;
+
+        const bottom =
+            obstacle.gapY +
+            obstacle.gapH / 2;
+
+        ctx.fillStyle =
+            world.obstacle;
+
+        ctx.fillRect(
+            obstacle.x,
+            0,
+            obstacle.width,
+            top
+        );
+
+        ctx.fillRect(
+            obstacle.x,
+            bottom,
+            obstacle.width,
+            H - bottom
+        );
+
+        ctx.beginPath();
+
+        ctx.moveTo(
+            obstacle.x,
+            top
+        );
+
+        ctx.lineTo(
+            obstacle.x +
+            obstacle.width / 2,
+            top + 24
+        );
+
+        ctx.lineTo(
+            obstacle.x +
+            obstacle.width,
+            top
+        );
+
+        ctx.closePath();
+
+        ctx.fill();
+
+        ctx.beginPath();
+
+        ctx.moveTo(
+            obstacle.x,
+            bottom
+        );
+
+        ctx.lineTo(
+            obstacle.x +
+            obstacle.width / 2,
+            bottom - 24
+        );
+
+        ctx.lineTo(
+            obstacle.x +
+            obstacle.width,
+            bottom
+        );
+
+        ctx.closePath();
+
+        ctx.fill();
+    }
+
+    /*
+       SPIELER
+    */
+
+    const skin =
+        skins.find(
+            s =>
+                s.id ===
+                state.selectedSkin
+        ) || skins[0];
+
+    ctx.save();
+
+    ctx.translate(
+        game.player.x,
+        game.player.y
+    );
+
+    ctx.rotate(
+        game.player.rot
+    );
+
+    drawSkin(
+        ctx,
+        skin.type,
+        0,
+        0,
+        game.player.r
+    );
+
+    ctx.restore();
+}
+
+
+/* =========================================================
+   PAUSE
+========================================================= */
+
+function togglePause(){
+
+    if(
+        !game.running ||
+        game.over
+    ){
+        return;
+    }
+
+    game.paused =
+        !game.paused;
+
+    document.getElementById(
+        "pauseOverlay"
+    ).classList.toggle(
+        "active",
+        game.paused
+    );
+
+    if(!game.paused){
+
+        game.lastTime =
+            performance.now();
+    }
+}
+
+
+/* =========================================================
+   LOBBY
+========================================================= */
+
+function returnToLobby(){
+
+    game.running =
+        false;
+
+    game.paused =
+        false;
+
+    game.over =
+        false;
+
+    canvas.style.display =
+        "none";
+
+    document.getElementById(
+        "gameHud"
+    ).style.display =
+        "none";
+
+    document
+        .querySelectorAll(
+            ".overlay"
+        )
+        .forEach(
+            overlay =>
+                overlay.classList.remove(
+                    "active"
+                )
+        );
+
+    showScreen(
+        "lobby"
+    );
+
+    updateLobby();
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+document.getElementById(
+    "startBtn"
+).onclick =
+    startGame;
+
+
+document.getElementById(
+    "shopBtn"
+).onclick =
+    () => {
+
+        renderShop();
+
+        showScreen(
+            "shop"
+        );
+    };
+
+
+document.getElementById(
+    "inventoryBtn"
+).onclick =
+    () => {
+
+        renderInventory();
+
+        showScreen(
+            "inventory"
+        );
+    };
+
+
+document.getElementById(
+    "shopBack"
+).onclick =
+    () =>
+        showScreen("lobby");
+
+
+document.getElementById(
+    "inventoryBack"
+).onclick =
+    () =>
+        showScreen("lobby");
+
+
+document.getElementById(
+    "musicBtn"
+).onclick =
+    () => {
+
+        state.music =
+            !state.music;
+
+        saveState();
+
+        if(
+            state.music
+        ){
+
+            initAudio();
+            startMusic();
+
+        }else{
+
+            stopMusic();
+        }
+
+        updateLobby();
+    };
+
+
+document.getElementById(
+    "onlineBtn"
+).onclick =
+    () =>
+        document.getElementById(
+            "onlineOverlay"
+        ).classList.add(
+            "active"
+        );
+
+
+document.getElementById(
+    "closeOnlineBtn"
+).onclick =
+    () =>
+        document.getElementById(
+            "onlineOverlay"
+        ).classList.remove(
+            "active"
+        );
+
+
+document.getElementById(
+    "pauseBtn"
+).onclick =
+    togglePause;
+
+
+document.getElementById(
+    "resumeBtn"
+).onclick =
+    togglePause;
+
+
+document.getElementById(
+    "pauseLobbyBtn"
+).onclick =
+    returnToLobby;
+
+
+document.getElementById(
+    "retryBtn"
+).onclick =
+    startGame;
+
+
+document.getElementById(
+    "returnLobbyBtn"
+).onclick =
+    returnToLobby;
+
+
+/* =========================================================
+   STEUERUNG
+========================================================= */
+
+canvas.addEventListener(
+    "pointerdown",
+    event => {
+
+        event.preventDefault();
+
+        flap();
+    }
+);
+
+
+window.addEventListener(
+    "keydown",
+    event => {
+
+        if(
+            event.code === "Space" ||
+            event.code === "ArrowUp"
+        ){
+
+            event.preventDefault();
+
+            flap();
+        }
+
+        if(
+            event.code === "Escape" ||
+            event.code === "KeyP"
+        ){
+
+            togglePause();
+        }
+    }
+);
+
+
+/* =========================================================
+   START
+========================================================= */
+
+canvas.style.display =
+    "none";
+
+document.getElementById(
+    "gameHud"
+).style.display =
+    "none";
+
+updateLobby();
+
+renderShop();
+
+renderInventory();
+
+</script>
+
+</body>
+</html>
