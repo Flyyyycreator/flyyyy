@@ -2,14 +2,13 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta name="theme-color" content="#0d1430">
 <title>FLYYYY 1.2</title>
 
 <style>
 :root{
     --bg:#0d1430;
-    --panel:#121a3d;
     --text:#fff;
     --muted:#b9c5ef;
     --yellow:#ffd447;
@@ -22,15 +21,14 @@
     -webkit-tap-highlight-color:transparent;
 }
 
-html,
-body{
+html,body{
     width:100%;
     height:100%;
     margin:0;
     overflow:hidden;
     font-family:Arial,Helvetica,sans-serif;
     background:var(--bg);
-    color:white;
+    color:#fff;
 }
 
 body{
@@ -39,8 +37,7 @@ body{
     justify-content:center;
 }
 
-button,
-input{
+button,input{
     font:inherit;
 }
 
@@ -57,6 +54,10 @@ button{
     background:#10162f;
 }
 
+/* =========================================================
+   CANVAS
+========================================================= */
+
 #gameCanvas{
     position:absolute;
     inset:0;
@@ -64,8 +65,8 @@ button{
     height:100%;
     display:none;
     z-index:1;
-    touch-action:none;
     cursor:pointer;
+    touch-action:none;
 }
 
 /* =========================================================
@@ -77,8 +78,8 @@ button{
     inset:0;
     z-index:20;
     display:none;
-    align-items:center;
     justify-content:center;
+    align-items:center;
     padding:18px;
 }
 
@@ -90,7 +91,6 @@ button{
     width:min(1000px,94vw);
     max-height:92vh;
     overflow:auto;
-    padding:26px;
 
     background:
         linear-gradient(
@@ -101,12 +101,17 @@ button{
 
     border:1px solid rgba(255,255,255,.14);
     border-radius:28px;
+    padding:26px;
 
     box-shadow:
         0 20px 60px rgba(0,0,0,.42);
 
     backdrop-filter:blur(14px);
 }
+
+/* =========================================================
+   TEXT
+========================================================= */
 
 .title{
     text-align:center;
@@ -124,6 +129,7 @@ button{
 }
 
 .version{
+    display:block;
     width:max-content;
     margin:14px auto;
 
@@ -147,26 +153,14 @@ button{
     font-size:16px;
 }
 
-.credits{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:12px;
-    margin-bottom:22px;
+.tiny{
+    color:var(--muted);
+    font-size:13px;
 }
 
-.badge{
-    padding:10px 16px;
-    border-radius:999px;
-
-    background:
-        rgba(255,212,71,.12);
-
-    border:
-        1px solid rgba(255,212,71,.3);
-
-    font-weight:900;
-}
+/* =========================================================
+   BUTTONS
+========================================================= */
 
 .button-grid{
     display:grid;
@@ -245,6 +239,10 @@ button{
         1px solid rgba(255,255,255,.13);
 }
 
+/* =========================================================
+   TOPBAR
+========================================================= */
+
 .topbar{
     display:flex;
     justify-content:space-between;
@@ -259,9 +257,29 @@ button{
     font-size:30px;
 }
 
-.tiny{
-    color:var(--muted);
-    font-size:13px;
+/* =========================================================
+   BADGES
+========================================================= */
+
+.credits{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-bottom:22px;
+}
+
+.badge{
+    padding:10px 16px;
+    border-radius:999px;
+
+    background:
+        rgba(255,212,71,.12);
+
+    border:
+        1px solid rgba(255,212,71,.3);
+
+    font-weight:900;
 }
 
 /* =========================================================
@@ -271,7 +289,6 @@ button{
 .tabs{
     display:flex;
     gap:8px;
-
     overflow:auto;
 
     margin-bottom:15px;
@@ -294,7 +311,6 @@ button{
     padding:10px 15px;
 
     font-weight:900;
-
     cursor:pointer;
 }
 
@@ -343,7 +359,6 @@ button{
     font-size:18px;
 }
 
-/* Keine Verzerrung */
 .preview{
     width:100%;
     height:145px;
@@ -437,8 +452,8 @@ button{
     height:145px;
 
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
 
     flex-direction:column;
 
@@ -483,9 +498,8 @@ button{
 }
 
 .nameInput{
-    min-width:0;
-
     width:100%;
+    min-width:0;
 
     border:
         1px solid rgba(255,255,255,.14);
@@ -517,7 +531,6 @@ button{
     grid-template-columns:55px 1fr auto;
 
     align-items:center;
-
     gap:12px;
 
     padding:14px 16px;
@@ -547,10 +560,8 @@ button{
 
 .leaderName{
     overflow:hidden;
-
     white-space:nowrap;
     text-overflow:ellipsis;
-
     font-weight:900;
 }
 
@@ -619,7 +630,7 @@ button{
 }
 
 /* =========================================================
-   GAME HUD
+   HUD
 ========================================================= */
 
 #gameHud{
@@ -665,8 +676,6 @@ button{
         1px solid rgba(255,255,255,.15);
 
     font-weight:900;
-
-    backdrop-filter:blur(8px);
 }
 
 .pause-btn{
@@ -685,7 +694,6 @@ button{
     padding:10px 14px;
 
     font-weight:900;
-
     cursor:pointer;
 }
 
@@ -695,7 +703,8 @@ button{
     left:50%;
     bottom:16px;
 
-    transform:translateX(-50%);
+    transform:
+        translateX(-50%);
 
     padding:9px 14px;
 
@@ -719,8 +728,8 @@ button{
 
     display:none;
 
-    align-items:center;
     justify-content:center;
+    align-items:center;
 
     background:
         rgba(5,8,22,.55);
@@ -797,6 +806,8 @@ button{
     align-items:center;
     justify-content:center;
 
+    padding:20px;
+
     background:
         linear-gradient(
             180deg,
@@ -858,12 +869,11 @@ button{
 .countdown{
     display:flex;
     justify-content:center;
-
     gap:10px;
 }
 
 .timeBox{
-    min-width:85px;
+    min-width:95px;
 
     padding:15px 10px;
 
@@ -914,9 +924,6 @@ button{
             #5ee7ff,
             #6df5a3
         );
-
-    transition:
-        width .4s linear;
 }
 
 /* =========================================================
@@ -953,7 +960,7 @@ button{
     }
 
     .timeBox{
-        min-width:72px;
+        min-width:82px;
         padding:12px 7px;
     }
 
@@ -969,7 +976,7 @@ button{
 <div id="app">
 
 <!-- =====================================================
-     2-MINUTEN-WARTUNG
+     WARTUNG 30 SEKUNDEN
 ===================================================== -->
 
 <div id="maintenance">
@@ -987,7 +994,7 @@ button{
         <p class="maintenanceText">
             FLYYYY bekommt jetzt ein Online-Leaderboard.
             <br>
-            Die Wartungsarbeiten dauern ungefähr zwei Minuten.
+            Die Wartungsarbeiten dauern ungefähr 30 Sekunden.
             <br><br>
             Danke für eure Geduld! ❤️
         </p>
@@ -998,22 +1005,8 @@ button{
 
                 <span
                     class="timeNum"
-                    id="mMinutes">
-                    02
-                </span>
-
-                <span class="timeLabel">
-                    Minuten
-                </span>
-
-            </div>
-
-            <div class="timeBox">
-
-                <span
-                    class="timeNum"
                     id="mSeconds">
-                    00
+                    30
                 </span>
 
                 <span class="timeLabel">
@@ -1039,7 +1032,7 @@ button{
 
 
 <!-- =====================================================
-     SPIEL
+     GAME CANVAS
 ===================================================== -->
 
 <canvas id="gameCanvas"></canvas>
@@ -1158,7 +1151,6 @@ button{
 
         </div>
 
-
         <div class="nameBox">
 
             <input
@@ -1175,13 +1167,11 @@ button{
 
         </div>
 
-
         <div
             id="leaderboardStatus"
             class="leaderStatus">
-            Verbinde mit dem Leaderboard...
+            Verbinde mit dem Online-Leaderboard...
         </div>
-
 
         <div
             id="leaderboardList"
@@ -1223,12 +1213,10 @@ button{
 
         </div>
 
-
         <div
             class="tabs"
             id="shopTabs">
         </div>
-
 
         <div
             class="cards"
@@ -1270,12 +1258,10 @@ button{
 
         </div>
 
-
         <div
             class="tabs"
             id="inventoryTabs">
         </div>
-
 
         <div
             class="cards"
@@ -1317,7 +1303,6 @@ button{
 
         </div>
 
-
         <div
             class="missionList"
             id="missionList">
@@ -1350,7 +1335,6 @@ button{
 
     </div>
 
-
     <div class="hud-right">
 
         <div class="hud-pill">
@@ -1368,7 +1352,6 @@ button{
         </button>
 
     </div>
-
 
     <div class="tip">
         Klicken / Tippen / Leertaste = Fliegen
@@ -1440,6 +1423,7 @@ button{
                 <div class="tiny">
                     Punkte
                 </div>
+
                 <strong id="finalScore">
                     0
                 </strong>
@@ -1449,6 +1433,7 @@ button{
                 <div class="tiny">
                     Coins
                 </div>
+
                 <strong id="earnedCoins">
                     0
                 </strong>
@@ -1458,6 +1443,7 @@ button{
                 <div class="tiny">
                     Rekord
                 </div>
+
                 <strong id="bestScore">
                     0
                 </strong>
@@ -1485,23 +1471,27 @@ button{
 
 </div>
 
+</div>
+
 
 <!-- =====================================================
-     FIREBASE + GAME
+     JAVASCRIPT
 ===================================================== -->
 
 <script type="module">
 
+/* =========================================================
+   FIREBASE
+========================================================= */
+
 import {
     initializeApp
-} from
-"https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
+} from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
 
 import {
     getAuth,
     signInAnonymously
-} from
-"https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js";
+} from "https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js";
 
 import {
     getDatabase,
@@ -1513,13 +1503,8 @@ import {
     orderByChild,
     limitToLast,
     runTransaction
-} from
-"https://www.gstatic.com/firebasejs/12.16.0/firebase-database.js";
+} from "https://www.gstatic.com/firebasejs/12.16.0/firebase-database.js";
 
-
-/* =========================================================
-   FIREBASE KONFIGURATION
-========================================================= */
 
 const firebaseConfig = {
 
@@ -1549,70 +1534,85 @@ const firebaseConfig = {
 };
 
 
-/* =========================================================
-   FIREBASE STARTEN
-========================================================= */
-
-let firebaseApp;
-let auth;
-let db;
-let currentUser = null;
-let databaseLeaderboardRef = null;
-
 let firebaseReady = false;
+let firebaseApp = null;
+let auth = null;
+let db = null;
+let currentUser = null;
+let leaderboardRef = null;
 
 
-try{
+function setLeaderboardStatus(text){
 
-    firebaseApp =
-        initializeApp(
-            firebaseConfig
+    const el =
+        document.getElementById(
+            "leaderboardStatus"
         );
 
-    auth =
-        getAuth(
-            firebaseApp
+    if(el){
+        el.textContent = text;
+    }
+}
+
+
+async function setupFirebase(){
+
+    try{
+
+        firebaseApp =
+            initializeApp(
+                firebaseConfig
+            );
+
+        auth =
+            getAuth(
+                firebaseApp
+            );
+
+        db =
+            getDatabase(
+                firebaseApp
+            );
+
+        await signInAnonymously(
+            auth
         );
 
-    db =
-        getDatabase(
-            firebaseApp
+        currentUser =
+            auth.currentUser;
+
+        leaderboardRef =
+            ref(
+                db,
+                "leaderboard"
+            );
+
+        firebaseReady = true;
+
+        setLeaderboardStatus(
+            "🟢 Online – Leaderboard verbunden."
         );
 
-    await signInAnonymously(
-        auth
-    );
+        listenLeaderboard();
 
-    currentUser =
-        auth.currentUser;
+    }catch(error){
 
-    databaseLeaderboardRef =
-        ref(
-            db,
-            "leaderboard"
+        console.error(
+            "Firebase Fehler:",
+            error
         );
 
-    firebaseReady = true;
+        firebaseReady = false;
 
-    setLeaderboardStatus(
-        "🟢 Online – Leaderboard verbunden."
-    );
-
-}catch(error){
-
-    console.error(
-        "Firebase konnte nicht gestartet werden:",
-        error
-    );
-
-    setLeaderboardStatus(
-        "🔴 Leaderboard konnte nicht verbunden werden."
-    );
+        setLeaderboardStatus(
+            "🔴 Leaderboard momentan nicht verfügbar."
+        );
+    }
 }
 
 
 /* =========================================================
-   NAME
+   PLAYER NAME
 ========================================================= */
 
 function getPlayerName(){
@@ -1620,59 +1620,8 @@ function getPlayerName(){
     return (
         localStorage.getItem(
             "FLYYYY_PLAYER_NAME"
-        ) ||
-        ""
+        ) || ""
     );
-}
-
-
-function savePlayerName(){
-
-    const input =
-        document.getElementById(
-            "playerName"
-        );
-
-    let name =
-        input.value.trim();
-
-    if(!name){
-
-        showMessage(
-            "Bitte einen Namen eingeben."
-        );
-
-        return;
-    }
-
-    /*
-       Keine leeren oder extrem langen Namen.
-    */
-
-    name =
-        name
-        .replace(
-            /[<>]/g,
-            ""
-        )
-        .slice(
-            0,
-            20
-        );
-
-    localStorage.setItem(
-        "FLYYYY_PLAYER_NAME",
-        name
-    );
-
-    input.value =
-        name;
-
-    setLeaderboardStatus(
-        `Name gespeichert: ${name}`
-    );
-
-    updateOnlineScoreAfterNameChange();
 }
 
 
@@ -1685,104 +1634,116 @@ function loadPlayerName(){
 }
 
 
-async function updateOnlineScoreAfterNameChange(){
+async function savePlayerName(){
 
-    if(
-        !firebaseReady ||
-        !currentUser
-    ){
+    let name =
+        document.getElementById(
+            "playerName"
+        ).value
+        .trim();
+
+    if(!name){
+
+        showMessage(
+            "Bitte einen Namen eingeben."
+        );
+
         return;
     }
 
+    name =
+        name
+        .replace(
+            /[<>]/g,
+            ""
+        )
+        .slice(
+            0,
+            20
+        );
+
+    if(!name){
+        return;
+    }
+
+    localStorage.setItem(
+        "FLYYYY_PLAYER_NAME",
+        name
+    );
+
+    document.getElementById(
+        "playerName"
+    ).value =
+        name;
+
+    setLeaderboardStatus(
+        `Name gespeichert: ${name}`
+    );
+
     /*
-       Wenn der Spieler bereits einen Score
-       hat, aktualisieren wir nur den Namen.
+       Wenn bereits ein Online-Score existiert,
+       nur den Namen ändern.
     */
 
-    try{
+    if(
+        firebaseReady &&
+        currentUser
+    ){
 
-        const playerRef =
-            ref(
-                db,
-                `leaderboard/${currentUser.uid}`
-            );
+        try{
 
-        const snapshot =
-            await get(
-                playerRef
-            );
+            const playerRef =
+                ref(
+                    db,
+                    "leaderboard/" +
+                    currentUser.uid
+                );
 
-        if(
-            snapshot.exists()
-        ){
+            const snapshot =
+                await get(
+                    playerRef
+                );
 
-            const current =
-                snapshot.val();
+            if(
+                snapshot.exists()
+            ){
 
-            await set(
-                playerRef,
-                {
-                    name:
-                        getPlayerName(),
+                const old =
+                    snapshot.val();
 
-                    score:
-                        Number(
-                            current.score || 0
+                await set(
+                    playerRef,
+                    {
+                        name:name,
+                        score:Number(
+                            old.score || 0
                         ),
+                        updatedAt:
+                            Date.now()
+                    }
+                );
+            }
 
-                    updatedAt:
-                        Date.now()
-                }
+        }catch(error){
+
+            console.error(
+                "Name konnte nicht aktualisiert werden:",
+                error
             );
         }
-
-    }catch(error){
-
-        console.error(
-            "Name konnte nicht synchronisiert werden:",
-            error
-        );
-    }
-}
-
-
-document.getElementById(
-    "saveNameBtn"
-).addEventListener(
-    "click",
-    savePlayerName
-);
-
-
-/* =========================================================
-   LEADERBOARD STATUS
-========================================================= */
-
-function setLeaderboardStatus(
-    text
-){
-
-    const element =
-        document.getElementById(
-            "leaderboardStatus"
-        );
-
-    if(element){
-        element.textContent =
-            text;
     }
 }
 
 
 /* =========================================================
-   LEADERBOARD LISTEN
+   LEADERBOARD
 ========================================================= */
 
-function startLeaderboardListener(){
+function listenLeaderboard(){
 
     if(
         !firebaseReady ||
-        !databaseLeaderboardRef
+        !leaderboardRef
     ){
         return;
     }
@@ -1791,13 +1752,9 @@ function startLeaderboardListener(){
 
         const leaderboardQuery =
             query(
-                databaseLeaderboardRef,
-                orderByChild(
-                    "score"
-                ),
-                limitToLast(
-                    50
-                )
+                leaderboardRef,
+                orderByChild("score"),
+                limitToLast(50)
             );
 
         onValue(
@@ -1805,13 +1762,11 @@ function startLeaderboardListener(){
             snapshot => {
 
                 const data =
-                    snapshot.val() ||
-                    {};
+                    snapshot.val() || {};
 
                 const players =
-                    Object.entries(
-                        data
-                    )
+                    Object
+                    .entries(data)
                     .map(
                         ([uid,value]) => ({
                             uid,
@@ -1819,11 +1774,10 @@ function startLeaderboardListener(){
                         })
                     )
                     .sort(
-                        (a,b)=>
+                        (a,b) =>
                             Number(
                                 b.score || 0
-                            )
-                            -
+                            ) -
                             Number(
                                 a.score || 0
                             )
@@ -1838,13 +1792,13 @@ function startLeaderboardListener(){
                 );
 
                 setLeaderboardStatus(
-                    "🟢 Online – Leaderboard wird automatisch aktualisiert."
+                    "🟢 Online – wird automatisch aktualisiert."
                 );
             },
             error => {
 
                 console.error(
-                    "Leaderboard-Fehler:",
+                    "Leaderboard Error:",
                     error
                 );
 
@@ -1863,10 +1817,6 @@ function startLeaderboardListener(){
 }
 
 
-/* =========================================================
-   LEADERBOARD RENDER
-========================================================= */
-
 function renderLeaderboard(
     players
 ){
@@ -1879,9 +1829,7 @@ function renderLeaderboard(
     list.innerHTML =
         "";
 
-    if(
-        players.length === 0
-    ){
+    if(!players.length){
 
         const empty =
             document.createElement(
@@ -1901,7 +1849,6 @@ function renderLeaderboard(
         return;
     }
 
-
     players.forEach(
         (player,index) => {
 
@@ -1912,7 +1859,6 @@ function renderLeaderboard(
 
             row.className =
                 "leaderRow";
-
 
             if(
                 currentUser &&
@@ -1925,7 +1871,6 @@ function renderLeaderboard(
                 );
             }
 
-
             const rank =
                 document.createElement(
                     "div"
@@ -1935,27 +1880,15 @@ function renderLeaderboard(
                 "leaderRank";
 
             if(index === 0){
-
-                rank.textContent =
-                    "🥇";
-
+                rank.textContent = "🥇";
             }else if(index === 1){
-
-                rank.textContent =
-                    "🥈";
-
+                rank.textContent = "🥈";
             }else if(index === 2){
-
-                rank.textContent =
-                    "🥉";
-
+                rank.textContent = "🥉";
             }else{
-
                 rank.textContent =
-                    "#" +
-                    (index + 1);
+                    "#" + (index + 1);
             }
-
 
             const name =
                 document.createElement(
@@ -1968,7 +1901,6 @@ function renderLeaderboard(
             name.textContent =
                 player.name ||
                 "Spieler";
-
 
             const score =
                 document.createElement(
@@ -1983,7 +1915,6 @@ function renderLeaderboard(
                 Number(
                     player.score || 0
                 );
-
 
             row.appendChild(
                 rank
@@ -2006,7 +1937,7 @@ function renderLeaderboard(
 
 
 /* =========================================================
-   HIGH SCORE ONLINE
+   ONLINE HIGHSCORE
 ========================================================= */
 
 async function submitHighscore(
@@ -2017,24 +1948,15 @@ async function submitHighscore(
         !firebaseReady ||
         !currentUser
     ){
-
         return false;
     }
-
 
     let name =
         getPlayerName();
 
-
     if(!name){
-
-        /*
-           Ohne Namen wird nichts veröffentlicht.
-        */
-
         return false;
     }
-
 
     name =
         name
@@ -2047,51 +1969,46 @@ async function submitHighscore(
             20
         );
 
+    if(!name){
+        return false;
+    }
 
     try{
 
         const playerRef =
             ref(
                 db,
-                `leaderboard/${currentUser.uid}`
+                "leaderboard/" +
+                currentUser.uid
             );
-
-
-        /*
-           Transaction:
-           Nur ein höherer Score
-           ersetzt den bisherigen Rekord.
-        */
 
         await runTransaction(
             playerRef,
             current => {
+
+                /*
+                   Erster Score.
+                */
 
                 if(
                     current === null
                 ){
 
                     return {
-
-                        name:
-                            name,
-
-                        score:
-                            Number(
-                                score
-                            ),
-
-                        updatedAt:
-                            Date.now()
+                        name:name,
+                        score:Number(score),
+                        updatedAt:Date.now()
                     };
                 }
-
 
                 const oldScore =
                     Number(
                         current.score || 0
                     );
 
+                /*
+                   Nur besserer Rekord.
+                */
 
                 if(
                     Number(score) >
@@ -2099,20 +2016,11 @@ async function submitHighscore(
                 ){
 
                     return {
-
-                        name:
-                            name,
-
-                        score:
-                            Number(
-                                score
-                            ),
-
-                        updatedAt:
-                            Date.now()
+                        name:name,
+                        score:Number(score),
+                        updatedAt:Date.now()
                     };
                 }
-
 
                 /*
                    Alten Rekord behalten.
@@ -2122,13 +2030,12 @@ async function submitHighscore(
             }
         );
 
-
         return true;
 
     }catch(error){
 
         console.error(
-            "Highscore-Upload fehlgeschlagen:",
+            "Highscore konnte nicht gespeichert werden:",
             error
         );
 
@@ -2138,466 +2045,334 @@ async function submitHighscore(
 
 
 /* =========================================================
-   WARTUNG – 2 MINUTEN
+   WARTUNG – 30 SEKUNDEN
 ========================================================= */
 
 const MAINTENANCE_KEY =
-    "FLYYYY_UPDATE12_START";
+    "FLYYYY_UPDATE12_30SEC";
 
 const MAINTENANCE_DURATION =
-    2 * 60 * 1000;
+    30 * 1000;
 
-
-function getMaintenanceStart(){
-
-    const stored =
+let maintenanceStart =
+    Number(
         localStorage.getItem(
             MAINTENANCE_KEY
-        );
+        )
+    );
 
-    if(
-        stored
-    ){
+if(
+    !Number.isFinite(
+        maintenanceStart
+    ) ||
+    maintenanceStart <= 0
+){
 
-        return Number(
-            stored
-        );
-    }
-
-
-    const start =
+    maintenanceStart =
         Date.now();
-
 
     localStorage.setItem(
         MAINTENANCE_KEY,
-        String(start)
+        String(
+            maintenanceStart
+        )
     );
-
-
-    return start;
 }
-
-
-const maintenanceStart =
-    getMaintenanceStart();
-
 
 const maintenanceEnd =
     maintenanceStart +
     MAINTENANCE_DURATION;
 
 
+function finishMaintenance(){
+
+    const maintenance =
+        document.getElementById(
+            "maintenance"
+        );
+
+    if(maintenance){
+        maintenance.style.display =
+            "none";
+    }
+
+    showScreen(
+        "lobby"
+    );
+
+    canvas.style.display =
+        "none";
+
+    document.getElementById(
+        "gameHud"
+    ).style.display =
+        "none";
+}
+
+
 function updateMaintenance(){
-
-    const now =
-        Date.now();
-
 
     const remaining =
         Math.max(
             0,
             maintenanceEnd -
-            now
+            Date.now()
         );
 
-
     if(
-        remaining <=
-        0
+        remaining <= 0
     ){
 
-        document.getElementById(
-            "maintenance"
-        ).style.display =
-            "none";
+        finishMaintenance();
 
         return true;
     }
 
-
-    const totalSeconds =
-        Math.floor(
-            remaining /
-            1000
-        );
-
-
-    const minutes =
-        Math.floor(
-            totalSeconds /
-            60
-        );
-
-
     const seconds =
-        totalSeconds %
-        60;
-
-
-    document.getElementById(
-        "mMinutes"
-    ).textContent =
-        String(
-            minutes
-        ).padStart(
-            2,
-            "0"
+        Math.ceil(
+            remaining / 1000
         );
 
-
-    document.getElementById(
-        "mSeconds"
-    ).textContent =
-        String(
-            seconds
-        ).padStart(
-            2,
-            "0"
+    const secondsElement =
+        document.getElementById(
+            "mSeconds"
         );
 
+    if(secondsElement){
+
+        secondsElement.textContent =
+            String(seconds)
+            .padStart(
+                2,
+                "0"
+            );
+    }
 
     const progress =
         (
-            (now - maintenanceStart) /
+            (Date.now() -
+            maintenanceStart) /
             MAINTENANCE_DURATION
         ) * 100;
 
+    const progressElement =
+        document.getElementById(
+            "mProgress"
+        );
 
-    document.getElementById(
-        "mProgress"
-    ).style.width =
-        Math.max(
-            0,
-            Math.min(
-                100,
-                progress
-            )
-        ) + "%";
+    if(progressElement){
 
+        progressElement.style.width =
+            Math.max(
+                0,
+                Math.min(
+                    100,
+                    progress
+                )
+            ) + "%";
+    }
 
     return false;
 }
 
 
-const maintenanceFinished =
+const alreadyFinished =
     updateMaintenance();
 
 
-const maintenanceTimer =
-    setInterval(
-        () => {
-
-            if(
-                updateMaintenance()
-            ){
-
-                clearInterval(
-                    maintenanceTimer
-                );
-            }
-
-        },
-        1000
-    );
+let maintenanceTimer =
+    null;
 
 
-/* =========================================================
-   STORAGE
-========================================================= */
+if(
+    !alreadyFinished
+){
 
-const defaultState = {
+    maintenanceTimer =
+        setInterval(
+            () => {
 
-    coins:0,
-    best:0,
+                if(
+                    updateMaintenance()
+                ){
 
-    ownedWorlds:[
-        "giza"
-    ],
+                    clearInterval(
+                        maintenanceTimer
+                    );
 
-    ownedSkins:[
-        "bird"
-    ],
+                    maintenanceTimer =
+                        null;
+                }
 
-    ownedSounds:[
-        "classic"
-    ],
-
-    ownedMusic:[
-        "classicMusic"
-    ],
-
-    selectedWorld:"giza",
-    selectedSkin:"bird",
-    selectedSound:"classic",
-    selectedMusic:"classicMusic",
-
-    musicEnabled:true,
-    sfxEnabled:true,
-
-    missionProgress:{
-        m1:0,
-        m2:0,
-        m3:0
-    },
-
-    missionClaimed:{
-        m1:false,
-        m2:false,
-        m3:false
-    }
-};
-
-
-function copyDefaultState(){
-
-    return {
-
-        ...defaultState,
-
-        ownedWorlds:[
-            ...defaultState.ownedWorlds
-        ],
-
-        ownedSkins:[
-            ...defaultState.ownedSkins
-        ],
-
-        ownedSounds:[
-            ...defaultState.ownedSounds
-        ],
-
-        ownedMusic:[
-            ...defaultState.ownedMusic
-        ],
-
-        missionProgress:{
-            ...defaultState.missionProgress
-        },
-
-        missionClaimed:{
-            ...defaultState.missionClaimed
-        }
-    };
+            },
+            250
+        );
 }
 
 
-function loadState(){
+/* =========================================================
+   CANVAS
+========================================================= */
 
-    try{
+const canvas =
+    document.getElementById(
+        "gameCanvas"
+    );
 
-        const saved =
-            localStorage.getItem(
-                "FLYYYY_PUBLIC_SAVE_12"
-            );
+const ctx =
+    canvas.getContext(
+        "2d"
+    );
+
+let W =
+    innerWidth;
+
+let H =
+    innerHeight;
+
+let DPR =
+    Math.min(
+        devicePixelRatio || 1,
+        2
+    );
 
 
-        if(
-            !saved
-        ){
+function resizeCanvas(){
 
-            return copyDefaultState();
-        }
+    W =
+        innerWidth;
 
+    H =
+        innerHeight;
 
-        const data =
-            JSON.parse(
-                saved
-            );
-
-
-        return {
-
-            ...copyDefaultState(),
-
-            ...data,
-
-            ownedWorlds:
-                Array.isArray(
-                    data.ownedWorlds
-                )
-                ? data.ownedWorlds
-                : [
-                    "giza"
-                ],
-
-            ownedSkins:
-                Array.isArray(
-                    data.ownedSkins
-                )
-                ? data.ownedSkins
-                : [
-                    "bird"
-                ],
-
-            ownedSounds:
-                Array.isArray(
-                    data.ownedSounds
-                )
-                ? data.ownedSounds
-                : [
-                    "classic"
-                ],
-
-            ownedMusic:
-                Array.isArray(
-                    data.ownedMusic
-                )
-                ? data.ownedMusic
-                : [
-                    "classicMusic"
-                ],
-
-            missionProgress:{
-                ...defaultState.missionProgress,
-                ...(data.missionProgress || {})
-            },
-
-            missionClaimed:{
-                ...defaultState.missionClaimed,
-                ...(data.missionClaimed || {})
-            }
-        };
-
-    }catch(error){
-
-        console.error(
-            error
+    DPR =
+        Math.min(
+            devicePixelRatio || 1,
+            2
         );
 
-        return copyDefaultState();
-    }
+    canvas.width =
+        W * DPR;
+
+    canvas.height =
+        H * DPR;
+
+    canvas.style.width =
+        W + "px";
+
+    canvas.style.height =
+        H + "px";
+
+    ctx.setTransform(
+        DPR,
+        0,
+        0,
+        DPR,
+        0,
+        0
+    );
 }
 
 
-let state =
-    loadState();
+window.addEventListener(
+    "resize",
+    resizeCanvas
+);
+
+resizeCanvas();
 
 
-function saveState(){
+/* =========================================================
+   AUDIO
+========================================================= */
 
-    localStorage.setItem(
-        "FLYYYY_PUBLIC_SAVE_12",
-        JSON.stringify(
-            state
-        )
+let audioContext =
+    null;
+
+let musicTimer =
+    null;
+
+let musicStep =
+    0;
+
+
+function initAudio(){
+
+    if(audioContext){
+        return;
+    }
+
+    const AC =
+        window.AudioContext ||
+        window.webkitAudioContext;
+
+    if(!AC){
+        return;
+    }
+
+    audioContext =
+        new AC();
+}
+
+
+function rawTone(
+    frequency,
+    duration,
+    volume,
+    type
+){
+
+    if(!audioContext){
+        return;
+    }
+
+    const oscillator =
+        audioContext.createOscillator();
+
+    const gain =
+        audioContext.createGain();
+
+    oscillator.type =
+        type;
+
+    oscillator.frequency.value =
+        frequency;
+
+    gain.gain.setValueAtTime(
+        0.0001,
+        audioContext.currentTime
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+        volume,
+        audioContext.currentTime + .02
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+        0.0001,
+        audioContext.currentTime + duration
+    );
+
+    oscillator.connect(
+        gain
+    );
+
+    gain.connect(
+        audioContext.destination
+    );
+
+    oscillator.start();
+
+    oscillator.stop(
+        audioContext.currentTime +
+        duration +
+        .02
     );
 }
 
 
 /* =========================================================
-   WELTEN
-========================================================= */
-
-const worlds = [
-
-    {
-        id:"giza",
-        name:"Gizeh",
-        price:0,
-        sky1:"#f8c875",
-        sky2:"#69c6d8",
-        ground:"#d48b3b",
-        obstacle:"#8f5a33"
-    },
-
-    {
-        id:"mountains",
-        name:"Berge",
-        price:50,
-        sky1:"#8ad8ff",
-        sky2:"#5469c8",
-        ground:"#527951",
-        obstacle:"#365c4b"
-    },
-
-    {
-        id:"ocean",
-        name:"Unterwasser",
-        price:100,
-        sky1:"#29d6e5",
-        sky2:"#174b9e",
-        ground:"#157c86",
-        obstacle:"#17566e"
-    },
-
-    {
-        id:"jungle",
-        name:"Dschungel",
-        price:150,
-        sky1:"#8ae17c",
-        sky2:"#1f6e53",
-        ground:"#244f2a",
-        obstacle:"#2f7339"
-    },
-
-    {
-        id:"space",
-        name:"Weltraum",
-        price:200,
-        sky1:"#22103f",
-        sky2:"#090d27",
-        ground:"#20183e",
-        obstacle:"#3a2b61"
-    },
-
-    {
-        id:"ice",
-        name:"Eiswelt",
-        price:250,
-        sky1:"#c9f6ff",
-        sky2:"#5da9d4",
-        ground:"#b3e5ff",
-        obstacle:"#72b1d2"
-    }
-];
-
-
-/* =========================================================
-   FIGUREN
-========================================================= */
-
-const skins = [
-
-    {
-        id:"bird",
-        name:"Vogel",
-        price:0,
-        type:"bird"
-    },
-
-    {
-        id:"dino",
-        name:"Fliegender Dino",
-        price:50,
-        type:"dino"
-    },
-
-    {
-        id:"pen",
-        name:"Stift",
-        price:100,
-        type:"pen"
-    },
-
-    {
-        id:"carrot",
-        name:"Karotte",
-        price:150,
-        type:"carrot"
-    },
-
-    {
-        id:"apple",
-        name:"Apfel",
-        price:200,
-        type:"apple"
-    }
-];
-
-
-/* =========================================================
-   SOUNDS
+   SOUND DATA
 ========================================================= */
 
 const sounds = [
@@ -2644,258 +2419,11 @@ const sounds = [
 ];
 
 
-/* =========================================================
-   MUSIK
-========================================================= */
+function playJumpSound(type){
 
-const musicTracks = [
-
-    {
-        id:"classicMusic",
-        name:"Classic",
-        price:0,
-        icon:"🎵",
-
-        melody:[
-            261.63,329.63,392,523.25,
-            392,329.63,293.66,349.23,
-            440,523.25,440,349.23,
-            392,329.63,261.63,293.66
-        ],
-
-        bass:[
-            130.81,130.81,164.81,164.81,
-            146.83,146.83,174.61,174.61
-        ],
-
-        tempo:380
-    },
-
-    {
-        id:"arcadeMusic",
-        name:"Arcade",
-        price:50,
-        icon:"👾",
-
-        melody:[
-            392,392,523.25,659.25,
-            523.25,392,329.63,392,
-            440,523.25,659.25,783.99,
-            659.25,523.25,440,392
-        ],
-
-        bass:[
-            196,196,261.63,261.63,
-            220,220,174.61,196
-        ],
-
-        tempo:300
-    },
-
-    {
-        id:"speedMusic",
-        name:"Speed",
-        price:100,
-        icon:"⚡",
-
-        melody:[
-            329.63,392,493.88,659.25,
-            493.88,392,329.63,493.88,
-            392,493.88,587.33,783.99,
-            587.33,493.88,392,329.63
-        ],
-
-        bass:[
-            164.81,196,164.81,196,
-            146.83,174.61,164.81,196
-        ],
-
-        tempo:250
-    },
-
-    {
-        id:"spaceMusic",
-        name:"Space",
-        price:150,
-        icon:"🚀",
-
-        melody:[
-            220,261.63,329.63,392,
-            493.88,392,329.63,261.63,
-            246.94,293.66,369.99,440,
-            554.37,440,369.99,293.66
-        ],
-
-        bass:[
-            110,110,130.81,130.81,
-            146.83,146.83,123.47,123.47
-        ],
-
-        tempo:420
-    },
-
-    {
-        id:"chillMusic",
-        name:"Chill",
-        price:200,
-        icon:"🌙",
-
-        melody:[
-            261.63,329.63,392,329.63,
-            293.66,349.23,440,349.23,
-            261.63,329.63,392,493.88,
-            440,392,329.63,293.66
-        ],
-
-        bass:[
-            130.81,130.81,146.83,146.83,
-            110,110,123.47,123.47
-        ],
-
-        tempo:500
-    },
-
-    {
-        id:"finalMusic",
-        name:"Final Boss",
-        price:250,
-        icon:"🔥",
-
-        melody:[
-            196,246.94,293.66,392,
-            293.66,246.94,220,329.63,
-            261.63,329.63,392,523.25,
-            392,329.63,293.66,246.94
-        ],
-
-        bass:[
-            98,98,123.47,123.47,
-            110,110,146.83,146.83
-        ],
-
-        tempo:280
-    }
-];
-
-
-/* =========================================================
-   MISSIONEN
-========================================================= */
-
-const missions = [
-
-    {
-        id:"m1",
-        name:"Überfliege 10 Hindernisse",
-        target:10,
-        reward:20
-    },
-
-    {
-        id:"m2",
-        name:"Sammle 5 Bonus-Coins",
-        target:5,
-        reward:25
-    },
-
-    {
-        id:"m3",
-        name:"Erreiche 25 Punkte in einem Lauf",
-        target:25,
-        reward:50
-    }
-];
-
-
-/* =========================================================
-   AUDIO
-========================================================= */
-
-let audioContext = null;
-let musicTimer = null;
-let musicStep = 0;
-
-
-function initAudio(){
-
-    if(audioContext){
-        return;
-    }
-
-    const AC =
-        window.AudioContext ||
-        window.webkitAudioContext;
-
-    if(!AC){
-        return;
-    }
-
-    audioContext =
-        new AC();
-}
-
-
-function rawTone(
-    frequency,
-    duration,
-    volume,
-    type
-){
-
-    if(!audioContext){
-        return;
-    }
-
-    const osc =
-        audioContext.createOscillator();
-
-    const gain =
-        audioContext.createGain();
-
-    osc.type =
-        type;
-
-    osc.frequency.value =
-        frequency;
-
-    gain.gain.setValueAtTime(
-        .0001,
-        audioContext.currentTime
-    );
-
-    gain.gain.exponentialRampToValueAtTime(
-        volume,
-        audioContext.currentTime +
-        .02
-    );
-
-    gain.gain.exponentialRampToValueAtTime(
-        .0001,
-        audioContext.currentTime +
-        duration
-    );
-
-    osc.connect(gain);
-
-    gain.connect(
-        audioContext.destination
-    );
-
-    osc.start();
-
-    osc.stop(
-        audioContext.currentTime +
-        duration +
-        .02
-    );
-}
-
-
-function playJumpSound(
-    type
-){
-
-    if(!state.sfxEnabled){
+    if(
+        !state.sfxEnabled
+    ){
         return;
     }
 
@@ -2913,7 +2441,6 @@ function playJumpSound(
         audioContext.resume();
     }
 
-
     if(type === "classic"){
 
         rawTone(
@@ -2923,7 +2450,6 @@ function playJumpSound(
             "square"
         );
     }
-
 
     if(type === "arcade"){
 
@@ -2946,7 +2472,6 @@ function playJumpSound(
         );
     }
 
-
     if(type === "laser"){
 
         rawTone(
@@ -2968,7 +2493,6 @@ function playJumpSound(
         );
     }
 
-
     if(type === "bubble"){
 
         rawTone(
@@ -2989,7 +2513,6 @@ function playJumpSound(
             60
         );
     }
-
 
     if(type === "power"){
 
@@ -3138,6 +2661,136 @@ function gameOverSound(){
    MUSIK
 ========================================================= */
 
+const musicTracks = [
+
+    {
+        id:"classicMusic",
+        name:"Classic",
+        price:0,
+        icon:"🎵",
+
+        melody:[
+            261.63,329.63,392,523.25,
+            392,329.63,293.66,349.23,
+            440,523.25,440,349.23,
+            392,329.63,261.63,293.66
+        ],
+
+        bass:[
+            130.81,130.81,164.81,164.81,
+            146.83,146.83,174.61,174.61
+        ],
+
+        tempo:380
+    },
+
+    {
+        id:"arcadeMusic",
+        name:"Arcade",
+        price:50,
+        icon:"👾",
+
+        melody:[
+            392,392,523.25,659.25,
+            523.25,392,329.63,392,
+            440,523.25,659.25,783.99,
+            659.25,523.25,440,392
+        ],
+
+        bass:[
+            196,196,261.63,261.63,
+            220,220,174.61,196
+        ],
+
+        tempo:300
+    },
+
+    {
+        id:"speedMusic",
+        name:"Speed",
+        price:100,
+        icon:"⚡",
+
+        melody:[
+            329.63,392,493.88,659.25,
+            493.88,392,329.63,493.88,
+            392,493.88,587.33,783.99,
+            587.33,493.88,392,329.63
+        ],
+
+        bass:[
+            164.81,196,164.81,196,
+            146.83,174.61,164.81,196
+        ],
+
+        tempo:250
+    },
+
+    {
+        id:"spaceMusic",
+        name:"Space",
+        price:150,
+        icon:"🚀",
+
+        melody:[
+            220,261.63,329.63,392,
+            493.88,392,329.63,261.63,
+            246.94,293.66,369.99,440,
+            554.37,440,369.99,293.66
+        ],
+
+        bass:[
+            110,110,130.81,130.81,
+            146.83,146.83,123.47,123.47
+        ],
+
+        tempo:420
+    },
+
+    {
+        id:"chillMusic",
+        name:"Chill",
+        price:200,
+        icon:"🌙",
+
+        melody:[
+            261.63,329.63,392,329.63,
+            293.66,349.23,440,349.23,
+            261.63,329.63,392,493.88,
+            440,392,329.63,293.66
+        ],
+
+        bass:[
+            130.81,130.81,146.83,146.83,
+            110,110,123.47,123.47
+        ],
+
+        tempo:500
+    },
+
+    {
+        id:"finalMusic",
+        name:"Final Boss",
+        price:250,
+        icon:"🔥",
+
+        melody:[
+            196,246.94,293.66,392,
+            293.66,246.94,220,329.63,
+            261.63,329.63,392,523.25,
+            392,329.63,293.66,246.94
+        ],
+
+        bass:[
+            98,98,123.47,123.47,
+            110,110,146.83,146.83
+        ],
+
+        tempo:280
+    }
+];
+
+
 function selectedMusic(){
 
     return (
@@ -3179,13 +2832,11 @@ function musicTick(){
     const music =
         selectedMusic();
 
-
     const note =
         music.melody[
             musicStep %
             music.melody.length
         ];
-
 
     const bass =
         music.bass[
@@ -3193,14 +2844,12 @@ function musicTick(){
             music.bass.length
         ];
 
-
     rawTone(
         note,
         .30,
         .025,
         "triangle"
     );
-
 
     if(
         musicStep % 2 === 0
@@ -3214,14 +2863,15 @@ function musicTick(){
         );
     }
 
-
     musicStep++;
 }
 
 
 function startMusic(){
 
-    if(!state.musicEnabled){
+    if(
+        !state.musicEnabled
+    ){
         return;
     }
 
@@ -3241,7 +2891,8 @@ function startMusic(){
 
     stopMusic();
 
-    musicStep = 0;
+    musicStep =
+        0;
 
     musicTick();
 
@@ -3310,7 +2961,316 @@ function previewMusic(
 
 
 /* =========================================================
-   GAME STATE
+   WELTEN
+========================================================= */
+
+const worlds = [
+
+    {
+        id:"giza",
+        name:"Gizeh",
+        price:0,
+        sky1:"#f8c875",
+        sky2:"#69c6d8",
+        ground:"#d48b3b",
+        obstacle:"#8f5a33"
+    },
+
+    {
+        id:"mountains",
+        name:"Berge",
+        price:50,
+        sky1:"#8ad8ff",
+        sky2:"#5469c8",
+        ground:"#527951",
+        obstacle:"#365c4b"
+    },
+
+    {
+        id:"ocean",
+        name:"Unterwasser",
+        price:100,
+        sky1:"#29d6e5",
+        sky2:"#174b9e",
+        ground:"#157c86",
+        obstacle:"#17566e"
+    },
+
+    {
+        id:"jungle",
+        name:"Dschungel",
+        price:150,
+        sky1:"#8ae17c",
+        sky2:"#1f6e53",
+        ground:"#244f2a",
+        obstacle:"#2f7339"
+    },
+
+    {
+        id:"space",
+        name:"Weltraum",
+        price:200,
+        sky1:"#22103f",
+        sky2:"#090d27",
+        ground:"#20183e",
+        obstacle:"#3a2b61"
+    },
+
+    {
+        id:"ice",
+        name:"Eiswelt",
+        price:250,
+        sky1:"#c9f6ff",
+        sky2:"#5da9d4",
+        ground:"#b3e5ff",
+        obstacle:"#72b1d2"
+    }
+];
+
+
+/* =========================================================
+   FIGUREN
+========================================================= */
+
+const skins = [
+
+    {
+        id:"bird",
+        name:"Vogel",
+        price:0,
+        type:"bird"
+    },
+
+    {
+        id:"dino",
+        name:"Fliegender Dino",
+        price:50,
+        type:"dino"
+    },
+
+    {
+        id:"pen",
+        name:"Stift",
+        price:100,
+        type:"pen"
+    },
+
+    {
+        id:"carrot",
+        name:"Karotte",
+        price:150,
+        type:"carrot"
+    },
+
+    {
+        id:"apple",
+        name:"Apfel",
+        price:200,
+        type:"apple"
+    }
+];
+
+
+/* =========================================================
+   MISSIONEN
+========================================================= */
+
+const missions = [
+
+    {
+        id:"m1",
+        name:"Überfliege 10 Hindernisse",
+        target:10,
+        reward:20
+    },
+
+    {
+        id:"m2",
+        name:"Sammle 5 Bonus-Coins",
+        target:5,
+        reward:25
+    },
+
+    {
+        id:"m3",
+        name:"Erreiche 25 Punkte in einem Lauf",
+        target:25,
+        reward:50
+    }
+];
+
+
+/* =========================================================
+   STATE
+========================================================= */
+
+const defaultState = {
+
+    coins:0,
+
+    best:0,
+
+    ownedWorlds:[
+        "giza"
+    ],
+
+    ownedSkins:[
+        "bird"
+    ],
+
+    ownedSounds:[
+        "classic"
+    ],
+
+    ownedMusic:[
+        "classicMusic"
+    ],
+
+    selectedWorld:"giza",
+    selectedSkin:"bird",
+    selectedSound:"classic",
+    selectedMusic:"classicMusic",
+
+    musicEnabled:true,
+    sfxEnabled:true,
+
+    missionProgress:{
+        m1:0,
+        m2:0,
+        m3:0
+    },
+
+    missionClaimed:{
+        m1:false,
+        m2:false,
+        m3:false
+    }
+};
+
+
+function copyDefault(){
+
+    return {
+
+        ...defaultState,
+
+        ownedWorlds:[
+            ...defaultState.ownedWorlds
+        ],
+
+        ownedSkins:[
+            ...defaultState.ownedSkins
+        ],
+
+        ownedSounds:[
+            ...defaultState.ownedSounds
+        ],
+
+        ownedMusic:[
+            ...defaultState.ownedMusic
+        ],
+
+        missionProgress:{
+            ...defaultState.missionProgress
+        },
+
+        missionClaimed:{
+            ...defaultState.missionClaimed
+        }
+    };
+}
+
+
+function loadState(){
+
+    try{
+
+        const raw =
+            localStorage.getItem(
+                "FLYYYY_UPDATE12_SAVE"
+            );
+
+        if(!raw){
+
+            return copyDefault();
+        }
+
+        const data =
+            JSON.parse(raw);
+
+        return {
+
+            ...copyDefault(),
+
+            ...data,
+
+            ownedWorlds:
+                Array.isArray(
+                    data.ownedWorlds
+                )
+                ? data.ownedWorlds
+                : ["giza"],
+
+            ownedSkins:
+                Array.isArray(
+                    data.ownedSkins
+                )
+                ? data.ownedSkins
+                : ["bird"],
+
+            ownedSounds:
+                Array.isArray(
+                    data.ownedSounds
+                )
+                ? data.ownedSounds
+                : ["classic"],
+
+            ownedMusic:
+                Array.isArray(
+                    data.ownedMusic
+                )
+                ? data.ownedMusic
+                : ["classicMusic"],
+
+            missionProgress:{
+                ...defaultState.missionProgress,
+                ...(data.missionProgress || {})
+            },
+
+            missionClaimed:{
+                ...defaultState.missionClaimed,
+                ...(data.missionClaimed || {})
+            }
+        };
+
+    }catch(error){
+
+        console.error(
+            error
+        );
+
+        return copyDefault();
+    }
+}
+
+
+let state =
+    loadState();
+
+
+function saveState(){
+
+    localStorage.setItem(
+        "FLYYYY_UPDATE12_SAVE",
+        JSON.stringify(
+            state
+        )
+    );
+}
+
+
+/* =========================================================
+   GAME
 ========================================================= */
 
 const game = {
@@ -3352,9 +3312,7 @@ const game = {
    SCREENS
 ========================================================= */
 
-function showScreen(
-    id
-){
+function showScreen(id){
 
     document
         .querySelectorAll(
@@ -3367,14 +3325,17 @@ function showScreen(
                 )
         );
 
-
-    document
-        .getElementById(
+    const target =
+        document.getElementById(
             id
-        )
-        .classList.add(
+        );
+
+    if(target){
+
+        target.classList.add(
             "active"
         );
+    }
 }
 
 
@@ -3500,7 +3461,6 @@ function renderMissions(){
                     ]
                 );
 
-
             const box =
                 document.createElement(
                     "div"
@@ -3514,7 +3474,6 @@ function renderMissions(){
                     : ""
                 );
 
-
             const top =
                 document.createElement(
                     "div"
@@ -3522,7 +3481,6 @@ function renderMissions(){
 
             top.className =
                 "missionTop";
-
 
             const title =
                 document.createElement(
@@ -3532,7 +3490,6 @@ function renderMissions(){
             title.textContent =
                 mission.name;
 
-
             const reward =
                 document.createElement(
                     "span"
@@ -3540,7 +3497,6 @@ function renderMissions(){
 
             reward.textContent =
                 `🪙 ${mission.reward}`;
-
 
             top.appendChild(
                 title
@@ -3553,7 +3509,6 @@ function renderMissions(){
             box.appendChild(
                 top
             );
-
 
             const info =
                 document.createElement(
@@ -3568,20 +3523,17 @@ function renderMissions(){
                 ? "✅ Belohnung abgeholt"
                 : `${progress} / ${mission.target}`;
 
-
             box.appendChild(
                 info
             );
 
-
-            const progressBar =
+            const bar =
                 document.createElement(
                     "div"
                 );
 
-            progressBar.className =
+            bar.className =
                 "missionProgress";
-
 
             const fill =
                 document.createElement(
@@ -3591,24 +3543,20 @@ function renderMissions(){
             fill.className =
                 "missionFill";
 
-
             fill.style.width =
                 (
                     progress /
                     mission.target *
                     100
-                ) +
-                "%";
+                ) + "%";
 
-
-            progressBar.appendChild(
+            bar.appendChild(
                 fill
             );
 
             box.appendChild(
-                progressBar
+                bar
             );
-
 
             if(
                 done &&
@@ -3626,37 +3574,31 @@ function renderMissions(){
                 claim.textContent =
                     "🪙 BELOHNUNG ABHOLEN";
 
-
                 claim.onclick =
                     () => {
 
                         state.coins +=
                             mission.reward;
 
-
                         state.missionClaimed[
                             mission.id
                         ] =
                             true;
-
 
                         saveState();
 
                         updateLobby();
                         renderMissions();
 
-
                         showMessage(
                             `🪙 +${mission.reward} Coins!`
                         );
                     };
 
-
                 box.appendChild(
                     claim
                 );
             }
-
 
             list.appendChild(
                 box
@@ -3676,7 +3618,6 @@ function updateMissionProgress(){
             game.score
         );
 
-
     state.missionProgress.m2 =
         Math.max(
             Number(
@@ -3685,7 +3626,6 @@ function updateMissionProgress(){
             game.bonusCoinsRun
         );
 
-
     state.missionProgress.m3 =
         Math.max(
             Number(
@@ -3693,7 +3633,6 @@ function updateMissionProgress(){
             ),
             game.score
         );
-
 
     saveState();
 }
@@ -3724,8 +3663,7 @@ function createTabs(
             button.className =
                 "tab" +
                 (
-                    item.id ===
-                    active
+                    item.id === active
                     ? " active"
                     : ""
                 );
@@ -3762,7 +3700,6 @@ function renderShop(){
     ).textContent =
         state.coins;
 
-
     createTabs(
         document.getElementById(
             "shopTabs"
@@ -3795,16 +3732,13 @@ function renderShop(){
         }
     );
 
-
     const container =
         document.getElementById(
             "shopCards"
         );
 
-
     container.innerHTML =
         "";
-
 
     if(
         shopTab ===
@@ -3818,7 +3752,6 @@ function renderShop(){
         return;
     }
 
-
     if(
         shopTab ===
         "music"
@@ -3831,20 +3764,17 @@ function renderShop(){
         return;
     }
 
-
     const items =
         shopTab ===
         "skins"
         ? skins
         : worlds;
 
-
     const owned =
         shopTab ===
         "skins"
         ? state.ownedSkins
         : state.ownedWorlds;
-
 
     items.forEach(
         item => {
@@ -3857,7 +3787,6 @@ function renderShop(){
             card.className =
                 "card";
 
-
             const preview =
                 document.createElement(
                     "div"
@@ -3866,21 +3795,21 @@ function renderShop(){
             preview.className =
                 "preview";
 
-
             const c =
                 document.createElement(
                     "canvas"
                 );
 
-            c.width = 240;
-            c.height = 140;
+            c.width =
+                240;
 
+            c.height =
+                140;
 
             const pctx =
                 c.getContext(
                     "2d"
                 );
-
 
             if(
                 shopTab ===
@@ -3905,16 +3834,13 @@ function renderShop(){
                 );
             }
 
-
             preview.appendChild(
                 c
             );
 
-
             card.appendChild(
                 preview
             );
-
 
             const title =
                 document.createElement(
@@ -3924,11 +3850,9 @@ function renderShop(){
             title.textContent =
                 item.name;
 
-
             card.appendChild(
                 title
             );
-
 
             const price =
                 document.createElement(
@@ -3943,11 +3867,9 @@ function renderShop(){
                 ? "Kostenlos"
                 : `🪙 ${item.price} Coins`;
 
-
             card.appendChild(
                 price
             );
-
 
             const button =
                 document.createElement(
@@ -3956,7 +3878,6 @@ function renderShop(){
 
             button.className =
                 "smallbtn";
-
 
             if(
                 owned.includes(
@@ -3975,7 +3896,6 @@ function renderShop(){
                 button.textContent =
                     "Kaufen";
 
-
                 button.onclick =
                     () => {
 
@@ -3991,32 +3911,25 @@ function renderShop(){
                             return;
                         }
 
-
                         state.coins -=
                             item.price;
-
 
                         owned.push(
                             item.id
                         );
 
-
                         saveState();
-
 
                         renderShop();
                         updateLobby();
-
 
                         purchaseSound();
                     };
             }
 
-
             card.appendChild(
                 button
             );
-
 
             container.appendChild(
                 card
@@ -4045,7 +3958,6 @@ function renderSoundShop(
             card.className =
                 "card";
 
-
             const preview =
                 document.createElement(
                     "div"
@@ -4054,7 +3966,6 @@ function renderSoundShop(
             preview.className =
                 "preview";
 
-
             const box =
                 document.createElement(
                     "div"
@@ -4062,7 +3973,6 @@ function renderSoundShop(
 
             box.className =
                 "soundPreview";
-
 
             const icon =
                 document.createElement(
@@ -4075,21 +3985,17 @@ function renderSoundShop(
             icon.textContent =
                 sound.icon;
 
-
             box.appendChild(
                 icon
             );
-
 
             preview.appendChild(
                 box
             );
 
-
             card.appendChild(
                 preview
             );
-
 
             const title =
                 document.createElement(
@@ -4099,11 +4005,9 @@ function renderSoundShop(
             title.textContent =
                 sound.name;
 
-
             card.appendChild(
                 title
             );
-
 
             const price =
                 document.createElement(
@@ -4118,11 +4022,9 @@ function renderSoundShop(
                 ? "Kostenlos"
                 : `🪙 ${sound.price} Coins`;
 
-
             card.appendChild(
                 price
             );
-
 
             const listen =
                 document.createElement(
@@ -4135,18 +4037,15 @@ function renderSoundShop(
             listen.textContent =
                 "▶ ANHÖREN";
 
-
             listen.onclick =
                 () =>
                     playJumpSound(
                         sound.type
                     );
 
-
             card.appendChild(
                 listen
             );
-
 
             const buy =
                 document.createElement(
@@ -4155,7 +4054,6 @@ function renderSoundShop(
 
             buy.className =
                 "smallbtn";
-
 
             if(
                 state.ownedSounds.includes(
@@ -4174,7 +4072,6 @@ function renderSoundShop(
                 buy.textContent =
                     "Kaufen";
 
-
                 buy.onclick =
                     () => {
 
@@ -4190,32 +4087,25 @@ function renderSoundShop(
                             return;
                         }
 
-
                         state.coins -=
                             sound.price;
-
 
                         state.ownedSounds.push(
                             sound.id
                         );
 
-
                         saveState();
-
 
                         renderShop();
                         updateLobby();
-
 
                         purchaseSound();
                     };
             }
 
-
             card.appendChild(
                 buy
             );
-
 
             container.appendChild(
                 card
@@ -4244,7 +4134,6 @@ function renderMusicShop(
             card.className =
                 "card";
 
-
             const preview =
                 document.createElement(
                     "div"
@@ -4253,7 +4142,6 @@ function renderMusicShop(
             preview.className =
                 "preview";
 
-
             const box =
                 document.createElement(
                     "div"
@@ -4261,7 +4149,6 @@ function renderMusicShop(
 
             box.className =
                 "soundPreview";
-
 
             const icon =
                 document.createElement(
@@ -4274,7 +4161,6 @@ function renderMusicShop(
             icon.textContent =
                 music.icon;
 
-
             const text =
                 document.createElement(
                     "div"
@@ -4286,7 +4172,6 @@ function renderMusicShop(
             text.textContent =
                 "Hintergrundmelodie";
 
-
             box.appendChild(
                 icon
             );
@@ -4295,16 +4180,13 @@ function renderMusicShop(
                 text
             );
 
-
             preview.appendChild(
                 box
             );
 
-
             card.appendChild(
                 preview
             );
-
 
             const title =
                 document.createElement(
@@ -4314,11 +4196,9 @@ function renderMusicShop(
             title.textContent =
                 music.name;
 
-
             card.appendChild(
                 title
             );
-
 
             const price =
                 document.createElement(
@@ -4333,11 +4213,9 @@ function renderMusicShop(
                 ? "Kostenlos"
                 : `🪙 ${music.price} Coins`;
 
-
             card.appendChild(
                 price
             );
-
 
             const listen =
                 document.createElement(
@@ -4350,18 +4228,15 @@ function renderMusicShop(
             listen.textContent =
                 "▶ ANHÖREN";
 
-
             listen.onclick =
                 () =>
                     previewMusic(
                         music
                     );
 
-
             card.appendChild(
                 listen
             );
-
 
             const buy =
                 document.createElement(
@@ -4370,7 +4245,6 @@ function renderMusicShop(
 
             buy.className =
                 "smallbtn";
-
 
             if(
                 state.ownedMusic.includes(
@@ -4389,7 +4263,6 @@ function renderMusicShop(
                 buy.textContent =
                     "Kaufen";
 
-
                 buy.onclick =
                     () => {
 
@@ -4405,32 +4278,25 @@ function renderMusicShop(
                             return;
                         }
 
-
                         state.coins -=
                             music.price;
-
 
                         state.ownedMusic.push(
                             music.id
                         );
 
-
                         saveState();
-
 
                         renderShop();
                         updateLobby();
-
 
                         purchaseSound();
                     };
             }
 
-
             card.appendChild(
                 buy
             );
-
 
             container.appendChild(
                 card
@@ -4482,16 +4348,13 @@ function renderInventory(){
         }
     );
 
-
     const container =
         document.getElementById(
             "inventoryCards"
         );
 
-
     container.innerHTML =
         "";
-
 
     if(
         inventoryTab ===
@@ -4505,7 +4368,6 @@ function renderInventory(){
         return;
     }
 
-
     if(
         inventoryTab ===
         "music"
@@ -4518,25 +4380,21 @@ function renderInventory(){
         return;
     }
 
-
     const items =
         inventoryTab ===
         "skins"
-
         ? skins.filter(
             item =>
                 state.ownedSkins.includes(
                     item.id
                 )
         )
-
         : worlds.filter(
             item =>
                 state.ownedWorlds.includes(
                     item.id
                 )
         );
-
 
     items.forEach(
         item => {
@@ -4549,7 +4407,6 @@ function renderInventory(){
             card.className =
                 "card";
 
-
             const preview =
                 document.createElement(
                     "div"
@@ -4558,21 +4415,21 @@ function renderInventory(){
             preview.className =
                 "preview";
 
-
             const c =
                 document.createElement(
                     "canvas"
                 );
 
-            c.width = 240;
-            c.height = 140;
+            c.width =
+                240;
 
+            c.height =
+                140;
 
             const pctx =
                 c.getContext(
                     "2d"
                 );
-
 
             if(
                 inventoryTab ===
@@ -4597,16 +4454,13 @@ function renderInventory(){
                 );
             }
 
-
             preview.appendChild(
                 c
             );
 
-
             card.appendChild(
                 preview
             );
-
 
             const title =
                 document.createElement(
@@ -4616,28 +4470,22 @@ function renderInventory(){
             title.textContent =
                 item.name;
 
-
             card.appendChild(
                 title
             );
 
-
             const selected =
                 inventoryTab ===
                 "skins"
-
                 ? state.selectedSkin ===
                   item.id
-
                 : state.selectedWorld ===
                   item.id;
-
 
             const equip =
                 document.createElement(
                     "button"
                 );
-
 
             equip.className =
                 "smallbtn" +
@@ -4647,12 +4495,10 @@ function renderInventory(){
                     : ""
                 );
 
-
             equip.textContent =
                 selected
                 ? "✓ AUSGERÜSTET"
                 : "AUSRÜSTEN";
-
 
             equip.onclick =
                 () => {
@@ -4671,18 +4517,14 @@ function renderInventory(){
                             item.id;
                     }
 
-
                     saveState();
-
 
                     renderInventory();
                 };
 
-
             card.appendChild(
                 equip
             );
-
 
             container.appendChild(
                 card
@@ -4691,10 +4533,6 @@ function renderInventory(){
     );
 }
 
-
-/* =========================================================
-   SOUND INVENTAR
-========================================================= */
 
 function renderSoundInventory(
     container
@@ -4718,7 +4556,6 @@ function renderSoundInventory(
                 card.className =
                     "card";
 
-
                 const preview =
                     document.createElement(
                         "div"
@@ -4727,7 +4564,6 @@ function renderSoundInventory(
                 preview.className =
                     "preview";
 
-
                 const box =
                     document.createElement(
                         "div"
@@ -4735,7 +4571,6 @@ function renderSoundInventory(
 
                 box.className =
                     "soundPreview";
-
 
                 const icon =
                     document.createElement(
@@ -4748,21 +4583,17 @@ function renderSoundInventory(
                 icon.textContent =
                     sound.icon;
 
-
                 box.appendChild(
                     icon
                 );
-
 
                 preview.appendChild(
                     box
                 );
 
-
                 card.appendChild(
                     preview
                 );
-
 
                 const title =
                     document.createElement(
@@ -4772,11 +4603,9 @@ function renderSoundInventory(
                 title.textContent =
                     sound.name;
 
-
                 card.appendChild(
                     title
                 );
-
 
                 const test =
                     document.createElement(
@@ -4789,23 +4618,19 @@ function renderSoundInventory(
                 test.textContent =
                     "▶ TESTEN";
 
-
                 test.onclick =
                     () =>
                         playJumpSound(
                             sound.type
                         );
 
-
                 card.appendChild(
                     test
                 );
 
-
                 const selected =
                     state.selectedSound ===
                     sound.id;
-
 
                 const equip =
                     document.createElement(
@@ -4820,12 +4645,10 @@ function renderSoundInventory(
                         : ""
                     );
 
-
                 equip.textContent =
                     selected
                     ? "✓ AUSGERÜSTET"
                     : "AUSRÜSTEN";
-
 
                 equip.onclick =
                     () => {
@@ -4838,11 +4661,9 @@ function renderSoundInventory(
                         renderInventory();
                     };
 
-
                 card.appendChild(
                     equip
                 );
-
 
                 container.appendChild(
                     card
@@ -4851,10 +4672,6 @@ function renderSoundInventory(
         );
 }
 
-
-/* =========================================================
-   MUSIK INVENTAR
-========================================================= */
 
 function renderMusicInventory(
     container
@@ -4878,7 +4695,6 @@ function renderMusicInventory(
                 card.className =
                     "card";
 
-
                 const preview =
                     document.createElement(
                         "div"
@@ -4887,7 +4703,6 @@ function renderMusicInventory(
                 preview.className =
                     "preview";
 
-
                 const box =
                     document.createElement(
                         "div"
@@ -4895,7 +4710,6 @@ function renderMusicInventory(
 
                 box.className =
                     "soundPreview";
-
 
                 const icon =
                     document.createElement(
@@ -4908,7 +4722,6 @@ function renderMusicInventory(
                 icon.textContent =
                     music.icon;
 
-
                 const text =
                     document.createElement(
                         "div"
@@ -4920,7 +4733,6 @@ function renderMusicInventory(
                 text.textContent =
                     "Hintergrundmusik";
 
-
                 box.appendChild(
                     icon
                 );
@@ -4929,16 +4741,13 @@ function renderMusicInventory(
                     text
                 );
 
-
                 preview.appendChild(
                     box
                 );
 
-
                 card.appendChild(
                     preview
                 );
-
 
                 const title =
                     document.createElement(
@@ -4948,11 +4757,9 @@ function renderMusicInventory(
                 title.textContent =
                     music.name;
 
-
                 card.appendChild(
                     title
                 );
-
 
                 const listen =
                     document.createElement(
@@ -4965,29 +4772,24 @@ function renderMusicInventory(
                 listen.textContent =
                     "▶ ANHÖREN";
 
-
                 listen.onclick =
                     () =>
                         previewMusic(
                             music
                         );
 
-
                 card.appendChild(
                     listen
                 );
-
 
                 const selected =
                     state.selectedMusic ===
                     music.id;
 
-
                 const equip =
                     document.createElement(
                         "button"
                     );
-
 
                 equip.className =
                     "smallbtn" +
@@ -4997,12 +4799,10 @@ function renderMusicInventory(
                         : ""
                     );
 
-
                 equip.textContent =
                     selected
                     ? "✓ AUSGERÜSTET"
                     : "AUSRÜSTEN";
-
 
                 equip.onclick =
                     () => {
@@ -5010,20 +4810,16 @@ function renderMusicInventory(
                         state.selectedMusic =
                             music.id;
 
-
                         saveState();
-
 
                         renderMusicInventory(
                             container
                         );
 
-
                         document.getElementById(
                             "musicHud"
                         ).textContent =
                             music.name;
-
 
                         if(
                             game.running
@@ -5033,11 +4829,9 @@ function renderMusicInventory(
                         }
                     };
 
-
                 card.appendChild(
                     equip
                 );
-
 
                 container.appendChild(
                     card
@@ -5055,7 +4849,6 @@ function startGame(){
 
     initAudio();
 
-
     if(
         audioContext &&
         audioContext.state ===
@@ -5065,22 +4858,17 @@ function startGame(){
         audioContext.resume();
     }
 
-
     startMusic();
-
 
     hideScreens();
 
-
     canvas.style.display =
         "block";
-
 
     document.getElementById(
         "gameHud"
     ).style.display =
         "block";
-
 
     document.getElementById(
         "pauseOverlay"
@@ -5088,57 +4876,44 @@ function startGame(){
         "active"
     );
 
-
     document.getElementById(
         "gameOverOverlay"
     ).classList.remove(
         "active"
     );
 
-
     game.running =
         true;
-
 
     game.paused =
         false;
 
-
     game.over =
         false;
-
 
     game.score =
         0;
 
-
     game.runCoins =
         0;
-
 
     game.jumpCount =
         0;
 
-
     game.bonusCoinsRun =
         0;
-
 
     game.speed =
         165;
 
-
     game.spawnTimer =
         .9;
-
 
     game.obstacles =
         [];
 
-
     game.coins =
         [];
-
 
     game.player = {
 
@@ -5158,7 +4933,6 @@ function startGame(){
             0
     };
 
-
     game.world =
         worlds.find(
             world =>
@@ -5166,32 +4940,22 @@ function startGame(){
                 state.selectedWorld
         ) || worlds[0];
 
-
     document.getElementById(
         "worldHud"
     ).textContent =
         game.world.name;
-
 
     document.getElementById(
         "musicHud"
     ).textContent =
         selectedMusic().name;
 
-
     updateHUD();
-
 
     game.lastTime =
         performance.now();
 
-
-    /*
-       Der erste Sprung.
-    */
-
     flap();
-
 
     requestAnimationFrame(
         gameLoop
@@ -5210,13 +4974,11 @@ function updateHUD(){
     ).textContent =
         game.score;
 
-
     document.getElementById(
         "coinsHud"
     ).textContent =
         state.coins +
         game.runCoins;
-
 
     document.getElementById(
         "jumpHud"
@@ -5236,37 +4998,31 @@ function flap(){
         game.paused ||
         game.over
     ){
-
         return;
     }
-
 
     game.player.vy =
         -405;
 
-
     game.jumpCount++;
-
 
     const sound =
         sounds.find(
-            item =>
-                item.id ===
+            sound =>
+                sound.id ===
                 state.selectedSound
         ) || sounds[0];
-
 
     playJumpSound(
         sound.type
     );
-
 
     updateHUD();
 }
 
 
 /* =========================================================
-   COIN
+   BONUS COIN
 ========================================================= */
 
 function spawnCoin(){
@@ -5274,13 +5030,11 @@ function spawnCoin(){
     const minY =
         100;
 
-
     const maxY =
         Math.max(
             minY + 30,
             H - 100
         );
-
 
     game.coins.push({
 
@@ -5295,27 +5049,23 @@ function spawnCoin(){
         r:
             10,
 
-        collected:
-            false
+        collected:false
     });
 }
 
 
 /* =========================================================
-   UPDATE
+   GAME UPDATE
 ========================================================= */
 
-function updateGame(
-    dt
-){
+function updateGame(dt){
 
     const p =
         game.player;
 
-
     /*
-       Sehr leicht starten,
-       später immer schneller.
+       Leichter Start,
+       später immer schwieriger.
     */
 
     game.speed =
@@ -5325,7 +5075,6 @@ function updateGame(
             game.score * 2.5
         );
 
-
     const gravity =
         1080 +
         Math.min(
@@ -5333,14 +5082,11 @@ function updateGame(
             game.score * 1.5
         );
 
-
     p.vy +=
         gravity * dt;
 
-
     p.y +=
         p.vy * dt;
-
 
     p.rot =
         Math.max(
@@ -5351,7 +5097,6 @@ function updateGame(
             )
         );
 
-
     const gapHeight =
         Math.max(
             150,
@@ -5359,10 +5104,8 @@ function updateGame(
             game.score * .62
         );
 
-
     game.spawnTimer -=
         dt;
-
 
     if(
         game.spawnTimer <=
@@ -5375,24 +5118,20 @@ function updateGame(
                 H * .11
             );
 
-
         const bottomMargin =
             Math.max(
                 75,
                 H * .12
             );
 
-
         const minGap =
             topMargin +
             gapHeight / 2;
-
 
         const maxGap =
             H -
             bottomMargin -
             gapHeight / 2;
-
 
         const gapY =
             minGap +
@@ -5403,13 +5142,11 @@ function updateGame(
                 minGap
             );
 
-
         const width =
             Math.max(
                 70,
                 W * .075
             );
-
 
         game.obstacles.push({
 
@@ -5423,10 +5160,8 @@ function updateGame(
             gapH:
                 gapHeight,
 
-            passed:
-                false
+            passed:false
         });
-
 
         game.spawnTimer =
             Math.max(
@@ -5434,11 +5169,6 @@ function updateGame(
                 1.62 -
                 game.score * .005
             );
-
-
-        /*
-           Bonus-Coin gelegentlich.
-        */
 
         if(
             Math.random() <
@@ -5448,7 +5178,6 @@ function updateGame(
             spawnCoin();
         }
     }
-
 
     /*
        Hindernisse
@@ -5462,7 +5191,6 @@ function updateGame(
         obstacle.x -=
             game.speed * dt;
 
-
         if(
             !obstacle.passed &&
             obstacle.x +
@@ -5474,16 +5202,13 @@ function updateGame(
             obstacle.passed =
                 true;
 
-
             game.score++;
-
 
             scoreSound();
 
-
             /*
-               Jedes 5. Hindernis:
-               +10 Coins.
+               Jedes 5. Hindernis =
+               10 Coins.
             */
 
             if(
@@ -5494,9 +5219,6 @@ function updateGame(
                 game.runCoins +=
                     10;
 
-                game.bonusCoinsRun +=
-                    10;
-
                 showMessage(
                     "🪙 +10 Coins!"
                 );
@@ -5504,7 +5226,6 @@ function updateGame(
                 coinSound();
             }
         }
-
 
         if(
             obstacleCollision(
@@ -5519,7 +5240,6 @@ function updateGame(
         }
     }
 
-
     game.obstacles =
         game.obstacles.filter(
             obstacle =>
@@ -5527,7 +5247,6 @@ function updateGame(
                 obstacle.width >
                 -100
         );
-
 
     /*
        Bonus-Coins
@@ -5540,7 +5259,6 @@ function updateGame(
 
         coin.x -=
             game.speed * dt;
-
 
         if(
             distance(
@@ -5560,37 +5278,30 @@ function updateGame(
                 coin.collected =
                     true;
 
-
                 game.runCoins +=
                     1;
-
 
                 game.bonusCoinsRun +=
                     1;
 
-
                 showMessage(
                     "🪙 +1 Bonus-Coin!"
                 );
-
 
                 coinSound();
             }
         }
     }
 
-
     game.coins =
         game.coins.filter(
             coin =>
-                coin.x >
-                    -50 &&
+                coin.x > -50 &&
                 !coin.collected
         );
 
-
     /*
-       Boden oder Decke.
+       Boden / Decke
     */
 
     if(
@@ -5607,9 +5318,8 @@ function updateGame(
         return;
     }
 
-
     /*
-       Lokalen Rekord aktualisieren.
+       Lokaler Rekord.
     */
 
     if(
@@ -5623,10 +5333,7 @@ function updateGame(
         saveState();
     }
 
-
     updateMissionProgress();
-
-
     updateHUD();
 }
 
@@ -5650,7 +5357,7 @@ function distance(
 
 
 /* =========================================================
-   COLLISION
+   KOLLISION
 ========================================================= */
 
 function obstacleCollision(
@@ -5662,11 +5369,9 @@ function obstacleCollision(
         obstacle.gapY -
         obstacle.gapH / 2;
 
-
     const bottom =
         obstacle.gapY +
         obstacle.gapH / 2;
-
 
     if(
         p.x +
@@ -5676,7 +5381,6 @@ function obstacleCollision(
 
         return false;
     }
-
 
     if(
         p.x -
@@ -5688,7 +5392,6 @@ function obstacleCollision(
         return false;
     }
 
-
     if(
         p.y -
         p.r <
@@ -5698,7 +5401,6 @@ function obstacleCollision(
         return true;
     }
 
-
     if(
         p.y +
         p.r >
@@ -5707,7 +5409,6 @@ function obstacleCollision(
 
         return true;
     }
-
 
     return false;
 }
@@ -5722,18 +5423,14 @@ async function endGame(){
     if(
         game.over
     ){
-
         return;
     }
-
 
     game.over =
         true;
 
-
     game.running =
         false;
-
 
     /*
        Coins speichern.
@@ -5741,7 +5438,6 @@ async function endGame(){
 
     state.coins +=
         game.runCoins;
-
 
     if(
         game.score >
@@ -5752,88 +5448,76 @@ async function endGame(){
             game.score;
     }
 
-
     updateMissionProgress();
-
 
     saveState();
 
-
     /*
-       Online-Highscore senden.
+       Online-Highscore.
     */
 
+    let uploaded =
+        false;
+
     if(
-        game.score >
-        0
+        game.score > 0
     ){
 
-        const uploaded =
+        uploaded =
             await submitHighscore(
                 game.score
             );
-
-
-        if(
-            uploaded
-        ){
-
-            setLeaderboardStatus(
-                "🏆 Dein neuer Score wurde online geprüft."
-            );
-        }
     }
-
 
     document.getElementById(
         "finalScore"
     ).textContent =
         game.score;
 
-
     document.getElementById(
         "earnedCoins"
     ).textContent =
         game.runCoins;
-
 
     document.getElementById(
         "bestScore"
     ).textContent =
         state.best;
 
-
     document.getElementById(
         "gameHud"
     ).style.display =
         "none";
 
-
-    document
-        .getElementById(
-            "gameOverOverlay"
-        )
-        .classList.add(
-            "active"
-        );
-
+    document.getElementById(
+        "gameOverOverlay"
+    ).classList.add(
+        "active"
+    );
 
     if(
-        getPlayerName()
+        uploaded
     ){
 
         document.getElementById(
             "gameOverText"
         ).textContent =
-            "Gut geflogen! Dein Highscore wird mit dem Online-Leaderboard abgeglichen.";
+            "🏆 Dein Highscore wurde online gespeichert.";
+    }else if(
+        !getPlayerName()
+    ){
+
+        document.getElementById(
+            "gameOverText"
+        ).textContent =
+            "Speichere deinen Namen im Leaderboard, damit dein Rekord online erscheint.";
     }else{
 
         document.getElementById(
             "gameOverText"
         ).textContent =
-            "Gut geflogen! Speichere deinen Namen im Leaderboard, damit dein Rekord online erscheint.";
+            "Gut geflogen!";
     }
-
 
     gameOverSound();
 }
@@ -5843,9 +5527,7 @@ async function endGame(){
    LOOP
 ========================================================= */
 
-function gameLoop(
-    time
-){
+function gameLoop(time){
 
     if(
         !game.running
@@ -5856,21 +5538,17 @@ function gameLoop(
         return;
     }
 
-
     const dt =
         Math.min(
             .033,
             (
                 time -
                 game.lastTime
-            ) /
-            1000
+            ) / 1000
         );
-
 
     game.lastTime =
         time;
-
 
     if(
         !game.paused
@@ -5881,9 +5559,7 @@ function gameLoop(
         );
     }
 
-
     draw();
-
 
     if(
         game.running
@@ -5897,7 +5573,7 @@ function gameLoop(
 
 
 /* =========================================================
-   HINTERGRÜNDE
+   BACKGROUNDS
 ========================================================= */
 
 function drawGiza(){
@@ -5905,13 +5581,10 @@ function drawGiza(){
     const horizon =
         H * .69;
 
-
     ctx.fillStyle =
         "rgba(255,225,150,.25)";
 
-
     ctx.beginPath();
-
 
     ctx.arc(
         W * .82,
@@ -5921,13 +5594,10 @@ function drawGiza(){
         Math.PI * 2
     );
 
-
     ctx.fill();
-
 
     ctx.fillStyle =
         "#d9a35a";
-
 
     ctx.fillRect(
         0,
@@ -5936,14 +5606,12 @@ function drawGiza(){
         H - horizon
     );
 
-
     drawPyramid(
         W * .57,
         horizon,
         200,
         130
     );
-
 
     drawPyramid(
         W * .75,
@@ -5964,30 +5632,24 @@ function drawPyramid(
     ctx.fillStyle =
         "#d5a05a";
 
-
     ctx.beginPath();
-
 
     ctx.moveTo(
         cx,
         base - height
     );
 
-
     ctx.lineTo(
         cx - width / 2,
         base
     );
-
 
     ctx.lineTo(
         cx + width / 2,
         base
     );
 
-
     ctx.closePath();
-
 
     ctx.fill();
 }
@@ -5998,67 +5660,54 @@ function drawMountains(){
     ctx.fillStyle =
         "#5b70aa";
 
-
     ctx.beginPath();
-
 
     ctx.moveTo(
         0,
         H * .72
     );
 
-
     ctx.lineTo(
         W * .18,
         H * .43
     );
-
 
     ctx.lineTo(
         W * .38,
         H * .70
     );
 
-
     ctx.lineTo(
         W * .57,
         H * .32
     );
-
 
     ctx.lineTo(
         W * .78,
         H * .67
     );
 
-
     ctx.lineTo(
         W,
         H * .40
     );
 
-
     ctx.lineTo(
         W,
         H
     );
-
 
     ctx.lineTo(
         0,
         H
     );
 
-
     ctx.closePath();
-
 
     ctx.fill();
 
-
     ctx.fillStyle =
         "#527951";
-
 
     ctx.fillRect(
         0,
@@ -6074,10 +5723,8 @@ function drawOcean(){
     ctx.strokeStyle =
         "rgba(255,255,255,.14)";
 
-
     ctx.lineWidth =
         2;
-
 
     for(
         let y = 90;
@@ -6086,7 +5733,6 @@ function drawOcean(){
     ){
 
         ctx.beginPath();
-
 
         for(
             let x = 0;
@@ -6099,7 +5745,6 @@ function drawOcean(){
                 y
             );
 
-
             ctx.quadraticCurveTo(
                 x + 12,
                 y - 10,
@@ -6108,14 +5753,11 @@ function drawOcean(){
             );
         }
 
-
         ctx.stroke();
     }
 
-
     ctx.fillStyle =
         "#157c86";
-
 
     ctx.fillRect(
         0,
@@ -6131,14 +5773,12 @@ function drawJungle(){
     ctx.fillStyle =
         "#2b753d";
 
-
     ctx.fillRect(
         0,
         H * .78,
         W,
         H * .22
     );
-
 
     for(
         let i = 0;
@@ -6150,17 +5790,15 @@ function drawJungle(){
             (i * 97) %
             W;
 
-
         const height =
             100 +
-            (i % 4) * 35;
-
+            (i % 4) *
+            35;
 
         ctx.fillStyle =
             i % 2
             ? "#1c5a31"
             : "#348746";
-
 
         ctx.fillRect(
             x,
@@ -6169,9 +5807,7 @@ function drawJungle(){
             height
         );
 
-
         ctx.beginPath();
-
 
         ctx.arc(
             x + 10,
@@ -6180,7 +5816,6 @@ function drawJungle(){
             Math.PI,
             Math.PI * 2
         );
-
 
         ctx.fill();
     }
@@ -6192,7 +5827,6 @@ function drawSpace(){
     ctx.fillStyle =
         "white";
 
-
     for(
         let i = 0;
         i < 100;
@@ -6203,16 +5837,14 @@ function drawSpace(){
             (i * 83) %
             W;
 
-
         const y =
             (i * 47) %
             H;
 
-
         ctx.globalAlpha =
             .25 +
-            (i % 5) * .1;
-
+            (i % 5) *
+            .1;
 
         ctx.fillRect(
             x,
@@ -6222,21 +5854,16 @@ function drawSpace(){
         );
     }
 
-
     ctx.globalAlpha =
         1;
-
 
     ctx.fillStyle =
         "#9b63dc";
 
-
     ctx.globalAlpha =
         .25;
 
-
     ctx.beginPath();
-
 
     ctx.arc(
         W * .78,
@@ -6246,9 +5873,7 @@ function drawSpace(){
         Math.PI * 2
     );
 
-
     ctx.fill();
-
 
     ctx.globalAlpha =
         1;
@@ -6260,7 +5885,6 @@ function drawIce(){
     ctx.fillStyle =
         "rgba(255,255,255,.45)";
 
-
     for(
         let i = 0;
         i < 8;
@@ -6270,38 +5894,30 @@ function drawIce(){
         const x =
             i * 190;
 
-
         ctx.beginPath();
-
 
         ctx.moveTo(
             x,
             H * .82
         );
 
-
         ctx.lineTo(
             x + 80,
             H * .25
         );
-
 
         ctx.lineTo(
             x + 150,
             H * .82
         );
 
-
         ctx.closePath();
-
 
         ctx.fill();
     }
 
-
     ctx.fillStyle =
         "#a7deef";
-
 
     ctx.fillRect(
         0,
@@ -6313,7 +5929,7 @@ function drawIce(){
 
 
 /* =========================================================
-   FIGUREN ZEICHNEN
+   FIGUREN
 ========================================================= */
 
 function drawSkin(
@@ -6331,82 +5947,51 @@ function drawSkin(
         y
     );
 
-
     if(
         type ===
         "bird"
     ){
-
-        drawBird(
-            c,
-            r
-        );
+        drawBird(c,r);
     }
-
 
     if(
         type ===
         "dino"
     ){
-
-        drawDino(
-            c,
-            r
-        );
+        drawDino(c,r);
     }
-
 
     if(
         type ===
         "pen"
     ){
-
-        drawPen(
-            c,
-            r
-        );
+        drawPen(c,r);
     }
-
 
     if(
         type ===
         "carrot"
     ){
-
-        drawCarrot(
-            c,
-            r
-        );
+        drawCarrot(c,r);
     }
-
 
     if(
         type ===
         "apple"
     ){
-
-        drawApple(
-            c,
-            r
-        );
+        drawApple(c,r);
     }
-
 
     c.restore();
 }
 
 
-function drawBird(
-    c,
-    r
-){
+function drawBird(c,r){
 
     c.fillStyle =
         "#ffd13b";
 
-
     c.beginPath();
-
 
     c.ellipse(
         0,
@@ -6418,16 +6003,12 @@ function drawBird(
         Math.PI * 2
     );
 
-
     c.fill();
-
 
     c.fillStyle =
         "#fff";
 
-
     c.beginPath();
-
 
     c.arc(
         r * .35,
@@ -6437,16 +6018,12 @@ function drawBird(
         Math.PI * 2
     );
 
-
     c.fill();
-
 
     c.fillStyle =
         "#17204a";
 
-
     c.beginPath();
-
 
     c.arc(
         r * .4,
@@ -6456,47 +6033,36 @@ function drawBird(
         Math.PI * 2
     );
 
-
     c.fill();
-
 
     c.fillStyle =
         "#ff7733";
 
-
     c.beginPath();
-
 
     c.moveTo(
         r * .9,
         -r * .05
     );
 
-
     c.lineTo(
         r * 1.45,
         r * .1
     );
-
 
     c.lineTo(
         r * .9,
         r * .28
     );
 
-
     c.closePath();
 
-
     c.fill();
-
 
     c.fillStyle =
         "#ef9d20";
 
-
     c.beginPath();
-
 
     c.ellipse(
         -r * .25,
@@ -6508,22 +6074,16 @@ function drawBird(
         Math.PI * 2
     );
 
-
     c.fill();
 }
 
 
-function drawDino(
-    c,
-    r
-){
+function drawDino(c,r){
 
     c.fillStyle =
         "#58d26b";
 
-
     c.beginPath();
-
 
     c.ellipse(
         0,
@@ -6535,47 +6095,36 @@ function drawDino(
         Math.PI * 2
     );
 
-
     c.fill();
-
 
     c.fillStyle =
         "#4baa59";
 
-
     c.beginPath();
-
 
     c.moveTo(
         -r * .7,
         -r * .25
     );
 
-
     c.lineTo(
         -r * 1.4,
         -r * .05
     );
-
 
     c.lineTo(
         -r * .8,
         r * .3
     );
 
-
     c.closePath();
 
-
     c.fill();
-
 
     c.fillStyle =
         "#fff";
 
-
     c.beginPath();
-
 
     c.arc(
         r * .4,
@@ -6585,16 +6134,12 @@ function drawDino(
         Math.PI * 2
     );
 
-
     c.fill();
-
 
     c.fillStyle =
         "#17204a";
 
-
     c.beginPath();
-
 
     c.arc(
         r * .45,
@@ -6604,24 +6149,18 @@ function drawDino(
         Math.PI * 2
     );
 
-
     c.fill();
 }
 
 
-function drawPen(
-    c,
-    r
-){
+function drawPen(c,r){
 
     c.rotate(
         -.35
     );
 
-
     c.fillStyle =
         "#ffdf4e";
-
 
     c.fillRect(
         -r * .25,
@@ -6630,10 +6169,8 @@ function drawPen(
         r * 1.6
     );
 
-
     c.fillStyle =
         "#4d75ff";
-
 
     c.fillRect(
         -r * .25,
@@ -6642,50 +6179,38 @@ function drawPen(
         r * .35
     );
 
-
     c.fillStyle =
         "#e9bd91";
 
-
     c.beginPath();
-
 
     c.moveTo(
         -r * .25,
         r * .5
     );
 
-
     c.lineTo(
         0,
         r * 1.05
     );
-
 
     c.lineTo(
         r * .25,
         r * .5
     );
 
-
     c.closePath();
-
 
     c.fill();
 }
 
 
-function drawCarrot(
-    c,
-    r
-){
+function drawCarrot(c,r){
 
     c.fillStyle =
         "#62d976";
 
-
     c.beginPath();
-
 
     c.ellipse(
         -r * .2,
@@ -6697,7 +6222,6 @@ function drawCarrot(
         Math.PI * 2
     );
 
-
     c.ellipse(
         r * .2,
         -r * .75,
@@ -6708,22 +6232,17 @@ function drawCarrot(
         Math.PI * 2
     );
 
-
     c.fill();
-
 
     c.fillStyle =
         "#ff8b28";
 
-
     c.beginPath();
-
 
     c.moveTo(
         -r * .65,
         -r * .25
     );
-
 
     c.quadraticCurveTo(
         0,
@@ -6732,7 +6251,6 @@ function drawCarrot(
         r * 1.05
     );
 
-
     c.quadraticCurveTo(
         0,
         r * .75,
@@ -6740,25 +6258,18 @@ function drawCarrot(
         -r * .25
     );
 
-
     c.closePath();
-
 
     c.fill();
 }
 
 
-function drawApple(
-    c,
-    r
-){
+function drawApple(c,r){
 
     c.fillStyle =
         "#f14848";
 
-
     c.beginPath();
-
 
     c.arc(
         -r * .3,
@@ -6768,7 +6279,6 @@ function drawApple(
         Math.PI * 2
     );
 
-
     c.arc(
         r * .3,
         0,
@@ -6777,42 +6287,32 @@ function drawApple(
         Math.PI * 2
     );
 
-
     c.fill();
-
 
     c.strokeStyle =
         "#69472b";
 
-
     c.lineWidth =
         4;
 
-
     c.beginPath();
-
 
     c.moveTo(
         0,
         -r * .45
     );
 
-
     c.lineTo(
         r * .1,
         -r * .95
     );
 
-
     c.stroke();
-
 
     c.fillStyle =
         "#63d878";
 
-
     c.beginPath();
-
 
     c.ellipse(
         r * .35,
@@ -6823,7 +6323,6 @@ function drawApple(
         0,
         Math.PI * 2
     );
-
 
     c.fill();
 }
@@ -6840,7 +6339,7 @@ function drawWorldPreview(
     height
 ){
 
-    const gradient =
+    const g =
         c.createLinearGradient(
             0,
             0,
@@ -6848,22 +6347,18 @@ function drawWorldPreview(
             height
         );
 
-
-    gradient.addColorStop(
+    g.addColorStop(
         0,
         world.sky1
     );
 
-
-    gradient.addColorStop(
+    g.addColorStop(
         1,
         world.sky2
     );
 
-
     c.fillStyle =
-        gradient;
-
+        g;
 
     c.fillRect(
         0,
@@ -6871,7 +6366,6 @@ function drawWorldPreview(
         width,
         height
     );
-
 
     if(
         world.id ===
@@ -6888,37 +6382,30 @@ function drawWorldPreview(
             height * .28
         );
 
-
         c.fillStyle =
             "#d6a05c";
 
         c.beginPath();
-
 
         c.moveTo(
             width * .48,
             height * .2
         );
 
-
         c.lineTo(
             width * .23,
             height * .72
         );
-
 
         c.lineTo(
             width * .73,
             height * .72
         );
 
-
         c.closePath();
-
 
         c.fill();
     }
-
 
     if(
         world.id ===
@@ -6928,46 +6415,37 @@ function drawWorldPreview(
         c.fillStyle =
             world.obstacle;
 
-
         c.beginPath();
-
 
         c.moveTo(
             0,
             height
         );
 
-
         c.lineTo(
             width * .22,
             height * .3
         );
-
 
         c.lineTo(
             width * .44,
             height
         );
 
-
         c.lineTo(
             width * .63,
             height * .22
         );
-
 
         c.lineTo(
             width,
             height
         );
 
-
         c.closePath();
-
 
         c.fill();
     }
-
 
     if(
         world.id ===
@@ -6977,7 +6455,6 @@ function drawWorldPreview(
         c.strokeStyle =
             "rgba(255,255,255,.16)";
 
-
         for(
             let y = 25;
             y < height;
@@ -6985,7 +6462,6 @@ function drawWorldPreview(
         ){
 
             c.beginPath();
-
 
             for(
                 let x = 0;
@@ -6998,7 +6474,6 @@ function drawWorldPreview(
                     y
                 );
 
-
                 c.quadraticCurveTo(
                     x + 7,
                     y - 5,
@@ -7007,11 +6482,9 @@ function drawWorldPreview(
                 );
             }
 
-
             c.stroke();
         }
     }
-
 
     if(
         world.id ===
@@ -7021,7 +6494,6 @@ function drawWorldPreview(
         c.fillStyle =
             world.ground;
 
-
         c.fillRect(
             0,
             height * .76,
@@ -7030,7 +6502,6 @@ function drawWorldPreview(
         );
     }
 
-
     if(
         world.id ===
         "space"
@@ -7038,7 +6509,6 @@ function drawWorldPreview(
 
         c.fillStyle =
             "white";
-
 
         for(
             let i = 0;
@@ -7057,7 +6527,6 @@ function drawWorldPreview(
         }
     }
 
-
     if(
         world.id ===
         "ice"
@@ -7066,42 +6535,34 @@ function drawWorldPreview(
         c.fillStyle =
             "#eefcff";
 
-
         c.beginPath();
-
 
         c.moveTo(
             0,
             height
         );
 
-
         c.lineTo(
             width * .24,
             height * .25
         );
-
 
         c.lineTo(
             width * .45,
             height
         );
 
-
         c.lineTo(
             width * .65,
             height * .2
         );
-
 
         c.lineTo(
             width,
             height
         );
 
-
         c.closePath();
-
 
         c.fill();
     }
@@ -7109,7 +6570,7 @@ function drawWorldPreview(
 
 
 /* =========================================================
-   DRAW
+   DRAW GAME
 ========================================================= */
 
 function draw(){
@@ -7117,7 +6578,6 @@ function draw(){
     const world =
         game.world ||
         worlds[0];
-
 
     const gradient =
         ctx.createLinearGradient(
@@ -7127,22 +6587,18 @@ function draw(){
             H
         );
 
-
     gradient.addColorStop(
         0,
         world.sky1
     );
-
 
     gradient.addColorStop(
         1,
         world.sky2
     );
 
-
     ctx.fillStyle =
         gradient;
-
 
     ctx.fillRect(
         0,
@@ -7151,48 +6607,47 @@ function draw(){
         H
     );
 
-
     if(
-        world.id === "giza"
+        world.id ===
+        "giza"
     ){
         drawGiza();
     }
 
-
     if(
-        world.id === "mountains"
+        world.id ===
+        "mountains"
     ){
         drawMountains();
     }
 
-
     if(
-        world.id === "ocean"
+        world.id ===
+        "ocean"
     ){
         drawOcean();
     }
 
-
     if(
-        world.id === "jungle"
+        world.id ===
+        "jungle"
     ){
         drawJungle();
     }
 
-
     if(
-        world.id === "space"
+        world.id ===
+        "space"
     ){
         drawSpace();
     }
 
-
     if(
-        world.id === "ice"
+        world.id ===
+        "ice"
     ){
         drawIce();
     }
-
 
     /*
        Hindernisse
@@ -7207,15 +6662,12 @@ function draw(){
             obstacle.gapY -
             obstacle.gapH / 2;
 
-
         const bottom =
             obstacle.gapY +
             obstacle.gapH / 2;
 
-
         ctx.fillStyle =
             world.obstacle;
-
 
         ctx.fillRect(
             obstacle.x,
@@ -7224,7 +6676,6 @@ function draw(){
             top
         );
 
-
         ctx.fillRect(
             obstacle.x,
             bottom,
@@ -7232,19 +6683,12 @@ function draw(){
             H - bottom
         );
 
-
-        /*
-           obere Spitze
-        */
-
         ctx.beginPath();
-
 
         ctx.moveTo(
             obstacle.x,
             top
         );
-
 
         ctx.lineTo(
             obstacle.x +
@@ -7252,32 +6696,22 @@ function draw(){
             top + 24
         );
 
-
         ctx.lineTo(
             obstacle.x +
             obstacle.width,
             top
         );
 
-
         ctx.closePath();
-
 
         ctx.fill();
 
-
-        /*
-           untere Spitze
-        */
-
         ctx.beginPath();
-
 
         ctx.moveTo(
             obstacle.x,
             bottom
         );
-
 
         ctx.lineTo(
             obstacle.x +
@@ -7285,20 +6719,16 @@ function draw(){
             bottom - 24
         );
 
-
         ctx.lineTo(
             obstacle.x +
             obstacle.width,
             bottom
         );
 
-
         ctx.closePath();
-
 
         ctx.fill();
     }
-
 
     /*
        Bonus-Coins
@@ -7311,12 +6741,10 @@ function draw(){
 
         ctx.save();
 
-
         ctx.translate(
             coin.x,
             coin.y
         );
-
 
         const glow =
             ctx.createRadialGradient(
@@ -7328,25 +6756,20 @@ function draw(){
                 22
             );
 
-
         glow.addColorStop(
             0,
             "rgba(255,240,100,.7)"
         );
-
 
         glow.addColorStop(
             1,
             "rgba(255,240,100,0)"
         );
 
-
         ctx.fillStyle =
             glow;
 
-
         ctx.beginPath();
-
 
         ctx.arc(
             0,
@@ -7356,16 +6779,12 @@ function draw(){
             Math.PI * 2
         );
 
-
         ctx.fill();
-
 
         ctx.fillStyle =
             "#ffd447";
 
-
         ctx.beginPath();
-
 
         ctx.arc(
             0,
@@ -7375,25 +6794,19 @@ function draw(){
             Math.PI * 2
         );
 
-
         ctx.fill();
-
 
         ctx.fillStyle =
             "#fff5a6";
 
-
         ctx.font =
             "bold 12px Arial";
-
 
         ctx.textAlign =
             "center";
 
-
         ctx.textBaseline =
             "middle";
-
 
         ctx.fillText(
             "$",
@@ -7401,10 +6814,8 @@ function draw(){
             1
         );
 
-
         ctx.restore();
     }
-
 
     /*
        Spieler
@@ -7417,20 +6828,16 @@ function draw(){
                 state.selectedSkin
         ) || skins[0];
 
-
     ctx.save();
-
 
     ctx.translate(
         game.player.x,
         game.player.y
     );
 
-
     ctx.rotate(
         game.player.rot
     );
-
 
     drawSkin(
         ctx,
@@ -7439,7 +6846,6 @@ function draw(){
         0,
         game.player.r
     );
-
 
     ctx.restore();
 }
@@ -7458,10 +6864,8 @@ function togglePause(){
         return;
     }
 
-
     game.paused =
         !game.paused;
-
 
     document
         .getElementById(
@@ -7471,7 +6875,6 @@ function togglePause(){
             "active",
             game.paused
         );
-
 
     if(
         !game.paused
@@ -7492,24 +6895,19 @@ function returnToLobby(){
     game.running =
         false;
 
-
     game.paused =
         false;
-
 
     game.over =
         false;
 
-
     canvas.style.display =
         "none";
-
 
     document.getElementById(
         "gameHud"
     ).style.display =
         "none";
-
 
     document
         .querySelectorAll(
@@ -7522,32 +6920,27 @@ function returnToLobby(){
                 )
         );
 
-
     showScreen(
         "lobby"
     );
-
 
     updateLobby();
 }
 
 
 /* =========================================================
-   BUTTON EVENTS
+   EVENTS
 ========================================================= */
 
 document.getElementById(
     "startBtn"
-).addEventListener(
-    "click",
-    startGame
-);
+).onclick =
+    startGame;
 
 
 document.getElementById(
     "leaderboardBtn"
-).addEventListener(
-    "click",
+).onclick =
     () => {
 
         loadPlayerName();
@@ -7555,27 +6948,27 @@ document.getElementById(
         showScreen(
             "leaderboard"
         );
-    }
-);
+    };
 
 
 document.getElementById(
     "leaderboardBack"
-).addEventListener(
-    "click",
-    () => {
-
+).onclick =
+    () =>
         showScreen(
             "lobby"
         );
-    }
-);
+
+
+document.getElementById(
+    "saveNameBtn"
+).onclick =
+    savePlayerName;
 
 
 document.getElementById(
     "shopBtn"
-).addEventListener(
-    "click",
+).onclick =
     () => {
 
         renderShop();
@@ -7583,25 +6976,21 @@ document.getElementById(
         showScreen(
             "shop"
         );
-    }
-);
+    };
 
 
 document.getElementById(
     "shopBack"
-).addEventListener(
-    "click",
+).onclick =
     () =>
         showScreen(
             "lobby"
-        )
-);
+        );
 
 
 document.getElementById(
     "inventoryBtn"
-).addEventListener(
-    "click",
+).onclick =
     () => {
 
         renderInventory();
@@ -7609,25 +6998,21 @@ document.getElementById(
         showScreen(
             "inventory"
         );
-    }
-);
+    };
 
 
 document.getElementById(
     "inventoryBack"
-).addEventListener(
-    "click",
+).onclick =
     () =>
         showScreen(
             "lobby"
-        )
-);
+        );
 
 
 document.getElementById(
     "missionsBtn"
-).addEventListener(
-    "click",
+).onclick =
     () => {
 
         renderMissions();
@@ -7635,33 +7020,27 @@ document.getElementById(
         showScreen(
             "missions"
         );
-    }
-);
+    };
 
 
 document.getElementById(
     "missionsBack"
-).addEventListener(
-    "click",
+).onclick =
     () =>
         showScreen(
             "lobby"
-        )
-);
+        );
 
 
 document.getElementById(
     "musicToggleBtn"
-).addEventListener(
-    "click",
+).onclick =
     () => {
 
         state.musicEnabled =
             !state.musicEnabled;
 
-
         saveState();
-
 
         if(
             state.musicEnabled
@@ -7676,50 +7055,38 @@ document.getElementById(
             stopMusic();
         }
 
-
         updateLobby();
-    }
-);
+    };
 
 
 document.getElementById(
     "pauseBtn"
-).addEventListener(
-    "click",
-    togglePause
-);
+).onclick =
+    togglePause;
 
 
 document.getElementById(
     "resumeBtn"
-).addEventListener(
-    "click",
-    togglePause
-);
+).onclick =
+    togglePause;
 
 
 document.getElementById(
     "pauseLobbyBtn"
-).addEventListener(
-    "click",
-    returnToLobby
-);
+).onclick =
+    returnToLobby;
 
 
 document.getElementById(
     "retryBtn"
-).addEventListener(
-    "click",
-    startGame
-);
+).onclick =
+    startGame;
 
 
 document.getElementById(
     "returnLobbyBtn"
-).addEventListener(
-    "click",
-    returnToLobby
-);
+).onclick =
+    returnToLobby;
 
 
 /* =========================================================
@@ -7753,7 +7120,6 @@ window.addEventListener(
             flap();
         }
 
-
         if(
             event.code ===
             "Escape" ||
@@ -7768,47 +7134,64 @@ window.addEventListener(
 
 
 /* =========================================================
-   INIT
+   START APP
 ========================================================= */
 
-updateLobby();
+function startApp(){
 
-renderShop();
+    const maintenance =
+        document.getElementById(
+            "maintenance"
+        );
 
-renderInventory();
+    if(
+        maintenance
+    ){
 
-renderMissions();
+        maintenance.style.display =
+            "none";
+    }
 
-loadPlayerName();
-
-startLeaderboardListener();
-
-
-/*
-   Nach Ende der 2-Minuten-Wartung
-   wird die Lobby angezeigt.
-*/
-
-if(
-    maintenanceFinished
-){
+    canvas.style.display =
+        "none";
 
     document.getElementById(
-        "maintenance"
+        "gameHud"
     ).style.display =
         "none";
+
+    hideScreens();
 
     showScreen(
         "lobby"
     );
-}else{
 
-    /*
-       Während Wartung:
-       keine andere Seite.
-    */
+    updateLobby();
+    renderShop();
+    renderInventory();
+    renderMissions();
+    loadPlayerName();
+}
 
-    hideScreens();
+
+/*
+   Firebase darf NICHT verhindern,
+   dass das Spiel startet.
+*/
+
+setupFirebase();
+
+
+/*
+   Falls die Wartung bereits vorbei ist,
+   sofort Lobby starten.
+*/
+
+if(
+    alreadyFinished
+){
+
+    startApp();
 }
 
 </script>
