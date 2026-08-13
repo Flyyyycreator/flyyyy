@@ -5768,72 +5768,91 @@ function drawJeszx(
     c,
     r
 ){
-    c.fillStyle = "#a67c52";
-    c.beginPath();
-    c.ellipse(0, 0, r * 1.1, r * 0.8, 0, 0, Math.PI * 2);
-    c.fill();
-
-    c.fillStyle = "#8c6745";
-    c.beginPath();
-    c.ellipse(-r * 0.8, -r * 0.15, r * 0.42, r * 0.26, 0.4, 0, Math.PI * 2);
-    c.fill();
-
     c.fillStyle = "#b98d63";
     c.beginPath();
-    c.ellipse(r * 0.8, -r * 0.15, r * 0.42, r * 0.26, -0.4, 0, Math.PI * 2);
+    c.ellipse(0, 0, r * 1.18, r * 0.82, 0, 0, Math.PI * 2);
+    c.fill();
+
+    c.fillStyle = "#8f673f";
+    c.beginPath();
+    c.moveTo(-r * 1.18, -r * 0.25);
+    c.lineTo(-r * 1.72, -r * 0.8);
+    c.lineTo(-r * 1.05, -r * 1.05);
+    c.closePath();
+    c.fill();
+
+    c.beginPath();
+    c.moveTo(r * 1.18, -r * 0.25);
+    c.lineTo(r * 1.72, -r * 0.8);
+    c.lineTo(r * 1.05, -r * 1.05);
+    c.closePath();
     c.fill();
 
     c.fillStyle = "#fff";
     c.beginPath();
-    c.arc(r * 0.3, -r * 0.18, r * 0.17, 0, Math.PI * 2);
+    c.arc(r * 0.32, -r * 0.18, r * 0.18, 0, Math.PI * 2);
     c.fill();
 
     c.fillStyle = "#17204a";
     c.beginPath();
-    c.arc(r * 0.33, -r * 0.18, r * 0.065, 0, Math.PI * 2);
+    c.arc(r * 0.35, -r * 0.18, r * 0.07, 0, Math.PI * 2);
     c.fill();
 
-    c.fillStyle = "#d9b586";
+    c.fillStyle = "#7c5535";
+    c.fillRect(-r * 0.95, r * 0.2, r * 0.22, r * 1.05);
+    c.fillRect(r * 0.72, r * 0.2, r * 0.22, r * 1.05);
+
+    c.fillStyle = "#8d5c38";
     c.beginPath();
-    c.moveTo(-r * 0.95, -r * 0.3);
-    c.lineTo(-r * 1.45, -r * 0.7);
-    c.lineTo(-r * 0.9, -r * 0.9);
+    c.moveTo(-r * 0.9, r * 1.0);
+    c.lineTo(-r * 0.35, r * 1.45);
+    c.lineTo(-r * 0.1, r * 1.0);
     c.closePath();
     c.fill();
 
     c.beginPath();
-    c.moveTo(r * 0.95, -r * 0.3);
-    c.lineTo(r * 1.45, -r * 0.7);
-    c.lineTo(r * 0.9, -r * 0.9);
+    c.moveTo(r * 0.55, r * 1.0);
+    c.lineTo(r * 0.1, r * 1.45);
+    c.lineTo(r * 0.35, r * 1.0);
     c.closePath();
     c.fill();
 
-    c.fillStyle = "#6d4a2a";
-    c.fillRect(-r * 0.95, r * 0.25, r * 0.2, r * 0.9);
-    c.fillRect(r * 0.75, r * 0.25, r * 0.2, r * 0.9);
-
-    c.fillStyle = "#7a5636";
+    c.fillStyle = "#5d3d2a";
     c.beginPath();
-    c.moveTo(-r * 0.8, r * 0.9);
-    c.lineTo(-r * 0.3, r * 1.35);
-    c.lineTo(-r * 0.05, r * 0.9);
+    c.moveTo(-r * 1.35, -r * 0.85);
+    c.lineTo(-r * 1.62, -r * 1.35);
+    c.lineTo(-r * 1.1, -r * 1.15);
     c.closePath();
     c.fill();
 
     c.beginPath();
-    c.moveTo(r * 0.5, r * 0.9);
-    c.lineTo(r * 0.1, r * 1.35);
-    c.lineTo(r * 0.35, r * 0.9);
+    c.moveTo(r * 1.35, -r * 0.85);
+    c.lineTo(r * 1.62, -r * 1.35);
+    c.lineTo(r * 1.1, -r * 1.15);
     c.closePath();
     c.fill();
 
-    c.fillStyle = "#b98d63";
+    c.fillStyle = "#e6c08c";
     c.beginPath();
-    c.ellipse(-r * 0.35, -r * 0.95, r * 0.4, r * 0.2, 0.1, 0, Math.PI * 2);
+    c.arc(-r * 0.48, -r * 0.65, r * 0.16, 0, Math.PI * 2);
+    c.arc(r * 0.48, -r * 0.65, r * 0.16, 0, Math.PI * 2);
     c.fill();
 
+    c.strokeStyle = "#5d3d2a";
+    c.lineWidth = 4;
     c.beginPath();
-    c.ellipse(r * 0.35, -r * 0.95, r * 0.4, r * 0.2, -0.1, 0, Math.PI * 2);
+    c.moveTo(-r * 0.6, -r * 0.2);
+    c.lineTo(-r * 0.9, r * 0.15);
+    c.moveTo(r * 0.6, -r * 0.2);
+    c.lineTo(r * 0.9, r * 0.15);
+    c.stroke();
+
+    c.fillStyle = "#c98d4d";
+    c.beginPath();
+    c.moveTo(-r * 0.2, -r * 0.35);
+    c.lineTo(0, -r * 0.9);
+    c.lineTo(r * 0.2, -r * 0.35);
+    c.closePath();
     c.fill();
 }
 
