@@ -1736,7 +1736,7 @@ const skins = [
 
     {
         id:"jeszx",
-        name:"Jeszx",
+        name:"Esel",
         price:1000,
         type:"jeszx"
     }
@@ -5768,91 +5768,159 @@ function drawJeszx(
     c,
     r
 ){
-    c.fillStyle = "#b98d63";
+    // ESEL
+    // Körper
+    c.fillStyle = "#9a9a9a";
     c.beginPath();
-    c.ellipse(0, 0, r * 1.18, r * 0.82, 0, 0, Math.PI * 2);
+    c.ellipse(
+        -r * .05,
+        r * .08,
+        r * 1.05,
+        r * .68,
+        0,
+        0,
+        Math.PI * 2
+    );
     c.fill();
 
-    c.fillStyle = "#8f673f";
+    // Hals
+    c.fillStyle = "#a6a6a6";
     c.beginPath();
-    c.moveTo(-r * 1.18, -r * 0.25);
-    c.lineTo(-r * 1.72, -r * 0.8);
-    c.lineTo(-r * 1.05, -r * 1.05);
+    c.moveTo(-r * .65, -r * .35);
+    c.quadraticCurveTo(-r * .85, -r * 1.05, -r * .25, -r * 1.05);
+    c.lineTo(r * .25, -r * .45);
+    c.closePath();
+    c.fill();
+
+    // Kopf
+    c.fillStyle = "#ababab";
+    c.beginPath();
+    c.ellipse(
+        r * .45,
+        -r * .65,
+        r * .72,
+        r * .58,
+        0,
+        0,
+        Math.PI * 2
+    );
+    c.fill();
+
+    // Große Eselohren
+    c.fillStyle = "#8b8b8b";
+    c.beginPath();
+    c.moveTo(r * .05, -r * 1.0);
+    c.lineTo(-r * .05, -r * 1.85);
+    c.quadraticCurveTo(r * .15, -r * 2.05, r * .38, -r * 1.1);
     c.closePath();
     c.fill();
 
     c.beginPath();
-    c.moveTo(r * 1.18, -r * 0.25);
-    c.lineTo(r * 1.72, -r * 0.8);
-    c.lineTo(r * 1.05, -r * 1.05);
+    c.moveTo(r * .62, -r * 1.05);
+    c.lineTo(r * .78, -r * 1.88);
+    c.quadraticCurveTo(r * 1.0, -r * 2.0, r * 1.02, -r * .88);
     c.closePath();
     c.fill();
 
+    // Innere Ohren
+    c.fillStyle = "#d0a6a6";
+    c.beginPath();
+    c.moveTo(r * .12, -r * 1.08);
+    c.lineTo(r * .10, -r * 1.65);
+    c.lineTo(r * .3, -r * 1.12);
+    c.closePath();
+    c.fill();
+
+    c.beginPath();
+    c.moveTo(r * .72, -r * 1.12);
+    c.lineTo(r * .8, -r * 1.65);
+    c.lineTo(r * .92, -r * 1.0);
+    c.closePath();
+    c.fill();
+
+    // Schnauze
+    c.fillStyle = "#c0c0c0";
+    c.beginPath();
+    c.ellipse(
+        r * 1.0,
+        -r * .48,
+        r * .43,
+        r * .3,
+        0,
+        0,
+        Math.PI * 2
+    );
+    c.fill();
+
+    // Nase
+    c.fillStyle = "#555";
+    c.beginPath();
+    c.arc(r * 1.12, -r * .55, r * .075, 0, Math.PI * 2);
+    c.arc(r * .88, -r * .55, r * .075, 0, Math.PI * 2);
+    c.fill();
+
+    // Auge
     c.fillStyle = "#fff";
     c.beginPath();
-    c.arc(r * 0.32, -r * 0.18, r * 0.18, 0, Math.PI * 2);
+    c.arc(r * .68, -r * .78, r * .19, 0, Math.PI * 2);
     c.fill();
 
     c.fillStyle = "#17204a";
     c.beginPath();
-    c.arc(r * 0.35, -r * 0.18, r * 0.07, 0, Math.PI * 2);
+    c.arc(r * .72, -r * .78, r * .075, 0, Math.PI * 2);
     c.fill();
 
-    c.fillStyle = "#7c5535";
-    c.fillRect(-r * 0.95, r * 0.2, r * 0.22, r * 1.05);
-    c.fillRect(r * 0.72, r * 0.2, r * 0.22, r * 1.05);
-
-    c.fillStyle = "#8d5c38";
+    // Mähne
+    c.fillStyle = "#666";
     c.beginPath();
-    c.moveTo(-r * 0.9, r * 1.0);
-    c.lineTo(-r * 0.35, r * 1.45);
-    c.lineTo(-r * 0.1, r * 1.0);
+    c.moveTo(-r * .58, -r * .52);
+    c.lineTo(-r * .78, -r * .85);
+    c.lineTo(-r * .62, -r * .8);
+    c.lineTo(-r * .75, -r * 1.08);
+    c.lineTo(-r * .48, -r * .9);
+    c.lineTo(-r * .38, -r * .62);
     c.closePath();
     c.fill();
 
-    c.beginPath();
-    c.moveTo(r * 0.55, r * 1.0);
-    c.lineTo(r * 0.1, r * 1.45);
-    c.lineTo(r * 0.35, r * 1.0);
-    c.closePath();
-    c.fill();
+    // Beine
+    c.fillStyle = "#858585";
+    c.fillRect(-r * .62, r * .45, r * .22, r * .9);
+    c.fillRect(-r * .08, r * .5, r * .22, r * .85);
+    c.fillRect(r * .48, r * .42, r * .22, r * .9);
+    c.fillRect(r * .78, r * .35, r * .2, r * .85);
 
-    c.fillStyle = "#5d3d2a";
-    c.beginPath();
-    c.moveTo(-r * 1.35, -r * 0.85);
-    c.lineTo(-r * 1.62, -r * 1.35);
-    c.lineTo(-r * 1.1, -r * 1.15);
-    c.closePath();
-    c.fill();
+    // Hufe
+    c.fillStyle = "#4a4a4a";
+    c.fillRect(-r * .66, r * 1.25, r * .3, r * .16);
+    c.fillRect(-r * .12, r * 1.2, r * .3, r * .16);
+    c.fillRect(r * .44, r * 1.2, r * .3, r * .16);
+    c.fillRect(r * .74, r * 1.1, r * .28, r * .16);
 
+    // Schwanz
+    c.strokeStyle = "#666";
+    c.lineWidth = r * .12;
     c.beginPath();
-    c.moveTo(r * 1.35, -r * 0.85);
-    c.lineTo(r * 1.62, -r * 1.35);
-    c.lineTo(r * 1.1, -r * 1.15);
-    c.closePath();
-    c.fill();
-
-    c.fillStyle = "#e6c08c";
-    c.beginPath();
-    c.arc(-r * 0.48, -r * 0.65, r * 0.16, 0, Math.PI * 2);
-    c.arc(r * 0.48, -r * 0.65, r * 0.16, 0, Math.PI * 2);
-    c.fill();
-
-    c.strokeStyle = "#5d3d2a";
-    c.lineWidth = 4;
-    c.beginPath();
-    c.moveTo(-r * 0.6, -r * 0.2);
-    c.lineTo(-r * 0.9, r * 0.15);
-    c.moveTo(r * 0.6, -r * 0.2);
-    c.lineTo(r * 0.9, r * 0.15);
+    c.moveTo(-r * 1.0, r * .05);
+    c.quadraticCurveTo(-r * 1.55, r * .15, -r * 1.45, r * .7);
     c.stroke();
 
-    c.fillStyle = "#c98d4d";
+    c.fillStyle = "#555";
     c.beginPath();
-    c.moveTo(-r * 0.2, -r * 0.35);
-    c.lineTo(0, -r * 0.9);
-    c.lineTo(r * 0.2, -r * 0.35);
-    c.closePath();
+    c.arc(-r * 1.43, r * .72, r * .22, 0, Math.PI * 2);
+    c.fill();
+
+    // Kleine Flügel, damit der Esel weiterhin zum Flugspiel passt
+    c.fillStyle = "#777";
+    c.beginPath();
+    c.ellipse(
+        -r * .35,
+        r * .1,
+        r * .65,
+        r * .25,
+        -.35,
+        0,
+        Math.PI * 2
+    );
     c.fill();
 }
 
