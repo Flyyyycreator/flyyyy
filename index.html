@@ -4,20 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta name="theme-color" content="#0d1430">
-<title>FLYYYY 1.1</title>
+<title>FLYYYY</title>
 
 <style>
 :root{
     --bg:#0d1430;
-    --panel:#121a3d;
     --text:#fff;
     --muted:#b9c5ef;
-    --accent:#ffd447;
-    --blue:#5ee7ff;
-    --green:#6df5a3;
 }
 
-*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+*{
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
 
 html,body{
     width:100%;
@@ -26,23 +25,25 @@ html,body{
     overflow:hidden;
     font-family:Arial,Helvetica,sans-serif;
     background:var(--bg);
-    color:white
+    color:#fff;
 }
 
 body{
     display:flex;
     justify-content:center;
-    align-items:center
+    align-items:center;
 }
 
-button{font:inherit}
+button{
+    font:inherit;
+}
 
 #app{
     position:relative;
     width:100vw;
     height:100vh;
     overflow:hidden;
-    background:#10162f
+    background:#10162f;
 }
 
 #gameCanvas{
@@ -53,7 +54,7 @@ button{font:inherit}
     display:none;
     z-index:1;
     cursor:pointer;
-    touch-action:none
+    touch-action:none;
 }
 
 .screen{
@@ -63,20 +64,31 @@ button{font:inherit}
     display:none;
     justify-content:center;
     align-items:center;
-    padding:18px
+    padding:18px;
 }
 
-.screen.active{display:flex}
+.screen.active{
+    display:flex;
+}
 
 .menu{
     width:min(980px,94vw);
     max-height:92vh;
     overflow:auto;
-    background:linear-gradient(180deg,rgba(15,23,55,.97),rgba(18,28,67,.97));
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(15,23,55,.97),
+            rgba(18,28,67,.97)
+        );
+
     border:1px solid rgba(255,255,255,.14);
     border-radius:28px;
     padding:26px;
-    box-shadow:0 20px 60px rgba(0,0,0,.4)
+
+    box-shadow:0 20px 60px rgba(0,0,0,.4);
+    backdrop-filter:blur(14px);
 }
 
 .title{
@@ -85,14 +97,17 @@ button{font:inherit}
     line-height:.9;
     font-weight:1000;
     letter-spacing:.08em;
-    text-shadow:0 8px 0 rgba(0,0,0,.15),0 0 35px rgba(94,231,255,.3)
+
+    text-shadow:
+        0 8px 0 rgba(0,0,0,.15),
+        0 0 35px rgba(94,231,255,.3);
 }
 
 .subtitle{
     text-align:center;
     color:var(--muted);
     margin:13px 0 22px;
-    font-size:16px
+    font-size:16px;
 }
 
 .version{
@@ -100,11 +115,15 @@ button{font:inherit}
     display:block;
     width:max-content;
     margin:0 auto 15px;
+
     padding:8px 14px;
+
     border-radius:999px;
+
     background:rgba(94,231,255,.12);
     border:1px solid rgba(94,231,255,.25);
-    font-weight:900
+
+    font-weight:900;
 }
 
 .credits{
@@ -112,49 +131,91 @@ button{font:inherit}
     justify-content:center;
     flex-wrap:wrap;
     gap:12px;
-    margin-bottom:22px
+    margin-bottom:22px;
 }
 
 .badge{
     padding:10px 16px;
     border-radius:999px;
+
     background:rgba(255,212,71,.12);
+
     border:1px solid rgba(255,212,71,.3);
-    font-weight:900
+
+    font-weight:900;
 }
 
-.button-grid{display:grid;gap:12px}
+.button-grid{
+    display:grid;
+    gap:12px;
+}
 
 .btn{
     border:0;
     border-radius:17px;
     padding:15px 18px;
+
     cursor:pointer;
     font-weight:900;
     color:#111;
-    background:linear-gradient(180deg,#ffe570,#ffc82c);
-    box-shadow:0 7px 0 #c99415,0 12px 22px rgba(0,0,0,.18);
-    transition:.12s
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffe570,
+            #ffc82c
+        );
+
+    box-shadow:
+        0 7px 0 #c99415,
+        0 12px 22px rgba(0,0,0,.18);
+
+    transition:.12s;
 }
 
-.btn:hover{filter:brightness(1.06)}
-.btn:active{transform:translateY(5px);box-shadow:0 2px 0 #c99415}
+.btn:hover{
+    filter:brightness(1.06);
+}
+
+.btn:active{
+    transform:translateY(5px);
+    box-shadow:0 2px 0 #c99415;
+}
 
 .btn.blue{
-    background:linear-gradient(180deg,#6ceeff,#39c9ea);
-    box-shadow:0 7px 0 #1b8aa7
+    background:
+        linear-gradient(
+            180deg,
+            #6ceeff,
+            #39c9ea
+        );
+
+    box-shadow:
+        0 7px 0 #1b8aa7;
 }
 
 .btn.dark{
     color:white;
-    background:rgba(255,255,255,.08);
+
+    background:
+        rgba(255,255,255,.08);
+
     box-shadow:none;
-    border:1px solid rgba(255,255,255,.13)
+
+    border:
+        1px solid rgba(255,255,255,.13);
 }
 
 .btn.green{
-    background:linear-gradient(180deg,#86ffbd,#4de89b);
-    box-shadow:0 7px 0 #239a60
+    background:
+        linear-gradient(
+            180deg,
+            #86ffbd,
+            #4de89b
+        );
+
+    box-shadow:
+        0 7px 0 #239a60;
 }
 
 .topbar{
@@ -162,14 +223,17 @@ button{font:inherit}
     justify-content:space-between;
     align-items:center;
     gap:12px;
-    margin-bottom:18px
+    margin-bottom:18px;
 }
 
-.topbar h2{margin:0;font-size:30px}
+.topbar h2{
+    margin:0;
+    font-size:30px;
+}
 
 .tiny{
     color:var(--muted);
-    font-size:13px
+    font-size:13px;
 }
 
 .tabs{
@@ -177,144 +241,232 @@ button{font:inherit}
     gap:8px;
     overflow:auto;
     margin-bottom:15px;
-    padding-bottom:6px
+    padding-bottom:6px;
 }
 
 .tab{
     white-space:nowrap;
-    border:1px solid rgba(255,255,255,.12);
-    background:rgba(255,255,255,.06);
+
+    border:
+        1px solid rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.06);
+
     color:#fff;
+
     border-radius:999px;
+
     padding:10px 15px;
+
     font-weight:900;
-    cursor:pointer
+    cursor:pointer;
 }
 
 .tab.active{
     background:#fff;
-    color:#17204a
+    color:#17204a;
 }
 
 .cards{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-    gap:14px
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(180px,1fr));
+
+    gap:14px;
 }
 
 .card{
-    background:linear-gradient(180deg,rgba(255,255,255,.095),rgba(255,255,255,.04));
-    border:1px solid rgba(255,255,255,.12);
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.095),
+            rgba(255,255,255,.04)
+        );
+
+    border:
+        1px solid rgba(255,255,255,.12);
+
     border-radius:22px;
+
     padding:14px;
+
     min-height:220px;
+
     display:flex;
     flex-direction:column;
-    gap:10px
+    gap:10px;
 }
 
-.card h3{margin:0;font-size:18px}
+.card h3{
+    margin:0;
+    font-size:18px;
+}
 
+/* Vorschauen werden nicht verzerrt */
 .preview{
     width:100%;
     height:145px;
+
     border-radius:17px;
+
     overflow:hidden;
-    background:linear-gradient(135deg,rgba(255,255,255,.11),rgba(255,255,255,.035));
-    border:1px solid rgba(255,255,255,.08);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.11),
+            rgba(255,255,255,.035)
+        );
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
     display:flex;
     align-items:center;
     justify-content:center;
-    padding:10px
+
+    padding:10px;
 }
 
 .preview canvas{
     display:block;
     width:100%;
     height:100%;
-    object-fit:contain
+    object-fit:contain;
 }
 
 .price{
     color:#ffe27b;
     font-size:13px;
-    font-weight:900
+    font-weight:900;
 }
 
 .smallbtn{
     margin-top:auto;
+
     border:0;
     border-radius:12px;
+
     padding:10px 12px;
+
     cursor:pointer;
+
     font-weight:950;
-    background:linear-gradient(180deg,#fff,#e9efff);
-    color:#17204a
+
+    background:
+        linear-gradient(
+            180deg,
+            #fff,
+            #e9efff
+        );
+
+    color:#17204a;
 }
 
 .smallbtn.blue{
-    background:linear-gradient(180deg,#6ceeff,#39c9ea)
+    background:
+        linear-gradient(
+            180deg,
+            #6ceeff,
+            #39c9ea
+        );
 }
 
 .smallbtn.selected{
-    background:linear-gradient(180deg,#83ffc0,#4de89b);
-    color:#0b3423
+    background:
+        linear-gradient(
+            180deg,
+            #83ffc0,
+            #4de89b
+        );
+
+    color:#0b3423;
 }
 
 .smallbtn:disabled{
     opacity:.55;
-    cursor:not-allowed
+    cursor:not-allowed;
 }
 
 .soundPreview{
     height:145px;
+
     display:flex;
     justify-content:center;
     align-items:center;
+
     flex-direction:column;
-    gap:8px
+
+    gap:8px;
 }
 
-.soundIcon{font-size:44px}
-.musicText{font-size:13px;color:var(--muted)}
+.soundIcon{
+    font-size:44px;
+}
+
+.musicText{
+    font-size:13px;
+    color:var(--muted);
+}
 
 .missionList{
     display:grid;
     gap:10px;
-    margin-top:18px
+    margin-top:18px;
 }
 
 .mission{
     padding:14px;
+
     border-radius:16px;
-    background:rgba(255,255,255,.06);
-    border:1px solid rgba(255,255,255,.1)
+
+    background:
+        rgba(255,255,255,.06);
+
+    border:
+        1px solid rgba(255,255,255,.1);
 }
 
 .mission.done{
-    background:rgba(109,245,163,.1);
-    border-color:rgba(109,245,163,.25)
+    background:
+        rgba(109,245,163,.1);
+
+    border-color:
+        rgba(109,245,163,.25);
 }
 
 .missionTop{
     display:flex;
     justify-content:space-between;
-    gap:10px
+    gap:10px;
 }
 
 .missionProgress{
     height:8px;
     margin-top:9px;
+
     border-radius:999px;
+
     overflow:hidden;
-    background:rgba(255,255,255,.08)
+
+    background:
+        rgba(255,255,255,.08);
 }
 
 .missionFill{
     height:100%;
     width:0;
+
     border-radius:999px;
-    background:linear-gradient(90deg,#5ee7ff,#6df5a3)
+
+    background:
+        linear-gradient(
+            90deg,
+            #5ee7ff,
+            #6df5a3
+        );
 }
 
 #gameHud{
@@ -322,81 +474,137 @@ button{font:inherit}
     inset:0;
     z-index:30;
     display:none;
-    pointer-events:none
+    pointer-events:none;
 }
 
-.hud-left,.hud-right{
+.hud-left,
+.hud-right{
     position:absolute;
     top:15px;
+
     display:flex;
     gap:10px;
+
     align-items:center;
-    flex-wrap:wrap
+    flex-wrap:wrap;
 }
 
-.hud-left{left:15px}
-.hud-right{right:15px}
+.hud-left{
+    left:15px;
+}
+
+.hud-right{
+    right:15px;
+}
 
 .hud-pill{
-    background:rgba(12,19,46,.72);
-    border:1px solid rgba(255,255,255,.15);
+    background:
+        rgba(12,19,46,.72);
+
+    border:
+        1px solid rgba(255,255,255,.15);
+
     padding:10px 14px;
+
     border-radius:999px;
+
     font-weight:900;
-    backdrop-filter:blur(8px)
+
+    backdrop-filter:blur(8px);
 }
 
 .pause-btn{
     pointer-events:auto;
-    border:1px solid rgba(255,255,255,.15);
+
+    border:
+        1px solid rgba(255,255,255,.15);
+
     color:white;
-    background:rgba(12,19,46,.72);
+
+    background:
+        rgba(12,19,46,.72);
+
     border-radius:999px;
+
     padding:10px 14px;
+
     font-weight:900;
-    cursor:pointer
+
+    cursor:pointer;
 }
 
 .tip{
     position:absolute;
+
     left:50%;
     bottom:16px;
-    transform:translateX(-50%);
-    background:rgba(12,19,46,.6);
+
+    transform:
+        translateX(-50%);
+
+    background:
+        rgba(12,19,46,.6);
+
     padding:9px 14px;
+
     border-radius:999px;
-    font-size:13px
+
+    font-size:13px;
 }
 
 .overlay{
     position:absolute;
     inset:0;
     z-index:100;
+
     display:none;
+
     justify-content:center;
     align-items:center;
-    background:rgba(5,8,22,.55);
-    backdrop-filter:blur(6px)
+
+    background:
+        rgba(5,8,22,.55);
+
+    backdrop-filter:blur(6px);
 }
 
-.overlay.active{display:flex}
+.overlay.active{
+    display:flex;
+}
 
 .dialog{
     width:min(560px,92vw);
-    background:linear-gradient(180deg,#101837,#18234d);
-    border:1px solid rgba(255,255,255,.15);
+
+    background:
+        linear-gradient(
+            180deg,
+            #101837,
+            #18234d
+        );
+
+    border:
+        1px solid rgba(255,255,255,.15);
+
     border-radius:28px;
+
     padding:28px;
+
     text-align:center;
-    box-shadow:0 20px 60px rgba(0,0,0,.45)
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.45);
 }
 
 .dialog h2{
     margin:0 0 10px;
-    font-size:clamp(40px,8vw,70px)
+
+    font-size:
+        clamp(40px,8vw,70px);
 }
 
-.dialog p{color:var(--muted)}
+.dialog p{
+    color:var(--muted);
+}
 
 .stats{
     display:flex;
@@ -404,100 +612,38 @@ button{font:inherit}
     align-items:center;
     gap:25px;
     flex-wrap:wrap;
-    margin:20px 0
+    margin:20px 0;
 }
 
 .stat strong{
     display:block;
-    font-size:28px
-}
-
-/* Wartung */
-#maintenance{
-    position:absolute;
-    inset:0;
-    z-index:99999;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:linear-gradient(180deg,#090f29,#111a3f)
-}
-
-.maintenanceBox{
-    width:min(780px,94vw);
-    padding:36px 26px;
-    text-align:center;
-    border-radius:30px;
-    background:linear-gradient(180deg,rgba(21,30,70,.97),rgba(13,20,48,.97));
-    border:1px solid rgba(255,255,255,.14);
-    box-shadow:0 25px 80px rgba(0,0,0,.5)
-}
-
-.maintenanceIcon{font-size:64px}
-.maintenanceTitle{
-    margin:10px 0 0;
-    font-size:clamp(42px,8vw,82px);
-    line-height:.95;
-    font-weight:1000
-}
-
-.maintenanceText{
-    color:var(--muted);
-    line-height:1.5;
-    font-size:17px;
-    max-width:620px;
-    margin:18px auto 25px
-}
-
-.countdown{
-    display:flex;
-    justify-content:center;
-    gap:10px
-}
-
-.timeBox{
-    min-width:85px;
-    padding:15px 10px;
-    border-radius:17px;
-    background:rgba(255,255,255,.07);
-    border:1px solid rgba(255,255,255,.1)
-}
-
-.timeNum{
-    display:block;
-    font-size:38px;
-    font-weight:1000
-}
-
-.timeLabel{
-    font-size:11px;
-    color:var(--muted);
-    text-transform:uppercase
-}
-
-.progressBar{
-    width:100%;
-    height:8px;
-    margin-top:24px;
-    background:rgba(255,255,255,.08);
-    border-radius:999px;
-    overflow:hidden
-}
-
-.progressFill{
-    width:0;
-    height:100%;
-    background:linear-gradient(90deg,#5ee7ff,#6df5a3)
+    font-size:28px;
 }
 
 @media(max-width:600px){
-    .menu{padding:20px;border-radius:22px}
-    .title{font-size:58px}
-    .preview{height:125px}
-    .hud-pill{padding:8px 10px;font-size:13px}
-    .tip{font-size:12px;bottom:10px}
-    .timeBox{min-width:72px;padding:12px 7px}
-    .timeNum{font-size:30px}
+
+    .menu{
+        padding:20px;
+        border-radius:22px;
+    }
+
+    .title{
+        font-size:58px;
+    }
+
+    .preview{
+        height:125px;
+    }
+
+    .hud-pill{
+        padding:8px 10px;
+        font-size:13px;
+    }
+
+    .tip{
+        font-size:12px;
+        bottom:10px;
+    }
 }
 </style>
 </head>
@@ -506,72 +652,39 @@ button{font:inherit}
 
 <div id="app">
 
-<!-- =====================================================
-     WARTUNG
-===================================================== -->
-
-<div id="maintenance">
-    <div class="maintenanceBox">
-        <div class="maintenanceIcon">🛠️</div>
-
-        <h1 class="maintenanceTitle">
-            WARTUNGSARBEITEN
-        </h1>
-
-        <p class="maintenanceText">
-            FLYYYY Update 1.1 wird vorbereitet.
-            <br>
-            Wir fügen neue Coins, Missionen und besondere Hindernisse hinzu.
-            <br><br>
-            Danke für eure Geduld! ❤️
-        </p>
-
-        <div class="countdown">
-            <div class="timeBox">
-                <span class="timeNum" id="mHours">02</span>
-                <span class="timeLabel">Stunden</span>
-            </div>
-            <div class="timeBox">
-                <span class="timeNum" id="mMinutes">00</span>
-                <span class="timeLabel">Minuten</span>
-            </div>
-            <div class="timeBox">
-                <span class="timeNum" id="mSeconds">00</span>
-                <span class="timeLabel">Sekunden</span>
-            </div>
-        </div>
-
-        <div class="progressBar">
-            <div class="progressFill" id="mProgress"></div>
-        </div>
-    </div>
-</div>
-
 <canvas id="gameCanvas"></canvas>
+
 
 <!-- =====================================================
      LOBBY
 ===================================================== -->
 
-<div id="lobby" class="screen">
+<div id="lobby" class="screen active">
 
 <div class="menu">
 
-<div class="title">FLYYYY</div>
+<div class="title">
+FLYYYY
+</div>
 
-<div class="version">🚀 UPDATE 1.1</div>
+<div class="version">
+🚀 UPDATE 1.1
+</div>
 
 <div class="subtitle">
 Fly weiter. Sammle Coins. Erledige Missionen. Schalte neue Welten frei.
 </div>
 
 <div class="credits">
-    <div class="badge">
-        🪙 <span id="lobbyCoins">0</span> Coins
-    </div>
-    <div class="badge">
-        🏆 Rekord: <span id="lobbyBest">0</span>
-    </div>
+
+<div class="badge">
+🪙 <span id="lobbyCoins">0</span> Coins
+</div>
+
+<div class="badge">
+🏆 Rekord: <span id="lobbyBest">0</span>
+</div>
+
 </div>
 
 <div class="button-grid">
@@ -598,8 +711,11 @@ START
 
 </div>
 
-<div class="tiny" style="text-align:center;margin-top:15px">
-Alle 5 Hindernisse = +10 Coins • Neue Coin-Items im Level
+<div class="tiny"
+style="text-align:center;margin-top:15px">
+
+Alle 5 Hindernisse = +10 Coins • Neue Bonus-Coins im Level
+
 </div>
 
 </div>
@@ -617,10 +733,13 @@ Alle 5 Hindernisse = +10 Coins • Neue Coin-Items im Level
 <div class="topbar">
 
 <div>
+
 <h2>🛒 Shop</h2>
+
 <div class="tiny">
 🪙 <span id="shopCoins">0</span> Coins
 </div>
+
 </div>
 
 <button class="btn dark" id="shopBack">
@@ -629,9 +748,13 @@ Alle 5 Hindernisse = +10 Coins • Neue Coin-Items im Level
 
 </div>
 
-<div class="tabs" id="shopTabs"></div>
+<div class="tabs"
+id="shopTabs">
+</div>
 
-<div class="cards" id="shopCards"></div>
+<div class="cards"
+id="shopCards">
+</div>
 
 </div>
 </div>
@@ -648,21 +771,29 @@ Alle 5 Hindernisse = +10 Coins • Neue Coin-Items im Level
 <div class="topbar">
 
 <div>
+
 <h2>🎒 Inventar</h2>
+
 <div class="tiny">
-Deine gekauften Figuren, Welten, Sounds und Musik.
-</div>
+Figur, Welt, Sound und Musik ausrüsten.
 </div>
 
-<button class="btn dark" id="inventoryBack">
+</div>
+
+<button class="btn dark"
+id="inventoryBack">
 ← Zurück
 </button>
 
 </div>
 
-<div class="tabs" id="inventoryTabs"></div>
+<div class="tabs"
+id="inventoryTabs">
+</div>
 
-<div class="cards" id="inventoryCards"></div>
+<div class="cards"
+id="inventoryCards">
+</div>
 
 </div>
 </div>
@@ -679,19 +810,25 @@ Deine gekauften Figuren, Welten, Sounds und Musik.
 <div class="topbar">
 
 <div>
+
 <h2>🎯 Missionen</h2>
+
 <div class="tiny">
 Schließe Aufgaben ab und verdiene Bonus-Coins.
 </div>
+
 </div>
 
-<button class="btn dark" id="missionsBack">
+<button class="btn dark"
+id="missionsBack">
 ← Zurück
 </button>
 
 </div>
 
-<div class="missionList" id="missionList"></div>
+<div class="missionList"
+id="missionList">
+</div>
 
 </div>
 </div>
@@ -729,7 +866,8 @@ Schließe Aufgaben ab und verdiene Bonus-Coins.
 🎵 <span id="musicHud">Classic</span>
 </div>
 
-<button class="pause-btn" id="pauseBtn">
+<button class="pause-btn"
+id="pauseBtn">
 Ⅱ Pause
 </button>
 
@@ -746,21 +884,26 @@ Klicken / Tippen / Leertaste = Fliegen
      PAUSE
 ===================================================== -->
 
-<div id="pauseOverlay" class="overlay">
+<div id="pauseOverlay"
+class="overlay">
 
 <div class="dialog">
 
 <h2>PAUSE</h2>
 
-<p>Dein Lauf wurde angehalten.</p>
+<p>
+Dein Lauf wurde angehalten.
+</p>
 
 <div class="button-grid">
 
-<button class="btn" id="resumeBtn">
+<button class="btn"
+id="resumeBtn">
 ▶ WEITER
 </button>
 
-<button class="btn dark" id="pauseLobbyBtn">
+<button class="btn dark"
+id="pauseLobbyBtn">
 🏠 ZUR LOBBY
 </button>
 
@@ -774,13 +917,16 @@ Klicken / Tippen / Leertaste = Fliegen
      GAME OVER
 ===================================================== -->
 
-<div id="gameOverOverlay" class="overlay">
+<div id="gameOverOverlay"
+class="overlay">
 
 <div class="dialog">
 
 <h2>GAME OVER</h2>
 
-<p>Gut geflogen!</p>
+<p>
+Gut geflogen!
+</p>
 
 <div class="stats">
 
@@ -803,11 +949,13 @@ Klicken / Tippen / Leertaste = Fliegen
 
 <div class="button-grid">
 
-<button class="btn green" id="retryBtn">
+<button class="btn green"
+id="retryBtn">
 🔄 NOCHMAL
 </button>
 
-<button class="btn blue" id="returnLobbyBtn">
+<button class="btn blue"
+id="returnLobbyBtn">
 🏠 ZUR LOBBY
 </button>
 
@@ -818,115 +966,9 @@ Klicken / Tippen / Leertaste = Fliegen
 
 </div>
 
+
 <script>
 "use strict";
-
-/* =========================================================
-   WARTUNG
-========================================================= */
-
-const MAINTENANCE_DURATION = 2 * 60 * 60 * 1000;
-const MAINTENANCE_KEY = "FLYYYY_UPDATE11_START";
-
-function getMaintenanceStart(){
-    const existing =
-        localStorage.getItem(MAINTENANCE_KEY);
-
-    if(existing){
-        return Number(existing);
-    }
-
-    const start = Date.now();
-
-    localStorage.setItem(
-        MAINTENANCE_KEY,
-        String(start)
-    );
-
-    return start;
-}
-
-const maintenanceStart =
-    getMaintenanceStart();
-
-const maintenanceEnd =
-    maintenanceStart +
-    MAINTENANCE_DURATION;
-
-function updateMaintenance(){
-
-    const now = Date.now();
-    const left =
-        Math.max(
-            0,
-            maintenanceEnd - now
-        );
-
-    if(left <= 0){
-
-        document.getElementById(
-            "maintenance"
-        ).style.display = "none";
-
-        startApp();
-
-        return true;
-    }
-
-    const totalSeconds =
-        Math.floor(left / 1000);
-
-    const h =
-        Math.floor(totalSeconds / 3600);
-
-    const m =
-        Math.floor((totalSeconds % 3600) / 60);
-
-    const s =
-        totalSeconds % 60;
-
-    document.getElementById(
-        "mHours"
-    ).textContent =
-        String(h).padStart(2,"0");
-
-    document.getElementById(
-        "mMinutes"
-    ).textContent =
-        String(m).padStart(2,"0");
-
-    document.getElementById(
-        "mSeconds"
-    ).textContent =
-        String(s).padStart(2,"0");
-
-    const progress =
-        Math.min(
-            100,
-            ((now - maintenanceStart) /
-            MAINTENANCE_DURATION) * 100
-        );
-
-    document.getElementById(
-        "mProgress"
-    ).style.width =
-        progress + "%";
-
-    return false;
-}
-
-updateMaintenance();
-
-const maintenanceTimer =
-    setInterval(() => {
-
-        if(updateMaintenance()){
-            clearInterval(
-                maintenanceTimer
-            );
-        }
-
-    },1000);
 
 
 /* =========================================================
@@ -934,38 +976,60 @@ const maintenanceTimer =
 ========================================================= */
 
 const canvas =
-document.getElementById("gameCanvas");
+    document.getElementById("gameCanvas");
 
 const ctx =
-canvas.getContext("2d");
+    canvas.getContext("2d");
 
-let W = innerWidth;
-let H = innerHeight;
+let W =
+    innerWidth;
+
+let H =
+    innerHeight;
 
 let DPR =
-Math.min(devicePixelRatio || 1,2);
-
-function resizeCanvas(){
-
-    W = innerWidth;
-    H = innerHeight;
-
-    DPR =
     Math.min(
         devicePixelRatio || 1,
         2
     );
 
-    canvas.width = W * DPR;
-    canvas.height = H * DPR;
 
-    canvas.style.width = W + "px";
-    canvas.style.height = H + "px";
+function resizeCanvas(){
+
+    W =
+        innerWidth;
+
+    H =
+        innerHeight;
+
+    DPR =
+        Math.min(
+            devicePixelRatio || 1,
+            2
+        );
+
+    canvas.width =
+        W * DPR;
+
+    canvas.height =
+        H * DPR;
+
+    canvas.style.width =
+        W + "px";
+
+    canvas.style.height =
+        H + "px";
 
     ctx.setTransform(
-        DPR,0,0,DPR,0,0
+        DPR,
+        0,
+        0,
+        DPR,
+        0,
+        0
     );
 }
+
 
 addEventListener(
     "resize",
@@ -981,71 +1045,71 @@ resizeCanvas();
 
 const worlds = [
 
-{
-    id:"giza",
-    name:"Gizeh",
-    price:0,
-    sky1:"#f8c875",
-    sky2:"#69c6d8",
-    ground:"#d48b3b",
-    obstacle:"#8f5a33",
-    obstacleName:"🪨 Stein"
-},
+    {
+        id:"giza",
+        name:"Gizeh",
+        price:0,
+        sky1:"#f8c875",
+        sky2:"#69c6d8",
+        ground:"#d48b3b",
+        obstacle:"#8f5a33",
+        obstacleName:"Stein"
+    },
 
-{
-    id:"mountains",
-    name:"Berge",
-    price:50,
-    sky1:"#8ad8ff",
-    sky2:"#5469c8",
-    ground:"#527951",
-    obstacle:"#365c4b",
-    obstacleName:"⛰️ Fels"
-},
+    {
+        id:"mountains",
+        name:"Berge",
+        price:50,
+        sky1:"#8ad8ff",
+        sky2:"#5469c8",
+        ground:"#527951",
+        obstacle:"#365c4b",
+        obstacleName:"Fels"
+    },
 
-{
-    id:"ocean",
-    name:"Unterwasser",
-    price:100,
-    sky1:"#29d6e5",
-    sky2:"#174b9e",
-    ground:"#157c86",
-    obstacle:"#17566e",
-    obstacleName:"🪸 Koralle"
-},
+    {
+        id:"ocean",
+        name:"Unterwasser",
+        price:100,
+        sky1:"#29d6e5",
+        sky2:"#174b9e",
+        ground:"#157c86",
+        obstacle:"#17566e",
+        obstacleName:"Koralle"
+    },
 
-{
-    id:"jungle",
-    name:"Dschungel",
-    price:150,
-    sky1:"#8ae17c",
-    sky2:"#1f6e53",
-    ground:"#244f2a",
-    obstacle:"#2f7339",
-    obstacleName:"🌴 Stamm"
-},
+    {
+        id:"jungle",
+        name:"Dschungel",
+        price:150,
+        sky1:"#8ae17c",
+        sky2:"#1f6e53",
+        ground:"#244f2a",
+        obstacle:"#2f7339",
+        obstacleName:"Baumstamm"
+    },
 
-{
-    id:"space",
-    name:"Weltraum",
-    price:200,
-    sky1:"#22103f",
-    sky2:"#090d27",
-    ground:"#20183e",
-    obstacle:"#3a2b61",
-    obstacleName:"☄️ Meteor"
-},
+    {
+        id:"space",
+        name:"Weltraum",
+        price:200,
+        sky1:"#22103f",
+        sky2:"#090d27",
+        ground:"#20183e",
+        obstacle:"#3a2b61",
+        obstacleName:"Meteor"
+    },
 
-{
-    id:"ice",
-    name:"Eiswelt",
-    price:250,
-    sky1:"#c9f6ff",
-    sky2:"#5da9d4",
-    ground:"#b3e5ff",
-    obstacle:"#72b1d2",
-    obstacleName:"🧊 Eis"
-}
+    {
+        id:"ice",
+        name:"Eiswelt",
+        price:250,
+        sky1:"#c9f6ff",
+        sky2:"#5da9d4",
+        ground:"#b3e5ff",
+        obstacle:"#72b1d2",
+        obstacleName:"Eis"
+    }
 ];
 
 
@@ -1055,88 +1119,88 @@ const worlds = [
 
 const skins = [
 
-{
-    id:"bird",
-    name:"Vogel",
-    price:0,
-    type:"bird"
-},
+    {
+        id:"bird",
+        name:"Vogel",
+        price:0,
+        type:"bird"
+    },
 
-{
-    id:"dino",
-    name:"Fliegender Dino",
-    price:50,
-    type:"dino"
-},
+    {
+        id:"dino",
+        name:"Fliegender Dino",
+        price:50,
+        type:"dino"
+    },
 
-{
-    id:"pen",
-    name:"Stift",
-    price:100,
-    type:"pen"
-},
+    {
+        id:"pen",
+        name:"Stift",
+        price:100,
+        type:"pen"
+    },
 
-{
-    id:"carrot",
-    name:"Karotte",
-    price:150,
-    type:"carrot"
-},
+    {
+        id:"carrot",
+        name:"Karotte",
+        price:150,
+        type:"carrot"
+    },
 
-{
-    id:"apple",
-    name:"Apfel",
-    price:200,
-    type:"apple"
-}
+    {
+        id:"apple",
+        name:"Apfel",
+        price:200,
+        type:"apple"
+    }
 ];
 
 
 /* =========================================================
-   JUMP-SOUNDS
+   SOUNDS
 ========================================================= */
 
 const sounds = [
 
-{
-    id:"classic",
-    name:"Classic",
-    price:0,
-    icon:"🔔",
-    type:"classic"
-},
+    {
+        id:"classic",
+        name:"Classic",
+        price:0,
+        icon:"🔔",
+        type:"classic"
+    },
 
-{
-    id:"arcade",
-    name:"Arcade",
-    price:50,
-    icon:"👾",
-    type:"arcade"
-},
+    {
+        id:"arcade",
+        name:"Arcade",
+        price:50,
+        icon:"👾",
+        type:"arcade"
+    },
 
-{
-    id:"laser",
-    name:"Laser",
-    price:100,
-    icon:"⚡",
-    type:"laser"
-},
+    {
+        id:"laser",
+        name:"Laser",
+        price:100,
+        icon:"⚡",
+        type:"laser"
+    },
 
-{
-    id:"bubble",
-    name:"Bubble",
-    price:150,
-    icon:"🫧",
-    type:"bubble"
-},
+    {
+        id:"bubble",
+        name:"Bubble",
+        price:150,
+        icon:"🫧",
+        type:"bubble"
+    },
 
-{
-    id:"power",
-    name:"Power",
-    price:200,
-    icon:"🔥",
-    type:"power"
-}
+    {
+        id:"power",
+        name:"Power",
+        price:200,
+        icon:"🔥",
+        type:"power"
+    }
 ];
 
 
@@ -1146,113 +1210,131 @@ const sounds = [
 
 const musicTracks = [
 
-{
-    id:"classicMusic",
-    name:"Classic",
-    price:0,
-    icon:"🎵",
-    melody:[
-        261.63,329.63,392,523.25,
-        392,329.63,293.66,349.23,
-        440,523.25,440,349.23,
-        392,329.63,261.63,293.66
-    ],
-    bass:[
-        130.81,130.81,164.81,164.81,
-        146.83,146.83,174.61,174.61
-    ],
-    tempo:380
-},
+    {
+        id:"classicMusic",
+        name:"Classic",
+        price:0,
+        icon:"🎵",
 
-{
-    id:"arcadeMusic",
-    name:"Arcade",
-    price:50,
-    icon:"👾",
-    melody:[
-        392,392,523.25,659.25,
-        523.25,392,329.63,392,
-        440,523.25,659.25,783.99,
-        659.25,523.25,440,392
-    ],
-    bass:[
-        196,196,261.63,261.63,
-        220,220,174.61,196
-    ],
-    tempo:300
-},
+        melody:[
+            261.63,329.63,392,523.25,
+            392,329.63,293.66,349.23,
+            440,523.25,440,349.23,
+            392,329.63,261.63,293.66
+        ],
 
-{
-    id:"speedMusic",
-    name:"Speed",
-    price:100,
-    icon:"⚡",
-    melody:[
-        329.63,392,493.88,659.25,
-        493.88,392,329.63,493.88,
-        392,493.88,587.33,783.99,
-        587.33,493.88,392,329.63
-    ],
-    bass:[
-        164.81,196,164.81,196,
-        146.83,174.61,164.81,196
-    ],
-    tempo:250
-},
+        bass:[
+            130.81,130.81,164.81,164.81,
+            146.83,146.83,174.61,174.61
+        ],
 
-{
-    id:"spaceMusic",
-    name:"Space",
-    price:150,
-    icon:"🚀",
-    melody:[
-        220,261.63,329.63,392,
-        493.88,392,329.63,261.63,
-        246.94,293.66,369.99,440,
-        554.37,440,369.99,293.66
-    ],
-    bass:[
-        110,110,130.81,130.81,
-        146.83,146.83,123.47,123.47
-    ],
-    tempo:420
-},
+        tempo:380
+    },
 
-{
-    id:"chillMusic",
-    name:"Chill",
-    price:200,
-    icon:"🌙",
-    melody:[
-        261.63,329.63,392,329.63,
-        293.66,349.23,440,349.23,
-        261.63,329.63,392,493.88,
-        440,392,329.63,293.66
-    ],
-    bass:[
-        130.81,130.81,146.83,146.83,
-        110,110,123.47,123.47
-    ],
-    tempo:500
-},
+    {
+        id:"arcadeMusic",
+        name:"Arcade",
+        price:50,
+        icon:"👾",
 
-{
-    id:"finalMusic",
-    name:"Final Boss",
-    price:250,
-    icon:"🔥",
-    melody:[
-        196,246.94,293.66,392,
-        293.66,246.94,220,329.63,
-        261.63,329.63,392,523.25,
-        392,329.63,293.66,246.94
-    ],
-    bass:[
-        98,98,123.47,123.47,
-        110,110,146.83,146.83
-    ],
-    tempo:280
-}
+        melody:[
+            392,392,523.25,659.25,
+            523.25,392,329.63,392,
+            440,523.25,659.25,783.99,
+            659.25,523.25,440,392
+        ],
+
+        bass:[
+            196,196,261.63,261.63,
+            220,220,174.61,196
+        ],
+
+        tempo:300
+    },
+
+    {
+        id:"speedMusic",
+        name:"Speed",
+        price:100,
+        icon:"⚡",
+
+        melody:[
+            329.63,392,493.88,659.25,
+            493.88,392,329.63,493.88,
+            392,493.88,587.33,783.99,
+            587.33,493.88,392,329.63
+        ],
+
+        bass:[
+            164.81,196,164.81,196,
+            146.83,174.61,164.81,196
+        ],
+
+        tempo:250
+    },
+
+    {
+        id:"spaceMusic",
+        name:"Space",
+        price:150,
+        icon:"🚀",
+
+        melody:[
+            220,261.63,329.63,392,
+            493.88,392,329.63,261.63,
+            246.94,293.66,369.99,440,
+            554.37,440,369.99,293.66
+        ],
+
+        bass:[
+            110,110,130.81,130.81,
+            146.83,146.83,123.47,123.47
+        ],
+
+        tempo:420
+    },
+
+    {
+        id:"chillMusic",
+        name:"Chill",
+        price:200,
+        icon:"🌙",
+
+        melody:[
+            261.63,329.63,392,329.63,
+            293.66,349.23,440,349.23,
+            261.63,329.63,392,493.88,
+            440,392,329.63,293.66
+        ],
+
+        bass:[
+            130.81,130.81,146.83,146.83,
+            110,110,123.47,123.47
+        ],
+
+        tempo:500
+    },
+
+    {
+        id:"finalMusic",
+        name:"Final Boss",
+        price:250,
+        icon:"🔥",
+
+        melody:[
+            196,246.94,293.66,392,
+            293.66,246.94,220,329.63,
+            261.63,329.63,392,523.25,
+            392,329.63,293.66,246.94
+        ],
+
+        bass:[
+            98,98,123.47,123.47,
+            110,110,146.83,146.83
+        ],
+
+        tempo:280
+    }
 ];
 
 
@@ -1261,24 +1343,27 @@ const musicTracks = [
 ========================================================= */
 
 const missions = [
+
     {
         id:"m1",
         name:"Überfliege 10 Hindernisse",
-        type:"score",
+        type:"obstacles",
         target:10,
         reward:20
     },
+
     {
         id:"m2",
         name:"Sammle 5 Bonus-Coins",
-        type:"bonusCoins",
+        type:"bonus",
         target:5,
         reward:25
     },
+
     {
         id:"m3",
         name:"Erreiche 25 Punkte in einem Lauf",
-        type:"bestRun",
+        type:"run",
         target:25,
         reward:50
     }
@@ -1286,11 +1371,13 @@ const missions = [
 
 
 /* =========================================================
-   SAVE
+   SPEICHER
 ========================================================= */
 
 const defaultState = {
+
     coins:0,
+
     best:0,
 
     missionProgress:{
@@ -1305,10 +1392,21 @@ const defaultState = {
         m3:false
     },
 
-    ownedWorlds:["giza"],
-    ownedSkins:["bird"],
-    ownedSounds:["classic"],
-    ownedMusic:["classicMusic"],
+    ownedWorlds:[
+        "giza"
+    ],
+
+    ownedSkins:[
+        "bird"
+    ],
+
+    ownedSounds:[
+        "classic"
+    ],
+
+    ownedMusic:[
+        "classicMusic"
+    ],
 
     selectedWorld:"giza",
     selectedSkin:"bird",
@@ -1318,6 +1416,39 @@ const defaultState = {
     musicEnabled:true,
     sfxEnabled:true
 };
+
+
+function cloneDefault(){
+
+    return {
+        ...defaultState,
+
+        missionProgress:{
+            ...defaultState.missionProgress
+        },
+
+        missionClaimed:{
+            ...defaultState.missionClaimed
+        },
+
+        ownedWorlds:[
+            ...defaultState.ownedWorlds
+        ],
+
+        ownedSkins:[
+            ...defaultState.ownedSkins
+        ],
+
+        ownedSounds:[
+            ...defaultState.ownedSounds
+        ],
+
+        ownedMusic:[
+            ...defaultState.ownedMusic
+        ]
+    };
+}
+
 
 function loadState(){
 
@@ -1329,21 +1460,59 @@ function loadState(){
             );
 
         if(!raw){
-            return structuredClone(defaultState);
+            return cloneDefault();
         }
 
+        const saved =
+            JSON.parse(raw);
+
         return {
-            ...structuredClone(defaultState),
-            ...JSON.parse(raw)
+
+            ...cloneDefault(),
+
+            ...saved,
+
+            missionProgress:{
+                ...defaultState.missionProgress,
+                ...(saved.missionProgress || {})
+            },
+
+            missionClaimed:{
+                ...defaultState.missionClaimed,
+                ...(saved.missionClaimed || {})
+            },
+
+            ownedWorlds:
+                Array.isArray(saved.ownedWorlds)
+                ? saved.ownedWorlds
+                : ["giza"],
+
+            ownedSkins:
+                Array.isArray(saved.ownedSkins)
+                ? saved.ownedSkins
+                : ["bird"],
+
+            ownedSounds:
+                Array.isArray(saved.ownedSounds)
+                ? saved.ownedSounds
+                : ["classic"],
+
+            ownedMusic:
+                Array.isArray(saved.ownedMusic)
+                ? saved.ownedMusic
+                : ["classicMusic"]
         };
 
     }catch{
-        return structuredClone(defaultState);
+
+        return cloneDefault();
     }
 }
 
+
 let state =
     loadState();
+
 
 function saveState(){
 
@@ -1362,18 +1531,25 @@ let audioContext = null;
 let musicTimer = null;
 let musicStep = 0;
 
+
 function initAudio(){
 
-    if(audioContext) return;
+    if(audioContext){
+        return;
+    }
 
     const AC =
         window.AudioContext ||
         window.webkitAudioContext;
 
-    if(!AC) return;
+    if(!AC){
+        return;
+    }
 
-    audioContext = new AC();
+    audioContext =
+        new AC();
 }
+
 
 function rawTone(
     frequency,
@@ -1382,7 +1558,9 @@ function rawTone(
     type
 ){
 
-    if(!audioContext) return;
+    if(!audioContext){
+        return;
+    }
 
     const oscillator =
         audioContext.createOscillator();
@@ -1390,8 +1568,11 @@ function rawTone(
     const gain =
         audioContext.createGain();
 
-    oscillator.type = type;
-    oscillator.frequency.value = frequency;
+    oscillator.type =
+        type;
+
+    oscillator.frequency.value =
+        frequency;
 
     gain.gain.setValueAtTime(
         0.0001,
@@ -1400,134 +1581,262 @@ function rawTone(
 
     gain.gain.exponentialRampToValueAtTime(
         volume,
-        audioContext.currentTime + .02
+        audioContext.currentTime +
+        .02
     );
 
     gain.gain.exponentialRampToValueAtTime(
         0.0001,
-        audioContext.currentTime + duration
+        audioContext.currentTime +
+        duration
     );
 
     oscillator.connect(gain);
-    gain.connect(audioContext.destination);
+
+    gain.connect(
+        audioContext.destination
+    );
 
     oscillator.start();
 
     oscillator.stop(
         audioContext.currentTime +
-        duration + .02
+        duration +
+        .02
     );
 }
 
+
 function playJumpSound(type){
 
-    if(!state.sfxEnabled) return;
+    if(!state.sfxEnabled){
+        return;
+    }
 
     initAudio();
 
-    if(!audioContext) return;
+    if(!audioContext){
+        return;
+    }
 
-    if(audioContext.state==="suspended"){
+    if(
+        audioContext.state ===
+        "suspended"
+    ){
         audioContext.resume();
     }
 
-    if(type==="classic"){
-        rawTone(520,.08,.065,"square");
+    if(type === "classic"){
+
+        rawTone(
+            520,
+            .08,
+            .065,
+            "square"
+        );
     }
 
-    if(type==="arcade"){
-        rawTone(440,.06,.055,"square");
+    if(type === "arcade"){
+
+        rawTone(
+            440,
+            .06,
+            .055,
+            "square"
+        );
+
         setTimeout(
-            ()=>rawTone(660,.07,.05,"square"),
+            () =>
+                rawTone(
+                    660,
+                    .07,
+                    .05,
+                    "square"
+                ),
             45
         );
     }
 
-    if(type==="laser"){
-        rawTone(900,.12,.055,"sawtooth");
+    if(type === "laser"){
+
+        rawTone(
+            900,
+            .12,
+            .055,
+            "sawtooth"
+        );
+
         setTimeout(
-            ()=>rawTone(1400,.09,.035,"sawtooth"),
+            () =>
+                rawTone(
+                    1400,
+                    .09,
+                    .035,
+                    "sawtooth"
+                ),
             45
         );
     }
 
-    if(type==="bubble"){
-        rawTone(300,.08,.045,"sine");
+    if(type === "bubble"){
+
+        rawTone(
+            300,
+            .08,
+            .045,
+            "sine"
+        );
+
         setTimeout(
-            ()=>rawTone(650,.12,.045,"sine"),
+            () =>
+                rawTone(
+                    650,
+                    .12,
+                    .045,
+                    "sine"
+                ),
             60
         );
     }
 
-    if(type==="power"){
-        rawTone(220,.13,.055,"sawtooth");
+    if(type === "power"){
+
+        rawTone(
+            220,
+            .13,
+            .055,
+            "sawtooth"
+        );
+
         setTimeout(
-            ()=>rawTone(520,.08,.06,"square"),
+            () =>
+                rawTone(
+                    520,
+                    .08,
+                    .06,
+                    "square"
+                ),
             65
         );
+
         setTimeout(
-            ()=>rawTone(820,.1,.05,"triangle"),
+            () =>
+                rawTone(
+                    820,
+                    .1,
+                    .05,
+                    "triangle"
+                ),
             120
         );
     }
 }
 
+
 function coinSound(){
 
-    if(!state.sfxEnabled) return;
+    if(!state.sfxEnabled){
+        return;
+    }
 
     initAudio();
-    if(!audioContext) return;
 
-    rawTone(783.99,.08,.05,"triangle");
+    if(!audioContext){
+        return;
+    }
+
+    rawTone(
+        783.99,
+        .08,
+        .05,
+        "triangle"
+    );
 
     setTimeout(
-        ()=>rawTone(1046.5,.12,.05,"triangle"),
+        () =>
+            rawTone(
+                1046.5,
+                .12,
+                .05,
+                "triangle"
+            ),
         70
     );
 }
 
+
 function scoreSound(){
 
-    if(!state.sfxEnabled) return;
+    if(!state.sfxEnabled){
+        return;
+    }
 
     initAudio();
 
     rawTone(
-        760,.04,.03,"triangle"
+        760,
+        .04,
+        .03,
+        "triangle"
     );
 }
+
 
 function purchaseSound(){
 
     initAudio();
 
-    if(!audioContext) return;
+    if(!audioContext){
+        return;
+    }
 
     rawTone(
-        523.25,.08,.045,"triangle"
+        523.25,
+        .08,
+        .045,
+        "triangle"
     );
 
     setTimeout(
-        ()=>rawTone(783.99,.12,.045,"triangle"),
+        () =>
+            rawTone(
+                783.99,
+                .12,
+                .045,
+                "triangle"
+            ),
         70
     );
 }
 
+
 function gameOverSound(){
 
-    if(!state.sfxEnabled) return;
+    if(!state.sfxEnabled){
+        return;
+    }
 
     initAudio();
 
-    if(!audioContext) return;
+    if(!audioContext){
+        return;
+    }
 
     rawTone(
-        300,.15,.05,"sawtooth"
+        300,
+        .15,
+        .05,
+        "sawtooth"
     );
 
     setTimeout(
-        ()=>rawTone(210,.22,.045,"sawtooth"),
+        () =>
+            rawTone(
+                210,
+                .22,
+                .045,
+                "sawtooth"
+            ),
         130
     );
 }
@@ -1549,13 +1858,20 @@ function selectedMusic(){
     );
 }
 
+
 function stopMusic(){
 
     if(musicTimer){
-        clearInterval(musicTimer);
-        musicTimer = null;
+
+        clearInterval(
+            musicTimer
+        );
+
+        musicTimer =
+            null;
     }
 }
+
 
 function musicTick(){
 
@@ -1563,6 +1879,7 @@ function musicTick(){
         !state.musicEnabled ||
         !audioContext
     ){
+
         stopMusic();
         return;
     }
@@ -1572,42 +1889,63 @@ function musicTick(){
 
     const note =
         music.melody[
-            musicStep % music.melody.length
+            musicStep %
+            music.melody.length
         ];
 
     const bass =
         music.bass[
-            musicStep % music.bass.length
+            musicStep %
+            music.bass.length
         ];
 
     rawTone(
-        note,.30,.025,"triangle"
+        note,
+        .30,
+        .025,
+        "triangle"
     );
 
-    if(musicStep % 2 === 0){
+    if(
+        musicStep % 2 === 0
+    ){
+
         rawTone(
-            bass,.45,.012,"sine"
+            bass,
+            .45,
+            .012,
+            "sine"
         );
     }
 
     musicStep++;
 }
 
+
 function startMusic(){
 
-    if(!state.musicEnabled) return;
+    if(!state.musicEnabled){
+        return;
+    }
 
     initAudio();
 
-    if(!audioContext) return;
+    if(!audioContext){
+        return;
+    }
 
-    if(audioContext.state==="suspended"){
+    if(
+        audioContext.state ===
+        "suspended"
+    ){
         audioContext.resume();
     }
 
     stopMusic();
 
-    musicStep = 0;
+    musicStep =
+        0;
+
     musicTick();
 
     const music =
@@ -1620,30 +1958,38 @@ function startMusic(){
         );
 }
 
+
 function previewMusic(music){
 
     initAudio();
 
-    if(!audioContext) return;
+    if(!audioContext){
+        return;
+    }
 
     stopMusic();
 
-    let step = 0;
+    let step =
+        0;
 
     const timer =
         setInterval(
-            ()=>{
+            () => {
 
                 if(
                     step >=
                     music.melody.length
                 ){
-                    clearInterval(timer);
+
+                    clearInterval(
+                        timer
+                    );
 
                     if(
                         state.musicEnabled &&
                         game.running
                     ){
+
                         startMusic();
                     }
 
@@ -1676,12 +2022,15 @@ const game = {
     over:false,
 
     score:0,
+
     runCoins:0,
+
     jumpCount:0,
 
     bonusCoinsRun:0,
 
     speed:165,
+
     spawnTimer:.9,
 
     obstacles:[],
@@ -1702,30 +2051,41 @@ const game = {
 
 
 /* =========================================================
-   SCREEN
+   SCREENS
 ========================================================= */
 
 function showScreen(id){
 
     document
-        .querySelectorAll(".screen")
+        .querySelectorAll(
+            ".screen"
+        )
         .forEach(
-            s =>
-                s.classList.remove("active")
+            screen =>
+                screen.classList.remove(
+                    "active"
+                )
         );
 
     document
         .getElementById(id)
-        .classList.add("active");
+        .classList.add(
+            "active"
+        );
 }
+
 
 function hideScreens(){
 
     document
-        .querySelectorAll(".screen")
+        .querySelectorAll(
+            ".screen"
+        )
         .forEach(
-            s =>
-                s.classList.remove("active")
+            screen =>
+                screen.classList.remove(
+                    "active"
+                )
         );
 }
 
@@ -1737,7 +2097,9 @@ function hideScreens(){
 function showMessage(text){
 
     const el =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
 
     el.textContent =
         text;
@@ -1758,10 +2120,12 @@ function showMessage(text){
         box-shadow:0 15px 40px rgba(0,0,0,.3);
     `;
 
-    document.body.appendChild(el);
+    document.body.appendChild(
+        el
+    );
 
     setTimeout(
-        ()=>el.remove(),
+        () => el.remove(),
         1400
     );
 }
@@ -1803,55 +2167,82 @@ function renderMissions(){
             "missionList"
         );
 
-    list.innerHTML = "";
+    list.innerHTML =
+        "";
 
     missions.forEach(
         mission => {
 
             const current =
                 Math.min(
-                    state.missionProgress[mission.id] || 0,
+                    state.missionProgress[
+                        mission.id
+                    ] || 0,
                     mission.target
                 );
 
             const done =
-                current >= mission.target;
+                current >=
+                mission.target;
 
             const claimed =
-                !!state.missionClaimed[mission.id];
+                !!state.missionClaimed[
+                    mission.id
+                ];
 
             const box =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
             box.className =
                 "mission" +
-                (done ? " done" : "");
+                (
+                    done
+                    ? " done"
+                    : ""
+                );
 
             const top =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
             top.className =
                 "missionTop";
 
             const left =
-                document.createElement("strong");
+                document.createElement(
+                    "strong"
+                );
 
             left.textContent =
                 mission.name;
 
             const right =
-                document.createElement("span");
+                document.createElement(
+                    "span"
+                );
 
             right.textContent =
                 `🪙 ${mission.reward}`;
 
-            top.appendChild(left);
-            top.appendChild(right);
+            top.appendChild(
+                left
+            );
 
-            box.appendChild(top);
+            top.appendChild(
+                right
+            );
+
+            box.appendChild(
+                top
+            );
 
             const info =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
             info.className =
                 "tiny";
@@ -1861,16 +2252,22 @@ function renderMissions(){
                 ? "✅ Belohnung abgeholt"
                 : `${current} / ${mission.target}`;
 
-            box.appendChild(info);
+            box.appendChild(
+                info
+            );
 
             const bar =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
             bar.className =
                 "missionProgress";
 
             const fill =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
             fill.className =
                 "missionFill";
@@ -1878,13 +2275,23 @@ function renderMissions(){
             fill.style.width =
                 `${(current / mission.target) * 100}%`;
 
-            bar.appendChild(fill);
-            box.appendChild(bar);
+            bar.appendChild(
+                fill
+            );
 
-            if(done && !claimed){
+            box.appendChild(
+                bar
+            );
+
+            if(
+                done &&
+                !claimed
+            ){
 
                 const claim =
-                    document.createElement("button");
+                    document.createElement(
+                        "button"
+                    );
 
                 claim.className =
                     "smallbtn selected";
@@ -1893,12 +2300,14 @@ function renderMissions(){
                     "🪙 BELOHNUNG ABHOLEN";
 
                 claim.onclick =
-                    ()=>{
+                    () => {
 
                         state.coins +=
                             mission.reward;
 
-                        state.missionClaimed[mission.id] =
+                        state.missionClaimed[
+                            mission.id
+                        ] =
                             true;
 
                         saveState();
@@ -1924,15 +2333,11 @@ function renderMissions(){
 }
 
 
-/* =========================================================
-   MISSIONEN UPDATE
-========================================================= */
-
 function updateMissionProgress(){
 
     /*
        Mission 1:
-       Punkte/Hindernisse
+       höchster Hinderniswert
     */
 
     state.missionProgress.m1 =
@@ -1943,7 +2348,7 @@ function updateMissionProgress(){
 
     /*
        Mission 2:
-       Bonus-Coins
+       Bonus-Coins in diesem Lauf
     */
 
     state.missionProgress.m2 =
@@ -1954,7 +2359,7 @@ function updateMissionProgress(){
 
     /*
        Mission 3:
-       Bestlauf
+       Punkte in einem Lauf
     */
 
     state.missionProgress.m3 =
@@ -1978,29 +2383,38 @@ function createTabs(
     callback
 ){
 
-    container.innerHTML = "";
+    container.innerHTML =
+        "";
 
     items.forEach(
         item => {
 
-            const b =
-                document.createElement("button");
+            const button =
+                document.createElement(
+                    "button"
+                );
 
-            b.className =
+            button.className =
                 "tab" +
                 (
-                    item.id === active
+                    item.id ===
+                    active
                     ? " active"
                     : ""
                 );
 
-            b.textContent =
+            button.textContent =
                 item.name;
 
-            b.onclick =
-                ()=>callback(item.id);
+            button.onclick =
+                () =>
+                    callback(
+                        item.id
+                    );
 
-            container.appendChild(b);
+            container.appendChild(
+                button
+            );
         }
     );
 }
@@ -2010,7 +2424,9 @@ function createTabs(
    SHOP
 ========================================================= */
 
-let shopTab = "skins";
+let shopTab =
+    "skins";
+
 
 function renderShop(){
 
@@ -2024,14 +2440,29 @@ function renderShop(){
             "shopTabs"
         ),
         [
-            {id:"skins",name:"🪽 Figuren"},
-            {id:"worlds",name:"🌍 Welten"},
-            {id:"sounds",name:"🔊 Sounds"},
-            {id:"music",name:"🎵 Musik"}
+            {
+                id:"skins",
+                name:"🪽 Figuren"
+            },
+            {
+                id:"worlds",
+                name:"🌍 Welten"
+            },
+            {
+                id:"sounds",
+                name:"🔊 Sounds"
+            },
+            {
+                id:"music",
+                name:"🎵 Musik"
+            }
         ],
         shopTab,
-        id=>{
-            shopTab=id;
+        id => {
+
+            shopTab =
+                id;
+
             renderShop();
         }
     );
@@ -2041,51 +2472,81 @@ function renderShop(){
             "shopCards"
         );
 
-    container.innerHTML = "";
+    container.innerHTML =
+        "";
 
-    if(shopTab==="sounds"){
-        renderSoundShop(container);
+    if(
+        shopTab ===
+        "sounds"
+    ){
+
+        renderSoundShop(
+            container
+        );
+
         return;
     }
 
-    if(shopTab==="music"){
-        renderMusicShop(container);
+    if(
+        shopTab ===
+        "music"
+    ){
+
+        renderMusicShop(
+            container
+        );
+
         return;
     }
 
     const items =
-        shopTab==="skins"
+        shopTab ===
+        "skins"
         ? skins
         : worlds;
 
     const owned =
-        shopTab==="skins"
+        shopTab ===
+        "skins"
         ? state.ownedSkins
         : state.ownedWorlds;
 
     items.forEach(
-        item=>{
+        item => {
 
             const card =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
-            card.className="card";
+            card.className =
+                "card";
 
             const preview =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
-            preview.className="preview";
+            preview.className =
+                "preview";
 
             const c =
-                document.createElement("canvas");
+                document.createElement(
+                    "canvas"
+                );
 
-            c.width=240;
-            c.height=140;
+            c.width = 240;
+            c.height = 140;
 
             const pctx =
-                c.getContext("2d");
+                c.getContext(
+                    "2d"
+                );
 
-            if(shopTab==="skins"){
+            if(
+                shopTab ===
+                "skins"
+            ){
 
                 drawSkin(
                     pctx,
@@ -2105,71 +2566,106 @@ function renderShop(){
                 );
             }
 
-            preview.appendChild(c);
-            card.appendChild(preview);
+            preview.appendChild(
+                c
+            );
+
+            card.appendChild(
+                preview
+            );
 
             const title =
-                document.createElement("h3");
+                document.createElement(
+                    "h3"
+                );
 
             title.textContent =
                 item.name;
 
-            card.appendChild(title);
+            card.appendChild(
+                title
+            );
 
             const price =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
-            price.className="price";
+            price.className =
+                "price";
 
             price.textContent =
-                item.price===0
+                item.price === 0
                 ? "Kostenlos"
                 : `🪙 ${item.price} Coins`;
 
-            card.appendChild(price);
+            card.appendChild(
+                price
+            );
 
             const button =
-                document.createElement("button");
+                document.createElement(
+                    "button"
+                );
 
-            button.className="smallbtn";
+            button.className =
+                "smallbtn";
 
-            if(owned.includes(item.id)){
+            if(
+                owned.includes(
+                    item.id
+                )
+            ){
 
                 button.textContent =
                     "✓ Im Besitz";
 
-                button.disabled=true;
+                button.disabled =
+                    true;
 
             }else{
 
                 button.textContent =
                     "Kaufen";
 
-                button.onclick=()=>{
+                button.onclick =
+                    () => {
 
-                    if(state.coins < item.price){
+                        if(
+                            state.coins <
+                            item.price
+                        ){
 
-                        showMessage(
-                            "Nicht genug Coins!"
+                            showMessage(
+                                "Nicht genug Coins!"
+                            );
+
+                            return;
+                        }
+
+                        state.coins -=
+                            item.price;
+
+                        owned.push(
+                            item.id
                         );
 
-                        return;
-                    }
+                        saveState();
 
-                    state.coins -= item.price;
-                    owned.push(item.id);
+                        renderShop();
+                        updateLobby();
 
-                    saveState();
-
-                    renderShop();
-                    updateLobby();
-                    purchaseSound();
-                };
+                        purchaseSound();
+                    };
             }
 
-            card.appendChild(button);
+            card.appendChild(
+                button
+            );
 
-            container.appendChild(card);
+            container.appendChild(
+                card
+            );
         }
     );
 }
@@ -2179,221 +2675,364 @@ function renderShop(){
    SOUND SHOP
 ========================================================= */
 
-function renderSoundShop(container){
+function renderSoundShop(
+    container
+){
 
     sounds.forEach(
-        sound=>{
+        sound => {
 
             const card =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
-            card.className="card";
+            card.className =
+                "card";
 
             const preview =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
-            preview.className="preview";
+            preview.className =
+                "preview";
 
             const box =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
-            box.className="soundPreview";
+            box.className =
+                "soundPreview";
 
             const icon =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
-            icon.className="soundIcon";
-            icon.textContent=sound.icon;
+            icon.className =
+                "soundIcon";
 
-            box.appendChild(icon);
-            preview.appendChild(box);
-            card.appendChild(preview);
+            icon.textContent =
+                sound.icon;
+
+            box.appendChild(
+                icon
+            );
+
+            preview.appendChild(
+                box
+            );
+
+            card.appendChild(
+                preview
+            );
 
             const title =
-                document.createElement("h3");
+                document.createElement(
+                    "h3"
+                );
 
-            title.textContent=sound.name;
+            title.textContent =
+                sound.name;
 
-            card.appendChild(title);
+            card.appendChild(
+                title
+            );
 
             const price =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
-            price.className="price";
+            price.className =
+                "price";
 
             price.textContent =
-                sound.price===0
+                sound.price === 0
                 ? "Kostenlos"
                 : `🪙 ${sound.price} Coins`;
 
-            card.appendChild(price);
+            card.appendChild(
+                price
+            );
 
             const listen =
-                document.createElement("button");
+                document.createElement(
+                    "button"
+                );
 
-            listen.className="smallbtn blue";
-            listen.textContent="▶ ANHÖREN";
+            listen.className =
+                "smallbtn blue";
+
+            listen.textContent =
+                "▶ ANHÖREN";
 
             listen.onclick =
-                ()=>playJumpSound(sound.type);
+                () =>
+                    playJumpSound(
+                        sound.type
+                    );
 
-            card.appendChild(listen);
+            card.appendChild(
+                listen
+            );
 
             const buy =
-                document.createElement("button");
+                document.createElement(
+                    "button"
+                );
 
-            buy.className="smallbtn";
+            buy.className =
+                "smallbtn";
 
-            if(state.ownedSounds.includes(sound.id)){
+            if(
+                state.ownedSounds.includes(
+                    sound.id
+                )
+            ){
 
-                buy.textContent="✓ Im Besitz";
-                buy.disabled=true;
+                buy.textContent =
+                    "✓ Im Besitz";
+
+                buy.disabled =
+                    true;
 
             }else{
 
-                buy.textContent="Kaufen";
+                buy.textContent =
+                    "Kaufen";
 
-                buy.onclick=()=>{
+                buy.onclick =
+                    () => {
 
-                    if(state.coins<sound.price){
+                        if(
+                            state.coins <
+                            sound.price
+                        ){
 
-                        showMessage(
-                            "Nicht genug Coins!"
+                            showMessage(
+                                "Nicht genug Coins!"
+                            );
+
+                            return;
+                        }
+
+                        state.coins -=
+                            sound.price;
+
+                        state.ownedSounds.push(
+                            sound.id
                         );
 
-                        return;
-                    }
+                        saveState();
 
-                    state.coins -= sound.price;
-                    state.ownedSounds.push(sound.id);
+                        renderShop();
+                        updateLobby();
 
-                    saveState();
-
-                    renderShop();
-                    updateLobby();
-                    purchaseSound();
-                };
+                        purchaseSound();
+                    };
             }
 
-            card.appendChild(buy);
+            card.appendChild(
+                buy
+            );
 
-            container.appendChild(card);
+            container.appendChild(
+                card
+            );
         }
     );
 }
 
 
 /* =========================================================
-   MUSIC SHOP
+   MUSIK SHOP
 ========================================================= */
 
-function renderMusicShop(container){
+function renderMusicShop(
+    container
+){
 
     musicTracks.forEach(
-        music=>{
+        music => {
 
             const card =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
-            card.className="card";
+            card.className =
+                "card";
 
             const preview =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
-            preview.className="preview";
+            preview.className =
+                "preview";
 
             const box =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
-            box.className="soundPreview";
+            box.className =
+                "soundPreview";
 
             const icon =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
-            icon.className="soundIcon";
-            icon.textContent=music.icon;
+            icon.className =
+                "soundIcon";
+
+            icon.textContent =
+                music.icon;
 
             const text =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
-            text.className="musicText";
-            text.textContent="Hintergrundmelodie";
+            text.className =
+                "musicText";
 
-            box.appendChild(icon);
-            box.appendChild(text);
+            text.textContent =
+                "Hintergrundmelodie";
 
-            preview.appendChild(box);
-            card.appendChild(preview);
+            box.appendChild(
+                icon
+            );
+
+            box.appendChild(
+                text
+            );
+
+            preview.appendChild(
+                box
+            );
+
+            card.appendChild(
+                preview
+            );
 
             const title =
-                document.createElement("h3");
+                document.createElement(
+                    "h3"
+                );
 
-            title.textContent=music.name;
+            title.textContent =
+                music.name;
 
-            card.appendChild(title);
+            card.appendChild(
+                title
+            );
 
             const price =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
-            price.className="price";
+            price.className =
+                "price";
 
             price.textContent =
-                music.price===0
+                music.price === 0
                 ? "Kostenlos"
                 : `🪙 ${music.price} Coins`;
 
-            card.appendChild(price);
+            card.appendChild(
+                price
+            );
 
             const listen =
-                document.createElement("button");
+                document.createElement(
+                    "button"
+                );
 
-            listen.className="smallbtn blue";
-            listen.textContent="▶ ANHÖREN";
+            listen.className =
+                "smallbtn blue";
+
+            listen.textContent =
+                "▶ ANHÖREN";
 
             listen.onclick =
-                ()=>previewMusic(music);
+                () =>
+                    previewMusic(
+                        music
+                    );
 
-            card.appendChild(listen);
+            card.appendChild(
+                listen
+            );
 
             const buy =
-                document.createElement("button");
+                document.createElement(
+                    "button"
+                );
 
-            buy.className="smallbtn";
+            buy.className =
+                "smallbtn";
 
-            if(state.ownedMusic.includes(music.id)){
+            if(
+                state.ownedMusic.includes(
+                    music.id
+                )
+            ){
 
-                buy.textContent="✓ Im Besitz";
-                buy.disabled=true;
+                buy.textContent =
+                    "✓ Im Besitz";
+
+                buy.disabled =
+                    true;
 
             }else{
 
-                buy.textContent="Kaufen";
+                buy.textContent =
+                    "Kaufen";
 
-                buy.onclick=()=>{
+                buy.onclick =
+                    () => {
 
-                    if(state.coins<music.price){
+                        if(
+                            state.coins <
+                            music.price
+                        ){
 
-                        showMessage(
-                            "Nicht genug Coins!"
+                            showMessage(
+                                "Nicht genug Coins!"
+                            );
+
+                            return;
+                        }
+
+                        state.coins -=
+                            music.price;
+
+                        state.ownedMusic.push(
+                            music.id
                         );
 
-                        return;
-                    }
+                        saveState();
 
-                    state.coins -= music.price;
-                    state.ownedMusic.push(music.id);
+                        renderShop();
+                        updateLobby();
 
-                    saveState();
-
-                    renderShop();
-                    updateLobby();
-                    purchaseSound();
-                };
+                        purchaseSound();
+                    };
             }
 
-            card.appendChild(buy);
+            card.appendChild(
+                buy
+            );
 
-            container.appendChild(card);
+            container.appendChild(
+                card
+            );
         }
     );
 }
@@ -2403,7 +3042,9 @@ function renderMusicShop(container){
    INVENTAR
 ========================================================= */
 
-let inventoryTab="skins";
+let inventoryTab =
+    "skins";
+
 
 function renderInventory(){
 
@@ -2412,14 +3053,29 @@ function renderInventory(){
             "inventoryTabs"
         ),
         [
-            {id:"skins",name:"🪽 Figuren"},
-            {id:"worlds",name:"🌍 Welten"},
-            {id:"sounds",name:"🔊 Sounds"},
-            {id:"music",name:"🎵 Musik"}
+            {
+                id:"skins",
+                name:"🪽 Figuren"
+            },
+            {
+                id:"worlds",
+                name:"🌍 Welten"
+            },
+            {
+                id:"sounds",
+                name:"🔊 Sounds"
+            },
+            {
+                id:"music",
+                name:"🎵 Musik"
+            }
         ],
         inventoryTab,
-        id=>{
-            inventoryTab=id;
+        id => {
+
+            inventoryTab =
+                id;
+
             renderInventory();
         }
     );
@@ -2429,50 +3085,87 @@ function renderInventory(){
             "inventoryCards"
         );
 
-    container.innerHTML="";
+    container.innerHTML =
+        "";
 
-    if(inventoryTab==="sounds"){
-        renderSoundInventory(container);
+    if(
+        inventoryTab ===
+        "sounds"
+    ){
+
+        renderSoundInventory(
+            container
+        );
+
         return;
     }
 
-    if(inventoryTab==="music"){
-        renderMusicInventory(container);
+    if(
+        inventoryTab ===
+        "music"
+    ){
+
+        renderMusicInventory(
+            container
+        );
+
         return;
     }
 
     const items =
-        inventoryTab==="skins"
+        inventoryTab ===
+        "skins"
+
         ? skins.filter(
-            i=>state.ownedSkins.includes(i.id)
+            item =>
+                state.ownedSkins.includes(
+                    item.id
+                )
         )
+
         : worlds.filter(
-            i=>state.ownedWorlds.includes(i.id)
+            item =>
+                state.ownedWorlds.includes(
+                    item.id
+                )
         );
 
     items.forEach(
-        item=>{
+        item => {
 
-            const card=
-                document.createElement("div");
+            const card =
+                document.createElement(
+                    "div"
+                );
 
-            card.className="card";
+            card.className =
+                "card";
 
-            const preview=
-                document.createElement("div");
+            const preview =
+                document.createElement(
+                    "div"
+                );
 
-            preview.className="preview";
+            preview.className =
+                "preview";
 
-            const c=
-                document.createElement("canvas");
+            const c =
+                document.createElement(
+                    "canvas"
+                );
 
-            c.width=240;
-            c.height=140;
+            c.width = 240;
+            c.height = 140;
 
-            const pctx=
-                c.getContext("2d");
+            const pctx =
+                c.getContext(
+                    "2d"
+                );
 
-            if(inventoryTab==="skins"){
+            if(
+                inventoryTab ===
+                "skins"
+            ){
 
                 drawSkin(
                     pctx,
@@ -2492,46 +3185,83 @@ function renderInventory(){
                 );
             }
 
-            preview.appendChild(c);
-            card.appendChild(preview);
+            preview.appendChild(
+                c
+            );
 
-            const title=
-                document.createElement("h3");
+            card.appendChild(
+                preview
+            );
 
-            title.textContent=item.name;
-            card.appendChild(title);
+            const title =
+                document.createElement(
+                    "h3"
+                );
 
-            const selected=
-                inventoryTab==="skins"
-                ? state.selectedSkin===item.id
-                : state.selectedWorld===item.id;
+            title.textContent =
+                item.name;
 
-            const equip=
-                document.createElement("button");
+            card.appendChild(
+                title
+            );
 
-            equip.className=
-                "smallbtn"+
-                (selected?" selected":"");
+            const selected =
+                inventoryTab ===
+                "skins"
 
-            equip.textContent=
+                ? state.selectedSkin ===
+                  item.id
+
+                : state.selectedWorld ===
+                  item.id;
+
+            const equip =
+                document.createElement(
+                    "button"
+                );
+
+            equip.className =
+                "smallbtn" +
+                (
+                    selected
+                    ? " selected"
+                    : ""
+                );
+
+            equip.textContent =
                 selected
                 ? "✓ AUSGERÜSTET"
                 : "AUSRÜSTEN";
 
-            equip.onclick=()=>{
+            equip.onclick =
+                () => {
 
-                if(inventoryTab==="skins"){
-                    state.selectedSkin=item.id;
-                }else{
-                    state.selectedWorld=item.id;
-                }
+                    if(
+                        inventoryTab ===
+                        "skins"
+                    ){
 
-                saveState();
-                renderInventory();
-            };
+                        state.selectedSkin =
+                            item.id;
 
-            card.appendChild(equip);
-            container.appendChild(card);
+                    }else{
+
+                        state.selectedWorld =
+                            item.id;
+                    }
+
+                    saveState();
+
+                    renderInventory();
+                };
+
+            card.appendChild(
+                equip
+            );
+
+            container.appendChild(
+                card
+            );
         }
     );
 }
@@ -2541,191 +3271,313 @@ function renderInventory(){
    SOUND INVENTAR
 ========================================================= */
 
-function renderSoundInventory(container){
+function renderSoundInventory(
+    container
+){
 
     sounds
-    .filter(
-        s=>state.ownedSounds.includes(s.id)
-    )
-    .forEach(
-        sound=>{
+        .filter(
+            sound =>
+                state.ownedSounds.includes(
+                    sound.id
+                )
+        )
+        .forEach(
+            sound => {
 
-            const card=
-                document.createElement("div");
+                const card =
+                    document.createElement(
+                        "div"
+                    );
 
-            card.className="card";
+                card.className =
+                    "card";
 
-            const preview=
-                document.createElement("div");
+                const preview =
+                    document.createElement(
+                        "div"
+                    );
 
-            preview.className="preview";
+                preview.className =
+                    "preview";
 
-            const box=
-                document.createElement("div");
+                const box =
+                    document.createElement(
+                        "div"
+                    );
 
-            box.className="soundPreview";
+                box.className =
+                    "soundPreview";
 
-            const icon=
-                document.createElement("div");
+                const icon =
+                    document.createElement(
+                        "div"
+                    );
 
-            icon.className="soundIcon";
-            icon.textContent=sound.icon;
+                icon.className =
+                    "soundIcon";
 
-            box.appendChild(icon);
-            preview.appendChild(box);
-            card.appendChild(preview);
+                icon.textContent =
+                    sound.icon;
 
-            const title=
-                document.createElement("h3");
+                box.appendChild(
+                    icon
+                );
 
-            title.textContent=sound.name;
-            card.appendChild(title);
+                preview.appendChild(
+                    box
+                );
 
-            const test=
-                document.createElement("button");
+                card.appendChild(
+                    preview
+                );
 
-            test.className="smallbtn blue";
-            test.textContent="▶ TESTEN";
+                const title =
+                    document.createElement(
+                        "h3"
+                    );
 
-            test.onclick=
-                ()=>playJumpSound(sound.type);
+                title.textContent =
+                    sound.name;
 
-            card.appendChild(test);
+                card.appendChild(
+                    title
+                );
 
-            const selected=
-                state.selectedSound===sound.id;
+                const test =
+                    document.createElement(
+                        "button"
+                    );
 
-            const equip=
-                document.createElement("button");
+                test.className =
+                    "smallbtn blue";
 
-            equip.className=
-                "smallbtn"+
-                (selected?" selected":"");
+                test.textContent =
+                    "▶ TESTEN";
 
-            equip.textContent=
-                selected
-                ? "✓ AUSGERÜSTET"
-                : "AUSRÜSTEN";
+                test.onclick =
+                    () =>
+                        playJumpSound(
+                            sound.type
+                        );
 
-            equip.onclick=()=>{
+                card.appendChild(
+                    test
+                );
 
-                state.selectedSound=
+                const selected =
+                    state.selectedSound ===
                     sound.id;
 
-                saveState();
-                renderInventory();
-            };
+                const equip =
+                    document.createElement(
+                        "button"
+                    );
 
-            card.appendChild(equip);
-            container.appendChild(card);
-        }
-    );
+                equip.className =
+                    "smallbtn" +
+                    (
+                        selected
+                        ? " selected"
+                        : ""
+                    );
+
+                equip.textContent =
+                    selected
+                    ? "✓ AUSGERÜSTET"
+                    : "AUSRÜSTEN";
+
+                equip.onclick =
+                    () => {
+
+                        state.selectedSound =
+                            sound.id;
+
+                        saveState();
+
+                        renderInventory();
+                    };
+
+                card.appendChild(
+                    equip
+                );
+
+                container.appendChild(
+                    card
+                );
+            }
+        );
 }
 
 
 /* =========================================================
-   MUSIC INVENTAR
+   MUSIK INVENTAR
 ========================================================= */
 
-function renderMusicInventory(container){
+function renderMusicInventory(
+    container
+){
 
     musicTracks
-    .filter(
-        m=>state.ownedMusic.includes(m.id)
-    )
-    .forEach(
-        music=>{
+        .filter(
+            music =>
+                state.ownedMusic.includes(
+                    music.id
+                )
+        )
+        .forEach(
+            music => {
 
-            const card=
-                document.createElement("div");
+                const card =
+                    document.createElement(
+                        "div"
+                    );
 
-            card.className="card";
+                card.className =
+                    "card";
 
-            const preview=
-                document.createElement("div");
+                const preview =
+                    document.createElement(
+                        "div"
+                    );
 
-            preview.className="preview";
+                preview.className =
+                    "preview";
 
-            const box=
-                document.createElement("div");
+                const box =
+                    document.createElement(
+                        "div"
+                    );
 
-            box.className="soundPreview";
+                box.className =
+                    "soundPreview";
 
-            const icon=
-                document.createElement("div");
+                const icon =
+                    document.createElement(
+                        "div"
+                    );
 
-            icon.className="soundIcon";
-            icon.textContent=music.icon;
+                icon.className =
+                    "soundIcon";
 
-            const text=
-                document.createElement("div");
+                icon.textContent =
+                    music.icon;
 
-            text.className="musicText";
-            text.textContent="Hintergrundmusik";
+                const text =
+                    document.createElement(
+                        "div"
+                    );
 
-            box.appendChild(icon);
-            box.appendChild(text);
+                text.className =
+                    "musicText";
 
-            preview.appendChild(box);
-            card.appendChild(preview);
+                text.textContent =
+                    "Hintergrundmusik";
 
-            const title=
-                document.createElement("h3");
-
-            title.textContent=music.name;
-            card.appendChild(title);
-
-            const test=
-                document.createElement("button");
-
-            test.className="smallbtn blue";
-            test.textContent="▶ ANHÖREN";
-
-            test.onclick=
-                ()=>previewMusic(music);
-
-            card.appendChild(test);
-
-            const selected=
-                state.selectedMusic===music.id;
-
-            const equip=
-                document.createElement("button");
-
-            equip.className=
-                "smallbtn"+
-                (selected?" selected":"");
-
-            equip.textContent=
-                selected
-                ? "✓ AUSGERÜSTET"
-                : "AUSRÜSTEN";
-
-            equip.onclick=()=>{
-
-                state.selectedMusic=
-                    music.id;
-
-                saveState();
-
-                renderMusicInventory(
-                    container
+                box.appendChild(
+                    icon
                 );
 
-                document.getElementById(
-                    "musicHud"
-                ).textContent=
+                box.appendChild(
+                    text
+                );
+
+                preview.appendChild(
+                    box
+                );
+
+                card.appendChild(
+                    preview
+                );
+
+                const title =
+                    document.createElement(
+                        "h3"
+                    );
+
+                title.textContent =
                     music.name;
 
-                if(game.running){
-                    startMusic();
-                }
-            };
+                card.appendChild(
+                    title
+                );
 
-            card.appendChild(equip);
-            container.appendChild(card);
-        }
-    );
+                const listen =
+                    document.createElement(
+                        "button"
+                    );
+
+                listen.className =
+                    "smallbtn blue";
+
+                listen.textContent =
+                    "▶ ANHÖREN";
+
+                listen.onclick =
+                    () =>
+                        previewMusic(
+                            music
+                        );
+
+                card.appendChild(
+                    listen
+                );
+
+                const selected =
+                    state.selectedMusic ===
+                    music.id;
+
+                const equip =
+                    document.createElement(
+                        "button"
+                    );
+
+                equip.className =
+                    "smallbtn" +
+                    (
+                        selected
+                        ? " selected"
+                        : ""
+                    );
+
+                equip.textContent =
+                    selected
+                    ? "✓ AUSGERÜSTET"
+                    : "AUSRÜSTEN";
+
+                equip.onclick =
+                    () => {
+
+                        state.selectedMusic =
+                            music.id;
+
+                        saveState();
+
+                        renderMusicInventory(
+                            container
+                        );
+
+                        document.getElementById(
+                            "musicHud"
+                        ).textContent =
+                            music.name;
+
+                        if(
+                            game.running
+                        ){
+                            startMusic();
+                        }
+                    };
+
+                card.appendChild(
+                    equip
+                );
+
+                container.appendChild(
+                    card
+                );
+            }
+        );
 }
 
 
@@ -2739,8 +3591,10 @@ function startGame(){
 
     if(
         audioContext &&
-        audioContext.state==="suspended"
+        audioContext.state ===
+        "suspended"
     ){
+
         audioContext.resume();
     }
 
@@ -2748,65 +3602,104 @@ function startGame(){
 
     hideScreens();
 
-    canvas.style.display="block";
+    canvas.style.display =
+        "block";
+
     document.getElementById(
         "gameHud"
-    ).style.display="block";
+    ).style.display =
+        "block";
 
     document.getElementById(
         "pauseOverlay"
-    ).classList.remove("active");
+    ).classList.remove(
+        "active"
+    );
 
     document.getElementById(
         "gameOverOverlay"
-    ).classList.remove("active");
+    ).classList.remove(
+        "active"
+    );
 
-    game.running=true;
-    game.paused=false;
-    game.over=false;
+    game.running =
+        true;
 
-    game.score=0;
-    game.runCoins=0;
-    game.jumpCount=0;
-    game.bonusCoinsRun=0;
+    game.paused =
+        false;
 
-    game.speed=165;
-    game.spawnTimer=.9;
+    game.over =
+        false;
 
-    game.obstacles=[];
-    game.coins=[];
+    game.score =
+        0;
 
-    game.player={
-        x:W*.24,
-        y:H*.45,
-        vy:0,
-        r:22,
-        rot:0
+    game.runCoins =
+        0;
+
+    game.jumpCount =
+        0;
+
+    game.bonusCoinsRun =
+        0;
+
+    game.speed =
+        165;
+
+    game.spawnTimer =
+        .9;
+
+    game.obstacles =
+        [];
+
+    game.coins =
+        [];
+
+    game.player = {
+
+        x:
+            W * .24,
+
+        y:
+            H * .45,
+
+        vy:
+            0,
+
+        r:
+            22,
+
+        rot:
+            0
     };
 
-    game.world=
+    game.world =
         worlds.find(
-            w=>w.id===state.selectedWorld
+            world =>
+                world.id ===
+                state.selectedWorld
         ) || worlds[0];
 
     document.getElementById(
         "worldHud"
-    ).textContent=
+    ).textContent =
         game.world.name;
 
     document.getElementById(
         "musicHud"
-    ).textContent=
+    ).textContent =
         selectedMusic().name;
 
     updateHUD();
 
-    game.lastTime=
+    game.lastTime =
         performance.now();
 
     flap();
 
-    requestAnimationFrame(gameLoop);
+    requestAnimationFrame(
+        gameLoop
+    );
 }
 
 
@@ -2818,18 +3711,18 @@ function updateHUD(){
 
     document.getElementById(
         "scoreHud"
-    ).textContent=
+    ).textContent =
         game.score;
 
     document.getElementById(
         "coinsHud"
-    ).textContent=
+    ).textContent =
         state.coins +
         game.runCoins;
 
     document.getElementById(
         "jumpHud"
-    ).textContent=
+    ).textContent =
         game.jumpCount;
 }
 
@@ -2845,17 +3738,20 @@ function flap(){
         game.paused ||
         game.over
     ){
+
         return;
     }
 
-    game.player.vy=
+    game.player.vy =
         -405;
 
     game.jumpCount++;
 
-    const sound=
+    const sound =
         sounds.find(
-            s=>s.id===state.selectedSound
+            sound =>
+                sound.id ===
+                state.selectedSound
         ) || sounds[0];
 
     playJumpSound(
@@ -2867,34 +3763,35 @@ function flap(){
 
 
 /* =========================================================
-   BONUS COINS IM LEVEL
+   BONUS COIN
 ========================================================= */
 
 function spawnCoin(){
 
-    const world=
-        game.world || worlds[0];
+    const minY =
+        100;
 
-    const minY=100;
-    const maxY=Math.max(
-        minY+30,
-        H-100
-    );
+    const maxY =
+        Math.max(
+            minY + 30,
+            H - 100
+        );
 
     game.coins.push({
 
-        x:W+40,
+        x:
+            W + 40,
 
         y:
             minY +
             Math.random() *
-            (maxY-minY),
+            (maxY - minY),
 
-        r:10,
+        r:
+            10,
 
-        value:1,
-
-        collected:false
+        collected:
+            false
     });
 }
 
@@ -2905,111 +3802,127 @@ function spawnCoin(){
 
 function updateGame(dt){
 
-    const p=
+    const p =
         game.player;
 
-    game.speed=
-        165+
+    /*
+       Langsamer Start,
+       später immer schwerer.
+    */
+
+    game.speed =
+        165 +
         Math.min(
             255,
-            game.score*2.5
+            game.score * 2.5
         );
 
-    const gravity=
-        1080+
+    const gravity =
+        1080 +
         Math.min(
             260,
-            game.score*1.5
+            game.score * 1.5
         );
 
-    p.vy+=gravity*dt;
-    p.y+=p.vy*dt;
+    p.vy +=
+        gravity * dt;
 
-    p.rot=
+    p.y +=
+        p.vy * dt;
+
+    p.rot =
         Math.max(
             -.55,
             Math.min(
                 1,
-                p.vy/700
+                p.vy / 700
             )
         );
 
-    /*
-       Hindernislücke:
-       am Anfang groß,
-       später kleiner.
-    */
-
-    const gapHeight=
+    const gapHeight =
         Math.max(
             150,
-            H*.34-
-            game.score*.62
+            H * .34 -
+            game.score * .62
         );
 
-    game.spawnTimer-=dt;
+    game.spawnTimer -=
+        dt;
 
     if(
-        game.spawnTimer<=0
+        game.spawnTimer <=
+        0
     ){
 
-        const topMargin=
+        const topMargin =
             Math.max(
                 75,
-                H*.11
+                H * .11
             );
 
-        const bottomMargin=
+        const bottomMargin =
             Math.max(
                 75,
-                H*.12
+                H * .12
             );
 
-        const minGap=
-            topMargin+
-            gapHeight/2;
+        const minGap =
+            topMargin +
+            gapHeight / 2;
 
-        const maxGap=
-            H-
-            bottomMargin-
-            gapHeight/2;
+        const maxGap =
+            H -
+            bottomMargin -
+            gapHeight / 2;
 
-        const gapY=
-            minGap+
-            Math.random()*
+        const gapY =
+            minGap +
+            Math.random() *
             Math.max(
                 1,
-                maxGap-minGap
+                maxGap -
+                minGap
             );
 
-        const width=
+        const width =
             Math.max(
                 70,
-                W*.075
+                W * .075
             );
 
         game.obstacles.push({
 
-            x:W+30,
+            x:
+                W + 30,
+
             width,
+
             gapY,
-            gapH:gapHeight,
-            passed:false
+
+            gapH:
+                gapHeight,
+
+            passed:
+                false
         });
 
-        game.spawnTimer=
+        game.spawnTimer =
             Math.max(
                 .88,
-                1.62-
-                game.score*.005
+                1.62 -
+                game.score * .005
             );
 
         /*
-           Bonus-Coin manchmal mit
-           einem Hindernis spawnen.
+           Bonus-Coins können
+           im Level auftauchen.
         */
 
-        if(Math.random()<.55){
+        if(
+            Math.random() <
+            .55
+        ){
+
             spawnCoin();
         }
     }
@@ -3023,32 +3936,44 @@ function updateGame(dt){
         of game.obstacles
     ){
 
-        obstacle.x-=
-            game.speed*dt;
+        obstacle.x -=
+            game.speed *
+            dt;
 
         if(
             !obstacle.passed &&
-            obstacle.x+
-            obstacle.width<
-            p.x-p.r
+            obstacle.x +
+            obstacle.width <
+            p.x -
+            p.r
         ){
 
-            obstacle.passed=true;
+            obstacle.passed =
+                true;
+
             game.score++;
 
             scoreSound();
 
             /*
-               Alle 5 Hindernisse:
-               +10 Coins
+               Jedes 5. Hindernis = 10 Coins
             */
 
             if(
-                game.score%5===0
+                game.score % 5 ===
+                0
             ){
 
-                game.runCoins+=10;
-                game.bonusCoinsRun+=10;
+                game.runCoins +=
+                    10;
+
+                /*
+                   Für Mission:
+                   10 Coins zählen.
+                */
+
+                game.bonusCoinsRun +=
+                    10;
 
                 showMessage(
                     "🪙 +10 Coins!"
@@ -3070,16 +3995,16 @@ function updateGame(dt){
         }
     }
 
-    game.obstacles=
+    game.obstacles =
         game.obstacles.filter(
-            o=>
-                o.x+
-                o.width>
+            obstacle =>
+                obstacle.x +
+                obstacle.width >
                 -100
         );
 
     /*
-       Bonus-Coins bewegen
+       Bonus-Coins
     */
 
     for(
@@ -3087,8 +4012,9 @@ function updateGame(dt){
         of game.coins
     ){
 
-        coin.x-=
-            game.speed*dt;
+        coin.x -=
+            game.speed *
+            dt;
 
         if(
             distance(
@@ -3096,17 +4022,23 @@ function updateGame(dt){
                 p.y,
                 coin.x,
                 coin.y
-            )<
-            p.r+
+            ) <
+            p.r +
             coin.r
         ){
 
-            if(!coin.collected){
+            if(
+                !coin.collected
+            ){
 
-                coin.collected=true;
+                coin.collected =
+                    true;
 
-                game.runCoins+=1;
-                game.bonusCoinsRun+=1;
+                game.runCoins +=
+                    1;
+
+                game.bonusCoinsRun +=
+                    1;
 
                 showMessage(
                     "🪙 +1 Bonus-Coin!"
@@ -3117,20 +4049,20 @@ function updateGame(dt){
         }
     }
 
-    game.coins=
+    game.coins =
         game.coins.filter(
-            c=>
-                c.x>-50 &&
-                !c.collected
+            coin =>
+                coin.x > -50 &&
+                !coin.collected
         );
 
     /*
-       Decke/Boden
+       Decke oder Boden
     */
 
     if(
-        p.y-p.r<0 ||
-        p.y+p.r>H
+        p.y - p.r < 0 ||
+        p.y + p.r > H
     ){
 
         endGame();
@@ -3142,11 +4074,11 @@ function updateGame(dt){
     */
 
     if(
-        game.score>
+        game.score >
         state.best
     ){
 
-        state.best=
+        state.best =
             game.score;
 
         saveState();
@@ -3158,7 +4090,7 @@ function updateGame(dt){
 
 
 /* =========================================================
-   DISTANZ
+   DISTANCE
 ========================================================= */
 
 function distance(
@@ -3169,14 +4101,14 @@ function distance(
 ){
 
     return Math.hypot(
-        x1-x2,
-        y1-y2
+        x1 - x2,
+        y1 - y2
     );
 }
 
 
 /* =========================================================
-   KOLLISION
+   COLLISION
 ========================================================= */
 
 function obstacleCollision(
@@ -3184,40 +4116,44 @@ function obstacleCollision(
     obstacle
 ){
 
-    const top=
-        obstacle.gapY-
-        obstacle.gapH/2;
+    const top =
+        obstacle.gapY -
+        obstacle.gapH / 2;
 
-    const bottom=
-        obstacle.gapY+
-        obstacle.gapH/2;
+    const bottom =
+        obstacle.gapY +
+        obstacle.gapH / 2;
 
     if(
-        p.x+p.r<
+        p.x + p.r <
         obstacle.x
     ){
+
         return false;
     }
 
     if(
-        p.x-p.r>
-        obstacle.x+
+        p.x - p.r >
+        obstacle.x +
         obstacle.width
     ){
+
         return false;
     }
 
     if(
-        p.y-p.r<
+        p.y - p.r <
         top
     ){
+
         return true;
     }
 
     if(
-        p.y+p.r>
+        p.y + p.r >
         bottom
     ){
+
         return true;
     }
 
@@ -3231,20 +4167,32 @@ function obstacleCollision(
 
 function endGame(){
 
-    if(game.over) return;
+    if(
+        game.over
+    ){
+        return;
+    }
 
-    game.over=true;
-    game.running=false;
+    game.over =
+        true;
 
-    state.coins+=
+    game.running =
+        false;
+
+    /*
+       Lauf-Coins nur einmal
+       ins gespeicherte Guthaben.
+    */
+
+    state.coins +=
         game.runCoins;
 
     if(
-        game.score>
+        game.score >
         state.best
     ){
 
-        state.best=
+        state.best =
             game.score;
     }
 
@@ -3254,22 +4202,22 @@ function endGame(){
 
     document.getElementById(
         "finalScore"
-    ).textContent=
+    ).textContent =
         game.score;
 
     document.getElementById(
         "earnedCoins"
-    ).textContent=
+    ).textContent =
         game.runCoins;
 
     document.getElementById(
         "bestScore"
-    ).textContent=
+    ).textContent =
         state.best;
 
     document.getElementById(
         "gameHud"
-    ).style.display=
+    ).style.display =
         "none";
 
     document.getElementById(
@@ -3283,32 +4231,44 @@ function endGame(){
 
 
 /* =========================================================
-   LOOP
+   GAME LOOP
 ========================================================= */
 
 function gameLoop(time){
 
-    if(!game.running){
+    if(
+        !game.running
+    ){
 
         draw();
+
         return;
     }
 
-    const dt=
+    const dt =
         Math.min(
             .033,
-            (time-game.lastTime)/1000
+            (time -
+            game.lastTime) /
+            1000
         );
 
-    game.lastTime=time;
+    game.lastTime =
+        time;
 
-    if(!game.paused){
+    if(
+        !game.paused
+    ){
+
         updateGame(dt);
     }
 
     draw();
 
-    if(game.running){
+    if(
+        game.running
+    ){
+
         requestAnimationFrame(
             gameLoop
         );
@@ -3317,53 +4277,54 @@ function gameLoop(time){
 
 
 /* =========================================================
-   HINTERGRUND
+   HINTERGRÜNDE
 ========================================================= */
 
 function drawGiza(){
 
-    const horizon=
-        H*.69;
+    const horizon =
+        H * .69;
 
-    ctx.fillStyle=
+    ctx.fillStyle =
         "rgba(255,225,150,.25)";
 
     ctx.beginPath();
 
     ctx.arc(
-        W*.82,
-        H*.18,
+        W * .82,
+        H * .18,
         85,
         0,
-        Math.PI*2
+        Math.PI * 2
     );
 
     ctx.fill();
 
-    ctx.fillStyle=
+    ctx.fillStyle =
         "#d9a35a";
 
     ctx.fillRect(
         0,
         horizon,
         W,
-        H-horizon
+        H - horizon
     );
 
     drawPyramid(
-        W*.57,
+        W * .57,
         horizon,
         200,
         130
     );
 
     drawPyramid(
-        W*.75,
-        horizon+12,
+        W * .75,
+        horizon + 12,
         110,
         78
     );
 }
+
 
 function drawPyramid(
     cx,
@@ -3372,23 +4333,23 @@ function drawPyramid(
     height
 ){
 
-    ctx.fillStyle=
+    ctx.fillStyle =
         "#d5a05a";
 
     ctx.beginPath();
 
     ctx.moveTo(
         cx,
-        base-height
+        base - height
     );
 
     ctx.lineTo(
-        cx-width/2,
+        cx - width / 2,
         base
     );
 
     ctx.lineTo(
-        cx+width/2,
+        cx + width / 2,
         base
     );
 
@@ -3397,84 +4358,101 @@ function drawPyramid(
     ctx.fill();
 }
 
+
 function drawMountains(){
 
-    ctx.fillStyle=
+    ctx.fillStyle =
         "#5b70aa";
 
     ctx.beginPath();
 
     ctx.moveTo(
-        0,H*.72
+        0,
+        H * .72
     );
 
     ctx.lineTo(
-        W*.18,H*.43
+        W * .18,
+        H * .43
     );
 
     ctx.lineTo(
-        W*.38,H*.70
+        W * .38,
+        H * .70
     );
 
     ctx.lineTo(
-        W*.57,H*.32
+        W * .57,
+        H * .32
     );
 
     ctx.lineTo(
-        W*.78,H*.67
+        W * .78,
+        H * .67
     );
 
     ctx.lineTo(
-        W,H*.40
+        W,
+        H * .40
     );
 
     ctx.lineTo(
-        W,H
+        W,
+        H
     );
 
     ctx.lineTo(
-        0,H
+        0,
+        H
     );
 
     ctx.closePath();
 
     ctx.fill();
 
-    ctx.fillStyle=
+    ctx.fillStyle =
         "#527951";
 
     ctx.fillRect(
-        0,H*.79,W,H*.21
+        0,
+        H * .79,
+        W,
+        H * .21
     );
 }
 
+
 function drawOcean(){
 
-    ctx.strokeStyle=
+    ctx.strokeStyle =
         "rgba(255,255,255,.14)";
 
-    ctx.lineWidth=2;
+    ctx.lineWidth =
+        2;
 
     for(
-        let y=90;
-        y<H*.85;
-        y+=80
+        let y = 90;
+        y < H * .85;
+        y += 80
     ){
 
         ctx.beginPath();
 
         for(
-            let x=0;
-            x<W;
-            x+=45
+            let x = 0;
+            x < W;
+            x += 45
         ){
 
-            ctx.moveTo(x,y);
+            ctx.moveTo(
+                x,
+                y
+            );
 
             ctx.quadraticCurveTo(
-                x+12,
-                y-10,
-                x+24,
+                x + 12,
+                y - 10,
+                x + 24,
                 y
             );
         }
@@ -3482,46 +4460,51 @@ function drawOcean(){
         ctx.stroke();
     }
 
-    ctx.fillStyle=
+    ctx.fillStyle =
         "#157c86";
 
     ctx.fillRect(
         0,
-        H*.88,
+        H * .88,
         W,
-        H*.12
+        H * .12
     );
 }
 
+
 function drawJungle(){
 
-    ctx.fillStyle=
+    ctx.fillStyle =
         "#2b753d";
 
     ctx.fillRect(
-        0,H*.78,W,H*.22
+        0,
+        H * .78,
+        W,
+        H * .22
     );
 
     for(
-        let i=0;
-        i<18;
+        let i = 0;
+        i < 18;
         i++
     ){
 
-        const x=
-            (i*97)%W;
+        const x =
+            (i * 97) % W;
 
-        const height=
-            100+(i%4)*35;
+        const height =
+            100 +
+            (i % 4) * 35;
 
-        ctx.fillStyle=
-            i%2
+        ctx.fillStyle =
+            i % 2
             ? "#1c5a31"
             : "#348746";
 
         ctx.fillRect(
             x,
-            H*.78-height,
+            H * .78 - height,
             20,
             height
         );
@@ -3529,87 +4512,102 @@ function drawJungle(){
         ctx.beginPath();
 
         ctx.arc(
-            x+10,
-            H*.78-height,
+            x + 10,
+            H * .78 - height,
             38,
             Math.PI,
-            Math.PI*2
+            Math.PI * 2
         );
 
         ctx.fill();
     }
 }
 
+
 function drawSpace(){
 
-    ctx.fillStyle="white";
+    ctx.fillStyle =
+        "white";
 
     for(
-        let i=0;
-        i<100;
+        let i = 0;
+        i < 100;
         i++
     ){
 
-        const x=
-            (i*83)%W;
+        const x =
+            (i * 83) % W;
 
-        const y=
-            (i*47)%H;
+        const y =
+            (i * 47) % H;
 
-        ctx.globalAlpha=
-            .25+(i%5)*.1;
+        ctx.globalAlpha =
+            .25 +
+            (i % 5) * .1;
 
         ctx.fillRect(
-            x,y,2,2
+            x,
+            y,
+            2,
+            2
         );
     }
 
-    ctx.globalAlpha=1;
+    ctx.globalAlpha =
+        1;
 
-    ctx.fillStyle="#9b63dc";
+    ctx.fillStyle =
+        "#9b63dc";
 
-    ctx.globalAlpha=.25;
+    ctx.globalAlpha =
+        .25;
 
     ctx.beginPath();
 
     ctx.arc(
-        W*.78,
-        H*.25,
+        W * .78,
+        H * .25,
         120,
         0,
-        Math.PI*2
+        Math.PI * 2
     );
 
     ctx.fill();
 
-    ctx.globalAlpha=1;
+    ctx.globalAlpha =
+        1;
 }
+
 
 function drawIce(){
 
-    ctx.fillStyle=
+    ctx.fillStyle =
         "rgba(255,255,255,.45)";
 
     for(
-        let i=0;
-        i<8;
+        let i = 0;
+        i < 8;
         i++
     ){
 
-        const x=i*190;
+        const x =
+            i * 190;
 
         ctx.beginPath();
 
         ctx.moveTo(
-            x,H*.82
+            x,
+            H * .82
         );
 
         ctx.lineTo(
-            x+80,H*.25
+            x + 80,
+            H * .25
         );
 
         ctx.lineTo(
-            x+150,H*.82
+            x + 150,
+            H * .82
         );
 
         ctx.closePath();
@@ -3617,11 +4615,14 @@ function drawIce(){
         ctx.fill();
     }
 
-    ctx.fillStyle=
+    ctx.fillStyle =
         "#a7deef";
 
     ctx.fillRect(
-        0,H*.82,W,H*.18
+        0,
+        H * .82,
+        W,
+        H * .18
     );
 }
 
@@ -3640,266 +4641,320 @@ function drawSkin(
 
     c.save();
 
-    c.translate(x,y);
+    c.translate(
+        x,
+        y
+    );
 
-    if(type==="bird") drawBird(c,r);
-    if(type==="dino") drawDino(c,r);
-    if(type==="pen") drawPen(c,r);
-    if(type==="carrot") drawCarrot(c,r);
-    if(type==="apple") drawApple(c,r);
+    if(
+        type ===
+        "bird"
+    ){
+        drawBird(c,r);
+    }
+
+    if(
+        type ===
+        "dino"
+    ){
+        drawDino(c,r);
+    }
+
+    if(
+        type ===
+        "pen"
+    ){
+        drawPen(c,r);
+    }
+
+    if(
+        type ===
+        "carrot"
+    ){
+        drawCarrot(c,r);
+    }
+
+    if(
+        type ===
+        "apple"
+    ){
+        drawApple(c,r);
+    }
 
     c.restore();
 }
 
+
 function drawBird(c,r){
 
-    c.fillStyle="#ffd13b";
+    c.fillStyle =
+        "#ffd13b";
 
     c.beginPath();
 
     c.ellipse(
-        0,0,
-        r*1.05,
-        r*.82,
         0,
         0,
-        Math.PI*2
+        r * 1.05,
+        r * .82,
+        0,
+        0,
+        Math.PI * 2
     );
 
     c.fill();
 
-    c.fillStyle="#fff";
+    c.fillStyle =
+        "#fff";
 
     c.beginPath();
 
     c.arc(
-        r*.35,
-        -r*.3,
-        r*.21,
+        r * .35,
+        -r * .3,
+        r * .21,
         0,
-        Math.PI*2
+        Math.PI * 2
     );
 
     c.fill();
 
-    c.fillStyle="#17204a";
+    c.fillStyle =
+        "#17204a";
 
     c.beginPath();
 
     c.arc(
-        r*.4,
-        -r*.3,
-        r*.08,
+        r * .4,
+        -r * .3,
+        r * .08,
         0,
-        Math.PI*2
+        Math.PI * 2
     );
 
     c.fill();
 
-    c.fillStyle="#ff7733";
+    c.fillStyle =
+        "#ff7733";
 
     c.beginPath();
 
     c.moveTo(
-        r*.9,
-        -r*.05
+        r * .9,
+        -r * .05
     );
 
     c.lineTo(
-        r*1.45,
-        r*.1
+        r * 1.45,
+        r * .1
     );
 
     c.lineTo(
-        r*.9,
-        r*.28
+        r * .9,
+        r * .28
     );
 
     c.closePath();
 
     c.fill();
 
-    c.fillStyle="#ef9d20";
+    c.fillStyle =
+        "#ef9d20";
 
     c.beginPath();
 
     c.ellipse(
-        -r*.25,
-        r*.4,
-        r*.55,
-        r*.18,
+        -r * .25,
+        r * .4,
+        r * .55,
+        r * .18,
         -.3,
         0,
-        Math.PI*2
+        Math.PI * 2
     );
 
     c.fill();
 }
+
 
 function drawDino(c,r){
 
-    c.fillStyle="#58d26b";
+    c.fillStyle =
+        "#58d26b";
 
     c.beginPath();
 
     c.ellipse(
-        0,0,
-        r*1.05,
-        r*.72,
         0,
         0,
-        Math.PI*2
+        r * 1.05,
+        r * .72,
+        0,
+        0,
+        Math.PI * 2
     );
 
     c.fill();
 
-    c.fillStyle="#4baa59";
+    c.fillStyle =
+        "#4baa59";
 
     c.beginPath();
 
     c.moveTo(
-        -r*.7,
-        -r*.25
+        -r * .7,
+        -r * .25
     );
 
     c.lineTo(
-        -r*1.4,
-        -r*.05
+        -r * 1.4,
+        -r * .05
     );
 
     c.lineTo(
-        -r*.8,
-        r*.3
+        -r * .8,
+        r * .3
     );
 
     c.closePath();
 
     c.fill();
 
-    c.fillStyle="#fff";
+    c.fillStyle =
+        "#fff";
 
     c.beginPath();
 
     c.arc(
-        r*.4,
-        -r*.2,
-        r*.2,
+        r * .4,
+        -r * .2,
+        r * .2,
         0,
-        Math.PI*2
+        Math.PI * 2
     );
 
     c.fill();
 
-    c.fillStyle="#17204a";
+    c.fillStyle =
+        "#17204a";
 
     c.beginPath();
 
     c.arc(
-        r*.45,
-        -r*.2,
-        r*.08,
+        r * .45,
+        -r * .2,
+        r * .08,
         0,
-        Math.PI*2
+        Math.PI * 2
     );
 
     c.fill();
 }
+
 
 function drawPen(c,r){
 
-    c.rotate(-.35);
-
-    c.fillStyle="#ffdf4e";
-
-    c.fillRect(
-        -r*.25,
-        -r*1.1,
-        r*.5,
-        r*1.6
+    c.rotate(
+        -.35
     );
 
-    c.fillStyle="#4d75ff";
+    c.fillStyle =
+        "#ffdf4e";
 
     c.fillRect(
-        -r*.25,
-        -r*1.1,
-        r*.5,
-        r*.35
+        -r * .25,
+        -r * 1.1,
+        r * .5,
+        r * 1.6
     );
 
-    c.fillStyle="#e9bd91";
+    c.fillStyle =
+        "#4d75ff";
+
+    c.fillRect(
+        -r * .25,
+        -r * 1.1,
+        r * .5,
+        r * .35
+    );
+
+    c.fillStyle =
+        "#e9bd91";
 
     c.beginPath();
 
     c.moveTo(
-        -r*.25,
-        r*.5
+        -r * .25,
+        r * .5
     );
 
     c.lineTo(
         0,
-        r*1.05
+        r * 1.05
     );
 
     c.lineTo(
-        r*.25,
-        r*.5
+        r * .25,
+        r * .5
     );
 
     c.closePath();
 
     c.fill();
 }
+
 
 function drawCarrot(c,r){
 
-    c.fillStyle="#62d976";
+    c.fillStyle =
+        "#62d976";
 
     c.beginPath();
 
     c.ellipse(
-        -r*.2,
-        -r*.75,
-        r*.25,
-        r*.55,
+        -r * .2,
+        -r * .75,
+        r * .25,
+        r * .55,
         -.5,
         0,
-        Math.PI*2
+        Math.PI * 2
     );
 
     c.ellipse(
-        r*.2,
-        -r*.75,
-        r*.25,
-        r*.55,
+        r * .2,
+        -r * .75,
+        r * .25,
+        r * .55,
         .5,
         0,
-        Math.PI*2
+        Math.PI * 2
     );
 
     c.fill();
 
-    c.fillStyle="#ff8b28";
+    c.fillStyle =
+        "#ff8b28";
 
     c.beginPath();
 
     c.moveTo(
-        -r*.65,
-        -r*.25
+        -r * .65,
+        -r * .25
     );
 
     c.quadraticCurveTo(
         0,
-        r*.75,
+        r * .75,
         0,
-        r*1.05
+        r * 1.05
     );
 
     c.quadraticCurveTo(
         0,
-        r*.75,
-        r*.65,
-        -r*.25
+        r * .75,
+        r * .65,
+        -r * .25
     );
 
     c.closePath();
@@ -3907,59 +4962,65 @@ function drawCarrot(c,r){
     c.fill();
 }
 
+
 function drawApple(c,r){
 
-    c.fillStyle="#f14848";
+    c.fillStyle =
+        "#f14848";
 
     c.beginPath();
 
     c.arc(
-        -r*.3,
+        -r * .3,
         0,
-        r*.65,
+        r * .65,
         0,
-        Math.PI*2
+        Math.PI * 2
     );
 
     c.arc(
-        r*.3,
+        r * .3,
         0,
-        r*.65,
+        r * .65,
         0,
-        Math.PI*2
+        Math.PI * 2
     );
 
     c.fill();
 
-    c.strokeStyle="#69472b";
-    c.lineWidth=4;
+    c.strokeStyle =
+        "#69472b";
+
+    c.lineWidth =
+        4;
 
     c.beginPath();
 
     c.moveTo(
         0,
-        -r*.45
+        -r * .45
     );
 
     c.lineTo(
-        r*.1,
-        -r*.95
+        r * .1,
+        -r * .95
     );
 
     c.stroke();
 
-    c.fillStyle="#63d878";
+    c.fillStyle =
+        "#63d878";
 
     c.beginPath();
 
     c.ellipse(
-        r*.35,
-        -r*.75,
-        r*.35,
-        r*.16,
+        r * .35,
+        -r * .75,
+        r * .35,
+        r * .16,
         -.4,
         0,
-        Math.PI*2
+        Math.PI * 2
     );
 
     c.fill();
@@ -3977,7 +5038,7 @@ function drawWorldPreview(
     height
 ){
 
-    const g=
+    const g =
         c.createLinearGradient(
             0,
             0,
@@ -3995,41 +5056,49 @@ function drawWorldPreview(
         world.sky2
     );
 
-    c.fillStyle=g;
+    c.fillStyle =
+        g;
 
     c.fillRect(
-        0,0,
-        width,height
+        0,
+        0,
+        width,
+        height
     );
 
-    if(world.id==="giza"){
+    if(
+        world.id ===
+        "giza"
+    ){
 
-        c.fillStyle=world.ground;
+        c.fillStyle =
+            world.ground;
 
         c.fillRect(
             0,
-            height*.72,
+            height * .72,
             width,
-            height*.28
+            height * .28
         );
 
-        c.fillStyle="#d6a05c";
+        c.fillStyle =
+            "#d6a05c";
 
         c.beginPath();
 
         c.moveTo(
-            width*.48,
-            height*.2
+            width * .48,
+            height * .2
         );
 
         c.lineTo(
-            width*.23,
-            height*.72
+            width * .23,
+            height * .72
         );
 
         c.lineTo(
-            width*.73,
-            height*.72
+            width * .73,
+            height * .72
         );
 
         c.closePath();
@@ -4037,47 +5106,77 @@ function drawWorldPreview(
         c.fill();
     }
 
-    if(world.id==="mountains"){
+    if(
+        world.id ===
+        "mountains"
+    ){
 
-        c.fillStyle=world.obstacle;
+        c.fillStyle =
+            world.obstacle;
 
         c.beginPath();
 
-        c.moveTo(0,height);
-        c.lineTo(width*.22,height*.3);
-        c.lineTo(width*.44,height);
-        c.lineTo(width*.63,height*.22);
-        c.lineTo(width,height);
+        c.moveTo(
+            0,
+            height
+        );
+
+        c.lineTo(
+            width * .22,
+            height * .3
+        );
+
+        c.lineTo(
+            width * .44,
+            height
+        );
+
+        c.lineTo(
+            width * .63,
+            height * .22
+        );
+
+        c.lineTo(
+            width,
+            height
+        );
+
         c.closePath();
 
         c.fill();
     }
 
-    if(world.id==="ocean"){
+    if(
+        world.id ===
+        "ocean"
+    ){
 
-        c.strokeStyle=
+        c.strokeStyle =
             "rgba(255,255,255,.16)";
 
         for(
-            let y=25;
-            y<height;
-            y+=28
+            let y = 25;
+            y < height;
+            y += 28
         ){
 
             c.beginPath();
 
             for(
-                let x=0;
-                x<=width;
-                x+=22
+                let x = 0;
+                x <= width;
+                x += 22
             ){
 
-                c.moveTo(x,y);
+                c.moveTo(
+                    x,
+                    y
+                );
 
                 c.quadraticCurveTo(
-                    x+7,
-                    y-5,
-                    x+14,
+                    x + 7,
+                    y - 5,
+                    x + 14,
                     y
                 );
             }
@@ -4086,46 +5185,80 @@ function drawWorldPreview(
         }
     }
 
-    if(world.id==="jungle"){
+    if(
+        world.id ===
+        "jungle"
+    ){
 
-        c.fillStyle=world.ground;
+        c.fillStyle =
+            world.ground;
 
         c.fillRect(
             0,
-            height*.76,
+            height * .76,
             width,
-            height*.24
+            height * .24
         );
     }
 
-    if(world.id==="space"){
+    if(
+        world.id ===
+        "space"
+    ){
 
-        c.fillStyle="white";
+        c.fillStyle =
+            "white";
 
         for(
-            let i=0;
-            i<30;
+            let i = 0;
+            i < 30;
             i++
         ){
+
             c.fillRect(
-                (i*37)%width,
-                (i*19)%height,
-                2,2
+                (i * 37) % width,
+                (i * 19) % height,
+                2,
+                2
             );
         }
     }
 
-    if(world.id==="ice"){
+    if(
+        world.id ===
+        "ice"
+    ){
 
-        c.fillStyle="#eefcff";
+        c.fillStyle =
+            "#eefcff";
 
         c.beginPath();
 
-        c.moveTo(0,height);
-        c.lineTo(width*.24,height*.25);
-        c.lineTo(width*.45,height);
-        c.lineTo(width*.65,height*.2);
-        c.lineTo(width,height);
+        c.moveTo(
+            0,
+            height
+        );
+
+        c.lineTo(
+            width * .24,
+            height * .25
+        );
+
+        c.lineTo(
+            width * .45,
+            height
+        );
+
+        c.lineTo(
+            width * .65,
+            height * .2
+        );
+
+        c.lineTo(
+            width,
+            height
+        );
+
         c.closePath();
 
         c.fill();
@@ -4134,18 +5267,21 @@ function drawWorldPreview(
 
 
 /* =========================================================
-   GAME DRAW
+   DRAW
 ========================================================= */
 
 function draw(){
 
-    const world=
+    const world =
         game.world ||
         worlds[0];
 
-    const g=
+    const g =
         ctx.createLinearGradient(
-            0,0,0,H
+            0,
+            0,
+            0,
+            H
         );
 
     g.addColorStop(
@@ -4158,21 +5294,60 @@ function draw(){
         world.sky2
     );
 
-    ctx.fillStyle=g;
+    ctx.fillStyle =
+        g;
 
     ctx.fillRect(
-        0,0,W,H
+        0,
+        0,
+        W,
+        H
     );
 
-    if(world.id==="giza") drawGiza();
-    if(world.id==="mountains") drawMountains();
-    if(world.id==="ocean") drawOcean();
-    if(world.id==="jungle") drawJungle();
-    if(world.id==="space") drawSpace();
-    if(world.id==="ice") drawIce();
+    if(
+        world.id ===
+        "giza"
+    ){
+        drawGiza();
+    }
+
+    if(
+        world.id ===
+        "mountains"
+    ){
+        drawMountains();
+    }
+
+    if(
+        world.id ===
+        "ocean"
+    ){
+        drawOcean();
+    }
+
+    if(
+        world.id ===
+        "jungle"
+    ){
+        drawJungle();
+    }
+
+    if(
+        world.id ===
+        "space"
+    ){
+        drawSpace();
+    }
+
+    if(
+        world.id ===
+        "ice"
+    ){
+        drawIce();
+    }
 
     /*
-       Welt-spezifische Hindernisse
+       Hindernisse
     */
 
     for(
@@ -4180,15 +5355,15 @@ function draw(){
         of game.obstacles
     ){
 
-        const top=
-            obstacle.gapY-
-            obstacle.gapH/2;
+        const top =
+            obstacle.gapY -
+            obstacle.gapH / 2;
 
-        const bottom=
-            obstacle.gapY+
-            obstacle.gapH/2;
+        const bottom =
+            obstacle.gapY +
+            obstacle.gapH / 2;
 
-        ctx.fillStyle=
+        ctx.fillStyle =
             world.obstacle;
 
         ctx.fillRect(
@@ -4202,12 +5377,8 @@ function draw(){
             obstacle.x,
             bottom,
             obstacle.width,
-            H-bottom
+            H - bottom
         );
-
-        /*
-           obere Spitze
-        */
 
         ctx.beginPath();
 
@@ -4217,13 +5388,13 @@ function draw(){
         );
 
         ctx.lineTo(
-            obstacle.x+
-            obstacle.width/2,
-            top+24
+            obstacle.x +
+            obstacle.width / 2,
+            top + 24
         );
 
         ctx.lineTo(
-            obstacle.x+
+            obstacle.x +
             obstacle.width,
             top
         );
@@ -4231,10 +5402,6 @@ function draw(){
         ctx.closePath();
 
         ctx.fill();
-
-        /*
-           untere Spitze
-        */
 
         ctx.beginPath();
 
@@ -4244,13 +5411,13 @@ function draw(){
         );
 
         ctx.lineTo(
-            obstacle.x+
-            obstacle.width/2,
-            bottom-24
+            obstacle.x +
+            obstacle.width / 2,
+            bottom - 24
         );
 
         ctx.lineTo(
-            obstacle.x+
+            obstacle.x +
             obstacle.width,
             bottom
         );
@@ -4276,10 +5443,14 @@ function draw(){
             coin.y
         );
 
-        const glow=
+        const glow =
             ctx.createRadialGradient(
-                0,0,2,
-                0,0,22
+                0,
+                0,
+                2,
+                0,
+                0,
+                22
             );
 
         glow.addColorStop(
@@ -4292,7 +5463,8 @@ function draw(){
             "rgba(255,240,100,0)"
         );
 
-        ctx.fillStyle=glow;
+        ctx.fillStyle =
+            glow;
 
         ctx.beginPath();
 
@@ -4301,12 +5473,12 @@ function draw(){
             0,
             22,
             0,
-            Math.PI*2
+            Math.PI * 2
         );
 
         ctx.fill();
 
-        ctx.fillStyle=
+        ctx.fillStyle =
             "#ffd447";
 
         ctx.beginPath();
@@ -4316,21 +5488,21 @@ function draw(){
             0,
             coin.r,
             0,
-            Math.PI*2
+            Math.PI * 2
         );
 
         ctx.fill();
 
-        ctx.fillStyle=
+        ctx.fillStyle =
             "#fff5a6";
 
-        ctx.font=
+        ctx.font =
             "bold 12px Arial";
 
-        ctx.textAlign=
+        ctx.textAlign =
             "center";
 
-        ctx.textBaseline=
+        ctx.textBaseline =
             "middle";
 
         ctx.fillText(
@@ -4346,10 +5518,10 @@ function draw(){
        Spieler
     */
 
-    const skin=
+    const skin =
         skins.find(
-            s=>
-                s.id===
+            s =>
+                s.id ===
                 state.selectedSkin
         ) || skins[0];
 
@@ -4389,7 +5561,7 @@ function togglePause(){
         return;
     }
 
-    game.paused=
+    game.paused =
         !game.paused;
 
     document
@@ -4401,9 +5573,11 @@ function togglePause(){
             game.paused
         );
 
-    if(!game.paused){
+    if(
+        !game.paused
+    ){
 
-        game.lastTime=
+        game.lastTime =
             performance.now();
     }
 }
@@ -4415,84 +5589,109 @@ function togglePause(){
 
 function returnToLobby(){
 
-    game.running=false;
-    game.paused=false;
-    game.over=false;
+    game.running =
+        false;
 
-    canvas.style.display="none";
+    game.paused =
+        false;
+
+    game.over =
+        false;
+
+    canvas.style.display =
+        "none";
 
     document.getElementById(
         "gameHud"
-    ).style.display="none";
+    ).style.display =
+        "none";
 
     document
         .querySelectorAll(
             ".overlay"
         )
         .forEach(
-            o=>
-                o.classList.remove("active")
+            overlay =>
+                overlay.classList.remove(
+                    "active"
+                )
         );
 
-    showScreen("lobby");
+    showScreen(
+        "lobby"
+    );
+
     updateLobby();
 }
 
 
 /* =========================================================
-   APP EVENTS
+   BUTTONS
 ========================================================= */
 
 document.getElementById(
     "startBtn"
-).onclick=
+).onclick =
     startGame;
+
 
 document.getElementById(
     "shopBtn"
-).onclick=
-    ()=>{
+).onclick =
+    () => {
+
         renderShop();
         showScreen("shop");
     };
 
+
 document.getElementById(
     "inventoryBtn"
-).onclick=
-    ()=>{
+).onclick =
+    () => {
+
         renderInventory();
         showScreen("inventory");
     };
 
+
 document.getElementById(
     "missionsBtn"
-).onclick=
-    ()=>{
+).onclick =
+    () => {
+
         renderMissions();
         showScreen("missions");
     };
 
+
 document.getElementById(
     "shopBack"
-).onclick=
-    ()=>showScreen("lobby");
+).onclick =
+    () =>
+        showScreen("lobby");
+
 
 document.getElementById(
     "inventoryBack"
-).onclick=
-    ()=>showScreen("lobby");
+).onclick =
+    () =>
+        showScreen("lobby");
+
 
 document.getElementById(
     "missionsBack"
-).onclick=
-    ()=>showScreen("lobby");
+).onclick =
+    () =>
+        showScreen("lobby");
+
 
 document.getElementById(
     "musicToggleBtn"
-).onclick=
-    ()=>{
+).onclick =
+    () => {
 
-        state.musicEnabled=
+        state.musicEnabled =
             !state.musicEnabled;
 
         saveState();
@@ -4512,29 +5711,34 @@ document.getElementById(
         updateLobby();
     };
 
+
 document.getElementById(
     "pauseBtn"
-).onclick=
+).onclick =
     togglePause;
+
 
 document.getElementById(
     "resumeBtn"
-).onclick=
+).onclick =
     togglePause;
+
 
 document.getElementById(
     "pauseLobbyBtn"
-).onclick=
+).onclick =
     returnToLobby;
+
 
 document.getElementById(
     "retryBtn"
-).onclick=
+).onclick =
     startGame;
+
 
 document.getElementById(
     "returnLobbyBtn"
-).onclick=
+).onclick =
     returnToLobby;
 
 
@@ -4544,28 +5748,36 @@ document.getElementById(
 
 canvas.addEventListener(
     "pointerdown",
-    e=>{
-        e.preventDefault();
+    event => {
+
+        event.preventDefault();
+
         flap();
     }
 );
 
+
 window.addEventListener(
     "keydown",
-    e=>{
+    event => {
 
         if(
-            e.code==="Space" ||
-            e.code==="ArrowUp"
+            event.code ===
+            "Space" ||
+            event.code ===
+            "ArrowUp"
         ){
 
-            e.preventDefault();
+            event.preventDefault();
+
             flap();
         }
 
         if(
-            e.code==="Escape" ||
-            e.code==="KeyP"
+            event.code ===
+            "Escape" ||
+            event.code ===
+            "KeyP"
         ){
 
             togglePause();
@@ -4575,46 +5787,27 @@ window.addEventListener(
 
 
 /* =========================================================
-   NORMALER APP-START
+   START
 ========================================================= */
 
-function startApp(){
+canvas.style.display =
+    "none";
 
-    canvas.style.display="none";
+document.getElementById(
+    "gameHud"
+).style.display =
+    "none";
 
-    document.getElementById(
-        "gameHud"
-    ).style.display="none";
+updateLobby();
 
-    showScreen("lobby");
+renderShop();
 
-    updateLobby();
-    renderShop();
-    renderInventory();
-    renderMissions();
-}
+renderInventory();
 
+renderMissions();
 
-/*
-   Bei bestehender Wartung:
-   nur Wartungsseite.
-*/
+showScreen("lobby");
 
-if(
-    Date.now() <
-    maintenanceEnd
-){
-
-    hideScreens();
-
-}else{
-
-    document.getElementById(
-        "maintenance"
-    ).style.display="none";
-
-    startApp();
-}
 </script>
 
 </body>
