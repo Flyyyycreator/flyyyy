@@ -9,11 +9,13 @@
 <style>
 :root{
     --bg:#0d1430;
+    --panel:#121a3d;
     --text:#fff;
     --muted:#b9c5ef;
     --yellow:#ffd447;
     --blue:#5ee7ff;
     --green:#6df5a3;
+    --red:#ff6374;
 }
 
 *{
@@ -28,13 +30,7 @@ html,body{
     overflow:hidden;
     font-family:Arial,Helvetica,sans-serif;
     background:var(--bg);
-    color:#fff;
-}
-
-body{
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    color:white;
 }
 
 button,input{
@@ -42,8 +38,7 @@ button,input{
 }
 
 button{
-    -webkit-user-select:none;
-    user-select:none;
+    cursor:pointer;
 }
 
 #app{
@@ -53,10 +48,6 @@ button{
     overflow:hidden;
     background:#10162f;
 }
-
-/* =========================================================
-   CANVAS
-========================================================= */
 
 #gameCanvas{
     position:absolute;
@@ -69,17 +60,17 @@ button{
     touch-action:none;
 }
 
-/* =========================================================
+/* =========================
    SCREENS
-========================================================= */
+========================= */
 
 .screen{
     position:absolute;
     inset:0;
     z-index:20;
     display:none;
-    justify-content:center;
     align-items:center;
+    justify-content:center;
     padding:18px;
 }
 
@@ -88,9 +79,10 @@ button{
 }
 
 .menu{
-    width:min(1000px,94vw);
+    width:min(980px,94vw);
     max-height:92vh;
     overflow:auto;
+    padding:26px;
 
     background:
         linear-gradient(
@@ -101,25 +93,20 @@ button{
 
     border:1px solid rgba(255,255,255,.14);
     border-radius:28px;
-    padding:26px;
 
-    box-shadow:
-        0 20px 60px rgba(0,0,0,.42);
+    box-shadow:0 20px 60px rgba(0,0,0,.4);
 
-    backdrop-filter:blur(14px);
+    backdrop-filter:blur(12px);
 }
 
-/* =========================================================
+/* =========================
    TEXT
-========================================================= */
+========================= */
 
 .title{
     text-align:center;
     line-height:.9;
-
-    font-size:
-        clamp(54px,10vw,110px);
-
+    font-size:clamp(55px,10vw,110px);
     font-weight:1000;
     letter-spacing:.08em;
 
@@ -129,7 +116,6 @@ button{
 }
 
 .version{
-    display:block;
     width:max-content;
     margin:14px auto;
 
@@ -137,11 +123,8 @@ button{
 
     border-radius:999px;
 
-    background:
-        rgba(94,231,255,.12);
-
-    border:
-        1px solid rgba(94,231,255,.28);
+    background:rgba(94,231,255,.12);
+    border:1px solid rgba(94,231,255,.28);
 
     font-weight:900;
 }
@@ -154,13 +137,20 @@ button{
 }
 
 .tiny{
-    color:var(--muted);
     font-size:13px;
+    color:var(--muted);
 }
 
-/* =========================================================
+.sectionInfo{
+    text-align:center;
+    color:var(--muted);
+    font-size:13px;
+    margin-top:14px;
+}
+
+/* =========================
    BUTTONS
-========================================================= */
+========================= */
 
 .button-grid{
     display:grid;
@@ -171,8 +161,6 @@ button{
     border:0;
     border-radius:17px;
     padding:15px 18px;
-
-    cursor:pointer;
 
     color:#111;
     font-weight:900;
@@ -188,19 +176,16 @@ button{
         0 7px 0 #c99415,
         0 12px 22px rgba(0,0,0,.18);
 
-    transition:
-        transform .12s,
-        filter .12s;
+    transition:.12s;
 }
 
 .btn:hover{
-    filter:brightness(1.06);
+    filter:brightness(1.05);
 }
 
 .btn:active{
     transform:translateY(5px);
-    box-shadow:
-        0 2px 0 #c99415;
+    box-shadow:0 2px 0 #c99415;
 }
 
 .btn.blue{
@@ -233,33 +218,13 @@ button{
     background:
         rgba(255,255,255,.08);
 
+    border:1px solid rgba(255,255,255,.13);
     box-shadow:none;
-
-    border:
-        1px solid rgba(255,255,255,.13);
 }
 
-/* =========================================================
-   TOPBAR
-========================================================= */
-
-.topbar{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:12px;
-
-    margin-bottom:18px;
-}
-
-.topbar h2{
-    margin:0;
-    font-size:30px;
-}
-
-/* =========================================================
+/* =========================
    BADGES
-========================================================= */
+========================= */
 
 .credits{
     display:flex;
@@ -273,24 +238,37 @@ button{
     padding:10px 16px;
     border-radius:999px;
 
-    background:
-        rgba(255,212,71,.12);
-
-    border:
-        1px solid rgba(255,212,71,.3);
+    background:rgba(255,212,71,.12);
+    border:1px solid rgba(255,212,71,.3);
 
     font-weight:900;
 }
 
-/* =========================================================
+/* =========================
+   TOPBAR
+========================= */
+
+.topbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    margin-bottom:18px;
+}
+
+.topbar h2{
+    margin:0;
+    font-size:30px;
+}
+
+/* =========================
    TABS
-========================================================= */
+========================= */
 
 .tabs{
     display:flex;
     gap:8px;
     overflow:auto;
-
     margin-bottom:15px;
     padding-bottom:6px;
 }
@@ -298,20 +276,16 @@ button{
 .tab{
     white-space:nowrap;
 
-    border:
-        1px solid rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.12);
 
-    background:
-        rgba(255,255,255,.06);
+    background:rgba(255,255,255,.06);
 
     color:#fff;
 
     border-radius:999px;
-
     padding:10px 15px;
 
     font-weight:900;
-    cursor:pointer;
 }
 
 .tab.active{
@@ -319,27 +293,24 @@ button{
     color:#17204a;
 }
 
-/* =========================================================
+/* =========================
    CARDS
-========================================================= */
+========================= */
 
 .cards{
     display:grid;
-
-    grid-template-columns:
-        repeat(auto-fit,minmax(180px,1fr));
-
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
     gap:14px;
 }
 
 .card{
     min-height:220px;
 
-    padding:14px;
-
     display:flex;
     flex-direction:column;
     gap:10px;
+
+    padding:14px;
 
     border-radius:22px;
 
@@ -350,8 +321,7 @@ button{
             rgba(255,255,255,.04)
         );
 
-    border:
-        1px solid rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.12);
 }
 
 .card h3{
@@ -363,13 +333,13 @@ button{
     width:100%;
     height:145px;
 
-    padding:10px;
-
     display:flex;
     align-items:center;
     justify-content:center;
 
     overflow:hidden;
+
+    padding:10px;
 
     border-radius:17px;
 
@@ -380,21 +350,20 @@ button{
             rgba(255,255,255,.035)
         );
 
-    border:
-        1px solid rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.08);
 }
 
 .preview canvas{
-    display:block;
     width:100%;
     height:100%;
     object-fit:contain;
+    display:block;
 }
 
 .price{
-    color:#ffe27b;
     font-size:13px;
     font-weight:900;
+    color:#ffe27b;
 }
 
 .smallbtn{
@@ -404,8 +373,6 @@ button{
     border-radius:12px;
 
     padding:10px 12px;
-
-    cursor:pointer;
 
     font-weight:950;
 
@@ -444,9 +411,9 @@ button{
     cursor:not-allowed;
 }
 
-/* =========================================================
+/* =========================
    SOUND
-========================================================= */
+========================= */
 
 .soundPreview{
     height:145px;
@@ -469,31 +436,26 @@ button{
     color:var(--muted);
 }
 
-/* =========================================================
+/* =========================
    LEADERBOARD
-========================================================= */
+========================= */
 
 .leaderStatus{
-    padding:11px 14px;
-
-    margin-bottom:14px;
-
+    padding:12px 14px;
     border-radius:14px;
+
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.08);
 
     color:var(--muted);
 
-    background:
-        rgba(255,255,255,.06);
-
-    border:
-        1px solid rgba(255,255,255,.08);
+    margin-bottom:14px;
 }
 
 .nameBox{
     display:grid;
     grid-template-columns:1fr auto;
     gap:10px;
-
     margin-bottom:14px;
 }
 
@@ -501,24 +463,15 @@ button{
     width:100%;
     min-width:0;
 
-    border:
-        1px solid rgba(255,255,255,.14);
-
-    border-radius:14px;
-
     padding:13px 14px;
+
+    border:1px solid rgba(255,255,255,.14);
+    border-radius:14px;
 
     outline:none;
 
-    background:
-        rgba(255,255,255,.07);
-
-    color:white;
-}
-
-.nameInput:focus{
-    border-color:
-        rgba(94,231,255,.5);
+    background:rgba(255,255,255,.07);
+    color:#fff;
 }
 
 .leaderboard{
@@ -529,33 +482,27 @@ button{
 .leaderRow{
     display:grid;
     grid-template-columns:55px 1fr auto;
-
     align-items:center;
+
     gap:12px;
 
     padding:14px 16px;
 
     border-radius:17px;
 
-    background:
-        rgba(255,255,255,.06);
-
-    border:
-        1px solid rgba(255,255,255,.09);
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.09);
 }
 
 .leaderRow.me{
-    background:
-        rgba(94,231,255,.09);
-
-    border-color:
-        rgba(94,231,255,.35);
+    background:rgba(94,231,255,.08);
+    border-color:rgba(94,231,255,.35);
 }
 
 .leaderRank{
+    text-align:center;
     font-size:23px;
     font-weight:1000;
-    text-align:center;
 }
 
 .leaderName{
@@ -570,9 +517,9 @@ button{
     font-weight:1000;
 }
 
-/* =========================================================
+/* =========================
    MISSIONEN
-========================================================= */
+========================= */
 
 .missionList{
     display:grid;
@@ -583,19 +530,13 @@ button{
     padding:14px;
     border-radius:16px;
 
-    background:
-        rgba(255,255,255,.06);
-
-    border:
-        1px solid rgba(255,255,255,.1);
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.1);
 }
 
 .mission.done{
-    background:
-        rgba(109,245,163,.1);
-
-    border-color:
-        rgba(109,245,163,.25);
+    background:rgba(109,245,163,.1);
+    border-color:rgba(109,245,163,.25);
 }
 
 .missionTop{
@@ -608,18 +549,15 @@ button{
     height:8px;
     margin-top:9px;
 
-    border-radius:999px;
     overflow:hidden;
+    border-radius:999px;
 
-    background:
-        rgba(255,255,255,.08);
+    background:rgba(255,255,255,.08);
 }
 
 .missionFill{
     height:100%;
     width:0;
-
-    border-radius:999px;
 
     background:
         linear-gradient(
@@ -629,9 +567,9 @@ button{
         );
 }
 
-/* =========================================================
-   HUD
-========================================================= */
+/* =========================
+   GAME HUD
+========================= */
 
 #gameHud{
     position:absolute;
@@ -650,10 +588,9 @@ button{
     top:15px;
 
     display:flex;
-    gap:10px;
-
-    align-items:center;
     flex-wrap:wrap;
+    align-items:center;
+    gap:10px;
 }
 
 .hud-left{
@@ -669,32 +606,28 @@ button{
 
     border-radius:999px;
 
-    background:
-        rgba(12,19,46,.72);
-
-    border:
-        1px solid rgba(255,255,255,.15);
+    background:rgba(12,19,46,.72);
+    border:1px solid rgba(255,255,255,.15);
 
     font-weight:900;
+
+    backdrop-filter:blur(8px);
 }
 
 .pause-btn{
     pointer-events:auto;
 
-    border:
-        1px solid rgba(255,255,255,.15);
-
-    color:white;
-
-    background:
-        rgba(12,19,46,.72);
+    padding:10px 14px;
 
     border-radius:999px;
 
-    padding:10px 14px;
+    border:1px solid rgba(255,255,255,.15);
+
+    color:#fff;
+
+    background:rgba(12,19,46,.72);
 
     font-weight:900;
-    cursor:pointer;
 }
 
 .tip{
@@ -703,22 +636,20 @@ button{
     left:50%;
     bottom:16px;
 
-    transform:
-        translateX(-50%);
+    transform:translateX(-50%);
 
     padding:9px 14px;
 
     border-radius:999px;
 
-    background:
-        rgba(12,19,46,.6);
+    background:rgba(12,19,46,.6);
 
     font-size:13px;
 }
 
-/* =========================================================
-   OVERLAYS
-========================================================= */
+/* =========================
+   OVERLAY
+========================= */
 
 .overlay{
     position:absolute;
@@ -728,11 +659,10 @@ button{
 
     display:none;
 
-    justify-content:center;
     align-items:center;
+    justify-content:center;
 
-    background:
-        rgba(5,8,22,.55);
+    background:rgba(5,8,22,.55);
 
     backdrop-filter:blur(6px);
 }
@@ -757,18 +687,15 @@ button{
             #18234d
         );
 
-    border:
-        1px solid rgba(255,255,255,.15);
+    border:1px solid rgba(255,255,255,.15);
 
-    box-shadow:
-        0 20px 60px rgba(0,0,0,.45);
+    box-shadow:0 20px 60px rgba(0,0,0,.45);
 }
 
 .dialog h2{
     margin:0 0 10px;
 
-    font-size:
-        clamp(40px,8vw,70px);
+    font-size:clamp(40px,8vw,70px);
 }
 
 .dialog p{
@@ -779,9 +706,8 @@ button{
     display:flex;
     justify-content:center;
     align-items:center;
-
-    gap:25px;
     flex-wrap:wrap;
+    gap:25px;
 
     margin:20px 0;
 }
@@ -791,9 +717,9 @@ button{
     font-size:28px;
 }
 
-/* =========================================================
+/* =========================
    WARTUNG
-========================================================= */
+========================= */
 
 #maintenance{
     position:absolute;
@@ -803,8 +729,8 @@ button{
 
     display:flex;
 
-    align-items:center;
     justify-content:center;
+    align-items:center;
 
     padding:20px;
 
@@ -832,8 +758,7 @@ button{
             rgba(13,20,48,.97)
         );
 
-    border:
-        1px solid rgba(255,255,255,.14);
+    border:1px solid rgba(255,255,255,.14);
 
     box-shadow:
         0 25px 80px rgba(0,0,0,.5);
@@ -846,8 +771,7 @@ button{
 .maintenanceTitle{
     margin:10px 0 0;
 
-    font-size:
-        clamp(42px,8vw,82px);
+    font-size:clamp(42px,8vw,82px);
 
     line-height:.95;
 
@@ -866,30 +790,24 @@ button{
     font-size:17px;
 }
 
-.countdown{
-    display:flex;
-    justify-content:center;
-    gap:10px;
-}
-
 .timeBox{
-    min-width:95px;
+    width:120px;
+
+    margin:0 auto;
 
     padding:15px 10px;
 
     border-radius:17px;
 
-    background:
-        rgba(255,255,255,.07);
+    background:rgba(255,255,255,.07);
 
-    border:
-        1px solid rgba(255,255,255,.1);
+    border:1px solid rgba(255,255,255,.1);
 }
 
 .timeNum{
     display:block;
 
-    font-size:38px;
+    font-size:42px;
 
     font-weight:1000;
 }
@@ -910,8 +828,7 @@ button{
 
     border-radius:999px;
 
-    background:
-        rgba(255,255,255,.08);
+    background:rgba(255,255,255,.08);
 }
 
 .progressFill{
@@ -926,9 +843,9 @@ button{
         );
 }
 
-/* =========================================================
+/* =========================
    MOBILE
-========================================================= */
+========================= */
 
 @media(max-width:600px){
 
@@ -958,15 +875,6 @@ button{
     .nameBox{
         grid-template-columns:1fr;
     }
-
-    .timeBox{
-        min-width:82px;
-        padding:12px 7px;
-    }
-
-    .timeNum{
-        font-size:30px;
-    }
 }
 </style>
 </head>
@@ -976,7 +884,7 @@ button{
 <div id="app">
 
 <!-- =====================================================
-     WARTUNG 30 SEKUNDEN
+     WARTUNG
 ===================================================== -->
 
 <div id="maintenance">
@@ -992,38 +900,30 @@ button{
         </h1>
 
         <p class="maintenanceText">
-            FLYYYY bekommt jetzt ein Online-Leaderboard.
+            FLYYYY bekommt ein neues Online-Leaderboard.
             <br>
-            Die Wartungsarbeiten dauern ungefähr 30 Sekunden.
+            Die Wartungsarbeiten dauern 30 Sekunden.
             <br><br>
             Danke für eure Geduld! ❤️
         </p>
 
-        <div class="countdown">
+        <div class="timeBox">
+            <span
+                id="maintenanceSeconds"
+                class="timeNum">
+                30
+            </span>
 
-            <div class="timeBox">
-
-                <span
-                    class="timeNum"
-                    id="mSeconds">
-                    30
-                </span>
-
-                <span class="timeLabel">
-                    Sekunden
-                </span>
-
-            </div>
-
+            <span class="timeLabel">
+                Sekunden
+            </span>
         </div>
 
         <div class="progressBar">
-
             <div
-                class="progressFill"
-                id="mProgress">
+                id="maintenanceProgress"
+                class="progressFill">
             </div>
-
         </div>
 
     </div>
@@ -1032,7 +932,7 @@ button{
 
 
 <!-- =====================================================
-     GAME CANVAS
+     GAME
 ===================================================== -->
 
 <canvas id="gameCanvas"></canvas>
@@ -1051,11 +951,11 @@ button{
         </div>
 
         <div class="version">
-            🏆 UPDATE 1.2 – LEADERBOARD
+            🏆 UPDATE 1.2
         </div>
 
         <div class="subtitle">
-            Fly weiter. Sammle Coins. Schlage die Rekorde anderer Spieler.
+            Fly weiter. Sammle Coins. Schlage andere Spieler.
         </div>
 
         <div class="credits">
@@ -1073,46 +973,44 @@ button{
         <div class="button-grid">
 
             <button
-                class="btn"
-                id="startBtn">
+                id="startBtn"
+                class="btn">
                 START
             </button>
 
             <button
-                class="btn blue"
-                id="leaderboardBtn">
+                id="leaderboardBtn"
+                class="btn blue">
                 🏆 LEADERBOARD
             </button>
 
             <button
-                class="btn blue"
-                id="shopBtn">
+                id="shopBtn"
+                class="btn blue">
                 🛒 SHOP
             </button>
 
             <button
-                class="btn blue"
-                id="inventoryBtn">
+                id="inventoryBtn"
+                class="btn blue">
                 🎒 INVENTAR
             </button>
 
             <button
-                class="btn blue"
-                id="missionsBtn">
+                id="missionsBtn"
+                class="btn blue">
                 🎯 MISSIONEN
             </button>
 
             <button
-                class="btn dark"
-                id="musicToggleBtn">
+                id="musicToggleBtn"
+                class="btn dark">
                 🎵 Musik: AN
             </button>
 
         </div>
 
-        <div
-            class="tiny"
-            style="text-align:center;margin-top:15px">
+        <div class="sectionInfo">
             Alle 5 Hindernisse = +10 Coins
         </div>
 
@@ -1133,9 +1031,7 @@ button{
 
             <div>
 
-                <h2>
-                    🏆 Leaderboard
-                </h2>
+                <h2>🏆 Leaderboard</h2>
 
                 <div class="tiny">
                     Die besten FLYYYY-Spieler
@@ -1144,8 +1040,8 @@ button{
             </div>
 
             <button
-                class="btn dark"
-                id="leaderboardBack">
+                id="leaderboardBack"
+                class="btn dark">
                 ← Zurück
             </button>
 
@@ -1160,8 +1056,8 @@ button{
                 placeholder="Dein Spielername">
 
             <button
-                class="btn"
-                id="saveNameBtn">
+                id="saveNameBtn"
+                class="btn">
                 NAME SPEICHERN
             </button>
 
@@ -1170,7 +1066,7 @@ button{
         <div
             id="leaderboardStatus"
             class="leaderStatus">
-            Verbinde mit dem Online-Leaderboard...
+            Leaderboard wird geladen...
         </div>
 
         <div
@@ -1195,9 +1091,7 @@ button{
 
             <div>
 
-                <h2>
-                    🛒 Shop
-                </h2>
+                <h2>🛒 Shop</h2>
 
                 <div class="tiny">
                     🪙 <span id="shopCoins">0</span> Coins
@@ -1206,21 +1100,21 @@ button{
             </div>
 
             <button
-                class="btn dark"
-                id="shopBack">
+                id="shopBack"
+                class="btn dark">
                 ← Zurück
             </button>
 
         </div>
 
         <div
-            class="tabs"
-            id="shopTabs">
+            id="shopTabs"
+            class="tabs">
         </div>
 
         <div
-            class="cards"
-            id="shopCards">
+            id="shopCards"
+            class="cards">
         </div>
 
     </div>
@@ -1240,32 +1134,30 @@ button{
 
             <div>
 
-                <h2>
-                    🎒 Inventar
-                </h2>
+                <h2>🎒 Inventar</h2>
 
                 <div class="tiny">
-                    Figur, Welt, Sound und Musik ausrüsten.
+                    Deine gekauften Gegenstände.
                 </div>
 
             </div>
 
             <button
-                class="btn dark"
-                id="inventoryBack">
+                id="inventoryBack"
+                class="btn dark">
                 ← Zurück
             </button>
 
         </div>
 
         <div
-            class="tabs"
-            id="inventoryTabs">
+            id="inventoryTabs"
+            class="tabs">
         </div>
 
         <div
-            class="cards"
-            id="inventoryCards">
+            id="inventoryCards"
+            class="cards">
         </div>
 
     </div>
@@ -1285,27 +1177,25 @@ button{
 
             <div>
 
-                <h2>
-                    🎯 Missionen
-                </h2>
+                <h2>🎯 Missionen</h2>
 
                 <div class="tiny">
-                    Schließe Aufgaben ab und verdiene Bonus-Coins.
+                    Schließe Aufgaben ab und verdiene Coins.
                 </div>
 
             </div>
 
             <button
-                class="btn dark"
-                id="missionsBack">
+                id="missionsBack"
+                class="btn dark">
                 ← Zurück
             </button>
 
         </div>
 
         <div
-            class="missionList"
-            id="missionList">
+            id="missionList"
+            class="missionList">
         </div>
 
     </div>
@@ -1314,7 +1204,7 @@ button{
 
 
 <!-- =====================================================
-     GAME HUD
+     HUD
 ===================================================== -->
 
 <div id="gameHud">
@@ -1346,8 +1236,8 @@ button{
         </div>
 
         <button
-            class="pause-btn"
-            id="pauseBtn">
+            id="pauseBtn"
+            class="pause-btn">
             Ⅱ Pause
         </button>
 
@@ -1370,9 +1260,7 @@ button{
 
     <div class="dialog">
 
-        <h2>
-            PAUSE
-        </h2>
+        <h2>PAUSE</h2>
 
         <p>
             Dein Lauf wurde angehalten.
@@ -1381,14 +1269,14 @@ button{
         <div class="button-grid">
 
             <button
-                class="btn"
-                id="resumeBtn">
+                id="resumeBtn"
+                class="btn">
                 ▶ WEITER
             </button>
 
             <button
-                class="btn dark"
-                id="pauseLobbyBtn">
+                id="pauseLobbyBtn"
+                class="btn dark">
                 🏠 ZUR LOBBY
             </button>
 
@@ -1409,9 +1297,7 @@ button{
 
     <div class="dialog">
 
-        <h2>
-            GAME OVER
-        </h2>
+        <h2>GAME OVER</h2>
 
         <p id="gameOverText">
             Gut geflogen!
@@ -1423,7 +1309,6 @@ button{
                 <div class="tiny">
                     Punkte
                 </div>
-
                 <strong id="finalScore">
                     0
                 </strong>
@@ -1433,7 +1318,6 @@ button{
                 <div class="tiny">
                     Coins
                 </div>
-
                 <strong id="earnedCoins">
                     0
                 </strong>
@@ -1443,7 +1327,6 @@ button{
                 <div class="tiny">
                     Rekord
                 </div>
-
                 <strong id="bestScore">
                     0
                 </strong>
@@ -1454,14 +1337,14 @@ button{
         <div class="button-grid">
 
             <button
-                class="btn green"
-                id="retryBtn">
+                id="retryBtn"
+                class="btn green">
                 🔄 NOCHMAL
             </button>
 
             <button
-                class="btn blue"
-                id="returnLobbyBtn">
+                id="returnLobbyBtn"
+                class="btn blue">
                 🏠 ZUR LOBBY
             </button>
 
@@ -1474,578 +1357,34 @@ button{
 </div>
 
 
-<!-- =====================================================
-     JAVASCRIPT
-===================================================== -->
-
 <script type="module">
 
 /* =========================================================
-   FIREBASE
+   FIREBASE - OPTIONAL
+   EIN FEHLER HIER STOPPT NICHT DAS SPIEL
 ========================================================= */
-
-import {
-    initializeApp
-} from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
-
-import {
-    getAuth,
-    signInAnonymously
-} from "https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js";
-
-import {
-    getDatabase,
-    ref,
-    get,
-    set,
-    onValue,
-    query,
-    orderByChild,
-    limitToLast,
-    runTransaction
-} from "https://www.gstatic.com/firebasejs/12.16.0/firebase-database.js";
-
-
-const firebaseConfig = {
-
-    apiKey:
-        "AIzaSyA0ppKuSgxKKgHEMkX9kUlVhm8pjkVxgXk",
-
-    authDomain:
-        "flyyyy.firebaseapp.com",
-
-    databaseURL:
-        "https://flyyyy-default-rtdb.firebaseio.com",
-
-    projectId:
-        "flyyyy",
-
-    storageBucket:
-        "flyyyy.firebasestorage.app",
-
-    messagingSenderId:
-        "872479897522",
-
-    appId:
-        "1:872479897522:web:3c87b8afdebfc66d01d6ab",
-
-    measurementId:
-        "G-S8YE4S6L8L"
-};
-
 
 let firebaseReady = false;
 let firebaseApp = null;
 let auth = null;
 let db = null;
 let currentUser = null;
-let leaderboardRef = null;
+let onlineLeaderboardRef = null;
 
-
-function setLeaderboardStatus(text){
-
-    const el =
-        document.getElementById(
-            "leaderboardStatus"
-        );
-
-    if(el){
-        el.textContent = text;
-    }
-}
-
-
-async function setupFirebase(){
-
-    try{
-
-        firebaseApp =
-            initializeApp(
-                firebaseConfig
-            );
-
-        auth =
-            getAuth(
-                firebaseApp
-            );
-
-        db =
-            getDatabase(
-                firebaseApp
-            );
-
-        await signInAnonymously(
-            auth
-        );
-
-        currentUser =
-            auth.currentUser;
-
-        leaderboardRef =
-            ref(
-                db,
-                "leaderboard"
-            );
-
-        firebaseReady = true;
-
-        setLeaderboardStatus(
-            "🟢 Online – Leaderboard verbunden."
-        );
-
-        listenLeaderboard();
-
-    }catch(error){
-
-        console.error(
-            "Firebase Fehler:",
-            error
-        );
-
-        firebaseReady = false;
-
-        setLeaderboardStatus(
-            "🔴 Leaderboard momentan nicht verfügbar."
-        );
-    }
-}
+const firebaseConfig = {
+    apiKey: "AIzaSyA0ppKuSgxKKgHEMkX9kUlVhm8pjkVxgXk",
+    authDomain: "flyyyy.firebaseapp.com",
+    databaseURL: "https://flyyyy-default-rtdb.firebaseio.com",
+    projectId: "flyyyy",
+    storageBucket: "flyyyy.firebasestorage.app",
+    messagingSenderId: "872479897522",
+    appId: "1:872479897522:web:3c87b8afdebfc66d01d6ab",
+    measurementId: "G-S8YE4S6L8L"
+};
 
 
 /* =========================================================
-   PLAYER NAME
-========================================================= */
-
-function getPlayerName(){
-
-    return (
-        localStorage.getItem(
-            "FLYYYY_PLAYER_NAME"
-        ) || ""
-    );
-}
-
-
-function loadPlayerName(){
-
-    document.getElementById(
-        "playerName"
-    ).value =
-        getPlayerName();
-}
-
-
-async function savePlayerName(){
-
-    let name =
-        document.getElementById(
-            "playerName"
-        ).value
-        .trim();
-
-    if(!name){
-
-        showMessage(
-            "Bitte einen Namen eingeben."
-        );
-
-        return;
-    }
-
-    name =
-        name
-        .replace(
-            /[<>]/g,
-            ""
-        )
-        .slice(
-            0,
-            20
-        );
-
-    if(!name){
-        return;
-    }
-
-    localStorage.setItem(
-        "FLYYYY_PLAYER_NAME",
-        name
-    );
-
-    document.getElementById(
-        "playerName"
-    ).value =
-        name;
-
-    setLeaderboardStatus(
-        `Name gespeichert: ${name}`
-    );
-
-    /*
-       Wenn bereits ein Online-Score existiert,
-       nur den Namen ändern.
-    */
-
-    if(
-        firebaseReady &&
-        currentUser
-    ){
-
-        try{
-
-            const playerRef =
-                ref(
-                    db,
-                    "leaderboard/" +
-                    currentUser.uid
-                );
-
-            const snapshot =
-                await get(
-                    playerRef
-                );
-
-            if(
-                snapshot.exists()
-            ){
-
-                const old =
-                    snapshot.val();
-
-                await set(
-                    playerRef,
-                    {
-                        name:name,
-                        score:Number(
-                            old.score || 0
-                        ),
-                        updatedAt:
-                            Date.now()
-                    }
-                );
-            }
-
-        }catch(error){
-
-            console.error(
-                "Name konnte nicht aktualisiert werden:",
-                error
-            );
-        }
-    }
-}
-
-
-/* =========================================================
-   LEADERBOARD
-========================================================= */
-
-function listenLeaderboard(){
-
-    if(
-        !firebaseReady ||
-        !leaderboardRef
-    ){
-        return;
-    }
-
-    try{
-
-        const leaderboardQuery =
-            query(
-                leaderboardRef,
-                orderByChild("score"),
-                limitToLast(50)
-            );
-
-        onValue(
-            leaderboardQuery,
-            snapshot => {
-
-                const data =
-                    snapshot.val() || {};
-
-                const players =
-                    Object
-                    .entries(data)
-                    .map(
-                        ([uid,value]) => ({
-                            uid,
-                            ...value
-                        })
-                    )
-                    .sort(
-                        (a,b) =>
-                            Number(
-                                b.score || 0
-                            ) -
-                            Number(
-                                a.score || 0
-                            )
-                    )
-                    .slice(
-                        0,
-                        10
-                    );
-
-                renderLeaderboard(
-                    players
-                );
-
-                setLeaderboardStatus(
-                    "🟢 Online – wird automatisch aktualisiert."
-                );
-            },
-            error => {
-
-                console.error(
-                    "Leaderboard Error:",
-                    error
-                );
-
-                setLeaderboardStatus(
-                    "🔴 Fehler beim Laden des Leaderboards."
-                );
-            }
-        );
-
-    }catch(error){
-
-        console.error(
-            error
-        );
-    }
-}
-
-
-function renderLeaderboard(
-    players
-){
-
-    const list =
-        document.getElementById(
-            "leaderboardList"
-        );
-
-    list.innerHTML =
-        "";
-
-    if(!players.length){
-
-        const empty =
-            document.createElement(
-                "div"
-            );
-
-        empty.className =
-            "leaderStatus";
-
-        empty.textContent =
-            "Noch keine Spieler im Leaderboard.";
-
-        list.appendChild(
-            empty
-        );
-
-        return;
-    }
-
-    players.forEach(
-        (player,index) => {
-
-            const row =
-                document.createElement(
-                    "div"
-                );
-
-            row.className =
-                "leaderRow";
-
-            if(
-                currentUser &&
-                player.uid ===
-                currentUser.uid
-            ){
-
-                row.classList.add(
-                    "me"
-                );
-            }
-
-            const rank =
-                document.createElement(
-                    "div"
-                );
-
-            rank.className =
-                "leaderRank";
-
-            if(index === 0){
-                rank.textContent = "🥇";
-            }else if(index === 1){
-                rank.textContent = "🥈";
-            }else if(index === 2){
-                rank.textContent = "🥉";
-            }else{
-                rank.textContent =
-                    "#" + (index + 1);
-            }
-
-            const name =
-                document.createElement(
-                    "div"
-                );
-
-            name.className =
-                "leaderName";
-
-            name.textContent =
-                player.name ||
-                "Spieler";
-
-            const score =
-                document.createElement(
-                    "div"
-                );
-
-            score.className =
-                "leaderScore";
-
-            score.textContent =
-                "⭐ " +
-                Number(
-                    player.score || 0
-                );
-
-            row.appendChild(
-                rank
-            );
-
-            row.appendChild(
-                name
-            );
-
-            row.appendChild(
-                score
-            );
-
-            list.appendChild(
-                row
-            );
-        }
-    );
-}
-
-
-/* =========================================================
-   ONLINE HIGHSCORE
-========================================================= */
-
-async function submitHighscore(
-    score
-){
-
-    if(
-        !firebaseReady ||
-        !currentUser
-    ){
-        return false;
-    }
-
-    let name =
-        getPlayerName();
-
-    if(!name){
-        return false;
-    }
-
-    name =
-        name
-        .replace(
-            /[<>]/g,
-            ""
-        )
-        .slice(
-            0,
-            20
-        );
-
-    if(!name){
-        return false;
-    }
-
-    try{
-
-        const playerRef =
-            ref(
-                db,
-                "leaderboard/" +
-                currentUser.uid
-            );
-
-        await runTransaction(
-            playerRef,
-            current => {
-
-                /*
-                   Erster Score.
-                */
-
-                if(
-                    current === null
-                ){
-
-                    return {
-                        name:name,
-                        score:Number(score),
-                        updatedAt:Date.now()
-                    };
-                }
-
-                const oldScore =
-                    Number(
-                        current.score || 0
-                    );
-
-                /*
-                   Nur besserer Rekord.
-                */
-
-                if(
-                    Number(score) >
-                    oldScore
-                ){
-
-                    return {
-                        name:name,
-                        score:Number(score),
-                        updatedAt:Date.now()
-                    };
-                }
-
-                /*
-                   Alten Rekord behalten.
-                */
-
-                return;
-            }
-        );
-
-        return true;
-
-    }catch(error){
-
-        console.error(
-            "Highscore konnte nicht gespeichert werden:",
-            error
-        );
-
-        return false;
-    }
-}
-
-
-/* =========================================================
-   WARTUNG – 30 SEKUNDEN
+   WARTUNG
 ========================================================= */
 
 const MAINTENANCE_KEY =
@@ -2054,7 +1393,7 @@ const MAINTENANCE_KEY =
 const MAINTENANCE_DURATION =
     30 * 1000;
 
-let maintenanceStart =
+let maintenanceStarted =
     Number(
         localStorage.getItem(
             MAINTENANCE_KEY
@@ -2062,26 +1401,27 @@ let maintenanceStart =
     );
 
 if(
-    !Number.isFinite(
-        maintenanceStart
-    ) ||
-    maintenanceStart <= 0
+    !Number.isFinite(maintenanceStarted) ||
+    maintenanceStarted <= 0
 ){
 
-    maintenanceStart =
+    maintenanceStarted =
         Date.now();
 
     localStorage.setItem(
         MAINTENANCE_KEY,
         String(
-            maintenanceStart
+            maintenanceStarted
         )
     );
 }
 
 const maintenanceEnd =
-    maintenanceStart +
+    maintenanceStarted +
     MAINTENANCE_DURATION;
+
+
+let maintenanceFinished = false;
 
 
 function finishMaintenance(){
@@ -2096,17 +1436,27 @@ function finishMaintenance(){
             "none";
     }
 
-    showScreen(
-        "lobby"
-    );
+    document
+        .querySelectorAll(
+            ".screen"
+        )
+        .forEach(
+            screen =>
+                screen.classList.remove(
+                    "active"
+                )
+        );
 
-    canvas.style.display =
-        "none";
+    document
+        .getElementById(
+            "lobby"
+        )
+        .classList.add(
+            "active"
+        );
 
-    document.getElementById(
-        "gameHud"
-    ).style.display =
-        "none";
+    maintenanceFinished =
+        true;
 }
 
 
@@ -2135,29 +1485,26 @@ function updateMaintenance(){
 
     const secondsElement =
         document.getElementById(
-            "mSeconds"
+            "maintenanceSeconds"
         );
 
     if(secondsElement){
-
         secondsElement.textContent =
-            String(seconds)
-            .padStart(
-                2,
-                "0"
-            );
+            String(seconds);
     }
 
     const progress =
         (
-            (Date.now() -
-            maintenanceStart) /
+            (
+                Date.now() -
+                maintenanceStarted
+            ) /
             MAINTENANCE_DURATION
         ) * 100;
 
     const progressElement =
         document.getElementById(
-            "mProgress"
+            "maintenanceProgress"
         );
 
     if(progressElement){
@@ -2176,16 +1523,12 @@ function updateMaintenance(){
 }
 
 
-const alreadyFinished =
-    updateMaintenance();
-
-
 let maintenanceTimer =
     null;
 
 
 if(
-    !alreadyFinished
+    !updateMaintenance()
 ){
 
     maintenanceTimer =
@@ -2230,14 +1573,14 @@ let W =
 let H =
     innerHeight;
 
-let DPR =
+let dpr =
     Math.min(
         devicePixelRatio || 1,
         2
     );
 
 
-function resizeCanvas(){
+function resize(){
 
     W =
         innerWidth;
@@ -2245,17 +1588,17 @@ function resizeCanvas(){
     H =
         innerHeight;
 
-    DPR =
+    dpr =
         Math.min(
             devicePixelRatio || 1,
             2
         );
 
     canvas.width =
-        W * DPR;
+        W * dpr;
 
     canvas.height =
-        H * DPR;
+        H * dpr;
 
     canvas.style.width =
         W + "px";
@@ -2264,10 +1607,10 @@ function resizeCanvas(){
         H + "px";
 
     ctx.setTransform(
-        DPR,
+        dpr,
         0,
         0,
-        DPR,
+        dpr,
         0,
         0
     );
@@ -2276,103 +1619,125 @@ function resizeCanvas(){
 
 window.addEventListener(
     "resize",
-    resizeCanvas
+    resize
 );
 
-resizeCanvas();
+resize();
 
 
 /* =========================================================
-   AUDIO
+   WELTEN
 ========================================================= */
 
-let audioContext =
-    null;
+const worlds = [
 
-let musicTimer =
-    null;
+    {
+        id:"giza",
+        name:"Gizeh",
+        price:0,
+        sky1:"#f8c875",
+        sky2:"#69c6d8",
+        ground:"#d48b3b",
+        obstacle:"#8f5a33"
+    },
 
-let musicStep =
-    0;
+    {
+        id:"mountains",
+        name:"Berge",
+        price:50,
+        sky1:"#8ad8ff",
+        sky2:"#5469c8",
+        ground:"#527951",
+        obstacle:"#365c4b"
+    },
 
+    {
+        id:"ocean",
+        name:"Unterwasser",
+        price:100,
+        sky1:"#29d6e5",
+        sky2:"#174b9e",
+        ground:"#157c86",
+        obstacle:"#17566e"
+    },
 
-function initAudio(){
+    {
+        id:"jungle",
+        name:"Dschungel",
+        price:150,
+        sky1:"#8ae17c",
+        sky2:"#1f6e53",
+        ground:"#244f2a",
+        obstacle:"#2f7339"
+    },
 
-    if(audioContext){
-        return;
+    {
+        id:"space",
+        name:"Weltraum",
+        price:200,
+        sky1:"#22103f",
+        sky2:"#090d27",
+        ground:"#20183e",
+        obstacle:"#3a2b61"
+    },
+
+    {
+        id:"ice",
+        name:"Eiswelt",
+        price:250,
+        sky1:"#c9f6ff",
+        sky2:"#5da9d4",
+        ground:"#b3e5ff",
+        obstacle:"#72b1d2"
     }
-
-    const AC =
-        window.AudioContext ||
-        window.webkitAudioContext;
-
-    if(!AC){
-        return;
-    }
-
-    audioContext =
-        new AC();
-}
-
-
-function rawTone(
-    frequency,
-    duration,
-    volume,
-    type
-){
-
-    if(!audioContext){
-        return;
-    }
-
-    const oscillator =
-        audioContext.createOscillator();
-
-    const gain =
-        audioContext.createGain();
-
-    oscillator.type =
-        type;
-
-    oscillator.frequency.value =
-        frequency;
-
-    gain.gain.setValueAtTime(
-        0.0001,
-        audioContext.currentTime
-    );
-
-    gain.gain.exponentialRampToValueAtTime(
-        volume,
-        audioContext.currentTime + .02
-    );
-
-    gain.gain.exponentialRampToValueAtTime(
-        0.0001,
-        audioContext.currentTime + duration
-    );
-
-    oscillator.connect(
-        gain
-    );
-
-    gain.connect(
-        audioContext.destination
-    );
-
-    oscillator.start();
-
-    oscillator.stop(
-        audioContext.currentTime +
-        duration +
-        .02
-    );
-}
+];
 
 
 /* =========================================================
-   SOUND DATA
+   FIGUREN
+========================================================= */
+
+const skins = [
+
+    {
+        id:"bird",
+        name:"Vogel",
+        price:0,
+        type:"bird"
+    },
+
+    {
+        id:"dino",
+        name:"Fliegender Dino",
+        price:50,
+        type:"dino"
+    },
+
+    {
+        id:"pen",
+        name:"Stift",
+        price:100,
+        type:"pen"
+    },
+
+    {
+        id:"carrot",
+        name:"Karotte",
+        price:150,
+        type:"carrot"
+    },
+
+    {
+        id:"apple",
+        name:"Apfel",
+        price:200,
+        type:"apple"
+    }
+];
+
+
+/* =========================================================
+   SOUNDS
 ========================================================= */
 
 const sounds = [
@@ -2417,244 +1782,6 @@ const sounds = [
         type:"power"
     }
 ];
-
-
-function playJumpSound(type){
-
-    if(
-        !state.sfxEnabled
-    ){
-        return;
-    }
-
-    initAudio();
-
-    if(!audioContext){
-        return;
-    }
-
-    if(
-        audioContext.state ===
-        "suspended"
-    ){
-
-        audioContext.resume();
-    }
-
-    if(type === "classic"){
-
-        rawTone(
-            520,
-            .08,
-            .065,
-            "square"
-        );
-    }
-
-    if(type === "arcade"){
-
-        rawTone(
-            440,
-            .06,
-            .055,
-            "square"
-        );
-
-        setTimeout(
-            () =>
-                rawTone(
-                    660,
-                    .07,
-                    .05,
-                    "square"
-                ),
-            45
-        );
-    }
-
-    if(type === "laser"){
-
-        rawTone(
-            900,
-            .12,
-            .055,
-            "sawtooth"
-        );
-
-        setTimeout(
-            () =>
-                rawTone(
-                    1400,
-                    .09,
-                    .035,
-                    "sawtooth"
-                ),
-            45
-        );
-    }
-
-    if(type === "bubble"){
-
-        rawTone(
-            300,
-            .08,
-            .045,
-            "sine"
-        );
-
-        setTimeout(
-            () =>
-                rawTone(
-                    650,
-                    .12,
-                    .045,
-                    "sine"
-                ),
-            60
-        );
-    }
-
-    if(type === "power"){
-
-        rawTone(
-            220,
-            .13,
-            .055,
-            "sawtooth"
-        );
-
-        setTimeout(
-            () =>
-                rawTone(
-                    520,
-                    .08,
-                    .06,
-                    "square"
-                ),
-            65
-        );
-
-        setTimeout(
-            () =>
-                rawTone(
-                    820,
-                    .1,
-                    .05,
-                    "triangle"
-                ),
-            120
-        );
-    }
-}
-
-
-function coinSound(){
-
-    if(!state.sfxEnabled){
-        return;
-    }
-
-    initAudio();
-
-    if(!audioContext){
-        return;
-    }
-
-    rawTone(
-        783.99,
-        .08,
-        .05,
-        "triangle"
-    );
-
-    setTimeout(
-        () =>
-            rawTone(
-                1046.5,
-                .12,
-                .05,
-                "triangle"
-            ),
-        70
-    );
-}
-
-
-function scoreSound(){
-
-    if(!state.sfxEnabled){
-        return;
-    }
-
-    initAudio();
-
-    rawTone(
-        760,
-        .04,
-        .03,
-        "triangle"
-    );
-}
-
-
-function purchaseSound(){
-
-    initAudio();
-
-    if(!audioContext){
-        return;
-    }
-
-    rawTone(
-        523.25,
-        .08,
-        .045,
-        "triangle"
-    );
-
-    setTimeout(
-        () =>
-            rawTone(
-                783.99,
-                .12,
-                .045,
-                "triangle"
-            ),
-        70
-    );
-}
-
-
-function gameOverSound(){
-
-    if(!state.sfxEnabled){
-        return;
-    }
-
-    initAudio();
-
-    if(!audioContext){
-        return;
-    }
-
-    rawTone(
-        300,
-        .15,
-        .05,
-        "sawtooth"
-    );
-
-    setTimeout(
-        () =>
-            rawTone(
-                210,
-                .22,
-                .045,
-                "sawtooth"
-            ),
-        130
-    );
-}
 
 
 /* =========================================================
@@ -2791,286 +1918,6 @@ const musicTracks = [
 ];
 
 
-function selectedMusic(){
-
-    return (
-        musicTracks.find(
-            music =>
-                music.id ===
-                state.selectedMusic
-        ) ||
-        musicTracks[0]
-    );
-}
-
-
-function stopMusic(){
-
-    if(musicTimer){
-
-        clearInterval(
-            musicTimer
-        );
-
-        musicTimer =
-            null;
-    }
-}
-
-
-function musicTick(){
-
-    if(
-        !state.musicEnabled ||
-        !audioContext
-    ){
-
-        stopMusic();
-        return;
-    }
-
-    const music =
-        selectedMusic();
-
-    const note =
-        music.melody[
-            musicStep %
-            music.melody.length
-        ];
-
-    const bass =
-        music.bass[
-            musicStep %
-            music.bass.length
-        ];
-
-    rawTone(
-        note,
-        .30,
-        .025,
-        "triangle"
-    );
-
-    if(
-        musicStep % 2 === 0
-    ){
-
-        rawTone(
-            bass,
-            .45,
-            .012,
-            "sine"
-        );
-    }
-
-    musicStep++;
-}
-
-
-function startMusic(){
-
-    if(
-        !state.musicEnabled
-    ){
-        return;
-    }
-
-    initAudio();
-
-    if(!audioContext){
-        return;
-    }
-
-    if(
-        audioContext.state ===
-        "suspended"
-    ){
-
-        audioContext.resume();
-    }
-
-    stopMusic();
-
-    musicStep =
-        0;
-
-    musicTick();
-
-    const music =
-        selectedMusic();
-
-    musicTimer =
-        setInterval(
-            musicTick,
-            music.tempo
-        );
-}
-
-
-function previewMusic(
-    music
-){
-
-    initAudio();
-
-    if(!audioContext){
-        return;
-    }
-
-    stopMusic();
-
-    let step = 0;
-
-    const timer =
-        setInterval(
-            () => {
-
-                if(
-                    step >=
-                    music.melody.length
-                ){
-
-                    clearInterval(
-                        timer
-                    );
-
-                    if(
-                        state.musicEnabled &&
-                        game.running
-                    ){
-
-                        startMusic();
-                    }
-
-                    return;
-                }
-
-                rawTone(
-                    music.melody[step],
-                    .28,
-                    .035,
-                    "triangle"
-                );
-
-                step++;
-
-            },
-            music.tempo
-        );
-}
-
-
-/* =========================================================
-   WELTEN
-========================================================= */
-
-const worlds = [
-
-    {
-        id:"giza",
-        name:"Gizeh",
-        price:0,
-        sky1:"#f8c875",
-        sky2:"#69c6d8",
-        ground:"#d48b3b",
-        obstacle:"#8f5a33"
-    },
-
-    {
-        id:"mountains",
-        name:"Berge",
-        price:50,
-        sky1:"#8ad8ff",
-        sky2:"#5469c8",
-        ground:"#527951",
-        obstacle:"#365c4b"
-    },
-
-    {
-        id:"ocean",
-        name:"Unterwasser",
-        price:100,
-        sky1:"#29d6e5",
-        sky2:"#174b9e",
-        ground:"#157c86",
-        obstacle:"#17566e"
-    },
-
-    {
-        id:"jungle",
-        name:"Dschungel",
-        price:150,
-        sky1:"#8ae17c",
-        sky2:"#1f6e53",
-        ground:"#244f2a",
-        obstacle:"#2f7339"
-    },
-
-    {
-        id:"space",
-        name:"Weltraum",
-        price:200,
-        sky1:"#22103f",
-        sky2:"#090d27",
-        ground:"#20183e",
-        obstacle:"#3a2b61"
-    },
-
-    {
-        id:"ice",
-        name:"Eiswelt",
-        price:250,
-        sky1:"#c9f6ff",
-        sky2:"#5da9d4",
-        ground:"#b3e5ff",
-        obstacle:"#72b1d2"
-    }
-];
-
-
-/* =========================================================
-   FIGUREN
-========================================================= */
-
-const skins = [
-
-    {
-        id:"bird",
-        name:"Vogel",
-        price:0,
-        type:"bird"
-    },
-
-    {
-        id:"dino",
-        name:"Fliegender Dino",
-        price:50,
-        type:"dino"
-    },
-
-    {
-        id:"pen",
-        name:"Stift",
-        price:100,
-        type:"pen"
-    },
-
-    {
-        id:"carrot",
-        name:"Karotte",
-        price:150,
-        type:"carrot"
-    },
-
-    {
-        id:"apple",
-        name:"Apfel",
-        price:200,
-        type:"apple"
-    }
-];
-
-
 /* =========================================================
    MISSIONEN
 ========================================================= */
@@ -3101,30 +1948,19 @@ const missions = [
 
 
 /* =========================================================
-   STATE
+   SPEICHER
+   WICHTIG:
+   Nimmt auch den alten Save.
 ========================================================= */
 
-const defaultState = {
-
+const DEFAULT_STATE = {
     coins:0,
-
     best:0,
 
-    ownedWorlds:[
-        "giza"
-    ],
-
-    ownedSkins:[
-        "bird"
-    ],
-
-    ownedSounds:[
-        "classic"
-    ],
-
-    ownedMusic:[
-        "classicMusic"
-    ],
+    ownedWorlds:["giza"],
+    ownedSkins:["bird"],
+    ownedSounds:["classic"],
+    ownedMusic:["classicMusic"],
 
     selectedWorld:"giza",
     selectedSkin:"bird",
@@ -3148,34 +1984,34 @@ const defaultState = {
 };
 
 
-function copyDefault(){
+function defaultState(){
 
     return {
 
-        ...defaultState,
+        ...DEFAULT_STATE,
 
         ownedWorlds:[
-            ...defaultState.ownedWorlds
+            ...DEFAULT_STATE.ownedWorlds
         ],
 
         ownedSkins:[
-            ...defaultState.ownedSkins
+            ...DEFAULT_STATE.ownedSkins
         ],
 
         ownedSounds:[
-            ...defaultState.ownedSounds
+            ...DEFAULT_STATE.ownedSounds
         ],
 
         ownedMusic:[
-            ...defaultState.ownedMusic
+            ...DEFAULT_STATE.ownedMusic
         ],
 
         missionProgress:{
-            ...defaultState.missionProgress
+            ...DEFAULT_STATE.missionProgress
         },
 
         missionClaimed:{
-            ...defaultState.missionClaimed
+            ...DEFAULT_STATE.missionClaimed
         }
     };
 }
@@ -3183,24 +2019,47 @@ function copyDefault(){
 
 function loadState(){
 
-    try{
+    const keys = [
 
-        const raw =
+        "FLYYYY_UPDATE12_SAVE",
+        "FLYYYY_UPDATE11_SAVE",
+        "flyyyy_save"
+    ];
+
+    let raw = null;
+
+    for(
+        const key
+        of keys
+    ){
+
+        const value =
             localStorage.getItem(
-                "FLYYYY_UPDATE12_SAVE"
+                key
             );
 
-        if(!raw){
+        if(value){
 
-            return copyDefault();
+            raw = value;
+            break;
         }
+    }
+
+    if(!raw){
+
+        return defaultState();
+    }
+
+    try{
 
         const data =
-            JSON.parse(raw);
+            JSON.parse(
+                raw
+            );
 
         return {
 
-            ...copyDefault(),
+            ...defaultState(),
 
             ...data,
 
@@ -3233,12 +2092,12 @@ function loadState(){
                 : ["classicMusic"],
 
             missionProgress:{
-                ...defaultState.missionProgress,
+                ...DEFAULT_STATE.missionProgress,
                 ...(data.missionProgress || {})
             },
 
             missionClaimed:{
-                ...defaultState.missionClaimed,
+                ...DEFAULT_STATE.missionClaimed,
                 ...(data.missionClaimed || {})
             }
         };
@@ -3246,10 +2105,11 @@ function loadState(){
     }catch(error){
 
         console.error(
+            "Save konnte nicht gelesen werden:",
             error
         );
 
-        return copyDefault();
+        return defaultState();
     }
 }
 
@@ -3270,7 +2130,7 @@ function saveState(){
 
 
 /* =========================================================
-   GAME
+   GAME STATE
 ========================================================= */
 
 const game = {
@@ -3280,15 +2140,12 @@ const game = {
     over:false,
 
     score:0,
-
     runCoins:0,
-
     jumpCount:0,
 
     bonusCoinsRun:0,
 
     speed:165,
-
     spawnTimer:.9,
 
     obstacles:[],
@@ -3304,15 +2161,498 @@ const game = {
 
     world:null,
 
-    lastTime:0
+    last:0
 };
 
 
 /* =========================================================
-   SCREENS
+   FIREBASE SETUP
 ========================================================= */
 
-function showScreen(id){
+async function setupFirebase(){
+
+    try{
+
+        const firebase =
+            await import(
+                "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js"
+            );
+
+        const firebaseAuth =
+            await import(
+                "https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js"
+            );
+
+        const firebaseDatabase =
+            await import(
+                "https://www.gstatic.com/firebasejs/12.16.0/firebase-database.js"
+            );
+
+        firebaseApp =
+            firebase.initializeApp(
+                firebaseConfig
+            );
+
+        auth =
+            firebaseAuth.getAuth(
+                firebaseApp
+            );
+
+        db =
+            firebaseDatabase.getDatabase(
+                firebaseApp
+            );
+
+        await firebaseAuth.signInAnonymously(
+            auth
+        );
+
+        currentUser =
+            auth.currentUser;
+
+        onlineLeaderboardRef =
+            firebaseDatabase.ref(
+                db,
+                "leaderboard"
+            );
+
+        firebaseReady =
+            true;
+
+        setLeaderboardStatus(
+            "🟢 Online – Leaderboard verbunden."
+        );
+
+        startLeaderboardListener(
+            firebaseDatabase
+        );
+
+    }catch(error){
+
+        /*
+           Ganz wichtig:
+           Firebase darf das Spiel NICHT stoppen.
+        */
+
+        console.error(
+            "Firebase nicht verfügbar:",
+            error
+        );
+
+        firebaseReady =
+            false;
+
+        setLeaderboardStatus(
+            "🟡 Offline – Online-Leaderboard momentan nicht verfügbar."
+        );
+    }
+}
+
+
+/* =========================================================
+   LEADERBOARD
+========================================================= */
+
+function setLeaderboardStatus(
+    text
+){
+
+    const element =
+        document.getElementById(
+            "leaderboardStatus"
+        );
+
+    if(element){
+
+        element.textContent =
+            text;
+    }
+}
+
+
+function getPlayerName(){
+
+    return (
+        localStorage.getItem(
+            "FLYYYY_PLAYER_NAME"
+        ) || ""
+    );
+}
+
+
+function loadPlayerName(){
+
+    const input =
+        document.getElementById(
+            "playerName"
+        );
+
+    if(input){
+
+        input.value =
+            getPlayerName();
+    }
+}
+
+
+async function savePlayerName(){
+
+    let name =
+        document
+        .getElementById(
+            "playerName"
+        )
+        .value
+        .trim();
+
+    name =
+        name
+        .replace(
+            /[<>]/g,
+            ""
+        )
+        .slice(
+            0,
+            20
+        );
+
+    if(!name){
+
+        showMessage(
+            "Bitte einen Namen eingeben."
+        );
+
+        return;
+    }
+
+    localStorage.setItem(
+        "FLYYYY_PLAYER_NAME",
+        name
+    );
+
+    setLeaderboardStatus(
+        `Name gespeichert: ${name}`
+    );
+}
+
+
+function startLeaderboardListener(
+    firebaseDatabase
+){
+
+    if(
+        !firebaseReady ||
+        !onlineLeaderboardRef
+    ){
+        return;
+    }
+
+    const q =
+        firebaseDatabase.query(
+            onlineLeaderboardRef,
+            firebaseDatabase.orderByChild(
+                "score"
+            ),
+            firebaseDatabase.limitToLast(
+                50
+            )
+        );
+
+    firebaseDatabase.onValue(
+        q,
+        snapshot => {
+
+            const data =
+                snapshot.val() || {};
+
+            const players =
+                Object
+                .entries(data)
+                .map(
+                    ([uid,value]) => ({
+                        uid,
+                        ...value
+                    })
+                )
+                .sort(
+                    (a,b) =>
+                        Number(
+                            b.score || 0
+                        ) -
+                        Number(
+                            a.score || 0
+                        )
+                )
+                .slice(
+                    0,
+                    10
+                );
+
+            renderLeaderboard(
+                players
+            );
+
+            setLeaderboardStatus(
+                "🟢 Online – automatisch aktualisiert."
+            );
+        },
+        error => {
+
+            console.error(
+                "Leaderboard Fehler:",
+                error
+            );
+
+            setLeaderboardStatus(
+                "🟡 Leaderboard momentan nicht verfügbar."
+            );
+        }
+    );
+}
+
+
+function renderLeaderboard(
+    players
+){
+
+    const list =
+        document.getElementById(
+            "leaderboardList"
+        );
+
+    list.innerHTML =
+        "";
+
+    if(
+        players.length === 0
+    ){
+
+        const empty =
+            document.createElement(
+                "div"
+            );
+
+        empty.className =
+            "leaderStatus";
+
+        empty.textContent =
+            "Noch keine Spieler im Leaderboard.";
+
+        list.appendChild(
+            empty
+        );
+
+        return;
+    }
+
+    players.forEach(
+        (player,index) => {
+
+            const row =
+                document.createElement(
+                    "div"
+                );
+
+            row.className =
+                "leaderRow";
+
+            if(
+                currentUser &&
+                player.uid ===
+                currentUser.uid
+            ){
+
+                row.classList.add(
+                    "me"
+                );
+            }
+
+            const rank =
+                document.createElement(
+                    "div"
+                );
+
+            rank.className =
+                "leaderRank";
+
+            if(index === 0){
+
+                rank.textContent =
+                    "🥇";
+
+            }else if(index === 1){
+
+                rank.textContent =
+                    "🥈";
+
+            }else if(index === 2){
+
+                rank.textContent =
+                    "🥉";
+
+            }else{
+
+                rank.textContent =
+                    "#" +
+                    (index + 1);
+            }
+
+            const name =
+                document.createElement(
+                    "div"
+                );
+
+            name.className =
+                "leaderName";
+
+            name.textContent =
+                player.name ||
+                "Spieler";
+
+            const score =
+                document.createElement(
+                    "div"
+                );
+
+            score.className =
+                "leaderScore";
+
+            score.textContent =
+                "⭐ " +
+                Number(
+                    player.score || 0
+                );
+
+            row.appendChild(
+                rank
+            );
+
+            row.appendChild(
+                name
+            );
+
+            row.appendChild(
+                score
+            );
+
+            list.appendChild(
+                row
+            );
+        }
+    );
+}
+
+
+/* =========================================================
+   SCORE ONLINE SPEICHERN
+========================================================= */
+
+async function submitHighscore(
+    score
+){
+
+    if(
+        !firebaseReady ||
+        !currentUser ||
+        !db
+    ){
+
+        return false;
+    }
+
+    const name =
+        getPlayerName();
+
+    if(!name){
+
+        return false;
+    }
+
+    try{
+
+        const playerRef =
+            ref(
+                db,
+                "leaderboard/" +
+                currentUser.uid
+            );
+
+        await runHighscoreTransaction(
+            playerRef,
+            score,
+            name
+        );
+
+        return true;
+
+    }catch(error){
+
+        console.error(
+            "Highscore Fehler:",
+            error
+        );
+
+        return false;
+    }
+}
+
+
+async function runHighscoreTransaction(
+    playerRef,
+    score,
+    name
+){
+
+    const databaseModule =
+        await import(
+            "https://www.gstatic.com/firebasejs/12.16.0/firebase-database.js"
+        );
+
+    await databaseModule.runTransaction(
+        playerRef,
+        current => {
+
+            if(
+                current === null
+            ){
+
+                return {
+                    name:name,
+                    score:Number(score),
+                    updatedAt:Date.now()
+                };
+            }
+
+            const oldScore =
+                Number(
+                    current.score || 0
+                );
+
+            if(
+                Number(score) >
+                oldScore
+            ){
+
+                return {
+                    name:name,
+                    score:Number(score),
+                    updatedAt:Date.now()
+                };
+            }
+
+            return;
+        }
+    );
+}
+
+
+/* =========================================================
+   SCREEN
+========================================================= */
+
+function showScreen(
+    id
+){
 
     document
         .querySelectorAll(
@@ -3355,7 +2695,7 @@ function hideScreens(){
 
 
 /* =========================================================
-   TOAST
+   UI
 ========================================================= */
 
 function showMessage(
@@ -3373,14 +2713,14 @@ function showMessage(
     el.style.cssText =
     `
         position:fixed;
+        z-index:99999;
         left:50%;
         top:18%;
         transform:translate(-50%,-50%);
-        z-index:9999;
-        background:rgba(8,12,30,.96);
-        border:1px solid rgba(255,255,255,.15);
         padding:13px 18px;
         border-radius:999px;
+        background:rgba(8,12,30,.97);
+        border:1px solid rgba(255,255,255,.15);
         color:white;
         font-weight:900;
         box-shadow:0 15px 40px rgba(0,0,0,.3);
@@ -3397,10 +2737,6 @@ function showMessage(
     );
 }
 
-
-/* =========================================================
-   LOBBY
-========================================================= */
 
 function updateLobby(){
 
@@ -3424,221 +2760,6 @@ function updateLobby(){
 
 
 /* =========================================================
-   MISSIONEN
-========================================================= */
-
-function renderMissions(){
-
-    const list =
-        document.getElementById(
-            "missionList"
-        );
-
-    list.innerHTML =
-        "";
-
-    missions.forEach(
-        mission => {
-
-            const progress =
-                Math.min(
-                    mission.target,
-                    Number(
-                        state.missionProgress[
-                            mission.id
-                        ] || 0
-                    )
-                );
-
-            const done =
-                progress >=
-                mission.target;
-
-            const claimed =
-                Boolean(
-                    state.missionClaimed[
-                        mission.id
-                    ]
-                );
-
-            const box =
-                document.createElement(
-                    "div"
-                );
-
-            box.className =
-                "mission" +
-                (
-                    done
-                    ? " done"
-                    : ""
-                );
-
-            const top =
-                document.createElement(
-                    "div"
-                );
-
-            top.className =
-                "missionTop";
-
-            const title =
-                document.createElement(
-                    "strong"
-                );
-
-            title.textContent =
-                mission.name;
-
-            const reward =
-                document.createElement(
-                    "span"
-                );
-
-            reward.textContent =
-                `🪙 ${mission.reward}`;
-
-            top.appendChild(
-                title
-            );
-
-            top.appendChild(
-                reward
-            );
-
-            box.appendChild(
-                top
-            );
-
-            const info =
-                document.createElement(
-                    "div"
-                );
-
-            info.className =
-                "tiny";
-
-            info.textContent =
-                claimed
-                ? "✅ Belohnung abgeholt"
-                : `${progress} / ${mission.target}`;
-
-            box.appendChild(
-                info
-            );
-
-            const bar =
-                document.createElement(
-                    "div"
-                );
-
-            bar.className =
-                "missionProgress";
-
-            const fill =
-                document.createElement(
-                    "div"
-                );
-
-            fill.className =
-                "missionFill";
-
-            fill.style.width =
-                (
-                    progress /
-                    mission.target *
-                    100
-                ) + "%";
-
-            bar.appendChild(
-                fill
-            );
-
-            box.appendChild(
-                bar
-            );
-
-            if(
-                done &&
-                !claimed
-            ){
-
-                const claim =
-                    document.createElement(
-                        "button"
-                    );
-
-                claim.className =
-                    "smallbtn selected";
-
-                claim.textContent =
-                    "🪙 BELOHNUNG ABHOLEN";
-
-                claim.onclick =
-                    () => {
-
-                        state.coins +=
-                            mission.reward;
-
-                        state.missionClaimed[
-                            mission.id
-                        ] =
-                            true;
-
-                        saveState();
-
-                        updateLobby();
-                        renderMissions();
-
-                        showMessage(
-                            `🪙 +${mission.reward} Coins!`
-                        );
-                    };
-
-                box.appendChild(
-                    claim
-                );
-            }
-
-            list.appendChild(
-                box
-            );
-        }
-    );
-}
-
-
-function updateMissionProgress(){
-
-    state.missionProgress.m1 =
-        Math.max(
-            Number(
-                state.missionProgress.m1 || 0
-            ),
-            game.score
-        );
-
-    state.missionProgress.m2 =
-        Math.max(
-            Number(
-                state.missionProgress.m2 || 0
-            ),
-            game.bonusCoinsRun
-        );
-
-    state.missionProgress.m3 =
-        Math.max(
-            Number(
-                state.missionProgress.m3 || 0
-            ),
-            game.score
-        );
-
-    saveState();
-}
-
-
-/* =========================================================
    TABS
 ========================================================= */
 
@@ -3655,30 +2776,31 @@ function createTabs(
     items.forEach(
         item => {
 
-            const button =
+            const b =
                 document.createElement(
                     "button"
                 );
 
-            button.className =
+            b.className =
                 "tab" +
                 (
-                    item.id === active
+                    active ===
+                    item.id
                     ? " active"
                     : ""
                 );
 
-            button.textContent =
+            b.textContent =
                 item.name;
 
-            button.onclick =
+            b.onclick =
                 () =>
                     callback(
                         item.id
                     );
 
             container.appendChild(
-                button
+                b
             );
         }
     );
@@ -3732,12 +2854,12 @@ function renderShop(){
         }
     );
 
-    const container =
+    const cards =
         document.getElementById(
             "shopCards"
         );
 
-    container.innerHTML =
+    cards.innerHTML =
         "";
 
     if(
@@ -3746,7 +2868,7 @@ function renderShop(){
     ){
 
         renderSoundShop(
-            container
+            cards
         );
 
         return;
@@ -3758,7 +2880,7 @@ function renderShop(){
     ){
 
         renderMusicShop(
-            container
+            cards
         );
 
         return;
@@ -3795,19 +2917,19 @@ function renderShop(){
             preview.className =
                 "preview";
 
-            const c =
+            const previewCanvas =
                 document.createElement(
                     "canvas"
                 );
 
-            c.width =
+            previewCanvas.width =
                 240;
 
-            c.height =
+            previewCanvas.height =
                 140;
 
-            const pctx =
-                c.getContext(
+            const previewCtx =
+                previewCanvas.getContext(
                     "2d"
                 );
 
@@ -3817,7 +2939,7 @@ function renderShop(){
             ){
 
                 drawSkin(
-                    pctx,
+                    previewCtx,
                     item.type,
                     120,
                     70,
@@ -3827,7 +2949,7 @@ function renderShop(){
             }else{
 
                 drawWorldPreview(
-                    pctx,
+                    previewCtx,
                     item,
                     240,
                     140
@@ -3835,7 +2957,7 @@ function renderShop(){
             }
 
             preview.appendChild(
-                c
+                previewCanvas
             );
 
             card.appendChild(
@@ -3871,12 +2993,12 @@ function renderShop(){
                 price
             );
 
-            const button =
+            const buy =
                 document.createElement(
                     "button"
                 );
 
-            button.className =
+            buy.className =
                 "smallbtn";
 
             if(
@@ -3885,18 +3007,18 @@ function renderShop(){
                 )
             ){
 
-                button.textContent =
+                buy.textContent =
                     "✓ Im Besitz";
 
-                button.disabled =
+                buy.disabled =
                     true;
 
             }else{
 
-                button.textContent =
+                buy.textContent =
                     "Kaufen";
 
-                button.onclick =
+                buy.onclick =
                     () => {
 
                         if(
@@ -3928,10 +3050,10 @@ function renderShop(){
             }
 
             card.appendChild(
-                button
+                buy
             );
 
-            container.appendChild(
+            cards.appendChild(
                 card
             );
         }
@@ -3939,12 +3061,8 @@ function renderShop(){
 }
 
 
-/* =========================================================
-   SOUND SHOP
-========================================================= */
-
 function renderSoundShop(
-    container
+    cards
 ){
 
     sounds.forEach(
@@ -4026,25 +3144,25 @@ function renderSoundShop(
                 price
             );
 
-            const listen =
+            const previewBtn =
                 document.createElement(
                     "button"
                 );
 
-            listen.className =
+            previewBtn.className =
                 "smallbtn blue";
 
-            listen.textContent =
+            previewBtn.textContent =
                 "▶ ANHÖREN";
 
-            listen.onclick =
+            previewBtn.onclick =
                 () =>
                     playJumpSound(
                         sound.type
                     );
 
             card.appendChild(
-                listen
+                previewBtn
             );
 
             const buy =
@@ -4107,7 +3225,7 @@ function renderSoundShop(
                 buy
             );
 
-            container.appendChild(
+            cards.appendChild(
                 card
             );
         }
@@ -4115,12 +3233,8 @@ function renderSoundShop(
 }
 
 
-/* =========================================================
-   MUSIC SHOP
-========================================================= */
-
 function renderMusicShop(
-    container
+    cards
 ){
 
     musicTracks.forEach(
@@ -4170,7 +3284,7 @@ function renderMusicShop(
                 "musicText";
 
             text.textContent =
-                "Hintergrundmelodie";
+                "Hintergrundmusik";
 
             box.appendChild(
                 icon
@@ -4298,7 +3412,7 @@ function renderMusicShop(
                 buy
             );
 
-            container.appendChild(
+            cards.appendChild(
                 card
             );
         }
@@ -4348,12 +3462,12 @@ function renderInventory(){
         }
     );
 
-    const container =
+    const cards =
         document.getElementById(
             "inventoryCards"
         );
 
-    container.innerHTML =
+    cards.innerHTML =
         "";
 
     if(
@@ -4362,7 +3476,7 @@ function renderInventory(){
     ){
 
         renderSoundInventory(
-            container
+            cards
         );
 
         return;
@@ -4374,7 +3488,7 @@ function renderInventory(){
     ){
 
         renderMusicInventory(
-            container
+            cards
         );
 
         return;
@@ -4526,7 +3640,7 @@ function renderInventory(){
                 equip
             );
 
-            container.appendChild(
+            cards.appendChild(
                 card
             );
         }
@@ -4535,7 +3649,7 @@ function renderInventory(){
 
 
 function renderSoundInventory(
-    container
+    cards
 ){
 
     sounds
@@ -4665,7 +3779,7 @@ function renderSoundInventory(
                     equip
                 );
 
-                container.appendChild(
+                cards.appendChild(
                     card
                 );
             }
@@ -4674,7 +3788,7 @@ function renderSoundInventory(
 
 
 function renderMusicInventory(
-    container
+    cards
 ){
 
     musicTracks
@@ -4813,7 +3927,7 @@ function renderMusicInventory(
                         saveState();
 
                         renderMusicInventory(
-                            container
+                            cards
                         );
 
                         document.getElementById(
@@ -4833,10 +3947,546 @@ function renderMusicInventory(
                     equip
                 );
 
-                container.appendChild(
+                cards.appendChild(
                     card
                 );
             }
+        );
+}
+
+
+/* =========================================================
+   AUDIO
+========================================================= */
+
+let audioContext = null;
+let musicTimer = null;
+let musicStep = 0;
+
+
+function initAudio(){
+
+    if(
+        audioContext
+    ){
+        return;
+    }
+
+    const AC =
+        window.AudioContext ||
+        window.webkitAudioContext;
+
+    if(!AC){
+        return;
+    }
+
+    audioContext =
+        new AC();
+}
+
+
+function rawTone(
+    frequency,
+    duration,
+    volume,
+    type
+){
+
+    if(!audioContext){
+        return;
+    }
+
+    const oscillator =
+        audioContext.createOscillator();
+
+    const gain =
+        audioContext.createGain();
+
+    oscillator.type =
+        type;
+
+    oscillator.frequency.value =
+        frequency;
+
+    gain.gain.setValueAtTime(
+        .0001,
+        audioContext.currentTime
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+        volume,
+        audioContext.currentTime + .02
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+        .0001,
+        audioContext.currentTime + duration
+    );
+
+    oscillator.connect(
+        gain
+    );
+
+    gain.connect(
+        audioContext.destination
+    );
+
+    oscillator.start();
+
+    oscillator.stop(
+        audioContext.currentTime +
+        duration +
+        .02
+    );
+}
+
+
+function playJumpSound(
+    type
+){
+
+    if(
+        !state.sfxEnabled
+    ){
+        return;
+    }
+
+    initAudio();
+
+    if(
+        !audioContext
+    ){
+        return;
+    }
+
+    if(
+        audioContext.state ===
+        "suspended"
+    ){
+
+        audioContext.resume();
+    }
+
+    if(
+        type ===
+        "classic"
+    ){
+
+        rawTone(
+            520,
+            .08,
+            .065,
+            "square"
+        );
+    }
+
+    if(
+        type ===
+        "arcade"
+    ){
+
+        rawTone(
+            440,
+            .06,
+            .055,
+            "square"
+        );
+
+        setTimeout(
+            () =>
+                rawTone(
+                    660,
+                    .07,
+                    .05,
+                    "square"
+                ),
+            45
+        );
+    }
+
+    if(
+        type ===
+        "laser"
+    ){
+
+        rawTone(
+            900,
+            .12,
+            .055,
+            "sawtooth"
+        );
+
+        setTimeout(
+            () =>
+                rawTone(
+                    1400,
+                    .09,
+                    .035,
+                    "sawtooth"
+                ),
+            45
+        );
+    }
+
+    if(
+        type ===
+        "bubble"
+    ){
+
+        rawTone(
+            300,
+            .08,
+            .045,
+            "sine"
+        );
+
+        setTimeout(
+            () =>
+                rawTone(
+                    650,
+                    .12,
+                    .045,
+                    "sine"
+                ),
+            60
+        );
+    }
+
+    if(
+        type ===
+        "power"
+    ){
+
+        rawTone(
+            220,
+            .13,
+            .055,
+            "sawtooth"
+        );
+
+        setTimeout(
+            () =>
+                rawTone(
+                    520,
+                    .08,
+                    .06,
+                    "square"
+                ),
+            65
+        );
+
+        setTimeout(
+            () =>
+                rawTone(
+                    820,
+                    .1,
+                    .05,
+                    "triangle"
+                ),
+            120
+        );
+    }
+}
+
+
+function coinSound(){
+
+    if(
+        !state.sfxEnabled
+    ){
+        return;
+    }
+
+    initAudio();
+
+    if(
+        !audioContext
+    ){
+        return;
+    }
+
+    rawTone(
+        783.99,
+        .08,
+        .05,
+        "triangle"
+    );
+
+    setTimeout(
+        () =>
+            rawTone(
+                1046.5,
+                .12,
+                .05,
+                "triangle"
+            ),
+        70
+    );
+}
+
+
+function scoreSound(){
+
+    if(
+        !state.sfxEnabled
+    ){
+        return;
+    }
+
+    initAudio();
+
+    rawTone(
+        760,
+        .04,
+        .03,
+        "triangle"
+    );
+}
+
+
+function purchaseSound(){
+
+    initAudio();
+
+    if(
+        !audioContext
+    ){
+        return;
+    }
+
+    rawTone(
+        523.25,
+        .08,
+        .045,
+        "triangle"
+    );
+
+    setTimeout(
+        () =>
+            rawTone(
+                783.99,
+                .12,
+                .045,
+                "triangle"
+            ),
+        70
+    );
+}
+
+
+function gameOverSound(){
+
+    if(
+        !state.sfxEnabled
+    ){
+        return;
+    }
+
+    initAudio();
+
+    if(
+        !audioContext
+    ){
+        return;
+    }
+
+    rawTone(
+        300,
+        .15,
+        .05,
+        "sawtooth"
+    );
+
+    setTimeout(
+        () =>
+            rawTone(
+                210,
+                .22,
+                .045,
+                "sawtooth"
+            ),
+        130
+    );
+}
+
+
+/* =========================================================
+   MUSIK
+========================================================= */
+
+function selectedMusic(){
+
+    return (
+        musicTracks.find(
+            music =>
+                music.id ===
+                state.selectedMusic
+        ) ||
+        musicTracks[0]
+    );
+}
+
+
+function stopMusic(){
+
+    if(
+        musicTimer
+    ){
+
+        clearInterval(
+            musicTimer
+        );
+
+        musicTimer =
+            null;
+    }
+}
+
+
+function musicTick(){
+
+    if(
+        !state.musicEnabled ||
+        !audioContext
+    ){
+
+        stopMusic();
+
+        return;
+    }
+
+    const music =
+        selectedMusic();
+
+    const note =
+        music.melody[
+            musicStep %
+            music.melody.length
+        ];
+
+    const bass =
+        music.bass[
+            musicStep %
+            music.bass.length
+        ];
+
+    rawTone(
+        note,
+        .30,
+        .025,
+        "triangle"
+    );
+
+    if(
+        musicStep % 2 === 0
+    ){
+
+        rawTone(
+            bass,
+            .45,
+            .012,
+            "sine"
+        );
+    }
+
+    musicStep++;
+}
+
+
+function startMusic(){
+
+    if(
+        !state.musicEnabled
+    ){
+        return;
+    }
+
+    initAudio();
+
+    if(
+        !audioContext
+    ){
+        return;
+    }
+
+    if(
+        audioContext.state ===
+        "suspended"
+    ){
+
+        audioContext.resume();
+    }
+
+    stopMusic();
+
+    musicStep =
+        0;
+
+    musicTick();
+
+    const music =
+        selectedMusic();
+
+    musicTimer =
+        setInterval(
+            musicTick,
+            music.tempo
+        );
+}
+
+
+function previewMusic(
+    music
+){
+
+    initAudio();
+
+    if(
+        !audioContext
+    ){
+        return;
+    }
+
+    stopMusic();
+
+    let step =
+        0;
+
+    const timer =
+        setInterval(
+            () => {
+
+                if(
+                    step >=
+                    music.melody.length
+                ){
+
+                    clearInterval(
+                        timer
+                    );
+
+                    if(
+                        state.musicEnabled &&
+                        game.running
+                    ){
+
+                        startMusic();
+                    }
+
+                    return;
+                }
+
+                rawTone(
+                    music.melody[step],
+                    .28,
+                    .035,
+                    "triangle"
+                );
+
+                step++;
+
+            },
+            music.tempo
         );
 }
 
@@ -4952,7 +4602,7 @@ function startGame(){
 
     updateHUD();
 
-    game.lastTime =
+    game.last =
         performance.now();
 
     flap();
@@ -4998,6 +4648,7 @@ function flap(){
         game.paused ||
         game.over
     ){
+
         return;
     }
 
@@ -5008,8 +4659,8 @@ function flap(){
 
     const sound =
         sounds.find(
-            sound =>
-                sound.id ===
+            item =>
+                item.id ===
                 state.selectedSound
         ) || sounds[0];
 
@@ -5022,7 +4673,7 @@ function flap(){
 
 
 /* =========================================================
-   BONUS COIN
+   COIN
 ========================================================= */
 
 function spawnCoin(){
@@ -5032,7 +4683,7 @@ function spawnCoin(){
 
     const maxY =
         Math.max(
-            minY + 30,
+            130,
             H - 100
         );
 
@@ -5044,7 +4695,10 @@ function spawnCoin(){
         y:
             minY +
             Math.random() *
-            (maxY - minY),
+            (
+                maxY -
+                minY
+            ),
 
         r:
             10,
@@ -5058,15 +4712,12 @@ function spawnCoin(){
    GAME UPDATE
 ========================================================= */
 
-function updateGame(dt){
+function updateGame(
+    dt
+){
 
     const p =
         game.player;
-
-    /*
-       Leichter Start,
-       später immer schwieriger.
-    */
 
     game.speed =
         165 +
@@ -5083,10 +4734,12 @@ function updateGame(dt){
         );
 
     p.vy +=
-        gravity * dt;
+        gravity *
+        dt;
 
     p.y +=
-        p.vy * dt;
+        p.vy *
+        dt;
 
     p.rot =
         Math.max(
@@ -5097,6 +4750,7 @@ function updateGame(dt){
             )
         );
 
+
     const gapHeight =
         Math.max(
             150,
@@ -5104,12 +4758,13 @@ function updateGame(dt){
             game.score * .62
         );
 
+
     game.spawnTimer -=
         dt;
 
+
     if(
-        game.spawnTimer <=
-        0
+        game.spawnTimer <= 0
     ){
 
         const topMargin =
@@ -5179,9 +4834,8 @@ function updateGame(dt){
         }
     }
 
-    /*
-       Hindernisse
-    */
+
+    /* HINDERNISSE */
 
     for(
         const obstacle
@@ -5189,7 +4843,9 @@ function updateGame(dt){
     ){
 
         obstacle.x -=
-            game.speed * dt;
+            game.speed *
+            dt;
+
 
         if(
             !obstacle.passed &&
@@ -5206,14 +4862,14 @@ function updateGame(dt){
 
             scoreSound();
 
+
             /*
-               Jedes 5. Hindernis =
-               10 Coins.
+               Alle 5 Hindernisse:
+               +10 Coins
             */
 
             if(
-                game.score % 5 ===
-                0
+                game.score % 5 === 0
             ){
 
                 game.runCoins +=
@@ -5226,6 +4882,7 @@ function updateGame(dt){
                 coinSound();
             }
         }
+
 
         if(
             obstacleCollision(
@@ -5240,6 +4897,7 @@ function updateGame(dt){
         }
     }
 
+
     game.obstacles =
         game.obstacles.filter(
             obstacle =>
@@ -5248,9 +4906,8 @@ function updateGame(dt){
                 -100
         );
 
-    /*
-       Bonus-Coins
-    */
+
+    /* BONUS COINS */
 
     for(
         const coin
@@ -5258,7 +4915,9 @@ function updateGame(dt){
     ){
 
         coin.x -=
-            game.speed * dt;
+            game.speed *
+            dt;
+
 
         if(
             distance(
@@ -5293,6 +4952,7 @@ function updateGame(dt){
         }
     }
 
+
     game.coins =
         game.coins.filter(
             coin =>
@@ -5300,9 +4960,8 @@ function updateGame(dt){
                 !coin.collected
         );
 
-    /*
-       Boden / Decke
-    */
+
+    /* BODEN / DECKE */
 
     if(
         p.y -
@@ -5318,9 +4977,8 @@ function updateGame(dt){
         return;
     }
 
-    /*
-       Lokaler Rekord.
-    */
+
+    /* REKORD */
 
     if(
         game.score >
@@ -5333,13 +4991,15 @@ function updateGame(dt){
         saveState();
     }
 
+
     updateMissionProgress();
+
     updateHUD();
 }
 
 
 /* =========================================================
-   DISTANZ
+   DISTANCE
 ========================================================= */
 
 function distance(
@@ -5357,7 +5017,7 @@ function distance(
 
 
 /* =========================================================
-   KOLLISION
+   COLLISION
 ========================================================= */
 
 function obstacleCollision(
@@ -5373,6 +5033,7 @@ function obstacleCollision(
         obstacle.gapY +
         obstacle.gapH / 2;
 
+
     if(
         p.x +
         p.r <
@@ -5381,6 +5042,7 @@ function obstacleCollision(
 
         return false;
     }
+
 
     if(
         p.x -
@@ -5392,6 +5054,7 @@ function obstacleCollision(
         return false;
     }
 
+
     if(
         p.y -
         p.r <
@@ -5401,6 +5064,7 @@ function obstacleCollision(
         return true;
     }
 
+
     if(
         p.y +
         p.r >
@@ -5409,6 +5073,7 @@ function obstacleCollision(
 
         return true;
     }
+
 
     return false;
 }
@@ -5423,6 +5088,7 @@ async function endGame(){
     if(
         game.over
     ){
+
         return;
     }
 
@@ -5432,12 +5098,14 @@ async function endGame(){
     game.running =
         false;
 
+
     /*
-       Coins speichern.
+       Coins ins Guthaben.
     */
 
     state.coins +=
         game.runCoins;
+
 
     if(
         game.score >
@@ -5448,26 +5116,39 @@ async function endGame(){
             game.score;
     }
 
+
     updateMissionProgress();
 
     saveState();
 
+
     /*
-       Online-Highscore.
+       Online-Highscore:
+       blockiert das Spiel nicht.
     */
 
-    let uploaded =
-        false;
+    let uploaded = false;
 
-    if(
-        game.score > 0
-    ){
+    try{
 
-        uploaded =
-            await submitHighscore(
-                game.score
-            );
+        if(
+            game.score > 0 &&
+            getPlayerName()
+        ){
+
+            uploaded =
+                await submitHighscore(
+                    game.score
+                );
+        }
+
+    }catch(error){
+
+        console.error(
+            error
+        );
     }
+
 
     document.getElementById(
         "finalScore"
@@ -5495,14 +5176,14 @@ async function endGame(){
         "active"
     );
 
-    if(
-        uploaded
-    ){
+
+    if(uploaded){
 
         document.getElementById(
             "gameOverText"
         ).textContent =
             "🏆 Dein Highscore wurde online gespeichert.";
+
     }else if(
         !getPlayerName()
     ){
@@ -5511,6 +5192,7 @@ async function endGame(){
             "gameOverText"
         ).textContent =
             "Speichere deinen Namen im Leaderboard, damit dein Rekord online erscheint.";
+
     }else{
 
         document.getElementById(
@@ -5519,15 +5201,18 @@ async function endGame(){
             "Gut geflogen!";
     }
 
+
     gameOverSound();
 }
 
 
 /* =========================================================
-   LOOP
+   GAME LOOP
 ========================================================= */
 
-function gameLoop(time){
+function gameLoop(
+    timestamp
+){
 
     if(
         !game.running
@@ -5538,17 +5223,20 @@ function gameLoop(time){
         return;
     }
 
+
     const dt =
         Math.min(
             .033,
             (
-                time -
-                game.lastTime
+                timestamp -
+                game.last
             ) / 1000
         );
 
-    game.lastTime =
-        time;
+
+    game.last =
+        timestamp;
+
 
     if(
         !game.paused
@@ -5559,7 +5247,9 @@ function gameLoop(time){
         );
     }
 
+
     draw();
+
 
     if(
         game.running
@@ -5603,7 +5293,8 @@ function drawGiza(){
         0,
         horizon,
         W,
-        H - horizon
+        H -
+        horizon
     );
 
     drawPyramid(
@@ -5787,8 +5478,7 @@ function drawJungle(){
     ){
 
         const x =
-            (i * 97) %
-            W;
+            (i * 97) % W;
 
         const height =
             100 +
@@ -5802,7 +5492,8 @@ function drawJungle(){
 
         ctx.fillRect(
             x,
-            H * .78 - height,
+            H * .78 -
+            height,
             20,
             height
         );
@@ -5811,7 +5502,8 @@ function drawJungle(){
 
         ctx.arc(
             x + 10,
-            H * .78 - height,
+            H * .78 -
+            height,
             38,
             Math.PI,
             Math.PI * 2
@@ -5834,12 +5526,10 @@ function drawSpace(){
     ){
 
         const x =
-            (i * 83) %
-            W;
+            (i * 83) % W;
 
         const y =
-            (i * 47) %
-            H;
+            (i * 47) % H;
 
         ctx.globalAlpha =
             .25 +
@@ -5947,38 +5637,23 @@ function drawSkin(
         y
     );
 
-    if(
-        type ===
-        "bird"
-    ){
+    if(type === "bird"){
         drawBird(c,r);
     }
 
-    if(
-        type ===
-        "dino"
-    ){
+    if(type === "dino"){
         drawDino(c,r);
     }
 
-    if(
-        type ===
-        "pen"
-    ){
+    if(type === "pen"){
         drawPen(c,r);
     }
 
-    if(
-        type ===
-        "carrot"
-    ){
+    if(type === "carrot"){
         drawCarrot(c,r);
     }
 
-    if(
-        type ===
-        "apple"
-    ){
+    if(type === "apple"){
         drawApple(c,r);
     }
 
@@ -5986,7 +5661,10 @@ function drawSkin(
 }
 
 
-function drawBird(c,r){
+function drawBird(
+    c,
+    r
+){
 
     c.fillStyle =
         "#ffd13b";
@@ -6078,7 +5756,10 @@ function drawBird(c,r){
 }
 
 
-function drawDino(c,r){
+function drawDino(
+    c,
+    r
+){
 
     c.fillStyle =
         "#58d26b";
@@ -6153,7 +5834,10 @@ function drawDino(c,r){
 }
 
 
-function drawPen(c,r){
+function drawPen(
+    c,
+    r
+){
 
     c.rotate(
         -.35
@@ -6205,7 +5889,10 @@ function drawPen(c,r){
 }
 
 
-function drawCarrot(c,r){
+function drawCarrot(
+    c,
+    r
+){
 
     c.fillStyle =
         "#62d976";
@@ -6264,7 +5951,10 @@ function drawCarrot(c,r){
 }
 
 
-function drawApple(c,r){
+function drawApple(
+    c,
+    r
+){
 
     c.fillStyle =
         "#f14848";
@@ -6339,7 +6029,7 @@ function drawWorldPreview(
     height
 ){
 
-    const g =
+    const gradient =
         c.createLinearGradient(
             0,
             0,
@@ -6347,18 +6037,18 @@ function drawWorldPreview(
             height
         );
 
-    g.addColorStop(
+    gradient.addColorStop(
         0,
         world.sky1
     );
 
-    g.addColorStop(
+    gradient.addColorStop(
         1,
         world.sky2
     );
 
     c.fillStyle =
-        g;
+        gradient;
 
     c.fillRect(
         0,
@@ -6570,7 +6260,7 @@ function drawWorldPreview(
 
 
 /* =========================================================
-   DRAW GAME
+   DRAW
 ========================================================= */
 
 function draw(){
@@ -6607,51 +6297,32 @@ function draw(){
         H
     );
 
-    if(
-        world.id ===
-        "giza"
-    ){
+    if(world.id === "giza"){
         drawGiza();
     }
 
-    if(
-        world.id ===
-        "mountains"
-    ){
+    if(world.id === "mountains"){
         drawMountains();
     }
 
-    if(
-        world.id ===
-        "ocean"
-    ){
+    if(world.id === "ocean"){
         drawOcean();
     }
 
-    if(
-        world.id ===
-        "jungle"
-    ){
+    if(world.id === "jungle"){
         drawJungle();
     }
 
-    if(
-        world.id ===
-        "space"
-    ){
+    if(world.id === "space"){
         drawSpace();
     }
 
-    if(
-        world.id ===
-        "ice"
-    ){
+    if(world.id === "ice"){
         drawIce();
     }
 
-    /*
-       Hindernisse
-    */
+
+    /* Hindernisse */
 
     for(
         const obstacle
@@ -6680,7 +6351,8 @@ function draw(){
             obstacle.x,
             bottom,
             obstacle.width,
-            H - bottom
+            H -
+            bottom
         );
 
         ctx.beginPath();
@@ -6730,9 +6402,8 @@ function draw(){
         ctx.fill();
     }
 
-    /*
-       Bonus-Coins
-    */
+
+    /* Bonus-Coins */
 
     for(
         const coin
@@ -6817,16 +6488,16 @@ function draw(){
         ctx.restore();
     }
 
-    /*
-       Spieler
-    */
+
+    /* Spieler */
 
     const skin =
         skins.find(
-            skin =>
-                skin.id ===
+            item =>
+                item.id ===
                 state.selectedSkin
-        ) || skins[0];
+        ) ||
+        skins[0];
 
     ctx.save();
 
@@ -6861,6 +6532,7 @@ function togglePause(){
         !game.running ||
         game.over
     ){
+
         return;
     }
 
@@ -6880,14 +6552,14 @@ function togglePause(){
         !game.paused
     ){
 
-        game.lastTime =
+        game.last =
             performance.now();
     }
 }
 
 
 /* =========================================================
-   LOBBY
+   GAME OVER / LOBBY
 ========================================================= */
 
 function returnToLobby(){
@@ -6929,7 +6601,225 @@ function returnToLobby(){
 
 
 /* =========================================================
-   EVENTS
+   MISSIONS
+========================================================= */
+
+function renderMissions(){
+
+    const list =
+        document.getElementById(
+            "missionList"
+        );
+
+    list.innerHTML =
+        "";
+
+    missions.forEach(
+        mission => {
+
+            const current =
+                Math.min(
+                    mission.target,
+                    Number(
+                        state.missionProgress[
+                            mission.id
+                        ] || 0
+                    )
+                );
+
+            const done =
+                current >=
+                mission.target;
+
+            const claimed =
+                Boolean(
+                    state.missionClaimed[
+                        mission.id
+                    ]
+                );
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+            card.className =
+                "mission" +
+                (
+                    done
+                    ? " done"
+                    : ""
+                );
+
+            const top =
+                document.createElement(
+                    "div"
+                );
+
+            top.className =
+                "missionTop";
+
+            const title =
+                document.createElement(
+                    "strong"
+                );
+
+            title.textContent =
+                mission.name;
+
+            const reward =
+                document.createElement(
+                    "span"
+                );
+
+            reward.textContent =
+                `🪙 ${mission.reward}`;
+
+            top.appendChild(
+                title
+            );
+
+            top.appendChild(
+                reward
+            );
+
+            card.appendChild(
+                top
+            );
+
+            const info =
+                document.createElement(
+                    "div"
+                );
+
+            info.className =
+                "tiny";
+
+            info.textContent =
+                claimed
+                ? "✅ Abgeholt"
+                : `${current} / ${mission.target}`;
+
+            card.appendChild(
+                info
+            );
+
+            const bar =
+                document.createElement(
+                    "div"
+                );
+
+            bar.className =
+                "missionProgress";
+
+            const fill =
+                document.createElement(
+                    "div"
+                );
+
+            fill.className =
+                "missionFill";
+
+            fill.style.width =
+                (
+                    current /
+                    mission.target *
+                    100
+                ) + "%";
+
+            bar.appendChild(
+                fill
+            );
+
+            card.appendChild(
+                bar
+            );
+
+            if(
+                done &&
+                !claimed
+            ){
+
+                const claim =
+                    document.createElement(
+                        "button"
+                    );
+
+                claim.className =
+                    "smallbtn selected";
+
+                claim.textContent =
+                    "🪙 BELOHNUNG ABHOLEN";
+
+                claim.onclick =
+                    () => {
+
+                        state.coins +=
+                            mission.reward;
+
+                        state.missionClaimed[
+                            mission.id
+                        ] =
+                            true;
+
+                        saveState();
+
+                        updateLobby();
+                        renderMissions();
+
+                        showMessage(
+                            `🪙 +${mission.reward} Coins!`
+                        );
+                    };
+
+                card.appendChild(
+                    claim
+                );
+            }
+
+            list.appendChild(
+                card
+            );
+        }
+    );
+}
+
+
+function updateMissionProgress(){
+
+    state.missionProgress.m1 =
+        Math.max(
+            Number(
+                state.missionProgress.m1 ||
+                0
+            ),
+            game.score
+        );
+
+    state.missionProgress.m2 =
+        Math.max(
+            Number(
+                state.missionProgress.m2 ||
+                0
+            ),
+            game.bonusCoinsRun
+        );
+
+    state.missionProgress.m3 =
+        Math.max(
+            Number(
+                state.missionProgress.m3 ||
+                0
+            ),
+            game.score
+        );
+
+    saveState();
+}
+
+
+/* =========================================================
+   BUTTONS
 ========================================================= */
 
 document.getElementById(
@@ -7047,7 +6937,6 @@ document.getElementById(
         ){
 
             initAudio();
-
             startMusic();
 
         }else{
@@ -7109,10 +6998,8 @@ window.addEventListener(
     event => {
 
         if(
-            event.code ===
-            "Space" ||
-            event.code ===
-            "ArrowUp"
+            event.code === "Space" ||
+            event.code === "ArrowUp"
         ){
 
             event.preventDefault();
@@ -7121,10 +7008,8 @@ window.addEventListener(
         }
 
         if(
-            event.code ===
-            "Escape" ||
-            event.code ===
-            "KeyP"
+            event.code === "Escape" ||
+            event.code === "KeyP"
         ){
 
             togglePause();
@@ -7134,20 +7019,38 @@ window.addEventListener(
 
 
 /* =========================================================
-   START APP
+   APP INITIALISIEREN
 ========================================================= */
 
-function startApp(){
+function initializeApp(){
+
+    updateLobby();
+
+    renderShop();
+
+    renderInventory();
+
+    renderMissions();
+
+    loadPlayerName();
+
+    /*
+       Nach Ablauf der Wartung
+       sicher Lobby anzeigen.
+    */
+
+    if(
+        !maintenanceFinished
+    ){
+        return;
+    }
 
     const maintenance =
         document.getElementById(
             "maintenance"
         );
 
-    if(
-        maintenance
-    ){
-
+    if(maintenance){
         maintenance.style.display =
             "none";
     }
@@ -7160,39 +7063,24 @@ function startApp(){
     ).style.display =
         "none";
 
-    hideScreens();
-
     showScreen(
         "lobby"
     );
-
-    updateLobby();
-    renderShop();
-    renderInventory();
-    renderMissions();
-    loadPlayerName();
 }
 
 
 /*
-   Firebase darf NICHT verhindern,
-   dass das Spiel startet.
+   Spiel zuerst starten.
+   Firebase läuft separat.
+*/
+
+initializeApp();
+
+/*
+   Firebase darf das Spiel nicht blockieren.
 */
 
 setupFirebase();
-
-
-/*
-   Falls die Wartung bereits vorbei ist,
-   sofort Lobby starten.
-*/
-
-if(
-    alreadyFinished
-){
-
-    startApp();
-}
 
 </script>
 
