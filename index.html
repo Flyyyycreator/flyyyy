@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
 <meta name="theme-color" content="#0d1430">
 <title>FLYYYY</title>
 
@@ -25,7 +25,7 @@ html,body{
     overflow:hidden;
     font-family:Arial,Helvetica,sans-serif;
     background:var(--bg);
-    color:#fff;
+    color:white;
 }
 
 body{
@@ -57,6 +57,184 @@ button{
     touch-action:none;
 }
 
+/* =========================================================
+   WARTUNGSARBEITEN
+========================================================= */
+
+#maintenanceScreen{
+    position:absolute;
+    inset:0;
+    z-index:99999;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:20px;
+
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(94,231,255,.12),
+            transparent 40%
+        ),
+        linear-gradient(
+            180deg,
+            #090f29,
+            #111a3f
+        );
+}
+
+.maintenanceBox{
+    width:min(760px,94vw);
+
+    padding:38px 28px;
+
+    text-align:center;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(21,30,70,.97),
+            rgba(13,20,48,.97)
+        );
+
+    border:1px solid rgba(255,255,255,.14);
+
+    border-radius:30px;
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.5);
+}
+
+.maintenanceIcon{
+    font-size:70px;
+    margin-bottom:15px;
+}
+
+.maintenanceTitle{
+    margin:0;
+
+    font-size:
+        clamp(42px,8vw,82px);
+
+    font-weight:1000;
+
+    letter-spacing:.04em;
+
+    line-height:.95;
+
+    text-shadow:
+        0 6px 0 rgba(0,0,0,.18),
+        0 0 30px rgba(94,231,255,.2);
+}
+
+.maintenanceSubtitle{
+    margin:18px auto 28px;
+
+    max-width:600px;
+
+    color:var(--muted);
+
+    font-size:
+        clamp(16px,2vw,20px);
+
+    line-height:1.5;
+}
+
+.countdownTitle{
+    font-size:14px;
+    color:var(--muted);
+    text-transform:uppercase;
+    letter-spacing:.12em;
+    font-weight:900;
+    margin-bottom:10px;
+}
+
+.countdown{
+    display:flex;
+
+    justify-content:center;
+
+    gap:12px;
+
+    margin-bottom:25px;
+}
+
+.timeBox{
+    min-width:92px;
+
+    padding:16px 12px;
+
+    border-radius:18px;
+
+    background:
+        rgba(255,255,255,.07);
+
+    border:
+        1px solid rgba(255,255,255,.1);
+}
+
+.timeNumber{
+    display:block;
+
+    font-size:
+        clamp(28px,5vw,44px);
+
+    font-weight:1000;
+}
+
+.timeLabel{
+    font-size:11px;
+    color:var(--muted);
+    text-transform:uppercase;
+    font-weight:900;
+}
+
+.maintenanceMessage{
+    color:#fff;
+
+    font-size:15px;
+
+    line-height:1.5;
+
+    margin:0;
+}
+
+.maintenanceBar{
+    width:100%;
+    height:8px;
+
+    margin-top:25px;
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+    background:rgba(255,255,255,.08);
+}
+
+.maintenanceProgress{
+    height:100%;
+    width:0%;
+
+    border-radius:999px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #5ee7ff,
+            #6df5a3
+        );
+
+    transition:width .5s linear;
+}
+
+
+/* =========================================================
+   APP
+========================================================= */
+
 .screen{
     position:absolute;
     inset:0;
@@ -75,15 +253,22 @@ button{
     width:min(950px,94vw);
     max-height:92vh;
     overflow:auto;
-    background:linear-gradient(
-        180deg,
-        rgba(15,23,55,.97),
-        rgba(18,28,67,.97)
-    );
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(15,23,55,.97),
+            rgba(18,28,67,.97)
+        );
+
     border:1px solid rgba(255,255,255,.14);
     border-radius:28px;
+
     padding:26px;
-    box-shadow:0 20px 60px rgba(0,0,0,.4);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.4);
+
     backdrop-filter:blur(14px);
 }
 
@@ -93,6 +278,7 @@ button{
     line-height:.9;
     font-weight:1000;
     letter-spacing:.08em;
+
     text-shadow:
         0 8px 0 rgba(0,0,0,.15),
         0 0 35px rgba(94,231,255,.3);
@@ -116,8 +302,13 @@ button{
 .badge{
     padding:10px 16px;
     border-radius:999px;
-    background:rgba(255,212,71,.12);
-    border:1px solid rgba(255,212,71,.3);
+
+    background:
+        rgba(255,212,71,.12);
+
+    border:
+        1px solid rgba(255,212,71,.3);
+
     font-weight:900;
 }
 
@@ -130,13 +321,23 @@ button{
     border:0;
     border-radius:17px;
     padding:15px 18px;
+
     cursor:pointer;
+
     font-weight:900;
     color:#111;
-    background:linear-gradient(180deg,#ffe570,#ffc82c);
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffe570,
+            #ffc82c
+        );
+
     box-shadow:
         0 7px 0 #c99415,
         0 12px 22px rgba(0,0,0,.18);
+
     transition:.12s;
 }
 
@@ -150,20 +351,39 @@ button{
 }
 
 .btn.blue{
-    background:linear-gradient(180deg,#6ceeff,#39c9ea);
-    box-shadow:0 7px 0 #1b8aa7;
+    background:
+        linear-gradient(
+            180deg,
+            #6ceeff,
+            #39c9ea
+        );
+
+    box-shadow:
+        0 7px 0 #1b8aa7;
 }
 
 .btn.dark{
     color:white;
-    background:rgba(255,255,255,.08);
+
+    background:
+        rgba(255,255,255,.08);
+
     box-shadow:none;
-    border:1px solid rgba(255,255,255,.13);
+
+    border:
+        1px solid rgba(255,255,255,.13);
 }
 
 .btn.green{
-    background:linear-gradient(180deg,#86ffbd,#4de89b);
-    box-shadow:0 7px 0 #239a60;
+    background:
+        linear-gradient(
+            180deg,
+            #86ffbd,
+            #4de89b
+        );
+
+    box-shadow:
+        0 7px 0 #239a60;
 }
 
 .topbar{
@@ -194,12 +414,21 @@ button{
 
 .tab{
     white-space:nowrap;
-    border:1px solid rgba(255,255,255,.12);
-    background:rgba(255,255,255,.06);
+
+    border:
+        1px solid rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.06);
+
     color:#fff;
+
     border-radius:999px;
+
     padding:10px 15px;
+
     font-weight:900;
+
     cursor:pointer;
 }
 
@@ -210,7 +439,10 @@ button{
 
 .cards{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(180px,1fr));
+
     gap:14px;
 }
 
@@ -221,10 +453,16 @@ button{
             rgba(255,255,255,.095),
             rgba(255,255,255,.04)
         );
-    border:1px solid rgba(255,255,255,.12);
+
+    border:
+        1px solid rgba(255,255,255,.12);
+
     border-radius:22px;
+
     padding:14px;
+
     min-height:225px;
+
     display:flex;
     flex-direction:column;
     gap:10px;
@@ -239,18 +477,25 @@ button{
 .preview{
     width:100%;
     height:145px;
+
     border-radius:17px;
+
     overflow:hidden;
+
     background:
         linear-gradient(
             135deg,
             rgba(255,255,255,.11),
             rgba(255,255,255,.035)
         );
-    border:1px solid rgba(255,255,255,.08);
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     padding:10px;
 }
 
@@ -269,21 +514,43 @@ button{
 
 .smallbtn{
     margin-top:auto;
+
     border:0;
     border-radius:12px;
+
     padding:10px 12px;
+
     cursor:pointer;
+
     font-weight:950;
-    background:linear-gradient(180deg,#fff,#e9efff);
+
+    background:
+        linear-gradient(
+            180deg,
+            #fff,
+            #e9efff
+        );
+
     color:#17204a;
 }
 
 .smallbtn.blue{
-    background:linear-gradient(180deg,#6ceeff,#39c9ea);
+    background:
+        linear-gradient(
+            180deg,
+            #6ceeff,
+            #39c9ea
+        );
 }
 
 .smallbtn.selected{
-    background:linear-gradient(180deg,#83ffc0,#4de89b);
+    background:
+        linear-gradient(
+            180deg,
+            #83ffc0,
+            #4de89b
+        );
+
     color:#0b3423;
 }
 
@@ -305,10 +572,13 @@ button{
 
 .soundPreview{
     height:145px;
+
     display:flex;
     justify-content:center;
     align-items:center;
+
     flex-direction:column;
+
     gap:8px;
 }
 
@@ -332,7 +602,9 @@ button{
 .hud-left,
 .hud-right{
     position:absolute;
+
     top:15px;
+
     display:flex;
     gap:10px;
     align-items:center;
@@ -348,33 +620,57 @@ button{
 }
 
 .hud-pill{
-    background:rgba(12,19,46,.72);
-    border:1px solid rgba(255,255,255,.15);
+    background:
+        rgba(12,19,46,.72);
+
+    border:
+        1px solid rgba(255,255,255,.15);
+
     padding:10px 14px;
+
     border-radius:999px;
+
     font-weight:900;
+
     backdrop-filter:blur(8px);
 }
 
 .pause-btn{
     pointer-events:auto;
-    border:1px solid rgba(255,255,255,.15);
-    color:white;
-    background:rgba(12,19,46,.72);
+
+    border:
+        1px solid rgba(255,255,255,.15);
+
+    color:#fff;
+
+    background:
+        rgba(12,19,46,.72);
+
     border-radius:999px;
+
     padding:10px 14px;
+
     font-weight:900;
+
     cursor:pointer;
 }
 
 .tip{
     position:absolute;
+
     left:50%;
     bottom:16px;
-    transform:translateX(-50%);
-    background:rgba(12,19,46,.6);
+
+    transform:
+        translateX(-50%);
+
+    background:
+        rgba(12,19,46,.6);
+
     padding:9px 14px;
+
     border-radius:999px;
+
     font-size:13px;
 }
 
@@ -382,10 +678,15 @@ button{
     position:absolute;
     inset:0;
     z-index:100;
+
     display:none;
+
     justify-content:center;
     align-items:center;
-    background:rgba(5,8,22,.55);
+
+    background:
+        rgba(5,8,22,.55);
+
     backdrop-filter:blur(6px);
 }
 
@@ -395,17 +696,32 @@ button{
 
 .dialog{
     width:min(540px,92vw);
-    background:linear-gradient(180deg,#101837,#18234d);
-    border:1px solid rgba(255,255,255,.15);
+
+    background:
+        linear-gradient(
+            180deg,
+            #101837,
+            #18234d
+        );
+
+    border:
+        1px solid rgba(255,255,255,.15);
+
     border-radius:28px;
+
     padding:28px;
+
     text-align:center;
-    box-shadow:0 20px 60px rgba(0,0,0,.45);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.45);
 }
 
 .dialog h2{
     margin:0 0 10px;
-    font-size:clamp(40px,8vw,70px);
+
+    font-size:
+        clamp(40px,8vw,70px);
 }
 
 .dialog p{
@@ -450,6 +766,15 @@ button{
         font-size:12px;
         bottom:10px;
     }
+
+    .countdown{
+        gap:7px;
+    }
+
+    .timeBox{
+        min-width:72px;
+        padding:13px 8px;
+    }
 }
 </style>
 </head>
@@ -458,15 +783,88 @@ button{
 
 <div id="app">
 
+<!-- =====================================================
+     WARTUNGSARBEITEN
+===================================================== -->
+
+<div id="maintenanceScreen">
+
+    <div class="maintenanceBox">
+
+        <div class="maintenanceIcon">
+            🛠️
+        </div>
+
+        <h1 class="maintenanceTitle">
+            WARTUNGSARBEITEN
+        </h1>
+
+        <p class="maintenanceSubtitle">
+            FLYYYY wird gerade gewartet und bekommt Verbesserungen,
+            Fehlerbehebungen und neue Inhalte.
+            <br><br>
+            Während der Wartungsarbeiten ist die App vorübergehend nicht verfügbar.
+        </p>
+
+        <div class="countdownTitle">
+            Voraussichtliche Wartungsdauer
+        </div>
+
+        <div class="countdown">
+
+            <div class="timeBox">
+                <span class="timeNumber" id="countHours">02</span>
+                <span class="timeLabel">Stunden</span>
+            </div>
+
+            <div class="timeBox">
+                <span class="timeNumber" id="countMinutes">00</span>
+                <span class="timeLabel">Minuten</span>
+            </div>
+
+            <div class="timeBox">
+                <span class="timeNumber" id="countSeconds">00</span>
+                <span class="timeLabel">Sekunden</span>
+            </div>
+
+        </div>
+
+        <p class="maintenanceMessage">
+            Vielen Dank für Ihre Geduld! ❤️
+            <br>
+            Wir sind bald wieder für euch da.
+        </p>
+
+        <div class="maintenanceBar">
+            <div
+                id="maintenanceProgress"
+                class="maintenanceProgress">
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     GAME
+===================================================== -->
+
 <canvas id="gameCanvas"></canvas>
 
-<!-- ================= LOBBY ================= -->
 
-<div id="lobby" class="screen active">
+<!-- =====================================================
+     LOBBY
+===================================================== -->
+
+<div id="lobby" class="screen">
 
 <div class="menu">
 
-<div class="title">FLYYYY</div>
+<div class="title">
+FLYYYY
+</div>
 
 <div class="subtitle">
 Fly weiter. Überfliege Hindernisse. Sammle Coins und schalte neue Sachen frei.
@@ -508,15 +906,20 @@ START
 
 </div>
 
-<div class="tiny" style="text-align:center;margin-top:15px">
+<div class="tiny"
+style="text-align:center;margin-top:15px">
+
 Alle 5 erfolgreich überflogenen Hindernisse = +10 Coins
+
 </div>
 
 </div>
 </div>
 
 
-<!-- ================= SHOP ================= -->
+<!-- =====================================================
+     SHOP
+===================================================== -->
 
 <div id="shop" class="screen">
 
@@ -540,15 +943,21 @@ Alle 5 erfolgreich überflogenen Hindernisse = +10 Coins
 
 </div>
 
-<div class="tabs" id="shopTabs"></div>
+<div class="tabs"
+id="shopTabs">
+</div>
 
-<div class="cards" id="shopCards"></div>
+<div class="cards"
+id="shopCards">
+</div>
 
 </div>
 </div>
 
 
-<!-- ================= INVENTAR ================= -->
+<!-- =====================================================
+     INVENTAR
+===================================================== -->
 
 <div id="inventory" class="screen">
 
@@ -572,15 +981,21 @@ Figur, Welt, Sound und Musik ausrüsten.
 
 </div>
 
-<div class="tabs" id="inventoryTabs"></div>
+<div class="tabs"
+id="inventoryTabs">
+</div>
 
-<div class="cards" id="inventoryCards"></div>
+<div class="cards"
+id="inventoryCards">
+</div>
 
 </div>
 </div>
 
 
-<!-- ================= HUD ================= -->
+<!-- =====================================================
+     HUD
+===================================================== -->
 
 <div id="gameHud">
 
@@ -610,7 +1025,8 @@ Figur, Welt, Sound und Musik ausrüsten.
 🎵 <span id="musicHud">Classic</span>
 </div>
 
-<button class="pause-btn" id="pauseBtn">
+<button class="pause-btn"
+id="pauseBtn">
 Ⅱ Pause
 </button>
 
@@ -623,9 +1039,12 @@ Klicken / Tippen / Leertaste = Fliegen
 </div>
 
 
-<!-- ================= PAUSE ================= -->
+<!-- =====================================================
+     PAUSE
+===================================================== -->
 
-<div id="pauseOverlay" class="overlay">
+<div id="pauseOverlay"
+class="overlay">
 
 <div class="dialog">
 
@@ -637,11 +1056,13 @@ Dein Lauf wurde angehalten.
 
 <div class="button-grid">
 
-<button class="btn" id="resumeBtn">
+<button class="btn"
+id="resumeBtn">
 ▶ WEITER
 </button>
 
-<button class="btn dark" id="pauseLobbyBtn">
+<button class="btn dark"
+id="pauseLobbyBtn">
 🏠 ZUR LOBBY
 </button>
 
@@ -651,9 +1072,12 @@ Dein Lauf wurde angehalten.
 </div>
 
 
-<!-- ================= GAME OVER ================= -->
+<!-- =====================================================
+     GAME OVER
+===================================================== -->
 
-<div id="gameOverOverlay" class="overlay">
+<div id="gameOverOverlay"
+class="overlay">
 
 <div class="dialog">
 
@@ -684,11 +1108,13 @@ Dein Lauf ist vorbei.
 
 <div class="button-grid">
 
-<button class="btn green" id="retryBtn">
+<button class="btn green"
+id="retryBtn">
 🔄 NOCHMAL
 </button>
 
-<button class="btn blue" id="returnLobbyBtn">
+<button class="btn blue"
+id="returnLobbyBtn">
 🏠 ZUR LOBBY
 </button>
 
@@ -698,9 +1124,12 @@ Dein Lauf ist vorbei.
 </div>
 
 
-<!-- ================= ONLINE ================= -->
+<!-- =====================================================
+     ONLINE
+===================================================== -->
 
-<div id="onlineOverlay" class="overlay">
+<div id="onlineOverlay"
+class="overlay">
 
 <div class="dialog">
 
@@ -710,52 +1139,263 @@ Dein Lauf ist vorbei.
 Der Online-Modus ist vorbereitet. Für echte Freundes-Spiele wird später ein Server benötigt.
 </p>
 
-<button class="btn" id="closeOnlineBtn">
+<button class="btn"
+id="closeOnlineBtn">
 OK
 </button>
 
 </div>
 </div>
 
-</div>
-
 
 <script>
 "use strict";
+
+
+/* =========================================================
+   WARTUNGSZEIT
+========================================================= */
+
+/*
+   2 Stunden = 7.200.000 Millisekunden
+*/
+
+const MAINTENANCE_DURATION =
+    2 * 60 * 60 * 1000;
+
+const MAINTENANCE_KEY =
+    "FLYYYY_MAINTENANCE_START";
+
+
+function getMaintenanceStart(){
+
+    let start =
+        localStorage.getItem(
+            MAINTENANCE_KEY
+        );
+
+    if(!start){
+
+        start =
+            Date.now().toString();
+
+        localStorage.setItem(
+            MAINTENANCE_KEY,
+            start
+        );
+    }
+
+    return Number(start);
+}
+
+
+const maintenanceStart =
+    getMaintenanceStart();
+
+
+const maintenanceEnd =
+    maintenanceStart +
+    MAINTENANCE_DURATION;
+
+
+const maintenanceScreen =
+    document.getElementById(
+        "maintenanceScreen"
+    );
+
+
+function updateMaintenance(){
+
+    const now =
+        Date.now();
+
+    const remaining =
+        Math.max(
+            0,
+            maintenanceEnd -
+            now
+        );
+
+
+    if(
+        remaining <= 0
+    ){
+
+        maintenanceScreen.style.display =
+            "none";
+
+        localStorage.removeItem(
+            MAINTENANCE_KEY
+        );
+
+        startNormalApp();
+
+        return true;
+    }
+
+
+    const totalSeconds =
+        Math.floor(
+            remaining / 1000
+        );
+
+
+    const hours =
+        Math.floor(
+            totalSeconds / 3600
+        );
+
+
+    const minutes =
+        Math.floor(
+            (totalSeconds % 3600) /
+            60
+        );
+
+
+    const seconds =
+        totalSeconds % 60;
+
+
+    document.getElementById(
+        "countHours"
+    ).textContent =
+        String(hours).padStart(
+            2,
+            "0"
+        );
+
+
+    document.getElementById(
+        "countMinutes"
+    ).textContent =
+        String(minutes).padStart(
+            2,
+            "0"
+        );
+
+
+    document.getElementById(
+        "countSeconds"
+    ).textContent =
+        String(seconds).padStart(
+            2,
+            "0"
+        );
+
+
+    const elapsed =
+        now -
+        maintenanceStart;
+
+
+    const progress =
+        Math.max(
+            0,
+            Math.min(
+                100,
+                elapsed /
+                MAINTENANCE_DURATION *
+                100
+            )
+        );
+
+
+    document.getElementById(
+        "maintenanceProgress"
+    ).style.width =
+        progress +
+        "%";
+
+
+    return false;
+}
+
+
+updateMaintenance();
+
+
+const maintenanceTimer =
+    setInterval(
+        () => {
+
+            if(
+                updateMaintenance()
+            ){
+
+                clearInterval(
+                    maintenanceTimer
+                );
+            }
+
+        },
+        1000
+    );
+
 
 /* =========================================================
    CANVAS
 ========================================================= */
 
-const canvas = document.getElementById("gameCanvas");
-const ctx = canvas.getContext("2d");
+const canvas =
+document.getElementById(
+    "gameCanvas"
+);
 
-let W = innerWidth;
-let H = innerHeight;
-let DPR = Math.min(devicePixelRatio || 1,2);
+const ctx =
+canvas.getContext("2d");
+
+let W =
+innerWidth;
+
+let H =
+innerHeight;
+
+let DPR =
+Math.min(
+    devicePixelRatio || 1,
+    2
+);
+
 
 function resizeCanvas(){
 
-    W = innerWidth;
-    H = innerHeight;
+    W =
+        innerWidth;
 
-    DPR = Math.min(
-        devicePixelRatio || 1,
-        2
-    );
+    H =
+        innerHeight;
 
-    canvas.width = W * DPR;
-    canvas.height = H * DPR;
+    DPR =
+        Math.min(
+            devicePixelRatio || 1,
+            2
+        );
 
-    canvas.style.width = W + "px";
-    canvas.style.height = H + "px";
+    canvas.width =
+        W * DPR;
+
+    canvas.height =
+        H * DPR;
+
+    canvas.style.width =
+        W + "px";
+
+    canvas.style.height =
+        H + "px";
 
     ctx.setTransform(
-        DPR,0,0,DPR,0,0
+        DPR,
+        0,
+        0,
+        DPR,
+        0,
+        0
     );
 }
 
-addEventListener(
+
+window.addEventListener(
     "resize",
     resizeCanvas
 );
@@ -875,7 +1515,7 @@ const skins = [
 
 
 /* =========================================================
-   JUMP-SOUNDS
+   SOUNDS
 ========================================================= */
 
 const sounds = [
@@ -923,7 +1563,7 @@ const sounds = [
 
 
 /* =========================================================
-   HINTERGRUNDMUSIK
+   MUSIK
 ========================================================= */
 
 const musicTracks = [
@@ -933,16 +1573,19 @@ const musicTracks = [
     name:"Classic",
     price:0,
     icon:"🎵",
+
     melody:[
         261.63,329.63,392.00,523.25,
         392.00,329.63,293.66,349.23,
         440.00,523.25,440.00,349.23,
         392.00,329.63,261.63,293.66
     ],
+
     bass:[
         130.81,130.81,164.81,164.81,
         146.83,146.83,174.61,174.61
     ],
+
     tempo:380
 },
 
@@ -951,16 +1594,19 @@ const musicTracks = [
     name:"Arcade",
     price:50,
     icon:"👾",
+
     melody:[
         392.00,392.00,523.25,659.25,
         523.25,392.00,329.63,392.00,
         440.00,523.25,659.25,783.99,
         659.25,523.25,440.00,392.00
     ],
+
     bass:[
         196,196,261.63,261.63,
         220,220,174.61,196
     ],
+
     tempo:300
 },
 
@@ -969,16 +1615,19 @@ const musicTracks = [
     name:"Speed",
     price:100,
     icon:"⚡",
+
     melody:[
         329.63,392.00,493.88,659.25,
         493.88,392.00,329.63,493.88,
         392.00,493.88,587.33,783.99,
         587.33,493.88,392.00,329.63
     ],
+
     bass:[
         164.81,196,164.81,196,
         146.83,174.61,164.81,196
     ],
+
     tempo:250
 },
 
@@ -987,16 +1636,19 @@ const musicTracks = [
     name:"Space",
     price:150,
     icon:"🚀",
+
     melody:[
         220,261.63,329.63,392.00,
         493.88,392.00,329.63,261.63,
         246.94,293.66,369.99,440.00,
         554.37,440.00,369.99,293.66
     ],
+
     bass:[
         110,110,130.81,130.81,
         146.83,146.83,123.47,123.47
     ],
+
     tempo:420
 },
 
@@ -1005,16 +1657,19 @@ const musicTracks = [
     name:"Chill",
     price:200,
     icon:"🌙",
+
     melody:[
         261.63,329.63,392.00,329.63,
         293.66,349.23,440.00,349.23,
         261.63,329.63,392.00,493.88,
         440.00,392.00,329.63,293.66
     ],
+
     bass:[
         130.81,130.81,146.83,146.83,
         110,110,123.47,123.47
     ],
+
     tempo:500
 },
 
@@ -1023,23 +1678,26 @@ const musicTracks = [
     name:"Final Boss",
     price:250,
     icon:"🔥",
+
     melody:[
         196,246.94,293.66,392.00,
         293.66,246.94,220,329.63,
         261.63,329.63,392.00,523.25,
         392.00,329.63,293.66,246.94
     ],
+
     bass:[
         98,98,123.47,123.47,
         110,110,146.83,146.83
     ],
+
     tempo:280
 }
 ];
 
 
 /* =========================================================
-   SAVE
+   SPEICHER
 ========================================================= */
 
 const defaultState = {
@@ -1061,6 +1719,7 @@ const defaultState = {
     sfxEnabled:true
 };
 
+
 function loadState(){
 
     try{
@@ -1071,47 +1730,74 @@ function loadState(){
             );
 
         if(!raw){
+
             return {
                 ...defaultState,
-                ownedWorlds:[...defaultState.ownedWorlds],
-                ownedSkins:[...defaultState.ownedSkins],
-                ownedSounds:[...defaultState.ownedSounds],
-                ownedMusic:[...defaultState.ownedMusic]
+                ownedWorlds:[
+                    "giza"
+                ],
+                ownedSkins:[
+                    "bird"
+                ],
+                ownedSounds:[
+                    "classic"
+                ],
+                ownedMusic:[
+                    "classicMusic"
+                ]
             };
         }
 
-        const saved = JSON.parse(raw);
+        const saved =
+            JSON.parse(raw);
 
         return {
+
             ...defaultState,
+
             ...saved,
-            ownedWorlds:Array.isArray(saved.ownedWorlds)
+
+            ownedWorlds:
+                Array.isArray(
+                    saved.ownedWorlds
+                )
                 ? saved.ownedWorlds
-                : [...defaultState.ownedWorlds],
-            ownedSkins:Array.isArray(saved.ownedSkins)
+                : ["giza"],
+
+            ownedSkins:
+                Array.isArray(
+                    saved.ownedSkins
+                )
                 ? saved.ownedSkins
-                : [...defaultState.ownedSkins],
-            ownedSounds:Array.isArray(saved.ownedSounds)
+                : ["bird"],
+
+            ownedSounds:
+                Array.isArray(
+                    saved.ownedSounds
+                )
                 ? saved.ownedSounds
-                : [...defaultState.ownedSounds],
-            ownedMusic:Array.isArray(saved.ownedMusic)
+                : ["classic"],
+
+            ownedMusic:
+                Array.isArray(
+                    saved.ownedMusic
+                )
                 ? saved.ownedMusic
-                : [...defaultState.ownedMusic]
+                : ["classicMusic"]
         };
 
     }catch{
 
         return {
-            ...defaultState,
-            ownedWorlds:[...defaultState.ownedWorlds],
-            ownedSkins:[...defaultState.ownedSkins],
-            ownedSounds:[...defaultState.ownedSounds],
-            ownedMusic:[...defaultState.ownedMusic]
+            ...defaultState
         };
     }
 }
 
-let state = loadState();
+
+let state =
+    loadState();
+
 
 function saveState(){
 
@@ -1126,23 +1812,34 @@ function saveState(){
    AUDIO
 ========================================================= */
 
-let audioContext = null;
-let musicTimer = null;
-let musicStep = 0;
+let audioContext =
+    null;
+
+let musicTimer =
+    null;
+
+let musicStep =
+    0;
+
 
 function initAudio(){
 
-    if(audioContext) return;
+    if(audioContext){
+        return;
+    }
 
     const AC =
         window.AudioContext ||
         window.webkitAudioContext;
 
-    if(!AC) return;
+    if(!AC){
+        return;
+    }
 
     audioContext =
         new AC();
 }
+
 
 function rawTone(
     frequency,
@@ -1151,7 +1848,9 @@ function rawTone(
     type
 ){
 
-    if(!audioContext) return;
+    if(!audioContext){
+        return;
+    }
 
     const oscillator =
         audioContext.createOscillator();
@@ -1159,28 +1858,42 @@ function rawTone(
     const gain =
         audioContext.createGain();
 
-    oscillator.type = type;
-    oscillator.frequency.value = frequency;
+
+    oscillator.type =
+        type;
+
+    oscillator.frequency.value =
+        frequency;
+
 
     gain.gain.setValueAtTime(
         0.0001,
         audioContext.currentTime
     );
 
+
     gain.gain.exponentialRampToValueAtTime(
         volume,
-        audioContext.currentTime + .02
+        audioContext.currentTime +
+        .02
     );
+
 
     gain.gain.exponentialRampToValueAtTime(
         0.0001,
-        audioContext.currentTime + duration
+        audioContext.currentTime +
+        duration
     );
 
+
     oscillator.connect(gain);
-    gain.connect(audioContext.destination);
+    gain.connect(
+        audioContext.destination
+    );
+
 
     oscillator.start();
+
 
     oscillator.stop(
         audioContext.currentTime +
@@ -1191,94 +1904,153 @@ function rawTone(
 
 
 /* =========================================================
-   JUMP SOUNDS
+   JUMP-SOUNDS
 ========================================================= */
 
-function playJumpSound(type){
+function playJumpSound(
+    type
+){
 
-    if(!state.sfxEnabled) return;
+    if(
+        !state.sfxEnabled
+    ){
+        return;
+    }
 
     initAudio();
 
-    if(!audioContext) return;
+    if(!audioContext){
+        return;
+    }
 
     if(
-        audioContext.state === "suspended"
+        audioContext.state ===
+        "suspended"
     ){
         audioContext.resume();
     }
 
-    if(type==="classic"){
+
+    if(
+        type ===
+        "classic"
+    ){
 
         rawTone(
-            520,.08,.065,"square"
+            520,
+            .08,
+            .065,
+            "square"
         );
     }
 
-    if(type==="arcade"){
+
+    if(
+        type ===
+        "arcade"
+    ){
 
         rawTone(
-            440,.06,.055,"square"
+            440,
+            .06,
+            .055,
+            "square"
         );
 
         setTimeout(
             () =>
-            rawTone(
-                660,.07,.05,"square"
-            ),
+                rawTone(
+                    660,
+                    .07,
+                    .05,
+                    "square"
+                ),
             45
         );
     }
 
-    if(type==="laser"){
+
+    if(
+        type ===
+        "laser"
+    ){
 
         rawTone(
-            900,.12,.055,"sawtooth"
+            900,
+            .12,
+            .055,
+            "sawtooth"
         );
 
         setTimeout(
             () =>
-            rawTone(
-                1400,.09,.035,"sawtooth"
-            ),
+                rawTone(
+                    1400,
+                    .09,
+                    .035,
+                    "sawtooth"
+                ),
             45
         );
     }
 
-    if(type==="bubble"){
+
+    if(
+        type ===
+        "bubble"
+    ){
 
         rawTone(
-            300,.08,.045,"sine"
+            300,
+            .08,
+            .045,
+            "sine"
         );
 
         setTimeout(
             () =>
-            rawTone(
-                650,.12,.045,"sine"
-            ),
+                rawTone(
+                    650,
+                    .12,
+                    .045,
+                    "sine"
+                ),
             60
         );
     }
 
-    if(type==="power"){
+
+    if(
+        type ===
+        "power"
+    ){
 
         rawTone(
-            220,.13,.055,"sawtooth"
+            220,
+            .13,
+            .055,
+            "sawtooth"
         );
 
         setTimeout(
             () =>
-            rawTone(
-                520,.08,.06,"square"
-            ),
+                rawTone(
+                    520,
+                    .08,
+                    .06,
+                    "square"
+                ),
             65
         );
 
         setTimeout(
             () =>
-            rawTone(
-                820,.10,.05,"triangle"
-            ),
+                rawTone(
+                    820,
+                    .1,
+                    .05,
+                    "triangle"
+                ),
             120
         );
     }
@@ -1286,16 +2058,22 @@ function playJumpSound(type){
 
 
 /* =========================================================
-   OTHER SOUNDS
+   SONSTIGE SOUNDS
 ========================================================= */
 
 function coinSound(){
 
-    if(!state.sfxEnabled) return;
+    if(
+        !state.sfxEnabled
+    ){
+        return;
+    }
 
     initAudio();
 
-    if(!audioContext) return;
+    if(!audioContext){
+        return;
+    }
 
     rawTone(
         783.99,
@@ -1306,19 +2084,24 @@ function coinSound(){
 
     setTimeout(
         () =>
-        rawTone(
-            1046.50,
-            .12,
-            .05,
-            "triangle"
-        ),
+            rawTone(
+                1046.50,
+                .12,
+                .05,
+                "triangle"
+            ),
         70
     );
 }
 
+
 function scoreSound(){
 
-    if(!state.sfxEnabled) return;
+    if(
+        !state.sfxEnabled
+    ){
+        return;
+    }
 
     initAudio();
 
@@ -1330,11 +2113,14 @@ function scoreSound(){
     );
 }
 
+
 function purchaseSound(){
 
     initAudio();
 
-    if(!audioContext) return;
+    if(!audioContext){
+        return;
+    }
 
     rawTone(
         523.25,
@@ -1345,23 +2131,30 @@ function purchaseSound(){
 
     setTimeout(
         () =>
-        rawTone(
-            783.99,
-            .12,
-            .045,
-            "triangle"
-        ),
+            rawTone(
+                783.99,
+                .12,
+                .045,
+                "triangle"
+            ),
         70
     );
 }
 
+
 function gameOverSound(){
 
-    if(!state.sfxEnabled) return;
+    if(
+        !state.sfxEnabled
+    ){
+        return;
+    }
 
     initAudio();
 
-    if(!audioContext) return;
+    if(!audioContext){
+        return;
+    }
 
     rawTone(
         300,
@@ -1372,41 +2165,49 @@ function gameOverSound(){
 
     setTimeout(
         () =>
-        rawTone(
-            210,
-            .22,
-            .045,
-            "sawtooth"
-        ),
+            rawTone(
+                210,
+                .22,
+                .045,
+                "sawtooth"
+            ),
         130
     );
 }
 
 
 /* =========================================================
-   MUSIC
+   MUSIK
 ========================================================= */
 
 function selectedMusic(){
 
-    return musicTracks.find(
-        music =>
-            music.id ===
-            state.selectedMusic
-    ) || musicTracks[0];
+    return (
+        musicTracks.find(
+            music =>
+                music.id ===
+                state.selectedMusic
+        ) ||
+        musicTracks[0]
+    );
 }
+
 
 function stopMusic(){
 
-    if(musicTimer){
+    if(
+        musicTimer
+    ){
 
         clearInterval(
             musicTimer
         );
 
-        musicTimer = null;
+        musicTimer =
+            null;
     }
 }
+
 
 function musicTick(){
 
@@ -1416,11 +2217,14 @@ function musicTick(){
     ){
 
         stopMusic();
+
         return;
     }
 
+
     const music =
         selectedMusic();
+
 
     const note =
         music.melody[
@@ -1428,11 +2232,13 @@ function musicTick(){
             music.melody.length
         ];
 
+
     const bass =
         music.bass[
             musicStep %
             music.bass.length
         ];
+
 
     rawTone(
         note,
@@ -1441,8 +2247,10 @@ function musicTick(){
         "triangle"
     );
 
+
     if(
-        musicStep % 2 === 0
+        musicStep % 2 ===
+        0
     ){
 
         rawTone(
@@ -1453,16 +2261,27 @@ function musicTick(){
         );
     }
 
+
     musicStep++;
 }
 
+
 function startMusic(){
 
-    if(!state.musicEnabled) return;
+    if(
+        !state.musicEnabled
+    ){
+        return;
+    }
+
 
     initAudio();
 
-    if(!audioContext) return;
+
+    if(!audioContext){
+        return;
+    }
+
 
     if(
         audioContext.state ===
@@ -1471,14 +2290,20 @@ function startMusic(){
         audioContext.resume();
     }
 
+
     stopMusic();
 
-    musicStep = 0;
+
+    musicStep =
+        0;
+
 
     musicTick();
 
+
     const music =
         selectedMusic();
+
 
     musicTimer =
         setInterval(
@@ -1487,15 +2312,24 @@ function startMusic(){
         );
 }
 
-function previewMusic(music){
+
+function previewMusic(
+    music
+){
 
     initAudio();
 
-    if(!audioContext) return;
+    if(!audioContext){
+        return;
+    }
+
 
     stopMusic();
 
-    let step = 0;
+
+    let step =
+        0;
+
 
     const timer =
         setInterval(
@@ -1506,17 +2340,23 @@ function previewMusic(music){
                     music.melody.length
                 ){
 
-                    clearInterval(timer);
+                    clearInterval(
+                        timer
+                    );
+
 
                     if(
                         state.musicEnabled &&
                         game.running
                     ){
+
                         startMusic();
                     }
 
+
                     return;
                 }
+
 
                 rawTone(
                     music.melody[step],
@@ -1524,6 +2364,7 @@ function previewMusic(music){
                     .035,
                     "triangle"
                 );
+
 
                 step++;
 
@@ -1540,14 +2381,19 @@ function previewMusic(music){
 const game = {
 
     running:false,
+
     paused:false,
+
     over:false,
 
     score:0,
+
     runCoins:0,
+
     jumpCount:0,
 
     speed:165,
+
     spawnTimer:.9,
 
     obstacles:[],
@@ -1561,6 +2407,7 @@ const game = {
     },
 
     world:null,
+
     lastTime:0
 };
 
@@ -1569,34 +2416,42 @@ const game = {
    SCREEN
 ========================================================= */
 
-function showScreen(id){
+function showScreen(
+    id
+){
 
     document
-    .querySelectorAll(".screen")
-    .forEach(
-        screen =>
-            screen.classList.remove(
-                "active"
-            )
-    );
+        .querySelectorAll(
+            ".screen"
+        )
+        .forEach(
+            screen =>
+                screen.classList.remove(
+                    "active"
+                )
+        );
+
 
     document
-    .getElementById(id)
-    .classList.add(
-        "active"
-    );
+        .getElementById(id)
+        .classList.add(
+            "active"
+        );
 }
+
 
 function hideScreens(){
 
     document
-    .querySelectorAll(".screen")
-    .forEach(
-        screen =>
-            screen.classList.remove(
-                "active"
-            )
-    );
+        .querySelectorAll(
+            ".screen"
+        )
+        .forEach(
+            screen =>
+                screen.classList.remove(
+                    "active"
+                )
+        );
 }
 
 
@@ -1604,12 +2459,19 @@ function hideScreens(){
    MESSAGE
 ========================================================= */
 
-function showMessage(text){
+function showMessage(
+    text
+){
 
     const el =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
 
-    el.textContent = text;
+
+    el.textContent =
+        text;
+
 
     el.style.cssText =
     `
@@ -1627,10 +2489,15 @@ function showMessage(text){
         box-shadow:0 15px 40px rgba(0,0,0,.3);
     `;
 
-    document.body.appendChild(el);
+
+    document.body.appendChild(
+        el
+    );
+
 
     setTimeout(
-        () => el.remove(),
+        () =>
+            el.remove(),
         1400
     );
 }
@@ -1647,10 +2514,12 @@ function updateLobby(){
     ).textContent =
         state.coins;
 
+
     document.getElementById(
         "lobbyBest"
     ).textContent =
         state.best;
+
 
     document.getElementById(
         "musicToggleBtn"
@@ -1672,7 +2541,9 @@ function createTabs(
     callback
 ){
 
-    container.innerHTML = "";
+    container.innerHTML =
+        "";
+
 
     items.forEach(
         item => {
@@ -1682,22 +2553,27 @@ function createTabs(
                     "button"
                 );
 
+
             button.className =
                 "tab" +
                 (
-                    item.id === active
+                    item.id ===
+                    active
                     ? " active"
                     : ""
                 );
 
+
             button.textContent =
                 item.name;
 
+
             button.onclick =
                 () =>
-                callback(
-                    item.id
-                );
+                    callback(
+                        item.id
+                    );
+
 
             container.appendChild(
                 button
@@ -1711,7 +2587,9 @@ function createTabs(
    SHOP
 ========================================================= */
 
-let shopTab = "skins";
+let shopTab =
+    "skins";
+
 
 function renderShop(){
 
@@ -1719,6 +2597,7 @@ function renderShop(){
         "shopCoins"
     ).textContent =
         state.coins;
+
 
     createTabs(
 
@@ -1731,14 +2610,17 @@ function renderShop(){
                 id:"skins",
                 name:"🪽 Figuren"
             },
+
             {
                 id:"worlds",
                 name:"🌍 Hintergründe"
             },
+
             {
                 id:"sounds",
                 name:"🔊 Sounds"
             },
+
             {
                 id:"music",
                 name:"🎵 Musik"
@@ -1749,46 +2631,64 @@ function renderShop(){
 
         id => {
 
-            shopTab = id;
+            shopTab =
+                id;
+
             renderShop();
 
         }
     );
+
 
     const container =
         document.getElementById(
             "shopCards"
         );
 
-    container.innerHTML = "";
+
+    container.innerHTML =
+        "";
+
 
     if(
         shopTab ===
         "sounds"
     ){
 
-        renderSoundShop(container);
+        renderSoundShop(
+            container
+        );
+
         return;
     }
+
 
     if(
         shopTab ===
         "music"
     ){
 
-        renderMusicShop(container);
+        renderMusicShop(
+            container
+        );
+
         return;
     }
 
+
     const items =
-        shopTab === "skins"
+        shopTab ===
+        "skins"
         ? skins
         : worlds;
 
+
     const owned =
-        shopTab === "skins"
+        shopTab ===
+        "skins"
         ? state.ownedSkins
         : state.ownedWorlds;
+
 
     items.forEach(
         item => {
@@ -1798,27 +2698,39 @@ function renderShop(){
                     "div"
                 );
 
+
             card.className =
                 "card";
+
 
             const preview =
                 document.createElement(
                     "div"
                 );
 
+
             preview.className =
                 "preview";
 
-            const previewCanvas =
+
+            const c =
                 document.createElement(
                     "canvas"
                 );
 
-            previewCanvas.width = 240;
-            previewCanvas.height = 140;
+
+            c.width =
+                240;
+
+            c.height =
+                140;
+
 
             const pctx =
-                previewCanvas.getContext("2d");
+                c.getContext(
+                    "2d"
+                );
+
 
             if(
                 shopTab ===
@@ -1843,97 +2755,133 @@ function renderShop(){
                 );
             }
 
+
             preview.appendChild(
-                previewCanvas
+                c
             );
+
 
             card.appendChild(
                 preview
             );
+
 
             const title =
                 document.createElement(
                     "h3"
                 );
 
+
             title.textContent =
                 item.name;
 
-            card.appendChild(title);
+
+            card.appendChild(
+                title
+            );
+
 
             const price =
                 document.createElement(
                     "div"
                 );
 
+
             price.className =
                 "price";
 
+
             price.textContent =
-                item.price === 0
+                item.price ===
+                0
                 ? "Kostenlos"
                 : `🪙 ${item.price} Coins`;
 
-            card.appendChild(price);
+
+            card.appendChild(
+                price
+            );
+
 
             const button =
                 document.createElement(
                     "button"
                 );
 
+
             button.className =
                 "smallbtn";
+
 
             const isOwned =
                 owned.includes(
                     item.id
                 );
 
-            if(isOwned){
+
+            if(
+                isOwned
+            ){
 
                 button.textContent =
                     "✓ Im Besitz";
 
-                button.disabled = true;
+
+                button.disabled =
+                    true;
 
             }else{
 
                 button.textContent =
                     "Kaufen";
 
-                button.onclick = () => {
 
-                    if(
-                        state.coins <
-                        item.price
-                    ){
+                button.onclick =
+                    () => {
 
-                        showMessage(
-                            "Nicht genug Coins!"
+                        if(
+                            state.coins <
+                            item.price
+                        ){
+
+                            showMessage(
+                                "Nicht genug Coins!"
+                            );
+
+                            return;
+                        }
+
+
+                        state.coins -=
+                            item.price;
+
+
+                        owned.push(
+                            item.id
                         );
 
-                        return;
-                    }
 
-                    state.coins -=
-                        item.price;
+                        saveState();
 
-                    owned.push(
-                        item.id
-                    );
 
-                    saveState();
+                        renderShop();
 
-                    renderShop();
-                    updateLobby();
+                        updateLobby();
 
-                    purchaseSound();
-                };
+
+                        purchaseSound();
+                    };
             }
 
-            card.appendChild(button);
 
-            container.appendChild(card);
+            card.appendChild(
+                button
+            );
+
+
+            container.appendChild(
+                card
+            );
         }
     );
 }
@@ -1943,7 +2891,9 @@ function renderShop(){
    SOUND SHOP
 ========================================================= */
 
-function renderSoundShop(container){
+function renderSoundShop(
+    container
+){
 
     sounds.forEach(
         sound => {
@@ -1953,102 +2903,146 @@ function renderSoundShop(container){
                     "div"
                 );
 
+
             card.className =
                 "card";
+
 
             const preview =
                 document.createElement(
                     "div"
                 );
 
+
             preview.className =
                 "preview";
+
 
             const box =
                 document.createElement(
                     "div"
                 );
 
+
             box.className =
                 "soundPreview";
+
 
             const icon =
                 document.createElement(
                     "div"
                 );
 
+
             icon.className =
                 "soundIcon";
+
 
             icon.textContent =
                 sound.icon;
 
-            box.appendChild(icon);
-            preview.appendChild(box);
 
-            card.appendChild(preview);
+            box.appendChild(
+                icon
+            );
+
+
+            preview.appendChild(
+                box
+            );
+
+
+            card.appendChild(
+                preview
+            );
+
 
             const title =
                 document.createElement(
                     "h3"
                 );
 
+
             title.textContent =
                 sound.name;
 
-            card.appendChild(title);
+
+            card.appendChild(
+                title
+            );
+
 
             const price =
                 document.createElement(
                     "div"
                 );
 
+
             price.className =
                 "price";
 
+
             price.textContent =
-                sound.price === 0
+                sound.price ===
+                0
                 ? "Kostenlos"
                 : `🪙 ${sound.price} Coins`;
 
-            card.appendChild(price);
+
+            card.appendChild(
+                price
+            );
+
 
             const listen =
                 document.createElement(
                     "button"
                 );
 
+
             listen.className =
                 "smallbtn blue";
+
 
             listen.textContent =
                 "▶ ANHÖREN";
 
+
             listen.onclick =
                 () =>
-                playJumpSound(
-                    sound.type
-                );
+                    playJumpSound(
+                        sound.type
+                    );
 
-            card.appendChild(listen);
+
+            card.appendChild(
+                listen
+            );
+
 
             const buy =
                 document.createElement(
                     "button"
                 );
 
+
             buy.className =
                 "smallbtn";
+
 
             const owned =
                 state.ownedSounds.includes(
                     sound.id
                 );
 
-            if(owned){
+
+            if(
+                owned
+            ){
 
                 buy.textContent =
                     "✓ Im Besitz";
+
 
                 buy.disabled =
                     true;
@@ -2058,49 +3052,65 @@ function renderSoundShop(container){
                 buy.textContent =
                     "Kaufen";
 
-                buy.onclick = () => {
 
-                    if(
-                        state.coins <
-                        sound.price
-                    ){
+                buy.onclick =
+                    () => {
 
-                        showMessage(
-                            "Nicht genug Coins!"
+                        if(
+                            state.coins <
+                            sound.price
+                        ){
+
+                            showMessage(
+                                "Nicht genug Coins!"
+                            );
+
+                            return;
+                        }
+
+
+                        state.coins -=
+                            sound.price;
+
+
+                        state.ownedSounds.push(
+                            sound.id
                         );
 
-                        return;
-                    }
 
-                    state.coins -=
-                        sound.price;
+                        saveState();
 
-                    state.ownedSounds.push(
-                        sound.id
-                    );
 
-                    saveState();
+                        renderShop();
 
-                    renderShop();
-                    updateLobby();
+                        updateLobby();
 
-                    purchaseSound();
-                };
+
+                        purchaseSound();
+                    };
             }
 
-            card.appendChild(buy);
 
-            container.appendChild(card);
+            card.appendChild(
+                buy
+            );
+
+
+            container.appendChild(
+                card
+            );
         }
     );
 }
 
 
 /* =========================================================
-   MUSIK SHOP
+   MUSIC SHOP
 ========================================================= */
 
-function renderMusicShop(container){
+function renderMusicShop(
+    container
+){
 
     musicTracks.forEach(
         music => {
@@ -2110,166 +3120,236 @@ function renderMusicShop(container){
                     "div"
                 );
 
+
             card.className =
                 "card";
+
 
             const preview =
                 document.createElement(
                     "div"
                 );
 
+
             preview.className =
                 "preview";
+
 
             const box =
                 document.createElement(
                     "div"
                 );
 
+
             box.className =
                 "soundPreview";
+
 
             const icon =
                 document.createElement(
                     "div"
                 );
 
+
             icon.className =
                 "soundIcon";
 
+
             icon.textContent =
                 music.icon;
+
 
             const text =
                 document.createElement(
                     "div"
                 );
 
+
             text.className =
                 "musicText";
+
 
             text.textContent =
                 "Hintergrundmelodie";
 
-            box.appendChild(icon);
-            box.appendChild(text);
 
-            preview.appendChild(box);
-            card.appendChild(preview);
+            box.appendChild(
+                icon
+            );
+
+
+            box.appendChild(
+                text
+            );
+
+
+            preview.appendChild(
+                box
+            );
+
+
+            card.appendChild(
+                preview
+            );
+
 
             const title =
                 document.createElement(
                     "h3"
                 );
 
+
             title.textContent =
                 music.name;
 
-            card.appendChild(title);
+
+            card.appendChild(
+                title
+            );
+
 
             const price =
                 document.createElement(
                     "div"
                 );
 
+
             price.className =
                 "price";
 
+
             price.textContent =
-                music.price === 0
+                music.price ===
+                0
                 ? "Kostenlos"
                 : `🪙 ${music.price} Coins`;
 
-            card.appendChild(price);
+
+            card.appendChild(
+                price
+            );
+
 
             const buttons =
                 document.createElement(
                     "div"
                 );
 
+
             buttons.className =
                 "soundButtons";
+
 
             const listen =
                 document.createElement(
                     "button"
                 );
 
+
             listen.className =
                 "smallbtn blue";
+
 
             listen.textContent =
                 "▶ Anhören";
 
+
             listen.onclick =
                 () =>
-                previewMusic(
-                    music
-                );
+                    previewMusic(
+                        music
+                    );
+
 
             buttons.appendChild(
                 listen
             );
+
 
             const buy =
                 document.createElement(
                     "button"
                 );
 
+
             buy.className =
                 "smallbtn";
+
 
             const owned =
                 state.ownedMusic.includes(
                     music.id
                 );
 
-            if(owned){
+
+            if(
+                owned
+            ){
 
                 buy.textContent =
                     "✓ Im Besitz";
 
-                buy.disabled = true;
+
+                buy.disabled =
+                    true;
 
             }else{
 
                 buy.textContent =
                     "Kaufen";
 
-                buy.onclick = () => {
 
-                    if(
-                        state.coins <
-                        music.price
-                    ){
+                buy.onclick =
+                    () => {
 
-                        showMessage(
-                            "Nicht genug Coins!"
+                        if(
+                            state.coins <
+                            music.price
+                        ){
+
+                            showMessage(
+                                "Nicht genug Coins!"
+                            );
+
+                            return;
+                        }
+
+
+                        state.coins -=
+                            music.price;
+
+
+                        state.ownedMusic.push(
+                            music.id
                         );
 
-                        return;
-                    }
 
-                    state.coins -=
-                        music.price;
+                        saveState();
 
-                    state.ownedMusic.push(
-                        music.id
-                    );
 
-                    saveState();
+                        renderShop();
 
-                    renderShop();
-                    updateLobby();
+                        updateLobby();
 
-                    purchaseSound();
-                };
+
+                        purchaseSound();
+                    };
             }
 
-            buttons.appendChild(buy);
-            card.appendChild(buttons);
 
-            container.appendChild(card);
+            buttons.appendChild(
+                buy
+            );
+
+
+            card.appendChild(
+                buttons
+            );
+
+
+            container.appendChild(
+                card
+            );
         }
     );
 }
@@ -2281,6 +3361,7 @@ function renderMusicShop(container){
 
 let inventoryTab =
     "skins";
+
 
 function renderInventory(){
 
@@ -2295,14 +3376,17 @@ function renderInventory(){
                 id:"skins",
                 name:"🪽 Figuren"
             },
+
             {
                 id:"worlds",
                 name:"🌍 Hintergründe"
             },
+
             {
                 id:"sounds",
                 name:"🔊 Sounds"
             },
+
             {
                 id:"music",
                 name:"🎵 Musik"
@@ -2313,52 +3397,68 @@ function renderInventory(){
 
         id => {
 
-            inventoryTab = id;
-            renderInventory();
+            inventoryTab =
+                id;
 
+            renderInventory();
         }
     );
+
 
     const container =
         document.getElementById(
             "inventoryCards"
         );
 
-    container.innerHTML = "";
+
+    container.innerHTML =
+        "";
+
 
     if(
         inventoryTab ===
         "sounds"
     ){
 
-        renderSoundInventory(container);
+        renderSoundInventory(
+            container
+        );
+
         return;
     }
+
 
     if(
         inventoryTab ===
         "music"
     ){
 
-        renderMusicInventory(container);
+        renderMusicInventory(
+            container
+        );
+
         return;
     }
+
 
     const items =
         inventoryTab ===
         "skins"
+
         ? skins.filter(
             item =>
                 state.ownedSkins.includes(
                     item.id
                 )
-          )
+        )
+
         : worlds.filter(
             item =>
                 state.ownedWorlds.includes(
                     item.id
                 )
-          );
+        );
+
 
     items.forEach(
         item => {
@@ -2368,29 +3468,39 @@ function renderInventory(){
                     "div"
                 );
 
+
             card.className =
                 "card";
+
 
             const preview =
                 document.createElement(
                     "div"
                 );
 
+
             preview.className =
                 "preview";
 
-            const previewCanvas =
+
+            const c =
                 document.createElement(
                     "canvas"
                 );
 
-            previewCanvas.width = 240;
-            previewCanvas.height = 140;
+
+            c.width =
+                240;
+
+            c.height =
+                140;
+
 
             const pctx =
-                previewCanvas.getContext(
+                c.getContext(
                     "2d"
                 );
+
 
             if(
                 inventoryTab ===
@@ -2415,32 +3525,48 @@ function renderInventory(){
                 );
             }
 
+
             preview.appendChild(
-                previewCanvas
+                c
             );
 
-            card.appendChild(preview);
+
+            card.appendChild(
+                preview
+            );
+
 
             const title =
                 document.createElement(
                     "h3"
                 );
 
+
             title.textContent =
                 item.name;
 
-            card.appendChild(title);
+
+            card.appendChild(
+                title
+            );
+
 
             const selected =
                 inventoryTab ===
                 "skins"
-                ? state.selectedSkin === item.id
-                : state.selectedWorld === item.id;
+
+                ? state.selectedSkin ===
+                  item.id
+
+                : state.selectedWorld ===
+                  item.id;
+
 
             const equip =
                 document.createElement(
                     "button"
                 );
+
 
             equip.className =
                 "smallbtn" +
@@ -2450,10 +3576,12 @@ function renderInventory(){
                     : ""
                 );
 
+
             equip.textContent =
                 selected
                 ? "✓ AUSGERÜSTET"
                 : "AUSRÜSTEN";
+
 
             equip.onclick =
                 () => {
@@ -2472,16 +3600,25 @@ function renderInventory(){
                             item.id;
                     }
 
+
                     saveState();
 
+
                     renderInventory();
+
 
                     updateLobby();
                 };
 
-            card.appendChild(equip);
 
-            container.appendChild(card);
+            card.appendChild(
+                equip
+            );
+
+
+            container.appendChild(
+                card
+            );
         }
     );
 }
@@ -2491,125 +3628,168 @@ function renderInventory(){
    SOUND INVENTAR
 ========================================================= */
 
-function renderSoundInventory(container){
+function renderSoundInventory(
+    container
+){
 
     sounds
-    .filter(
-        sound =>
-            state.ownedSounds.includes(
-                sound.id
-            )
-    )
-    .forEach(
-        sound => {
+        .filter(
+            sound =>
+                state.ownedSounds.includes(
+                    sound.id
+                )
+        )
+        .forEach(
+            sound => {
 
-            const card =
-                document.createElement(
-                    "div"
+                const card =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                card.className =
+                    "card";
+
+
+                const preview =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                preview.className =
+                    "preview";
+
+
+                const box =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                box.className =
+                    "soundPreview";
+
+
+                const icon =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                icon.className =
+                    "soundIcon";
+
+
+                icon.textContent =
+                    sound.icon;
+
+
+                box.appendChild(
+                    icon
                 );
 
-            card.className =
-                "card";
 
-            const preview =
-                document.createElement(
-                    "div"
+                preview.appendChild(
+                    box
                 );
 
-            preview.className =
-                "preview";
 
-            const box =
-                document.createElement(
-                    "div"
+                card.appendChild(
+                    preview
                 );
 
-            box.className =
-                "soundPreview";
 
-            const icon =
-                document.createElement(
-                    "div"
+                const title =
+                    document.createElement(
+                        "h3"
+                    );
+
+
+                title.textContent =
+                    sound.name;
+
+
+                card.appendChild(
+                    title
                 );
 
-            icon.className =
-                "soundIcon";
 
-            icon.textContent =
-                sound.icon;
+                const test =
+                    document.createElement(
+                        "button"
+                    );
 
-            box.appendChild(icon);
-            preview.appendChild(box);
 
-            card.appendChild(preview);
+                test.className =
+                    "smallbtn blue";
 
-            const title =
-                document.createElement(
-                    "h3"
+
+                test.textContent =
+                    "▶ TESTEN";
+
+
+                test.onclick =
+                    () =>
+                        playJumpSound(
+                            sound.type
+                        );
+
+
+                card.appendChild(
+                    test
                 );
 
-            title.textContent =
-                sound.name;
 
-            card.appendChild(title);
+                const selected =
+                    state.selectedSound ===
+                    sound.id;
 
-            const test =
-                document.createElement(
-                    "button"
-                );
 
-            test.className =
-                "smallbtn blue";
+                const equip =
+                    document.createElement(
+                        "button"
+                    );
 
-            test.textContent =
-                "▶ TESTEN";
 
-            test.onclick =
-                () =>
-                playJumpSound(
-                    sound.type
-                );
+                equip.className =
+                    "smallbtn" +
+                    (
+                        selected
+                        ? " selected"
+                        : ""
+                    );
 
-            card.appendChild(test);
 
-            const selected =
-                state.selectedSound ===
-                sound.id;
-
-            const equip =
-                document.createElement(
-                    "button"
-                );
-
-            equip.className =
-                "smallbtn" +
-                (
+                equip.textContent =
                     selected
-                    ? " selected"
-                    : ""
+                    ? "✓ AUSGERÜSTET"
+                    : "AUSRÜSTEN";
+
+
+                equip.onclick =
+                    () => {
+
+                        state.selectedSound =
+                            sound.id;
+
+                        saveState();
+
+                        renderInventory();
+                    };
+
+
+                card.appendChild(
+                    equip
                 );
 
-            equip.textContent =
-                selected
-                ? "✓ AUSGERÜSTET"
-                : "AUSRÜSTEN";
 
-            equip.onclick =
-                () => {
-
-                    state.selectedSound =
-                        sound.id;
-
-                    saveState();
-
-                    renderInventory();
-                };
-
-            card.appendChild(equip);
-
-            container.appendChild(card);
-        }
-    );
+                container.appendChild(
+                    card
+                );
+            }
+        );
 }
 
 
@@ -2617,148 +3797,203 @@ function renderSoundInventory(container){
    MUSIK INVENTAR
 ========================================================= */
 
-function renderMusicInventory(container){
+function renderMusicInventory(
+    container
+){
 
     musicTracks
-    .filter(
-        music =>
-            state.ownedMusic.includes(
-                music.id
-            )
-    )
-    .forEach(
-        music => {
+        .filter(
+            music =>
+                state.ownedMusic.includes(
+                    music.id
+                )
+        )
+        .forEach(
+            music => {
 
-            const card =
-                document.createElement(
-                    "div"
-                );
-
-            card.className =
-                "card";
-
-            const preview =
-                document.createElement(
-                    "div"
-                );
-
-            preview.className =
-                "preview";
-
-            const box =
-                document.createElement(
-                    "div"
-                );
-
-            box.className =
-                "soundPreview";
-
-            const icon =
-                document.createElement(
-                    "div"
-                );
-
-            icon.className =
-                "soundIcon";
-
-            icon.textContent =
-                music.icon;
-
-            const text =
-                document.createElement(
-                    "div"
-                );
-
-            text.className =
-                "musicText";
-
-            text.textContent =
-                "Hintergrundmusik";
-
-            box.appendChild(icon);
-            box.appendChild(text);
-
-            preview.appendChild(box);
-            card.appendChild(preview);
-
-            const title =
-                document.createElement(
-                    "h3"
-                );
-
-            title.textContent =
-                music.name;
-
-            card.appendChild(title);
-
-            const listen =
-                document.createElement(
-                    "button"
-                );
-
-            listen.className =
-                "smallbtn blue";
-
-            listen.textContent =
-                "▶ ANHÖREN";
-
-            listen.onclick =
-                () =>
-                previewMusic(
-                    music
-                );
-
-            card.appendChild(listen);
-
-            const selected =
-                state.selectedMusic ===
-                music.id;
-
-            const equip =
-                document.createElement(
-                    "button"
-                );
-
-            equip.className =
-                "smallbtn" +
-                (
-                    selected
-                    ? " selected"
-                    : ""
-                );
-
-            equip.textContent =
-                selected
-                ? "✓ AUSGERÜSTET"
-                : "AUSRÜSTEN";
-
-            equip.onclick =
-                () => {
-
-                    state.selectedMusic =
-                        music.id;
-
-                    saveState();
-
-                    renderMusicInventory(
-                        container
+                const card =
+                    document.createElement(
+                        "div"
                     );
 
-                    document.getElementById(
-                        "musicHud"
-                    ).textContent =
-                        music.name;
 
-                    if(game.running){
-                        startMusic();
-                    }
-                };
+                card.className =
+                    "card";
 
-            card.appendChild(equip);
 
-            container.appendChild(card);
-        }
-    );
+                const preview =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                preview.className =
+                    "preview";
+
+
+                const box =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                box.className =
+                    "soundPreview";
+
+
+                const icon =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                icon.className =
+                    "soundIcon";
+
+
+                icon.textContent =
+                    music.icon;
+
+
+                const text =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                text.className =
+                    "musicText";
+
+
+                text.textContent =
+                    "Hintergrundmusik";
+
+
+                box.appendChild(
+                    icon
+                );
+
+
+                box.appendChild(
+                    text
+                );
+
+
+                preview.appendChild(
+                    box
+                );
+
+
+                card.appendChild(
+                    preview
+                );
+
+
+                const title =
+                    document.createElement(
+                        "h3"
+                    );
+
+
+                title.textContent =
+                    music.name;
+
+
+                card.appendChild(
+                    title
+                );
+
+
+                const listen =
+                    document.createElement(
+                        "button"
+                    );
+
+
+                listen.className =
+                    "smallbtn blue";
+
+
+                listen.textContent =
+                    "▶ ANHÖREN";
+
+
+                listen.onclick =
+                    () =>
+                        previewMusic(
+                            music
+                        );
+
+
+                card.appendChild(
+                    listen
+                );
+
+
+                const selected =
+                    state.selectedMusic ===
+                    music.id;
+
+
+                const equip =
+                    document.createElement(
+                        "button"
+                    );
+
+
+                equip.className =
+                    "smallbtn" +
+                    (
+                        selected
+                        ? " selected"
+                        : ""
+                    );
+
+
+                equip.textContent =
+                    selected
+                    ? "✓ AUSGERÜSTET"
+                    : "AUSRÜSTEN";
+
+
+                equip.onclick =
+                    () => {
+
+                        state.selectedMusic =
+                            music.id;
+
+
+                        saveState();
+
+
+                        renderInventory();
+
+
+                        document.getElementById(
+                            "musicHud"
+                        ).textContent =
+                            music.name;
+
+
+                        if(
+                            game.running
+                        ){
+
+                            startMusic();
+                        }
+                    };
+
+
+                card.appendChild(
+                    equip
+                );
+
+
+                container.appendChild(
+                    card
+                );
+            }
+        );
 }
 
 
@@ -2770,25 +4005,32 @@ function startGame(){
 
     initAudio();
 
+
     if(
         audioContext &&
         audioContext.state ===
         "suspended"
     ){
+
         audioContext.resume();
     }
 
+
     startMusic();
+
 
     hideScreens();
 
+
     canvas.style.display =
         "block";
+
 
     document.getElementById(
         "gameHud"
     ).style.display =
         "block";
+
 
     document.getElementById(
         "pauseOverlay"
@@ -2796,36 +4038,70 @@ function startGame(){
         "active"
     );
 
+
     document.getElementById(
         "gameOverOverlay"
     ).classList.remove(
         "active"
     );
 
-    game.running = true;
-    game.paused = false;
-    game.over = false;
 
-    game.score = 0;
-    game.runCoins = 0;
-    game.jumpCount = 0;
+    game.running =
+        true;
+
+
+    game.paused =
+        false;
+
+
+    game.over =
+        false;
+
+
+    game.score =
+        0;
+
+
+    game.runCoins =
+        0;
+
+
+    game.jumpCount =
+        0;
+
 
     /* Sehr leichter Start */
-    game.speed = 165;
 
-    game.spawnTimer = .9;
+    game.speed =
+        165;
 
-    game.obstacles = [];
+
+    game.spawnTimer =
+        .9;
+
+
+    game.obstacles =
+        [];
+
 
     game.player = {
 
-        x:W * .24,
-        y:H * .45,
-        vy:0,
-        r:22,
-        rot:0
+        x:
+            W * .24,
 
+        y:
+            H * .45,
+
+        vy:
+            0,
+
+        r:
+            22,
+
+        rot:
+            0
     };
+
 
     game.world =
         worlds.find(
@@ -2834,23 +4110,30 @@ function startGame(){
                 state.selectedWorld
         ) || worlds[0];
 
+
     document.getElementById(
         "worldHud"
     ).textContent =
         game.world.name;
+
 
     document.getElementById(
         "musicHud"
     ).textContent =
         selectedMusic().name;
 
+
     updateHUD();
+
 
     game.lastTime =
         performance.now();
 
+
     /* Start-Jump zählt */
+
     flap();
+
 
     requestAnimationFrame(
         gameLoop
@@ -2869,11 +4152,13 @@ function updateHUD(){
     ).textContent =
         game.score;
 
+
     document.getElementById(
         "coinsHud"
     ).textContent =
         state.coins +
         game.runCoins;
+
 
     document.getElementById(
         "jumpHud"
@@ -2893,13 +4178,17 @@ function flap(){
         game.paused ||
         game.over
     ){
+
         return;
     }
+
 
     game.player.vy =
         -405;
 
+
     game.jumpCount++;
+
 
     const sound =
         sounds.find(
@@ -2908,26 +4197,31 @@ function flap(){
                 state.selectedSound
         ) || sounds[0];
 
+
     playJumpSound(
         sound.type
     );
+
 
     updateHUD();
 }
 
 
 /* =========================================================
-   UPDATE
+   GAME UPDATE
 ========================================================= */
 
-function updateGame(dt){
+function updateGame(
+    dt
+){
 
     const p =
         game.player;
 
+
     /*
-       Start sehr leicht.
-       Später immer schneller.
+       165 am Anfang,
+       später deutlich schwieriger.
     */
 
     game.speed =
@@ -2937,6 +4231,7 @@ function updateGame(dt){
             game.score * 2.5
         );
 
+
     const gravity =
         1080 +
         Math.min(
@@ -2944,11 +4239,14 @@ function updateGame(dt){
             game.score * 1.5
         );
 
+
     p.vy +=
         gravity * dt;
 
+
     p.y +=
         p.vy * dt;
+
 
     p.rot =
         Math.max(
@@ -2959,9 +4257,9 @@ function updateGame(dt){
             )
         );
 
+
     /*
        Große Lücke am Anfang.
-       Langsam schwieriger.
     */
 
     const gapHeight =
@@ -2971,10 +4269,14 @@ function updateGame(dt){
             game.score * .62
         );
 
-    game.spawnTimer -= dt;
+
+    game.spawnTimer -=
+        dt;
+
 
     if(
-        game.spawnTimer <= 0
+        game.spawnTimer <=
+        0
     ){
 
         const topMargin =
@@ -2983,20 +4285,24 @@ function updateGame(dt){
                 H * .11
             );
 
+
         const bottomMargin =
             Math.max(
                 75,
                 H * .12
             );
 
+
         const minGap =
             topMargin +
             gapHeight / 2;
+
 
         const maxGap =
             H -
             bottomMargin -
             gapHeight / 2;
+
 
         const gapY =
             minGap +
@@ -3007,21 +4313,30 @@ function updateGame(dt){
                 minGap
             );
 
+
         const width =
             Math.max(
                 70,
                 W * .075
             );
 
+
         game.obstacles.push({
 
-            x:W + 30,
-            width,
-            gapY,
-            gapH:gapHeight,
-            passed:false
+            x:
+                W + 30,
 
+            width,
+
+            gapY,
+
+            gapH:
+                gapHeight,
+
+            passed:
+                false
         });
+
 
         game.spawnTimer =
             Math.max(
@@ -3030,6 +4345,7 @@ function updateGame(dt){
                 game.score * .005
             );
     }
+
 
     /*
        Hindernisse
@@ -3041,7 +4357,9 @@ function updateGame(dt){
     ){
 
         obstacle.x -=
-            game.speed * dt;
+            game.speed *
+            dt;
+
 
         /*
            Erfolgreich überflogen
@@ -3058,28 +4376,36 @@ function updateGame(dt){
             obstacle.passed =
                 true;
 
+
             game.score++;
+
 
             scoreSound();
 
+
             /*
-               ALLE 5 HINDERNISSE:
-               +10 COINS
+               ALLE 5 HINDERNISSE
+               = +10 COINS
             */
 
             if(
-                game.score % 5 === 0
+                game.score % 5 ===
+                0
             ){
 
-                game.runCoins += 10;
+                game.runCoins +=
+                    10;
+
 
                 showMessage(
                     "🪙 +10 Coins!"
                 );
 
+
                 coinSound();
             }
         }
+
 
         /*
            Kollision
@@ -3098,6 +4424,7 @@ function updateGame(dt){
         }
     }
 
+
     game.obstacles =
         game.obstacles.filter(
             obstacle =>
@@ -3105,6 +4432,7 @@ function updateGame(dt){
                 obstacle.width >
                 -100
         );
+
 
     /*
        Decke
@@ -3117,8 +4445,10 @@ function updateGame(dt){
     ){
 
         endGame();
+
         return;
     }
+
 
     /*
        Boden
@@ -3131,11 +4461,13 @@ function updateGame(dt){
     ){
 
         endGame();
+
         return;
     }
 
+
     /*
-       Rekord laufend speichern
+       Rekord speichern
     */
 
     if(
@@ -3146,8 +4478,10 @@ function updateGame(dt){
         state.best =
             game.score;
 
+
         saveState();
     }
+
 
     updateHUD();
 }
@@ -3166,38 +4500,52 @@ function obstacleCollision(
         obstacle.gapY -
         obstacle.gapH / 2;
 
+
     const bottom =
         obstacle.gapY +
         obstacle.gapH / 2;
 
+
     if(
-        p.x + p.r <
+        p.x +
+        p.r <
         obstacle.x
     ){
+
         return false;
     }
 
+
     if(
-        p.x - p.r >
+        p.x -
+        p.r >
         obstacle.x +
         obstacle.width
     ){
+
         return false;
     }
 
+
     if(
-        p.y - p.r <
+        p.y -
+        p.r <
         top
     ){
+
         return true;
     }
 
+
     if(
-        p.y + p.r >
+        p.y +
+        p.r >
         bottom
     ){
+
         return true;
     }
+
 
     return false;
 }
@@ -3209,56 +4557,73 @@ function obstacleCollision(
 
 function endGame(){
 
-    if(game.over){
+    if(
+        game.over
+    ){
+
         return;
     }
 
-    game.over = true;
-    game.running = false;
+
+    game.over =
+        true;
+
+
+    game.running =
+        false;
+
 
     /*
-       Die während des Laufs verdienten
-       Coins werden EINMAL gespeichert.
+       Verdiente Coins werden einmal übertragen.
     */
 
     state.coins +=
         game.runCoins;
 
+
     if(
         game.score >
         state.best
     ){
+
         state.best =
             game.score;
     }
 
+
     saveState();
+
 
     document.getElementById(
         "finalScore"
     ).textContent =
         game.score;
 
+
     document.getElementById(
         "earnedCoins"
     ).textContent =
         game.runCoins;
+
 
     document.getElementById(
         "bestScore"
     ).textContent =
         state.best;
 
+
     document.getElementById(
         "gameHud"
     ).style.display =
         "none";
+
 
     document.getElementById(
         "gameOverOverlay"
     ).classList.add(
         "active"
     );
+
 
     gameOverSound();
 }
@@ -3268,25 +4633,32 @@ function endGame(){
    GAME LOOP
 ========================================================= */
 
-function gameLoop(time){
+function gameLoop(
+    time
+){
 
     if(
         !game.running
     ){
 
         draw();
+
         return;
     }
+
 
     const dt =
         Math.min(
             .033,
             (time -
-            game.lastTime) / 1000
+            game.lastTime) /
+            1000
         );
+
 
     game.lastTime =
         time;
+
 
     if(
         !game.paused
@@ -3295,9 +4667,13 @@ function gameLoop(time){
         updateGame(dt);
     }
 
+
     draw();
 
-    if(game.running){
+
+    if(
+        game.running
+    ){
 
         requestAnimationFrame(
             gameLoop
@@ -3315,10 +4691,13 @@ function drawGiza(){
     const horizon =
         H * .69;
 
+
     ctx.fillStyle =
         "rgba(255,225,150,.25)";
 
+
     ctx.beginPath();
+
 
     ctx.arc(
         W * .82,
@@ -3328,32 +4707,39 @@ function drawGiza(){
         Math.PI * 2
     );
 
+
     ctx.fill();
+
 
     ctx.fillStyle =
         "#d9a35a";
+
 
     ctx.fillRect(
         0,
         horizon,
         W,
-        H-horizon
+        H -
+        horizon
     );
 
+
     drawPyramid(
-        W*.57,
+        W * .57,
         horizon,
         200,
         130
     );
 
+
     drawPyramid(
-        W*.75,
-        horizon+12,
+        W * .75,
+        horizon + 12,
         110,
         78
     );
 }
+
 
 function drawPyramid(
     cx,
@@ -3365,110 +4751,137 @@ function drawPyramid(
     ctx.fillStyle =
         "#d5a05a";
 
+
     ctx.beginPath();
+
 
     ctx.moveTo(
         cx,
-        base-height
+        base -
+        height
     );
 
+
     ctx.lineTo(
-        cx-width/2,
+        cx -
+        width / 2,
         base
     );
 
+
     ctx.lineTo(
-        cx+width/2,
+        cx +
+        width / 2,
         base
     );
+
 
     ctx.closePath();
 
+
     ctx.fill();
 }
+
 
 function drawMountains(){
 
     ctx.fillStyle =
         "#5b70aa";
 
+
     ctx.beginPath();
+
 
     ctx.moveTo(
         0,
-        H*.72
+        H * .72
     );
 
-    ctx.lineTo(
-        W*.18,
-        H*.43
-    );
 
     ctx.lineTo(
-        W*.38,
-        H*.70
+        W * .18,
+        H * .43
     );
 
-    ctx.lineTo(
-        W*.57,
-        H*.32
-    );
 
     ctx.lineTo(
-        W*.78,
-        H*.67
+        W * .38,
+        H * .70
     );
+
+
+    ctx.lineTo(
+        W * .57,
+        H * .32
+    );
+
+
+    ctx.lineTo(
+        W * .78,
+        H * .67
+    );
+
 
     ctx.lineTo(
         W,
-        H*.4
+        H * .40
     );
+
 
     ctx.lineTo(
         W,
         H
     );
+
 
     ctx.lineTo(
         0,
         H
     );
 
+
     ctx.closePath();
 
+
     ctx.fill();
+
 
     ctx.fillStyle =
         "#527951";
 
+
     ctx.fillRect(
         0,
-        H*.79,
+        H * .79,
         W,
-        H*.21
+        H * .21
     );
 }
+
 
 function drawOcean(){
 
     ctx.strokeStyle =
         "rgba(255,255,255,.14)";
 
+
     ctx.lineWidth =
         2;
 
+
     for(
-        let y=90;
-        y<H*.85;
-        y+=80
+        let y = 90;
+        y < H * .85;
+        y += 80
     ){
 
         ctx.beginPath();
 
+
         for(
-            let x=0;
-            x<W;
-            x+=45
+            let x = 0;
+            x < W;
+            x += 45
         ){
 
             ctx.moveTo(
@@ -3476,97 +4889,124 @@ function drawOcean(){
                 y
             );
 
+
             ctx.quadraticCurveTo(
-                x+12,
-                y-10,
-                x+24,
+                x + 12,
+                y - 10,
+                x + 24,
                 y
             );
         }
 
+
         ctx.stroke();
     }
+
 
     ctx.fillStyle =
         "#157c86";
 
+
     ctx.fillRect(
         0,
-        H*.88,
+        H * .88,
         W,
-        H*.12
+        H * .12
     );
 }
+
 
 function drawJungle(){
 
     ctx.fillStyle =
         "#2b753d";
 
+
     ctx.fillRect(
         0,
-        H*.78,
+        H * .78,
         W,
-        H*.22
+        H * .22
     );
 
+
     for(
-        let i=0;
-        i<18;
+        let i = 0;
+        i < 18;
         i++
     ){
 
         const x =
-            (i*97)%W;
+            (i * 97) %
+            W;
+
 
         const height =
-            100+(i%4)*35;
+            100 +
+            (i % 4) *
+            35;
+
 
         ctx.fillStyle =
-            i%2
+            i % 2
             ? "#1c5a31"
             : "#348746";
 
+
         ctx.fillRect(
             x,
-            H*.78-height,
+            H * .78 -
+            height,
             20,
             height
         );
 
+
         ctx.beginPath();
 
+
         ctx.arc(
-            x+10,
-            H*.78-height,
+            x + 10,
+            H * .78 -
+            height,
             38,
             Math.PI,
-            Math.PI*2
+            Math.PI * 2
         );
+
 
         ctx.fill();
     }
 }
+
 
 function drawSpace(){
 
     ctx.fillStyle =
         "white";
 
+
     for(
-        let i=0;
-        i<100;
+        let i = 0;
+        i < 100;
         i++
     ){
 
         const x =
-            (i*83)%W;
+            (i * 83) %
+            W;
+
 
         const y =
-            (i*47)%H;
+            (i * 47) %
+            H;
+
 
         ctx.globalAlpha =
-            .25+(i%5)*.1;
+            .25 +
+            (i % 5) *
+            .1;
+
 
         ctx.fillRect(
             x,
@@ -3576,75 +5016,92 @@ function drawSpace(){
         );
     }
 
+
     ctx.globalAlpha =
         1;
+
 
     ctx.fillStyle =
         "#9b63dc";
 
+
     ctx.globalAlpha =
         .25;
 
+
     ctx.beginPath();
 
+
     ctx.arc(
-        W*.78,
-        H*.25,
+        W * .78,
+        H * .25,
         120,
         0,
-        Math.PI*2
+        Math.PI * 2
     );
 
+
     ctx.fill();
+
 
     ctx.globalAlpha =
         1;
 }
+
 
 function drawIce(){
 
     ctx.fillStyle =
         "rgba(255,255,255,.45)";
 
+
     for(
-        let i=0;
-        i<8;
+        let i = 0;
+        i < 8;
         i++
     ){
 
         const x =
-            i*190;
+            i * 190;
+
 
         ctx.beginPath();
 
+
         ctx.moveTo(
             x,
-            H*.82
+            H * .82
         );
 
-        ctx.lineTo(
-            x+80,
-            H*.25
-        );
 
         ctx.lineTo(
-            x+150,
-            H*.82
+            x + 80,
+            H * .25
         );
+
+
+        ctx.lineTo(
+            x + 150,
+            H * .82
+        );
+
 
         ctx.closePath();
+
 
         ctx.fill();
     }
 
+
     ctx.fillStyle =
         "#a7deef";
 
+
     ctx.fillRect(
         0,
-        H*.82,
+        H * .82,
         W,
-        H*.18
+        H * .18
     );
 }
 
@@ -3663,360 +5120,505 @@ function drawSkin(
 
     c.save();
 
+
     c.translate(
         x,
         y
     );
 
-    if(type==="bird")
-        drawBird(c,r);
 
-    if(type==="dino")
-        drawDino(c,r);
+    if(
+        type ===
+        "bird"
+    ){
 
-    if(type==="pen")
-        drawPen(c,r);
+        drawBird(
+            c,
+            r
+        );
+    }
 
-    if(type==="carrot")
-        drawCarrot(c,r);
 
-    if(type==="apple")
-        drawApple(c,r);
+    if(
+        type ===
+        "dino"
+    ){
+
+        drawDino(
+            c,
+            r
+        );
+    }
+
+
+    if(
+        type ===
+        "pen"
+    ){
+
+        drawPen(
+            c,
+            r
+        );
+    }
+
+
+    if(
+        type ===
+        "carrot"
+    ){
+
+        drawCarrot(
+            c,
+            r
+        );
+    }
+
+
+    if(
+        type ===
+        "apple"
+    ){
+
+        drawApple(
+            c,
+            r
+        );
+    }
+
 
     c.restore();
 }
 
-function drawBird(c,r){
+
+function drawBird(
+    c,
+    r
+){
 
     c.fillStyle =
         "#ffd13b";
 
+
     c.beginPath();
+
 
     c.ellipse(
         0,
         0,
-        r*1.05,
-        r*.82,
+        r * 1.05,
+        r * .82,
         0,
         0,
-        Math.PI*2
+        Math.PI * 2
     );
 
+
     c.fill();
+
 
     c.fillStyle =
         "#fff";
 
+
     c.beginPath();
 
+
     c.arc(
-        r*.35,
-        -r*.3,
-        r*.21,
+        r * .35,
+        -r * .3,
+        r * .21,
         0,
-        Math.PI*2
+        Math.PI * 2
     );
 
+
     c.fill();
+
 
     c.fillStyle =
         "#17204a";
 
+
     c.beginPath();
 
+
     c.arc(
-        r*.4,
-        -r*.3,
-        r*.08,
+        r * .4,
+        -r * .3,
+        r * .08,
         0,
-        Math.PI*2
+        Math.PI * 2
     );
 
+
     c.fill();
+
 
     c.fillStyle =
         "#ff7733";
 
+
     c.beginPath();
 
+
     c.moveTo(
-        r*.9,
-        -r*.05
+        r * .9,
+        -r * .05
     );
 
-    c.lineTo(
-        r*1.45,
-        r*.1
-    );
 
     c.lineTo(
-        r*.9,
-        r*.28
+        r * 1.45,
+        r * .1
     );
+
+
+    c.lineTo(
+        r * .9,
+        r * .28
+    );
+
 
     c.closePath();
 
+
     c.fill();
+
 
     c.fillStyle =
         "#ef9d20";
 
+
     c.beginPath();
 
+
     c.ellipse(
-        -r*.25,
-        r*.4,
-        r*.55,
-        r*.18,
+        -r * .25,
+        r * .4,
+        r * .55,
+        r * .18,
         -.3,
         0,
-        Math.PI*2
+        Math.PI * 2
     );
+
 
     c.fill();
 }
 
-function drawDino(c,r){
+
+function drawDino(
+    c,
+    r
+){
 
     c.fillStyle =
         "#58d26b";
 
+
     c.beginPath();
+
 
     c.ellipse(
         0,
         0,
-        r*1.05,
-        r*.72,
+        r * 1.05,
+        r * .72,
         0,
         0,
-        Math.PI*2
+        Math.PI * 2
     );
 
+
     c.fill();
+
 
     c.fillStyle =
         "#4baa59";
 
+
     c.beginPath();
 
+
     c.moveTo(
-        -r*.7,
-        -r*.25
+        -r * .7,
+        -r * .25
     );
 
-    c.lineTo(
-        -r*1.4,
-        -r*.05
-    );
 
     c.lineTo(
-        -r*.8,
-        r*.3
+        -r * 1.4,
+        -r * .05
     );
+
+
+    c.lineTo(
+        -r * .8,
+        r * .3
+    );
+
 
     c.closePath();
 
+
     c.fill();
+
 
     c.fillStyle =
         "#fff";
 
+
     c.beginPath();
 
+
     c.arc(
-        r*.4,
-        -r*.2,
-        r*.2,
+        r * .4,
+        -r * .2,
+        r * .2,
         0,
-        Math.PI*2
+        Math.PI * 2
     );
 
+
     c.fill();
+
 
     c.fillStyle =
         "#17204a";
 
+
     c.beginPath();
 
+
     c.arc(
-        r*.45,
-        -r*.2,
-        r*.08,
+        r * .45,
+        -r * .2,
+        r * .08,
         0,
-        Math.PI*2
+        Math.PI * 2
     );
+
 
     c.fill();
 }
 
-function drawPen(c,r){
 
-    c.rotate(-.35);
+function drawPen(
+    c,
+    r
+){
+
+    c.rotate(
+        -.35
+    );
+
 
     c.fillStyle =
         "#ffdf4e";
 
+
     c.fillRect(
-        -r*.25,
-        -r*1.1,
-        r*.5,
-        r*1.6
+        -r * .25,
+        -r * 1.1,
+        r * .5,
+        r * 1.6
     );
+
 
     c.fillStyle =
         "#4d75ff";
 
+
     c.fillRect(
-        -r*.25,
-        -r*1.1,
-        r*.5,
-        r*.35
+        -r * .25,
+        -r * 1.1,
+        r * .5,
+        r * .35
     );
+
 
     c.fillStyle =
         "#e9bd91";
 
+
     c.beginPath();
 
+
     c.moveTo(
-        -r*.25,
-        r*.5
+        -r * .25,
+        r * .5
     );
+
 
     c.lineTo(
         0,
-        r*1.05
+        r * 1.05
     );
+
 
     c.lineTo(
-        r*.25,
-        r*.5
+        r * .25,
+        r * .5
     );
 
+
     c.closePath();
+
 
     c.fill();
 }
 
-function drawCarrot(c,r){
+
+function drawCarrot(
+    c,
+    r
+){
 
     c.fillStyle =
         "#62d976";
 
+
     c.beginPath();
 
+
     c.ellipse(
-        -r*.2,
-        -r*.75,
-        r*.25,
-        r*.55,
+        -r * .2,
+        -r * .75,
+        r * .25,
+        r * .55,
         -.5,
         0,
-        Math.PI*2
+        Math.PI * 2
     );
+
 
     c.ellipse(
-        r*.2,
-        -r*.75,
-        r*.25,
-        r*.55,
+        r * .2,
+        -r * .75,
+        r * .25,
+        r * .55,
         .5,
         0,
-        Math.PI*2
+        Math.PI * 2
     );
 
+
     c.fill();
+
 
     c.fillStyle =
         "#ff8b28";
 
+
     c.beginPath();
 
+
     c.moveTo(
-        -r*.65,
-        -r*.25
+        -r * .65,
+        -r * .25
     );
+
 
     c.quadraticCurveTo(
         0,
-        r*.75,
+        r * .75,
         0,
-        r*1.05
+        r * 1.05
     );
+
 
     c.quadraticCurveTo(
         0,
-        r*.75,
-        r*.65,
-        -r*.25
+        r * .75,
+        r * .65,
+        -r * .25
     );
+
 
     c.closePath();
+
 
     c.fill();
 }
 
-function drawApple(c,r){
+
+function drawApple(
+    c,
+    r
+){
 
     c.fillStyle =
         "#f14848";
 
+
     c.beginPath();
 
-    c.arc(
-        -r*.3,
-        0,
-        r*.65,
-        0,
-        Math.PI*2
-    );
 
     c.arc(
-        r*.3,
+        -r * .3,
         0,
-        r*.65,
+        r * .65,
         0,
-        Math.PI*2
+        Math.PI * 2
     );
+
+
+    c.arc(
+        r * .3,
+        0,
+        r * .65,
+        0,
+        Math.PI * 2
+    );
+
 
     c.fill();
+
 
     c.strokeStyle =
         "#69472b";
 
+
     c.lineWidth =
         4;
 
+
     c.beginPath();
+
 
     c.moveTo(
         0,
-        -r*.45
+        -r * .45
     );
+
 
     c.lineTo(
-        r*.1,
-        -r*.95
+        r * .1,
+        -r * .95
     );
 
+
     c.stroke();
+
 
     c.fillStyle =
         "#63d878";
 
+
     c.beginPath();
 
+
     c.ellipse(
-        r*.35,
-        -r*.75,
-        r*.35,
-        r*.16,
+        r * .35,
+        -r * .75,
+        r * .35,
+        r * .16,
         -.4,
         0,
-        Math.PI*2
+        Math.PI * 2
     );
+
 
     c.fill();
 }
@@ -4041,18 +5643,22 @@ function drawWorldPreview(
             height
         );
 
+
     gradient.addColorStop(
         0,
         world.sky1
     );
+
 
     gradient.addColorStop(
         1,
         world.sky2
     );
 
+
     c.fillStyle =
         gradient;
+
 
     c.fillRect(
         0,
@@ -4061,103 +5667,127 @@ function drawWorldPreview(
         height
     );
 
+
     if(
-        world.id==="giza"
+        world.id ===
+        "giza"
     ){
 
         c.fillStyle =
             world.ground;
 
+
         c.fillRect(
             0,
-            height*.72,
+            height * .72,
             width,
-            height*.28
+            height * .28
         );
+
 
         c.fillStyle =
             "#d6a05c";
 
+
         c.beginPath();
 
+
         c.moveTo(
-            width*.48,
-            height*.2
+            width * .48,
+            height * .2
         );
 
-        c.lineTo(
-            width*.23,
-            height*.72
-        );
 
         c.lineTo(
-            width*.73,
-            height*.72
+            width * .23,
+            height * .72
         );
+
+
+        c.lineTo(
+            width * .73,
+            height * .72
+        );
+
 
         c.closePath();
+
 
         c.fill();
     }
 
+
     if(
-        world.id==="mountains"
+        world.id ===
+        "mountains"
     ){
 
         c.fillStyle =
             world.obstacle;
 
+
         c.beginPath();
+
 
         c.moveTo(
             0,
             height
         );
 
-        c.lineTo(
-            width*.22,
-            height*.3
-        );
 
         c.lineTo(
-            width*.44,
+            width * .22,
+            height * .3
+        );
+
+
+        c.lineTo(
+            width * .44,
             height
         );
 
+
         c.lineTo(
-            width*.63,
-            height*.22
+            width * .63,
+            height * .22
         );
+
 
         c.lineTo(
             width,
             height
         );
 
+
         c.closePath();
+
 
         c.fill();
     }
 
+
     if(
-        world.id==="ocean"
+        world.id ===
+        "ocean"
     ){
 
         c.strokeStyle =
             "rgba(255,255,255,.16)";
 
+
         for(
-            let y=25;
-            y<height;
-            y+=28
+            let y = 25;
+            y < height;
+            y += 28
         ){
 
             c.beginPath();
 
+
             for(
-                let x=0;
-                x<=width;
-                x+=22
+                let x = 0;
+                x <= width;
+                x += 22
             ){
 
                 c.moveTo(
@@ -4165,90 +5795,110 @@ function drawWorldPreview(
                     y
                 );
 
+
                 c.quadraticCurveTo(
-                    x+7,
-                    y-5,
-                    x+14,
+                    x + 7,
+                    y - 5,
+                    x + 14,
                     y
                 );
             }
+
 
             c.stroke();
         }
     }
 
+
     if(
-        world.id==="jungle"
+        world.id ===
+        "jungle"
     ){
 
         c.fillStyle =
             world.ground;
 
+
         c.fillRect(
             0,
-            height*.76,
+            height * .76,
             width,
-            height*.24
+            height * .24
         );
     }
 
+
     if(
-        world.id==="space"
+        world.id ===
+        "space"
     ){
 
         c.fillStyle =
             "white";
 
+
         for(
-            let i=0;
-            i<30;
+            let i = 0;
+            i < 30;
             i++
         ){
 
             c.fillRect(
-                (i*37)%width,
-                (i*19)%height,
+                (i * 37) %
+                width,
+                (i * 19) %
+                height,
                 2,
                 2
             );
         }
     }
 
+
     if(
-        world.id==="ice"
+        world.id ===
+        "ice"
     ){
 
         c.fillStyle =
             "#eefcff";
 
+
         c.beginPath();
+
 
         c.moveTo(
             0,
             height
         );
 
-        c.lineTo(
-            width*.24,
-            height*.25
-        );
 
         c.lineTo(
-            width*.45,
+            width * .24,
+            height * .25
+        );
+
+
+        c.lineTo(
+            width * .45,
             height
         );
 
+
         c.lineTo(
-            width*.65,
-            height*.2
+            width * .65,
+            height * .2
         );
+
 
         c.lineTo(
             width,
             height
         );
 
+
         c.closePath();
+
 
         c.fill();
     }
@@ -4265,6 +5915,7 @@ function draw(){
         game.world ||
         worlds[0];
 
+
     const gradient =
         ctx.createLinearGradient(
             0,
@@ -4273,18 +5924,22 @@ function draw(){
             H
         );
 
+
     gradient.addColorStop(
         0,
         world.sky1
     );
+
 
     gradient.addColorStop(
         1,
         world.sky2
     );
 
+
     ctx.fillStyle =
         gradient;
+
 
     ctx.fillRect(
         0,
@@ -4293,25 +5948,52 @@ function draw(){
         H
     );
 
-    if(world.id==="giza")
+
+    if(
+        world.id ===
+        "giza"
+    )
         drawGiza();
 
-    if(world.id==="mountains")
+
+    if(
+        world.id ===
+        "mountains"
+    )
         drawMountains();
 
-    if(world.id==="ocean")
+
+    if(
+        world.id ===
+        "ocean"
+    )
         drawOcean();
 
-    if(world.id==="jungle")
+
+    if(
+        world.id ===
+        "jungle"
+    )
         drawJungle();
 
-    if(world.id==="space")
+
+    if(
+        world.id ===
+        "space"
+    )
         drawSpace();
 
-    if(world.id==="ice")
+
+    if(
+        world.id ===
+        "ice"
+    )
         drawIce();
 
-    /* Hindernisse */
+
+    /*
+       Hindernisse
+    */
 
     for(
         const obstacle
@@ -4320,14 +6002,19 @@ function draw(){
 
         const top =
             obstacle.gapY -
-            obstacle.gapH/2;
+            obstacle.gapH /
+            2;
+
 
         const bottom =
             obstacle.gapY +
-            obstacle.gapH/2;
+            obstacle.gapH /
+            2;
+
 
         ctx.fillStyle =
             world.obstacle;
+
 
         ctx.fillRect(
             obstacle.x,
@@ -4336,61 +6023,80 @@ function draw(){
             top
         );
 
+
         ctx.fillRect(
             obstacle.x,
             bottom,
             obstacle.width,
-            H-bottom
+            H -
+            bottom
         );
 
+
         ctx.beginPath();
+
 
         ctx.moveTo(
             obstacle.x,
             top
         );
 
-        ctx.lineTo(
-            obstacle.x+
-            obstacle.width/2,
-            top+24
-        );
 
         ctx.lineTo(
-            obstacle.x+
+            obstacle.x +
+            obstacle.width /
+            2,
+            top + 24
+        );
+
+
+        ctx.lineTo(
+            obstacle.x +
             obstacle.width,
             top
         );
 
+
         ctx.closePath();
+
 
         ctx.fill();
 
+
         ctx.beginPath();
+
 
         ctx.moveTo(
             obstacle.x,
             bottom
         );
 
-        ctx.lineTo(
-            obstacle.x+
-            obstacle.width/2,
-            bottom-24
-        );
 
         ctx.lineTo(
-            obstacle.x+
+            obstacle.x +
+            obstacle.width /
+            2,
+            bottom - 24
+        );
+
+
+        ctx.lineTo(
+            obstacle.x +
             obstacle.width,
             bottom
         );
 
+
         ctx.closePath();
+
 
         ctx.fill();
     }
 
-    /* Spieler */
+
+    /*
+       Spieler
+    */
 
     const skin =
         skins.find(
@@ -4399,16 +6105,20 @@ function draw(){
                 state.selectedSkin
         ) || skins[0];
 
+
     ctx.save();
+
 
     ctx.translate(
         game.player.x,
         game.player.y
     );
 
+
     ctx.rotate(
         game.player.rot
     );
+
 
     drawSkin(
         ctx,
@@ -4417,6 +6127,7 @@ function draw(){
         0,
         game.player.r
     );
+
 
     ctx.restore();
 }
@@ -4435,8 +6146,10 @@ function togglePause(){
         return;
     }
 
+
     game.paused =
         !game.paused;
+
 
     document
         .getElementById(
@@ -4446,6 +6159,7 @@ function togglePause(){
             "active",
             game.paused
         );
+
 
     if(
         !game.paused
@@ -4472,13 +6186,16 @@ function returnToLobby(){
     game.over =
         false;
 
+
     canvas.style.display =
         "none";
+
 
     document.getElementById(
         "gameHud"
     ).style.display =
         "none";
+
 
     document
         .querySelectorAll(
@@ -4491,16 +6208,18 @@ function returnToLobby(){
                 )
         );
 
+
     showScreen(
         "lobby"
     );
+
 
     updateLobby();
 }
 
 
 /* =========================================================
-   BUTTONS
+   EVENTS
 ========================================================= */
 
 document.getElementById(
@@ -4561,19 +6280,23 @@ document.getElementById(
         state.musicEnabled =
             !state.musicEnabled;
 
+
         saveState();
+
 
         if(
             state.musicEnabled
         ){
 
             initAudio();
+
             startMusic();
 
         }else{
 
             stopMusic();
         }
+
 
         updateLobby();
     };
@@ -4655,8 +6378,10 @@ window.addEventListener(
     event => {
 
         if(
-            event.code === "Space" ||
-            event.code === "ArrowUp"
+            event.code ===
+            "Space" ||
+            event.code ===
+            "ArrowUp"
         ){
 
             event.preventDefault();
@@ -4664,9 +6389,12 @@ window.addEventListener(
             flap();
         }
 
+
         if(
-            event.code === "Escape" ||
-            event.code === "KeyP"
+            event.code ===
+            "Escape" ||
+            event.code ===
+            "KeyP"
         ){
 
             togglePause();
@@ -4676,22 +6404,50 @@ window.addEventListener(
 
 
 /* =========================================================
-   START
+   APP STARTEN
 ========================================================= */
 
-canvas.style.display =
-    "none";
+function startNormalApp(){
 
-document.getElementById(
-    "gameHud"
-).style.display =
-    "none";
+    canvas.style.display =
+        "none";
 
-updateLobby();
+    document.getElementById(
+        "gameHud"
+    ).style.display =
+        "none";
 
-renderShop();
+    showScreen(
+        "lobby"
+    );
 
-renderInventory();
+    updateLobby();
+
+}
+
+
+/*
+   Während Wartung:
+   KEIN Spiel sichtbar.
+*/
+
+if(
+    Date.now() <
+    maintenanceEnd
+){
+
+    hideScreens();
+
+    canvas.style.display =
+        "none";
+
+}else{
+
+    maintenanceScreen.style.display =
+        "none";
+
+    startNormalApp();
+}
 
 </script>
 
