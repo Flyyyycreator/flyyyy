@@ -171,7 +171,7 @@ function setOnlineUI(count,connected=true){const n=Math.max(0,Number(count)||0);
 function safeName(name){return String(name||"").replace(/[<>]/g,"").replace(/\s+/g," ").trim().slice(0,20)}
 function defaultNameForUser(u){const base=(u?.email||"Spieler").split("@")[0].replace(/[^a-zA-Z0-9äöüÄÖÜß._-]/g,"").slice(0,20);return safeName(base||"Spieler")}
 async function setupFirebase(){try{const {app,a,d}=await loadFirebase();firebaseApp=app.getApps().length?app.getApp():app.initializeApp(firebaseConfig);auth=a.getAuth(firebaseApp);db=d.getDatabase(firebaseApp);
-a.onAuthStateChanged(auth,async u=>{currentUser=u||null;updateAccountUI();if(currentUser){if(!getPlayerName()){storage.setItem("FLYYYY_PLAYER_NAME",defaultNameForUser(currentUser))}await loadPlayerStateCloud();await applyUpdate19ResetForCurrentUser();await ensurePlayerEntry(getPlayerName());await setPresenceOnline();await savePlayerStateCloud();}else{await setPresenceOffline()}startLeaderboardListener();startOnlineListener()});}catch(e){console.error(e);setLeaderboardStatus("🔴 Firebase konnte nicht geladen werden. Gastmodus funktioniert trotzdem.");setOnlineUI(0,false)}}
+a.onAuthStateChanged(auth,async u=>{currentUser=u||null;updateAccountUI();if(currentUser){if(!getPlayerName()){storage.setItem("FLYYYY_PLAYER_NAME",defaultNameForUser(currentUser))}await loadPlayerStateCloud();await applyUpdate19ResetForCurrentUser();await grantFlyOwnerCoins();await ensurePlayerEntry(getPlayerName());await setPresenceOnline();await savePlayerStateCloud();}else{await setPresenceOffline()}startLeaderboardListener();startOnlineListener()});}catch(e){console.error(e);setLeaderboardStatus("🔴 Firebase konnte nicht geladen werden. Gastmodus funktioniert trotzdem.");setOnlineUI(0,false)}}
 function updateAccountUI(){const s=document.getElementById("accountStatus"),b=document.getElementById("accountBtn"),l=document.getElementById("logoutBtn");if(currentUser){s.textContent="✅ "+(currentUser.email||"Konto");b.style.display="none";l.style.display=""}else{s.textContent="👤 Gast";b.style.display="";l.style.display="none"}}
 function authText(e){const m={"auth/email-already-in-use":"Diese E-Mail ist bereits registriert.","auth/invalid-email":"Die E-Mail ist ungültig.","auth/weak-password":"Das Passwort ist zu schwach.","auth/invalid-credential":"E-Mail oder Passwort ist falsch.","auth/network-request-failed":"Keine Internetverbindung."};return m[e?.code]||"Anmeldung fehlgeschlagen."}
 async function registerAccount(){try{const email=authEmail.value.trim(),pw=authPassword.value;if(!email||!pw){authStatus.textContent="Bitte E-Mail und Passwort eingeben.";return}if(pw.length<6){authStatus.textContent="Passwort: mindestens 6 Zeichen.";return}const {a}=await loadFirebase();await a.createUserWithEmailAndPassword(auth,email,pw);storage.setItem("FLYYYY_PLAYER_NAME",defaultNameForUser(auth.currentUser));showMessage("✅ Konto erstellt!");showScreen("lobby")}catch(e){authStatus.textContent=authText(e)}}
@@ -190,6 +190,38 @@ function getPlayerName(){return storage.getItem("FLYYYY_PLAYER_NAME")||""}functi
 async function savePlayerName(){let n=safeName(playerName.value);if(!n){showMessage("Bitte einen Namen eingeben.");return}storage.setItem("FLYYYY_PLAYER_NAME",n);if(!currentUser){setLeaderboardStatus("💾 Lokal gespeichert. Melde dich für Online-Highscores an.");return}setLeaderboardStatus(await ensurePlayerEntry(n)?`🟢 ${n} ist online gespeichert.`:"🔴 Online-Speichern fehlgeschlagen.");await setPresenceOnline()}
 const JESSE_UID="";
 function isJesseAccount(uid=currentUser?.uid){if(JESSE_UID&&uid===JESSE_UID)return true;const n=getPlayerName().trim().toLowerCase();const email=(currentUser?.email||"").split("@")[0].trim().toLowerCase();return n==="jesse"||email==="jesse"}
+async function grantFlyOwnerCoins(){
+  if(!currentUser||!db)return;
+  try{
+    const raw=(getPlayerName()||((currentUser.email||"").split("@")[0]||"")).trim();
+    const normalized=raw.toLowerCase().replace(/[^a-z0-9]/g,"");
+
+    // Nur der Account „FlyyyyOwner😊😉“ bekommt den Bonus.
+    if(normalized!=="flyyyyowner")return;
+
+    const {d}=await loadFirebase();
+    const ref=d.ref(db,"playerStates/"+currentUser.uid);
+    const snap=await d.get(ref);
+    const cloud=snap.exists()?snap.val():{};
+
+    // Cloud-Flag verhindert, dass der Bonus mehrfach auf verschiedenen Geräten vergeben wird.
+    if(cloud.flyOwner1000Granted===true)return;
+
+    const newCoins=Number(cloud.coins ?? state.coins ?? 0)+1000;
+    await d.update(ref,{
+      coins:newCoins,
+      flyOwner1000Granted:true,
+      updatedAt:d.serverTimestamp()
+    });
+
+    state.coins=newCoins;
+    saveStateLocalOnly();
+    showMessage("🪙 FlyyyyOwner😊😉: +1000 Coins!");
+    updateLobby();
+  }catch(e){
+    console.error("FlyyyyOwner bonus",e);
+  }
+}
 function isJesseEntry(uid,v){if(JESSE_UID&&uid===JESSE_UID)return true;const n=safeName(v?.name||"").toLowerCase();return n==="jesse"}
 async function ensurePlayerEntry(name){if(!currentUser||!db)return false;try{const {d}=await loadFirebase(),r=d.ref(db,"leaderboard/"+currentUser.uid),s=await d.get(r),old=s.exists()?s.val():{};await d.update(r,{name:safeName(name||defaultNameForUser(currentUser)),score:Number(old.score||0),wins:Number(old.wins||0),update19ResetDone:true,updatedAt:d.serverTimestamp()});return true}catch(e){console.error(e);return false}}
 async function submitHighscore(score){if(!currentUser||!db||!getPlayerName())return false;try{const {d}=await loadFirebase(),r=d.ref(db,"leaderboard/"+currentUser.uid);await d.runTransaction(r,c=>{if(!c)return{name:getPlayerName(),score:Number(score),wins:Number(state.wins||0),updatedAt:d.serverTimestamp()};return Number(score)>Number(c.score||0)?{...c,name:getPlayerName(),score:Number(score),wins:Number(c.wins||state.wins||0),updatedAt:d.serverTimestamp()}:c});return true}catch(e){console.error(e);return false}}
