@@ -606,7 +606,7 @@ function unlockAdmin(){const code=adminCodeInput.value;if(code===ADMIN_CODE){adm
 function requireAdmin(){if(!adminUnlocked){showMessage("🔒 Adminrechte erforderlich.");return false}return true}
 adminMyAccountBtn.onclick=()=>{if(!requireAdmin())return;adminInfo.textContent=`Firebase UID: ${currentUser?.uid||"nicht angemeldet"}`};
 adminCoinsBtn.onclick=async()=>{if(!requireAdmin())return;if(!currentUser){showMessage("🔐 Bitte zuerst mit deinem Account anmelden.");return}const amount=prompt("Wie viele Coins soll dein aktuell angemeldeter Account bekommen?","1000000");if(amount===null)return;const n=Number(amount);if(!Number.isFinite(n)||n<0){showMessage("❌ Ungültige Zahl.");return}state.coins=Math.floor(n);saveState();updateLobby();try{await savePlayerStateCloud()}catch(e){console.error(e)}showMessage(`🪙 ${Math.floor(n).toLocaleString("de-DE")} Coins gesetzt.`)};
-adminLoginBtn.onclick=openAdminLogin;adminUnlockBtn.onclick=unlockAdmin;adminCloseBtn.onclick=closeAdminLogin;adminClosePanelBtn.onclick=closeAdminLogin;adminCodeInput.addEventListener("keydown",e=>{if(e.key==="Enter")unlockAdmin();if(e.key==="Escape")closeAdminLogin()});
+adminLoginBtn.onclick=openAdminLogin;const adminOpenBtn=$("adminOpenBtn");if(adminOpenBtn)adminOpenBtn.onclick=openAdminLogin;adminUnlockBtn.onclick=unlockAdmin;adminCloseBtn.onclick=closeAdminLogin;adminClosePanelBtn.onclick=closeAdminLogin;adminCodeInput.addEventListener("keydown",e=>{if(e.key==="Enter")unlockAdmin();if(e.key==="Escape")closeAdminLogin()});
 
 accountBtn.onclick=()=>showScreen("authScreen");
 myAccountBtn.onclick=()=>{authStatus.textContent=currentUser?"✅ Du bist angemeldet. Hier kannst du deinen Account verwalten.":"🔐 Bitte mit E-Mail und Passwort anmelden oder registrieren.";showScreen("authScreen");};authBackBtn.onclick=()=>showScreen("lobby");guestBtn.onclick=()=>{showScreen("lobby");showMessage("👤 Gastmodus aktiviert.")};
@@ -659,20 +659,7 @@ claimSeasonRewardBtn.onclick=claimSeasonReward;musicToggleBtn.onclick=()=>{state
 confirmLuckyBuyBtn.onclick=confirmLuckyBuy;cancelLuckyBuyBtn.onclick=cancelLuckyBuy;pauseBtn.onclick=togglePause;resumeBtn.onclick=togglePause;pauseLobbyBtn.onclick=returnLobby;retryBtn.onclick=()=>startGame(game.onlineRun);returnLobbyBtn.onclick=returnLobby;
 canvas.addEventListener("pointerdown",e=>{e.preventDefault();flap()});addEventListener("keydown",e=>{if(e.code==="Space"||e.code==="ArrowUp"){e.preventDefault();flap()}if(e.code==="Escape"||e.code==="KeyP")togglePause()});addEventListener("beforeunload",()=>{if(currentUser&&db)try{setPresenceOffline()}catch{}});
 
-const adminOpenBtn=document.getElementById("adminOpenBtn");
-const adminOverlay=document.getElementById("adminOverlay");
-const adminCodeInput=document.getElementById("adminCodeInput");
-const adminUnlockBtn=document.getElementById("adminUnlockBtn");
-const adminCloseBtn=document.getElementById("adminCloseBtn");
-const adminStatus=document.getElementById("adminStatus");
-const adminPanel=document.getElementById("adminPanel");
-const showUidBtn=document.getElementById("showUidBtn");
-const adminUid=document.getElementById("adminUid");
-const ADMIN_CODE="Flyyyyowneradminrechte43";
-if(adminOpenBtn)adminOpenBtn.onclick=()=>{adminOverlay.classList.add("active");adminCodeInput.value="";adminStatus.textContent="";adminPanel.style.display="none";};
-if(adminCloseBtn)adminCloseBtn.onclick=()=>adminOverlay.classList.remove("active");
-if(adminUnlockBtn)adminUnlockBtn.onclick=()=>{if(adminCodeInput.value===ADMIN_CODE){adminStatus.textContent="✅ Admin-Code korrekt.";adminPanel.style.display="block";}else{adminStatus.textContent="❌ Falscher Admin-Code.";adminPanel.style.display="none";}};
-if(showUidBtn)showUidBtn.onclick=()=>{adminUid.textContent=currentUser?.uid?`Firebase UID: ${currentUser.uid}`:"Nicht angemeldet.";};
+
 updateLobby();renderShop();renderInventory();ensureActiveMissions();renderMissions();loadPlayerName();updateAccountUI();updateSeasonUI();startSeasonTimer();setupFirebase();
 </script>
 </body>
