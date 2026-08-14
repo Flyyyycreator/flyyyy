@@ -23,9 +23,28 @@
 #gameHud{position:absolute;inset:0;z-index:30;display:none;pointer-events:none}.hud-left,.hud-right{position:absolute;top:15px;display:flex;flex-wrap:wrap;align-items:center;gap:10px}.hud-left{left:15px;right:180px;justify-content:flex-start}.hud-right{right:15px;max-width:150px;justify-content:flex-end}.hud-pill{padding:10px 14px;white-space:nowrap;border-radius:999px;background:rgba(12,19,46,.72);border:1px solid rgba(255,255,255,.15);font-weight:900;backdrop-filter:blur(8px)}.pause-btn{pointer-events:auto;padding:10px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.15);color:#fff;background:rgba(12,19,46,.72);font-weight:900}.tip{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);padding:9px 14px;border-radius:999px;background:rgba(12,19,46,.6);font-size:13px}
 .overlay{position:absolute;inset:0;z-index:100;display:none;align-items:center;justify-content:center;background:rgba(5,8,22,.55);backdrop-filter:blur(6px)}.overlay.active{display:flex}.dialog{width:min(560px,92vw);padding:28px;text-align:center;border-radius:28px;background:linear-gradient(180deg,#101837,#18234d);border:1px solid rgba(255,255,255,.15);box-shadow:0 20px 60px rgba(0,0,0,.45)}.dialog h2{margin:0 0 10px;font-size:clamp(40px,8vw,70px)}.dialog p{color:var(--muted)}.stats{display:flex;justify-content:center;flex-wrap:wrap;gap:25px;margin:20px 0}.stat strong{display:block;font-size:28px}.notice{padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);color:var(--muted);font-size:13px;margin-top:12px}
 @media(max-width:600px){.hud-left{left:8px;right:145px;gap:6px}.hud-right{right:8px;max-width:125px;gap:6px}.hud-left .hud-pill,.hud-right .hud-pill,.pause-btn{padding:7px 9px;font-size:12px}.menu{padding:20px;border-radius:22px}.title{font-size:58px}.preview{height:125px}.hud-pill{padding:8px 10px;font-size:13px}.tip{font-size:12px;bottom:10px}.authGrid,.nameBox{grid-template-columns:1fr}#onlineBadge{top:10px;left:50%;right:auto;transform:translateX(-50%);font-size:12px}}
+
+#maintenanceScreen{position:fixed;inset:0;z-index:999999;display:none;align-items:center;justify-content:center;padding:20px;background:radial-gradient(circle at top,#18285c 0%,#0d1430 45%,#070b1c 100%);}
+#maintenanceScreen.active{display:flex;}
+.maintenanceBox{width:min(560px,92vw);padding:42px 28px;text-align:center;border-radius:28px;background:linear-gradient(180deg,rgba(25,37,82,.98),rgba(13,20,48,.98));border:1px solid rgba(255,255,255,.14);box-shadow:0 25px 80px rgba(0,0,0,.5);}
+.maintenanceIcon{font-size:72px;margin-bottom:8px;}
+.maintenanceTag{display:inline-block;margin-bottom:12px;padding:8px 14px;border-radius:999px;background:rgba(94,231,255,.12);border:1px solid rgba(94,231,255,.28);font-weight:900;color:#bdefff;}
+.maintenanceBox h1{margin:0;font-size:clamp(34px,8vw,64px);font-weight:1000;letter-spacing:.04em;}
+.maintenanceBox p{margin:14px 0 0;color:#b9c5ef;font-size:18px;font-weight:700;}
+.maintenanceBox .maintenanceSmall{font-size:14px;opacity:.75;}
 </style>
 </head>
 <body>
+
+<div id="maintenanceScreen">
+  <div class="maintenanceBox">
+    <div class="maintenanceIcon">🔧</div>
+    <div class="maintenanceTag">UPDATE 1.9</div>
+    <h1>WARTUNGSARBEITEN</h1>
+    <p>FLYYYY wird gerade aktualisiert.</p>
+    <p class="maintenanceSmall">Das Spiel ist vorübergehend nicht verfügbar.</p>
+  </div>
+</div>
 <div id="app">
 <div id="onlineBadge"><span id="onlineDot"></span><span>🟢 Online: <b id="onlineCount">0</b></span></div>
 <canvas id="gameCanvas"></canvas>
@@ -211,6 +230,27 @@ canvas.addEventListener("pointerdown",e=>{e.preventDefault();flap()});addEventLi
 addEventListener("beforeunload",()=>{if(currentUser&&db){try{setPresenceOffline()}catch(e){}}});
 
 updateLobby();renderShop();renderInventory();ensureActiveMissions();renderMissions();loadPlayerName();updateAccountUI();setupFirebase();
+
+/* ========================= WARTUNGSMODUS ========================= */
+const MAINTENANCE_MODE=true;
+function updateMaintenanceMode(){
+  const screen=document.getElementById("maintenanceScreen");
+  if(!screen)return;
+  if(MAINTENANCE_MODE){
+    screen.classList.add("active");
+    if(typeof game!=="undefined"){game.running=false;game.paused=false;game.over=false;}
+    document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));
+    document.querySelectorAll(".overlay").forEach(x=>x.classList.remove("active"));
+    const canvas=document.getElementById("gameCanvas");
+    const hud=document.getElementById("gameHud");
+    if(canvas)canvas.style.display="none";
+    if(hud)hud.style.display="none";
+  }else{
+    screen.classList.remove("active");
+  }
+}
+
+updateMaintenanceMode();
 </script>
 </body>
 </html>
