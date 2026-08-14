@@ -33,7 +33,7 @@
 <div id="onlineBadge"><span id="onlineDot"></span><span>🟢 <b id="onlineCount">0</b> Online</span></div>
 <canvas id="gameCanvas"></canvas>
 
-<div id="authScreen" class="screen"><div class="menu"><div class="title">FLYYYY</div><div class="version">🔐 ACCOUNT</div><div class="subtitle">Mit E-Mail anmelden, neues Konto erstellen oder ohne Konto spielen.</div><div class="authBox"><h2 style="margin:0 0 12px">Anmelden / Registrieren</h2><input id="authEmail" class="authInput" type="email" autocomplete="email" placeholder="E-Mail"><input id="authPassword" class="authInput" type="password" autocomplete="current-password" placeholder="Passwort (mind. 6 Zeichen)" style="margin-top:10px"><div class="authGrid"><button id="loginBtn" class="btn blue">ANMELDEN</button><button id="registerBtn" class="btn green">REGISTRIEREN</button></div><button id="guestBtn" class="btn dark" style="width:100%;margin-top:10px">👤 OHNE KONTO SPIELEN</button><button id="adminLoginBtn" class="btn dark" style="width:100%;margin-top:10px">🛠️ ADMIN</button><div id="authStatus" class="authStatus">Gastmodus ist jederzeit möglich.</div><div class="tiny" style="margin-top:10px">Tipp: Falls Firebase „E-Mail/Passwort nicht aktiviert“ meldet, muss der Anbieter in Firebase Authentication aktiviert werden.</div></div><button id="adminOpenBtn" class="btn red" style="width:100%;margin-top:10px">🛠️ ADMIN</button><button id="authBackBtn" class="btn dark" style="width:100%">← Zur Lobby</button></div></div>
+<div id="authScreen" class="screen"><div class="menu"><div class="title">FLYYYY</div><div class="version">🔐 ACCOUNT</div><div class="subtitle">Mit E-Mail anmelden, neues Konto erstellen oder ohne Konto spielen.</div><div class="authBox"><h2 style="margin:0 0 12px">Anmelden / Registrieren</h2><input id="authEmail" class="authInput" type="email" autocomplete="email" placeholder="E-Mail"><input id="authPassword" class="authInput" type="password" autocomplete="current-password" placeholder="Passwort (mind. 6 Zeichen)" style="margin-top:10px"><div class="authGrid"><button id="loginBtn" class="btn blue">ANMELDEN</button><button id="registerBtn" class="btn green">REGISTRIEREN</button></div><button id="guestBtn" class="btn dark" style="width:100%;margin-top:10px">👤 OHNE KONTO SPIELEN</button><button id="adminLoginBtn" class="btn dark" style="width:100%;margin-top:10px">🛠️ ADMIN</button><div id="authStatus" class="authStatus">Gastmodus ist jederzeit möglich.</div><div class="tiny" style="margin-top:10px">🛡️ Adminrechte werden serverseitig mit Firebase geprüft.</div></div><button id="authBackBtn" class="btn dark" style="width:100%">← Zur Lobby</button></div></div>
 
 <div id="lobby" class="screen active"><div class="menu"><div class="title">FLYYYY</div><div class="version">🏆 UPDATE 2.0</div><div class="subtitle">Fly weiter. Sammle Coins. Schlage andere Spieler.</div><div class="accountLine"><div id="accountStatus" class="accountPill">👤 Gast</div><button id="accountBtn" class="btn dark">🔐 ANMELDEN</button><button id="logoutBtn" class="btn red" style="display:none">ABMELDEN</button><button id="myAccountBtn" class="btn dark">👤 MEIN KONTO</button></div><div class="credits"><div class="badge">🪙 <span id="lobbyCoins">0</span> Coins</div><div class="badge">🏆 Rekord: <span id="lobbyBest">0</span></div></div><div class="seasonPanel"><div class="seasonTop"><div class="seasonTitle">🌐 SEASON <span id="seasonNumberLobby">1</span></div><div class="seasonTimer" id="seasonTimerLobby">⏱️ Lädt...</div></div><div class="seasonSub">7-Tage-Online-Season · nur mit Konto spielbar</div><div class="onlineNote">🥇 1.000 Coins · 🥈 500 Coins · 🥉 300 Coins · Platz 4–10: 100 · Platz 11–25: 50</div></div><div class="button-grid"><button id="startBtn" class="btn">START</button><button id="onlineModeBtn" class="btn green">🌐 ONLINE-SEASON SPIELEN</button><button id="leaderboardBtn" class="btn blue">🏆 LEADERBOARD</button><button id="shopBtn" class="btn blue">🛒 SHOP</button><button id="inventoryBtn" class="btn blue">🎒 INVENTAR</button><button id="missionsBtn" class="btn blue">🎯 MISSIONEN</button><button id="musicToggleBtn" class="btn dark">🎵 Musik: AN</button></div><div class="notice">✅ Season-Punkte sind getrennt vom Allzeit-Highscore. Nur die aktuelle Season entscheidet über die Season-Belohnung.</div></div></div>
 
@@ -50,7 +50,7 @@
 <div id="luckyConfirmOverlay" class="overlay"><div class="dialog"><h2>🎡 LUCKY RAD</h2><p>Ein Dreh kostet <strong>🪙 200 Coins</strong>.</p><p class="tiny">Nach dem Kauf öffnet sich sofort das Lucky Rad.</p><div class="button-grid"><button id="confirmLuckyBuyBtn" class="btn green">🪙 KAUFEN & ÖFFNEN</button><button id="cancelLuckyBuyBtn" class="btn dark">ABBRECHEN</button></div></div></div>
 <div id="jackpotOverlay" class="jackpotOverlay"><div class="jackpotBox"><div id="prizePopupIcon" class="prizeIcon">🎁</div><div id="prizePopupTitle" class="prizeTitle">DEIN PREIS!</div><div id="prizePopupText" class="prizeText">Preis</div><div id="prizePopupSub" class="prizeSub">Der Preis wurde deinem Konto gutgeschrieben.</div></div></div>
 <div id="seasonRewardOverlay" class="rewardOverlay"><div class="rewardBox"><div style="font-size:72px">🏆</div><h2>SEASON BEENDET!</h2><div id="seasonRewardRank" class="rewardRank">Platz 1</div><div id="seasonRewardCoins" class="rewardCoins">🪙 +1.000</div><p id="seasonRewardText">Deine persönliche Season-Belohnung wartet auf dich.</p><button id="claimSeasonRewardBtn" class="btn green" style="width:100%;margin-top:10px">🎁 BELOHNUNG ABHOLEN</button></div></div>
-<div id="adminOverlay" class="overlay"><div class="dialog"><h2 style="font-size:42px">🛠️ ADMIN</h2><p id="adminStatusText">Gib den Admin-Code ein.</p><input id="adminCodeInput" class="authInput" type="password" autocomplete="off" placeholder="Admin-Code"><div class="button-grid" style="margin-top:12px"><button id="adminUnlockBtn" class="btn green">🔓 AKTIVIEREN</button><button id="adminCloseBtn" class="btn dark">← SCHLIESSEN</button></div><div id="adminPanel" style="display:none;margin-top:18px;text-align:left"><div class="notice">✅ Adminrechte aktiviert.</div><div class="button-grid"><button id="adminMyAccountBtn" class="btn blue">👤 MEIN KONTO</button><button id="adminCoinsBtn" class="btn">🪙 COINS SETZEN</button><button id="adminClosePanelBtn" class="btn dark">🔒 SCHLIESSEN</button></div><div id="adminInfo" class="notice">Nur als Admin sichtbar.</div></div></div></div>
+<div id="adminOverlay" class="overlay"><div class="dialog"><h2 style="font-size:42px">🛠️ ADMIN</h2><p id="adminStatusText">Gib den Admin-Code ein.</p><input id="adminCodeInput" class="authInput" type="password" autocomplete="off" placeholder="Admin-Aktivierungscode"><div class="button-grid" style="margin-top:12px"><button id="adminUnlockBtn" class="btn green">🔓 AKTIVIEREN</button><button id="adminCloseBtn" class="btn dark">← SCHLIESSEN</button></div><div id="adminPanel" style="display:none;margin-top:18px;text-align:left"><div class="notice">✅ Adminrechte aktiviert.</div><div class="button-grid"><button id="adminMyAccountBtn" class="btn blue">👤 MEIN KONTO</button><button id="adminCoinsBtn" class="btn">🪙 COINS SETZEN</button><button id="adminClosePanelBtn" class="btn dark">🔒 SCHLIESSEN</button></div><div id="adminInfo" class="notice">Nur als Admin sichtbar.</div></div></div></div>
 </div>
 
 <script type="module">
@@ -534,8 +534,7 @@ function drawDino(c,r){c.fillStyle="#58d26b";c.beginPath();c.ellipse(0,0,r*1.05,
 function drawPen(c,r){c.rotate(-.35);c.fillStyle="#ffdf4e";c.fillRect(-r*.25,-r*1.1,r*.5,r*1.6);c.fillStyle="#4d75ff";c.fillRect(-r*.25,-r*1.1,r*.5,r*.35);c.fillStyle="#e9bd91";c.beginPath();c.moveTo(-r*.25,r*.5);c.lineTo(0,r*1.05);c.lineTo(r*.25,r*.5);c.closePath();c.fill()}
 function drawCarrot(c,r){c.fillStyle="#62d976";c.beginPath();c.ellipse(-r*.2,-r*.75,r*.25,r*.55,-.5,0,Math.PI*2);c.ellipse(r*.2,-r*.75,r*.25,r*.55,.5,0,Math.PI*2);c.fill();c.fillStyle="#ff8b28";c.beginPath();c.moveTo(-r*.65,-r*.25);c.quadraticCurveTo(0,r*.75,0,r*1.05);c.quadraticCurveTo(0,r*.75,r*.65,-r*.25);c.closePath();c.fill()}
 function drawApple(c,r){c.fillStyle="#f14848";c.beginPath();c.arc(-r*.3,0,r*.65,0,Math.PI*2);c.arc(r*.3,0,r*.65,0,Math.PI*2);c.fill();c.strokeStyle="#69472b";c.lineWidth=4;c.beginPath();c.moveTo(0,-r*.45);c.lineTo(r*.1,-r*.95);c.stroke();c.fillStyle="#63d878";c.beginPath();c.ellipse(r*.35,-r*.75,r*.35,r*.16,-.4,0,Math.PI*2);c.fill()}
-function drawDonkey(c,r){c.fillStyle="#9b9b9b";c.beginPath();c.ellipse(0,r*.05,r*1.05,r*.68,0,0,Math.PI*2);c.fill();c.fillStyle="#a8a8a8";c.beginPath();c.ellipse(r*.45,-r*.55,r*.65,r*.55,0,0,Math.PI*2);c.fill();c.fillStyle="#888";c.beginPath();c.moveTo(r*.05,-r*.95);c.lineTo(-r*.05,-r*1.8);c.quadraticCurveTo(r*.18,-r*2,r*.4,-r*1.05);c.closePath();c.fill();c.beginPath();c.moveTo(r*.55,-r*.95);c.lineTo(r*.78,-r*1.8);c.quadraticCurveTo(r*1.02,-r*1.95,r*1.02,-r*.82);c.closePath();c.fill();c.fillStyle="#d8a0a0";c.beginPath();c.moveTo(r*.12,-r*1.05);c.lineTo(r*.12,-r*1.58);c.lineTo(r*.3,-r*1.1);c.closePath();c.fill();c.beginPath();c.moveTo(r*.7,-r*1.08);c.lineTo(r*.79,-r*1.58);c.lineTo(r*.91,-r*.98);c.closePath();c.fill();c.fillStyle="#c0c0c0";c.beginPath();c.ellipse(r*.92,-r*.43,r*.4,r*.28,0,0,Math.PI*2);c.fill();c.fillStyle="#555";c.beginPath();c.arc(r*.82,-r*.48,r*.06,0,Math.PI*2);c.arc(r*1.03,-r*.48,r*.06,0,Math.PI*2);c.fill();c.fillStyle="#fff";c.beginPath();c.arc(r*.64,-r*.72,r*.17,0,Math.PI*2);c.fill();c.fillStyle="#111";c.beginPath();c.arc(r*.68,-r*.72,r*.07,0,Math.PI*2);c.fill();c.fillStyle="#6c6c6c";c.fillRect(-r*.55,r*.45,r*.2,r*.85);c.fillRect(-r*.05,r*.5,r*.2,r*.8);c.fillRect(r*.45,r*.42,r*.2,r*.85);c.fillStyle="#444";c.fillRect(-r*.58,r*1.23,r*.27,r*.14);c.fillRect(-r*.08,r*1.2,r*.27,r*.14);c.fillRect(r*.42,r*1.2,r*.27,r*.14);c.strokeStyle="#666";c.lineWidth=r*.12;c.beginPath();c.moveTo(-r*.95,0);c.quadraticCurveTo(-r*1.4,r*.3,-r*1.25,r*.7);c.stroke();c.fillStyle="#555";c.beginPath();c.arc(-r*1.25,r*.72,r*.18,0,Math.PI*2);c.fill()}
-function drawWorldPreview(c,w,width,height){const g=c.createLinearGradient(0,0,0,height);g.addColorStop(0,w.sky1);g.addColorStop(1,w.sky2);c.fillStyle=g;c.fillRect(0,0,width,height);c.fillStyle=w.ground;c.fillRect(0,height*.78,width,height*.22);if(w.id==="giza"){c.fillStyle="#d6a05c";c.beginPath();c.moveTo(width*.48,height*.2);c.lineTo(width*.22,height*.78);c.lineTo(width*.73,height*.78);c.closePath();c.fill()}if(w.id==="mountains"){c.fillStyle=w.obstacle;c.beginPath();c.moveTo(0,height);c.lineTo(width*.22,height*.3);c.lineTo(width*.44,height);c.lineTo(width*.66,height*.25);c.lineTo(width,height);c.closePath();c.fill()}if(w.id==="space"){c.fillStyle="#fff";for(let i=0;i<35;i++)c.fillRect((i*37)%width,(i*19)%height,2,2)}}
+function drawDonkey(c,r){c.save();c.textAlign="center";c.textBaseline="middle";c.font=`${Math.max(30,r*2.35)}px "Segoe UI Emoji","Apple Color Emoji","Noto Color Emoji",sans-serif`;c.fillText("🫏",0,r*0.05);c.restore()}function drawWorldPreview(c,w,width,height){const g=c.createLinearGradient(0,0,0,height);g.addColorStop(0,w.sky1);g.addColorStop(1,w.sky2);c.fillStyle=g;c.fillRect(0,0,width,height);c.fillStyle=w.ground;c.fillRect(0,height*.78,width,height*.22);if(w.id==="giza"){c.fillStyle="#d6a05c";c.beginPath();c.moveTo(width*.48,height*.2);c.lineTo(width*.22,height*.78);c.lineTo(width*.73,height*.78);c.closePath();c.fill()}if(w.id==="mountains"){c.fillStyle=w.obstacle;c.beginPath();c.moveTo(0,height);c.lineTo(width*.22,height*.3);c.lineTo(width*.44,height);c.lineTo(width*.66,height*.25);c.lineTo(width,height);c.closePath();c.fill()}if(w.id==="space"){c.fillStyle="#fff";for(let i=0;i<35;i++)c.fillRect((i*37)%width,(i*19)%height,2,2)}}
 function drawBackground(){const w=game.world||worlds[0],g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,w.sky1);g.addColorStop(1,w.sky2);ctx.fillStyle=g;ctx.fillRect(0,0,W,H);if(w.id==="giza"){ctx.fillStyle="#d9a35a";ctx.fillRect(0,H*.69,W,H*.31);drawPyramid(W*.57,H*.69,200,130)}if(w.id==="mountains"){ctx.fillStyle="#5b70aa";ctx.beginPath();ctx.moveTo(0,H*.75);ctx.lineTo(W*.2,H*.42);ctx.lineTo(W*.4,H*.7);ctx.lineTo(W*.58,H*.3);ctx.lineTo(W*.8,H*.68);ctx.lineTo(W,H*.4);ctx.lineTo(W,H);ctx.lineTo(0,H);ctx.closePath();ctx.fill();ctx.fillStyle="#527951";ctx.fillRect(0,H*.8,W,H*.2)}if(w.id==="ocean"){ctx.strokeStyle="rgba(255,255,255,.14)";for(let y=80;y<H*.85;y+=80){ctx.beginPath();for(let x=0;x<W;x+=45){ctx.moveTo(x,y);ctx.quadraticCurveTo(x+12,y-10,x+24,y)}ctx.stroke()}ctx.fillStyle="#157c86";ctx.fillRect(0,H*.88,W,H*.12)}if(w.id==="jungle"){ctx.fillStyle="#2b753d";ctx.fillRect(0,H*.78,W,H*.22);for(let i=0;i<18;i++){const x=(i*97)%W,h=100+(i%4)*35;ctx.fillStyle=i%2?"#1c5a31":"#348746";ctx.fillRect(x,H*.78-h,20,h);ctx.beginPath();ctx.arc(x+10,H*.78-h,38,Math.PI,Math.PI*2);ctx.fill()}}if(w.id==="space"){ctx.fillStyle="#fff";for(let i=0;i<100;i++){ctx.globalAlpha=.25+(i%5)*.1;ctx.fillRect((i*83)%W,(i*47)%H,2,2)}ctx.globalAlpha=1}if(w.id==="ice"){ctx.fillStyle="rgba(255,255,255,.45)";for(let i=0;i<8;i++){const x=i*190;ctx.beginPath();ctx.moveTo(x,H*.82);ctx.lineTo(x+80,H*.25);ctx.lineTo(x+150,H*.82);ctx.closePath();ctx.fill()}ctx.fillStyle="#a7deef";ctx.fillRect(0,H*.82,W,H*.18)}if(w.id==="lava"){ctx.fillStyle="#5f171d";ctx.fillRect(0,H*.82,W,H*.18);ctx.fillStyle="#ff7a18";for(let i=0;i<10;i++){const x=(i*131)%W,y=H*.84+(i%3)*16;ctx.beginPath();ctx.arc(x,y,18+(i%3)*5,0,Math.PI*2);ctx.fill()}}}
 function drawPyramid(cx,base,w,h){ctx.fillStyle="#d5a05a";ctx.beginPath();ctx.moveTo(cx,base-h);ctx.lineTo(cx-w/2,base);ctx.lineTo(cx+w/2,base);ctx.closePath();ctx.fill()}function drawSpikeRow(x,width,yBase,direction){ctx.fillStyle="rgba(30,20,25,.65)";ctx.beginPath();for(let xp=x;xp<x+width;xp+=SPIKE_STEP){const w=Math.min(SPIKE_STEP,x+width-xp),cx=xp+w/2;ctx.moveTo(xp,yBase);direction===1?(ctx.lineTo(cx,yBase+SPIKE_H),ctx.lineTo(xp+w,yBase)):(ctx.lineTo(cx,yBase-SPIKE_H),ctx.lineTo(xp+w,yBase))}ctx.closePath();ctx.fill()}
 function draw(){drawBackground();for(const o of game.obstacles){const top=o.gapY-o.gapH/2,bottom=o.gapY+o.gapH/2;ctx.fillStyle=game.world?.obstacle||"#8f5a33";ctx.fillRect(o.x,0,o.width,top);ctx.fillRect(o.x,bottom,o.width,H-bottom);drawSpikeRow(o.x,o.width,top,1);drawSpikeRow(o.x,o.width,bottom,-1)}for(const c of game.coins){ctx.save();ctx.shadowColor="#ffd447";ctx.shadowBlur=14;ctx.fillStyle="#ffd447";ctx.beginPath();ctx.arc(c.x,c.y,c.r,0,Math.PI*2);ctx.fill();ctx.restore();ctx.fillStyle="#fff5a6";ctx.font="bold 15px Arial";ctx.textAlign="center";ctx.textBaseline="middle";ctx.fillText("$",c.x,c.y)}const s=skins.find(x=>x.id===state.selectedSkin)||skins[0];ctx.save();ctx.translate(game.player.x,game.player.y);ctx.rotate(game.player.rot);drawSkin(ctx,s.type,0,0,s.type==="jeszx"?game.player.r*.78:game.player.r);ctx.restore()}
@@ -597,16 +596,133 @@ leaderboardBtn.onclick=async()=>{loadPlayerName();showScreen("leaderboard");awai
 leaderboardBack.onclick=()=>showScreen("lobby");saveNameBtn.onclick=savePlayerName;
 seasonTabBtn.onclick=async()=>{await startSeasonLeaderboardListener();switchLeaderboardMode("season")};allTimeTabBtn.onclick=()=>switchLeaderboardMode("alltime");
 shopBtn.onclick=()=>{renderShop();showScreen("shop")};shopBack.onclick=()=>showScreen("lobby");inventoryBtn.onclick=()=>{renderInventory();showScreen("inventory")};inventoryBack.onclick=()=>showScreen("lobby");missionsBtn.onclick=()=>{renderMissions();showScreen("missions")};missionsBack.onclick=()=>showScreen("lobby");
-/* ===== ADMIN ACCESS ===== */
-const ADMIN_CODE="Flyyyyowneradminrechte43";
+/* ===== SECURE ADMIN ACCESS ===== */
 let adminUnlocked=false;
-function openAdminLogin(){adminOverlay.classList.add("active");adminCodeInput.value="";adminPanel.style.display="none";adminStatusText.textContent="Gib den Admin-Code ein.";setTimeout(()=>adminCodeInput.focus(),50)}
-function closeAdminLogin(){adminOverlay.classList.remove("active");adminCodeInput.value="";adminPanel.style.display="none";adminUnlocked=false}
-function unlockAdmin(){const code=adminCodeInput.value;if(code===ADMIN_CODE){adminUnlocked=true;adminPanel.style.display="block";adminStatusText.textContent="✅ Admin-Code akzeptiert.";adminInfo.textContent=currentUser?`Angemeldet als: ${currentUser.email||"Konto"}`:"⚠️ Kein Account angemeldet.";showMessage("🛠️ Adminrechte aktiviert.")}else{adminUnlocked=false;adminPanel.style.display="none";adminStatusText.textContent="❌ Falscher Admin-Code.";adminCodeInput.select()}}
-function requireAdmin(){if(!adminUnlocked){showMessage("🔒 Adminrechte erforderlich.");return false}return true}
-adminMyAccountBtn.onclick=()=>{if(!requireAdmin())return;adminInfo.textContent=`Firebase UID: ${currentUser?.uid||"nicht angemeldet"}`};
-adminCoinsBtn.onclick=async()=>{if(!requireAdmin())return;if(!currentUser){showMessage("🔐 Bitte zuerst mit deinem Account anmelden.");return}const amount=prompt("Wie viele Coins soll dein aktuell angemeldeter Account bekommen?","1000000");if(amount===null)return;const n=Number(amount);if(!Number.isFinite(n)||n<0){showMessage("❌ Ungültige Zahl.");return}state.coins=Math.floor(n);saveState();updateLobby();try{await savePlayerStateCloud()}catch(e){console.error(e)}showMessage(`🪙 ${Math.floor(n).toLocaleString("de-DE")} Coins gesetzt.`)};
-adminLoginBtn.onclick=openAdminLogin;const adminOpenBtn=$("adminOpenBtn");if(adminOpenBtn)adminOpenBtn.onclick=openAdminLogin;adminUnlockBtn.onclick=unlockAdmin;adminCloseBtn.onclick=closeAdminLogin;adminClosePanelBtn.onclick=closeAdminLogin;adminCodeInput.addEventListener("keydown",e=>{if(e.key==="Enter")unlockAdmin();if(e.key==="Escape")closeAdminLogin()});
+let adminActivating=false;
+
+async function getAdminClaim(forceRefresh=true){
+  if(!currentUser) return false;
+  try{
+    const token=await currentUser.getIdTokenResult(forceRefresh);
+    return token?.claims?.admin===true;
+  }catch(e){
+    console.error("admin claim",e);
+    return false;
+  }
+}
+
+async function openAdminLogin(){
+  adminOverlay.classList.add("active");
+  adminCodeInput.value="";
+  adminPanel.style.display="none";
+  adminUnlocked=false;
+  adminStatusText.textContent=currentUser
+    ? "Gib den Admin-Aktivierungscode ein."
+    : "🔐 Bitte zuerst mit deinem FLYYYY-Konto anmelden.";
+  setTimeout(()=>adminCodeInput.focus(),50);
+}
+
+function closeAdminLogin(){
+  adminOverlay.classList.remove("active");
+  adminCodeInput.value="";
+  adminPanel.style.display="none";
+  adminUnlocked=false;
+}
+
+async function activateAdmin(){
+  if(adminActivating)return;
+  if(!currentUser){
+    adminStatusText.textContent="🔐 Du musst zuerst angemeldet sein.";
+    return;
+  }
+  const code=adminCodeInput.value.trim();
+  if(!code){
+    adminStatusText.textContent="Bitte den Admin-Aktivierungscode eingeben.";
+    return;
+  }
+  adminActivating=true;
+  adminUnlockBtn.disabled=true;
+  adminStatusText.textContent="⏳ Adminrechte werden sicher geprüft...";
+  try{
+    const fn=await import("https://www.gstatic.com/firebasejs/12.16.0/firebase-functions.js");
+    const functions=fn.getFunctions(firebaseApp);
+    const activate=fn.httpsCallable(functions,"activateAdmin");
+    await activate({code});
+    await currentUser.getIdToken(true);
+    const ok=await getAdminClaim(true);
+    if(!ok)throw new Error("ADMIN_CLAIM_NOT_ACTIVE");
+    adminUnlocked=true;
+    adminPanel.style.display="block";
+    adminStatusText.textContent="✅ Adminrechte sicher aktiviert.";
+    adminInfo.textContent=`Angemeldet als: ${currentUser.email||"Konto"}`;
+    adminCodeInput.value="";
+    showMessage("🛠️ Adminrechte aktiviert.");
+  }catch(e){
+    console.error("Admin activation",e);
+    const codeMap={
+      "functions/unauthenticated":"🔐 Bitte zuerst anmelden.",
+      "functions/permission-denied":"❌ Falscher oder abgelaufener Admin-Code.",
+      "functions/invalid-argument":"❌ Ungültiger Admin-Code.",
+      "ADMIN_CLAIM_NOT_ACTIVE":"❌ Adminrolle konnte nicht aktiviert werden."
+    };
+    const key=e?.code||e?.message||"";
+    adminUnlocked=false;
+    adminPanel.style.display="none";
+    adminStatusText.textContent=codeMap[key]||"❌ Admin-Aktivierung fehlgeschlagen.";
+    adminCodeInput.select();
+  }finally{
+    adminActivating=false;
+    adminUnlockBtn.disabled=false;
+  }
+}
+
+async function requireAdmin(){
+  if(!currentUser){
+    showMessage("🔐 Bitte zuerst anmelden.");
+    return false;
+  }
+  const ok=await getAdminClaim(true);
+  if(!ok){
+    adminUnlocked=false;
+    adminPanel.style.display="none";
+    adminStatusText.textContent="🔒 Keine Adminrechte für dieses Konto.";
+    showMessage("🔒 Adminrechte erforderlich.");
+    return false;
+  }
+  adminUnlocked=true;
+  return true;
+}
+
+adminMyAccountBtn.onclick=async()=>{
+  if(!await requireAdmin())return;
+  adminInfo.textContent=`Firebase UID: ${currentUser?.uid||"nicht angemeldet"}`;
+};
+
+adminCoinsBtn.onclick=async()=>{
+  if(!await requireAdmin())return;
+  if(!currentUser){showMessage("🔐 Bitte zuerst anmelden.");return}
+  const amount=prompt("Wie viele Coins soll dein aktuell angemeldeter Account bekommen?","1000000");
+  if(amount===null)return;
+  const n=Number(amount);
+  if(!Number.isFinite(n)||n<0||n>1000000000){
+    showMessage("❌ Ungültige Zahl. Maximum: 1.000.000.000");
+    return;
+  }
+  state.coins=Math.floor(n);
+  saveState();
+  updateLobby();
+  try{await savePlayerStateCloud()}catch(e){console.error(e)}
+  showMessage(`🪙 ${Math.floor(n).toLocaleString("de-DE")} Coins gesetzt.`);
+};
+
+adminLoginBtn.onclick=openAdminLogin;
+adminUnlockBtn.onclick=activateAdmin;
+adminCloseBtn.onclick=closeAdminLogin;
+adminClosePanelBtn.onclick=closeAdminLogin;
+adminCodeInput.addEventListener("keydown",e=>{
+  if(e.key==="Enter")activateAdmin();
+  if(e.key==="Escape")closeAdminLogin();
+});
 
 accountBtn.onclick=()=>showScreen("authScreen");
 myAccountBtn.onclick=()=>{authStatus.textContent=currentUser?"✅ Du bist angemeldet. Hier kannst du deinen Account verwalten.":"🔐 Bitte mit E-Mail und Passwort anmelden oder registrieren.";showScreen("authScreen");};authBackBtn.onclick=()=>showScreen("lobby");guestBtn.onclick=()=>{showScreen("lobby");showMessage("👤 Gastmodus aktiviert.")};
