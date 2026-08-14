@@ -131,9 +131,56 @@ function getPlayerName(){return storage.getItem("FLYYYY_PLAYER_NAME")||""}functi
 
 async function ensurePlayerEntry(name){if(!currentUser||!db)return false;try{const {d}=await loadFirebase(),r=d.ref(db,"leaderboard/"+currentUser.uid),s=await d.get(r),old=s.exists()?s.val():{};await d.update(r,{name:safeName(name||defaultNameForUser(currentUser)),score:Number(old.score||0),wins:Number(old.wins||0),update19ResetDone:true,updatedAt:d.serverTimestamp()});return true}catch(e){console.error(e);return false}}
 async function submitHighscore(score){if(!currentUser||!db||!getPlayerName())return false;try{const {d}=await loadFirebase(),r=d.ref(db,"leaderboard/"+currentUser.uid);await d.runTransaction(r,c=>{const old=c||{};return Number(score)>Number(old.score||0)?{...old,name:getPlayerName(),score:Number(score),wins:Number(state.wins||old.wins||0),update19ResetDone:true,updatedAt:d.serverTimestamp()}:old});return true}catch(e){console.error(e);return false}}
-async function submitSeasonScore(score){if(!currentUser||!db||!seasonInfo?.id)return false;try{const {d}=await loadFirebase(),r=d.ref(db,"seasonScores/"+seasonInfo.id+"/"+currentUser.uid);await d.runTransaction(r,c=>{const old=c||{};const best=Math.max(Number(old.score||0),Number(score)||0);return{name:getPlayerName()||defaultNameForUser(currentUser),score:best,updatedAt:d.serverTimestamp()}});state.seasonScore=Math.max(Number(state.seasonScore||0),Number(score)||0);saveState();return true}catch(e){console.error(e);return false}}
+async function ensureSeasonScoreEntry(){
+  if(!currentUser||!db||!seasonInfo?.id)return false;
+  try{
+    const {d}=await loadFirebase();
+    const r=d.ref(db,"seasonScores/"+Number(seasonInfo.id)+"/"+currentUser.uid);
+    const snap=await d.get(r);
+    const old=snap.exists()?(snap.val()||{}):{};
+    const current=Math.max(0,Number(old.score||0),Number(state.seasonScore||0));
+    await d.set(r,{
+      name:getPlayerName()||defaultNameForUser(currentUser),
+      score:current,
+      updatedAt:d.serverTimestamp()
+    });
+    state.seasonScore=current;
+    saveState();
+    return true;
+  }catch(e){
+    console.error("ensure season score entry",e);
+    return false;
+  }
+}
 
-async function savePlayerName(){const n=safeName(playerName.value);if(!n){showMessage("Bitte einen Namen eingeben.");return}storage.setItem("FLYYYY_PLAYER_NAME",n);if(!currentUser){setLeaderboardStatus("💾 Lokal gespeichert. Für Online-Seasons anmelden.");return}setLeaderboardStatus(await ensurePlayerEntry(n)?`🟢 ${n} ist online gespeichert.`:"🔴 Online-Speichern fehlgeschlagen.");await setPresenceOnline()}
+async function submitSeasonScore(score){
+  if(!currentUser||!db||!seasonInfo?.id)return false;
+  try{
+    const {d}=await loadFirebase();
+    const r=d.ref(db,"seasonScores/"+Number(seasonInfo.id)+"/"+currentUser.uid);
+    await d.runTransaction(r,c=>{
+      const old=c||{};
+      const best=Math.max(Number(old.score||0),Number(score)||0);
+      return{
+        name:getPlayerName()||defaultNameForUser(currentUser),
+        score:best,
+        updatedAt:d.serverTimestamp()
+      };
+    });
+    state.seasonScore=Math.max(Number(state.seasonScore||0),Number(score)||0);
+    saveState();
+    return true;
+  }catch(e){
+    console.error("submit season score",e);
+    return false;
+  }
+}
+
+async function savePlayerName(){const n=safeName(playerName.value);if(!n){showMessage("Bitte einen Namen eingeben.");return}storage.setItem("FLYYYY_PLAYER_NAME",n);if(!currentUser){setLeaderboardStatus("💾 Lokal gespeichert. Für Online-Seasons anmelden.");return}setLeaderboardStatus(await ensurePlayerEntry(n)?`🟢 ${n} ist online gespeichert.`:"🔴 Online-Speichern fehlgeschlagen.");
+    await ensureSeason();
+    await ensureSeasonScoreEntry();
+    await setPresenceOnline();
+}
 
 async function loadPlayerStateCloud(){if(!currentUser||!db)return;try{const {d}=await loadFirebase();const snap=await d.get(d.ref(db,"playerStates/"+currentUser.uid));if(snap.exists()){const c=snap.val()||{},b=defaultState();state={...b,...c,ownedWorlds:Array.isArray(c.ownedWorlds)?c.ownedWorlds:b.ownedWorlds,ownedSkins:Array.isArray(c.ownedSkins)?c.ownedSkins:b.ownedSkins,ownedSounds:Array.isArray(c.ownedSounds)?c.ownedSounds:b.ownedSounds,ownedMusic:Array.isArray(c.ownedMusic)?c.ownedMusic:b.ownedMusic,missionProgress:{...b.missionProgress,...(c.missionProgress||{})},missionClaimed:{...b.missionClaimed,...(c.missionClaimed||{})}};saveStateLocalOnly();updateLobby();renderShop();renderInventory();renderMissions()}}catch(e){console.error(e)}}
 async function savePlayerStateCloud(){if(!currentUser||!db)return;try{const {d}=await loadFirebase();await d.set(d.ref(db,"playerStates/"+currentUser.uid),JSON.parse(JSON.stringify(state)))}catch(e){console.error(e)}}
@@ -222,7 +269,31 @@ function renderInventory(){tabs(inventoryTabs,[{id:"skins",name:"🪽 Figuren"},
 
 function updateLobby(){lobbyCoins.textContent=state.coins;lobbyBest.textContent=state.best;musicToggleBtn.textContent=state.musicEnabled?"🎵 Musik: AN":"🔇 Musik: AUS"}
 
-startBtn.onclick=()=>startGame(false);onlineModeBtn.onclick=async()=>{if(!currentUser){showMessage("🔐 Für den Online-Modus anmelden.");showScreen("authScreen");return}await ensureSeason();startGame(true)};
+startBtn.onclick=()=>startGame(false);
+onlineModeBtn.onclick=async()=>{
+  if(!currentUser){
+    showMessage("🔐 Für den Online-Modus anmelden.");
+    showScreen("authScreen");
+    return;
+  }
+
+  await ensureSeason();
+
+  // Spieler sofort in der aktuellen Season-Tabelle anlegen.
+  const ok=await ensureSeasonScoreEntry();
+  if(!ok){
+    showMessage("🔴 Season konnte nicht gespeichert werden.");
+    return;
+  }
+
+  // Season-Leaderboard direkt mit dem eigenen Namen + Score aktualisieren.
+  await startSeasonLeaderboardListener();
+  if(seasonMode==="season"){
+    switchLeaderboardMode("season");
+  }
+
+  startGame(true);
+};
 leaderboardBtn.onclick=async()=>{loadPlayerName();showScreen("leaderboard");await ensureSeason();await startSeasonLeaderboardListener();switchLeaderboardMode("season")};
 leaderboardBack.onclick=()=>showScreen("lobby");saveNameBtn.onclick=savePlayerName;
 seasonTabBtn.onclick=async()=>{await startSeasonLeaderboardListener();switchLeaderboardMode("season")};allTimeTabBtn.onclick=()=>switchLeaderboardMode("alltime");
