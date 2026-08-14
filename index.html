@@ -116,7 +116,40 @@ function switchLeaderboardMode(mode){seasonMode=mode;seasonTabBtn.classList.togg
 
 async function startSeasonLeaderboardListener(){
   if(!db)return;
-  try{const {d}=await loadFirebase();if(seasonLeaderboardStop){seasonLeaderboardStop();seasonLeaderboardStop=null}const id=Number(seasonInfo.id||1);const ref=d.ref(db,"seasonScores/"+id);seasonLeaderboardStop=d.onValue(ref,s=>{const raw=s.val()||{};seasonLeaderboardCache=Object.entries(raw).map(([uid,v])=>({uid,name:safeName(v?.name||"Spieler"),score:Number(v?.score||0),wins:0,updatedAt:Number(v?.updatedAt||0)})).sort((a,b)=>b.score-a.score||a.name.localeCompare(b.name));if(seasonMode==="season"){renderLeaderboard(seasonLeaderboardCache.slice(0,50));setLeaderboardStatus(`🌐 Season ${id} · ${seasonLeaderboardCache.length} Spieler`)}},e=>{console.error(e);setLeaderboardStatus("🔴 Season-Leaderboard konnte nicht geladen werden.")})}catch(e){console.error(e)}
+  try{
+    const {d}=await loadFirebase();
+    if(seasonLeaderboardStop){seasonLeaderboardStop();seasonLeaderboardStop=null}
+    const id=Number(seasonInfo.id||1);
+    const ref=d.ref(db,"leaderboard");
+
+    seasonLeaderboardStop=d.onValue(ref,s=>{
+      const raw=s.val()||{};
+      seasonLeaderboardCache=Object.entries(raw)
+        .map(([uid,v])=>{
+          const season=v?.seasonScores?.[id];
+          if(!season)return null;
+          return {
+            uid,
+            name:safeName(season.name||v?.name||"Spieler"),
+            score:Number(season.score||0),
+            wins:0,
+            updatedAt:Number(season.updatedAt||0)
+          };
+        })
+        .filter(Boolean)
+        .sort((a,b)=>b.score-a.score||a.name.localeCompare(b.name));
+
+      if(seasonMode==="season"){
+        renderLeaderboard(seasonLeaderboardCache.slice(0,50));
+        setLeaderboardStatus(`🌐 Season ${id} · ${seasonLeaderboardCache.length} Spieler`);
+      }
+    },e=>{
+      console.error("season listener",e);
+      setLeaderboardStatus("🔴 Season-Leaderboard konnte nicht geladen werden.");
+    });
+  }catch(e){
+    console.error(e);
+  }
 }
 
 async function startLeaderboardListener(){if(!db)return;try{const {d}=await loadFirebase();if(leaderboardStop){leaderboardStop();leaderboardStop=null}const ref=d.ref(db,"leaderboard");leaderboardStop=d.onValue(ref,s=>{const raw=s.val()||{};allTimeLeaderboardCache=Object.entries(raw).filter(([uid,v])=>v&&v.update19ResetDone===true).map(([uid,v])=>({uid,name:safeName(v.name||"Spieler"),score:Number(v.score||0),wins:Number(v.wins||0),updatedAt:Number(v.updatedAt||0)})).sort((a,b)=>b.score-a.score||b.wins-a.wins||a.name.localeCompare(b.name));if(seasonMode==="alltime")renderLeaderboard(allTimeLeaderboardCache.slice(0,50))},e=>{console.error(e);setLeaderboardStatus("🔴 Allzeit-Leaderboard konnte nicht geladen werden.")})}catch(e){console.error(e)}}
@@ -153,7 +186,10 @@ async function ensureSeasonScoreEntry(){
   if(!currentUser||!db||!seasonInfo?.id)return false;
   try{
     const {d}=await loadFirebase();
-    const r=d.ref(db,"seasonScores/"+Number(seasonInfo.id)+"/"+currentUser.uid);
+    // Season-Daten liegen bewusst unter dem bereits erlaubten eigenen
+    // Leaderboard-Eintrag. Dadurch brauchen wir keinen neuen Root-Pfad
+    // wie /seasonScores, der bei Firebase-Regeln oft blockiert wird.
+    const r=d.ref(db,"leaderboard/"+currentUser.uid+"/seasonScores/"+Number(seasonInfo.id));
     const snap=await d.get(r);
     const old=snap.exists()?(snap.val()||{}):{};
     const current=Math.max(0,Number(old.score||0),Number(state.seasonScore||0));
@@ -163,10 +199,11 @@ async function ensureSeasonScoreEntry(){
       updatedAt:d.serverTimestamp()
     });
     state.seasonScore=current;
-    saveState();
+    saveStateLocalOnly();
     return true;
   }catch(e){
     console.error("ensure season score entry",e);
+    setLeaderboardStatus("🔴 Season konnte nicht gespeichert werden: "+(e?.message||"Firebase-Schreibfehler"));
     return false;
   }
 }
@@ -175,21 +212,21 @@ async function submitSeasonScore(score){
   if(!currentUser||!db||!seasonInfo?.id)return false;
   try{
     const {d}=await loadFirebase();
-    const r=d.ref(db,"seasonScores/"+Number(seasonInfo.id)+"/"+currentUser.uid);
-    await d.runTransaction(r,c=>{
-      const old=c||{};
-      const best=Math.max(Number(old.score||0),Number(score)||0);
-      return{
-        name:getPlayerName()||defaultNameForUser(currentUser),
-        score:best,
-        updatedAt:d.serverTimestamp()
-      };
+    const r=d.ref(db,"leaderboard/"+currentUser.uid+"/seasonScores/"+Number(seasonInfo.id));
+    const snap=await d.get(r);
+    const old=snap.exists()?(snap.val()||{}):{};
+    const best=Math.max(Number(old.score||0),Number(score)||0,Number(state.seasonScore||0));
+    await d.set(r,{
+      name:getPlayerName()||defaultNameForUser(currentUser),
+      score:best,
+      updatedAt:d.serverTimestamp()
     });
-    state.seasonScore=Math.max(Number(state.seasonScore||0),Number(score)||0);
-    saveState();
+    state.seasonScore=best;
+    saveStateLocalOnly();
     return true;
   }catch(e){
     console.error("submit season score",e);
+    setLeaderboardStatus("🔴 Season konnte nicht gespeichert werden: "+(e?.message||"Firebase-Schreibfehler"));
     return false;
   }
 }
@@ -214,17 +251,64 @@ async function finalizeExpiredSeason(cur){
   try{
     const {d}=await loadFirebase();
     const id=Number(cur.id||1);
-    const scoreSnap=await d.get(d.ref(db,"seasonScores/"+id));
-    const raw=scoreSnap.exists()?scoreSnap.val()||{}:{};
-    const arr=Object.entries(raw).map(([uid,v])=>({uid,name:safeName(v?.name||"Spieler"),score:Number(v?.score||0)})).sort((a,b)=>b.score-a.score||a.name.localeCompare(b.name));
+
+    // Season-Punkte aus den bereits erlaubten Leaderboard-Einträgen lesen.
+    const boardSnap=await d.get(d.ref(db,"leaderboard"));
+    const board=boardSnap.exists()?boardSnap.val()||{}:{};
+    const arr=[];
+
+    Object.entries(board).forEach(([uid,v])=>{
+      const season=v?.seasonScores?.[id];
+      if(!season)return;
+      arr.push({
+        uid,
+        name:safeName(season.name||v?.name||"Spieler"),
+        score:Number(season.score||0)
+      });
+    });
+
+    arr.sort((a,b)=>b.score-a.score||a.name.localeCompare(b.name));
+
     const winners={};
-    arr.forEach((p,i)=>{const rank=i+1,reward=rewardForRank(rank);if(reward>0)winners[p.uid]={uid:p.uid,rank,reward,name:p.name,score:p.score,claimed:false}});
-    await d.set(d.ref(db,"seasonHistory/"+id),{id,startsAt:Number(cur.startsAt||0),endsAt:Number(cur.endsAt||Date.now()),winners});
-    const next={id:id+1,startsAt:Date.now(),endsAt:Date.now()+SEASON_LENGTH_MS};
-    await d.transaction(d.ref(db,"season/current"),c=>(c&&Number(c.id)===id&&Number(c.endsAt)<=Date.now())?next:(c||next));
+    arr.forEach((p,i)=>{
+      const rank=i+1;
+      const reward=rewardForRank(rank);
+      if(reward>0){
+        winners[p.uid]={
+          uid:p.uid,
+          rank,
+          reward,
+          name:p.name,
+          score:p.score,
+          claimed:false
+        };
+      }
+    });
+
+    await d.set(d.ref(db,"seasonHistory/"+id),{
+      id,
+      startsAt:Number(cur.startsAt||0),
+      endsAt:Number(cur.endsAt||Date.now()),
+      winners
+    });
+
+    const next={
+      id:id+1,
+      startsAt:Date.now(),
+      endsAt:Date.now()+SEASON_LENGTH_MS
+    };
+
+    await d.transaction(
+      d.ref(db,"season/current"),
+      c=>(c&&Number(c.id)===id&&Number(c.endsAt)<=Date.now())?next:(c||next)
+    );
+
     await checkSeasonReward(id);
     return true;
-  }catch(e){console.error("finalizeExpiredSeason",e);return false}
+  }catch(e){
+    console.error("finalizeExpiredSeason",e);
+    return false;
+  }
 }
 
 let authStateReady=null;
@@ -304,7 +388,58 @@ function spikeCollision(p,o){const hr=hitRadius(p),top=o.gapY-o.gapH/2,bottom=o.
 function spawnCoin(o){const margin=Math.max(32,Math.min(55,o.gapH*.18)),minY=o.gapY-o.gapH/2+margin,maxY=o.gapY+o.gapH/2-margin,y=minY+Math.random()*Math.max(1,maxY-minY),x=o.x+o.width+Math.max(55,W*.04);game.coins.push({x,y,r:17,collected:false})}
 function updateGame(dt){const p=game.player;const ice=game.score>=20;if(ice&&game.world?.id!=="ice"){game.world=worlds.find(w=>w.id==="ice")||worlds[0];worldHud.textContent="Eiswelt";showMessage("🧊 EISWELT! Jetzt wird es schwieriger!");startMusic()}game.speed=165+Math.min(255,game.score*2.5)+(ice?70:0);const gravity=1080+Math.min(260,game.score*1.5)+(ice?180:0);p.vy+=gravity*dt;p.y+=p.vy*dt;p.rot=Math.max(-.55,Math.min(1,p.vy/700));const gapH=Math.max(125,ice?H*.29-game.score*.78:H*.34-game.score*.62);game.spawnTimer-=dt;if(game.spawnTimer<=0){const topM=Math.max(75,H*.11),bottomM=Math.max(75,H*.12),minG=topM+gapH/2,maxG=H-bottomM-gapH/2,gapY=minG+Math.random()*Math.max(1,maxG-minG),width=Math.max(70,W*.075);const o={x:W+30,width,gapY,gapH,passed:false};game.obstacles.push(o);game.spawnTimer=Math.max(ice?.68:.88,ice?1.25-game.score*.006:1.62-game.score*.005);if(Math.random()<(ice?.7:.55))spawnCoin(o)}for(const o of game.obstacles){o.x-=game.speed*dt;if(!o.passed&&o.x+o.width<p.x-p.r){o.passed=true;game.score++;scoreSound();if(game.score===20){game.runCoins+=10;showMessage("🪙 Level 20! +10 Coins!");coinSound();worldHud.textContent="Eiswelt"}}if(obstacleCollision(p,o)){endGame();return}}game.obstacles=game.obstacles.filter(o=>o.x+o.width>-100);for(const c of game.coins){c.x-=game.speed*dt;if(dist(p.x,p.y,c.x,c.y)<hitRadius(p)+c.r+10&&!c.collected){c.collected=true;game.runCoins++;game.bonusCoinsRun++;showMessage("🪙 +1 Bonus-Coin!");coinSound()}}game.coins=game.coins.filter(c=>c.x>-50&&!c.collected);const hr=hitRadius(p);if(p.y-hr<0||p.y+hr>H){endGame();return}if(game.score>state.best){state.best=game.score;saveState()}updateMissionProgress();updateHUD()}
 function startGame(online=false){if(online&&!currentUser){showMessage("🔐 Für den Online-Modus musst du angemeldet sein.");showScreen("authScreen");return}game.onlineRun=!!online;initAudio();startMusic();hideScreens();canvas.style.display="block";gameHud.style.display="block";pauseOverlay.classList.remove("active");gameOverOverlay.classList.remove("active");game.running=true;game.paused=false;game.over=false;game.score=0;game.runCoins=0;game.jumpCount=0;game.bonusCoinsRun=0;game.speed=165;game.spawnTimer=.9;game.obstacles=[];game.coins=[];game.player={x:W*.24,y:H*.45,vy:0,r:22,hitR:state.selectedSkin==="jeszx"?12:16,rot:0};game.world=worlds.find(w=>w.id===state.selectedWorld)||worlds[0];worldHud.textContent=game.world.name;musicHud.textContent=selectedMusic().name;updateHUD();game.last=performance.now();flap();requestAnimationFrame(gameLoop)}
-async function endGame(){if(game.over)return;game.over=true;game.running=false;state.coins+=game.runCoins;if(game.score>state.best)state.best=game.score;updateMissionProgress();saveState();finalScore.textContent=game.score;earnedCoins.textContent=game.runCoins;bestScore.textContent=state.best;gameHud.style.display="none";pauseOverlay.classList.remove("active");gameOverOverlay.classList.add("active");gameOverText.textContent=game.onlineRun?"🌐 Season-Score wird gespeichert...":currentUser?"Gut geflogen!":"🔐 Melde dich an, damit dein Highscore online gespeichert wird.";gameOverSound();if(currentUser&&getPlayerName()){try{await Promise.race([submitHighscore(game.score),new Promise(r=>setTimeout(()=>r(false),3500))]);if(game.onlineRun)await Promise.race([submitSeasonScore(game.score),new Promise(r=>setTimeout(()=>r(false),3500))]);if(game.onlineRun)gameOverText.textContent="🌐 Season-Score gespeichert.";else gameOverText.textContent="🏆 Highscore online gespeichert."}catch(e){console.error(e)}}}
+async function endGame(){
+  if(game.over)return;
+  game.over=true;
+  game.running=false;
+  state.coins+=game.runCoins;
+  if(game.score>state.best)state.best=game.score;
+  updateMissionProgress();
+  saveState();
+  finalScore.textContent=game.score;
+  earnedCoins.textContent=game.runCoins;
+  bestScore.textContent=state.best;
+  gameHud.style.display="none";
+  pauseOverlay.classList.remove("active");
+  gameOverOverlay.classList.add("active");
+  gameOverText.textContent=game.onlineRun?"🌐 Season-Score wird gespeichert...":currentUser?"Gut geflogen!":"🔐 Melde dich an, damit dein Highscore online gespeichert wird.";
+  gameOverSound();
+
+  if(currentUser&&getPlayerName()){
+    try{
+      const highscoreSaved=await Promise.race([
+        submitHighscore(game.score),
+        new Promise(r=>setTimeout(()=>r(false),3500))
+      ]);
+
+      if(game.onlineRun){
+        const seasonSaved=await Promise.race([
+          submitSeasonScore(game.score),
+          new Promise(r=>setTimeout(()=>r(false),3500))
+        ]);
+
+        if(seasonSaved){
+          gameOverText.textContent="🌐 Season-Score gespeichert.";
+        }else{
+          gameOverText.textContent="⚠️ Season-Score konnte noch nicht gespeichert werden – erneuter Versuch läuft.";
+          setTimeout(async()=>{
+            const retry=await submitSeasonScore(game.score);
+            if(retry){
+              await startSeasonLeaderboardListener();
+              if(seasonMode==="season")switchLeaderboardMode("season");
+              gameOverText.textContent="✅ Season-Score nachträglich gespeichert.";
+            }
+          },1000);
+        }
+      }else if(highscoreSaved){
+        gameOverText.textContent="🏆 Highscore online gespeichert.";
+      }
+    }catch(e){
+      console.error(e);
+      if(game.onlineRun)gameOverText.textContent="⚠️ Online-Speicherung wird erneut versucht.";
+    }
+  }
+}
 function gameLoop(ts){if(!game.running){draw();return}const dt=Math.min(.033,(ts-game.last)/1000);game.last=ts;if(!game.paused)updateGame(dt);draw();if(game.running)requestAnimationFrame(gameLoop)}function togglePause(){if(!game.running||game.over)return;game.paused=!game.paused;pauseOverlay.classList.toggle("active",game.paused);if(!game.paused)game.last=performance.now()}function returnLobby(){game.running=false;game.paused=false;game.over=false;canvas.style.display="none";gameHud.style.display="none";document.querySelectorAll(".overlay").forEach(x=>x.classList.remove("active"));showScreen("lobby");updateLobby()}
 
 function drawSkin(c,type,x,y,r){c.save();c.translate(x,y);if(type==="bird")drawBird(c,r);else if(type==="dino")drawDino(c,r);else if(type==="pen")drawPen(c,r);else if(type==="carrot")drawCarrot(c,r);else if(type==="apple")drawApple(c,r);else drawDonkey(c,r);c.restore()}
@@ -350,20 +485,27 @@ onlineModeBtn.onclick=async()=>{
 
   await ensureSeason();
 
-  // Spieler sofort in der aktuellen Season-Tabelle anlegen.
-  const ok=await ensureSeasonScoreEntry();
-  if(!ok){
-    showMessage("🔴 Season konnte nicht gespeichert werden.");
-    return;
-  }
+  // Nicht mehr vom Start abhalten, falls Firebase kurzfristig langsam ist.
+  const ok=await Promise.race([
+    ensureSeasonScoreEntry(),
+    new Promise(resolve=>setTimeout(()=>resolve(false),4000))
+  ]);
 
-  // Season-Leaderboard direkt mit dem eigenen Namen + Score aktualisieren.
   await startSeasonLeaderboardListener();
-  if(seasonMode==="season"){
-    switchLeaderboardMode("season");
-  }
-
+  switchLeaderboardMode("season");
   startGame(true);
+
+  if(!ok){
+    showMessage("⚠️ Online gestartet – Season-Speicherung wird erneut versucht.");
+    setTimeout(async()=>{
+      const retry=await ensureSeasonScoreEntry();
+      if(retry){
+        await startSeasonLeaderboardListener();
+        if(seasonMode==="season")switchLeaderboardMode("season");
+        showMessage("✅ Season-Daten gespeichert.");
+      }
+    },1000);
+  }
 };
 leaderboardBtn.onclick=async()=>{loadPlayerName();showScreen("leaderboard");await ensureSeason();await startSeasonLeaderboardListener();switchLeaderboardMode("season")};
 leaderboardBack.onclick=()=>showScreen("lobby");saveNameBtn.onclick=savePlayerName;
