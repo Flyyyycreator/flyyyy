@@ -55,6 +55,7 @@
 .jackpotTitle{font-size:clamp(48px,9vw,92px);font-weight:1000;letter-spacing:.08em;color:#ffd447;text-shadow:0 0 25px rgba(255,212,71,.55)}
 .jackpotText{font-size:clamp(24px,5vw,42px);font-weight:1000;margin:10px 0}
 .jackpotSub{color:var(--muted);margin-bottom:18px}
+.prizeIcon{font-size:72px}.prizeTitle{font-size:clamp(40px,8vw,82px);font-weight:1000;letter-spacing:.05em;color:#ffd447;text-shadow:0 0 25px rgba(255,212,71,.55)}.prizeText{font-size:clamp(24px,5vw,44px);font-weight:1000;margin:10px 0}.prizeSub{color:var(--muted);font-size:16px}
 @keyframes jackpotPulse{from{transform:scale(1)}to{transform:scale(1.02)}}
 @media(max-width:760px){.luckyWrap{grid-template-columns:1fr}.wheelStage{width:min(360px,82vw)}}
 </style>
@@ -81,7 +82,7 @@
 <div id="gameOverOverlay" class="overlay"><div class="dialog"><h2>GAME OVER</h2><p id="gameOverText">Gut geflogen!</p><div class="stats"><div class="stat"><div class="tiny">Punkte</div><strong id="finalScore">0</strong></div><div class="stat"><div class="tiny">Coins</div><strong id="earnedCoins">0</strong></div><div class="stat"><div class="tiny">Rekord</div><strong id="bestScore">0</strong></div></div><div class="button-grid"><button id="retryBtn" class="btn green">🔄 NOCHMAL</button><button id="returnLobbyBtn" class="btn blue">🏠 ZUR LOBBY</button></div></div></div>
 
 <div id="luckyConfirmOverlay" class="overlay"><div class="dialog"><h2>🎡 LUCKY RAD</h2><p>Ein Dreh kostet <strong>🪙 200 Coins</strong>.</p><p class="tiny">Nach dem Kauf öffnet sich sofort das Lucky Rad.</p><div class="button-grid"><button id="confirmLuckyBuyBtn" class="btn green">🪙 KAUFEN & ÖFFNEN</button><button id="cancelLuckyBuyBtn" class="btn dark">ABBRECHEN</button></div></div></div>
-<div id="jackpotOverlay" class="jackpotOverlay"><div class="jackpotBox"><div class="jackpotIcon">🫏👑</div><div class="jackpotTitle">HAUPTPREIS!</div><div class="jackpotText">Jeszx</div><div class="jackpotSub">Du hast den seltenen Icon-Skin gewonnen!</div><button id="jackpotCloseBtn" class="btn">🎉 WEITER</button></div></div>
+<div id="jackpotOverlay" class="jackpotOverlay"><div class="jackpotBox"><div id="prizePopupIcon" class="prizeIcon">🎁</div><div id="prizePopupTitle" class="prizeTitle">DEIN PREIS!</div><div id="prizePopupText" class="prizeText">Preis</div><div id="prizePopupSub" class="prizeSub">Der Preis wurde deinem Konto gutgeschrieben.</div></div></div>
 </div>
 
 <script type="module">
@@ -138,7 +139,10 @@ const luckyConfirmOverlay = document.getElementById("luckyConfirmOverlay");
 const confirmLuckyBuyBtn = document.getElementById("confirmLuckyBuyBtn");
 const cancelLuckyBuyBtn = document.getElementById("cancelLuckyBuyBtn");
 const jackpotOverlay = document.getElementById("jackpotOverlay");
-const jackpotCloseBtn = document.getElementById("jackpotCloseBtn");
+const prizePopupIcon = document.getElementById("prizePopupIcon");
+const prizePopupTitle = document.getElementById("prizePopupTitle");
+const prizePopupText = document.getElementById("prizePopupText");
+const prizePopupSub = document.getElementById("prizePopupSub");
 const gameHud = document.getElementById("gameHud");
 const scoreHud = document.getElementById("scoreHud");
 const coinsHud = document.getElementById("coinsHud");
@@ -171,7 +175,7 @@ function setOnlineUI(count,connected=true){const n=Math.max(0,Number(count)||0);
 function safeName(name){return String(name||"").replace(/[<>]/g,"").replace(/\s+/g," ").trim().slice(0,20)}
 function defaultNameForUser(u){const base=(u?.email||"Spieler").split("@")[0].replace(/[^a-zA-Z0-9äöüÄÖÜß._-]/g,"").slice(0,20);return safeName(base||"Spieler")}
 async function setupFirebase(){try{const {app,a,d}=await loadFirebase();firebaseApp=app.getApps().length?app.getApp():app.initializeApp(firebaseConfig);auth=a.getAuth(firebaseApp);db=d.getDatabase(firebaseApp);
-a.onAuthStateChanged(auth,async u=>{currentUser=u||null;updateAccountUI();if(currentUser){if(!getPlayerName()){storage.setItem("FLYYYY_PLAYER_NAME",defaultNameForUser(currentUser))}await loadPlayerStateCloud();await applyUpdate19ResetForCurrentUser();await grantFlyOwnerCoins();await ensurePlayerEntry(getPlayerName());await setPresenceOnline();await savePlayerStateCloud();}else{await setPresenceOffline()}startLeaderboardListener();startOnlineListener()});}catch(e){console.error(e);setLeaderboardStatus("🔴 Firebase konnte nicht geladen werden. Gastmodus funktioniert trotzdem.");setOnlineUI(0,false)}}
+a.onAuthStateChanged(auth,async u=>{currentUser=u||null;updateAccountUI();if(currentUser){if(!getPlayerName()){storage.setItem("FLYYYY_PLAYER_NAME",defaultNameForUser(currentUser))}await loadPlayerStateCloud();await grantFlyOwnerCoins();await ensurePlayerEntry(getPlayerName());await setPresenceOnline();await savePlayerStateCloud();}else{await setPresenceOffline()}startLeaderboardListener();startOnlineListener()});}catch(e){console.error(e);setLeaderboardStatus("🔴 Firebase konnte nicht geladen werden. Gastmodus funktioniert trotzdem.");setOnlineUI(0,false)}}
 function updateAccountUI(){const s=document.getElementById("accountStatus"),b=document.getElementById("accountBtn"),l=document.getElementById("logoutBtn");if(currentUser){s.textContent="✅ "+(currentUser.email||"Konto");b.style.display="none";l.style.display=""}else{s.textContent="👤 Gast";b.style.display="";l.style.display="none"}}
 function authText(e){const m={"auth/email-already-in-use":"Diese E-Mail ist bereits registriert.","auth/invalid-email":"Die E-Mail ist ungültig.","auth/weak-password":"Das Passwort ist zu schwach.","auth/invalid-credential":"E-Mail oder Passwort ist falsch.","auth/network-request-failed":"Keine Internetverbindung."};return m[e?.code]||"Anmeldung fehlgeschlagen."}
 async function registerAccount(){try{const email=authEmail.value.trim(),pw=authPassword.value;if(!email||!pw){authStatus.textContent="Bitte E-Mail und Passwort eingeben.";return}if(pw.length<6){authStatus.textContent="Passwort: mindestens 6 Zeichen.";return}const {a}=await loadFirebase();await a.createUserWithEmailAndPassword(auth,email,pw);storage.setItem("FLYYYY_PLAYER_NAME",defaultNameForUser(auth.currentUser));showMessage("✅ Konto erstellt!");showScreen("lobby")}catch(e){authStatus.textContent=authText(e)}}
@@ -256,34 +260,9 @@ function scheduleCloudSave(){
   clearTimeout(cloudSaveTimer);
   cloudSaveTimer=setTimeout(()=>savePlayerStateCloud(),700);
 }
-async function applyUpdate19ResetForCurrentUser(){
-  if(!currentUser||!db||state.update19ResetDone)return;
-  try{
-    const {d}=await loadFirebase();
-    const r=d.ref(db,"leaderboard/"+currentUser.uid);
-    const snap=await d.get(r);
-    const old=snap.exists()?(snap.val()||{}):{};
-    const jesse=isJesseAccount(currentUser.uid);
-    const oldScore=Number(old.score||state.best||0);
-    const oldWins=Number(old.wins||state.wins||0);
-    if(jesse){
-      state=defaultState();
-      state.coins=500;
-      state.best=oldScore;
-      state.wins=oldWins;
-    }else{
-      state=defaultState();
-      state.coins=0;
-      state.best=0;
-      state.wins=0;
-    }
-    state.update19ResetDone=true;
-    await d.set(r,{name:safeName(old.name||getPlayerName()||defaultNameForUser(currentUser)),score:jesse?oldScore:0,wins:jesse?oldWins:0,update19ResetDone:true,updatedAt:d.serverTimestamp()});
-    saveStateLocalOnly();
-    await savePlayerStateCloud();
-    updateLobby(); renderShop(); renderInventory(); ensureActiveMissions(); renderMissions();
-    showMessage(jesse?"👑 Jesse: 500 Coins behalten. Wins/Score übernommen.":"🔄 Update 1.9: Dein Spielstand wurde auf 0 zurückgesetzt.");
-  }catch(e){console.error("Update 1.9 reset",e)}
+function applyUpdate19ResetForCurrentUser(){
+  // Update 1.9: Bestehende Spielstände werden nicht zurückgesetzt.
+  // Alle Coins, Skins, Welten, Sounds, Musik, Rekorde, Siege und Missionen bleiben erhalten.
 }
 
 /* ===== LOCAL SAVE ===== */
@@ -292,15 +271,10 @@ const SAVEKEYS=["FLYYYY_UPDATE14_SAVE","FLYYYY_UPDATE13_SAVE","FLYYYY_UPDATE12_S
 function defaultState(){return JSON.parse(JSON.stringify(DEFAULT))}
 function loadState(){let raw=null;for(const k of SAVEKEYS){const v=storage.getItem(k);if(v){raw=v;break}}if(!raw)return defaultState();try{const d=JSON.parse(raw),b=defaultState();return {...b,...d,wins:Number(d.wins||0),ownedWorlds:Array.isArray(d.ownedWorlds)?d.ownedWorlds:b.ownedWorlds,ownedSkins:Array.isArray(d.ownedSkins)?d.ownedSkins:b.ownedSkins,ownedSounds:Array.isArray(d.ownedSounds)?d.ownedSounds:b.ownedSounds,ownedMusic:Array.isArray(d.ownedMusic)?d.ownedMusic:b.ownedMusic,missionProgress:{...b.missionProgress,...(d.missionProgress||{})},missionClaimed:{...b.missionClaimed,...(d.missionClaimed||{})},activeMissions:Array.isArray(d.activeMissions)?d.activeMissions:null,missionCycle:Number(d.missionCycle||1),update19ResetDone:!!d.update19ResetDone}}catch{return defaultState()}}
 let state=loadState();
-const LOCAL_UPDATE19_RESET_KEY="FLYYYY_UPDATE19_LOCAL_RESET";
-if(storage.getItem(LOCAL_UPDATE19_RESET_KEY)!=="done"){
-  state=defaultState();
-  storage.setItem(LOCAL_UPDATE19_RESET_KEY,"done");
-}
 function saveStateLocalOnly(){const s=JSON.stringify(state);SAVEKEYS.forEach(k=>storage.setItem(k,s))}function saveState(){saveStateLocalOnly();scheduleCloudSave()}
 
 /* ===== GAME DATA ===== */
-const worlds=[{id:"giza",name:"Gizeh",price:0,sky1:"#f8c875",sky2:"#69c6d8",ground:"#d48b3b",obstacle:"#8f5a33"},{id:"mountains",name:"Berge",price:50,sky1:"#8ad8ff",sky2:"#5469c8",ground:"#527951",obstacle:"#365c4b"},{id:"ocean",name:"Unterwasser",price:100,sky1:"#29d6e5",sky2:"#174b9e",ground:"#157c86",obstacle:"#17566e"},{id:"jungle",name:"Dschungel",price:150,sky1:"#8ae17c",sky2:"#1f6e53",ground:"#244f2a",obstacle:"#2f7339"},{id:"space",name:"Weltraum",price:200,sky1:"#22103f",sky2:"#090d27",ground:"#20183e",obstacle:"#3a2b61"},{id:"ice",name:"Eiswelt",price:250,sky1:"#c9f6ff",sky2:"#5da9d4",ground:"#b3e5ff",obstacle:"#72b1d2"}];
+const worlds=[{id:"giza",name:"Gizeh",price:0,sky1:"#f8c875",sky2:"#69c6d8",ground:"#d48b3b",obstacle:"#8f5a33"},{id:"mountains",name:"Berge",price:50,sky1:"#8ad8ff",sky2:"#5469c8",ground:"#527951",obstacle:"#365c4b"},{id:"ocean",name:"Unterwasser",price:100,sky1:"#29d6e5",sky2:"#174b9e",ground:"#157c86",obstacle:"#17566e"},{id:"jungle",name:"Dschungel",price:150,sky1:"#8ae17c",sky2:"#1f6e53",ground:"#244f2a",obstacle:"#2f7339"},{id:"space",name:"Weltraum",price:200,sky1:"#22103f",sky2:"#090d27",ground:"#20183e",obstacle:"#3a2b61"},{id:"ice",name:"Eiswelt",price:250,sky1:"#c9f6ff",sky2:"#5da9d4",ground:"#b3e5ff",obstacle:"#72b1d2"}, {id:"lava",name:"Lavawelt",price:300,sky1:"#ff9a55",sky2:"#8f1f2b",ground:"#5f171d",obstacle:"#3d1118"}];
 const skins=[{id:"bird",name:"Vogel",price:0,type:"bird"},{id:"dino",name:"Fliegender Dino",price:50,type:"dino"},{id:"pen",name:"Stift",price:100,type:"pen"},{id:"carrot",name:"Karotte",price:150,type:"carrot"},{id:"apple",name:"Apfel",price:200,type:"apple"},{id:"jeszx",name:"Jeszx",price:1000,type:"jeszx",icon:"🫏"}];
 const sounds=[{id:"classic",name:"Classic",price:0,icon:"🔔",type:"classic"},{id:"arcade",name:"Arcade",price:50,icon:"👾",type:"arcade"},{id:"laser",name:"Laser",price:100,icon:"⚡",type:"laser"},{id:"bubble",name:"Bubble",price:150,icon:"🫧",type:"bubble"},{id:"power",name:"Power",price:200,icon:"🔥",type:"power"}];
 const musicTracks=[{id:"classicMusic",name:"Classic",price:0,icon:"🎵",melody:[261.63,329.63,392,523.25,392,329.63,293.66,349.23,440,523.25,440,349.23,392,329.63,261.63,293.66],bass:[130.81,130.81,164.81,164.81,146.83,146.83,174.61,174.61],tempo:380},{id:"arcadeMusic",name:"Arcade",price:50,icon:"👾",melody:[392,392,523.25,659.25,523.25,392,329.63,392,440,523.25,659.25,783.99,659.25,523.25,440,392],bass:[196,196,261.63,261.63,220,220,174.61,196],tempo:300},{id:"speedMusic",name:"Speed",price:100,icon:"⚡",melody:[329.63,392,493.88,659.25,493.88,392,329.63,493.88,392,493.88,587.33,783.99,587.33,493.88,392,329.63],bass:[164.81,196,164.81,196,146.83,174.61,164.61,196],tempo:250},{id:"spaceMusic",name:"Space",price:150,icon:"🚀",melody:[220,261.63,329.63,392,493.88,392,329.63,261.63,246.94,293.66,369.99,440,554.37,440,369.99,293.66],bass:[110,110,130.81,130.81,146.83,146.83,123.47,123.47],tempo:420},{id:"chillMusic",name:"Chill",price:200,icon:"🌙",melody:[261.63,329.63,392,329.63,293.66,349.23,440,349.23,261.63,329.63,392,493.88,440,392,329.63,293.66],bass:[130.81,130.81,146.83,146.83,110,110,123.47,123.47],tempo:500},{id:"finalMusic",name:"Final Boss",price:250,icon:"🔥",melody:[196,246.94,293.66,392,293.66,246.94,220,329.63,261.63,329.63,392,523.25,392,329.63,293.66,246.94],bass:[98,98,123.47,123.47,110,110,146.83,146.83],tempo:280}];
@@ -374,7 +348,7 @@ function drawCarrot(c,r){c.fillStyle="#62d976";c.beginPath();c.ellipse(-r*.2,-r*
 function drawApple(c,r){c.fillStyle="#f14848";c.beginPath();c.arc(-r*.3,0,r*.65,0,Math.PI*2);c.arc(r*.3,0,r*.65,0,Math.PI*2);c.fill();c.strokeStyle="#69472b";c.lineWidth=4;c.beginPath();c.moveTo(0,-r*.45);c.lineTo(r*.1,-r*.95);c.stroke();c.fillStyle="#63d878";c.beginPath();c.ellipse(r*.35,-r*.75,r*.35,r*.16,-.4,0,Math.PI*2);c.fill()}
 function drawDonkey(c,r){c.fillStyle="#9b9b9b";c.beginPath();c.ellipse(0,r*.05,r*1.05,r*.68,0,0,Math.PI*2);c.fill();c.fillStyle="#a8a8a8";c.beginPath();c.ellipse(r*.45,-r*.55,r*.65,r*.55,0,0,Math.PI*2);c.fill();c.fillStyle="#888";c.beginPath();c.moveTo(r*.05,-r*.95);c.lineTo(-r*.05,-r*1.8);c.quadraticCurveTo(r*.18,-r*2,r*.4,-r*1.05);c.closePath();c.fill();c.beginPath();c.moveTo(r*.55,-r*.95);c.lineTo(r*.78,-r*1.8);c.quadraticCurveTo(r*1.02,-r*1.95,r*1.02,-r*.82);c.closePath();c.fill();c.fillStyle="#d8a0a0";c.beginPath();c.moveTo(r*.12,-r*1.05);c.lineTo(r*.12,-r*1.58);c.lineTo(r*.3,-r*1.1);c.closePath();c.fill();c.beginPath();c.moveTo(r*.7,-r*1.08);c.lineTo(r*.79,-r*1.58);c.lineTo(r*.91,-r*.98);c.closePath();c.fill();c.fillStyle="#c0c0c0";c.beginPath();c.ellipse(r*.92,-r*.43,r*.4,r*.28,0,0,Math.PI*2);c.fill();c.fillStyle="#555";c.beginPath();c.arc(r*.82,-r*.48,r*.06,0,Math.PI*2);c.arc(r*1.03,-r*.48,r*.06,0,Math.PI*2);c.fill();c.fillStyle="#fff";c.beginPath();c.arc(r*.64,-r*.72,r*.17,0,Math.PI*2);c.fill();c.fillStyle="#111";c.beginPath();c.arc(r*.68,-r*.72,r*.07,0,Math.PI*2);c.fill();c.fillStyle="#6c6c6c";c.fillRect(-r*.55,r*.45,r*.2,r*.85);c.fillRect(-r*.05,r*.5,r*.2,r*.8);c.fillRect(r*.45,r*.42,r*.2,r*.85);c.fillStyle="#444";c.fillRect(-r*.58,r*1.23,r*.27,r*.14);c.fillRect(-r*.08,r*1.2,r*.27,r*.14);c.fillRect(r*.42,r*1.2,r*.27,r*.14);c.strokeStyle="#666";c.lineWidth=r*.12;c.beginPath();c.moveTo(-r*.95,0);c.quadraticCurveTo(-r*1.4,r*.3,-r*1.25,r*.7);c.stroke();c.fillStyle="#555";c.beginPath();c.arc(-r*1.25,r*.72,r*.18,0,Math.PI*2);c.fill();c.fillStyle="#777";c.beginPath();c.ellipse(-r*.3,r*.05,r*.6,r*.2,-.35,0,Math.PI*2);c.fill()}
 function drawWorldPreview(c,w,width,height){const g=c.createLinearGradient(0,0,0,height);g.addColorStop(0,w.sky1);g.addColorStop(1,w.sky2);c.fillStyle=g;c.fillRect(0,0,width,height);c.fillStyle=w.ground;c.fillRect(0,height*.78,width,height*.22);if(w.id==="giza"){c.fillStyle="#d6a05c";c.beginPath();c.moveTo(width*.48,height*.2);c.lineTo(width*.22,height*.78);c.lineTo(width*.73,height*.78);c.closePath();c.fill()}if(w.id==="mountains"){c.fillStyle=w.obstacle;c.beginPath();c.moveTo(0,height);c.lineTo(width*.22,height*.3);c.lineTo(width*.44,height);c.lineTo(width*.66,height*.25);c.lineTo(width,height);c.closePath();c.fill()}if(w.id==="space"){c.fillStyle="#fff";for(let i=0;i<35;i++)c.fillRect((i*37)%width,(i*19)%height,2,2)}}
-function drawBackground(){const w=game.world||worlds[0],g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,w.sky1);g.addColorStop(1,w.sky2);ctx.fillStyle=g;ctx.fillRect(0,0,W,H);if(w.id==="giza"){ctx.fillStyle="#d9a35a";ctx.fillRect(0,H*.69,W,H*.31);drawPyramid(W*.57,H*.69,200,130)}if(w.id==="mountains"){ctx.fillStyle="#5b70aa";ctx.beginPath();ctx.moveTo(0,H*.75);ctx.lineTo(W*.2,H*.42);ctx.lineTo(W*.4,H*.7);ctx.lineTo(W*.58,H*.3);ctx.lineTo(W*.8,H*.68);ctx.lineTo(W,H*.4);ctx.lineTo(W,H);ctx.lineTo(0,H);ctx.closePath();ctx.fill();ctx.fillStyle="#527951";ctx.fillRect(0,H*.8,W,H*.2)}if(w.id==="ocean"){ctx.strokeStyle="rgba(255,255,255,.14)";for(let y=80;y<H*.85;y+=80){ctx.beginPath();for(let x=0;x<W;x+=45){ctx.moveTo(x,y);ctx.quadraticCurveTo(x+12,y-10,x+24,y)}ctx.stroke()}ctx.fillStyle="#157c86";ctx.fillRect(0,H*.88,W,H*.12)}if(w.id==="jungle"){ctx.fillStyle="#2b753d";ctx.fillRect(0,H*.78,W,H*.22);for(let i=0;i<18;i++){const x=(i*97)%W,h=100+(i%4)*35;ctx.fillStyle=i%2?"#1c5a31":"#348746";ctx.fillRect(x,H*.78-h,20,h);ctx.beginPath();ctx.arc(x+10,H*.78-h,38,Math.PI,Math.PI*2);ctx.fill()}}if(w.id==="space"){ctx.fillStyle="#fff";for(let i=0;i<100;i++){ctx.globalAlpha=.25+(i%5)*.1;ctx.fillRect((i*83)%W,(i*47)%H,2,2)}ctx.globalAlpha=1}if(w.id==="ice"){ctx.fillStyle="rgba(255,255,255,.45)";for(let i=0;i<8;i++){const x=i*190;ctx.beginPath();ctx.moveTo(x,H*.82);ctx.lineTo(x+80,H*.25);ctx.lineTo(x+150,H*.82);ctx.closePath();ctx.fill()}ctx.fillStyle="#a7deef";ctx.fillRect(0,H*.82,W,H*.18)}}function drawPyramid(cx,base,w,h){ctx.fillStyle="#d5a05a";ctx.beginPath();ctx.moveTo(cx,base-h);ctx.lineTo(cx-w/2,base);ctx.lineTo(cx+w/2,base);ctx.closePath();ctx.fill()}
+function drawBackground(){const w=game.world||worlds[0],g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,w.sky1);g.addColorStop(1,w.sky2);ctx.fillStyle=g;ctx.fillRect(0,0,W,H);if(w.id==="giza"){ctx.fillStyle="#d9a35a";ctx.fillRect(0,H*.69,W,H*.31);drawPyramid(W*.57,H*.69,200,130)}if(w.id==="mountains"){ctx.fillStyle="#5b70aa";ctx.beginPath();ctx.moveTo(0,H*.75);ctx.lineTo(W*.2,H*.42);ctx.lineTo(W*.4,H*.7);ctx.lineTo(W*.58,H*.3);ctx.lineTo(W*.8,H*.68);ctx.lineTo(W,H*.4);ctx.lineTo(W,H);ctx.lineTo(0,H);ctx.closePath();ctx.fill();ctx.fillStyle="#527951";ctx.fillRect(0,H*.8,W,H*.2)}if(w.id==="ocean"){ctx.strokeStyle="rgba(255,255,255,.14)";for(let y=80;y<H*.85;y+=80){ctx.beginPath();for(let x=0;x<W;x+=45){ctx.moveTo(x,y);ctx.quadraticCurveTo(x+12,y-10,x+24,y)}ctx.stroke()}ctx.fillStyle="#157c86";ctx.fillRect(0,H*.88,W,H*.12)}if(w.id==="jungle"){ctx.fillStyle="#2b753d";ctx.fillRect(0,H*.78,W,H*.22);for(let i=0;i<18;i++){const x=(i*97)%W,h=100+(i%4)*35;ctx.fillStyle=i%2?"#1c5a31":"#348746";ctx.fillRect(x,H*.78-h,20,h);ctx.beginPath();ctx.arc(x+10,H*.78-h,38,Math.PI,Math.PI*2);ctx.fill()}}if(w.id==="space"){ctx.fillStyle="#fff";for(let i=0;i<100;i++){ctx.globalAlpha=.25+(i%5)*.1;ctx.fillRect((i*83)%W,(i*47)%H,2,2)}ctx.globalAlpha=1}if(w.id==="ice"){ctx.fillStyle="rgba(255,255,255,.45)";for(let i=0;i<8;i++){const x=i*190;ctx.beginPath();ctx.moveTo(x,H*.82);ctx.lineTo(x+80,H*.25);ctx.lineTo(x+150,H*.82);ctx.closePath();ctx.fill()}ctx.fillStyle="#a7deef";ctx.fillRect(0,H*.82,W,H*.18)}if(w.id==="lava"){ctx.fillStyle="#5f171d";ctx.fillRect(0,H*.82,W,H*.18);ctx.fillStyle="#ff7a18";for(let i=0;i<10;i++){const x=(i*131)%W;const y=H*.84+(i%3)*16;ctx.beginPath();ctx.arc(x,y,18+(i%3)*5,0,Math.PI*2);ctx.fill()}ctx.fillStyle="#3d1118";for(let i=0;i<7;i++){const x=(i*173)%W;const h=90+(i%3)*35;ctx.fillRect(x,H*.82-h,18,h)}}}function drawPyramid(cx,base,w,h){ctx.fillStyle="#d5a05a";ctx.beginPath();ctx.moveTo(cx,base-h);ctx.lineTo(cx-w/2,base);ctx.lineTo(cx+w/2,base);ctx.closePath();ctx.fill()}
 function drawSpikeRow(x,width,yBase,direction){
   ctx.beginPath();
   const step=SPIKE_STEP;
@@ -456,34 +430,43 @@ function jackpotSound(){
   notes.forEach((n,i)=>setTimeout(()=>tone(n,.22,.07,"square"),i*95));
   setTimeout(()=>tone(2093,.5,.08,"triangle"),620);
 }
+function showPrizePopup({icon="🎁",title="DEIN PREIS!",text="Preis",sub="Der Preis wurde deinem Konto gutgeschrieben.",jackpot=false}){
+  prizePopupIcon.textContent=icon;
+  prizePopupTitle.textContent=title;
+  prizePopupText.textContent=text;
+  prizePopupSub.textContent=sub;
+  jackpotOverlay.classList.add("active");
+  if(jackpot)jackpotSound();
+  clearTimeout(showPrizePopup.timer);
+  showPrizePopup.timer=setTimeout(()=>jackpotOverlay.classList.remove("active"),5000);
+}
 function awardLucky(result){
+  let popup={icon:"🎁",title:"DEIN PREIS!",text:"Preis",sub:"Der Preis wurde deinem Konto gutgeschrieben."};
   if(result.kind==="jeszx"){
     if(!state.ownedSkins.includes("jeszx"))state.ownedSkins.push("jeszx");
     state.selectedSkin="jeszx";
     state.luckyLastResult="👑 HAUPTPREIS! Jeszx";
-    saveState();
-    renderInventory();
-    jackpotSound();
-    jackpotOverlay.classList.add("active");
-    return state.luckyLastResult;
-  }
-  if(result.kind==="skin"){
-    if(state.ownedSkins.includes(result.item.id)){state.coins+=150;state.luckyLastResult="🪙 Doppelter Skin → +150 Coins";}
-    else{state.ownedSkins.push(result.item.id);state.luckyLastResult=`🪽 Gewonnen: ${result.item.name}`;}
+    popup={icon:"🫏👑",title:"HAUPTPREIS!",text:"Jeszx",sub:"Der Icon-Skin wurde deinem Konto gutgeschrieben.",jackpot:true};
+  }else if(result.kind==="skin"){
+    if(state.ownedSkins.includes(result.item.id)){state.coins+=150;state.luckyLastResult="🪙 Doppelter Skin → +150 Coins";popup={icon:"🪙",title:"DEIN PREIS!",text:"+150 Coins",sub:"Der Skin war schon vorhanden, deshalb bekommst du Coins als Ersatz."};}
+    else{state.ownedSkins.push(result.item.id);state.luckyLastResult=`🪽 Gewonnen: ${result.item.name}`;popup={icon:"🪽",title:"DEIN PREIS!",text:result.item.name,sub:"Der Skin wurde deinem Konto gutgeschrieben."};}
   }else if(result.kind==="world"){
-    if(state.ownedWorlds.includes(result.item.id)){state.coins+=150;state.luckyLastResult="🪙 Doppelte Welt → +150 Coins";}
-    else{state.ownedWorlds.push(result.item.id);state.luckyLastResult=`🌍 Gewonnen: ${result.item.name}`;}
+    if(state.ownedWorlds.includes(result.item.id)){state.coins+=150;state.luckyLastResult="🪙 Doppelte Welt → +150 Coins";popup={icon:"🪙",title:"DEIN PREIS!",text:"+150 Coins",sub:"Die Welt war schon vorhanden, deshalb bekommst du Coins als Ersatz."};}
+    else{state.ownedWorlds.push(result.item.id);state.luckyLastResult=`🌍 Gewonnen: ${result.item.name}`;popup={icon:"🌍",title:"DEIN PREIS!",text:result.item.name,sub:"Die Welt wurde deinem Konto gutgeschrieben."};}
   }else if(result.kind==="sound"){
-    if(state.ownedSounds.includes(result.item.id)){state.coins+=100;state.luckyLastResult="🪙 Doppelsound → +100 Coins";}
-    else{state.ownedSounds.push(result.item.id);state.luckyLastResult=`🔊 Gewonnen: ${result.item.name}`;}
+    if(state.ownedSounds.includes(result.item.id)){state.coins+=100;state.luckyLastResult="🪙 Doppelsound → +100 Coins";popup={icon:"🪙",title:"DEIN PREIS!",text:"+100 Coins",sub:"Der Sound war schon vorhanden, deshalb bekommst du Coins als Ersatz."};}
+    else{state.ownedSounds.push(result.item.id);state.luckyLastResult=`🔊 Gewonnen: ${result.item.name}`;popup={icon:"🔊",title:"DEIN PREIS!",text:result.item.name,sub:"Der Sound wurde deinem Konto gutgeschrieben."};}
   }else if(result.kind==="music"){
-    if(state.ownedMusic.includes(result.item.id)){state.coins+=100;state.luckyLastResult="🪙 Doppelte Musik → +100 Coins";}
-    else{state.ownedMusic.push(result.item.id);state.luckyLastResult=`🎵 Gewonnen: ${result.item.name}`;}
+    if(state.ownedMusic.includes(result.item.id)){state.coins+=100;state.luckyLastResult="🪙 Doppelte Musik → +100 Coins";popup={icon:"🪙",title:"DEIN PREIS!",text:"+100 Coins",sub:"Die Musik war schon vorhanden, deshalb bekommst du Coins als Ersatz."};}
+    else{state.ownedMusic.push(result.item.id);state.luckyLastResult=`🎵 Gewonnen: ${result.item.name}`;popup={icon:"🎵",title:"DEIN PREIS!",text:result.item.name,sub:"Die Musik wurde deinem Konto gutgeschrieben."};}
   }else{
     state.coins+=Number(result.amount||0);
     state.luckyLastResult=`🪙 Gewonnen: +${result.amount} Coins`;
+    popup={icon:"🪙",title:"DEIN PREIS!",text:`+${result.amount} Coins`,sub:"Die Coins wurden deinem Konto gutgeschrieben."};
   }
   saveState();
+  showPrizePopup(popup);
+  renderInventory();
   return state.luckyLastResult;
 }
 function spinLuckyRad(){
@@ -532,7 +515,7 @@ startBtn.onclick=startGame;accountBtn.onclick=()=>showScreen("authScreen");authB
 onlineBadge.onclick=()=>{loadPlayerName();showScreen("leaderboard");setTimeout(()=>document.getElementById("leaderboardList")?.scrollIntoView({behavior:"smooth",block:"start"}),50)};leaderboardBtn.onclick=()=>{loadPlayerName();showScreen("leaderboard")};leaderboardBack.onclick=()=>showScreen("lobby");saveNameBtn.onclick=savePlayerName;
 shopBtn.onclick=()=>{renderShop();showScreen("shop")};shopBack.onclick=()=>showScreen("lobby");inventoryBtn.onclick=()=>{renderInventory();showScreen("inventory")};inventoryBack.onclick=()=>showScreen("lobby");missionsBtn.onclick=()=>{renderMissions();showScreen("missions")};missionsBack.onclick=()=>showScreen("lobby");
 musicToggleBtn.onclick=()=>{state.musicEnabled=!state.musicEnabled;saveState();if(state.musicEnabled)startMusic();else stopMusic();updateLobby()};
-confirmLuckyBuyBtn.onclick=confirmLuckyBuy;cancelLuckyBuyBtn.onclick=cancelLuckyBuy;jackpotCloseBtn.onclick=()=>jackpotOverlay.classList.remove("active");pauseBtn.onclick=togglePause;resumeBtn.onclick=togglePause;pauseLobbyBtn.onclick=returnLobby;retryBtn.onclick=startGame;returnLobbyBtn.onclick=returnLobby;
+confirmLuckyBuyBtn.onclick=confirmLuckyBuy;cancelLuckyBuyBtn.onclick=cancelLuckyBuy;pauseBtn.onclick=togglePause;resumeBtn.onclick=togglePause;pauseLobbyBtn.onclick=returnLobby;retryBtn.onclick=startGame;returnLobbyBtn.onclick=returnLobby;
 canvas.addEventListener("pointerdown",e=>{e.preventDefault();flap()});addEventListener("keydown",e=>{if(e.code==="Space"||e.code==="ArrowUp"){e.preventDefault();flap()}if(e.code==="Escape"||e.code==="KeyP")togglePause()});
 
 addEventListener("beforeunload",()=>{if(currentUser&&db){try{setPresenceOffline()}catch(e){}}});
