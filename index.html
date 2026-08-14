@@ -197,7 +197,9 @@ function setOnlineUI(count,connected=true){const n=Math.max(0,Number(count)||0);
 function safeName(name){return String(name||"").replace(/[<>]/g,"").replace(/\s+/g," ").trim().slice(0,20)}
 function defaultNameForUser(u){const base=(u?.email||"Spieler").split("@")[0].replace(/[^a-zA-Z0-9äöüÄÖÜß._-]/g,"").slice(0,20);return safeName(base||"Spieler")}
 async function setupFirebase(){try{const {app,a,d}=await loadFirebase();firebaseApp=app.getApps().length?app.getApp():app.initializeApp(firebaseConfig);auth=a.getAuth(firebaseApp);db=d.getDatabase(firebaseApp);
-a.onAuthStateChanged(auth,async u=>{currentUser=u||null;updateAccountUI();if(currentUser){if(!getPlayerName()){storage.setItem("FLYYYY_PLAYER_NAME",defaultNameForUser(currentUser))}await loadPlayerStateCloud();await grantSpecialAccountCoins();await ensurePlayerEntry(getPlayerName());await setPresenceOnline();await savePlayerStateCloud();await ensureSeason();await startSeasonLeaderboardListener();await checkSeasonReward(Math.max(1,seasonInfo.id-1));}else{await setPresenceOffline()}startLeaderboardListener();startOnlineListener();startSeasonTimer()});}catch(e){console.error(e);setLeaderboardStatus("🔴 Firebase konnte nicht geladen werden. Gastmodus funktioniert trotzdem.");setOnlineUI(0,false)}}
+a.onAuthStateChanged(auth,async u=>{currentUser=u||null;updateAccountUI();await ensureSeason();if(currentUser){if(!getPlayerName()){storage.setItem("FLYYYY_PLAYER_NAME",defaultNameForUser(currentUser))}await loadPlayerStateCloud();await grantFlyOwnerCoins();await ensurePlayerEntry(getPlayerName());await setPresenceOnline();await savePlayerStateCloud();await ensureSeason();await startSeasonLeaderboardListener();await checkSeasonReward(Math.max(1,seasonInfo.id-1));}else{await setPresenceOffline()}startLeaderboardListener();startOnlineListener();startSeasonTimer()});
+    await ensureSeason();
+    startSeasonTimer();}catch(e){console.error(e);setLeaderboardStatus("🔴 Firebase konnte nicht geladen werden. Gastmodus funktioniert trotzdem.");setOnlineUI(0,false)}}
 function updateAccountUI(){const s=document.getElementById("accountStatus"),b=document.getElementById("accountBtn"),l=document.getElementById("logoutBtn");if(currentUser){s.textContent="✅ "+(currentUser.email||"Konto");b.style.display="none";l.style.display=""}else{s.textContent="👤 Gast";b.style.display="";l.style.display="none"}}
 function authText(e){const m={"auth/email-already-in-use":"Diese E-Mail ist bereits registriert.","auth/invalid-email":"Die E-Mail ist ungültig.","auth/weak-password":"Das Passwort ist zu schwach.","auth/invalid-credential":"E-Mail oder Passwort ist falsch.","auth/network-request-failed":"Keine Internetverbindung."};return m[e?.code]||"Anmeldung fehlgeschlagen."}
 async function registerAccount(){try{const email=authEmail.value.trim(),pw=authPassword.value;if(!email||!pw){authStatus.textContent="Bitte E-Mail und Passwort eingeben.";return}if(pw.length<6){authStatus.textContent="Passwort: mindestens 6 Zeichen.";return}const {a}=await loadFirebase();await a.createUserWithEmailAndPassword(auth,email,pw);storage.setItem("FLYYYY_PLAYER_NAME",defaultNameForUser(auth.currentUser));showMessage("✅ Konto erstellt!");showScreen("lobby")}catch(e){authStatus.textContent=authText(e)}}
@@ -216,46 +218,36 @@ function getPlayerName(){return storage.getItem("FLYYYY_PLAYER_NAME")||""}functi
 async function savePlayerName(){let n=safeName(playerName.value);if(!n){showMessage("Bitte einen Namen eingeben.");return}storage.setItem("FLYYYY_PLAYER_NAME",n);if(!currentUser){setLeaderboardStatus("💾 Lokal gespeichert. Melde dich für Online-Highscores an.");return}setLeaderboardStatus(await ensurePlayerEntry(n)?`🟢 ${n} ist online gespeichert.`:"🔴 Online-Speichern fehlgeschlagen.");await setPresenceOnline()}
 const JESSE_UID="";
 function isJesseAccount(uid=currentUser?.uid){if(JESSE_UID&&uid===JESSE_UID)return true;const n=getPlayerName().trim().toLowerCase();const email=(currentUser?.email||"").split("@")[0].trim().toLowerCase();return n==="jesse"||email==="jesse"}
-async function grantSpecialAccountCoins(){
+async function grantFlyOwnerCoins(){
   if(!currentUser||!db)return;
   try{
     const raw=(getPlayerName()||((currentUser.email||"").split("@")[0]||"")).trim();
     const normalized=raw.toLowerCase().replace(/[^a-z0-9]/g,"");
 
-    // Genau diese beiden Accounts bekommen einmalig +1000 Coins.
-    let grantKey="";
-    let message="";
-    if(normalized==="flyyyyowner") {
-      grantKey="flyOwner1000Granted";
-      message="🪙 FlyyyyOwner😊😉: +1000 Coins!";
-    } else if(normalized==="jesse") {
-      grantKey="jesse1000Granted";
-      message="🪙 Jesse: +1000 Coins!";
-    } else {
-      return;
-    }
+    // Nur der Account „FlyyyyOwner😊😉“ bekommt den Bonus.
+    if(normalized!=="flyyyyowner")return;
 
     const {d}=await loadFirebase();
     const ref=d.ref(db,"playerStates/"+currentUser.uid);
     const snap=await d.get(ref);
     const cloud=snap.exists()?snap.val():{};
 
-    // Cloud-Flag verhindert doppelte Gutschriften auf mehreren Geräten.
-    if(cloud[grantKey]===true)return;
+    // Cloud-Flag verhindert, dass der Bonus mehrfach auf verschiedenen Geräten vergeben wird.
+    if(cloud.flyOwner1000Granted===true)return;
 
     const newCoins=Number(cloud.coins ?? state.coins ?? 0)+1000;
     await d.update(ref,{
       coins:newCoins,
-      [grantKey]:true,
+      flyOwner1000Granted:true,
       updatedAt:d.serverTimestamp()
     });
 
     state.coins=newCoins;
     saveStateLocalOnly();
-    showMessage(message);
+    showMessage("🪙 FlyyyyOwner😊😉: +1000 Coins!");
     updateLobby();
   }catch(e){
-    console.error("Special account bonus",e);
+    console.error("FlyyyyOwner bonus",e);
   }
 }
 function isJesseEntry(uid,v){if(JESSE_UID&&uid===JESSE_UID)return true;const n=safeName(v?.name||"").toLowerCase();return n==="jesse"}
@@ -307,16 +299,81 @@ function saveStateLocalOnly(){const s=JSON.stringify(state);SAVEKEYS.forEach(k=>
 
 /* ===== UPDATE 2.0 SEASONS ===== */
 const SEASON_LENGTH_MS=7*24*60*60*1000;
-let seasonInfo={id:1,startsAt:0,endsAt:0};
+// Update-2.0-Start: 14.08.2026 17:37 MESZ. Dieser Zeitpunkt gilt fuer alle Spieler.
+const SEASON_RELEASE_MS=Date.parse("2026-08-14T17:37:00+02:00");
+let seasonInfo={id:1,startsAt:SEASON_RELEASE_MS,endsAt:SEASON_RELEASE_MS+SEASON_LENGTH_MS};
 let seasonInterval=null;
 let seasonMode="season";
 let seasonLeaderboardStop=null;
 let allTimeLeaderboardCache=[];
 let seasonLeaderboardCache=[];
 function rewardForRank(rank){if(rank===1)return 1000;if(rank===2)return 500;if(rank===3)return 300;if(rank>=4&&rank<=10)return 100;if(rank>=11&&rank<=25)return 50;return 0}
-function formatSeasonTime(ms){if(ms<=0)return "⏱️ 0T 00Std 00Min 00Sek";const total=Math.floor(ms/1000),d=Math.floor(total/86400),h=Math.floor((total%86400)/3600),m=Math.floor((total%3600)/60),s=total%60;return `⏱️ ${d}T ${String(h).padStart(2,"0")}Std ${String(m).padStart(2,"0")}Min ${String(s).padStart(2,"0")}Sek`}
-function updateSeasonUI(){const now=Date.now();const left=Math.max(0,Number(seasonInfo.endsAt||0)-now);const text=formatSeasonTime(left);if(seasonNumberLobby)seasonNumberLobby.textContent=seasonInfo.id;if(seasonNumberBoard)seasonNumberBoard.textContent=seasonInfo.id;if(seasonTimerLobby)seasonTimerLobby.textContent=text;if(seasonTimerBoard)seasonTimerBoard.textContent=text;if(left<=0)ensureSeason(true)}
-async function ensureSeason(forceCheck=false){if(!db)return seasonInfo;try{const {d}=await loadFirebase();const ref=d.ref(db,"season/current");let snap=await d.get(ref);if(!snap.exists()){const data={id:1,startsAt:Date.now(),endsAt:Date.now()+SEASON_LENGTH_MS};await d.transaction(ref,c=>c||data);snap=await d.get(ref)}let cur=snap.val()||{};if(Number(cur.endsAt||0)<=Date.now() && (forceCheck||Number(cur.endsAt||0)>0)){await finalizeExpiredSeason(cur);snap=await d.get(ref);cur=snap.val()||cur}seasonInfo={id:Number(cur.id||1),startsAt:Number(cur.startsAt||Date.now()),endsAt:Number(cur.endsAt||Date.now()+SEASON_LENGTH_MS)};updateSeasonUI();return seasonInfo}catch(e){console.error("season",e);updateSeasonUI();return seasonInfo}}
+function formatSeasonTime(ms){const safe=Math.max(0,Number(ms)||0);const total=Math.floor(safe/1000),d=Math.floor(total/86400),h=Math.floor((total%86400)/3600),m=Math.floor((total%3600)/60),s=total%60;return `${d}T ${String(h).padStart(2,"0")}Std ${String(m).padStart(2,"0")}Min ${String(s).padStart(2,"0")}Sek`}
+function updateSeasonUI(){
+  const now=Date.now();
+  if(!Number.isFinite(Number(seasonInfo.endsAt)) || Number(seasonInfo.endsAt)<=0){
+    seasonInfo={id:1,startsAt:SEASON_RELEASE_MS,endsAt:SEASON_RELEASE_MS+SEASON_LENGTH_MS};
+  }
+  const end=Number(seasonInfo.endsAt);
+  const left=Math.max(0,end-now);
+  const text=formatSeasonTime(left);
+  if(seasonNumberLobby)seasonNumberLobby.textContent=seasonInfo.id;
+  if(seasonNumberBoard)seasonNumberBoard.textContent=seasonInfo.id;
+  if(seasonTimerLobby)seasonTimerLobby.textContent=`⏱️ ${text}`;
+  if(seasonTimerBoard)seasonTimerBoard.textContent=`⏱️ ${text}`;
+  if(left<=0 && end>0 && !updateSeasonUI._checking){
+    updateSeasonUI._checking=true;
+    ensureSeason(true).finally(()=>{updateSeasonUI._checking=false;});
+  }
+}
+async function ensureSeason(forceCheck=false){
+  try{
+    if(!db){
+      const cached=storage.getItem("FLYYYY_SEASON_INFO");
+      if(cached){
+        try{const v=JSON.parse(cached);if(v&&Number(v.endsAt)>Date.now()) seasonInfo={id:Number(v.id||1),startsAt:Number(v.startsAt||SEASON_RELEASE_MS),endsAt:Number(v.endsAt)};}catch{}
+      }
+      if(!seasonInfo.endsAt || Number(seasonInfo.endsAt)<=0){
+        seasonInfo={id:1,startsAt:SEASON_RELEASE_MS,endsAt:SEASON_RELEASE_MS+SEASON_LENGTH_MS};
+        storage.setItem("FLYYYY_SEASON_INFO",JSON.stringify(seasonInfo));
+      }
+      updateSeasonUI();
+      return seasonInfo;
+    }
+    const {d}=await loadFirebase();
+    const ref=d.ref(db,"season/current");
+    let snap=await d.get(ref);
+    if(!snap.exists()){
+      const data={id:1,startsAt:SEASON_RELEASE_MS,endsAt:SEASON_RELEASE_MS+SEASON_LENGTH_MS};
+      await d.transaction(ref,c=>c||data);
+      snap=await d.get(ref);
+    }
+    let cur=snap.val()||{};
+    if(Number(cur.endsAt||0)<=Date.now() && (forceCheck||Number(cur.endsAt||0)>0)){
+      await finalizeExpiredSeason(cur);
+      snap=await d.get(ref);
+      cur=snap.val()||cur;
+    }
+    seasonInfo={
+      id:Number(cur.id||1),
+      startsAt:Number(cur.startsAt||Date.now()),
+      endsAt:Number(cur.endsAt||Date.now()+SEASON_LENGTH_MS)
+    };
+    storage.setItem("FLYYYY_SEASON_INFO",JSON.stringify(seasonInfo));
+    updateSeasonUI();
+    return seasonInfo;
+  }catch(e){
+    console.error("season",e);
+    const cached=storage.getItem("FLYYYY_SEASON_INFO");
+    if(cached){try{const v=JSON.parse(cached);if(v&&Number(v.endsAt)>0){seasonInfo={id:Number(v.id||1),startsAt:Number(v.startsAt||SEASON_RELEASE_MS),endsAt:Number(v.endsAt)};}}catch{}}
+    if(!seasonInfo.endsAt || seasonInfo.endsAt<=0){
+      seasonInfo={id:Number(seasonInfo.id||1),startsAt:SEASON_RELEASE_MS,endsAt:SEASON_RELEASE_MS+SEASON_LENGTH_MS};
+      storage.setItem("FLYYYY_SEASON_INFO",JSON.stringify(seasonInfo));
+    }
+    updateSeasonUI();
+    return seasonInfo;
+  }
+}
 async function finalizeExpiredSeason(cur){try{const {d}=await loadFirebase();const id=Number(cur.id||1);const scoreSnap=await d.get(d.ref(db,"seasonScores/"+id));const raw=scoreSnap.exists()?scoreSnap.val()||{}:{};const arr=Object.entries(raw).map(([uid,v])=>({uid,name:safeName(v?.name||"Spieler"),score:Number(v?.score||0)})).sort((a,b)=>b.score-a.score||a.name.localeCompare(b.name));const winners={};arr.forEach((p,i)=>{const rank=i+1,reward=rewardForRank(rank);if(reward>0)winners[p.uid]={rank,reward,name:p.name,score:p.score,claimed:false}});await d.set(d.ref(db,"seasonHistory/"+id),{id,startsAt:Number(cur.startsAt||0),endsAt:Number(cur.endsAt||Date.now()),winners});const next={id:id+1,startsAt:Date.now(),endsAt:Date.now()+SEASON_LENGTH_MS};await d.transaction(d.ref(db,"season/current"),c=>{if(c&&Number(c.id)===id&&Number(c.endsAt)<=Date.now())return next;return c||next});await checkSeasonReward(id);if(currentUser){await ensureSeason();await startSeasonLeaderboardListener();}return true}catch(e){console.error("finalize season",e);return false}}
 async function checkSeasonReward(seasonId){if(!currentUser||!db)return;try{const {d}=await loadFirebase();const ref=d.ref(db,"seasonHistory/"+seasonId+"/winners/"+currentUser.uid);const snap=await d.get(ref);if(!snap.exists())return;const w=snap.val()||{};if(w.claimed===true)return;seasonRewardPending={seasonId:Number(seasonId),rank:Number(w.rank||0),reward:Number(w.reward||0)};showSeasonReward(seasonRewardPending)}catch(e){console.error("season reward",e)}}
 function showSeasonReward(r){if(!r||!r.reward)return;seasonRewardRank.textContent=`🥇 Platz ${r.rank}`;seasonRewardCoins.textContent=`🪙 +${r.reward.toLocaleString("de-DE")} Coins`;seasonRewardText.textContent=`Deine Season-Belohnung aus Season ${r.seasonId} wartet auf dich.`;seasonRewardOverlay.classList.add("active")}
@@ -619,7 +676,7 @@ canvas.addEventListener("pointerdown",e=>{e.preventDefault();flap()});addEventLi
 
 addEventListener("beforeunload",()=>{if(currentUser&&db){try{setPresenceOffline()}catch(e){}}});
 
-updateLobby();renderShop();renderInventory();ensureActiveMissions();renderMissions();loadPlayerName();updateAccountUI();startSeasonTimer();setupFirebase();
+updateLobby();renderShop();renderInventory();ensureActiveMissions();renderMissions();loadPlayerName();updateAccountUI();updateSeasonUI();startSeasonTimer();setupFirebase();
 
 </script>
 </body>
