@@ -33,7 +33,7 @@
 <div id="onlineBadge"><span id="onlineDot"></span><span>🟢 <b id="onlineCount">0</b> Online</span></div>
 <canvas id="gameCanvas"></canvas>
 
-<div id="authScreen" class="screen"><div class="menu"><div class="title">FLYYYY</div><div class="version">🔐 ACCOUNT</div><div class="subtitle">Mit E-Mail anmelden, neues Konto erstellen oder ohne Konto spielen.</div><div class="authBox"><h2 style="margin:0 0 12px">Anmelden / Registrieren</h2><input id="authEmail" class="authInput" type="email" autocomplete="email" placeholder="E-Mail"><input id="authPassword" class="authInput" type="password" autocomplete="current-password" placeholder="Passwort (mind. 6 Zeichen)" style="margin-top:10px"><div class="authGrid"><button id="loginBtn" class="btn blue">ANMELDEN</button><button id="registerBtn" class="btn green">REGISTRIEREN</button></div><button id="guestBtn" class="btn dark" style="width:100%;margin-top:10px">👤 OHNE KONTO SPIELEN</button><div id="authStatus" class="authStatus">Gastmodus ist jederzeit möglich.</div></div><button id="authBackBtn" class="btn dark" style="width:100%">← Zur Lobby</button></div></div>
+<div id="authScreen" class="screen"><div class="menu"><div class="title">FLYYYY</div><div class="version">🔐 ACCOUNT</div><div class="subtitle">Mit E-Mail anmelden, neues Konto erstellen oder ohne Konto spielen.</div><div class="authBox"><h2 style="margin:0 0 12px">Anmelden / Registrieren</h2><input id="authEmail" class="authInput" type="email" autocomplete="email" placeholder="E-Mail"><input id="authPassword" class="authInput" type="password" autocomplete="current-password" placeholder="Passwort (mind. 6 Zeichen)" style="margin-top:10px"><div class="authGrid"><button id="loginBtn" class="btn blue">ANMELDEN</button><button id="registerBtn" class="btn green">REGISTRIEREN</button></div><button id="guestBtn" class="btn dark" style="width:100%;margin-top:10px">👤 OHNE KONTO SPIELEN</button><div id="authStatus" class="authStatus">Gastmodus ist jederzeit möglich.</div><div class="tiny" style="margin-top:10px">Tipp: Falls Firebase „E-Mail/Passwort nicht aktiviert“ meldet, muss der Anbieter in Firebase Authentication aktiviert werden.</div></div><button id="authBackBtn" class="btn dark" style="width:100%">← Zur Lobby</button></div></div>
 
 <div id="lobby" class="screen active"><div class="menu"><div class="title">FLYYYY</div><div class="version">🏆 UPDATE 2.0</div><div class="subtitle">Fly weiter. Sammle Coins. Schlage andere Spieler.</div><div class="accountLine"><div id="accountStatus" class="accountPill">👤 Gast</div><button id="accountBtn" class="btn dark">🔐 ANMELDEN</button><button id="logoutBtn" class="btn red" style="display:none">ABMELDEN</button></div><div class="credits"><div class="badge">🪙 <span id="lobbyCoins">0</span> Coins</div><div class="badge">🏆 Rekord: <span id="lobbyBest">0</span></div></div><div class="seasonPanel"><div class="seasonTop"><div class="seasonTitle">🌐 SEASON <span id="seasonNumberLobby">1</span></div><div class="seasonTimer" id="seasonTimerLobby">⏱️ Lädt...</div></div><div class="seasonSub">7-Tage-Online-Season · nur mit Konto spielbar</div><div class="onlineNote">🥇 1.000 Coins · 🥈 500 Coins · 🥉 300 Coins · Platz 4–10: 100 · Platz 11–25: 50</div></div><div class="button-grid"><button id="startBtn" class="btn">START</button><button id="onlineModeBtn" class="btn green">🌐 ONLINE-SEASON SPIELEN</button><button id="leaderboardBtn" class="btn blue">🏆 LEADERBOARD</button><button id="shopBtn" class="btn blue">🛒 SHOP</button><button id="inventoryBtn" class="btn blue">🎒 INVENTAR</button><button id="missionsBtn" class="btn blue">🎯 MISSIONEN</button><button id="musicToggleBtn" class="btn dark">🎵 Musik: AN</button></div><div class="notice">✅ Season-Punkte sind getrennt vom Allzeit-Highscore. Nur die aktuelle Season entscheidet über die Season-Belohnung.</div></div></div>
 
@@ -126,7 +126,25 @@ async function setPresenceOnline(){if(!currentUser||!db)return;try{const {d}=awa
 async function setPresenceOffline(){if(!db||!currentUser)return;try{const {d}=await loadFirebase();await d.remove(d.ref(db,"presence/"+currentUser.uid))}catch(e){console.error(e)}}
 
 function updateAccountUI(){if(currentUser){accountStatus.textContent="✅ "+(currentUser.email||"Konto");accountBtn.style.display="none";logoutBtn.style.display=""}else{accountStatus.textContent="👤 Gast";accountBtn.style.display="";logoutBtn.style.display="none"}}
-function authText(e){const m={"auth/email-already-in-use":"Diese E-Mail ist bereits registriert.","auth/invalid-email":"Die E-Mail ist ungültig.","auth/weak-password":"Das Passwort ist zu schwach.","auth/invalid-credential":"E-Mail oder Passwort ist falsch.","auth/network-request-failed":"Keine Internetverbindung."};return m[e?.code]||"Anmeldung fehlgeschlagen."}
+function authText(e){
+  const m={
+    "auth/email-already-in-use":"Diese E-Mail ist bereits registriert.",
+    "auth/invalid-email":"Die E-Mail ist ungültig.",
+    "auth/weak-password":"Das Passwort ist zu schwach (mindestens 6 Zeichen).",
+    "auth/invalid-credential":"E-Mail oder Passwort ist falsch.",
+    "auth/user-not-found":"Kein Konto mit dieser E-Mail gefunden.",
+    "auth/wrong-password":"Das Passwort ist falsch.",
+    "auth/too-many-requests":"Zu viele Versuche. Bitte kurz warten und erneut versuchen.",
+    "auth/network-request-failed":"Keine Internetverbindung.",
+    "auth/operation-not-allowed":"E-Mail/Passwort-Anmeldung ist in Firebase noch nicht aktiviert.",
+    "auth/configuration-not-found":"Die Firebase-Authentifizierung ist noch nicht eingerichtet.",
+    "auth/invalid-api-key":"Der Firebase API-Key ist ungültig.",
+    "auth/app-not-authorized":"Diese Website ist für dein Firebase-Projekt nicht autorisiert. Prüfe die Domain in Firebase.",
+    "auth/unauthorized-domain":"Diese Domain ist in Firebase Auth nicht freigegeben. Füge sie unter Authentication → Settings → Authorized domains hinzu.",
+    "auth/internal-error":"Firebase hat einen internen Fehler gemeldet. Bitte erneut versuchen."
+  };
+  return m[e?.code]||`Anmeldung fehlgeschlagen${e?.code?` (${e.code})`:""}.`;
+}
 function getPlayerName(){return storage.getItem("FLYYYY_PLAYER_NAME")||""}function loadPlayerName(){playerName.value=getPlayerName()}
 
 async function ensurePlayerEntry(name){if(!currentUser||!db)return false;try{const {d}=await loadFirebase(),r=d.ref(db,"leaderboard/"+currentUser.uid),s=await d.get(r),old=s.exists()?s.val():{};await d.update(r,{name:safeName(name||defaultNameForUser(currentUser)),score:Number(old.score||0),wins:Number(old.wins||0),update19ResetDone:true,updatedAt:d.serverTimestamp()});return true}catch(e){console.error(e);return false}}
@@ -209,7 +227,60 @@ async function finalizeExpiredSeason(cur){
   }catch(e){console.error("finalizeExpiredSeason",e);return false}
 }
 
-async function setupFirebase(){try{const {app:appMod,a,d}=await loadFirebase();firebaseApp=appMod.getApps().length?appMod.getApp():appMod.initializeApp(firebaseConfig);auth=a.getAuth(firebaseApp);db=d.getDatabase(firebaseApp);a.onAuthStateChanged(auth,async u=>{currentUser=u||null;updateAccountUI();if(currentUser){if(!getPlayerName())storage.setItem("FLYYYY_PLAYER_NAME",defaultNameForUser(currentUser));await loadPlayerStateCloud();await grantFlyOwnerCoins();await ensurePlayerEntry(getPlayerName());await setPresenceOnline();await savePlayerStateCloud();}else{await setPresenceOffline()}await ensureSeason();await startLeaderboardListener();await startSeasonLeaderboardListener();await startOnlineListener();await checkSeasonReward(Math.max(1,Number(seasonInfo.id)-1));startSeasonTimer()})}catch(e){console.error(e);setLeaderboardStatus("🔴 Firebase konnte nicht geladen werden. Gastmodus funktioniert trotzdem.");setOnlineUI(0,false)}}
+let authStateReady=null;
+async function initFirebaseCore(){
+  const {app:appMod,a,d}=await loadFirebase();
+  firebaseApp=appMod.getApps().length?appMod.getApp():appMod.initializeApp(firebaseConfig);
+  if(!auth) auth=a.getAuth(firebaseApp);
+  if(!db) db=d.getDatabase(firebaseApp);
+  return {a,d};
+}
+async function waitForAuthReady(){
+  await initFirebaseCore();
+  if(currentUser!==null || authStateReady)return;
+  authStateReady=new Promise(resolve=>{
+    const {a}=F;
+    let done=false;
+    const unsubscribe=a.onAuthStateChanged(auth,()=>{
+      if(!done){done=true;unsubscribe();resolve();}
+    });
+  });
+  await authStateReady;
+}
+async function setupFirebase(){
+  try{
+    const {a}=await initFirebaseCore();
+    a.onAuthStateChanged(auth,async u=>{
+      currentUser=u||null;
+      updateAccountUI();
+      if(currentUser){
+        if(!getPlayerName())storage.setItem("FLYYYY_PLAYER_NAME",defaultNameForUser(currentUser));
+        await loadPlayerStateCloud();
+        await grantFlyOwnerCoins();
+        await ensurePlayerEntry(getPlayerName());
+        await ensureSeason();
+        await ensureSeasonScoreEntry();
+        await setPresenceOnline();
+        await savePlayerStateCloud();
+        await startLeaderboardListener();
+        await startSeasonLeaderboardListener();
+        await startOnlineListener();
+        await checkSeasonReward(Math.max(1,Number(seasonInfo.id)-1));
+      }else{
+        await setPresenceOffline();
+        await ensureSeason();
+        await startLeaderboardListener();
+        await startSeasonLeaderboardListener();
+        await startOnlineListener();
+      }
+      startSeasonTimer();
+    });
+  }catch(e){
+    console.error(e);
+    setLeaderboardStatus("🔴 Firebase konnte nicht geladen werden. Gastmodus funktioniert trotzdem.");
+    setOnlineUI(0,false);
+  }
+}
 
 const worlds=[{id:"giza",name:"Gizeh",price:0,sky1:"#f8c875",sky2:"#69c6d8",ground:"#d48b3b",obstacle:"#8f5a33"},{id:"mountains",name:"Berge",price:50,sky1:"#8ad8ff",sky2:"#5469c8",ground:"#527951",obstacle:"#365c4b"},{id:"ocean",name:"Unterwasser",price:100,sky1:"#29d6e5",sky2:"#174b9e",ground:"#157c86",obstacle:"#17566e"},{id:"jungle",name:"Dschungel",price:150,sky1:"#8ae17c",sky2:"#1f6e53",ground:"#244f2a",obstacle:"#2f7339"},{id:"space",name:"Weltraum",price:200,sky1:"#22103f",sky2:"#090d27",ground:"#20183e",obstacle:"#3a2b61"},{id:"ice",name:"Eiswelt",price:250,sky1:"#c9f6ff",sky2:"#5da9d4",ground:"#b3e5ff",obstacle:"#72b1d2"},{id:"lava",name:"Lavawelt",price:300,sky1:"#ff9a55",sky2:"#8f1f2b",ground:"#5f171d",obstacle:"#3d1118"}];
 const skins=[{id:"bird",name:"Vogel",price:0,type:"bird"},{id:"dino",name:"Fliegender Dino",price:50,type:"dino"},{id:"pen",name:"Stift",price:100,type:"pen"},{id:"carrot",name:"Karotte",price:150,type:"carrot"},{id:"apple",name:"Apfel",price:200,type:"apple"},{id:"jeszx",name:"Jeszx",price:1000,type:"jeszx",icon:"🫏"}];
@@ -299,8 +370,49 @@ leaderboardBack.onclick=()=>showScreen("lobby");saveNameBtn.onclick=savePlayerNa
 seasonTabBtn.onclick=async()=>{await startSeasonLeaderboardListener();switchLeaderboardMode("season")};allTimeTabBtn.onclick=()=>switchLeaderboardMode("alltime");
 shopBtn.onclick=()=>{renderShop();showScreen("shop")};shopBack.onclick=()=>showScreen("lobby");inventoryBtn.onclick=()=>{renderInventory();showScreen("inventory")};inventoryBack.onclick=()=>showScreen("lobby");missionsBtn.onclick=()=>{renderMissions();showScreen("missions")};missionsBack.onclick=()=>showScreen("lobby");
 accountBtn.onclick=()=>showScreen("authScreen");authBackBtn.onclick=()=>showScreen("lobby");guestBtn.onclick=()=>{showScreen("lobby");showMessage("👤 Gastmodus aktiviert.")};
-loginBtn.onclick=async()=>{try{const email=authEmail.value.trim(),pw=authPassword.value;if(!email||!pw){authStatus.textContent="Bitte E-Mail und Passwort eingeben.";return}const {a}=await loadFirebase();await a.signInWithEmailAndPassword(auth,email,pw);if(!getPlayerName())storage.setItem("FLYYYY_PLAYER_NAME",defaultNameForUser(auth.currentUser));showScreen("lobby");showMessage("✅ Angemeldet!")}catch(e){authStatus.textContent=authText(e)}};
-registerBtn.onclick=async()=>{try{const email=authEmail.value.trim(),pw=authPassword.value;if(!email||!pw){authStatus.textContent="Bitte E-Mail und Passwort eingeben.";return}if(pw.length<6){authStatus.textContent="Passwort: mindestens 6 Zeichen.";return}const {a}=await loadFirebase();await a.createUserWithEmailAndPassword(auth,email,pw);storage.setItem("FLYYYY_PLAYER_NAME",defaultNameForUser(auth.currentUser));showScreen("lobby");showMessage("✅ Konto erstellt!")}catch(e){authStatus.textContent=authText(e)}};
+loginBtn.onclick=async()=>{
+  loginBtn.disabled=true;
+  try{
+    const email=authEmail.value.trim().toLowerCase();
+    const pw=authPassword.value;
+    authStatus.textContent="🔄 Anmeldung läuft...";
+    if(!email||!pw){authStatus.textContent="Bitte E-Mail und Passwort eingeben.";return}
+    const {a}=await initFirebaseCore();
+    await waitForAuthReady();
+    await a.signInWithEmailAndPassword(auth,email,pw);
+    if(!getPlayerName())storage.setItem("FLYYYY_PLAYER_NAME",defaultNameForUser(auth.currentUser));
+    authStatus.textContent="✅ Erfolgreich angemeldet!";
+    showScreen("lobby");
+    showMessage("✅ Angemeldet!");
+  }catch(e){
+    console.error("Login-Fehler:",e);
+    authStatus.textContent=authText(e);
+  }finally{
+    loginBtn.disabled=false;
+  }
+};
+registerBtn.onclick=async()=>{
+  registerBtn.disabled=true;
+  try{
+    const email=authEmail.value.trim().toLowerCase();
+    const pw=authPassword.value;
+    authStatus.textContent="🔄 Konto wird erstellt...";
+    if(!email||!pw){authStatus.textContent="Bitte E-Mail und Passwort eingeben.";return}
+    if(pw.length<6){authStatus.textContent="Passwort: mindestens 6 Zeichen.";return}
+    const {a}=await initFirebaseCore();
+    await waitForAuthReady();
+    await a.createUserWithEmailAndPassword(auth,email,pw);
+    storage.setItem("FLYYYY_PLAYER_NAME",defaultNameForUser(auth.currentUser));
+    authStatus.textContent="✅ Konto erstellt!";
+    showScreen("lobby");
+    showMessage("✅ Konto erstellt!");
+  }catch(e){
+    console.error("Registrierungs-Fehler:",e);
+    authStatus.textContent=authText(e);
+  }finally{
+    registerBtn.disabled=false;
+  }
+};
 logoutBtn.onclick=async()=>{try{await setPresenceOffline();const {a}=await loadFirebase();await a.signOut(auth);showMessage("👤 Gastmodus aktiviert.")}catch(e){console.error(e)}};
 onlineBadge.onclick=async()=>{loadPlayerName();showScreen("leaderboard");await ensureSeason();await startSeasonLeaderboardListener();switchLeaderboardMode("season");setTimeout(()=>leaderboardList.scrollIntoView({behavior:"smooth",block:"start"}),50)};
 claimSeasonRewardBtn.onclick=claimSeasonReward;musicToggleBtn.onclick=()=>{state.musicEnabled=!state.musicEnabled;saveState();if(state.musicEnabled)startMusic();else stopMusic();updateLobby()};
