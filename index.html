@@ -7,7 +7,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <meta name="theme-color" content="#0d1430">
-<title>FLYYYY 1.8.2</title>
+<title>FLYYYY 1.8</title>
 <style>
 :root{--bg:#0d1430;--panel:#121a3d;--text:#fff;--muted:#b9c5ef;--yellow:#ffd447;--blue:#5ee7ff;--green:#6df5a3;--red:#ff6374}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{width:100%;height:100%;margin:0;overflow:hidden;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:#fff}button,input{font:inherit}button{cursor:pointer}
@@ -30,15 +30,9 @@
 <div id="onlineBadge"><span id="onlineDot"></span><span>🟢 Online: <b id="onlineCount">0</b></span></div>
 <canvas id="gameCanvas"></canvas>
 
-<div id="authScreen" class="screen"><div class="menu"><div class="title">FLYYYY</div><div class="version">🔐 ACCOUNT</div><div class="subtitle">Mit E-Mail anmelden, neues Konto erstellen oder ohne Konto spielen.</div><div class="authBox"><h2 style="margin:0 0 12px">Anmelden / Registrieren</h2><input id="authEmail" class="authInput" type="email" autocomplete="email" placeholder="E-Mail"><input id="authPassword" class="authInput" type="password" autocomplete="current-password" placeholder="Passwort (mind. 6 Zeichen)" style="margin-top:10px"><div class="authGrid"><button id="loginBtn" class="btn blue">ANMELDEN</button><button id="registerBtn" class="btn green">REGISTRIEREN</button></div><button id="guestBtn" class="btn dark" style="width:100%;margin-top:10px">👤 OHNE KONTO SPIELEN</button>
-      <div style="margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.10)">
-        <div style="font-weight:900;margin-bottom:8px">🛠️ Dev-Modus</div>
-        <input id="devCodeInput" class="authInput" type="password" autocomplete="off" placeholder="Privaten Dev-Code eingeben">
-        <button id="devCodeBtn" class="btn" style="width:100%;margin-top:10px">🛠️ DEV AKTIVIEREN</button>
-      </div>
-      <div id="authStatus" class="authStatus">Gastmodus ist jederzeit möglich.</div></div><button id="authBackBtn" class="btn dark" style="width:100%">← Zur Lobby</button></div></div>
+<div id="authScreen" class="screen"><div class="menu"><div class="title">FLYYYY</div><div class="version">🔐 ACCOUNT</div><div class="subtitle">Mit E-Mail anmelden, neues Konto erstellen oder ohne Konto spielen.</div><div class="authBox"><h2 style="margin:0 0 12px">Anmelden / Registrieren</h2><input id="authEmail" class="authInput" type="email" autocomplete="email" placeholder="E-Mail"><input id="authPassword" class="authInput" type="password" autocomplete="current-password" placeholder="Passwort (mind. 6 Zeichen)" style="margin-top:10px"><div class="authGrid"><button id="loginBtn" class="btn blue">ANMELDEN</button><button id="registerBtn" class="btn green">REGISTRIEREN</button></div><button id="guestBtn" class="btn dark" style="width:100%;margin-top:10px">👤 OHNE KONTO SPIELEN</button><div id="authStatus" class="authStatus">Gastmodus ist jederzeit möglich.</div></div><button id="authBackBtn" class="btn dark" style="width:100%">← Zur Lobby</button></div></div>
 
-<div id="lobby" class="screen active"><div class="menu"><div class="title">FLYYYY</div><div class="version">🏆 UPDATE 1.8.3 DEV</div><div class="subtitle">Fly weiter. Sammle Coins. Schlage andere Spieler.</div><div class="accountLine"><div id="accountStatus" class="accountPill">👤 Gast</div><div id="devStatus" class="accountPill" style="display:none;background:rgba(170,110,255,.14);border-color:rgba(170,110,255,.35)">🛠️ DEV</div><button id="accountBtn" class="btn dark">🔐 ANMELDEN</button><button id="logoutBtn" class="btn red" style="display:none">ABMELDEN</button></div><div id="devTools" style="display:none;margin:0 0 16px" class="notice">🛠️ DEV-MODUS AKTIV – alle Inhalte freigeschaltet.</div><div class="credits"><div class="badge">🪙 <span id="lobbyCoins">0</span> Coins</div><div class="badge">🏆 Rekord: <span id="lobbyBest">0</span></div></div><div class="button-grid"><button id="startBtn" class="btn">START</button><button id="leaderboardBtn" class="btn blue">🏆 LEADERBOARD</button><button id="shopBtn" class="btn blue">🛒 SHOP</button><button id="inventoryBtn" class="btn blue">🎒 INVENTAR</button><button id="missionsBtn" class="btn blue">🎯 MISSIONEN</button><button id="musicToggleBtn" class="btn dark">🎵 Musik: AN</button></div><div class="notice">✅ Angemeldete Spieler erscheinen automatisch online im Leaderboard. Der gespeicherte Rekord wird dort sofort angezeigt. Gäste können spielen, werden aber nicht als Online-Spieler gezählt.</div></div></div>
+<div id="lobby" class="screen active"><div class="menu"><div class="title">FLYYYY</div><div class="version">🏆 UPDATE 1.8</div><div class="subtitle">Fly weiter. Sammle Coins. Schlage andere Spieler.</div><div class="accountLine"><div id="accountStatus" class="accountPill">👤 Gast</div><button id="accountBtn" class="btn dark">🔐 ANMELDEN</button><button id="logoutBtn" class="btn red" style="display:none">ABMELDEN</button></div><div class="credits"><div class="badge">🪙 <span id="lobbyCoins">0</span> Coins</div><div class="badge">🏆 Rekord: <span id="lobbyBest">0</span></div></div><div class="button-grid"><button id="startBtn" class="btn">START</button><button id="leaderboardBtn" class="btn blue">🏆 LEADERBOARD</button><button id="shopBtn" class="btn blue">🛒 SHOP</button><button id="inventoryBtn" class="btn blue">🎒 INVENTAR</button><button id="missionsBtn" class="btn blue">🎯 MISSIONEN</button><button id="musicToggleBtn" class="btn dark">🎵 Musik: AN</button></div><div class="notice">✅ Angemeldete Spieler erscheinen automatisch online im Leaderboard. Der gespeicherte Rekord wird dort sofort angezeigt. Gäste können spielen, werden aber nicht als Online-Spieler gezählt.</div></div></div>
 
 <div id="leaderboard" class="screen"><div class="menu"><div class="topbar"><div><h2>🏆 Leaderboard</h2><div class="tiny">Spieler mit Konto werden automatisch angezeigt.</div></div><button id="leaderboardBack" class="btn dark">← Zurück</button></div><div id="leaderboardStatus" class="leaderStatus">Lade Leaderboard...</div><div class="nameBox"><input id="playerName" class="nameInput" maxlength="20" placeholder="Dein Spielername"><button id="saveNameBtn" class="btn">NAME SPEICHERN</button></div><div id="leaderboardList" class="leaderboard"></div></div></div>
 
@@ -53,14 +47,7 @@
 </div>
 
 <script type="module">
-const APP_VERSION = "1.8.3";
-// WICHTIG: Hier die UID deines persönlichen Firebase-Kontos eintragen.
-// Den Wert findest du in Firebase Authentication -> Users -> User UID.
-// Nur diese UID wird im Spiel als Dev-Account erkannt.
-const DEV_UID = "DEINE_FIREBASE_USER_UID";
-const DEV_CODE = "NB-FLYYYY-DEV-7392";
-let devMode=false;
-let devCodeSession=false;
+const APP_VERSION = "1.8.1";
 // Version marker: prevents stale local UI state from pretending this is an older build.
 if (localStorage.getItem("FLYYYY_APP_VERSION") !== APP_VERSION) {
   localStorage.setItem("FLYYYY_APP_VERSION", APP_VERSION);
@@ -72,47 +59,12 @@ function setOnlineUI(count,connected=true){onlineCount.textContent=String(count|
 function safeName(name){return String(name||"").replace(/[<>]/g,"").replace(/\s+/g," ").trim().slice(0,20)}
 function defaultNameForUser(u){const base=(u?.email||"Spieler").split("@")[0].replace(/[^a-zA-Z0-9äöüÄÖÜß._-]/g,"").slice(0,20);return safeName(base||"Spieler")}
 async function setupFirebase(){try{const {app,a,d}=await loadFirebase();firebaseApp=app.getApps().length?app.getApp():app.initializeApp(firebaseConfig);auth=a.getAuth(firebaseApp);db=d.getDatabase(firebaseApp);
-a.onAuthStateChanged(auth,async u=>{currentUser=u||null;devMode=!!(devCodeSession || (currentUser&&DEV_UID!=="DEINE_FIREBASE_USER_UID"&&currentUser.uid===DEV_UID));if(devMode)activateDevAccount();else updateAccountUI();if(currentUser){if(!getPlayerName()){localStorage.setItem("FLYYYY_PLAYER_NAME",defaultNameForUser(currentUser))}await ensurePlayerEntry(getPlayerName());await setPresenceOnline();}else{await setPresenceOffline()}startLeaderboardListener();startOnlineListener();});}catch(e){console.error(e);setLeaderboardStatus("🔴 Firebase konnte nicht geladen werden. Gastmodus funktioniert trotzdem.");setOnlineUI(0,false)}}
-function activateDevAccount(){
-  devMode=true;
-  devCodeSession=true;
-  state.coins=999999999;
-  state.best=999999;
-  state.ownedWorlds=worlds.map(w=>w.id);
-  state.ownedSkins=skins.map(x=>x.id);
-  state.ownedSounds=sounds.map(x=>x.id);
-  state.ownedMusic=musicTracks.map(x=>x.id);
-  state.selectedWorld=worlds[worlds.length-1].id;
-  state.selectedSkin='jeszx';
-  state.selectedSound=sounds[sounds.length-1].id;
-  state.selectedMusic=musicTracks[musicTracks.length-1].id;
-  state.missionProgress={m1:999999,m2:999999,m3:999999};
-  state.missionClaimed={m1:false,m2:false,m3:false};
-  saveState();
-  updateAccountUI();
-  updateLobby();
-}
-
-function activateDevByCode(){
-  const input=(document.getElementById("devCodeInput")?.value||"").trim();
-  if(input!==DEV_CODE){
-    const s=document.getElementById("authStatus");
-    if(s)s.textContent="🔴 Falscher Dev-Code.";
-    return;
-  }
-  devCodeSession=true;
-  devMode=true;
-  if(document.getElementById("devCodeInput"))document.getElementById("devCodeInput").value="";
-  activateDevAccount();
-  showScreen("lobby");
-  showMessage("🛠️ Dev-Modus aktiviert!");
-}
-
-function updateAccountUI(){const s=document.getElementById("accountStatus"),b=document.getElementById("accountBtn"),l=document.getElementById("logoutBtn"),d=document.getElementById("devStatus"),tools=document.getElementById("devTools");if(devMode){s.textContent="🛠️ Dev-Account";b.style.display="none";l.style.display="";d.style.display="";if(tools)tools.style.display="block";return}if(tools)tools.style.display="none";d.style.display="none";if(currentUser){s.textContent="✅ "+(currentUser.email||"Konto");b.style.display="none";l.style.display=""}else{s.textContent="👤 Gast";b.style.display="";l.style.display="none"}}
+a.onAuthStateChanged(auth,async u=>{currentUser=u||null;updateAccountUI();if(currentUser){if(!getPlayerName()){localStorage.setItem("FLYYYY_PLAYER_NAME",defaultNameForUser(currentUser))}await ensurePlayerEntry(getPlayerName());await setPresenceOnline();}else{await setPresenceOffline()}startLeaderboardListener();startOnlineListener()});}catch(e){console.error(e);setLeaderboardStatus("🔴 Firebase konnte nicht geladen werden. Gastmodus funktioniert trotzdem.");setOnlineUI(0,false)}}
+function updateAccountUI(){const s=document.getElementById("accountStatus"),b=document.getElementById("accountBtn"),l=document.getElementById("logoutBtn");if(currentUser){s.textContent="✅ "+(currentUser.email||"Konto");b.style.display="none";l.style.display=""}else{s.textContent="👤 Gast";b.style.display="";l.style.display="none"}}
 function authText(e){const m={"auth/email-already-in-use":"Diese E-Mail ist bereits registriert.","auth/invalid-email":"Die E-Mail ist ungültig.","auth/weak-password":"Das Passwort ist zu schwach.","auth/invalid-credential":"E-Mail oder Passwort ist falsch.","auth/network-request-failed":"Keine Internetverbindung."};return m[e?.code]||"Anmeldung fehlgeschlagen."}
 async function registerAccount(){try{const email=authEmail.value.trim(),pw=authPassword.value;if(!email||!pw){authStatus.textContent="Bitte E-Mail und Passwort eingeben.";return}if(pw.length<6){authStatus.textContent="Passwort: mindestens 6 Zeichen.";return}const {a}=await loadFirebase();await a.createUserWithEmailAndPassword(auth,email,pw);localStorage.setItem("FLYYYY_PLAYER_NAME",defaultNameForUser(auth.currentUser));showMessage("✅ Konto erstellt!");showScreen("lobby")}catch(e){authStatus.textContent=authText(e)}}
 async function loginAccount(){try{const email=authEmail.value.trim(),pw=authPassword.value;if(!email||!pw){authStatus.textContent="Bitte E-Mail und Passwort eingeben.";return}const {a}=await loadFirebase();await a.signInWithEmailAndPassword(auth,email,pw);if(!getPlayerName())localStorage.setItem("FLYYYY_PLAYER_NAME",defaultNameForUser(auth.currentUser));showMessage("✅ Angemeldet!");showScreen("lobby")}catch(e){authStatus.textContent=authText(e)}}
-async function logoutAccount(){try{await setPresenceOffline();const {a}=await loadFirebase();await a.signOut(auth);devMode=false;devCodeSession=false;showMessage("👤 Gastmodus aktiviert.")}catch(e){console.error(e)}}
+async function logoutAccount(){try{await setPresenceOffline();const {a}=await loadFirebase();await a.signOut(auth);showMessage("👤 Gastmodus aktiviert.")}catch(e){console.error(e)}}
 
 /* ===== ACCOUNT / ONLINE PRESENCE ===== */
 async function setPresenceOnline(){if(!currentUser||!db)return;try{const {d}=await loadFirebase();const connectedRef=d.ref(db,".info/connected");const presRef=d.ref(db,"presence/"+currentUser.uid);const connectedSnap=await d.get(connectedRef);if(connectedSnap.val()===false)return;await d.onDisconnect(presRef).remove();await d.set(presRef,{online:true,name:getPlayerName()||defaultNameForUser(currentUser),since:d.serverTimestamp()});}catch(e){console.error("presence online",e)}}
@@ -250,7 +202,7 @@ function showScreen(id){document.querySelectorAll(".screen").forEach(s=>s.classL
 function hideScreens(){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"))}
 function showMessage(t){const e=document.createElement("div");e.textContent=t;e.style.cssText="position:fixed;z-index:99999;left:50%;top:18%;transform:translate(-50%,-50%);padding:13px 18px;border-radius:999px;background:rgba(8,12,30,.97);border:1px solid rgba(255,255,255,.15);color:#fff;font-weight:900;box-shadow:0 15px 40px rgba(0,0,0,.3)";document.body.appendChild(e);setTimeout(()=>e.remove(),1400)}
 function updateLobby(){lobbyCoins.textContent=state.coins;lobbyBest.textContent=state.best;musicToggleBtn.textContent=state.musicEnabled?"🎵 Musik: AN":"🔇 Musik: AUS"}
-startBtn.onclick=startGame;accountBtn.onclick=()=>showScreen("authScreen");authBackBtn.onclick=()=>showScreen("lobby");guestBtn.onclick=()=>{devMode=false;devCodeSession=false;showScreen("lobby");showMessage("👤 Gastmodus aktiviert.")};loginBtn.onclick=loginAccount;registerBtn.onclick=registerAccount;logoutBtn.onclick=logoutAccount;devCodeBtn.onclick=activateDevByCode;devCodeInput.addEventListener("keydown",e=>{if(e.key==="Enter")activateDevByCode()});
+startBtn.onclick=startGame;accountBtn.onclick=()=>showScreen("authScreen");authBackBtn.onclick=()=>showScreen("lobby");guestBtn.onclick=()=>{showScreen("lobby");showMessage("👤 Gastmodus aktiviert.")};loginBtn.onclick=loginAccount;registerBtn.onclick=registerAccount;logoutBtn.onclick=logoutAccount;
 leaderboardBtn.onclick=()=>{loadPlayerName();showScreen("leaderboard")};leaderboardBack.onclick=()=>showScreen("lobby");saveNameBtn.onclick=savePlayerName;
 shopBtn.onclick=()=>{renderShop();showScreen("shop")};shopBack.onclick=()=>showScreen("lobby");inventoryBtn.onclick=()=>{renderInventory();showScreen("inventory")};inventoryBack.onclick=()=>showScreen("lobby");missionsBtn.onclick=()=>{renderMissions();showScreen("missions")};missionsBack.onclick=()=>showScreen("lobby");
 musicToggleBtn.onclick=()=>{state.musicEnabled=!state.musicEnabled;saveState();if(state.musicEnabled)startMusic();else stopMusic();updateLobby()};pauseBtn.onclick=togglePause;resumeBtn.onclick=togglePause;pauseLobbyBtn.onclick=returnLobby;retryBtn.onclick=startGame;returnLobbyBtn.onclick=returnLobby;
