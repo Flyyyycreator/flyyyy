@@ -26,6 +26,110 @@
 .rewardOverlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;background:rgba(4,8,20,.72);backdrop-filter:blur(8px)}.rewardOverlay.active{display:flex}.rewardBox{width:min(560px,92vw);padding:30px;text-align:center;border-radius:30px;background:linear-gradient(180deg,#132042,#19295b);border:1px solid rgba(255,255,255,.16);box-shadow:0 30px 90px rgba(0,0,0,.55)}.rewardBox h2{margin:0;font-size:clamp(34px,8vw,62px)}.rewardRank{font-size:28px;font-weight:1000;margin:10px 0}.rewardCoins{font-size:40px;font-weight:1000;color:#ffd447;margin:12px 0}.rewardBox p{color:var(--muted)}
 .luckyWrap{display:grid;grid-template-columns:minmax(280px,430px) minmax(260px,1fr);gap:20px;align-items:center}.luckyWheelCard{padding:20px;border-radius:24px;background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.035));border:1px solid rgba(255,255,255,.12);text-align:center}.wheelStage{position:relative;width:min(390px,80vw);aspect-ratio:1/1;margin:0 auto 16px;display:grid;place-items:center}.luckyWheel{position:relative;width:100%;height:100%;border-radius:50%;border:10px solid #fff;box-shadow:0 15px 45px rgba(0,0,0,.35),0 0 35px rgba(255,212,71,.25);overflow:hidden;background:#fff}.luckyWheelInner{position:absolute;inset:0;border-radius:50%;transform:rotate(0deg);transition:transform 4.8s cubic-bezier(.12,.78,.18,1);background:conic-gradient(#ffd447 0 45deg,#5ee7ff 45deg 90deg,#6df5a3 90deg 135deg,#ff8c6b 135deg 180deg,#b58cff 180deg 225deg,#7dd3fc 225deg 270deg,#fda4af 270deg 315deg,#ffe58a 315deg 360deg)}.wheelLabels{position:absolute;inset:0;pointer-events:none;font-size:clamp(14px,2.4vw,20px);font-weight:1000}.wheelLabel{position:absolute;left:50%;top:50%;width:90px;margin-left:-45px;margin-top:-12px;text-align:center;color:#17204a;text-shadow:0 1px 0 rgba(255,255,255,.5)}.wheelLabel:nth-child(1){transform:rotate(22.5deg) translateY(-145px)}.wheelLabel:nth-child(2){transform:rotate(67.5deg) translateY(-145px)}.wheelLabel:nth-child(3){transform:rotate(112.5deg) translateY(-145px)}.wheelLabel:nth-child(4){transform:rotate(157.5deg) translateY(-145px)}.wheelLabel:nth-child(5){transform:rotate(202.5deg) translateY(-145px)}.wheelLabel:nth-child(6){transform:rotate(247.5deg) translateY(-145px)}.wheelLabel:nth-child(7){transform:rotate(292.5deg) translateY(-145px)}.wheelLabel:nth-child(8){transform:rotate(337.5deg) translateY(-145px)}.wheelPointer{position:absolute;top:-2px;left:50%;transform:translateX(-50%);z-index:5;font-size:44px;filter:drop-shadow(0 6px 5px rgba(0,0,0,.25))}.luckyInfo{display:grid;gap:12px}.luckyInfoBox,.luckyMainPrize{padding:16px;border-radius:18px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09)}.luckyInfoBox h3{margin:0 0 8px}.luckyMainPrize{background:linear-gradient(180deg,rgba(255,212,71,.16),rgba(255,255,255,.05));border-color:rgba(255,212,71,.35)}.luckyMainPrize strong{display:block;font-size:26px;margin-bottom:6px}.luckyOdds{font-size:13px;color:var(--muted);line-height:1.5}.spinBtn{width:100%;font-size:20px}.luckyResult{margin-top:12px;min-height:50px;padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09);font-weight:900}.jackpotOverlay{position:absolute;inset:0;display:none;align-items:center;justify-content:center;background:rgba(6,8,24,.72);backdrop-filter:blur(8px);z-index:300}.jackpotOverlay.active{display:flex}.jackpotBox{width:min(620px,92vw);padding:34px 24px;text-align:center;border-radius:30px;background:linear-gradient(180deg,#33245d,#151b3d);border:2px solid rgba(255,212,71,.7);box-shadow:0 20px 80px rgba(0,0,0,.5),0 0 60px rgba(255,212,71,.25);animation:jackpotPulse .8s ease-in-out infinite alternate}.prizeIcon{font-size:72px}.prizeTitle{font-size:clamp(40px,8vw,82px);font-weight:1000;letter-spacing:.05em;color:#ffd447;text-shadow:0 0 25px rgba(255,212,71,.55)}.prizeText{font-size:clamp(24px,5vw,44px);font-weight:1000;margin:10px 0}.prizeSub{color:var(--muted);font-size:16px}@keyframes jackpotPulse{from{transform:scale(1)}to{transform:scale(1.02)}}
 @media(max-width:760px){.luckyWrap{grid-template-columns:1fr}.wheelStage{width:min(360px,82vw)}}@media(max-width:600px){.hud-left{left:8px;right:145px;gap:6px}.hud-right{right:8px;max-width:125px;gap:6px}.hud-left .hud-pill,.hud-right .hud-pill,.pause-btn{padding:7px 9px;font-size:12px}.menu{padding:20px;border-radius:22px}.title{font-size:58px}.preview{height:125px}.tip{font-size:12px;bottom:10px}.authGrid,.nameBox{grid-template-columns:1fr}.leaderRow{grid-template-columns:45px 1fr auto}.leaderMeta{min-width:95px}#onlineBadge{top:10px;font-size:12px}}
+
+.adminUserCard{padding:14px;border-radius:18px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.1)}
+.adminUserTop{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap}.adminUserEmail{font-weight:900;word-break:break-word}.adminMeta{font-size:12px;color:var(--muted);margin-top:4px}.adminActions{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:8px;margin-top:12px}.adminActions input,.adminActions select{width:100%;padding:10px 11px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.07);color:#fff}.adminBadge{display:inline-block;padding:5px 9px;border-radius:999px;font-size:11px;font-weight:900;background:rgba(255,255,255,.08);margin:3px 5px 0 0}.adminBadge.banned{background:rgba(255,99,116,.16);color:#ff8995}.adminBadge.ok{background:rgba(109,245,163,.12);color:#6df5a3}
+
+/* ===== 2.2 PC + MOBILE OPTIMIZATION ===== */
+html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{overscroll-behavior:none}
+button{min-height:44px;touch-action:manipulation}
+input{min-height:44px}
+.screen{padding:clamp(8px,2vw,22px)}
+.menu{width:min(1120px,96vw);max-height:calc(100dvh - 24px);overflow-x:hidden;overscroll-behavior:contain}
+.topbar{flex-wrap:wrap}
+.cards{grid-template-columns:repeat(auto-fit,minmax(min(210px,100%),1fr))}
+.card{min-width:0}
+.tabs,.seasonTabs{scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+.authGrid,.nameBox{min-width:0}
+.authGrid .btn,.nameBox .btn,.button-grid .btn{width:100%}
+.luckyWrap{grid-template-columns:minmax(300px,460px) minmax(280px,1fr);align-items:start}
+.luckyWheelCard{min-width:0}
+.wheelStage{width:min(410px,100%);margin-inline:auto}
+.luckyWheel{box-sizing:border-box}
+.wheelLabels{z-index:3}
+.wheelLabel{width:76px;margin-left:-38px;margin-top:-12px;font-size:clamp(11px,1.7vw,17px);line-height:1.05;overflow-wrap:anywhere;text-shadow:0 1px 2px rgba(255,255,255,.7);--wheelR:clamp(84px,34vw,150px)}
+.wheelLabel:nth-child(1){transform:rotate(22.5deg) translateY(calc(-1 * var(--wheelR)))}
+.wheelLabel:nth-child(2){transform:rotate(67.5deg) translateY(calc(-1 * var(--wheelR)))}
+.wheelLabel:nth-child(3){transform:rotate(112.5deg) translateY(calc(-1 * var(--wheelR)))}
+.wheelLabel:nth-child(4){transform:rotate(157.5deg) translateY(calc(-1 * var(--wheelR)))}
+.wheelLabel:nth-child(5){transform:rotate(202.5deg) translateY(calc(-1 * var(--wheelR)))}
+.wheelLabel:nth-child(6){transform:rotate(247.5deg) translateY(calc(-1 * var(--wheelR)))}
+.wheelLabel:nth-child(7){transform:rotate(292.5deg) translateY(calc(-1 * var(--wheelR)))}
+.wheelLabel:nth-child(8){transform:rotate(337.5deg) translateY(calc(-1 * var(--wheelR)))}
+.luckyInfo{min-width:0}
+.luckyInfoBox,.luckyMainPrize{overflow-wrap:anywhere}
+#shopCards{min-width:0}
+#shopCards>*{min-width:0}
+#gameHud{env(safe-area-inset-top)}
+
+@media (max-width:900px){
+  .menu{width:97vw}
+  .luckyWrap{grid-template-columns:1fr;gap:14px}
+  .luckyInfo{grid-template-columns:repeat(2,minmax(0,1fr));display:grid}
+  .luckyMainPrize{grid-column:1/-1}
+}
+
+@media (max-width:600px){
+  .screen{padding:8px}
+  .menu{width:100%;max-height:calc(100dvh - 16px);padding:14px;border-radius:18px}
+  .title{font-size:clamp(46px,15vw,66px);letter-spacing:.04em}
+  .version{margin:10px auto;padding:7px 12px}
+  .subtitle{margin:8px 0 14px;font-size:14px}
+  .topbar{gap:8px;margin-bottom:12px}
+  .topbar h2{font-size:24px}
+  .tabs{gap:6px;margin-bottom:10px}
+  .tab,.seasonTab{padding:9px 12px;font-size:13px}
+  .cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .card{min-height:195px;padding:10px;border-radius:16px;gap:7px}
+  .card h3{font-size:15px}
+  .preview{height:108px;padding:6px;border-radius:12px}
+  .smallbtn{padding:10px 8px;font-size:13px}
+  .authBox{padding:12px}
+  .authGrid,.nameBox{grid-template-columns:1fr}
+  .leaderRow{grid-template-columns:38px minmax(0,1fr) auto;gap:8px;padding:11px 10px}
+  .leaderRank{font-size:19px}
+  .leaderScore{font-size:17px}
+  .leaderMeta{min-width:72px}
+  .leaderWins,.onlineMini{font-size:11px}
+  .luckyWrap{gap:12px}
+  .luckyWheelCard{padding:12px;border-radius:18px}
+  .wheelStage{width:min(330px,calc(100vw - 44px));margin-bottom:10px}
+  .luckyWheel{border-width:7px}
+  .wheelPointer{font-size:34px;top:-1px}
+  .wheelLabel{width:58px;margin-left:-29px;margin-top:-10px;font-size:10px;--wheelR:clamp(72px,29vw,108px)}
+  .spinBtn{font-size:18px;min-height:50px}
+  .luckyInfo{display:grid;grid-template-columns:1fr}
+  .luckyInfoBox,.luckyMainPrize{padding:12px;border-radius:14px}
+  .luckyMainPrize strong{font-size:20px}
+  .luckyOdds{font-size:12px}
+  .jackpotBox{width:calc(100vw - 24px);padding:24px 16px;border-radius:22px}
+  .prizeIcon{font-size:56px}
+  .prizeTitle{font-size:clamp(34px,10vw,60px)}
+  .prizeText{font-size:clamp(22px,7vw,38px)}
+  .prizeSub{font-size:14px}
+  #onlineBadge{max-width:calc(100vw - 20px);overflow:hidden;text-overflow:ellipsis}
+  .hud-left{left:7px;right:120px;top:8px;gap:5px}
+  .hud-right{right:7px;top:8px;max-width:108px;gap:5px}
+  .hud-left .hud-pill,.hud-right .hud-pill,.pause-btn{padding:7px 8px;font-size:11px}
+  .tip{max-width:calc(100vw - 20px);text-align:center}
+}
+
+@media (max-width:380px){
+  .cards{grid-template-columns:1fr}
+  .wheelStage{width:min(290px,calc(100vw - 38px))}
+  .wheelLabel{--wheelR:82px}
+  .hud-left{right:105px}
+  .hud-right{max-width:96px}
+}
+
+@media (min-width:1200px){
+  .menu{padding:30px}
+  .luckyWrap{grid-template-columns:minmax(360px,500px) minmax(320px,1fr);gap:28px}
+  .wheelStage{width:430px}
+  .wheelLabel{--wheelR:155px}
+}
+
 </style>
 </head>
 <body>
@@ -50,7 +154,7 @@
 <div id="luckyConfirmOverlay" class="overlay"><div class="dialog"><h2>🎡 LUCKY RAD</h2><p>Ein Dreh kostet <strong>🪙 200 Coins</strong>.</p><p class="tiny">Nach dem Kauf öffnet sich sofort das Lucky Rad.</p><div class="button-grid"><button id="confirmLuckyBuyBtn" class="btn green">🪙 KAUFEN & ÖFFNEN</button><button id="cancelLuckyBuyBtn" class="btn dark">ABBRECHEN</button></div></div></div>
 <div id="jackpotOverlay" class="jackpotOverlay"><div class="jackpotBox"><div id="prizePopupIcon" class="prizeIcon">🎁</div><div id="prizePopupTitle" class="prizeTitle">DEIN PREIS!</div><div id="prizePopupText" class="prizeText">Preis</div><div id="prizePopupSub" class="prizeSub">Der Preis wurde deinem Konto gutgeschrieben.</div></div></div>
 <div id="seasonRewardOverlay" class="rewardOverlay"><div class="rewardBox"><div style="font-size:72px">🏆</div><h2>SEASON BEENDET!</h2><div id="seasonRewardRank" class="rewardRank">Platz 1</div><div id="seasonRewardCoins" class="rewardCoins">🪙 +1.000</div><p id="seasonRewardText">Deine persönliche Season-Belohnung wartet auf dich.</p><button id="claimSeasonRewardBtn" class="btn green" style="width:100%;margin-top:10px">🎁 BELOHNUNG ABHOLEN</button></div></div>
-<div id="adminOverlay" class="overlay"><div class="dialog"><h2 style="font-size:42px">🛠️ ADMIN</h2><p id="adminStatusText">Gib den Admin-Code ein.</p><input id="adminCodeInput" class="authInput" type="password" autocomplete="off" placeholder="Admin-Aktivierungscode"><div class="button-grid" style="margin-top:12px"><button id="adminUnlockBtn" class="btn green">🔓 AKTIVIEREN</button><button id="adminCloseBtn" class="btn dark">← SCHLIESSEN</button></div><div id="adminPanel" style="display:none;margin-top:18px;text-align:left"><div class="notice">✅ Adminrechte aktiviert.</div><div class="button-grid"><button id="adminMyAccountBtn" class="btn blue">👤 MEIN KONTO</button><button id="adminCoinsBtn" class="btn">🪙 COINS SETZEN</button><button id="adminClosePanelBtn" class="btn dark">🔒 SCHLIESSEN</button></div><div id="adminInfo" class="notice">Nur als Admin sichtbar.</div></div></div></div>
+<div id="adminOverlay" class="overlay"><div class="dialog" style="width:min(1100px,96vw);max-height:92vh;overflow:auto;text-align:left"><h2 style="font-size:42px;margin-bottom:6px">🛠️ ADMIN</h2><p id="adminStatusText">Bitte mit deinem FLYYYY-Konto anmelden.</p><div id="adminUnlockArea"><input id="adminCodeInput" class="authInput" type="password" autocomplete="off" placeholder="Admin-Aktivierungscode"><div class="button-grid" style="margin-top:12px"><button id="adminUnlockBtn" class="btn green">🔓 AKTIVIEREN</button><button id="adminCloseBtn" class="btn dark">← SCHLIESSEN</button></div></div><div id="adminPanel" style="display:none;margin-top:18px"><div class="notice">✅ Serverseitige Adminrechte aktiv. Personenbezogene Daten nur für die Administration verwenden.</div><div style="display:grid;grid-template-columns:minmax(180px,1fr) auto;gap:10px;margin:12px 0"><input id="adminUserSearch" class="authInput" placeholder="🔎 E-Mail oder UID suchen"><button id="adminRefreshUsersBtn" class="btn blue">↻ AKTUALISIEREN</button></div><div id="adminUsersStatus" class="leaderStatus">Lade Spieler...</div><div id="adminUsersList" class="leaderboard"></div><div class="button-grid" style="margin-top:14px"><button id="adminMyAccountBtn" class="btn dark">👤 MEIN KONTO</button><button id="adminClosePanelBtn" class="btn dark">🔒 SCHLIESSEN</button></div><div id="adminInfo" class="notice">Nur als Admin sichtbar.</div></div></div></div>
 </div>
 
 <script type="module">
@@ -70,7 +174,7 @@ const shop=$("shop"),shopBack=$("shopBack"),shopTabs=$("shopTabs"),shopCards=$("
 const luckyConfirmOverlay=$("luckyConfirmOverlay"),confirmLuckyBuyBtn=$("confirmLuckyBuyBtn"),cancelLuckyBuyBtn=$("cancelLuckyBuyBtn"),jackpotOverlay=$("jackpotOverlay"),prizePopupIcon=$("prizePopupIcon"),prizePopupTitle=$("prizePopupTitle"),prizePopupText=$("prizePopupText"),prizePopupSub=$("prizePopupSub");
 const gameHud=$("gameHud"),scoreHud=$("scoreHud"),coinsHud=$("coinsHud"),jumpHud=$("jumpHud"),worldHud=$("worldHud"),seasonHud=$("seasonHud"),musicHud=$("musicHud"),pauseBtn=$("pauseBtn"),pauseOverlay=$("pauseOverlay"),resumeBtn=$("resumeBtn"),pauseLobbyBtn=$("pauseLobbyBtn"),gameOverOverlay=$("gameOverOverlay"),gameOverText=$("gameOverText"),finalScore=$("finalScore"),earnedCoins=$("earnedCoins"),bestScore=$("bestScore"),retryBtn=$("retryBtn"),returnLobbyBtn=$("returnLobbyBtn"),onlineBadge=$("onlineBadge"),onlineCount=$("onlineCount"),onlineDot=$("onlineDot");
 
-const APP_VERSION="2.0.1";storage.setItem("FLYYYY_APP_VERSION",APP_VERSION);
+const APP_VERSION="2.1.0";storage.setItem("FLYYYY_APP_VERSION",APP_VERSION);
 const firebaseConfig={apiKey:"AIzaSyA0ppKuSgxKKgHEMkX9kUlVhm8pjkVxgXk",authDomain:"flyyyy.firebaseapp.com",databaseURL:"https://flyyyy-default-rtdb.firebaseio.com",projectId:"flyyyy",storageBucket:"flyyyy.firebasestorage.app",messagingSenderId:"872479897522",appId:"1:872479897522:web:3c87b8afdebfc66d01d6ab",measurementId:"G-S8YE4S6L8L"};
 let F=null,firebaseApp=null,auth=null,db=null,currentUser=null,leaderboardStop=null,presenceStop=null,seasonLeaderboardStop=null;
 async function loadFirebase(){if(F)return F;const appMod=await import("https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js"),authMod=await import("https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js"),dbMod=await import("https://www.gstatic.com/firebasejs/12.16.0/firebase-database.js");return F={app:appMod,a:authMod,d:dbMod}};
@@ -596,104 +700,89 @@ leaderboardBtn.onclick=async()=>{loadPlayerName();showScreen("leaderboard");awai
 leaderboardBack.onclick=()=>showScreen("lobby");saveNameBtn.onclick=savePlayerName;
 seasonTabBtn.onclick=async()=>{await startSeasonLeaderboardListener();switchLeaderboardMode("season")};allTimeTabBtn.onclick=()=>switchLeaderboardMode("alltime");
 shopBtn.onclick=()=>{renderShop();showScreen("shop")};shopBack.onclick=()=>showScreen("lobby");inventoryBtn.onclick=()=>{renderInventory();showScreen("inventory")};inventoryBack.onclick=()=>showScreen("lobby");missionsBtn.onclick=()=>{renderMissions();showScreen("missions")};missionsBack.onclick=()=>showScreen("lobby");
-/* ===== SECURE ADMIN ACCESS ===== */
+/* ===== SERVER-SIDE ADMIN MANAGER ===== */
 let adminUnlocked=false;
-let adminActivating=false;
+let adminFunctions=null;
 
-async function getAdminClaim(forceRefresh=true){
-  if(!currentUser) return false;
-  try{
-    const token=await currentUser.getIdTokenResult(forceRefresh);
-    return token?.claims?.admin===true;
-  }catch(e){
-    console.error("admin claim",e);
-    return false;
-  }
+async function getAdminFunctions(){
+  if(adminFunctions) return adminFunctions;
+  const {getFunctions,httpsCallable}=await import("https://www.gstatic.com/firebasejs/12.16.0/firebase-functions.js");
+  const functions=getFunctions(firebaseApp);
+  adminFunctions={
+    activate:httpsCallable(functions,"activateAdmin"),
+    listUsers:httpsCallable(functions,"adminListUsers"),
+    adjustCoins:httpsCallable(functions,"adminAdjustCoins"),
+    banUser:httpsCallable(functions,"adminBanUser"),
+    deleteUser:httpsCallable(functions,"adminDeleteUser")
+  };
+  return adminFunctions;
 }
-
+async function hasAdminClaim(force=true){
+  if(!currentUser)return false;
+  try{return (await currentUser.getIdTokenResult(force)).claims?.admin===true}catch(e){console.error(e);return false}
+}
 async function openAdminLogin(){
   adminOverlay.classList.add("active");
   adminCodeInput.value="";
   adminPanel.style.display="none";
   adminUnlocked=false;
-  adminStatusText.textContent=currentUser
-    ? "Gib den Admin-Aktivierungscode ein."
-    : "🔐 Bitte zuerst mit deinem FLYYYY-Konto anmelden.";
+  adminStatusText.textContent=currentUser?"Gib den Admin-Aktivierungscode ein.":"🔐 Bitte zuerst mit deinem FLYYYY-Konto anmelden.";
   setTimeout(()=>adminCodeInput.focus(),50);
+  if(currentUser && await hasAdminClaim(false)){
+    adminUnlocked=true;
+    adminPanel.style.display="block";
+    adminStatusText.textContent="✅ Adminrechte bereits aktiv.";
+    await loadAdminUsers();
+  }
 }
-
-function closeAdminLogin(){
-  adminOverlay.classList.remove("active");
-  adminCodeInput.value="";
-  adminPanel.style.display="none";
-  adminUnlocked=false;
-}
-
+function closeAdminLogin(){adminOverlay.classList.remove("active");adminCodeInput.value="";adminPanel.style.display="none";adminUnlocked=false}
 async function activateAdmin(){
-  if(!currentUser){
-    adminStatusText.textContent="🔐 Bitte zuerst anmelden.";
-    return;
-  }
-
+  if(!currentUser){adminStatusText.textContent="🔐 Bitte zuerst anmelden.";return}
   const code=adminCodeInput.value.trim();
-  const ADMIN_CODE="Flyyyy-Admin-7391-X";
-
-  if(code!==ADMIN_CODE){
-    adminStatusText.textContent="❌ Falscher Admin-Code.";
-    adminCodeInput.select();
-    return;
-  }
-
-  adminUnlocked=true;
-  adminPanel.style.display="block";
-  adminStatusText.textContent="✅ Adminrechte aktiviert.";
-  adminInfo.textContent=`Angemeldet als: ${currentUser.email||"Konto"}`;
-  adminCodeInput.value="";
-  showMessage("🛠️ Adminrechte aktiviert.");
+  if(!code){adminStatusText.textContent="Bitte den Admin-Code eingeben.";return}
+  adminUnlockBtn.disabled=true;adminStatusText.textContent="🔄 Admin wird serverseitig geprüft...";
+  try{
+    const f=await getAdminFunctions();
+    await f.activate({code});
+    await currentUser.getIdToken(true);
+    const ok=await hasAdminClaim(true);
+    if(!ok)throw new Error("Admin-Token wurde noch nicht übernommen. Seite neu laden und erneut anmelden.");
+    adminUnlocked=true;adminPanel.style.display="block";adminStatusText.textContent="✅ Adminrechte aktiviert.";adminCodeInput.value="";showMessage("🛠️ Adminrechte aktiviert.");await loadAdminUsers();
+  }catch(e){console.error(e);adminStatusText.textContent="❌ "+(e?.message||"Admin konnte nicht aktiviert werden.")}
+  finally{adminUnlockBtn.disabled=false}
 }
-
-async function requireAdmin(){
-  if(!currentUser){
-    showMessage("🔐 Bitte zuerst anmelden.");
-    return false;
-  }
-  if(!adminUnlocked){
-    showMessage("🔒 Bitte zuerst den Admin-Code eingeben.");
-    return false;
-  }
-  return true;
+async function requireAdmin(){if(!currentUser){showMessage("🔐 Bitte zuerst anmelden.");return false}const ok=adminUnlocked && await hasAdminClaim(false);if(!ok){showMessage("🔒 Adminrechte sind nicht aktiv.");return false}return true}
+function formatDate(v){if(!v)return "-";try{return new Date(v).toLocaleString("de-DE")}catch{return "-"}}
+function adminUserCard(u){
+  const card=document.createElement("div");card.className="adminUserCard";
+  const top=document.createElement("div");top.className="adminUserTop";
+  const left=document.createElement("div");
+  const email=document.createElement("div");email.className="adminUserEmail";email.textContent=u.email||"(keine E-Mail)";
+  const meta=document.createElement("div");meta.className="adminMeta";meta.textContent=`UID: ${u.uid}`;
+  left.append(email,meta);
+  const right=document.createElement("div");right.innerHTML=`<span class="adminBadge ${u.disabled?"banned":"ok"}">${u.disabled?"🔴 GESPERRT":"🟢 AKTIV"}</span><span class="adminBadge">🪙 ${(Number(u.coins||0)).toLocaleString("de-DE")}</span>`;
+  top.append(left,right);card.appendChild(top);
+  const info=document.createElement("div");info.className="adminMeta";info.textContent=`Erstellt: ${formatDate(u.createdAt)} · Letzter Login: ${formatDate(u.lastSignInAt)}`;card.appendChild(info);
+  if(u.bannedUntil){const b=document.createElement("div");b.className="adminMeta";b.textContent=u.bannedUntil===-1?"🚫 Dauerhaft gesperrt":`⏱️ Gesperrt bis: ${formatDate(u.bannedUntil)}`;card.appendChild(b)}
+  const actions=document.createElement("div");actions.className="adminActions";
+  const amt=document.createElement("input");amt.type="number";amt.min="1";amt.max="1000000000";amt.placeholder="Coins";
+  const add=document.createElement("button");add.className="btn green";add.textContent="🪙 + Coins";add.onclick=()=>adminAdjust(u.uid,Math.abs(Number(amt.value||0)));
+  const rem=document.createElement("button");rem.className="btn red";rem.textContent="🪙 - Coins";rem.onclick=()=>adminAdjust(u.uid,-Math.abs(Number(amt.value||0)));
+  const banSel=document.createElement("select");[10,20,30,60,120,240,720,1440].forEach(m=>{const o=document.createElement("option");o.value=m;o.textContent=m<60?`${m} Min.`:m<1440?`${m/60} Std.`:"24 Std.";banSel.appendChild(o)});const perm=document.createElement("option");perm.value="-1";perm.textContent="Dauerhaft";banSel.appendChild(perm);
+  const ban=document.createElement("button");ban.className="btn red";ban.textContent="🚫 SPERREN";ban.onclick=()=>adminBan(u.uid,Number(banSel.value));
+  const unban=document.createElement("button");unban.className="btn blue";unban.textContent="✅ ENTSPERREN";unban.onclick=()=>adminBan(u.uid,0);
+  const del=document.createElement("button");del.className="btn dark";del.textContent="🗑️ KONTO LÖSCHEN";del.onclick=()=>adminDelete(u);
+  actions.append(amt,add,rem,banSel,ban,unban,del);card.appendChild(actions);return card;
 }
-
-adminMyAccountBtn.onclick=async()=>{
+async function loadAdminUsers(){
   if(!await requireAdmin())return;
-  adminInfo.textContent=`Firebase UID: ${currentUser?.uid||"nicht angemeldet"}`;
-};
-
-adminCoinsBtn.onclick=async()=>{
-  if(!await requireAdmin())return;
-  if(!currentUser){showMessage("🔐 Bitte zuerst anmelden.");return}
-  const amount=prompt("Wie viele Coins soll dein aktuell angemeldeter Account bekommen?","1000000");
-  if(amount===null)return;
-  const n=Number(amount);
-  if(!Number.isFinite(n)||n<0||n>1000000000){
-    showMessage("❌ Ungültige Zahl. Maximum: 1.000.000.000");
-    return;
-  }
-  state.coins=Math.floor(n);
-  saveState();
-  updateLobby();
-  try{await savePlayerStateCloud()}catch(e){console.error(e)}
-  showMessage(`🪙 ${Math.floor(n).toLocaleString("de-DE")} Coins gesetzt.`);
-};
-
-adminLoginBtn.onclick=openAdminLogin;
-adminUnlockBtn.onclick=activateAdmin;
-adminCloseBtn.onclick=closeAdminLogin;
-adminClosePanelBtn.onclick=closeAdminLogin;
-adminCodeInput.addEventListener("keydown",e=>{
-  if(e.key==="Enter")activateAdmin();
-  if(e.key==="Escape")closeAdminLogin();
-});
+  const list=$("adminUsersList"),status=$("adminUsersStatus");list.innerHTML="";status.textContent="🔄 Spieler werden geladen...";
+  try{const f=await getAdminFunctions();const r=await f.listUsers({});const users=Array.isArray(r.data?.users)?r.data.users:[];const q=($("adminUserSearch").value||"").trim().toLowerCase();const filtered=users.filter(u=>(u.email||"").toLowerCase().includes(q)||String(u.uid||"").toLowerCase().includes(q));status.textContent=`👥 ${filtered.length} von ${users.length} Spieler(n)`;filtered.forEach(u=>list.appendChild(adminUserCard(u)))}catch(e){console.error(e);status.textContent="🔴 "+(e?.message||"Spieler konnten nicht geladen werden.")}
+}
+async function adminAdjust(uid,delta){if(!await requireAdmin())return;if(!delta){showMessage("Bitte eine Coin-Anzahl eingeben.");return}try{const f=await getAdminFunctions();const r=await f.adjustCoins({uid,delta});showMessage(`🪙 Neuer Kontostand: ${Number(r.data?.coins||0).toLocaleString("de-DE")}`);await loadAdminUsers()}catch(e){console.error(e);showMessage("❌ Coins konnten nicht geändert werden.")}}
+async function adminBan(uid,minutes){if(!await requireAdmin())return;try{const f=await getAdminFunctions();await f.banUser({uid,durationMinutes:minutes});showMessage(minutes===0?"✅ Spieler entsperrt.":minutes===-1?"🚫 Spieler dauerhaft gesperrt.":`🚫 Spieler für ${minutes} Minuten gesperrt.`);await loadAdminUsers()}catch(e){console.error(e);showMessage("❌ Sperre konnte nicht geändert werden.")}}
+async function adminDelete(u){if(!await requireAdmin())return;if(u.uid===currentUser.uid){showMessage("❌ Deinen eigenen Admin-Account nicht löschen.");return}if(!confirm(`Account ${u.email||u.uid} wirklich löschen? Dieser Vorgang kann nicht rückgängig gemacht werden.`))return;try{const f=await getAdminFunctions();await f.deleteUser({uid:u.uid});showMessage("🗑️ Account gelöscht.");await loadAdminUsers()}catch(e){console.error(e);showMessage("❌ Account konnte nicht gelöscht werden.")}}
+adminLoginBtn.onclick=openAdminLogin;adminUnlockBtn.onclick=activateAdmin;adminCloseBtn.onclick=closeAdminLogin;adminClosePanelBtn.onclick=closeAdminLogin;adminMyAccountBtn.onclick=async()=>{if(await requireAdmin())adminInfo.textContent=`Firebase UID: ${currentUser.uid} · E-Mail: ${currentUser.email||"-"}`};$("adminRefreshUsersBtn").onclick=loadAdminUsers;$("adminUserSearch").addEventListener("input",()=>loadAdminUsers());adminCodeInput.addEventListener("keydown",e=>{if(e.key==="Enter")activateAdmin();if(e.key==="Escape")closeAdminLogin()});
 
 accountBtn.onclick=()=>showScreen("authScreen");
 myAccountBtn.onclick=()=>{authStatus.textContent=currentUser?"✅ Du bist angemeldet. Hier kannst du deinen Account verwalten.":"🔐 Bitte mit E-Mail und Passwort anmelden oder registrieren.";showScreen("authScreen");};authBackBtn.onclick=()=>showScreen("lobby");guestBtn.onclick=()=>{showScreen("lobby");showMessage("👤 Gastmodus aktiviert.")};
