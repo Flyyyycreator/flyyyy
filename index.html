@@ -630,50 +630,26 @@ function closeAdminLogin(){
 }
 
 async function activateAdmin(){
-  if(adminActivating)return;
   if(!currentUser){
-    adminStatusText.textContent="🔐 Du musst zuerst angemeldet sein.";
+    adminStatusText.textContent="🔐 Bitte zuerst anmelden.";
     return;
   }
+
   const code=adminCodeInput.value.trim();
-  if(!code){
-    adminStatusText.textContent="Bitte den Admin-Aktivierungscode eingeben.";
+  const ADMIN_CODE="Flyyyy-Admin-7391-X";
+
+  if(code!==ADMIN_CODE){
+    adminStatusText.textContent="❌ Falscher Admin-Code.";
+    adminCodeInput.select();
     return;
   }
-  adminActivating=true;
-  adminUnlockBtn.disabled=true;
-  adminStatusText.textContent="⏳ Adminrechte werden sicher geprüft...";
-  try{
-    const fn=await import("https://www.gstatic.com/firebasejs/12.16.0/firebase-functions.js");
-    const functions=fn.getFunctions(firebaseApp);
-    const activate=fn.httpsCallable(functions,"activateAdmin");
-    await activate({code});
-    await currentUser.getIdToken(true);
-    const ok=await getAdminClaim(true);
-    if(!ok)throw new Error("ADMIN_CLAIM_NOT_ACTIVE");
-    adminUnlocked=true;
-    adminPanel.style.display="block";
-    adminStatusText.textContent="✅ Adminrechte sicher aktiviert.";
-    adminInfo.textContent=`Angemeldet als: ${currentUser.email||"Konto"}`;
-    adminCodeInput.value="";
-    showMessage("🛠️ Adminrechte aktiviert.");
-  }catch(e){
-    console.error("Admin activation",e);
-    const codeMap={
-      "functions/unauthenticated":"🔐 Bitte zuerst anmelden.",
-      "functions/permission-denied":"❌ Falscher oder abgelaufener Admin-Code.",
-      "functions/invalid-argument":"❌ Ungültiger Admin-Code.",
-      "ADMIN_CLAIM_NOT_ACTIVE":"❌ Adminrolle konnte nicht aktiviert werden."
-    };
-    const key=e?.code||e?.message||"";
-    adminUnlocked=false;
-    adminPanel.style.display="none";
-    adminStatusText.textContent=codeMap[key]||"❌ Admin-Aktivierung fehlgeschlagen.";
-    adminCodeInput.select();
-  }finally{
-    adminActivating=false;
-    adminUnlockBtn.disabled=false;
-  }
+
+  adminUnlocked=true;
+  adminPanel.style.display="block";
+  adminStatusText.textContent="✅ Adminrechte aktiviert.";
+  adminInfo.textContent=`Angemeldet als: ${currentUser.email||"Konto"}`;
+  adminCodeInput.value="";
+  showMessage("🛠️ Adminrechte aktiviert.");
 }
 
 async function requireAdmin(){
@@ -681,15 +657,10 @@ async function requireAdmin(){
     showMessage("🔐 Bitte zuerst anmelden.");
     return false;
   }
-  const ok=await getAdminClaim(true);
-  if(!ok){
-    adminUnlocked=false;
-    adminPanel.style.display="none";
-    adminStatusText.textContent="🔒 Keine Adminrechte für dieses Konto.";
-    showMessage("🔒 Adminrechte erforderlich.");
+  if(!adminUnlocked){
+    showMessage("🔒 Bitte zuerst den Admin-Code eingeben.");
     return false;
   }
-  adminUnlocked=true;
   return true;
 }
 
