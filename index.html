@@ -16,668 +16,227 @@
 .title{text-align:center;line-height:.9;font-size:clamp(55px,10vw,110px);font-weight:1000;letter-spacing:.08em;text-shadow:0 8px 0 rgba(0,0,0,.15),0 0 35px rgba(94,231,255,.3)}.version{width:max-content;margin:14px auto;padding:8px 16px;border-radius:999px;background:rgba(94,231,255,.12);border:1px solid rgba(94,231,255,.28);font-weight:900}.subtitle{text-align:center;color:var(--muted);margin:12px 0 22px}.tiny{font-size:13px;color:var(--muted)}
 .button-grid{display:grid;gap:12px}.btn{border:0;border-radius:17px;padding:15px 18px;color:#111;font-weight:900;background:linear-gradient(180deg,#ffe570,#ffc82c);box-shadow:0 7px 0 #c99415,0 12px 22px rgba(0,0,0,.18);transition:.12s}.btn:active{transform:translateY(5px);box-shadow:0 2px 0 #c99415}.btn.blue{background:linear-gradient(180deg,#6ceeff,#39c9ea);box-shadow:0 7px 0 #1b8aa7}.btn.green{background:linear-gradient(180deg,#86ffbd,#4de89b);box-shadow:0 7px 0 #239a60}.btn.red{background:linear-gradient(180deg,#ff8995,#ff5e72);box-shadow:0 7px 0 #a62f43;color:#fff}.btn.dark{color:#fff;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.13);box-shadow:none}
 .credits,.accountLine{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-bottom:18px}.badge,.accountPill{padding:10px 16px;border-radius:999px;background:rgba(255,212,71,.12);border:1px solid rgba(255,212,71,.3);font-weight:900}.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}.topbar h2{margin:0;font-size:30px}
-.tabs{display:flex;gap:8px;overflow:auto;margin-bottom:15px;padding-bottom:6px}.tab{white-space:nowrap;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:#fff;border-radius:999px;padding:10px 15px;font-weight:900}.tab.active{background:#fff;color:#17204a}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}.card{min-height:220px;display:flex;flex-direction:column;gap:10px;padding:14px;border-radius:22px;background:linear-gradient(180deg,rgba(255,255,255,.095),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.12)}.card h3{margin:0;font-size:18px}.preview{width:100%;height:145px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:10px;border-radius:17px;background:linear-gradient(135deg,rgba(255,255,255,.11),rgba(255,255,255,.035));border:1px solid rgba(255,255,255,.08)}.preview canvas{width:100%;height:100%;object-fit:contain;display:block}.price{font-size:13px;font-weight:900;color:#ffe27b}.smallbtn{margin-top:auto;border:0;border-radius:12px;padding:10px 12px;font-weight:950;background:linear-gradient(180deg,#fff,#e9efff);color:#17204a}.smallbtn.blue{background:linear-gradient(180deg,#6ceeff,#39c9ea)}.smallbtn.selected{background:linear-gradient(180deg,#83ffc0,#4de89b);color:#0b3423}.smallbtn:disabled{opacity:.55;cursor:not-allowed}
-.authBox{padding:16px;border-radius:18px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);margin-bottom:15px}.authInput,.nameInput{width:100%;padding:13px 14px;border:1px solid rgba(255,255,255,.14);border-radius:14px;outline:none;background:rgba(255,255,255,.07);color:#fff}.authGrid,.nameBox{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}.authStatus{margin-top:10px;color:var(--muted);font-size:13px}.leaderStatus{padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);color:var(--muted);margin-bottom:14px}.leaderboard{display:grid;gap:10px}.leaderRow{display:grid;grid-template-columns:55px 1fr auto;align-items:center;gap:12px;padding:14px 16px;border-radius:17px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09)}.leaderRow.me{background:rgba(94,231,255,.08);border-color:rgba(94,231,255,.35)}.leaderRank{text-align:center;font-size:23px;font-weight:1000}.leaderName{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-weight:900}.leaderScore{font-size:20px;font-weight:1000}.leaderMeta{text-align:right;min-width:120px}.leaderWins{font-size:13px;color:var(--muted);font-weight:800;margin-top:2px}.onlineMini{font-size:11px;font-weight:900;margin-top:4px}.onlineMini.online{color:#6df5a3}.onlineMini.offline{color:#8790ad}.onlineMini{font-size:12px;color:var(--green);font-weight:900}
+.tabs,.seasonTabs{display:flex;gap:8px;overflow:auto;margin-bottom:15px;padding-bottom:6px}.tab,.seasonTab{white-space:nowrap;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:#fff;border-radius:999px;padding:10px 15px;font-weight:900}.tab.active,.seasonTab.active{background:#fff;color:#17204a}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}.card{min-height:220px;display:flex;flex-direction:column;gap:10px;padding:14px;border-radius:22px;background:linear-gradient(180deg,rgba(255,255,255,.095),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.12)}.card h3{margin:0;font-size:18px}.preview{width:100%;height:145px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:10px;border-radius:17px;background:linear-gradient(135deg,rgba(255,255,255,.11),rgba(255,255,255,.035));border:1px solid rgba(255,255,255,.08)}.preview canvas{width:100%;height:100%;object-fit:contain;display:block}.price{font-size:13px;font-weight:900;color:#ffe27b}.smallbtn{margin-top:auto;border:0;border-radius:12px;padding:10px 12px;font-weight:950;background:linear-gradient(180deg,#fff,#e9efff);color:#17204a}.smallbtn.blue{background:linear-gradient(180deg,#6ceeff,#39c9ea)}.smallbtn.selected{background:linear-gradient(180deg,#83ffc0,#4de89b);color:#0b3423}.smallbtn:disabled{opacity:.55;cursor:not-allowed}
+.authBox{padding:16px;border-radius:18px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);margin-bottom:15px}.authInput,.nameInput{width:100%;padding:13px 14px;border:1px solid rgba(255,255,255,.14);border-radius:14px;outline:none;background:rgba(255,255,255,.07);color:#fff}.authGrid,.nameBox{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}.authStatus{margin-top:10px;color:var(--muted);font-size:13px}.leaderStatus{padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);color:var(--muted);margin-bottom:14px}.leaderboard{display:grid;gap:10px}.leaderRow{display:grid;grid-template-columns:55px 1fr auto;align-items:center;gap:12px;padding:14px 16px;border-radius:17px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09)}.leaderRow.me{background:rgba(94,231,255,.08);border-color:rgba(94,231,255,.35)}.leaderRank{text-align:center;font-size:23px;font-weight:1000}.leaderName{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-weight:900}.leaderScore{font-size:20px;font-weight:1000}.leaderMeta{text-align:right;min-width:120px}.leaderWins{font-size:13px;color:var(--muted);font-weight:800;margin-top:2px}.onlineMini{font-size:12px;font-weight:900;margin-top:4px}.onlineMini.online{color:var(--green)}.onlineMini.offline{color:#8790ad}
 .missionList{display:grid;gap:10px}.mission{padding:14px;border-radius:16px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1)}.mission.done{background:rgba(109,245,163,.1);border-color:rgba(109,245,163,.25)}.missionTop{display:flex;justify-content:space-between;gap:10px}.missionProgress{height:8px;margin-top:9px;overflow:hidden;border-radius:999px;background:rgba(255,255,255,.08)}.missionFill{height:100%;background:linear-gradient(90deg,#5ee7ff,#6df5a3)}
 #onlineBadge{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:5000;display:flex;align-items:center;gap:8px;padding:9px 13px;border-radius:999px;background:rgba(8,15,34,.9);border:1px solid rgba(109,245,163,.35);box-shadow:0 10px 30px rgba(0,0,0,.3);font-weight:900;backdrop-filter:blur(8px);white-space:nowrap}#onlineDot{width:10px;height:10px;border-radius:50%;background:#42e879;box-shadow:0 0 12px rgba(66,232,121,.8)}#onlineDot.off{background:#ff6374;box-shadow:0 0 12px rgba(255,99,116,.5)}
 #gameHud{position:absolute;inset:0;z-index:30;display:none;pointer-events:none}.hud-left,.hud-right{position:absolute;top:15px;display:flex;flex-wrap:wrap;align-items:center;gap:10px}.hud-left{left:15px;right:180px;justify-content:flex-start}.hud-right{right:15px;max-width:150px;justify-content:flex-end}.hud-pill{padding:10px 14px;white-space:nowrap;border-radius:999px;background:rgba(12,19,46,.72);border:1px solid rgba(255,255,255,.15);font-weight:900;backdrop-filter:blur(8px)}.pause-btn{pointer-events:auto;padding:10px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.15);color:#fff;background:rgba(12,19,46,.72);font-weight:900}.tip{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);padding:9px 14px;border-radius:999px;background:rgba(12,19,46,.6);font-size:13px}
 .overlay{position:absolute;inset:0;z-index:100;display:none;align-items:center;justify-content:center;background:rgba(5,8,22,.55);backdrop-filter:blur(6px)}.overlay.active{display:flex}.dialog{width:min(560px,92vw);padding:28px;text-align:center;border-radius:28px;background:linear-gradient(180deg,#101837,#18234d);border:1px solid rgba(255,255,255,.15);box-shadow:0 20px 60px rgba(0,0,0,.45)}.dialog h2{margin:0 0 10px;font-size:clamp(40px,8vw,70px)}.dialog p{color:var(--muted)}.stats{display:flex;justify-content:center;flex-wrap:wrap;gap:25px;margin:20px 0}.stat strong{display:block;font-size:28px}.notice{padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);color:var(--muted);font-size:13px;margin-top:12px}
-
-/* ===== UPDATE 2.0 SEASONS ===== */
-.seasonPanel{margin:14px 0 18px;padding:16px;border-radius:20px;background:linear-gradient(135deg,rgba(94,231,255,.10),rgba(109,245,163,.08));border:1px solid rgba(94,231,255,.20)}
-.seasonTop{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.seasonTitle{font-size:20px;font-weight:1000}.seasonTimer{font-weight:1000;color:#6df5a3}.seasonSub{color:var(--muted);font-size:13px;margin-top:7px}.onlineNote{font-size:12px;color:var(--muted);margin-top:8px}
-.seasonTabs{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}.seasonTab{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:#fff;border-radius:999px;padding:10px 14px;font-weight:900}.seasonTab.active{background:#fff;color:#17204a}
+.seasonPanel{margin:14px 0 18px;padding:16px;border-radius:20px;background:linear-gradient(135deg,rgba(94,231,255,.10),rgba(109,245,163,.08));border:1px solid rgba(94,231,255,.20)}.seasonTop{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.seasonTitle{font-size:20px;font-weight:1000}.seasonTimer{font-weight:1000;color:#6df5a3}.seasonSub{color:var(--muted);font-size:13px;margin-top:7px}.onlineNote{font-size:12px;color:var(--muted);margin-top:8px}
 .rewardOverlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;background:rgba(4,8,20,.72);backdrop-filter:blur(8px)}.rewardOverlay.active{display:flex}.rewardBox{width:min(560px,92vw);padding:30px;text-align:center;border-radius:30px;background:linear-gradient(180deg,#132042,#19295b);border:1px solid rgba(255,255,255,.16);box-shadow:0 30px 90px rgba(0,0,0,.55)}.rewardBox h2{margin:0;font-size:clamp(34px,8vw,62px)}.rewardRank{font-size:28px;font-weight:1000;margin:10px 0}.rewardCoins{font-size:40px;font-weight:1000;color:#ffd447;margin:12px 0}.rewardBox p{color:var(--muted)}
-.seasonLocked{opacity:.65;filter:saturate(.75)}
-@media(max-width:600px){.seasonTop{align-items:flex-start}.seasonTimer{font-size:14px}}
-@media(max-width:600px){.hud-left{left:8px;right:145px;gap:6px}.hud-right{right:8px;max-width:125px;gap:6px}.hud-left .hud-pill,.hud-right .hud-pill,.pause-btn{padding:7px 9px;font-size:12px}.menu{padding:20px;border-radius:22px}.title{font-size:58px}.preview{height:125px}.hud-pill{padding:8px 10px;font-size:13px}.tip{font-size:12px;bottom:10px}.authGrid,.nameBox{grid-template-columns:1fr}.leaderRow{grid-template-columns:45px 1fr auto}.leaderMeta{min-width:95px}#onlineBadge{top:10px;left:50%;right:auto;transform:translateX(-50%);font-size:12px}}
-
-
-.luckyWrap{display:grid;grid-template-columns:minmax(280px,430px) minmax(260px,1fr);gap:20px;align-items:center}
-.luckyWheelCard{padding:20px;border-radius:24px;background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.035));border:1px solid rgba(255,255,255,.12);text-align:center}
-.wheelStage{position:relative;width:min(390px,80vw);aspect-ratio:1/1;margin:0 auto 16px;display:grid;place-items:center}
-.luckyWheel{position:relative;width:100%;height:100%;border-radius:50%;border:10px solid #fff;box-shadow:0 15px 45px rgba(0,0,0,.35),0 0 35px rgba(255,212,71,.25);overflow:hidden;background:#fff}.luckyWheelInner{position:absolute;inset:0;border-radius:50%;transform:rotate(0deg);transition:transform 4.8s cubic-bezier(.12,.78,.18,1);background:conic-gradient(#ffd447 0 45deg,#5ee7ff 45deg 90deg,#6df5a3 90deg 135deg,#ff8c6b 135deg 180deg,#b58cff 180deg 225deg,#7dd3fc 225deg 270deg,#fda4af 270deg 315deg,#ffe58a 315deg 360deg)}
-.wheelLabels{position:absolute;inset:0;pointer-events:none;font-size:clamp(14px,2.4vw,20px);font-weight:1000}
-.wheelLabel{position:absolute;left:50%;top:50%;width:90px;margin-left:-45px;margin-top:-12px;text-align:center;color:#17204a;text-shadow:0 1px 0 rgba(255,255,255,.5)}
-.wheelLabel:nth-child(1){transform:rotate(22.5deg) translateY(-145px)}
-.wheelLabel:nth-child(2){transform:rotate(67.5deg) translateY(-145px)}
-.wheelLabel:nth-child(3){transform:rotate(112.5deg) translateY(-145px)}
-.wheelLabel:nth-child(4){transform:rotate(157.5deg) translateY(-145px)}
-.wheelLabel:nth-child(5){transform:rotate(202.5deg) translateY(-145px)}
-.wheelLabel:nth-child(6){transform:rotate(247.5deg) translateY(-145px)}
-.wheelLabel:nth-child(7){transform:rotate(292.5deg) translateY(-145px)}
-.wheelLabel:nth-child(8){transform:rotate(337.5deg) translateY(-145px)}
-.wheelPointer{position:absolute;top:-2px;left:50%;transform:translateX(-50%);z-index:5;font-size:44px;filter:drop-shadow(0 6px 5px rgba(0,0,0,.25))}
-.luckyInfo{display:grid;gap:12px}
-.luckyInfoBox{padding:16px;border-radius:18px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09)}
-.luckyInfoBox h3{margin:0 0 8px}
-.luckyMainPrize{padding:18px;border-radius:18px;background:linear-gradient(180deg,rgba(255,212,71,.16),rgba(255,255,255,.05));border:1px solid rgba(255,212,71,.35)}
-.luckyMainPrize strong{display:block;font-size:26px;margin-bottom:6px}
-.luckyOdds{font-size:13px;color:var(--muted);line-height:1.5}
-.spinBtn{width:100%;font-size:20px}
-.luckyResult{margin-top:12px;min-height:50px;padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09);font-weight:900}
-.jackpotOverlay{position:absolute;inset:0;display:none;align-items:center;justify-content:center;background:rgba(6,8,24,.72);backdrop-filter:blur(8px);z-index:300}
-.jackpotOverlay.active{display:flex}
-.jackpotBox{width:min(620px,92vw);padding:34px 24px;text-align:center;border-radius:30px;background:linear-gradient(180deg,#33245d,#151b3d);border:2px solid rgba(255,212,71,.7);box-shadow:0 20px 80px rgba(0,0,0,.5),0 0 60px rgba(255,212,71,.25);animation:jackpotPulse .8s ease-in-out infinite alternate}
-.jackpotIcon{font-size:76px}
-.jackpotTitle{font-size:clamp(48px,9vw,92px);font-weight:1000;letter-spacing:.08em;color:#ffd447;text-shadow:0 0 25px rgba(255,212,71,.55)}
-.jackpotText{font-size:clamp(24px,5vw,42px);font-weight:1000;margin:10px 0}
-.jackpotSub{color:var(--muted);margin-bottom:18px}
-.prizeIcon{font-size:72px}.prizeTitle{font-size:clamp(40px,8vw,82px);font-weight:1000;letter-spacing:.05em;color:#ffd447;text-shadow:0 0 25px rgba(255,212,71,.55)}.prizeText{font-size:clamp(24px,5vw,44px);font-weight:1000;margin:10px 0}.prizeSub{color:var(--muted);font-size:16px}
-@keyframes jackpotPulse{from{transform:scale(1)}to{transform:scale(1.02)}}
-@media(max-width:760px){.luckyWrap{grid-template-columns:1fr}.wheelStage{width:min(360px,82vw)}}
+.luckyWrap{display:grid;grid-template-columns:minmax(280px,430px) minmax(260px,1fr);gap:20px;align-items:center}.luckyWheelCard{padding:20px;border-radius:24px;background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.035));border:1px solid rgba(255,255,255,.12);text-align:center}.wheelStage{position:relative;width:min(390px,80vw);aspect-ratio:1/1;margin:0 auto 16px;display:grid;place-items:center}.luckyWheel{position:relative;width:100%;height:100%;border-radius:50%;border:10px solid #fff;box-shadow:0 15px 45px rgba(0,0,0,.35),0 0 35px rgba(255,212,71,.25);overflow:hidden;background:#fff}.luckyWheelInner{position:absolute;inset:0;border-radius:50%;transform:rotate(0deg);transition:transform 4.8s cubic-bezier(.12,.78,.18,1);background:conic-gradient(#ffd447 0 45deg,#5ee7ff 45deg 90deg,#6df5a3 90deg 135deg,#ff8c6b 135deg 180deg,#b58cff 180deg 225deg,#7dd3fc 225deg 270deg,#fda4af 270deg 315deg,#ffe58a 315deg 360deg)}.wheelLabels{position:absolute;inset:0;pointer-events:none;font-size:clamp(14px,2.4vw,20px);font-weight:1000}.wheelLabel{position:absolute;left:50%;top:50%;width:90px;margin-left:-45px;margin-top:-12px;text-align:center;color:#17204a;text-shadow:0 1px 0 rgba(255,255,255,.5)}.wheelLabel:nth-child(1){transform:rotate(22.5deg) translateY(-145px)}.wheelLabel:nth-child(2){transform:rotate(67.5deg) translateY(-145px)}.wheelLabel:nth-child(3){transform:rotate(112.5deg) translateY(-145px)}.wheelLabel:nth-child(4){transform:rotate(157.5deg) translateY(-145px)}.wheelLabel:nth-child(5){transform:rotate(202.5deg) translateY(-145px)}.wheelLabel:nth-child(6){transform:rotate(247.5deg) translateY(-145px)}.wheelLabel:nth-child(7){transform:rotate(292.5deg) translateY(-145px)}.wheelLabel:nth-child(8){transform:rotate(337.5deg) translateY(-145px)}.wheelPointer{position:absolute;top:-2px;left:50%;transform:translateX(-50%);z-index:5;font-size:44px;filter:drop-shadow(0 6px 5px rgba(0,0,0,.25))}.luckyInfo{display:grid;gap:12px}.luckyInfoBox,.luckyMainPrize{padding:16px;border-radius:18px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09)}.luckyInfoBox h3{margin:0 0 8px}.luckyMainPrize{background:linear-gradient(180deg,rgba(255,212,71,.16),rgba(255,255,255,.05));border-color:rgba(255,212,71,.35)}.luckyMainPrize strong{display:block;font-size:26px;margin-bottom:6px}.luckyOdds{font-size:13px;color:var(--muted);line-height:1.5}.spinBtn{width:100%;font-size:20px}.luckyResult{margin-top:12px;min-height:50px;padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09);font-weight:900}.jackpotOverlay{position:absolute;inset:0;display:none;align-items:center;justify-content:center;background:rgba(6,8,24,.72);backdrop-filter:blur(8px);z-index:300}.jackpotOverlay.active{display:flex}.jackpotBox{width:min(620px,92vw);padding:34px 24px;text-align:center;border-radius:30px;background:linear-gradient(180deg,#33245d,#151b3d);border:2px solid rgba(255,212,71,.7);box-shadow:0 20px 80px rgba(0,0,0,.5),0 0 60px rgba(255,212,71,.25);animation:jackpotPulse .8s ease-in-out infinite alternate}.prizeIcon{font-size:72px}.prizeTitle{font-size:clamp(40px,8vw,82px);font-weight:1000;letter-spacing:.05em;color:#ffd447;text-shadow:0 0 25px rgba(255,212,71,.55)}.prizeText{font-size:clamp(24px,5vw,44px);font-weight:1000;margin:10px 0}.prizeSub{color:var(--muted);font-size:16px}@keyframes jackpotPulse{from{transform:scale(1)}to{transform:scale(1.02)}}
+@media(max-width:760px){.luckyWrap{grid-template-columns:1fr}.wheelStage{width:min(360px,82vw)}}@media(max-width:600px){.hud-left{left:8px;right:145px;gap:6px}.hud-right{right:8px;max-width:125px;gap:6px}.hud-left .hud-pill,.hud-right .hud-pill,.pause-btn{padding:7px 9px;font-size:12px}.menu{padding:20px;border-radius:22px}.title{font-size:58px}.preview{height:125px}.tip{font-size:12px;bottom:10px}.authGrid,.nameBox{grid-template-columns:1fr}.leaderRow{grid-template-columns:45px 1fr auto}.leaderMeta{min-width:95px}#onlineBadge{top:10px;font-size:12px}}
 </style>
 </head>
 <body>
-
 <div id="app">
 <div id="onlineBadge"><span id="onlineDot"></span><span>🟢 <b id="onlineCount">0</b> Online</span></div>
 <canvas id="gameCanvas"></canvas>
 
 <div id="authScreen" class="screen"><div class="menu"><div class="title">FLYYYY</div><div class="version">🔐 ACCOUNT</div><div class="subtitle">Mit E-Mail anmelden, neues Konto erstellen oder ohne Konto spielen.</div><div class="authBox"><h2 style="margin:0 0 12px">Anmelden / Registrieren</h2><input id="authEmail" class="authInput" type="email" autocomplete="email" placeholder="E-Mail"><input id="authPassword" class="authInput" type="password" autocomplete="current-password" placeholder="Passwort (mind. 6 Zeichen)" style="margin-top:10px"><div class="authGrid"><button id="loginBtn" class="btn blue">ANMELDEN</button><button id="registerBtn" class="btn green">REGISTRIEREN</button></div><button id="guestBtn" class="btn dark" style="width:100%;margin-top:10px">👤 OHNE KONTO SPIELEN</button><div id="authStatus" class="authStatus">Gastmodus ist jederzeit möglich.</div></div><button id="authBackBtn" class="btn dark" style="width:100%">← Zur Lobby</button></div></div>
 
-<div id="lobby" class="screen active"><div class="menu"><div class="title">FLYYYY</div><div class="version">🏆 UPDATE 2.0</div><div class="subtitle">Fly weiter. Sammle Coins. Schlage andere Spieler.</div><div class="accountLine"><div id="accountStatus" class="accountPill">👤 Gast</div><button id="accountBtn" class="btn dark">🔐 ANMELDEN</button><button id="logoutBtn" class="btn red" style="display:none">ABMELDEN</button></div><div class="credits"><div class="badge">🪙 <span id="lobbyCoins">0</span> Coins</div><div class="badge">🏆 Rekord: <span id="lobbyBest">0</span></div></div><div class="seasonPanel"><div class="seasonTop"><div class="seasonTitle">🌐 SEASON <span id="seasonNumberLobby">1</span></div><div class="seasonTimer" id="seasonTimerLobby">⏱️ Lädt...</div></div><div class="seasonSub">7-Tage-Online-Season · nur mit Konto spielbar</div><div class="onlineNote">🥇 1.000 Coins · 🥈 500 Coins · 🥉 300 Coins · Platz 4–10: 100 · Platz 11–25: 50</div></div><div class="button-grid"><button id="startBtn" class="btn">START</button><button id="onlineModeBtn" class="btn green">🌐 ONLINE-SEASON SPIELEN</button><button id="leaderboardBtn" class="btn blue">🏆 LEADERBOARD</button><button id="shopBtn" class="btn blue">🛒 SHOP</button><button id="inventoryBtn" class="btn blue">🎒 INVENTAR</button><button id="missionsBtn" class="btn blue">🎯 MISSIONEN</button><button id="musicToggleBtn" class="btn dark">🎵 Musik: AN</button></div><div class="notice">✅ Angemeldete Spieler erscheinen automatisch online im Leaderboard. Der gespeicherte Rekord wird dort sofort angezeigt. Gäste können spielen, werden aber nicht als Online-Spieler gezählt.</div></div></div>
+<div id="lobby" class="screen active"><div class="menu"><div class="title">FLYYYY</div><div class="version">🏆 UPDATE 2.0</div><div class="subtitle">Fly weiter. Sammle Coins. Schlage andere Spieler.</div><div class="accountLine"><div id="accountStatus" class="accountPill">👤 Gast</div><button id="accountBtn" class="btn dark">🔐 ANMELDEN</button><button id="logoutBtn" class="btn red" style="display:none">ABMELDEN</button></div><div class="credits"><div class="badge">🪙 <span id="lobbyCoins">0</span> Coins</div><div class="badge">🏆 Rekord: <span id="lobbyBest">0</span></div></div><div class="seasonPanel"><div class="seasonTop"><div class="seasonTitle">🌐 SEASON <span id="seasonNumberLobby">1</span></div><div class="seasonTimer" id="seasonTimerLobby">⏱️ Lädt...</div></div><div class="seasonSub">7-Tage-Online-Season · nur mit Konto spielbar</div><div class="onlineNote">🥇 1.000 Coins · 🥈 500 Coins · 🥉 300 Coins · Platz 4–10: 100 · Platz 11–25: 50</div></div><div class="button-grid"><button id="startBtn" class="btn">START</button><button id="onlineModeBtn" class="btn green">🌐 ONLINE-SEASON SPIELEN</button><button id="leaderboardBtn" class="btn blue">🏆 LEADERBOARD</button><button id="shopBtn" class="btn blue">🛒 SHOP</button><button id="inventoryBtn" class="btn blue">🎒 INVENTAR</button><button id="missionsBtn" class="btn blue">🎯 MISSIONEN</button><button id="musicToggleBtn" class="btn dark">🎵 Musik: AN</button></div><div class="notice">✅ Season-Punkte sind getrennt vom Allzeit-Highscore. Nur die aktuelle Season entscheidet über die Season-Belohnung.</div></div></div>
 
-<div id="leaderboard" class="screen"><div class="menu"><div class="topbar"><div><h2>🏆 Leaderboard</h2><div class="tiny">Live-Rangliste und aktuelle Online-Season.</div></div><button id="leaderboardBack" class="btn dark">← Zurück</button></div><div class="seasonTabs"><button id="seasonTabBtn" class="seasonTab active">🌐 Season</button><button id="allTimeTabBtn" class="seasonTab">⭐ Allzeit</button></div><div class="seasonPanel"><div class="seasonTop"><div class="seasonTitle">SEASON <span id="seasonNumberBoard">1</span></div><div class="seasonTimer" id="seasonTimerBoard">⏱️ Lädt...</div></div><div class="seasonSub" id="seasonBoardSub">Online-Season</div></div><div id="leaderboardStatus" class="leaderStatus">Lade Leaderboard...</div><div class="nameBox"><input id="playerName" class="nameInput" maxlength="20" placeholder="Dein Spielername"><button id="saveNameBtn" class="btn">NAME SPEICHERN</button></div><div id="leaderboardList" class="leaderboard"></div></div></div>
+<div id="leaderboard" class="screen"><div class="menu"><div class="topbar"><div><h2>🏆 Leaderboard</h2><div class="tiny">Season und Allzeit werden getrennt angezeigt.</div></div><button id="leaderboardBack" class="btn dark">← Zurück</button></div><div class="seasonTabs"><button id="seasonTabBtn" class="seasonTab active">🌐 Season</button><button id="allTimeTabBtn" class="seasonTab">⭐ Allzeit</button></div><div class="seasonPanel"><div class="seasonTop"><div class="seasonTitle">SEASON <span id="seasonNumberBoard">1</span></div><div class="seasonTimer" id="seasonTimerBoard">⏱️ Lädt...</div></div><div class="seasonSub" id="seasonBoardSub">🌐 Nur Season-Punkte</div></div><div id="leaderboardStatus" class="leaderStatus">Lade Leaderboard...</div><div class="nameBox"><input id="playerName" class="nameInput" maxlength="20" placeholder="Dein Spielername"><button id="saveNameBtn" class="btn">NAME SPEICHERN</button></div><div id="leaderboardList" class="leaderboard"></div></div></div>
 
 <div id="shop" class="screen"><div class="menu"><div class="topbar"><div><h2>🛒 Shop</h2><div class="tiny">🪙 <span id="shopCoins">0</span> Coins</div></div><button id="shopBack" class="btn dark">← Zurück</button></div><div id="shopTabs" class="tabs"></div><div id="shopCards" class="cards"></div></div></div>
 <div id="inventory" class="screen"><div class="menu"><div class="topbar"><div><h2>🎒 Inventar</h2><div class="tiny">Deine gekauften Gegenstände.</div></div><button id="inventoryBack" class="btn dark">← Zurück</button></div><div id="inventoryTabs" class="tabs"></div><div id="inventoryCards" class="cards"></div></div></div>
 <div id="missions" class="screen"><div class="menu"><div class="topbar"><div><h2>🎯 Missionen</h2><div class="tiny">Schließe Aufgaben ab und verdiene Coins.</div></div><button id="missionsBack" class="btn dark">← Zurück</button></div><div id="missionList" class="missionList"></div></div></div>
 
-<div id="gameHud"><div class="hud-left"><div class="hud-pill">⭐ <span id="scoreHud">0</span></div><div class="hud-pill">🪙 <span id="coinsHud">0</span></div><div class="hud-pill">🪽 Jumps: <span id="jumpHud">0</span></div></div><div class="hud-right"><div class="hud-pill" id="seasonHudPill">🌐 Season <span id="seasonHud">1</span></div><div class="hud-pill">🌍 <span id="worldHud">Gizeh</span></div><div class="hud-pill">🎵 <span id="musicHud">Classic</span></div><button id="pauseBtn" class="pause-btn">Ⅱ Pause</button></div><div class="tip">Klicken / Tippen / Leertaste = Fliegen</div></div>
+<div id="gameHud"><div class="hud-left"><div class="hud-pill">⭐ <span id="scoreHud">0</span></div><div class="hud-pill">🪙 <span id="coinsHud">0</span></div><div class="hud-pill">🪽 Jumps: <span id="jumpHud">0</span></div></div><div class="hud-right"><div class="hud-pill">🌐 Season <span id="seasonHud">1</span></div><div class="hud-pill">🌍 <span id="worldHud">Gizeh</span></div><div class="hud-pill">🎵 <span id="musicHud">Classic</span></div><button id="pauseBtn" class="pause-btn">Ⅱ Pause</button></div><div class="tip">Klicken / Tippen / Leertaste = Fliegen</div></div>
 
 <div id="pauseOverlay" class="overlay"><div class="dialog"><h2>PAUSE</h2><p>Dein Lauf wurde angehalten.</p><div class="button-grid"><button id="resumeBtn" class="btn">▶ WEITER</button><button id="pauseLobbyBtn" class="btn dark">🏠 ZUR LOBBY</button></div></div></div>
 <div id="gameOverOverlay" class="overlay"><div class="dialog"><h2>GAME OVER</h2><p id="gameOverText">Gut geflogen!</p><div class="stats"><div class="stat"><div class="tiny">Punkte</div><strong id="finalScore">0</strong></div><div class="stat"><div class="tiny">Coins</div><strong id="earnedCoins">0</strong></div><div class="stat"><div class="tiny">Rekord</div><strong id="bestScore">0</strong></div></div><div class="button-grid"><button id="retryBtn" class="btn green">🔄 NOCHMAL</button><button id="returnLobbyBtn" class="btn blue">🏠 ZUR LOBBY</button></div></div></div>
-
 <div id="luckyConfirmOverlay" class="overlay"><div class="dialog"><h2>🎡 LUCKY RAD</h2><p>Ein Dreh kostet <strong>🪙 200 Coins</strong>.</p><p class="tiny">Nach dem Kauf öffnet sich sofort das Lucky Rad.</p><div class="button-grid"><button id="confirmLuckyBuyBtn" class="btn green">🪙 KAUFEN & ÖFFNEN</button><button id="cancelLuckyBuyBtn" class="btn dark">ABBRECHEN</button></div></div></div>
-<div id="jackpotOverlay" class="jackpotOverlay"><div class="jackpotBox"><div id="prizePopupIcon" class="prizeIcon">🎁</div><div id="prizePopupTitle" class="prizeTitle">DEIN PREIS!</div><div id="prizePopupText" class="prizeText">Preis</div><div id="prizePopupSub" class="prizeSub">Der Preis wurde deinem Konto gutgeschrieben.</div></div></div><div id="seasonRewardOverlay" class="rewardOverlay"><div class="rewardBox"><div style="font-size:72px">🏆</div><h2>SEASON BEENDET!</h2><div id="seasonRewardRank" class="rewardRank">Platz 1</div><div id="seasonRewardCoins" class="rewardCoins">🪙 +1.000</div><p id="seasonRewardText">Deine persönliche Season-Belohnung wartet auf dich.</p><button id="claimSeasonRewardBtn" class="btn green" style="width:100%;margin-top:10px">🎁 BELOHNUNG ABHOLEN</button></div></div>
+<div id="jackpotOverlay" class="jackpotOverlay"><div class="jackpotBox"><div id="prizePopupIcon" class="prizeIcon">🎁</div><div id="prizePopupTitle" class="prizeTitle">DEIN PREIS!</div><div id="prizePopupText" class="prizeText">Preis</div><div id="prizePopupSub" class="prizeSub">Der Preis wurde deinem Konto gutgeschrieben.</div></div></div>
+<div id="seasonRewardOverlay" class="rewardOverlay"><div class="rewardBox"><div style="font-size:72px">🏆</div><h2>SEASON BEENDET!</h2><div id="seasonRewardRank" class="rewardRank">Platz 1</div><div id="seasonRewardCoins" class="rewardCoins">🪙 +1.000</div><p id="seasonRewardText">Deine persönliche Season-Belohnung wartet auf dich.</p><button id="claimSeasonRewardBtn" class="btn green" style="width:100%;margin-top:10px">🎁 BELOHNUNG ABHOLEN</button></div></div>
 </div>
 
 <script type="module">
-// Robust storage: works even when a browser preview blocks localStorage.
-const _memoryStore = Object.create(null);
-const storage = {
-  getItem(key){ try { return window.localStorage.getItem(key); } catch(e) { return Object.prototype.hasOwnProperty.call(_memoryStore,key) ? _memoryStore[key] : null; } },
-  setItem(key,value){ try { window.localStorage.setItem(key,String(value)); } catch(e) { _memoryStore[key]=String(value); } },
-  removeItem(key){ try { window.localStorage.removeItem(key); } catch(e) { delete _memoryStore[key]; } }
-};
+const _memoryStore=Object.create(null);
+const storage={getItem(k){try{return localStorage.getItem(k)}catch{return Object.prototype.hasOwnProperty.call(_memoryStore,k)?_memoryStore[k]:null}},setItem(k,v){try{localStorage.setItem(k,String(v))}catch{_memoryStore[k]=String(v)}},removeItem(k){try{localStorage.removeItem(k)}catch{delete _memoryStore[k]}}};
 
-// Explicit DOM references: required because this is a JavaScript module.
-const app = document.getElementById("app");
-const gameCanvas = document.getElementById("gameCanvas");
-const authScreen = document.getElementById("authScreen");
-const authEmail = document.getElementById("authEmail");
-const authPassword = document.getElementById("authPassword");
-const loginBtn = document.getElementById("loginBtn");
-const registerBtn = document.getElementById("registerBtn");
-const guestBtn = document.getElementById("guestBtn");
-const authStatus = document.getElementById("authStatus");
-const authBackBtn = document.getElementById("authBackBtn");
-const lobby = document.getElementById("lobby");
-const accountStatus = document.getElementById("accountStatus");
-const accountBtn = document.getElementById("accountBtn");
-const logoutBtn = document.getElementById("logoutBtn");
-const lobbyCoins = document.getElementById("lobbyCoins");
-const lobbyBest = document.getElementById("lobbyBest");
-const startBtn = document.getElementById("startBtn");
-const leaderboardBtn = document.getElementById("leaderboardBtn");
-const shopBtn = document.getElementById("shopBtn");
-const inventoryBtn = document.getElementById("inventoryBtn");
-const missionsBtn = document.getElementById("missionsBtn");
-const musicToggleBtn = document.getElementById("musicToggleBtn");
-const leaderboard = document.getElementById("leaderboard");
-const leaderboardBack = document.getElementById("leaderboardBack");
-const leaderboardStatus = document.getElementById("leaderboardStatus");
-const playerName = document.getElementById("playerName");
-const saveNameBtn = document.getElementById("saveNameBtn");
-const leaderboardList = document.getElementById("leaderboardList");
-const onlineModeBtn = document.getElementById("onlineModeBtn");
-const seasonNumberLobby = document.getElementById("seasonNumberLobby");
-const seasonTimerLobby = document.getElementById("seasonTimerLobby");
-const seasonNumberBoard = document.getElementById("seasonNumberBoard");
-const seasonTimerBoard = document.getElementById("seasonTimerBoard");
-const seasonBoardSub = document.getElementById("seasonBoardSub");
-const seasonTabBtn = document.getElementById("seasonTabBtn");
-const allTimeTabBtn = document.getElementById("allTimeTabBtn");
-const seasonRewardOverlay = document.getElementById("seasonRewardOverlay");
-const seasonRewardRank = document.getElementById("seasonRewardRank");
-const seasonRewardCoins = document.getElementById("seasonRewardCoins");
-const seasonRewardText = document.getElementById("seasonRewardText");
-const claimSeasonRewardBtn = document.getElementById("claimSeasonRewardBtn");
-const shop = document.getElementById("shop");
-const shopBack = document.getElementById("shopBack");
-const shopTabs = document.getElementById("shopTabs");
-const shopCards = document.getElementById("shopCards");
-const shopCoins = document.getElementById("shopCoins");
-const inventory = document.getElementById("inventory");
-const inventoryBack = document.getElementById("inventoryBack");
-const inventoryTabs = document.getElementById("inventoryTabs");
-const inventoryCards = document.getElementById("inventoryCards");
-const missionsScreen = document.getElementById("missions");
-const missionsBack = document.getElementById("missionsBack");
-const missionList = document.getElementById("missionList");
-const luckyConfirmOverlay = document.getElementById("luckyConfirmOverlay");
-const confirmLuckyBuyBtn = document.getElementById("confirmLuckyBuyBtn");
-const cancelLuckyBuyBtn = document.getElementById("cancelLuckyBuyBtn");
-const jackpotOverlay = document.getElementById("jackpotOverlay");
-const prizePopupIcon = document.getElementById("prizePopupIcon");
-const prizePopupTitle = document.getElementById("prizePopupTitle");
-const prizePopupText = document.getElementById("prizePopupText");
-const prizePopupSub = document.getElementById("prizePopupSub");
-const gameHud = document.getElementById("gameHud");
-const scoreHud = document.getElementById("scoreHud");
-const coinsHud = document.getElementById("coinsHud");
-const jumpHud = document.getElementById("jumpHud");
-const worldHud = document.getElementById("worldHud");
-const seasonHud = document.getElementById("seasonHud");
-const musicHud = document.getElementById("musicHud");
-const pauseBtn = document.getElementById("pauseBtn");
-const pauseOverlay = document.getElementById("pauseOverlay");
-const resumeBtn = document.getElementById("resumeBtn");
-const pauseLobbyBtn = document.getElementById("pauseLobbyBtn");
-const gameOverOverlay = document.getElementById("gameOverOverlay");
-const gameOverText = document.getElementById("gameOverText");
-const finalScore = document.getElementById("finalScore");
-const earnedCoins = document.getElementById("earnedCoins");
-const bestScore = document.getElementById("bestScore");
-const retryBtn = document.getElementById("retryBtn");
-const returnLobbyBtn = document.getElementById("returnLobbyBtn");
-const onlineBadge = document.getElementById("onlineBadge");
-const onlineCount = document.getElementById("onlineCount");
-const onlineDot = document.getElementById("onlineDot");
-const APP_VERSION = "2.0.0";
-// Version marker: prevents stale local UI state from pretending this is an older build.
-if (storage.getItem("FLYYYY_APP_VERSION") !== APP_VERSION) {
-  storage.setItem("FLYYYY_APP_VERSION", APP_VERSION);
-}
+const $=id=>document.getElementById(id);
+const app=$("app"),canvas=$("gameCanvas"),ctx=canvas.getContext("2d");
+const authScreen=$("authScreen"),authEmail=$("authEmail"),authPassword=$("authPassword"),loginBtn=$("loginBtn"),registerBtn=$("registerBtn"),guestBtn=$("guestBtn"),authStatus=$("authStatus"),authBackBtn=$("authBackBtn");
+const lobby=$("lobby"),accountStatus=$("accountStatus"),accountBtn=$("accountBtn"),logoutBtn=$("logoutBtn"),lobbyCoins=$("lobbyCoins"),lobbyBest=$("lobbyBest");
+const startBtn=$("startBtn"),onlineModeBtn=$("onlineModeBtn"),leaderboardBtn=$("leaderboardBtn"),shopBtn=$("shopBtn"),inventoryBtn=$("inventoryBtn"),missionsBtn=$("missionsBtn"),musicToggleBtn=$("musicToggleBtn");
+const leaderboard=$("leaderboard"),leaderboardBack=$("leaderboardBack"),leaderboardStatus=$("leaderboardStatus"),playerName=$("playerName"),saveNameBtn=$("saveNameBtn"),leaderboardList=$("leaderboardList"),onlineModeButton=$("onlineModeBtn");
+const seasonNumberLobby=$("seasonNumberLobby"),seasonTimerLobby=$("seasonTimerLobby"),seasonNumberBoard=$("seasonNumberBoard"),seasonTimerBoard=$("seasonTimerBoard"),seasonBoardSub=$("seasonBoardSub"),seasonTabBtn=$("seasonTabBtn"),allTimeTabBtn=$("allTimeTabBtn");
+const seasonRewardOverlay=$("seasonRewardOverlay"),seasonRewardRank=$("seasonRewardRank"),seasonRewardCoins=$("seasonRewardCoins"),seasonRewardText=$("seasonRewardText"),claimSeasonRewardBtn=$("claimSeasonRewardBtn");
+const shop=$("shop"),shopBack=$("shopBack"),shopTabs=$("shopTabs"),shopCards=$("shopCards"),shopCoins=$("shopCoins"),inventory=$("inventory"),inventoryBack=$("inventoryBack"),inventoryTabs=$("inventoryTabs"),inventoryCards=$("inventoryCards"),missionsScreen=$("missions"),missionsBack=$("missionsBack"),missionList=$("missionList");
+const luckyConfirmOverlay=$("luckyConfirmOverlay"),confirmLuckyBuyBtn=$("confirmLuckyBuyBtn"),cancelLuckyBuyBtn=$("cancelLuckyBuyBtn"),jackpotOverlay=$("jackpotOverlay"),prizePopupIcon=$("prizePopupIcon"),prizePopupTitle=$("prizePopupTitle"),prizePopupText=$("prizePopupText"),prizePopupSub=$("prizePopupSub");
+const gameHud=$("gameHud"),scoreHud=$("scoreHud"),coinsHud=$("coinsHud"),jumpHud=$("jumpHud"),worldHud=$("worldHud"),seasonHud=$("seasonHud"),musicHud=$("musicHud"),pauseBtn=$("pauseBtn"),pauseOverlay=$("pauseOverlay"),resumeBtn=$("resumeBtn"),pauseLobbyBtn=$("pauseLobbyBtn"),gameOverOverlay=$("gameOverOverlay"),gameOverText=$("gameOverText"),finalScore=$("finalScore"),earnedCoins=$("earnedCoins"),bestScore=$("bestScore"),retryBtn=$("retryBtn"),returnLobbyBtn=$("returnLobbyBtn"),onlineBadge=$("onlineBadge"),onlineCount=$("onlineCount"),onlineDot=$("onlineDot");
+
+const APP_VERSION="2.0.1";storage.setItem("FLYYYY_APP_VERSION",APP_VERSION);
 const firebaseConfig={apiKey:"AIzaSyA0ppKuSgxKKgHEMkX9kUlVhm8pjkVxgXk",authDomain:"flyyyy.firebaseapp.com",databaseURL:"https://flyyyy-default-rtdb.firebaseio.com",projectId:"flyyyy",storageBucket:"flyyyy.firebasestorage.app",messagingSenderId:"872479897522",appId:"1:872479897522:web:3c87b8afdebfc66d01d6ab",measurementId:"G-S8YE4S6L8L"};
-let F=null,firebaseApp=null,auth=null,db=null,currentUser=null,leaderboardStop=null,presenceStop=null;
-async function loadFirebase(){if(F)return F;const app=await import("https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js"),a=await import("https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js"),d=await import("https://www.gstatic.com/firebasejs/12.16.0/firebase-database.js");return F={app,a,d}}
-function setOnlineUI(count,connected=true){const n=Math.max(0,Number(count)||0);onlineCount.textContent=String(n);onlineDot.classList.toggle("off",!connected);onlineBadge.title=connected?(n===1?"1 Spieler ist online":""+n+" Spieler sind online"):"Online-Status nicht verfügbar"}
-function safeName(name){return String(name||"").replace(/[<>]/g,"").replace(/\s+/g," ").trim().slice(0,20)}
-function defaultNameForUser(u){const base=(u?.email||"Spieler").split("@")[0].replace(/[^a-zA-Z0-9äöüÄÖÜß._-]/g,"").slice(0,20);return safeName(base||"Spieler")}
-async function setupFirebase(){try{const {app,a,d}=await loadFirebase();firebaseApp=app.getApps().length?app.getApp():app.initializeApp(firebaseConfig);auth=a.getAuth(firebaseApp);db=d.getDatabase(firebaseApp);
-a.onAuthStateChanged(auth,async u=>{currentUser=u||null;updateAccountUI();await ensureSeason();if(currentUser){if(!getPlayerName()){storage.setItem("FLYYYY_PLAYER_NAME",defaultNameForUser(currentUser))}await loadPlayerStateCloud();await grantFlyOwnerCoins();await ensurePlayerEntry(getPlayerName());await setPresenceOnline();await savePlayerStateCloud();await ensureSeason();await startSeasonLeaderboardListener();await checkSeasonReward(Math.max(1,seasonInfo.id-1));}else{await setPresenceOffline()}startLeaderboardListener();startOnlineListener();startSeasonTimer()});
-    await ensureSeason();
-    startSeasonTimer();}catch(e){console.error(e);setLeaderboardStatus("🔴 Firebase konnte nicht geladen werden. Gastmodus funktioniert trotzdem.");setOnlineUI(0,false)}}
-function updateAccountUI(){const s=document.getElementById("accountStatus"),b=document.getElementById("accountBtn"),l=document.getElementById("logoutBtn");if(currentUser){s.textContent="✅ "+(currentUser.email||"Konto");b.style.display="none";l.style.display=""}else{s.textContent="👤 Gast";b.style.display="";l.style.display="none"}}
-function authText(e){const m={"auth/email-already-in-use":"Diese E-Mail ist bereits registriert.","auth/invalid-email":"Die E-Mail ist ungültig.","auth/weak-password":"Das Passwort ist zu schwach.","auth/invalid-credential":"E-Mail oder Passwort ist falsch.","auth/network-request-failed":"Keine Internetverbindung."};return m[e?.code]||"Anmeldung fehlgeschlagen."}
-async function registerAccount(){try{const email=authEmail.value.trim(),pw=authPassword.value;if(!email||!pw){authStatus.textContent="Bitte E-Mail und Passwort eingeben.";return}if(pw.length<6){authStatus.textContent="Passwort: mindestens 6 Zeichen.";return}const {a}=await loadFirebase();await a.createUserWithEmailAndPassword(auth,email,pw);storage.setItem("FLYYYY_PLAYER_NAME",defaultNameForUser(auth.currentUser));showMessage("✅ Konto erstellt!");showScreen("lobby")}catch(e){authStatus.textContent=authText(e)}}
-async function loginAccount(){try{const email=authEmail.value.trim(),pw=authPassword.value;if(!email||!pw){authStatus.textContent="Bitte E-Mail und Passwort eingeben.";return}const {a}=await loadFirebase();await a.signInWithEmailAndPassword(auth,email,pw);if(!getPlayerName())storage.setItem("FLYYYY_PLAYER_NAME",defaultNameForUser(auth.currentUser));showMessage("✅ Angemeldet!");showScreen("lobby")}catch(e){authStatus.textContent=authText(e)}}
-async function logoutAccount(){try{await setPresenceOffline();const {a}=await loadFirebase();await a.signOut(auth);showMessage("👤 Gastmodus aktiviert.")}catch(e){console.error(e)}}
+let F=null,firebaseApp=null,auth=null,db=null,currentUser=null,leaderboardStop=null,presenceStop=null,seasonLeaderboardStop=null;
+async function loadFirebase(){if(F)return F;const appMod=await import("https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js"),authMod=await import("https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js"),dbMod=await import("https://www.gstatic.com/firebasejs/12.16.0/firebase-database.js");return F={app:appMod,a:authMod,d:dbMod}};
+function setOnlineUI(count,connected=true){const n=Math.max(0,Number(count)||0);onlineCount.textContent=n;onlineDot.classList.toggle("off",!connected);onlineBadge.title=connected?`${n} Spieler sind online`:"Online-Status nicht verfügbar"}
+function safeName(n){return String(n||"").replace(/[<>]/g,"").replace(/\s+/g," ").trim().slice(0,20)}
+function defaultNameForUser(u){return safeName((u?.email||"Spieler").split("@")[0].replace(/[^a-zA-Z0-9äöüÄÖÜß._-]/g,"").slice(0,20)||"Spieler")}
+function showScreen(id){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));$(id)?.classList.add("active")}
+function hideScreens(){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"))}
+function showMessage(t){const e=document.createElement("div");e.textContent=t;e.style.cssText="position:fixed;z-index:99999;left:50%;top:18%;transform:translate(-50%,-50%);padding:13px 18px;border-radius:999px;background:rgba(8,12,30,.97);border:1px solid rgba(255,255,255,.15);color:#fff;font-weight:900;box-shadow:0 15px 40px rgba(0,0,0,.3);white-space:nowrap";document.body.appendChild(e);setTimeout(()=>e.remove(),1800)}
+function setLeaderboardStatus(t){leaderboardStatus.textContent=t}
 
-/* ===== ACCOUNT / ONLINE PRESENCE ===== */
-async function setPresenceOnline(){if(!currentUser||!db)return;try{const {d}=await loadFirebase();const connectedRef=d.ref(db,".info/connected");const presRef=d.ref(db,"presence/"+currentUser.uid);const connectedSnap=await d.get(connectedRef);if(connectedSnap.val()===false)return;await d.onDisconnect(presRef).remove();await d.set(presRef,{online:true,name:getPlayerName()||defaultNameForUser(currentUser),since:d.serverTimestamp()});}catch(e){console.error("presence online",e)}}
-async function setPresenceOffline(){if(!db||!currentUser)return;try{const {d}=await loadFirebase();await d.remove(d.ref(db,"presence/"+currentUser.uid))}catch(e){console.error("presence offline",e)}}
-async function startOnlineListener(){if(!db)return;try{const {d}=await loadFirebase();if(presenceStop)presenceStop();const r=d.ref(db,"presence");presenceStop=d.onValue(r,s=>{const raw=s.val()||{};onlineCache=new Set(Object.keys(raw).filter(uid=>raw[uid]?.online!==false));setOnlineUI(onlineCache.size,true);if(document.getElementById("leaderboard")?.classList.contains("active"))renderCurrentLeaderboard()},()=>setOnlineUI(0,false));}catch(e){console.error(e);setOnlineUI(0,false)}}
-let lastLeaderboard=[];
-function renderCurrentLeaderboard(){renderLeaderboard(lastLeaderboard)}
-
-/* ===== LEADERBOARD ===== */
-function getPlayerName(){return storage.getItem("FLYYYY_PLAYER_NAME")||""}function loadPlayerName(){playerName.value=getPlayerName()}function setLeaderboardStatus(t){leaderboardStatus.textContent=t}
-async function savePlayerName(){let n=safeName(playerName.value);if(!n){showMessage("Bitte einen Namen eingeben.");return}storage.setItem("FLYYYY_PLAYER_NAME",n);if(!currentUser){setLeaderboardStatus("💾 Lokal gespeichert. Melde dich für Online-Highscores an.");return}setLeaderboardStatus(await ensurePlayerEntry(n)?`🟢 ${n} ist online gespeichert.`:"🔴 Online-Speichern fehlgeschlagen.");await setPresenceOnline()}
-const JESSE_UID="";
-function isJesseAccount(uid=currentUser?.uid){if(JESSE_UID&&uid===JESSE_UID)return true;const n=getPlayerName().trim().toLowerCase();const email=(currentUser?.email||"").split("@")[0].trim().toLowerCase();return n==="jesse"||email==="jesse"}
-async function grantFlyOwnerCoins(){
-  if(!currentUser||!db)return;
-  try{
-    const raw=(getPlayerName()||((currentUser.email||"").split("@")[0]||"")).trim();
-    const normalized=raw.toLowerCase().replace(/[^a-z0-9]/g,"");
-
-    // Nur der Account „FlyyyyOwner😊😉“ bekommt den Bonus.
-    if(normalized!=="flyyyyowner")return;
-
-    const {d}=await loadFirebase();
-    const ref=d.ref(db,"playerStates/"+currentUser.uid);
-    const snap=await d.get(ref);
-    const cloud=snap.exists()?snap.val():{};
-
-    // Cloud-Flag verhindert, dass der Bonus mehrfach auf verschiedenen Geräten vergeben wird.
-    if(cloud.flyOwner1000Granted===true)return;
-
-    const newCoins=Number(cloud.coins ?? state.coins ?? 0)+1000;
-    await d.update(ref,{
-      coins:newCoins,
-      flyOwner1000Granted:true,
-      updatedAt:d.serverTimestamp()
-    });
-
-    state.coins=newCoins;
-    saveStateLocalOnly();
-    showMessage("🪙 FlyyyyOwner😊😉: +1000 Coins!");
-    updateLobby();
-  }catch(e){
-    console.error("FlyyyyOwner bonus",e);
-  }
-}
-function isJesseEntry(uid,v){if(JESSE_UID&&uid===JESSE_UID)return true;const n=safeName(v?.name||"").toLowerCase();return n==="jesse"}
-async function ensurePlayerEntry(name){if(!currentUser||!db)return false;try{const {d}=await loadFirebase(),r=d.ref(db,"leaderboard/"+currentUser.uid),s=await d.get(r),old=s.exists()?s.val():{};await d.update(r,{name:safeName(name||defaultNameForUser(currentUser)),score:Number(old.score||0),wins:Number(old.wins||0),update19ResetDone:true,updatedAt:d.serverTimestamp()});return true}catch(e){console.error(e);return false}}
-async function submitHighscore(score){if(!currentUser||!db||!getPlayerName())return false;try{const {d}=await loadFirebase(),r=d.ref(db,"leaderboard/"+currentUser.uid);await d.runTransaction(r,c=>{if(!c)return{name:getPlayerName(),score:Number(score),wins:Number(state.wins||0),updatedAt:d.serverTimestamp()};return Number(score)>Number(c.score||0)?{...c,name:getPlayerName(),score:Number(score),wins:Number(c.wins||state.wins||0),updatedAt:d.serverTimestamp()}:c});return true}catch(e){console.error(e);return false}}
-async function startLeaderboardListener(){if(!db)return;try{const {d}=await loadFirebase();if(leaderboardStop)leaderboardStop();const r=d.ref(db,"leaderboard");leaderboardStop=d.onValue(r,s=>{const raw=s.val()||{};const arr=Object.entries(raw).filter(([uid,v])=>v&& (isJesseEntry(uid,v)||v.update19ResetDone===true)).map(([uid,v])=>({uid,name:safeName(v.name||"Spieler"),score:Number(v.score||0),wins:Number(v.wins||0),updatedAt:Number(v.updatedAt||0)})).sort((a,b)=>b.score-a.score||b.wins-a.wins||a.name.localeCompare(b.name));allTimeLeaderboardCache=arr;if(seasonMode==="alltime")renderLeaderboard(arr.slice(0,50));setLeaderboardStatus(currentUser?`🟢 ${arr.length} Spieler mit Konto`:`🟡 Gastmodus – anmelden für Online-Highscores`)},e=>{console.error(e);setLeaderboardStatus("🔴 Leaderboard konnte nicht geladen werden.")})}catch(e){console.error(e);setLeaderboardStatus("🔴 Leaderboard konnte nicht geladen werden.")}}
-let onlineCache=new Set();
-function isUidOnline(uid){return onlineCache.has(uid)}
-function renderLeaderboard(arr){lastLeaderboard=arr;leaderboardList.innerHTML="";if(!arr.length){const e=document.createElement("div");e.className="leaderStatus";e.textContent="Noch keine Online-Spieler.";leaderboardList.appendChild(e);return}arr.forEach((p,i)=>{const row=document.createElement("div");row.className="leaderRow";if(currentUser&&p.uid===currentUser.uid)row.classList.add("me");const r=document.createElement("div");r.className="leaderRank";r.textContent=i===0?"🥇":i===1?"🥈":i===2?"🥉":"#"+(i+1);const n=document.createElement("div");n.className="leaderName";n.textContent=p.name;const sc=document.createElement("div");sc.className="leaderMeta";const scoreLine=document.createElement("div");scoreLine.className="leaderScore";scoreLine.textContent=`⭐ ${p.score}`;const winsLine=document.createElement("div");winsLine.className="leaderWins";winsLine.textContent=`🏆 ${p.wins||0} Siege`;const online=document.createElement("div");online.className=isUidOnline(p.uid)?"onlineMini online":"onlineMini offline";online.textContent=isUidOnline(p.uid)?"● ONLINE":"○ offline";sc.append(scoreLine,winsLine,online);row.append(r,n,sc);leaderboardList.appendChild(row)})}
-
-/* ===== CLOUD SAVE / UPDATE 1.9 ===== */
-let cloudSaveTimer=null;
-async function loadPlayerStateCloud(){
-  if(!currentUser||!db)return;
-  try{
-    const {d}=await loadFirebase();
-    const snap=await d.get(d.ref(db,"playerStates/"+currentUser.uid));
-    if(snap.exists()){
-      const cloud=snap.val()||{};
-      state={...defaultState(),...cloud,ownedWorlds:Array.isArray(cloud.ownedWorlds)?cloud.ownedWorlds:defaultState().ownedWorlds,ownedSkins:Array.isArray(cloud.ownedSkins)?cloud.ownedSkins:defaultState().ownedSkins,ownedSounds:Array.isArray(cloud.ownedSounds)?cloud.ownedSounds:defaultState().ownedSounds,ownedMusic:Array.isArray(cloud.ownedMusic)?cloud.ownedMusic:defaultState().ownedMusic,missionProgress:{...defaultState().missionProgress,...(cloud.missionProgress||{})},missionClaimed:{...defaultState().missionClaimed,...(cloud.missionClaimed||{})}};
-      saveStateLocalOnly(); updateLobby(); renderShop(); renderInventory(); renderMissions();
-    }
-  }catch(e){console.error("cloud load",e)}
-}
-async function savePlayerStateCloud(){
-  if(!currentUser||!db)return;
-  try{
-    const {d}=await loadFirebase();
-    await d.set(d.ref(db,"playerStates/"+currentUser.uid),JSON.parse(JSON.stringify(state)));
-  }catch(e){console.error("cloud save",e)}
-}
-function scheduleCloudSave(){
-  if(!currentUser||!db)return;
-  clearTimeout(cloudSaveTimer);
-  cloudSaveTimer=setTimeout(()=>savePlayerStateCloud(),700);
-}
-function applyUpdate19ResetForCurrentUser(){
-  // Update 1.9: Bestehende Spielstände werden nicht zurückgesetzt.
-  // Alle Coins, Skins, Welten, Sounds, Musik, Rekorde, Siege und Missionen bleiben erhalten.
-}
-
-/* ===== LOCAL SAVE ===== */
-const DEFAULT={coins:0,best:0,wins:0,ownedWorlds:["giza"],ownedSkins:["bird"],ownedSounds:["classic"],ownedMusic:["classicMusic"],selectedWorld:"giza",selectedSkin:"bird",selectedSound:"classic",selectedMusic:"classicMusic",musicEnabled:true,sfxEnabled:true,missionProgress:{m1:0,m2:0,m3:0},missionClaimed:{m1:false,m2:false,m3:false},activeMissions:null,missionCycle:1,update19ResetDone:false,luckySpins:0,luckyLastResult:null,seasonScore:0,currentSeasonId:1,seasonRewardPending:null,seasonRewardClaimed:false};
+const DEFAULT={coins:0,best:0,wins:0,ownedWorlds:["giza"],ownedSkins:["bird"],ownedSounds:["classic"],ownedMusic:["classicMusic"],selectedWorld:"giza",selectedSkin:"bird",selectedSound:"classic",selectedMusic:"classicMusic",musicEnabled:true,sfxEnabled:true,missionProgress:{m1:0,m2:0,m3:0},missionClaimed:{m1:false,m2:false,m3:false},activeMissions:null,missionCycle:1,luckySpins:0,luckyLastResult:null,seasonScore:0,currentSeasonId:1,seasonRewardPending:null,seasonRewardClaimed:false,flyOwner1000Granted:false};
 const SAVEKEYS=["FLYYYY_UPDATE14_SAVE","FLYYYY_UPDATE13_SAVE","FLYYYY_UPDATE12_SAVE","FLYYYY_UPDATE11_SAVE","flyyyy_save"];
 function defaultState(){return JSON.parse(JSON.stringify(DEFAULT))}
-function loadState(){let raw=null;for(const k of SAVEKEYS){const v=storage.getItem(k);if(v){raw=v;break}}if(!raw)return defaultState();try{const d=JSON.parse(raw),b=defaultState();return {...b,...d,wins:Number(d.wins||0),ownedWorlds:Array.isArray(d.ownedWorlds)?d.ownedWorlds:b.ownedWorlds,ownedSkins:Array.isArray(d.ownedSkins)?d.ownedSkins:b.ownedSkins,ownedSounds:Array.isArray(d.ownedSounds)?d.ownedSounds:b.ownedSounds,ownedMusic:Array.isArray(d.ownedMusic)?d.ownedMusic:b.ownedMusic,missionProgress:{...b.missionProgress,...(d.missionProgress||{})},missionClaimed:{...b.missionClaimed,...(d.missionClaimed||{})},activeMissions:Array.isArray(d.activeMissions)?d.activeMissions:null,missionCycle:Number(d.missionCycle||1),update19ResetDone:!!d.update19ResetDone}}catch{return defaultState()}}
+function loadState(){for(const k of SAVEKEYS){const raw=storage.getItem(k);if(raw){try{const d=JSON.parse(raw),b=defaultState();return {...b,...d,ownedWorlds:Array.isArray(d.ownedWorlds)?d.ownedWorlds:b.ownedWorlds,ownedSkins:Array.isArray(d.ownedSkins)?d.ownedSkins:b.ownedSkins,ownedSounds:Array.isArray(d.ownedSounds)?d.ownedSounds:b.ownedSounds,ownedMusic:Array.isArray(d.ownedMusic)?d.ownedMusic:b.ownedMusic,missionProgress:{...b.missionProgress,...(d.missionProgress||{})},missionClaimed:{...b.missionClaimed,...(d.missionClaimed||{})},activeMissions:Array.isArray(d.activeMissions)?d.activeMissions:null}}catch{}}}return defaultState()}
 let state=loadState();
-function saveStateLocalOnly(){const s=JSON.stringify(state);SAVEKEYS.forEach(k=>storage.setItem(k,s))}function saveState(){saveStateLocalOnly();scheduleCloudSave()}
+function saveStateLocalOnly(){const s=JSON.stringify(state);SAVEKEYS.forEach(k=>storage.setItem(k,s))}
+let cloudSaveTimer=null;function saveState(){saveStateLocalOnly();if(currentUser&&db){clearTimeout(cloudSaveTimer);cloudSaveTimer=setTimeout(savePlayerStateCloud,700)}}
 
-/* ===== UPDATE 2.0 SEASONS ===== */
 const SEASON_LENGTH_MS=7*24*60*60*1000;
-// Update-2.0-Start: 14.08.2026 17:37 MESZ. Dieser Zeitpunkt gilt fuer alle Spieler.
 const SEASON_RELEASE_MS=Date.parse("2026-08-14T17:37:00+02:00");
-let seasonInfo={id:1,startsAt:SEASON_RELEASE_MS,endsAt:SEASON_RELEASE_MS+SEASON_LENGTH_MS};
-let seasonInterval=null;
-let seasonMode="season";
-let seasonLeaderboardStop=null;
-let allTimeLeaderboardCache=[];
-let seasonLeaderboardCache=[];
+let seasonInfo={id:1,startsAt:SEASON_RELEASE_MS,endsAt:SEASON_RELEASE_MS+SEASON_LENGTH_MS},seasonInterval=null,seasonMode="season";
+let allTimeLeaderboardCache=[],seasonLeaderboardCache=[],onlineCache=new Set(),lastLeaderboard=[];
 function rewardForRank(rank){if(rank===1)return 1000;if(rank===2)return 500;if(rank===3)return 300;if(rank>=4&&rank<=10)return 100;if(rank>=11&&rank<=25)return 50;return 0}
-function formatSeasonTime(ms){const safe=Math.max(0,Number(ms)||0);const total=Math.floor(safe/1000),d=Math.floor(total/86400),h=Math.floor((total%86400)/3600),m=Math.floor((total%3600)/60),s=total%60;return `${d}T ${String(h).padStart(2,"0")}Std ${String(m).padStart(2,"0")}Min ${String(s).padStart(2,"0")}Sek`}
-function updateSeasonUI(){
-  const now=Date.now();
-  if(!Number.isFinite(Number(seasonInfo.endsAt)) || Number(seasonInfo.endsAt)<=0){
-    seasonInfo={id:1,startsAt:SEASON_RELEASE_MS,endsAt:SEASON_RELEASE_MS+SEASON_LENGTH_MS};
-  }
-  const end=Number(seasonInfo.endsAt);
-  const left=Math.max(0,end-now);
-  const text=formatSeasonTime(left);
-  if(seasonNumberLobby)seasonNumberLobby.textContent=seasonInfo.id;
-  if(seasonNumberBoard)seasonNumberBoard.textContent=seasonInfo.id;
-  if(seasonTimerLobby)seasonTimerLobby.textContent=`⏱️ ${text}`;
-  if(seasonTimerBoard)seasonTimerBoard.textContent=`⏱️ ${text}`;
-  if(left<=0 && end>0 && !updateSeasonUI._checking){
-    updateSeasonUI._checking=true;
-    ensureSeason(true).finally(()=>{updateSeasonUI._checking=false;});
-  }
-}
+function formatSeasonTime(ms){const safe=Math.max(0,Number(ms)||0),total=Math.floor(safe/1000),d=Math.floor(total/86400),h=Math.floor((total%86400)/3600),m=Math.floor((total%3600)/60),s=total%60;return `${d}T ${String(h).padStart(2,"0")}Std ${String(m).padStart(2,"0")}Min ${String(s).padStart(2,"0")}Sek`}
+function updateSeasonUI(){const left=Math.max(0,Number(seasonInfo.endsAt||0)-Date.now());const txt=formatSeasonTime(left);seasonNumberLobby.textContent=seasonInfo.id;seasonNumberBoard.textContent=seasonInfo.id;seasonTimerLobby.textContent=`⏱️ ${txt}`;seasonTimerBoard.textContent=`⏱️ ${txt}`;if(seasonHud)seasonHud.textContent=seasonInfo.id}
+function startSeasonTimer(){clearInterval(seasonInterval);seasonInterval=setInterval(updateSeasonUI,1000);updateSeasonUI()}
+
 async function ensureSeason(forceCheck=false){
   try{
-    if(!db){
-      const cached=storage.getItem("FLYYYY_SEASON_INFO");
-      if(cached){
-        try{const v=JSON.parse(cached);if(v&&Number(v.endsAt)>Date.now()) seasonInfo={id:Number(v.id||1),startsAt:Number(v.startsAt||SEASON_RELEASE_MS),endsAt:Number(v.endsAt)};}catch{}
-      }
-      if(!seasonInfo.endsAt || Number(seasonInfo.endsAt)<=0){
-        seasonInfo={id:1,startsAt:SEASON_RELEASE_MS,endsAt:SEASON_RELEASE_MS+SEASON_LENGTH_MS};
-        storage.setItem("FLYYYY_SEASON_INFO",JSON.stringify(seasonInfo));
-      }
-      updateSeasonUI();
-      return seasonInfo;
-    }
-    const {d}=await loadFirebase();
-    const ref=d.ref(db,"season/current");
-    let snap=await d.get(ref);
-    if(!snap.exists()){
-      const data={id:1,startsAt:SEASON_RELEASE_MS,endsAt:SEASON_RELEASE_MS+SEASON_LENGTH_MS};
-      await d.transaction(ref,c=>c||data);
-      snap=await d.get(ref);
-    }
+    if(!db){const cached=storage.getItem("FLYYYY_SEASON_INFO");if(cached){try{const v=JSON.parse(cached);if(v&&Number(v.endsAt)>Date.now())seasonInfo={id:Number(v.id||1),startsAt:Number(v.startsAt||SEASON_RELEASE_MS),endsAt:Number(v.endsAt)}}catch{}}updateSeasonUI();return seasonInfo}
+    const {d}=await loadFirebase();const ref=d.ref(db,"season/current");let snap=await d.get(ref);
+    if(!snap.exists()){const initial={id:1,startsAt:SEASON_RELEASE_MS,endsAt:SEASON_RELEASE_MS+SEASON_LENGTH_MS};await d.transaction(ref,c=>c||initial);snap=await d.get(ref)}
     let cur=snap.val()||{};
-    if(Number(cur.endsAt||0)<=Date.now() && (forceCheck||Number(cur.endsAt||0)>0)){
-      await finalizeExpiredSeason(cur);
-      snap=await d.get(ref);
-      cur=snap.val()||cur;
-    }
-    seasonInfo={
-      id:Number(cur.id||1),
-      startsAt:Number(cur.startsAt||Date.now()),
-      endsAt:Number(cur.endsAt||Date.now()+SEASON_LENGTH_MS)
-    };
-    storage.setItem("FLYYYY_SEASON_INFO",JSON.stringify(seasonInfo));
-    updateSeasonUI();
-    return seasonInfo;
-  }catch(e){
-    console.error("season",e);
-    const cached=storage.getItem("FLYYYY_SEASON_INFO");
-    if(cached){try{const v=JSON.parse(cached);if(v&&Number(v.endsAt)>0){seasonInfo={id:Number(v.id||1),startsAt:Number(v.startsAt||SEASON_RELEASE_MS),endsAt:Number(v.endsAt)};}}catch{}}
-    if(!seasonInfo.endsAt || seasonInfo.endsAt<=0){
-      seasonInfo={id:Number(seasonInfo.id||1),startsAt:SEASON_RELEASE_MS,endsAt:SEASON_RELEASE_MS+SEASON_LENGTH_MS};
-      storage.setItem("FLYYYY_SEASON_INFO",JSON.stringify(seasonInfo));
-    }
-    updateSeasonUI();
-    return seasonInfo;
-  }
+    if(Number(cur.endsAt||0)<=Date.now()&&(forceCheck||Number(cur.endsAt||0)>0))await finalizeExpiredSeason(cur);
+    snap=await d.get(ref);cur=snap.val()||cur;
+    seasonInfo={id:Number(cur.id||1),startsAt:Number(cur.startsAt||Date.now()),endsAt:Number(cur.endsAt||Date.now()+SEASON_LENGTH_MS)};
+    storage.setItem("FLYYYY_SEASON_INFO",JSON.stringify(seasonInfo));updateSeasonUI();return seasonInfo;
+  }catch(e){console.error("ensureSeason",e);updateSeasonUI();return seasonInfo}
 }
-async function finalizeExpiredSeason(cur){try{const {d}=await loadFirebase();const id=Number(cur.id||1);const scoreSnap=await d.get(d.ref(db,"seasonScores/"+id));const raw=scoreSnap.exists()?scoreSnap.val()||{}:{};const arr=Object.entries(raw).map(([uid,v])=>({uid,name:safeName(v?.name||"Spieler"),score:Number(v?.score||0)})).sort((a,b)=>b.score-a.score||a.name.localeCompare(b.name));const winners={};arr.forEach((p,i)=>{const rank=i+1,reward=rewardForRank(rank);if(reward>0)winners[p.uid]={rank,reward,name:p.name,score:p.score,claimed:false}});await d.set(d.ref(db,"seasonHistory/"+id),{id,startsAt:Number(cur.startsAt||0),endsAt:Number(cur.endsAt||Date.now()),winners});const next={id:id+1,startsAt:Date.now(),endsAt:Date.now()+SEASON_LENGTH_MS};await d.transaction(d.ref(db,"season/current"),c=>{if(c&&Number(c.id)===id&&Number(c.endsAt)<=Date.now())return next;return c||next});await checkSeasonReward(id);if(currentUser){await ensureSeason();await startSeasonLeaderboardListener();}return true}catch(e){console.error("finalize season",e);return false}}
-async function checkSeasonReward(seasonId){if(!currentUser||!db)return;try{const {d}=await loadFirebase();const ref=d.ref(db,"seasonHistory/"+seasonId+"/winners/"+currentUser.uid);const snap=await d.get(ref);if(!snap.exists())return;const w=snap.val()||{};if(w.claimed===true)return;seasonRewardPending={seasonId:Number(seasonId),rank:Number(w.rank||0),reward:Number(w.reward||0)};showSeasonReward(seasonRewardPending)}catch(e){console.error("season reward",e)}}
-function showSeasonReward(r){if(!r||!r.reward)return;seasonRewardRank.textContent=`🥇 Platz ${r.rank}`;seasonRewardCoins.textContent=`🪙 +${r.reward.toLocaleString("de-DE")} Coins`;seasonRewardText.textContent=`Deine Season-Belohnung aus Season ${r.seasonId} wartet auf dich.`;seasonRewardOverlay.classList.add("active")}
-async function claimSeasonReward(){if(!currentUser||!db||!seasonRewardPending)return;claimSeasonRewardBtn.disabled=true;try{const {d}=await loadFirebase();const ref=d.ref(db,"seasonHistory/"+seasonRewardPending.seasonId+"/winners/"+currentUser.uid);const snap=await d.get(ref);if(!snap.exists()){seasonRewardOverlay.classList.remove("active");return}const w=snap.val()||{};if(w.claimed===true){seasonRewardOverlay.classList.remove("active");return}await d.update(ref,{claimed:true,claimedAt:d.serverTimestamp()});state.coins+=Number(w.reward||0);state.seasonRewardClaimed=true;state.seasonRewardPending=null;saveState();await savePlayerStateCloud();updateLobby();showMessage(`🏆 Season-Belohnung +${Number(w.reward||0)} Coins!`);seasonRewardOverlay.classList.remove("active")}catch(e){console.error(e);showMessage("🔴 Belohnung konnte nicht abgeholt werden.")}finally{claimSeasonRewardBtn.disabled=false}}
-async function submitSeasonScore(score){if(!currentUser||!db||!seasonInfo?.id)return false;try{const {d}=await loadFirebase();const ref=d.ref(db,"seasonScores/"+seasonInfo.id+"/"+currentUser.uid);await d.runTransaction(ref,c=>{const old=c||{};return{name:getPlayerName()||defaultNameForUser(currentUser),score:Math.max(Number(old.score||0),Number(score)||0),updatedAt:d.serverTimestamp()}});state.seasonScore=Math.max(Number(state.seasonScore||0),Number(score)||0);saveState();return true}catch(e){console.error("season score",e);return false}}
-async function startSeasonLeaderboardListener(){if(!db)return;try{const {d}=await loadFirebase();if(seasonLeaderboardStop)seasonLeaderboardStop();const id=seasonInfo.id||1;const r=d.ref(db,"seasonScores/"+id);seasonLeaderboardStop=d.onValue(r,s=>{const raw=s.val()||{};seasonLeaderboardCache=Object.entries(raw).map(([uid,v])=>({uid,name:safeName(v?.name||"Spieler"),score:Number(v?.score||0),wins:0,updatedAt:Number(v?.updatedAt||0)})).sort((a,b)=>b.score-a.score||a.name.localeCompare(b.name));if(seasonMode==="season")renderLeaderboard(seasonLeaderboardCache.slice(0,50));setLeaderboardStatus(`🌐 Season ${id} · ${seasonLeaderboardCache.length} Spieler`);},e=>{console.error(e);setLeaderboardStatus("🔴 Season-Leaderboard konnte nicht geladen werden.")})}catch(e){console.error(e)}}
-function renderCurrentSeasonLeaderboard(){renderLeaderboard(seasonLeaderboardCache.slice(0,50))}
-function switchLeaderboardMode(mode){seasonMode=mode;seasonTabBtn.classList.toggle("active",mode==="season");allTimeTabBtn.classList.toggle("active",mode==="alltime");if(mode==="season"){seasonBoardSub.textContent=`🌐 Season ${seasonInfo.id} · Online-Modus`;renderCurrentSeasonLeaderboard()}else{seasonBoardSub.textContent="⭐ Allzeit-Rekorde";renderLeaderboard(allTimeLeaderboardCache.slice(0,50))}}
-function startSeasonTimer(){clearInterval(seasonInterval);seasonInterval=setInterval(()=>{updateSeasonUI();},1000);updateSeasonUI()}
 
-/* ===== GAME DATA ===== */
-const worlds=[{id:"giza",name:"Gizeh",price:0,sky1:"#f8c875",sky2:"#69c6d8",ground:"#d48b3b",obstacle:"#8f5a33"},{id:"mountains",name:"Berge",price:50,sky1:"#8ad8ff",sky2:"#5469c8",ground:"#527951",obstacle:"#365c4b"},{id:"ocean",name:"Unterwasser",price:100,sky1:"#29d6e5",sky2:"#174b9e",ground:"#157c86",obstacle:"#17566e"},{id:"jungle",name:"Dschungel",price:150,sky1:"#8ae17c",sky2:"#1f6e53",ground:"#244f2a",obstacle:"#2f7339"},{id:"space",name:"Weltraum",price:200,sky1:"#22103f",sky2:"#090d27",ground:"#20183e",obstacle:"#3a2b61"},{id:"ice",name:"Eiswelt",price:250,sky1:"#c9f6ff",sky2:"#5da9d4",ground:"#b3e5ff",obstacle:"#72b1d2"}, {id:"lava",name:"Lavawelt",price:300,sky1:"#ff9a55",sky2:"#8f1f2b",ground:"#5f171d",obstacle:"#3d1118"}];
+function isUidOnline(uid){return onlineCache.has(uid)}
+function renderLeaderboard(arr){lastLeaderboard=arr;leaderboardList.innerHTML="";if(!arr.length){const e=document.createElement("div");e.className="leaderStatus";e.textContent=seasonMode==="season"?"Noch keine Season-Punkte.":"Noch keine Allzeit-Spieler.";leaderboardList.appendChild(e);return}arr.forEach((p,i)=>{const row=document.createElement("div");row.className="leaderRow";if(currentUser&&p.uid===currentUser.uid)row.classList.add("me");const r=document.createElement("div");r.className="leaderRank";r.textContent=i===0?"🥇":i===1?"🥈":i===2?"🥉":"#"+(i+1);const n=document.createElement("div");n.className="leaderName";n.textContent=p.name;const meta=document.createElement("div");meta.className="leaderMeta";const sc=document.createElement("div");sc.className="leaderScore";sc.textContent=`⭐ ${p.score}`;const wins=document.createElement("div");wins.className="leaderWins";wins.textContent=`🏆 ${p.wins||0} Siege`;const on=document.createElement("div");on.className=isUidOnline(p.uid)?"onlineMini online":"onlineMini offline";on.textContent=isUidOnline(p.uid)?"● ONLINE":"○ offline";meta.append(sc,wins,on);row.append(r,n,meta);leaderboardList.appendChild(row)})}
+function switchLeaderboardMode(mode){seasonMode=mode;seasonTabBtn.classList.toggle("active",mode==="season");allTimeTabBtn.classList.toggle("active",mode==="alltime");if(mode==="season"){seasonBoardSub.textContent=`🌐 Season ${seasonInfo.id} · Nur Season-Punkte`;renderLeaderboard(seasonLeaderboardCache.slice(0,50));setLeaderboardStatus(`🌐 Season ${seasonInfo.id} · ${seasonLeaderboardCache.length} Spieler`)}else{seasonBoardSub.textContent="⭐ Allzeit · normale Highscores";renderLeaderboard(allTimeLeaderboardCache.slice(0,50));setLeaderboardStatus(`⭐ Allzeit · ${allTimeLeaderboardCache.length} Spieler`)}}
+
+async function startSeasonLeaderboardListener(){
+  if(!db)return;
+  try{const {d}=await loadFirebase();if(seasonLeaderboardStop){seasonLeaderboardStop();seasonLeaderboardStop=null}const id=Number(seasonInfo.id||1);const ref=d.ref(db,"seasonScores/"+id);seasonLeaderboardStop=d.onValue(ref,s=>{const raw=s.val()||{};seasonLeaderboardCache=Object.entries(raw).map(([uid,v])=>({uid,name:safeName(v?.name||"Spieler"),score:Number(v?.score||0),wins:0,updatedAt:Number(v?.updatedAt||0)})).sort((a,b)=>b.score-a.score||a.name.localeCompare(b.name));if(seasonMode==="season"){renderLeaderboard(seasonLeaderboardCache.slice(0,50));setLeaderboardStatus(`🌐 Season ${id} · ${seasonLeaderboardCache.length} Spieler`)}},e=>{console.error(e);setLeaderboardStatus("🔴 Season-Leaderboard konnte nicht geladen werden.")})}catch(e){console.error(e)}
+}
+
+async function startLeaderboardListener(){if(!db)return;try{const {d}=await loadFirebase();if(leaderboardStop){leaderboardStop();leaderboardStop=null}const ref=d.ref(db,"leaderboard");leaderboardStop=d.onValue(ref,s=>{const raw=s.val()||{};allTimeLeaderboardCache=Object.entries(raw).filter(([uid,v])=>v&&v.update19ResetDone===true).map(([uid,v])=>({uid,name:safeName(v.name||"Spieler"),score:Number(v.score||0),wins:Number(v.wins||0),updatedAt:Number(v.updatedAt||0)})).sort((a,b)=>b.score-a.score||b.wins-a.wins||a.name.localeCompare(b.name));if(seasonMode==="alltime")renderLeaderboard(allTimeLeaderboardCache.slice(0,50))},e=>{console.error(e);setLeaderboardStatus("🔴 Allzeit-Leaderboard konnte nicht geladen werden.")})}catch(e){console.error(e)}}
+async function startOnlineListener(){if(!db)return;try{const {d}=await loadFirebase();if(presenceStop){presenceStop();presenceStop=null}presenceStop=d.onValue(d.ref(db,"presence"),s=>{const raw=s.val()||{};onlineCache=new Set(Object.keys(raw).filter(uid=>raw[uid]?.online!==false));setOnlineUI(onlineCache.size,true);if(leaderboard.classList.contains("active"))renderLeaderboard((seasonMode==="season"?seasonLeaderboardCache:allTimeLeaderboardCache).slice(0,50))},()=>setOnlineUI(0,false))}catch(e){console.error(e);setOnlineUI(0,false)}}
+
+async function setPresenceOnline(){if(!currentUser||!db)return;try{const {d}=await loadFirebase();const pres=d.ref(db,"presence/"+currentUser.uid);await d.onDisconnect(pres).remove();await d.set(pres,{online:true,name:getPlayerName()||defaultNameForUser(currentUser),since:d.serverTimestamp()})}catch(e){console.error(e)}}
+async function setPresenceOffline(){if(!db||!currentUser)return;try{const {d}=await loadFirebase();await d.remove(d.ref(db,"presence/"+currentUser.uid))}catch(e){console.error(e)}}
+
+function updateAccountUI(){if(currentUser){accountStatus.textContent="✅ "+(currentUser.email||"Konto");accountBtn.style.display="none";logoutBtn.style.display=""}else{accountStatus.textContent="👤 Gast";accountBtn.style.display="";logoutBtn.style.display="none"}}
+function authText(e){const m={"auth/email-already-in-use":"Diese E-Mail ist bereits registriert.","auth/invalid-email":"Die E-Mail ist ungültig.","auth/weak-password":"Das Passwort ist zu schwach.","auth/invalid-credential":"E-Mail oder Passwort ist falsch.","auth/network-request-failed":"Keine Internetverbindung."};return m[e?.code]||"Anmeldung fehlgeschlagen."}
+function getPlayerName(){return storage.getItem("FLYYYY_PLAYER_NAME")||""}function loadPlayerName(){playerName.value=getPlayerName()}
+
+async function ensurePlayerEntry(name){if(!currentUser||!db)return false;try{const {d}=await loadFirebase(),r=d.ref(db,"leaderboard/"+currentUser.uid),s=await d.get(r),old=s.exists()?s.val():{};await d.update(r,{name:safeName(name||defaultNameForUser(currentUser)),score:Number(old.score||0),wins:Number(old.wins||0),update19ResetDone:true,updatedAt:d.serverTimestamp()});return true}catch(e){console.error(e);return false}}
+async function submitHighscore(score){if(!currentUser||!db||!getPlayerName())return false;try{const {d}=await loadFirebase(),r=d.ref(db,"leaderboard/"+currentUser.uid);await d.runTransaction(r,c=>{const old=c||{};return Number(score)>Number(old.score||0)?{...old,name:getPlayerName(),score:Number(score),wins:Number(state.wins||old.wins||0),update19ResetDone:true,updatedAt:d.serverTimestamp()}:old});return true}catch(e){console.error(e);return false}}
+async function submitSeasonScore(score){if(!currentUser||!db||!seasonInfo?.id)return false;try{const {d}=await loadFirebase(),r=d.ref(db,"seasonScores/"+seasonInfo.id+"/"+currentUser.uid);await d.runTransaction(r,c=>{const old=c||{};const best=Math.max(Number(old.score||0),Number(score)||0);return{name:getPlayerName()||defaultNameForUser(currentUser),score:best,updatedAt:d.serverTimestamp()}});state.seasonScore=Math.max(Number(state.seasonScore||0),Number(score)||0);saveState();return true}catch(e){console.error(e);return false}}
+
+async function savePlayerName(){const n=safeName(playerName.value);if(!n){showMessage("Bitte einen Namen eingeben.");return}storage.setItem("FLYYYY_PLAYER_NAME",n);if(!currentUser){setLeaderboardStatus("💾 Lokal gespeichert. Für Online-Seasons anmelden.");return}setLeaderboardStatus(await ensurePlayerEntry(n)?`🟢 ${n} ist online gespeichert.`:"🔴 Online-Speichern fehlgeschlagen.");await setPresenceOnline()}
+
+async function loadPlayerStateCloud(){if(!currentUser||!db)return;try{const {d}=await loadFirebase();const snap=await d.get(d.ref(db,"playerStates/"+currentUser.uid));if(snap.exists()){const c=snap.val()||{},b=defaultState();state={...b,...c,ownedWorlds:Array.isArray(c.ownedWorlds)?c.ownedWorlds:b.ownedWorlds,ownedSkins:Array.isArray(c.ownedSkins)?c.ownedSkins:b.ownedSkins,ownedSounds:Array.isArray(c.ownedSounds)?c.ownedSounds:b.ownedSounds,ownedMusic:Array.isArray(c.ownedMusic)?c.ownedMusic:b.ownedMusic,missionProgress:{...b.missionProgress,...(c.missionProgress||{})},missionClaimed:{...b.missionClaimed,...(c.missionClaimed||{})}};saveStateLocalOnly();updateLobby();renderShop();renderInventory();renderMissions()}}catch(e){console.error(e)}}
+async function savePlayerStateCloud(){if(!currentUser||!db)return;try{const {d}=await loadFirebase();await d.set(d.ref(db,"playerStates/"+currentUser.uid),JSON.parse(JSON.stringify(state)))}catch(e){console.error(e)}}
+async function grantFlyOwnerCoins(){if(!currentUser||!db)return;try{const raw=(getPlayerName()||((currentUser.email||"").split("@")[0]||"")).trim();const normalized=raw.toLowerCase().replace(/[^a-z0-9]/g,"");if(normalized!=="flyyyyowner")return;const {d}=await loadFirebase(),ref=d.ref(db,"playerStates/"+currentUser.uid),snap=await d.get(ref),cloud=snap.exists()?snap.val():{};if(cloud.flyOwner1000Granted===true)return;const newCoins=Number(cloud.coins??state.coins??0)+1000;await d.update(ref,{coins:newCoins,flyOwner1000Granted:true,updatedAt:d.serverTimestamp()});state.coins=newCoins;saveStateLocalOnly();showMessage("🪙 FlyyyyOwner: +1000 Coins!");updateLobby()}catch(e){console.error(e)}}
+
+async function claimSeasonReward(){
+  if(!currentUser||!db||!state.seasonRewardPending)return;
+  claimSeasonRewardBtn.disabled=true;
+  try{const {d}=await loadFirebase();const r=state.seasonRewardPending;const ref=d.ref(db,"seasonHistory/"+r.seasonId+"/winners/"+currentUser.uid);const snap=await d.get(ref);if(!snap.exists()){seasonRewardOverlay.classList.remove("active");return}const w=snap.val()||{};if(w.claimed===true){seasonRewardOverlay.classList.remove("active");return}await d.update(ref,{claimed:true,claimedAt:d.serverTimestamp()});state.coins+=Number(w.reward||0);state.seasonRewardPending=null;state.seasonRewardClaimed=true;saveState();await savePlayerStateCloud();updateLobby();showMessage(`🏆 Season-Belohnung +${Number(w.reward||0)} Coins!`);seasonRewardOverlay.classList.remove("active")}catch(e){console.error(e);showMessage("🔴 Belohnung konnte nicht abgeholt werden.")}finally{claimSeasonRewardBtn.disabled=false}}
+async function checkSeasonReward(seasonId){if(!currentUser||!db)return;try{const {d}=await loadFirebase();const ref=d.ref(db,"seasonHistory/"+seasonId+"/winners/"+currentUser.uid),snap=await d.get(ref);if(!snap.exists())return;const w=snap.val()||{};if(w.claimed===true)return;if(Number(w.reward||0)<=0)return;state.seasonRewardPending={seasonId:Number(seasonId),rank:Number(w.rank||0),reward:Number(w.reward||0)};saveStateLocalOnly();seasonRewardRank.textContent=`🥇 Platz ${state.seasonRewardPending.rank}`;seasonRewardCoins.textContent=`🪙 +${Number(w.reward).toLocaleString("de-DE")} Coins`;seasonRewardText.textContent=`Deine Belohnung aus Season ${seasonId} ist bereit.`;seasonRewardOverlay.classList.add("active")}catch(e){console.error(e)}}
+
+async function finalizeExpiredSeason(cur){
+  try{
+    const {d}=await loadFirebase();
+    const id=Number(cur.id||1);
+    const scoreSnap=await d.get(d.ref(db,"seasonScores/"+id));
+    const raw=scoreSnap.exists()?scoreSnap.val()||{}:{};
+    const arr=Object.entries(raw).map(([uid,v])=>({uid,name:safeName(v?.name||"Spieler"),score:Number(v?.score||0)})).sort((a,b)=>b.score-a.score||a.name.localeCompare(b.name));
+    const winners={};
+    arr.forEach((p,i)=>{const rank=i+1,reward=rewardForRank(rank);if(reward>0)winners[p.uid]={uid:p.uid,rank,reward,name:p.name,score:p.score,claimed:false}});
+    await d.set(d.ref(db,"seasonHistory/"+id),{id,startsAt:Number(cur.startsAt||0),endsAt:Number(cur.endsAt||Date.now()),winners});
+    const next={id:id+1,startsAt:Date.now(),endsAt:Date.now()+SEASON_LENGTH_MS};
+    await d.transaction(d.ref(db,"season/current"),c=>(c&&Number(c.id)===id&&Number(c.endsAt)<=Date.now())?next:(c||next));
+    await checkSeasonReward(id);
+    return true;
+  }catch(e){console.error("finalizeExpiredSeason",e);return false}
+}
+
+async function setupFirebase(){try{const {app:appMod,a,d}=await loadFirebase();firebaseApp=appMod.getApps().length?appMod.getApp():appMod.initializeApp(firebaseConfig);auth=a.getAuth(firebaseApp);db=d.getDatabase(firebaseApp);a.onAuthStateChanged(auth,async u=>{currentUser=u||null;updateAccountUI();if(currentUser){if(!getPlayerName())storage.setItem("FLYYYY_PLAYER_NAME",defaultNameForUser(currentUser));await loadPlayerStateCloud();await grantFlyOwnerCoins();await ensurePlayerEntry(getPlayerName());await setPresenceOnline();await savePlayerStateCloud();}else{await setPresenceOffline()}await ensureSeason();await startLeaderboardListener();await startSeasonLeaderboardListener();await startOnlineListener();await checkSeasonReward(Math.max(1,Number(seasonInfo.id)-1));startSeasonTimer()})}catch(e){console.error(e);setLeaderboardStatus("🔴 Firebase konnte nicht geladen werden. Gastmodus funktioniert trotzdem.");setOnlineUI(0,false)}}
+
+const worlds=[{id:"giza",name:"Gizeh",price:0,sky1:"#f8c875",sky2:"#69c6d8",ground:"#d48b3b",obstacle:"#8f5a33"},{id:"mountains",name:"Berge",price:50,sky1:"#8ad8ff",sky2:"#5469c8",ground:"#527951",obstacle:"#365c4b"},{id:"ocean",name:"Unterwasser",price:100,sky1:"#29d6e5",sky2:"#174b9e",ground:"#157c86",obstacle:"#17566e"},{id:"jungle",name:"Dschungel",price:150,sky1:"#8ae17c",sky2:"#1f6e53",ground:"#244f2a",obstacle:"#2f7339"},{id:"space",name:"Weltraum",price:200,sky1:"#22103f",sky2:"#090d27",ground:"#20183e",obstacle:"#3a2b61"},{id:"ice",name:"Eiswelt",price:250,sky1:"#c9f6ff",sky2:"#5da9d4",ground:"#b3e5ff",obstacle:"#72b1d2"},{id:"lava",name:"Lavawelt",price:300,sky1:"#ff9a55",sky2:"#8f1f2b",ground:"#5f171d",obstacle:"#3d1118"}];
 const skins=[{id:"bird",name:"Vogel",price:0,type:"bird"},{id:"dino",name:"Fliegender Dino",price:50,type:"dino"},{id:"pen",name:"Stift",price:100,type:"pen"},{id:"carrot",name:"Karotte",price:150,type:"carrot"},{id:"apple",name:"Apfel",price:200,type:"apple"},{id:"jeszx",name:"Jeszx",price:1000,type:"jeszx",icon:"🫏"}];
 const sounds=[{id:"classic",name:"Classic",price:0,icon:"🔔",type:"classic"},{id:"arcade",name:"Arcade",price:50,icon:"👾",type:"arcade"},{id:"laser",name:"Laser",price:100,icon:"⚡",type:"laser"},{id:"bubble",name:"Bubble",price:150,icon:"🫧",type:"bubble"},{id:"power",name:"Power",price:200,icon:"🔥",type:"power"}];
 const musicTracks=[{id:"classicMusic",name:"Classic",price:0,icon:"🎵",melody:[261.63,329.63,392,523.25,392,329.63,293.66,349.23,440,523.25,440,349.23,392,329.63,261.63,293.66],bass:[130.81,130.81,164.81,164.81,146.83,146.83,174.61,174.61],tempo:380},{id:"arcadeMusic",name:"Arcade",price:50,icon:"👾",melody:[392,392,523.25,659.25,523.25,392,329.63,392,440,523.25,659.25,783.99,659.25,523.25,440,392],bass:[196,196,261.63,261.63,220,220,174.61,196],tempo:300},{id:"speedMusic",name:"Speed",price:100,icon:"⚡",melody:[329.63,392,493.88,659.25,493.88,392,329.63,493.88,392,493.88,587.33,783.99,587.33,493.88,392,329.63],bass:[164.81,196,164.81,196,146.83,174.61,164.61,196],tempo:250},{id:"spaceMusic",name:"Space",price:150,icon:"🚀",melody:[220,261.63,329.63,392,493.88,392,329.63,261.63,246.94,293.66,369.99,440,554.37,440,369.99,293.66],bass:[110,110,130.81,130.81,146.83,146.83,123.47,123.47],tempo:420},{id:"chillMusic",name:"Chill",price:200,icon:"🌙",melody:[261.63,329.63,392,329.63,293.66,349.23,440,349.23,261.63,329.63,392,493.88,440,392,329.63,293.66],bass:[130.81,130.81,146.83,146.83,110,110,123.47,123.47],tempo:500},{id:"finalMusic",name:"Final Boss",price:250,icon:"🔥",melody:[196,246.94,293.66,392,293.66,246.94,220,329.63,261.63,329.63,392,523.25,392,329.63,293.66,246.94],bass:[98,98,123.47,123.47,110,110,146.83,146.83],tempo:280}];
-const missionPool=[
-{id:"obstacles10",name:"Überfliege 10 Hindernisse",target:10,reward:20,source:"score",value:10,icon:"🚧"},
-{id:"obstacles25",name:"Überfliege 25 Hindernisse",target:25,reward:40,source:"score",value:25,icon:"🚧"},
-{id:"obstacles40",name:"Überfliege 40 Hindernisse",target:40,reward:60,source:"score",value:40,icon:"🔥"},
-{id:"bonus5",name:"Sammle 5 Bonus-Coins in einem Lauf",target:5,reward:25,source:"bonus",value:5,icon:"🪙"},
-{id:"bonus10",name:"Sammle 10 Bonus-Coins in einem Lauf",target:10,reward:50,source:"bonus",value:10,icon:"💰"},
-{id:"score20",name:"Erreiche 20 Punkte in einem Lauf",target:20,reward:30,source:"score",value:20,icon:"⭐"},
-{id:"score35",name:"Erreiche 35 Punkte in einem Lauf",target:35,reward:55,source:"score",value:35,icon:"🏆"},
-{id:"jumps15",name:"Fliege 15-mal",target:15,reward:20,source:"jumps",value:15,icon:"🪽"},
-{id:"jumps30",name:"Fliege 30-mal",target:30,reward:35,source:"jumps",value:30,icon:"🪽"},
-{id:"score50",name:"Schaffe 50 Punkte in einem Lauf",target:50,reward:80,source:"score",value:50,icon:"👑"}
-];
-const missions=missionPool;
-function randomMissions(){const pool=[...missionPool];const picked=[];while(picked.length<3&&pool.length){const i=Math.floor(Math.random()*pool.length);picked.push({...pool.splice(i,1)[0]});}return picked;}
-function ensureActiveMissions(){if(!Array.isArray(state.activeMissions)||state.activeMissions.length!==3){state.activeMissions=randomMissions();state.missionProgress={m1:0,m2:0,m3:0};state.missionClaimed={m1:false,m2:false,m3:false};saveState();}}
-function allMissionsClaimed(){return state.activeMissions.length===3&&state.activeMissions.every((_,i)=>!!state.missionClaimed["m"+(i+1)]);}
-function refreshMissions(){state.activeMissions=randomMissions();state.missionProgress={m1:0,m2:0,m3:0};state.missionClaimed={m1:false,m2:false,m3:false};state.missionCycle=Number(state.missionCycle||1)+1;saveState();renderMissions();showMessage("🎯 Neue Challenges! Alle Missionen wurden refreshed.");}
+const missionPool=[{id:"obstacles10",name:"Überfliege 10 Hindernisse",target:10,reward:20,source:"score",icon:"🚧"},{id:"obstacles25",name:"Überfliege 25 Hindernisse",target:25,reward:40,source:"score",icon:"🚧"},{id:"obstacles40",name:"Überfliege 40 Hindernisse",target:40,reward:60,source:"score",icon:"🔥"},{id:"bonus5",name:"Sammle 5 Bonus-Coins in einem Lauf",target:5,reward:25,source:"bonus",icon:"🪙"},{id:"bonus10",name:"Sammle 10 Bonus-Coins in einem Lauf",target:10,reward:50,source:"bonus",icon:"💰"},{id:"score20",name:"Erreiche 20 Punkte in einem Lauf",target:20,reward:30,source:"score",icon:"⭐"},{id:"score35",name:"Erreiche 35 Punkte in einem Lauf",target:35,reward:55,source:"score",icon:"🏆"},{id:"jumps15",name:"Fliege 15-mal",target:15,reward:20,source:"jumps",icon:"🪽"},{id:"jumps30",name:"Fliege 30-mal",target:30,reward:35,source:"jumps",icon:"🪽"},{id:"score50",name:"Schaffe 50 Punkte in einem Lauf",target:50,reward:80,source:"score",icon:"👑"}];
+function pick(a){return a[Math.floor(Math.random()*a.length)]}function randomMissions(){const p=[...missionPool],out=[];while(out.length<3&&p.length)out.push({...p.splice(Math.floor(Math.random()*p.length),1)[0]});return out}function ensureActiveMissions(){if(!Array.isArray(state.activeMissions)||state.activeMissions.length!==3){state.activeMissions=randomMissions();state.missionProgress={m1:0,m2:0,m3:0};state.missionClaimed={m1:false,m2:false,m3:false};saveState()}}
+function renderMissions(){ensureActiveMissions();missionList.innerHTML="";state.activeMissions.forEach((m,i)=>{const key="m"+(i+1),cur=Math.min(m.target,Number(state.missionProgress[key]||0)),done=cur>=m.target,claimed=!!state.missionClaimed[key];const card=document.createElement("div");card.className="mission"+(done?" done":"");card.innerHTML=`<div class="missionTop"><strong>${m.icon} ${m.name}</strong><span>🪙 ${m.reward}</span></div><div class="tiny">${claimed?"✅ Abgeholt":cur+" / "+m.target}</div><div class="missionProgress"><div class="missionFill" style="width:${Math.min(100,cur/m.target*100)}%"></div></div>`;if(done&&!claimed){const b=document.createElement("button");b.className="smallbtn selected";b.textContent="🪙 BELOHNUNG ABHOLEN";b.onclick=()=>{state.coins+=m.reward;state.missionClaimed[key]=true;saveState();updateLobby();renderMissions();showMessage("🪙 +"+m.reward+" Coins!")};card.appendChild(b)}missionList.appendChild(card)})}
+function updateMissionProgress(){ensureActiveMissions();state.activeMissions.forEach((m,i)=>{const key="m"+(i+1);let v=0;if(m.source==="score")v=game.score;else if(m.source==="bonus")v=game.bonusCoinsRun;else v=game.jumpCount;state.missionProgress[key]=Math.max(Number(state.missionProgress[key]||0),v)});saveState()}
 
-/* ===== AUDIO ===== */
 let ACtx=null,musicTimer=null,musicStep=0;function initAudio(){if(ACtx)return;const C=window.AudioContext||window.webkitAudioContext;if(C)ACtx=new C}function tone(f,d,v,t){if(!ACtx)return;const o=ACtx.createOscillator(),g=ACtx.createGain();o.type=t;o.frequency.value=f;g.gain.setValueAtTime(.0001,ACtx.currentTime);g.gain.exponentialRampToValueAtTime(v,ACtx.currentTime+.02);g.gain.exponentialRampToValueAtTime(.0001,ACtx.currentTime+d);o.connect(g);g.connect(ACtx.destination);o.start();o.stop(ACtx.currentTime+d+.02)}
-function jumpSound(type){if(!state.sfxEnabled)return;initAudio();if(!ACtx)return;if(type==="classic")tone(520,.08,.06,"square");else if(type==="arcade"){tone(440,.06,.05,"square");setTimeout(()=>tone(660,.07,.05,"square"),45)}else if(type==="laser"){tone(900,.12,.05,"sawtooth");setTimeout(()=>tone(1400,.09,.03,"sawtooth"),45)}else if(type==="bubble"){tone(300,.08,.04,"sine");setTimeout(()=>tone(650,.12,.04,"sine"),60)}else{tone(220,.13,.05,"sawtooth");setTimeout(()=>tone(520,.08,.05,"square"),65)}}
-function coinSound(){if(!state.sfxEnabled)return;initAudio();tone(784,.08,.05,"triangle");setTimeout(()=>tone(1046,.12,.05,"triangle"),70)}function scoreSound(){if(state.sfxEnabled){initAudio();tone(760,.04,.03,"triangle")}}function gameOverSound(){if(state.sfxEnabled){initAudio();tone(300,.15,.05,"sawtooth");setTimeout(()=>tone(210,.22,.04,"sawtooth"),130)}}function purchaseSound(){initAudio();tone(523,.08,.04,"triangle");setTimeout(()=>tone(784,.12,.04,"triangle"),70)}
-function selectedMusic(){return musicTracks.find(x=>x.id===state.selectedMusic)||musicTracks[0]}function stopMusic(){if(musicTimer){clearInterval(musicTimer);musicTimer=null}}function startMusic(){if(!state.musicEnabled)return;initAudio();if(!ACtx)return;if(ACtx.state==="suspended")ACtx.resume();stopMusic();musicStep=0;const m=selectedMusic();const tick=()=>{if(!state.musicEnabled){stopMusic();return}tone(m.melody[musicStep%m.melody.length],.28,.024,"triangle");if(musicStep%2===0)tone(m.bass[musicStep%m.bass.length],.4,.011,"sine");musicStep++};tick();musicTimer=setInterval(tick,m.tempo)}
-function previewMusic(m){initAudio();if(!ACtx)return;stopMusic();let i=0;const t=setInterval(()=>{if(i>=m.melody.length){clearInterval(t);if(game.running&&state.musicEnabled)startMusic();return}tone(m.melody[i++],.28,.03,"triangle")},m.tempo)}
+function jumpSound(type){if(!state.sfxEnabled)return;initAudio();if(!ACtx)return;if(type==="classic")tone(520,.08,.06,"square");else if(type==="arcade"){tone(440,.06,.05,"square");setTimeout(()=>tone(660,.07,.05,"square"),45)}else if(type==="laser"){tone(900,.12,.05,"sawtooth");setTimeout(()=>tone(1400,.09,.03,"sawtooth"),45)}else if(type==="bubble"){tone(300,.08,.04,"sine");setTimeout(()=>tone(650,.12,.04,"sine"),60)}else{tone(220,.13,.05,"sawtooth");setTimeout(()=>tone(520,.08,.05,"square"),65)}}function coinSound(){if(!state.sfxEnabled)return;initAudio();tone(784,.08,.05,"triangle");setTimeout(()=>tone(1046,.12,.05,"triangle"),70)}function scoreSound(){if(state.sfxEnabled){initAudio();tone(760,.04,.03,"triangle")}}function gameOverSound(){if(state.sfxEnabled){initAudio();tone(300,.15,.05,"sawtooth");setTimeout(()=>tone(210,.22,.04,"sawtooth"),130)}}function purchaseSound(){initAudio();tone(523,.08,.04,"triangle");setTimeout(()=>tone(784,.12,.04,"triangle"),70)}function selectedMusic(){return musicTracks.find(x=>x.id===state.selectedMusic)||musicTracks[0]}function stopMusic(){if(musicTimer){clearInterval(musicTimer);musicTimer=null}}function startMusic(){if(!state.musicEnabled)return;initAudio();if(!ACtx)return;if(ACtx.state==="suspended")ACtx.resume();stopMusic();musicStep=0;const m=selectedMusic();const tick=()=>{if(!state.musicEnabled){stopMusic();return}tone(m.melody[musicStep%m.melody.length],.28,.024,"triangle");if(musicStep%2===0)tone(m.bass[musicStep%m.bass.length],.4,.011,"sine");musicStep++};tick();musicTimer=setInterval(tick,m.tempo)}function previewMusic(m){initAudio();if(!ACtx)return;stopMusic();let i=0;const t=setInterval(()=>{if(i>=m.melody.length){clearInterval(t);if(game.running&&state.musicEnabled)startMusic();return}tone(m.melody[i++],.28,.03,"triangle")},m.tempo)}
 
-/* ===== CANVAS / GAME ===== */
-const canvas=document.getElementById("gameCanvas"),ctx=canvas.getContext("2d");let W=innerWidth,H=innerHeight,dpr=Math.min(devicePixelRatio||1,2);function resize(){W=innerWidth;H=innerHeight;dpr=Math.min(devicePixelRatio||1,2);canvas.width=W*dpr;canvas.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}addEventListener("resize",resize);resize();
+let W=innerWidth,H=innerHeight,dpr=Math.min(devicePixelRatio||1,2);function resize(){W=innerWidth;H=innerHeight;dpr=Math.min(devicePixelRatio||1,2);canvas.width=W*dpr;canvas.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}addEventListener("resize",resize);resize();
 const game={running:false,paused:false,over:false,score:0,runCoins:0,jumpCount:0,bonusCoinsRun:0,speed:165,spawnTimer:.9,obstacles:[],coins:[],player:{x:0,y:0,vy:0,r:22,hitR:16,rot:0},world:null,last:0,onlineRun:false};
-function updateHUD(){scoreHud.textContent=game.score;coinsHud.textContent=state.coins+game.runCoins;jumpHud.textContent=game.jumpCount;if(seasonHud)seasonHud.textContent=seasonInfo.id||1}
-function flap(){if(!game.running||game.paused||game.over)return;game.player.vy=-405;game.jumpCount++;const s=sounds.find(x=>x.id===state.selectedSound)||sounds[0];jumpSound(s.type);updateHUD()}
-function dist(a,b,c,d){return Math.hypot(a-c,b-d)}
-const SPIKE_H=18, SPIKE_STEP=18;
-function circleRectHit(cx,cy,r,rx,ry,rw,rh){const nx=Math.max(rx,Math.min(cx,rx+rw)),ny=Math.max(ry,Math.min(cy,ry+rh));return dist(cx,cy,nx,ny)<r}
-function hitRadius(p){return Number(p.hitR||16)}
-function spikeCollision(p,o){
-  const hr=hitRadius(p);
-  const top=o.gapY-o.gapH/2, bottom=o.gapY+o.gapH/2;
-  if(p.x+hr<o.x||p.x-hr>o.x+o.width)return false;
-  const spikeBand=SPIKE_H+hr*.35;
-  if(p.y-hr < top+spikeBand && p.y+hr > top)return true;
-  if(p.y+hr > bottom-spikeBand && p.y-hr < bottom)return true;
-  return false;
-}
-function obstacleCollision(p,o){const hr=hitRadius(p),top=o.gapY-o.gapH/2,bottom=o.gapY+o.gapH/2;if(p.x+hr<o.x||p.x-hr>o.x+o.width)return false;return p.y-hr<top||p.y+hr>bottom||spikeCollision(p,o)}
-function spawnCoin(o){
-  if(!o) return;
-  const safeMargin=Math.max(32, Math.min(55, o.gapH*0.18));
-  const minY=o.gapY-o.gapH/2+safeMargin;
-  const maxY=o.gapY+o.gapH/2-safeMargin;
-  const y=minY+Math.random()*Math.max(1,maxY-minY);
-  const x=o.x+o.width+Math.max(55,W*.04);
-  game.coins.push({x,y,r:17,collected:false});
-}
-function updateGame(dt){const p=game.player;const iceMode=game.score>=20;if(iceMode&&game.world?.id!=="ice"){game.world=worlds.find(w=>w.id==="ice")||worlds[worlds.length-1];worldHud.textContent="Eiswelt";showMessage("🧊 EISWELT! Jetzt wird es schwieriger!");startMusic()}
-const speedBase=165+Math.min(255,game.score*2.5);const hardSpeed=iceMode?70:0;game.speed=speedBase+hardSpeed;const gravity=1080+Math.min(260,game.score*1.5)+(iceMode?180:0);p.vy+=gravity*dt;p.y+=p.vy*dt;p.rot=Math.max(-.55,Math.min(1,p.vy/700));const gapH=Math.max(125,iceMode?H*.29-game.score*.78:H*.34-game.score*.62);game.spawnTimer-=dt;if(game.spawnTimer<=0){const topM=Math.max(75,H*.11),bottomM=Math.max(75,H*.12),minG=topM+gapH/2,maxG=H-bottomM-gapH/2,gapY=minG+Math.random()*Math.max(1,maxG-minG),width=Math.max(70,W*.075);const obstacle={x:W+30,width,gapY,gapH,passed:false};game.obstacles.push(obstacle);game.spawnTimer=Math.max(iceMode?.68:.88,iceMode?1.25-game.score*.006:1.62-game.score*.005);if(Math.random()<(iceMode?.7:.55))spawnCoin(obstacle)}
-for(const o of game.obstacles){o.x-=game.speed*dt;if(!o.passed&&o.x+o.width<p.x-p.r){o.passed=true;game.score++;scoreSound();if(game.score===20){game.runCoins+=10;showMessage("🪙 Level 20! +10 Coins!");coinSound()}if(game.score===20){game.world=worlds.find(w=>w.id==="ice")||worlds[worlds.length-1];worldHud.textContent="Eiswelt";showMessage("🧊 20 Hindernisse geschafft! Eiswelt aktiviert!");}}if(obstacleCollision(p,o)){endGame();return}}game.obstacles=game.obstacles.filter(o=>o.x+o.width>-100);for(const c of game.coins){c.x-=game.speed*dt;if(dist(p.x,p.y,c.x,c.y)<hitRadius(p)+c.r+10&&!c.collected){c.collected=true;game.runCoins++;game.bonusCoinsRun++;showMessage("🪙 +1 Bonus-Coin!");coinSound()}}game.coins=game.coins.filter(c=>c.x>-50&&!c.collected);const hr=hitRadius(p);if(p.y-hr<0||p.y+hr>H){endGame();return}if(game.score>state.best){state.best=game.score;saveState()}updateMissionProgress();updateHUD()}
+function updateHUD(){scoreHud.textContent=game.score;coinsHud.textContent=state.coins+game.runCoins;jumpHud.textContent=game.jumpCount;seasonHud.textContent=seasonInfo.id||1}
+function flap(){if(!game.running||game.paused||game.over)return;game.player.vy=-405;game.jumpCount++;jumpSound((sounds.find(x=>x.id===state.selectedSound)||sounds[0]).type);updateHUD()}
+function dist(a,b,c,d){return Math.hypot(a-c,b-d)}const SPIKE_H=18,SPIKE_STEP=18;
+function circleRectHit(cx,cy,r,rx,ry,rw,rh){const nx=Math.max(rx,Math.min(cx,rx+rw)),ny=Math.max(ry,Math.min(cy,ry+rh));return dist(cx,cy,nx,ny)<r}function hitRadius(p){return Number(p.hitR||16)}
+function spikeCollision(p,o){const hr=hitRadius(p),top=o.gapY-o.gapH/2,bottom=o.gapY+o.gapH/2;if(p.x+hr<o.x||p.x-hr>o.x+o.width)return false;const band=SPIKE_H+hr*.35;return (p.y-hr<top+band&&p.y+hr>top)||(p.y+hr>bottom-band&&p.y-hr<bottom)}function obstacleCollision(p,o){const hr=hitRadius(p),top=o.gapY-o.gapH/2,bottom=o.gapY+o.gapH/2;if(p.x+hr<o.x||p.x-hr>o.x+o.width)return false;return p.y-hr<top||p.y+hr>bottom||spikeCollision(p,o)}
+function spawnCoin(o){const margin=Math.max(32,Math.min(55,o.gapH*.18)),minY=o.gapY-o.gapH/2+margin,maxY=o.gapY+o.gapH/2-margin,y=minY+Math.random()*Math.max(1,maxY-minY),x=o.x+o.width+Math.max(55,W*.04);game.coins.push({x,y,r:17,collected:false})}
+function updateGame(dt){const p=game.player;const ice=game.score>=20;if(ice&&game.world?.id!=="ice"){game.world=worlds.find(w=>w.id==="ice")||worlds[0];worldHud.textContent="Eiswelt";showMessage("🧊 EISWELT! Jetzt wird es schwieriger!");startMusic()}game.speed=165+Math.min(255,game.score*2.5)+(ice?70:0);const gravity=1080+Math.min(260,game.score*1.5)+(ice?180:0);p.vy+=gravity*dt;p.y+=p.vy*dt;p.rot=Math.max(-.55,Math.min(1,p.vy/700));const gapH=Math.max(125,ice?H*.29-game.score*.78:H*.34-game.score*.62);game.spawnTimer-=dt;if(game.spawnTimer<=0){const topM=Math.max(75,H*.11),bottomM=Math.max(75,H*.12),minG=topM+gapH/2,maxG=H-bottomM-gapH/2,gapY=minG+Math.random()*Math.max(1,maxG-minG),width=Math.max(70,W*.075);const o={x:W+30,width,gapY,gapH,passed:false};game.obstacles.push(o);game.spawnTimer=Math.max(ice?.68:.88,ice?1.25-game.score*.006:1.62-game.score*.005);if(Math.random()<(ice?.7:.55))spawnCoin(o)}for(const o of game.obstacles){o.x-=game.speed*dt;if(!o.passed&&o.x+o.width<p.x-p.r){o.passed=true;game.score++;scoreSound();if(game.score===20){game.runCoins+=10;showMessage("🪙 Level 20! +10 Coins!");coinSound();worldHud.textContent="Eiswelt"}}if(obstacleCollision(p,o)){endGame();return}}game.obstacles=game.obstacles.filter(o=>o.x+o.width>-100);for(const c of game.coins){c.x-=game.speed*dt;if(dist(p.x,p.y,c.x,c.y)<hitRadius(p)+c.r+10&&!c.collected){c.collected=true;game.runCoins++;game.bonusCoinsRun++;showMessage("🪙 +1 Bonus-Coin!");coinSound()}}game.coins=game.coins.filter(c=>c.x>-50&&!c.collected);const hr=hitRadius(p);if(p.y-hr<0||p.y+hr>H){endGame();return}if(game.score>state.best){state.best=game.score;saveState()}updateMissionProgress();updateHUD()}
 function startGame(online=false){if(online&&!currentUser){showMessage("🔐 Für den Online-Modus musst du angemeldet sein.");showScreen("authScreen");return}game.onlineRun=!!online;initAudio();startMusic();hideScreens();canvas.style.display="block";gameHud.style.display="block";pauseOverlay.classList.remove("active");gameOverOverlay.classList.remove("active");game.running=true;game.paused=false;game.over=false;game.score=0;game.runCoins=0;game.jumpCount=0;game.bonusCoinsRun=0;game.speed=165;game.spawnTimer=.9;game.obstacles=[];game.coins=[];game.player={x:W*.24,y:H*.45,vy:0,r:22,hitR:state.selectedSkin==="jeszx"?12:16,rot:0};game.world=worlds.find(w=>w.id===state.selectedWorld)||worlds[0];worldHud.textContent=game.world.name;musicHud.textContent=selectedMusic().name;updateHUD();game.last=performance.now();flap();requestAnimationFrame(gameLoop)}
-async function endGame(){
-  if(game.over)return;
-  game.over=true;
-  game.running=false;
+async function endGame(){if(game.over)return;game.over=true;game.running=false;state.coins+=game.runCoins;if(game.score>state.best)state.best=game.score;updateMissionProgress();saveState();finalScore.textContent=game.score;earnedCoins.textContent=game.runCoins;bestScore.textContent=state.best;gameHud.style.display="none";pauseOverlay.classList.remove("active");gameOverOverlay.classList.add("active");gameOverText.textContent=game.onlineRun?"🌐 Season-Score wird gespeichert...":currentUser?"Gut geflogen!":"🔐 Melde dich an, damit dein Highscore online gespeichert wird.";gameOverSound();if(currentUser&&getPlayerName()){try{await Promise.race([submitHighscore(game.score),new Promise(r=>setTimeout(()=>r(false),3500))]);if(game.onlineRun)await Promise.race([submitSeasonScore(game.score),new Promise(r=>setTimeout(()=>r(false),3500))]);if(game.onlineRun)gameOverText.textContent="🌐 Season-Score gespeichert.";else gameOverText.textContent="🏆 Highscore online gespeichert."}catch(e){console.error(e)}}}
+function gameLoop(ts){if(!game.running){draw();return}const dt=Math.min(.033,(ts-game.last)/1000);game.last=ts;if(!game.paused)updateGame(dt);draw();if(game.running)requestAnimationFrame(gameLoop)}function togglePause(){if(!game.running||game.over)return;game.paused=!game.paused;pauseOverlay.classList.toggle("active",game.paused);if(!game.paused)game.last=performance.now()}function returnLobby(){game.running=false;game.paused=false;game.over=false;canvas.style.display="none";gameHud.style.display="none";document.querySelectorAll(".overlay").forEach(x=>x.classList.remove("active"));showScreen("lobby");updateLobby()}
 
-  // Sofort lokal sichern und Game-Over anzeigen – Firebase darf das Fenster nicht blockieren.
-  state.coins+=game.runCoins;
-  if(game.score>state.best)state.best=game.score;
-  updateMissionProgress();
-  saveState();
-
-  finalScore.textContent=game.score;
-  earnedCoins.textContent=game.runCoins;
-  bestScore.textContent=state.best;
-  gameHud.style.display="none";
-  pauseOverlay.classList.remove("active");
-  gameOverOverlay.classList.add("active");
-  gameOverText.textContent=game.onlineRun
-    ? "🌐 Season-Score wird gespeichert..."
-    : currentUser
-      ? "Gut geflogen!"
-      : "🔐 Melde dich an, damit dein Highscore online gespeichert wird.";
-  gameOverSound();
-
-  // Online-Speichern danach im Hintergrund. Das Game-Over-Fenster bleibt unabhängig davon offen.
-  let uploaded=false;
-  if(currentUser&&getPlayerName()){
-    try{uploaded=await Promise.race([
-      submitHighscore(game.score),
-      new Promise(resolve=>setTimeout(()=>resolve(false),3500))
-    ])}catch(e){console.error(e)}
-
-    if(game.onlineRun){
-      try{await Promise.race([
-        submitSeasonScore(game.score),
-        new Promise(resolve=>setTimeout(()=>resolve(false),3500))
-      ])}catch(e){console.error(e)}
-    }
-
-    if(game.onlineRun){
-      gameOverText.textContent="🌐 Season-Score gespeichert.";
-    }else if(uploaded){
-      gameOverText.textContent="🏆 Highscore online gespeichert.";
-    }
-  }
-}
-function gameLoop(ts){if(!game.running){draw();return}const dt=Math.min(.033,(ts-game.last)/1000);game.last=ts;if(!game.paused)updateGame(dt);draw();if(game.running)requestAnimationFrame(gameLoop)}function togglePause(){if(!game.running||game.over)return;game.paused=!game.paused;pauseOverlay.classList.toggle("active",game.paused);if(!game.paused)game.last=performance.now()}
-function returnLobby(){game.running=false;game.paused=false;game.over=false;canvas.style.display="none";gameHud.style.display="none";document.querySelectorAll(".overlay").forEach(x=>x.classList.remove("active"));showScreen("lobby");updateLobby()}
-
-/* ===== DRAWING ===== */
-function drawSkin(c,type,x,y,r){c.save();c.translate(x,y);if(type==="bird")drawBird(c,r);else if(type==="dino")drawDino(c,r);else if(type==="pen")drawPen(c,r);else if(type==="carrot")drawCarrot(c,r);else if(type==="apple")drawApple(c,r);else if(type==="jeszx")drawDonkey(c,r);c.restore()}
+function drawSkin(c,type,x,y,r){c.save();c.translate(x,y);if(type==="bird")drawBird(c,r);else if(type==="dino")drawDino(c,r);else if(type==="pen")drawPen(c,r);else if(type==="carrot")drawCarrot(c,r);else if(type==="apple")drawApple(c,r);else drawDonkey(c,r);c.restore()}
 function drawBird(c,r){c.fillStyle="#ffd13b";c.beginPath();c.ellipse(0,0,r*1.05,r*.82,0,0,Math.PI*2);c.fill();c.fillStyle="#fff";c.beginPath();c.arc(r*.35,-r*.3,r*.21,0,Math.PI*2);c.fill();c.fillStyle="#17204a";c.beginPath();c.arc(r*.4,-r*.3,r*.08,0,Math.PI*2);c.fill();c.fillStyle="#ff7733";c.beginPath();c.moveTo(r*.9,-r*.05);c.lineTo(r*1.45,r*.1);c.lineTo(r*.9,r*.28);c.closePath();c.fill()}
 function drawDino(c,r){c.fillStyle="#58d26b";c.beginPath();c.ellipse(0,0,r*1.05,r*.72,0,0,Math.PI*2);c.fill();c.fillStyle="#4baa59";c.beginPath();c.moveTo(-r*.7,-r*.25);c.lineTo(-r*1.4,-r*.05);c.lineTo(-r*.8,r*.3);c.closePath();c.fill();c.fillStyle="#fff";c.beginPath();c.arc(r*.4,-r*.2,r*.2,0,Math.PI*2);c.fill();c.fillStyle="#17204a";c.beginPath();c.arc(r*.45,-r*.2,r*.08,0,Math.PI*2);c.fill()}
 function drawPen(c,r){c.rotate(-.35);c.fillStyle="#ffdf4e";c.fillRect(-r*.25,-r*1.1,r*.5,r*1.6);c.fillStyle="#4d75ff";c.fillRect(-r*.25,-r*1.1,r*.5,r*.35);c.fillStyle="#e9bd91";c.beginPath();c.moveTo(-r*.25,r*.5);c.lineTo(0,r*1.05);c.lineTo(r*.25,r*.5);c.closePath();c.fill()}
 function drawCarrot(c,r){c.fillStyle="#62d976";c.beginPath();c.ellipse(-r*.2,-r*.75,r*.25,r*.55,-.5,0,Math.PI*2);c.ellipse(r*.2,-r*.75,r*.25,r*.55,.5,0,Math.PI*2);c.fill();c.fillStyle="#ff8b28";c.beginPath();c.moveTo(-r*.65,-r*.25);c.quadraticCurveTo(0,r*.75,0,r*1.05);c.quadraticCurveTo(0,r*.75,r*.65,-r*.25);c.closePath();c.fill()}
 function drawApple(c,r){c.fillStyle="#f14848";c.beginPath();c.arc(-r*.3,0,r*.65,0,Math.PI*2);c.arc(r*.3,0,r*.65,0,Math.PI*2);c.fill();c.strokeStyle="#69472b";c.lineWidth=4;c.beginPath();c.moveTo(0,-r*.45);c.lineTo(r*.1,-r*.95);c.stroke();c.fillStyle="#63d878";c.beginPath();c.ellipse(r*.35,-r*.75,r*.35,r*.16,-.4,0,Math.PI*2);c.fill()}
-function drawDonkey(c,r){c.fillStyle="#9b9b9b";c.beginPath();c.ellipse(0,r*.05,r*1.05,r*.68,0,0,Math.PI*2);c.fill();c.fillStyle="#a8a8a8";c.beginPath();c.ellipse(r*.45,-r*.55,r*.65,r*.55,0,0,Math.PI*2);c.fill();c.fillStyle="#888";c.beginPath();c.moveTo(r*.05,-r*.95);c.lineTo(-r*.05,-r*1.8);c.quadraticCurveTo(r*.18,-r*2,r*.4,-r*1.05);c.closePath();c.fill();c.beginPath();c.moveTo(r*.55,-r*.95);c.lineTo(r*.78,-r*1.8);c.quadraticCurveTo(r*1.02,-r*1.95,r*1.02,-r*.82);c.closePath();c.fill();c.fillStyle="#d8a0a0";c.beginPath();c.moveTo(r*.12,-r*1.05);c.lineTo(r*.12,-r*1.58);c.lineTo(r*.3,-r*1.1);c.closePath();c.fill();c.beginPath();c.moveTo(r*.7,-r*1.08);c.lineTo(r*.79,-r*1.58);c.lineTo(r*.91,-r*.98);c.closePath();c.fill();c.fillStyle="#c0c0c0";c.beginPath();c.ellipse(r*.92,-r*.43,r*.4,r*.28,0,0,Math.PI*2);c.fill();c.fillStyle="#555";c.beginPath();c.arc(r*.82,-r*.48,r*.06,0,Math.PI*2);c.arc(r*1.03,-r*.48,r*.06,0,Math.PI*2);c.fill();c.fillStyle="#fff";c.beginPath();c.arc(r*.64,-r*.72,r*.17,0,Math.PI*2);c.fill();c.fillStyle="#111";c.beginPath();c.arc(r*.68,-r*.72,r*.07,0,Math.PI*2);c.fill();c.fillStyle="#6c6c6c";c.fillRect(-r*.55,r*.45,r*.2,r*.85);c.fillRect(-r*.05,r*.5,r*.2,r*.8);c.fillRect(r*.45,r*.42,r*.2,r*.85);c.fillStyle="#444";c.fillRect(-r*.58,r*1.23,r*.27,r*.14);c.fillRect(-r*.08,r*1.2,r*.27,r*.14);c.fillRect(r*.42,r*1.2,r*.27,r*.14);c.strokeStyle="#666";c.lineWidth=r*.12;c.beginPath();c.moveTo(-r*.95,0);c.quadraticCurveTo(-r*1.4,r*.3,-r*1.25,r*.7);c.stroke();c.fillStyle="#555";c.beginPath();c.arc(-r*1.25,r*.72,r*.18,0,Math.PI*2);c.fill();c.fillStyle="#777";c.beginPath();c.ellipse(-r*.3,r*.05,r*.6,r*.2,-.35,0,Math.PI*2);c.fill()}
+function drawDonkey(c,r){c.fillStyle="#9b9b9b";c.beginPath();c.ellipse(0,r*.05,r*1.05,r*.68,0,0,Math.PI*2);c.fill();c.fillStyle="#a8a8a8";c.beginPath();c.ellipse(r*.45,-r*.55,r*.65,r*.55,0,0,Math.PI*2);c.fill();c.fillStyle="#888";c.beginPath();c.moveTo(r*.05,-r*.95);c.lineTo(-r*.05,-r*1.8);c.quadraticCurveTo(r*.18,-r*2,r*.4,-r*1.05);c.closePath();c.fill();c.beginPath();c.moveTo(r*.55,-r*.95);c.lineTo(r*.78,-r*1.8);c.quadraticCurveTo(r*1.02,-r*1.95,r*1.02,-r*.82);c.closePath();c.fill();c.fillStyle="#d8a0a0";c.beginPath();c.moveTo(r*.12,-r*1.05);c.lineTo(r*.12,-r*1.58);c.lineTo(r*.3,-r*1.1);c.closePath();c.fill();c.beginPath();c.moveTo(r*.7,-r*1.08);c.lineTo(r*.79,-r*1.58);c.lineTo(r*.91,-r*.98);c.closePath();c.fill();c.fillStyle="#c0c0c0";c.beginPath();c.ellipse(r*.92,-r*.43,r*.4,r*.28,0,0,Math.PI*2);c.fill();c.fillStyle="#555";c.beginPath();c.arc(r*.82,-r*.48,r*.06,0,Math.PI*2);c.arc(r*1.03,-r*.48,r*.06,0,Math.PI*2);c.fill();c.fillStyle="#fff";c.beginPath();c.arc(r*.64,-r*.72,r*.17,0,Math.PI*2);c.fill();c.fillStyle="#111";c.beginPath();c.arc(r*.68,-r*.72,r*.07,0,Math.PI*2);c.fill();c.fillStyle="#6c6c6c";c.fillRect(-r*.55,r*.45,r*.2,r*.85);c.fillRect(-r*.05,r*.5,r*.2,r*.8);c.fillRect(r*.45,r*.42,r*.2,r*.85);c.fillStyle="#444";c.fillRect(-r*.58,r*1.23,r*.27,r*.14);c.fillRect(-r*.08,r*1.2,r*.27,r*.14);c.fillRect(r*.42,r*1.2,r*.27,r*.14);c.strokeStyle="#666";c.lineWidth=r*.12;c.beginPath();c.moveTo(-r*.95,0);c.quadraticCurveTo(-r*1.4,r*.3,-r*1.25,r*.7);c.stroke();c.fillStyle="#555";c.beginPath();c.arc(-r*1.25,r*.72,r*.18,0,Math.PI*2);c.fill()}
 function drawWorldPreview(c,w,width,height){const g=c.createLinearGradient(0,0,0,height);g.addColorStop(0,w.sky1);g.addColorStop(1,w.sky2);c.fillStyle=g;c.fillRect(0,0,width,height);c.fillStyle=w.ground;c.fillRect(0,height*.78,width,height*.22);if(w.id==="giza"){c.fillStyle="#d6a05c";c.beginPath();c.moveTo(width*.48,height*.2);c.lineTo(width*.22,height*.78);c.lineTo(width*.73,height*.78);c.closePath();c.fill()}if(w.id==="mountains"){c.fillStyle=w.obstacle;c.beginPath();c.moveTo(0,height);c.lineTo(width*.22,height*.3);c.lineTo(width*.44,height);c.lineTo(width*.66,height*.25);c.lineTo(width,height);c.closePath();c.fill()}if(w.id==="space"){c.fillStyle="#fff";for(let i=0;i<35;i++)c.fillRect((i*37)%width,(i*19)%height,2,2)}}
-function drawBackground(){const w=game.world||worlds[0],g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,w.sky1);g.addColorStop(1,w.sky2);ctx.fillStyle=g;ctx.fillRect(0,0,W,H);if(w.id==="giza"){ctx.fillStyle="#d9a35a";ctx.fillRect(0,H*.69,W,H*.31);drawPyramid(W*.57,H*.69,200,130)}if(w.id==="mountains"){ctx.fillStyle="#5b70aa";ctx.beginPath();ctx.moveTo(0,H*.75);ctx.lineTo(W*.2,H*.42);ctx.lineTo(W*.4,H*.7);ctx.lineTo(W*.58,H*.3);ctx.lineTo(W*.8,H*.68);ctx.lineTo(W,H*.4);ctx.lineTo(W,H);ctx.lineTo(0,H);ctx.closePath();ctx.fill();ctx.fillStyle="#527951";ctx.fillRect(0,H*.8,W,H*.2)}if(w.id==="ocean"){ctx.strokeStyle="rgba(255,255,255,.14)";for(let y=80;y<H*.85;y+=80){ctx.beginPath();for(let x=0;x<W;x+=45){ctx.moveTo(x,y);ctx.quadraticCurveTo(x+12,y-10,x+24,y)}ctx.stroke()}ctx.fillStyle="#157c86";ctx.fillRect(0,H*.88,W,H*.12)}if(w.id==="jungle"){ctx.fillStyle="#2b753d";ctx.fillRect(0,H*.78,W,H*.22);for(let i=0;i<18;i++){const x=(i*97)%W,h=100+(i%4)*35;ctx.fillStyle=i%2?"#1c5a31":"#348746";ctx.fillRect(x,H*.78-h,20,h);ctx.beginPath();ctx.arc(x+10,H*.78-h,38,Math.PI,Math.PI*2);ctx.fill()}}if(w.id==="space"){ctx.fillStyle="#fff";for(let i=0;i<100;i++){ctx.globalAlpha=.25+(i%5)*.1;ctx.fillRect((i*83)%W,(i*47)%H,2,2)}ctx.globalAlpha=1}if(w.id==="ice"){ctx.fillStyle="rgba(255,255,255,.45)";for(let i=0;i<8;i++){const x=i*190;ctx.beginPath();ctx.moveTo(x,H*.82);ctx.lineTo(x+80,H*.25);ctx.lineTo(x+150,H*.82);ctx.closePath();ctx.fill()}ctx.fillStyle="#a7deef";ctx.fillRect(0,H*.82,W,H*.18)}if(w.id==="lava"){ctx.fillStyle="#5f171d";ctx.fillRect(0,H*.82,W,H*.18);ctx.fillStyle="#ff7a18";for(let i=0;i<10;i++){const x=(i*131)%W;const y=H*.84+(i%3)*16;ctx.beginPath();ctx.arc(x,y,18+(i%3)*5,0,Math.PI*2);ctx.fill()}ctx.fillStyle="#3d1118";for(let i=0;i<7;i++){const x=(i*173)%W;const h=90+(i%3)*35;ctx.fillRect(x,H*.82-h,18,h)}}}function drawPyramid(cx,base,w,h){ctx.fillStyle="#d5a05a";ctx.beginPath();ctx.moveTo(cx,base-h);ctx.lineTo(cx-w/2,base);ctx.lineTo(cx+w/2,base);ctx.closePath();ctx.fill()}
-function drawSpikeRow(x,width,yBase,direction){
-  ctx.beginPath();
-  const step=SPIKE_STEP;
-  for(let xPos=x;xPos<x+width-0.1;xPos+=step){
-    const w=Math.min(step,x+width-xPos);
-    const cx=xPos+w*.5;
-    ctx.moveTo(xPos,yBase);
-    if(direction===1){ctx.lineTo(cx,yBase+SPIKE_H);ctx.lineTo(xPos+w,yBase);}
-    else{ctx.lineTo(cx,yBase-SPIKE_H);ctx.lineTo(xPos+w,yBase);}
-  }
-  ctx.closePath();ctx.fill();
-}
-function draw(){drawBackground();for(const o of game.obstacles){const top=o.gapY-o.gapH/2,bottom=o.gapY+o.gapH/2,w=game.world?.obstacle||"#8f5a33";ctx.fillStyle=w;ctx.fillRect(o.x,0,o.width,top);ctx.fillRect(o.x,bottom,o.width,H-bottom);drawSpikeRow(o.x,o.width,top,1);drawSpikeRow(o.x,o.width,bottom,-1)}for(const c of game.coins){ctx.save();ctx.shadowColor="#ffd447";ctx.shadowBlur=14;ctx.fillStyle="#ffd447";ctx.beginPath();ctx.arc(c.x,c.y,c.r,0,Math.PI*2);ctx.fill();ctx.restore();ctx.fillStyle="#fff5a6";ctx.font="bold 15px Arial";ctx.textAlign="center";ctx.textBaseline="middle";ctx.fillText("$",c.x,c.y)}const s=skins.find(x=>x.id===state.selectedSkin)||skins[0];ctx.save();ctx.translate(game.player.x,game.player.y);ctx.rotate(game.player.rot);const visualR=s.type==="jeszx"?game.player.r*.78:game.player.r;drawSkin(ctx,s.type,0,0,visualR);ctx.restore()}
+function drawBackground(){const w=game.world||worlds[0],g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,w.sky1);g.addColorStop(1,w.sky2);ctx.fillStyle=g;ctx.fillRect(0,0,W,H);if(w.id==="giza"){ctx.fillStyle="#d9a35a";ctx.fillRect(0,H*.69,W,H*.31);drawPyramid(W*.57,H*.69,200,130)}if(w.id==="mountains"){ctx.fillStyle="#5b70aa";ctx.beginPath();ctx.moveTo(0,H*.75);ctx.lineTo(W*.2,H*.42);ctx.lineTo(W*.4,H*.7);ctx.lineTo(W*.58,H*.3);ctx.lineTo(W*.8,H*.68);ctx.lineTo(W,H*.4);ctx.lineTo(W,H);ctx.lineTo(0,H);ctx.closePath();ctx.fill();ctx.fillStyle="#527951";ctx.fillRect(0,H*.8,W,H*.2)}if(w.id==="ocean"){ctx.strokeStyle="rgba(255,255,255,.14)";for(let y=80;y<H*.85;y+=80){ctx.beginPath();for(let x=0;x<W;x+=45){ctx.moveTo(x,y);ctx.quadraticCurveTo(x+12,y-10,x+24,y)}ctx.stroke()}ctx.fillStyle="#157c86";ctx.fillRect(0,H*.88,W,H*.12)}if(w.id==="jungle"){ctx.fillStyle="#2b753d";ctx.fillRect(0,H*.78,W,H*.22);for(let i=0;i<18;i++){const x=(i*97)%W,h=100+(i%4)*35;ctx.fillStyle=i%2?"#1c5a31":"#348746";ctx.fillRect(x,H*.78-h,20,h);ctx.beginPath();ctx.arc(x+10,H*.78-h,38,Math.PI,Math.PI*2);ctx.fill()}}if(w.id==="space"){ctx.fillStyle="#fff";for(let i=0;i<100;i++){ctx.globalAlpha=.25+(i%5)*.1;ctx.fillRect((i*83)%W,(i*47)%H,2,2)}ctx.globalAlpha=1}if(w.id==="ice"){ctx.fillStyle="rgba(255,255,255,.45)";for(let i=0;i<8;i++){const x=i*190;ctx.beginPath();ctx.moveTo(x,H*.82);ctx.lineTo(x+80,H*.25);ctx.lineTo(x+150,H*.82);ctx.closePath();ctx.fill()}ctx.fillStyle="#a7deef";ctx.fillRect(0,H*.82,W,H*.18)}if(w.id==="lava"){ctx.fillStyle="#5f171d";ctx.fillRect(0,H*.82,W,H*.18);ctx.fillStyle="#ff7a18";for(let i=0;i<10;i++){const x=(i*131)%W,y=H*.84+(i%3)*16;ctx.beginPath();ctx.arc(x,y,18+(i%3)*5,0,Math.PI*2);ctx.fill()}}}
+function drawPyramid(cx,base,w,h){ctx.fillStyle="#d5a05a";ctx.beginPath();ctx.moveTo(cx,base-h);ctx.lineTo(cx-w/2,base);ctx.lineTo(cx+w/2,base);ctx.closePath();ctx.fill()}function drawSpikeRow(x,width,yBase,direction){ctx.fillStyle="rgba(30,20,25,.65)";ctx.beginPath();for(let xp=x;xp<x+width;xp+=SPIKE_STEP){const w=Math.min(SPIKE_STEP,x+width-xp),cx=xp+w/2;ctx.moveTo(xp,yBase);direction===1?(ctx.lineTo(cx,yBase+SPIKE_H),ctx.lineTo(xp+w,yBase)):(ctx.lineTo(cx,yBase-SPIKE_H),ctx.lineTo(xp+w,yBase))}ctx.closePath();ctx.fill()}
+function draw(){drawBackground();for(const o of game.obstacles){const top=o.gapY-o.gapH/2,bottom=o.gapY+o.gapH/2;ctx.fillStyle=game.world?.obstacle||"#8f5a33";ctx.fillRect(o.x,0,o.width,top);ctx.fillRect(o.x,bottom,o.width,H-bottom);drawSpikeRow(o.x,o.width,top,1);drawSpikeRow(o.x,o.width,bottom,-1)}for(const c of game.coins){ctx.save();ctx.shadowColor="#ffd447";ctx.shadowBlur=14;ctx.fillStyle="#ffd447";ctx.beginPath();ctx.arc(c.x,c.y,c.r,0,Math.PI*2);ctx.fill();ctx.restore();ctx.fillStyle="#fff5a6";ctx.font="bold 15px Arial";ctx.textAlign="center";ctx.textBaseline="middle";ctx.fillText("$",c.x,c.y)}const s=skins.find(x=>x.id===state.selectedSkin)||skins[0];ctx.save();ctx.translate(game.player.x,game.player.y);ctx.rotate(game.player.rot);drawSkin(ctx,s.type,0,0,s.type==="jeszx"?game.player.r*.78:game.player.r);ctx.restore()}
 
+const LUCKY_COST=200;const luckySegments=[{id:"coins25",label:"🪙 25",type:"coins",amount:25},{id:"coins50",label:"🪙 50",type:"coins",amount:50},{id:"world",label:"🌍 Welt",type:"world"},{id:"sound",label:"🔊 Sound",type:"sound"},{id:"music",label:"🎵 Musik",type:"music"},{id:"coins100",label:"🪙 100",type:"coins",amount:100},{id:"skin",label:"🪽 Skin",type:"skin"},{id:"jeszx",label:"🫏 JESZX",type:"jeszx",main:true}];let luckyRotation=0,luckySpinning=false,luckyPaid=false,luckyPool=null;
+function makeLuckyPool(){return{world:pick(worlds.filter(x=>x.id!=="giza")),sound:pick(sounds.filter(x=>x.id!=="classic")),music:pick(musicTracks.filter(x=>x.id!=="classicMusic")),skin:pick(skins.filter(x=>x.id!=="bird"&&x.id!=="jeszx")),coins:pick([25,50,100,150])}}luckyPool=makeLuckyPool();
+function openLuckyRad(){luckyConfirmOverlay.classList.add("active")}function cancelLuckyBuy(){luckyConfirmOverlay.classList.remove("active")}function confirmLuckyBuy(){if(state.coins<LUCKY_COST){showMessage("🪙 Du brauchst 200 Coins.");return}state.coins-=LUCKY_COST;state.luckySpins=Number(state.luckySpins||0)+1;luckyPaid=true;saveState();updateLobby();luckyConfirmOverlay.classList.remove("active");showScreen("shop");renderLuckyRad()}
+function renderLuckyRad(){shopCoins.textContent=state.coins;if(!luckyPaid){shopCards.innerHTML=`<div class="luckyWrap"><div class="luckyWheelCard"><div style="font-size:76px">🎡</div><h2 style="margin:8px 0">Lucky Rad</h2><p class="subtitle" style="margin-bottom:16px">Drehe für 200 Coins und gewinne einen Preis.</p><div class="luckyMainPrize"><strong>👑 HAUPTPREIS</strong><div style="font-size:22px;font-weight:1000">🫏 Jeszx</div><div class="luckyOdds">Chance: <strong>1 / 1000</strong></div></div><button id="buyLuckyBtn" class="btn green spinBtn" style="margin-top:16px">🪙 FÜR 200 COINS KAUFEN</button></div><div class="luckyInfo"><div class="luckyInfoBox"><h3>🎁 Dieser Lucky Drop</h3><div class="tiny">Der Pool wird nach jedem Gewinn neu gefüllt.</div><div style="margin-top:8px">🌍 ${luckyPool.world.name}<br>🔊 ${luckyPool.sound.name}<br>🎵 ${luckyPool.music.name}<br>🪽 ${luckyPool.skin.name}<br>🪙 ${luckyPool.coins} Coins</div></div><div class="luckyInfoBox"><h3>📊 Chancen</h3><div class="luckyOdds">Normaler Skin: <strong>1 / 200</strong><br>Jeszx Hauptpreis: <strong>1 / 1000</strong></div></div></div></div>`;$("buyLuckyBtn").onclick=openLuckyRad;return}shopCards.innerHTML=`<div class="luckyWrap"><div class="luckyWheelCard"><div class="wheelStage"><div class="wheelPointer">▼</div><div class="luckyWheel"><div id="luckyWheelInner" class="luckyWheelInner"><div class="wheelLabels">${luckySegments.map(x=>`<div class="wheelLabel">${x.label}</div>`).join("")}</div></div></div></div><button id="luckySpinBtn" class="btn green spinBtn">🎡 DREHEN</button><div id="luckyResult" class="luckyResult">Bereit für deinen Dreh.</div></div><div class="luckyInfo"><div class="luckyMainPrize"><strong>👑 HAUPTPREIS</strong><div style="font-size:22px;font-weight:1000">🫏 Jeszx</div><div class="luckyOdds">Chance: <strong>1 / 1000</strong></div></div><div class="luckyInfoBox"><h3>🎁 Dieser Lucky Drop</h3><div class="tiny">Der Pool wird nach jedem Gewinn neu gefüllt.</div><div style="margin-top:8px">🌍 ${luckyPool.world.name}<br>🔊 ${luckyPool.sound.name}<br>🎵 ${luckyPool.music.name}<br>🪽 ${luckyPool.skin.name}<br>🪙 ${luckyPool.coins} Coins</div></div><div class="luckyInfoBox"><h3>📊 Seltenheiten</h3><div class="luckyOdds">Normaler Skin: <strong>1 / 200</strong><br>Jeszx Hauptpreis: <strong>1 / 1000</strong></div></div></div></div>`;$("luckySpinBtn").onclick=spinLuckyRad}
+function chooseLuckyResult(){const roll=Math.floor(Math.random()*1000)+1;if(roll===1)return{kind:"jeszx"};if(roll<=6)return{kind:"skin",item:luckyPool.skin};const kind=pick(["coins","world","sound","music"]);return kind==="coins"?{kind,amount:luckyPool.coins}:{kind,item:luckyPool[kind]}}
+function jackpotSound(){initAudio();if(!ACtx)return;[523.25,659.25,783.99,1046.5,1318.51,1567.98].forEach((n,i)=>setTimeout(()=>tone(n,.22,.07,"square"),i*95));setTimeout(()=>tone(2093,.5,.08,"triangle"),620)}function showPrizePopup(o){prizePopupIcon.textContent=o.icon||"🎁";prizePopupTitle.textContent=o.title||"DEIN PREIS!";prizePopupText.textContent=o.text||"Preis";prizePopupSub.textContent=o.sub||"Der Preis wurde deinem Konto gutgeschrieben.";jackpotOverlay.classList.add("active");if(o.jackpot)jackpotSound();clearTimeout(showPrizePopup.timer);showPrizePopup.timer=setTimeout(()=>jackpotOverlay.classList.remove("active"),5000)}
+function awardLucky(result){let p={icon:"🎁",title:"DEIN PREIS!",text:"Preis",sub:"Der Preis wurde deinem Konto gutgeschrieben."};if(result.kind==="jeszx"){if(!state.ownedSkins.includes("jeszx"))state.ownedSkins.push("jeszx");state.selectedSkin="jeszx";state.luckyLastResult="👑 HAUPTPREIS! Jeszx";p={icon:"🫏👑",title:"HAUPTPREIS!",text:"Jeszx",sub:"Der Icon-Skin wurde deinem Konto gutgeschrieben.",jackpot:true}}else if(result.kind==="skin"){if(state.ownedSkins.includes(result.item.id)){state.coins+=150;p={icon:"🪙",title:"DEIN PREIS!",text:"+150 Coins",sub:"Doppelter Skin → Ersatz-Coins."}}else{state.ownedSkins.push(result.item.id);p={icon:"🪽",title:"DEIN PREIS!",text:result.item.name,sub:"Der Skin wurde deinem Konto gutgeschrieben."}}}else if(result.kind==="world"){if(state.ownedWorlds.includes(result.item.id)){state.coins+=150;p={icon:"🪙",title:"DEIN PREIS!",text:"+150 Coins",sub:"Doppelte Welt → Ersatz-Coins."}}else{state.ownedWorlds.push(result.item.id);p={icon:"🌍",title:"DEIN PREIS!",text:result.item.name,sub:"Die Welt wurde deinem Konto gutgeschrieben."}}}else if(result.kind==="sound"){if(state.ownedSounds.includes(result.item.id)){state.coins+=100;p={icon:"🪙",title:"DEIN PREIS!",text:"+100 Coins",sub:"Doppelter Sound → Ersatz-Coins."}}else{state.ownedSounds.push(result.item.id);p={icon:"🔊",title:"DEIN PREIS!",text:result.item.name,sub:"Der Sound wurde deinem Konto gutgeschrieben."}}}else if(result.kind==="music"){if(state.ownedMusic.includes(result.item.id)){state.coins+=100;p={icon:"🪙",title:"DEIN PREIS!",text:"+100 Coins",sub:"Doppelte Musik → Ersatz-Coins."}}else{state.ownedMusic.push(result.item.id);p={icon:"🎵",title:"DEIN PREIS!",text:result.item.name,sub:"Die Musik wurde deinem Konto gutgeschrieben."}}}else{state.coins+=Number(result.amount||0);p={icon:"🪙",title:"DEIN PREIS!",text:`+${result.amount} Coins`,sub:"Die Coins wurden deinem Konto gutgeschrieben."}}saveState();showPrizePopup(p);renderInventory()}
+function spinLuckyRad(){if(luckySpinning)return;const result=chooseLuckyResult();luckySpinning=true;const wheel=$("luckyWheelInner"),idx=Math.max(0,luckySegments.findIndex(x=>x.type===result.kind)),center=idx*45+22.5,target=(360-center+360)%360;luckyRotation+=2160+target;wheel.style.transform=`rotate(${luckyRotation}deg)`;setTimeout(()=>{awardLucky(result);const rb=$("luckyResult");if(rb)rb.textContent=result.kind==="jeszx"?"👑 HAUPTPREIS! Jeszx":`🎁 ${result.kind.toUpperCase()} gewonnen`;luckyPool=makeLuckyPool();luckyPaid=false;luckySpinning=false;saveState();updateLobby();renderShop()},4900)}
 
-/* ===== LUCKY RAD ===== */
-const LUCKY_COST=200;
-const luckySegments=[
-  {id:"coins25",label:"🪙 25",type:"coins",amount:25},
-  {id:"coins50",label:"🪙 50",type:"coins",amount:50},
-  {id:"world",label:"🌍 Welt",type:"world"},
-  {id:"sound",label:"🔊 Sound",type:"sound"},
-  {id:"music",label:"🎵 Musik",type:"music"},
-  {id:"coins100",label:"🪙 100",type:"coins",amount:100},
-  {id:"skin",label:"🪽 Skin",type:"skin"},
-  {id:"jeszx",label:"🫏 JESZX",type:"jeszx",main:true}
-];
-let luckyRotation=0,luckySpinning=false,luckyPaid=false,luckyPool=makeLuckyPool();
-function pick(arr){return arr[Math.floor(Math.random()*arr.length)]}
-function makeLuckyPool(){
-  const nonDefaultWorlds=worlds.filter(x=>x.id!=="giza");
-  const nonDefaultSounds=sounds.filter(x=>x.id!=="classic");
-  const nonDefaultMusic=musicTracks.filter(x=>x.id!=="classicMusic");
-  const normalSkins=skins.filter(x=>x.id!=="bird"&&x.id!=="jeszx");
-  return {
-    world:pick(nonDefaultWorlds.length?nonDefaultWorlds:worlds),
-    sound:pick(nonDefaultSounds.length?nonDefaultSounds:sounds),
-    music:pick(nonDefaultMusic.length?nonDefaultMusic:musicTracks),
-    skin:pick(normalSkins.length?normalSkins:skins),
-    coins:pick([25,50,100,150])
-  };
-}
-function openLuckyRad(){luckyConfirmOverlay.classList.add("active")}
-function cancelLuckyBuy(){luckyConfirmOverlay.classList.remove("active")}
-function confirmLuckyBuy(){
-  if(state.coins<LUCKY_COST){showMessage("🪙 Du brauchst 200 Coins.");return}
-  state.coins-=LUCKY_COST;
-  state.luckySpins=Number(state.luckySpins||0)+1;
-  luckyPaid=true;
-  saveState();
-  updateLobby();
-  luckyConfirmOverlay.classList.remove("active");
-  showScreen("shop");
-  renderLuckyRad();
-}
-function renderLuckyRad(){
-  shopCoins.textContent=state.coins;
-  if(!luckyPaid){
-    shopCards.innerHTML=`<div class="luckyWrap"><div class="luckyWheelCard"><div style="font-size:76px">🎡</div><h2 style="margin:8px 0">Lucky Rad</h2><p class="subtitle" style="margin-bottom:16px">Drehe für 200 Coins und gewinne einen Preis.</p><div class="luckyMainPrize"><strong>👑 HAUPTPREIS</strong><div style="font-size:22px;font-weight:1000">🫏 Jeszx</div><div class="luckyOdds">Chance: <strong>1 / 1000</strong></div></div><button id="buyLuckyBtn" class="btn green spinBtn" style="margin-top:16px">🪙 FÜR 200 COINS KAUFEN</button></div><div class="luckyInfo"><div class="luckyInfoBox"><h3>🎁 Dieser Lucky Drop</h3><div class="tiny">Jeder neue Drop wird nach dem Gewinn komplett neu aufgefüllt.</div><div style="margin-top:8px">🌍 ${luckyPool.world.name}<br>🔊 ${luckyPool.sound.name}<br>🎵 ${luckyPool.music.name}<br>🪽 ${luckyPool.skin.name}<br>🪙 ${luckyPool.coins} Coins</div></div><div class="luckyInfoBox"><h3>📊 Chancen</h3><div class="luckyOdds">Normaler Skin: <strong>1 / 200</strong><br>Jeszx Hauptpreis: <strong>1 / 1000</strong></div></div></div></div>`;
-    document.getElementById("buyLuckyBtn").onclick=openLuckyRad;
-    return;
-  }
-  shopCards.innerHTML=`<div class="luckyWrap"><div class="luckyWheelCard"><div class="wheelStage"><div class="wheelPointer">▼</div><div id="luckyWheel" class="luckyWheel"><div id="luckyWheelInner" class="luckyWheelInner"><div class="wheelLabels">${luckySegments.map(x=>`<div class="wheelLabel">${x.label}</div>`).join("")}</div></div></div></div><button id="luckySpinBtn" class="btn green spinBtn">🎡 DREHEN</button><div id="luckyResult" class="luckyResult">Bereit für deinen Dreh.</div></div><div class="luckyInfo"><div class="luckyMainPrize"><strong>👑 HAUPTPREIS</strong><div style="font-size:22px;font-weight:1000">🫏 Jeszx</div><div class="luckyOdds">Chance: <strong>1 / 1000</strong></div></div><div class="luckyInfoBox"><h3>🎁 Dieser Lucky Drop</h3><div class="tiny">Der Pool wird nach jedem Gewinn neu gefüllt.</div><div style="margin-top:8px">🌍 ${luckyPool.world.name}<br>🔊 ${luckyPool.sound.name}<br>🎵 ${luckyPool.music.name}<br>🪽 ${luckyPool.skin.name}<br>🪙 ${luckyPool.coins} Coins</div></div><div class="luckyInfoBox"><h3>📊 Seltenheiten</h3><div class="luckyOdds">Normaler Skin: <strong>1 / 200</strong><br>Jeszx Hauptpreis: <strong>1 / 1000</strong></div></div></div></div>`;
-  document.getElementById("luckySpinBtn").onclick=spinLuckyRad;
-}
-function chooseLuckyResult(){
-  const roll=Math.floor(Math.random()*1000)+1;
-  if(roll===1)return {kind:"jeszx"};
-  if(roll<=6)return {kind:"skin",item:luckyPool.skin};
-  const kind=pick(["coins","world","sound","music"]);
-  if(kind==="coins")return {kind,amount:luckyPool.coins};
-  return {kind,item:luckyPool[kind]};
-}
-function jackpotSound(){
-  initAudio();
-  if(!ACtx)return;
-  if(ACtx.state==="suspended")ACtx.resume();
-  const notes=[523.25,659.25,783.99,1046.5,1318.51,1567.98];
-  notes.forEach((n,i)=>setTimeout(()=>tone(n,.22,.07,"square"),i*95));
-  setTimeout(()=>tone(2093,.5,.08,"triangle"),620);
-}
-function showPrizePopup({icon="🎁",title="DEIN PREIS!",text="Preis",sub="Der Preis wurde deinem Konto gutgeschrieben.",jackpot=false}){
-  prizePopupIcon.textContent=icon;
-  prizePopupTitle.textContent=title;
-  prizePopupText.textContent=text;
-  prizePopupSub.textContent=sub;
-  jackpotOverlay.classList.add("active");
-  if(jackpot)jackpotSound();
-  clearTimeout(showPrizePopup.timer);
-  showPrizePopup.timer=setTimeout(()=>jackpotOverlay.classList.remove("active"),5000);
-}
-function awardLucky(result){
-  let popup={icon:"🎁",title:"DEIN PREIS!",text:"Preis",sub:"Der Preis wurde deinem Konto gutgeschrieben."};
-  if(result.kind==="jeszx"){
-    if(!state.ownedSkins.includes("jeszx"))state.ownedSkins.push("jeszx");
-    state.selectedSkin="jeszx";
-    state.luckyLastResult="👑 HAUPTPREIS! Jeszx";
-    popup={icon:"🫏👑",title:"HAUPTPREIS!",text:"Jeszx",sub:"Der Icon-Skin wurde deinem Konto gutgeschrieben.",jackpot:true};
-  }else if(result.kind==="skin"){
-    if(state.ownedSkins.includes(result.item.id)){state.coins+=150;state.luckyLastResult="🪙 Doppelter Skin → +150 Coins";popup={icon:"🪙",title:"DEIN PREIS!",text:"+150 Coins",sub:"Der Skin war schon vorhanden, deshalb bekommst du Coins als Ersatz."};}
-    else{state.ownedSkins.push(result.item.id);state.luckyLastResult=`🪽 Gewonnen: ${result.item.name}`;popup={icon:"🪽",title:"DEIN PREIS!",text:result.item.name,sub:"Der Skin wurde deinem Konto gutgeschrieben."};}
-  }else if(result.kind==="world"){
-    if(state.ownedWorlds.includes(result.item.id)){state.coins+=150;state.luckyLastResult="🪙 Doppelte Welt → +150 Coins";popup={icon:"🪙",title:"DEIN PREIS!",text:"+150 Coins",sub:"Die Welt war schon vorhanden, deshalb bekommst du Coins als Ersatz."};}
-    else{state.ownedWorlds.push(result.item.id);state.luckyLastResult=`🌍 Gewonnen: ${result.item.name}`;popup={icon:"🌍",title:"DEIN PREIS!",text:result.item.name,sub:"Die Welt wurde deinem Konto gutgeschrieben."};}
-  }else if(result.kind==="sound"){
-    if(state.ownedSounds.includes(result.item.id)){state.coins+=100;state.luckyLastResult="🪙 Doppelsound → +100 Coins";popup={icon:"🪙",title:"DEIN PREIS!",text:"+100 Coins",sub:"Der Sound war schon vorhanden, deshalb bekommst du Coins als Ersatz."};}
-    else{state.ownedSounds.push(result.item.id);state.luckyLastResult=`🔊 Gewonnen: ${result.item.name}`;popup={icon:"🔊",title:"DEIN PREIS!",text:result.item.name,sub:"Der Sound wurde deinem Konto gutgeschrieben."};}
-  }else if(result.kind==="music"){
-    if(state.ownedMusic.includes(result.item.id)){state.coins+=100;state.luckyLastResult="🪙 Doppelte Musik → +100 Coins";popup={icon:"🪙",title:"DEIN PREIS!",text:"+100 Coins",sub:"Die Musik war schon vorhanden, deshalb bekommst du Coins als Ersatz."};}
-    else{state.ownedMusic.push(result.item.id);state.luckyLastResult=`🎵 Gewonnen: ${result.item.name}`;popup={icon:"🎵",title:"DEIN PREIS!",text:result.item.name,sub:"Die Musik wurde deinem Konto gutgeschrieben."};}
-  }else{
-    state.coins+=Number(result.amount||0);
-    state.luckyLastResult=`🪙 Gewonnen: +${result.amount} Coins`;
-    popup={icon:"🪙",title:"DEIN PREIS!",text:`+${result.amount} Coins`,sub:"Die Coins wurden deinem Konto gutgeschrieben."};
-  }
-  saveState();
-  showPrizePopup(popup);
-  renderInventory();
-  return state.luckyLastResult;
-}
-function spinLuckyRad(){
-  if(luckySpinning)return;
-  const result=chooseLuckyResult();
-  luckySpinning=true;
-  const wheel=document.getElementById("luckyWheelInner");
-  const resultIndex=luckySegments.findIndex(x=>x.type===result.kind);
-  const idx=resultIndex>=0?resultIndex:0;
-  const segCenter=idx*45+22.5;
-  const target=(360-segCenter+360)%360;
-  luckyRotation+=360*6+target;
-  wheel.style.transform=`rotate(${luckyRotation}deg)`;
-  setTimeout(()=>{
-    const text=awardLucky(result);
-    const resultBox=document.getElementById("luckyResult");
-    if(resultBox)resultBox.textContent=text;
-    luckyPool=makeLuckyPool();
-    luckyPaid=false;
-    luckySpinning=false;
-    saveState();
-    updateLobby();
-    renderShop();
-  },4900);
-}
-
-/* ===== SHOP / INVENTORY / MISSIONS ===== */
 function tabs(container,items,active,cb){container.innerHTML="";items.forEach(i=>{const b=document.createElement("button");b.className="tab"+(active===i.id?" active":"");b.textContent=i.name;b.onclick=()=>cb(i.id);container.appendChild(b)})}
 let shopTab="skins",inventoryTab="skins";
-function renderShop(){shopCoins.textContent=state.coins;tabs(shopTabs,[{id:"skins",name:"🪽 Figuren"},{id:"worlds",name:"🌍 Welten"},{id:"sounds",name:"🔊 Sounds"},{id:"music",name:"🎵 Musik"},{id:"lucky",name:"🎡 Lucky Rad"}],shopTab,id=>{shopTab=id;renderShop()});shopCards.innerHTML="";if(shopTab==="lucky")return renderLuckyRad();if(shopTab==="sounds")return renderSoundShop(shopCards);if(shopTab==="music")return renderMusicShop(shopCards);const items=shopTab==="skins"?skins:worlds,owned=shopTab==="skins"?state.ownedSkins:state.ownedWorlds;items.forEach(item=>{const card=document.createElement("div");card.className="card";const p=document.createElement("div");p.className="preview";if(shopTab==="skins"&&item.id==="jeszx"){const icon=document.createElement("div");icon.textContent=item.icon||"🫏";icon.style.fontSize="78px";icon.style.lineHeight="1";p.appendChild(icon)}else{const c=document.createElement("canvas");c.width=240;c.height=140;shopTab==="skins"?drawSkin(c.getContext("2d"),item.type,120,70,28):drawWorldPreview(c.getContext("2d"),item,240,140);p.appendChild(c)}card.appendChild(p);const h=document.createElement("h3");h.textContent=item.name;card.appendChild(h);const pr=document.createElement("div");pr.className="price";pr.textContent=item.price?`🪙 ${item.price} Coins`:"Kostenlos";card.appendChild(pr);const b=document.createElement("button");b.className="smallbtn";if(owned.includes(item.id)){b.textContent="✓ Im Besitz";b.disabled=true}else{b.textContent="Kaufen";b.onclick=()=>buyItem(item,owned)}card.appendChild(b);shopCards.appendChild(card)})}
+function renderSoundShop(cards){sounds.forEach(s=>{const c=document.createElement("div");c.className="card";c.innerHTML=`<div class="preview"><div style="font-size:44px">${s.icon}</div></div><h3>${s.name}</h3><div class="price">${s.price?"🪙 "+s.price+" Coins":"Kostenlos"}</div>`;const t=document.createElement("button");t.className="smallbtn blue";t.textContent="▶ TESTEN";t.onclick=()=>jumpSound(s.type);c.appendChild(t);const b=document.createElement("button");b.className="smallbtn";if(state.ownedSounds.includes(s.id)){b.textContent="✓ Im Besitz";b.disabled=true}else{b.textContent="Kaufen";b.onclick=()=>buyItem(s,state.ownedSounds)}c.appendChild(b);cards.appendChild(c)})}
+function renderMusicShop(cards){musicTracks.forEach(m=>{const c=document.createElement("div");c.className="card";c.innerHTML=`<div class="preview"><div style="font-size:44px">${m.icon}</div></div><h3>${m.name}</h3><div class="price">${m.price?"🪙 "+m.price+" Coins":"Kostenlos"}</div>`;const t=document.createElement("button");t.className="smallbtn blue";t.textContent="▶ ANHÖREN";t.onclick=()=>previewMusic(m);c.appendChild(t);const b=document.createElement("button");b.className="smallbtn";if(state.ownedMusic.includes(m.id)){b.textContent="✓ Im Besitz";b.disabled=true}else{b.textContent="Kaufen";b.onclick=()=>buyItem(m,state.ownedMusic)}c.appendChild(b);cards.appendChild(c)})}
+function renderShop(){shopCoins.textContent=state.coins;tabs(shopTabs,[{id:"skins",name:"🪽 Figuren"},{id:"worlds",name:"🌍 Welten"},{id:"sounds",name:"🔊 Sounds"},{id:"music",name:"🎵 Musik"},{id:"lucky",name:"🎡 Lucky Rad"}],shopTab,id=>{shopTab=id;renderShop()});shopCards.innerHTML="";if(shopTab==="lucky")return renderLuckyRad();if(shopTab==="sounds")return renderSoundShop(shopCards);if(shopTab==="music")return renderMusicShop(shopCards);const items=shopTab==="skins"?skins:worlds,owned=shopTab==="skins"?state.ownedSkins:state.ownedWorlds;items.forEach(item=>{const c=document.createElement("div");c.className="card";const p=document.createElement("div");p.className="preview";if(shopTab==="skins"&&item.id==="jeszx"){const i=document.createElement("div");i.textContent=item.icon;i.style.fontSize="78px";p.appendChild(i)}else{const cv=document.createElement("canvas");cv.width=240;cv.height=140;shopTab==="skins"?drawSkin(cv.getContext("2d"),item.type,120,70,28):drawWorldPreview(cv.getContext("2d"),item,240,140);p.appendChild(cv)}c.appendChild(p);const h=document.createElement("h3");h.textContent=item.name;c.appendChild(h);const pr=document.createElement("div");pr.className="price";pr.textContent=item.price?`🪙 ${item.price} Coins`:"Kostenlos";c.appendChild(pr);const b=document.createElement("button");b.className="smallbtn";if(owned.includes(item.id)){b.textContent="✓ Im Besitz";b.disabled=true}else{b.textContent="Kaufen";b.onclick=()=>buyItem(item,owned)}c.appendChild(b);shopCards.appendChild(c)})}
 function buyItem(item,owned){if(state.coins<item.price){showMessage("Nicht genug Coins!");return}state.coins-=item.price;owned.push(item.id);saveState();renderShop();updateLobby();purchaseSound()}
-function renderSoundShop(cards){sounds.forEach(s=>{const card=document.createElement("div");card.className="card";card.innerHTML=`<div class="preview"><div style="font-size:44px">${s.icon}</div></div><h3>${s.name}</h3><div class="price">${s.price?"🪙 "+s.price+" Coins":"Kostenlos"}</div>`;const test=document.createElement("button");test.className="smallbtn blue";test.textContent="▶ TESTEN";test.onclick=()=>jumpSound(s.type);card.appendChild(test);const b=document.createElement("button");b.className="smallbtn";if(state.ownedSounds.includes(s.id)){b.textContent="✓ Im Besitz";b.disabled=true}else{b.textContent="Kaufen";b.onclick=()=>buyItem(s,state.ownedSounds)}card.appendChild(b);cards.appendChild(card)})}
-function renderMusicShop(cards){musicTracks.forEach(m=>{const card=document.createElement("div");card.className="card";card.innerHTML=`<div class="preview"><div style="font-size:44px">${m.icon}</div></div><h3>${m.name}</h3><div class="price">${m.price?"🪙 "+m.price+" Coins":"Kostenlos"}</div>`;const listen=document.createElement("button");listen.className="smallbtn blue";listen.textContent="▶ ANHÖREN";listen.onclick=()=>previewMusic(m);card.appendChild(listen);const b=document.createElement("button");b.className="smallbtn";if(state.ownedMusic.includes(m.id)){b.textContent="✓ Im Besitz";b.disabled=true}else{b.textContent="Kaufen";b.onclick=()=>buyItem(m,state.ownedMusic)}card.appendChild(b);cards.appendChild(card)})}
-function renderInventory(){tabs(inventoryTabs,[{id:"skins",name:"🪽 Figuren"},{id:"worlds",name:"🌍 Welten"},{id:"sounds",name:"🔊 Sounds"},{id:"music",name:"🎵 Musik"}],inventoryTab,id=>{inventoryTab=id;renderInventory()});inventoryCards.innerHTML="";if(inventoryTab==="sounds")return renderSoundInventory(inventoryCards);if(inventoryTab==="music")return renderMusicInventory(inventoryCards);const items=inventoryTab==="skins"?skins.filter(x=>state.ownedSkins.includes(x.id)):worlds.filter(x=>state.ownedWorlds.includes(x.id));items.forEach(item=>{const card=document.createElement("div");card.className="card";const p=document.createElement("div");p.className="preview";if(inventoryTab==="skins"&&item.id==="jeszx"){const icon=document.createElement("div");icon.textContent=item.icon||"🫏";icon.style.fontSize="78px";icon.style.lineHeight="1";p.appendChild(icon)}else{const c=document.createElement("canvas");c.width=240;c.height=140;inventoryTab==="skins"?drawSkin(c.getContext("2d"),item.type,120,70,28):drawWorldPreview(c.getContext("2d"),item,240,140);p.appendChild(c)}card.appendChild(p);const h=document.createElement("h3");h.textContent=item.name;card.appendChild(h);const b=document.createElement("button");b.className="smallbtn";const sel=inventoryTab==="skins"?state.selectedSkin===item.id:state.selectedWorld===item.id;b.classList.toggle("selected",sel);b.textContent=sel?"✓ AUSGERÜSTET":"AUSRÜSTEN";b.onclick=()=>{if(inventoryTab==="skins")state.selectedSkin=item.id;else state.selectedWorld=item.id;saveState();renderInventory()};card.appendChild(b);inventoryCards.appendChild(card)})}
-function renderSoundInventory(cards){sounds.filter(x=>state.ownedSounds.includes(x.id)).forEach(s=>{const card=document.createElement("div");card.className="card";card.innerHTML=`<div class="preview"><div style="font-size:44px">${s.icon}</div></div><h3>${s.name}</h3>`;const t=document.createElement("button");t.className="smallbtn blue";t.textContent="▶ TESTEN";t.onclick=()=>jumpSound(s.type);card.appendChild(t);const b=document.createElement("button");b.className="smallbtn";const sel=state.selectedSound===s.id;b.classList.toggle("selected",sel);b.textContent=sel?"✓ AUSGERÜSTET":"AUSRÜSTEN";b.onclick=()=>{state.selectedSound=s.id;saveState();renderInventory()};card.appendChild(b);cards.appendChild(card)})}
-function renderMusicInventory(cards){musicTracks.filter(x=>state.ownedMusic.includes(x.id)).forEach(m=>{const card=document.createElement("div");card.className="card";card.innerHTML=`<div class="preview"><div style="font-size:44px">${m.icon}</div></div><h3>${m.name}</h3>`;const t=document.createElement("button");t.className="smallbtn blue";t.textContent="▶ ANHÖREN";t.onclick=()=>previewMusic(m);card.appendChild(t);const b=document.createElement("button");b.className="smallbtn";const sel=state.selectedMusic===m.id;b.classList.toggle("selected",sel);b.textContent=sel?"✓ AUSGERÜSTET":"AUSRÜSTEN";b.onclick=()=>{state.selectedMusic=m.id;saveState();renderInventory();musicHud.textContent=m.name;if(game.running)startMusic()};card.appendChild(b);cards.appendChild(card)})}
-function renderMissions(){ensureActiveMissions();missionList.innerHTML="";state.activeMissions.forEach((m,index)=>{const key="m"+(index+1);const cur=Math.min(m.target,Number(state.missionProgress[key]||0)),done=cur>=m.target,claimed=!!state.missionClaimed[key];const card=document.createElement("div");card.className="mission"+(done?" done":"");card.innerHTML=`<div class="missionTop"><strong>${m.icon||"🎯"} ${m.name}</strong><span>🪙 ${m.reward}</span></div><div class="tiny">${claimed?"✅ Abgeholt":cur+" / "+m.target}</div><div class="missionProgress"><div class="missionFill" style="width:${Math.min(100,cur/m.target*100)}%"></div></div>`;if(done&&!claimed){const b=document.createElement("button");b.className="smallbtn selected";b.textContent="🪙 BELOHNUNG ABHOLEN";b.onclick=()=>{state.coins+=m.reward;state.missionClaimed[key]=true;saveState();updateLobby();if(allMissionsClaimed()){refreshMissions();}else{renderMissions();showMessage("🪙 +"+m.reward+" Coins!")}};card.appendChild(b)}missionList.appendChild(card)})}
-function updateMissionProgress(){ensureActiveMissions();state.activeMissions.forEach((m,index)=>{const key="m"+(index+1);let value=0;if(m.source==="score")value=game.score;else if(m.source==="bonus")value=game.bonusCoinsRun;else if(m.source==="jumps")value=game.jumpCount;state.missionProgress[key]=Math.max(Number(state.missionProgress[key]||0),value);});saveState()}
+function renderSoundInventory(cards){sounds.filter(x=>state.ownedSounds.includes(x.id)).forEach(s=>{const c=document.createElement("div");c.className="card";c.innerHTML=`<div class="preview"><div style="font-size:44px">${s.icon}</div></div><h3>${s.name}</h3>`;const t=document.createElement("button");t.className="smallbtn blue";t.textContent="▶ TESTEN";t.onclick=()=>jumpSound(s.type);c.appendChild(t);const b=document.createElement("button");b.className="smallbtn";const sel=state.selectedSound===s.id;b.classList.toggle("selected",sel);b.textContent=sel?"✓ AUSGERÜSTET":"AUSRÜSTEN";b.onclick=()=>{state.selectedSound=s.id;saveState();renderInventory()};c.appendChild(b);cards.appendChild(c)})}
+function renderMusicInventory(cards){musicTracks.filter(x=>state.ownedMusic.includes(x.id)).forEach(m=>{const c=document.createElement("div");c.className="card";c.innerHTML=`<div class="preview"><div style="font-size:44px">${m.icon}</div></div><h3>${m.name}</h3>`;const t=document.createElement("button");t.className="smallbtn blue";t.textContent="▶ ANHÖREN";t.onclick=()=>previewMusic(m);c.appendChild(t);const b=document.createElement("button");b.className="smallbtn";const sel=state.selectedMusic===m.id;b.classList.toggle("selected",sel);b.textContent=sel?"✓ AUSGERÜSTET":"AUSRÜSTEN";b.onclick=()=>{state.selectedMusic=m.id;saveState();renderInventory();musicHud.textContent=m.name;if(game.running)startMusic()};c.appendChild(b);cards.appendChild(c)})}
+function renderInventory(){tabs(inventoryTabs,[{id:"skins",name:"🪽 Figuren"},{id:"worlds",name:"🌍 Welten"},{id:"sounds",name:"🔊 Sounds"},{id:"music",name:"🎵 Musik"}],inventoryTab,id=>{inventoryTab=id;renderInventory()});inventoryCards.innerHTML="";if(inventoryTab==="sounds")return renderSoundInventory(inventoryCards);if(inventoryTab==="music")return renderMusicInventory(inventoryCards);const items=inventoryTab==="skins"?skins.filter(x=>state.ownedSkins.includes(x.id)):worlds.filter(x=>state.ownedWorlds.includes(x.id));items.forEach(item=>{const c=document.createElement("div");c.className="card";const p=document.createElement("div");p.className="preview";if(inventoryTab==="skins"&&item.id==="jeszx"){const i=document.createElement("div");i.textContent=item.icon;i.style.fontSize="78px";p.appendChild(i)}else{const cv=document.createElement("canvas");cv.width=240;cv.height=140;inventoryTab==="skins"?drawSkin(cv.getContext("2d"),item.type,120,70,28):drawWorldPreview(cv.getContext("2d"),item,240,140);p.appendChild(cv)}c.appendChild(p);const h=document.createElement("h3");h.textContent=item.name;c.appendChild(h);const b=document.createElement("button");b.className="smallbtn";const sel=inventoryTab==="skins"?state.selectedSkin===item.id:state.selectedWorld===item.id;b.classList.toggle("selected",sel);b.textContent=sel?"✓ AUSGERÜSTET":"AUSRÜSTEN";b.onclick=()=>{if(inventoryTab==="skins")state.selectedSkin=item.id;else state.selectedWorld=item.id;saveState();renderInventory()};c.appendChild(b);inventoryCards.appendChild(c)})}
 
-/* ===== EVENTS ===== */
-function showScreen(id){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));document.getElementById(id)?.classList.add("active")}
-function hideScreens(){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"))}
-function showMessage(t){const e=document.createElement("div");e.textContent=t;e.style.cssText="position:fixed;z-index:99999;left:50%;top:18%;transform:translate(-50%,-50%);padding:13px 18px;border-radius:999px;background:rgba(8,12,30,.97);border:1px solid rgba(255,255,255,.15);color:#fff;font-weight:900;box-shadow:0 15px 40px rgba(0,0,0,.3)";document.body.appendChild(e);setTimeout(()=>e.remove(),1400)}
 function updateLobby(){lobbyCoins.textContent=state.coins;lobbyBest.textContent=state.best;musicToggleBtn.textContent=state.musicEnabled?"🎵 Musik: AN":"🔇 Musik: AUS"}
-startBtn.onclick=()=>startGame(false);onlineModeBtn.onclick=()=>startGame(true);seasonTabBtn.onclick=()=>switchLeaderboardMode("season");allTimeTabBtn.onclick=()=>switchLeaderboardMode("alltime");claimSeasonRewardBtn.onclick=claimSeasonReward;accountBtn.onclick=()=>showScreen("authScreen");authBackBtn.onclick=()=>showScreen("lobby");guestBtn.onclick=()=>{showScreen("lobby");showMessage("👤 Gastmodus aktiviert.")};loginBtn.onclick=loginAccount;registerBtn.onclick=registerAccount;logoutBtn.onclick=logoutAccount;
-onlineBadge.onclick=()=>{loadPlayerName();showScreen("leaderboard");setTimeout(()=>document.getElementById("leaderboardList")?.scrollIntoView({behavior:"smooth",block:"start"}),50)};leaderboardBtn.onclick=()=>{loadPlayerName();showScreen("leaderboard")};leaderboardBack.onclick=()=>showScreen("lobby");saveNameBtn.onclick=savePlayerName;
-shopBtn.onclick=()=>{renderShop();showScreen("shop")};shopBack.onclick=()=>showScreen("lobby");inventoryBtn.onclick=()=>{renderInventory();showScreen("inventory")};inventoryBack.onclick=()=>showScreen("lobby");missionsBtn.onclick=()=>{renderMissions();showScreen("missions")};missionsBack.onclick=()=>showScreen("lobby");
-musicToggleBtn.onclick=()=>{state.musicEnabled=!state.musicEnabled;saveState();if(state.musicEnabled)startMusic();else stopMusic();updateLobby()};
-confirmLuckyBuyBtn.onclick=confirmLuckyBuy;cancelLuckyBuyBtn.onclick=cancelLuckyBuy;pauseBtn.onclick=togglePause;resumeBtn.onclick=togglePause;pauseLobbyBtn.onclick=returnLobby;retryBtn.onclick=()=>startGame(game.onlineRun);returnLobbyBtn.onclick=returnLobby;
-canvas.addEventListener("pointerdown",e=>{e.preventDefault();flap()});addEventListener("keydown",e=>{if(e.code==="Space"||e.code==="ArrowUp"){e.preventDefault();flap()}if(e.code==="Escape"||e.code==="KeyP")togglePause()});
 
-addEventListener("beforeunload",()=>{if(currentUser&&db){try{setPresenceOffline()}catch(e){}}});
+startBtn.onclick=()=>startGame(false);onlineModeBtn.onclick=async()=>{if(!currentUser){showMessage("🔐 Für den Online-Modus anmelden.");showScreen("authScreen");return}await ensureSeason();startGame(true)};
+leaderboardBtn.onclick=async()=>{loadPlayerName();showScreen("leaderboard");await ensureSeason();await startSeasonLeaderboardListener();switchLeaderboardMode("season")};
+leaderboardBack.onclick=()=>showScreen("lobby");saveNameBtn.onclick=savePlayerName;
+seasonTabBtn.onclick=async()=>{await startSeasonLeaderboardListener();switchLeaderboardMode("season")};allTimeTabBtn.onclick=()=>switchLeaderboardMode("alltime");
+shopBtn.onclick=()=>{renderShop();showScreen("shop")};shopBack.onclick=()=>showScreen("lobby");inventoryBtn.onclick=()=>{renderInventory();showScreen("inventory")};inventoryBack.onclick=()=>showScreen("lobby");missionsBtn.onclick=()=>{renderMissions();showScreen("missions")};missionsBack.onclick=()=>showScreen("lobby");
+accountBtn.onclick=()=>showScreen("authScreen");authBackBtn.onclick=()=>showScreen("lobby");guestBtn.onclick=()=>{showScreen("lobby");showMessage("👤 Gastmodus aktiviert.")};
+loginBtn.onclick=async()=>{try{const email=authEmail.value.trim(),pw=authPassword.value;if(!email||!pw){authStatus.textContent="Bitte E-Mail und Passwort eingeben.";return}const {a}=await loadFirebase();await a.signInWithEmailAndPassword(auth,email,pw);if(!getPlayerName())storage.setItem("FLYYYY_PLAYER_NAME",defaultNameForUser(auth.currentUser));showScreen("lobby");showMessage("✅ Angemeldet!")}catch(e){authStatus.textContent=authText(e)}};
+registerBtn.onclick=async()=>{try{const email=authEmail.value.trim(),pw=authPassword.value;if(!email||!pw){authStatus.textContent="Bitte E-Mail und Passwort eingeben.";return}if(pw.length<6){authStatus.textContent="Passwort: mindestens 6 Zeichen.";return}const {a}=await loadFirebase();await a.createUserWithEmailAndPassword(auth,email,pw);storage.setItem("FLYYYY_PLAYER_NAME",defaultNameForUser(auth.currentUser));showScreen("lobby");showMessage("✅ Konto erstellt!")}catch(e){authStatus.textContent=authText(e)}};
+logoutBtn.onclick=async()=>{try{await setPresenceOffline();const {a}=await loadFirebase();await a.signOut(auth);showMessage("👤 Gastmodus aktiviert.")}catch(e){console.error(e)}};
+onlineBadge.onclick=async()=>{loadPlayerName();showScreen("leaderboard");await ensureSeason();await startSeasonLeaderboardListener();switchLeaderboardMode("season");setTimeout(()=>leaderboardList.scrollIntoView({behavior:"smooth",block:"start"}),50)};
+claimSeasonRewardBtn.onclick=claimSeasonReward;musicToggleBtn.onclick=()=>{state.musicEnabled=!state.musicEnabled;saveState();if(state.musicEnabled)startMusic();else stopMusic();updateLobby()};
+confirmLuckyBuyBtn.onclick=confirmLuckyBuy;cancelLuckyBuyBtn.onclick=cancelLuckyBuy;pauseBtn.onclick=togglePause;resumeBtn.onclick=togglePause;pauseLobbyBtn.onclick=returnLobby;retryBtn.onclick=()=>startGame(game.onlineRun);returnLobbyBtn.onclick=returnLobby;
+canvas.addEventListener("pointerdown",e=>{e.preventDefault();flap()});addEventListener("keydown",e=>{if(e.code==="Space"||e.code==="ArrowUp"){e.preventDefault();flap()}if(e.code==="Escape"||e.code==="KeyP")togglePause()});addEventListener("beforeunload",()=>{if(currentUser&&db)try{setPresenceOffline()}catch{}});
 
 updateLobby();renderShop();renderInventory();ensureActiveMissions();renderMissions();loadPlayerName();updateAccountUI();updateSeasonUI();startSeasonTimer();setupFirebase();
-
 </script>
 </body>
 </html>
