@@ -20,7 +20,7 @@
 .authBox{padding:16px;border-radius:18px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);margin-bottom:15px}.authInput,.nameInput{width:100%;padding:13px 14px;border:1px solid rgba(255,255,255,.14);border-radius:14px;outline:none;background:rgba(255,255,255,.07);color:#fff}.authGrid,.nameBox{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}.authStatus{margin-top:10px;color:var(--muted);font-size:13px}.leaderStatus{padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);color:var(--muted);margin-bottom:14px}.leaderboard{display:grid;gap:10px}.leaderRow{display:grid;grid-template-columns:55px 1fr auto;align-items:center;gap:12px;padding:14px 16px;border-radius:17px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09)}.leaderRow.me{background:rgba(94,231,255,.08);border-color:rgba(94,231,255,.35)}.leaderRank{text-align:center;font-size:23px;font-weight:1000}.leaderName{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-weight:900}.leaderScore{font-size:20px;font-weight:1000}.leaderMeta{text-align:right;min-width:120px}.leaderWins{font-size:13px;color:var(--muted);font-weight:800;margin-top:2px}.onlineMini{font-size:12px;font-weight:900;margin-top:4px}.onlineMini.online{color:var(--green)}.onlineMini.offline{color:#8790ad}
 .missionList{display:grid;gap:10px}.mission{padding:14px;border-radius:16px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1)}.mission.done{background:rgba(109,245,163,.1);border-color:rgba(109,245,163,.25)}.missionTop{display:flex;justify-content:space-between;gap:10px}.missionProgress{height:8px;margin-top:9px;overflow:hidden;border-radius:999px;background:rgba(255,255,255,.08)}.missionFill{height:100%;background:linear-gradient(90deg,#5ee7ff,#6df5a3)}
 #onlineBadge{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:5000;display:flex;align-items:center;gap:8px;padding:9px 13px;border-radius:999px;background:rgba(8,15,34,.9);border:1px solid rgba(109,245,163,.35);box-shadow:0 10px 30px rgba(0,0,0,.3);font-weight:900;backdrop-filter:blur(8px);white-space:nowrap}#onlineDot{width:10px;height:10px;border-radius:50%;background:#42e879;box-shadow:0 0 12px rgba(66,232,121,.8)}#onlineDot.off{background:#ff6374;box-shadow:0 0 12px rgba(255,99,116,.5)}
-#gameHud{position:absolute;inset:0;z-index:30;display:none;pointer-events:none}.hud-left,.hud-right{position:absolute;top:15px;display:flex;flex-wrap:wrap;align-items:center;gap:10px}.hud-left{left:15px;right:180px;justify-content:flex-start}.hud-right{right:15px;max-width:150px;justify-content:flex-end}.hud-pill{padding:10px 14px;white-space:nowrap;border-radius:999px;background:rgba(12,19,46,.72);border:1px solid rgba(255,255,255,.15);font-weight:900;backdrop-filter:blur(8px)}.pause-btn{pointer-events:auto;padding:10px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.15);color:#fff;background:rgba(12,19,46,.72);font-weight:900}.tip{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);padding:9px 14px;border-radius:999px;background:rgba(12,19,46,.6);font-size:13px}
+#gameHud{position:absolute;inset:0;z-index:30;display:none;pointer-events:none}.hud-left,.hud-right{position:absolute;top:15px;display:flex;flex-wrap:wrap;align-items:center;gap:10px}.comboHud{border-color:rgba(255,212,71,.45);background:linear-gradient(180deg,rgba(76,54,8,.88),rgba(24,20,8,.78));transition:transform .12s,box-shadow .12s;color:#fff}.comboHud.hot{box-shadow:0 0 24px rgba(255,212,71,.28)}.comboHud.mega{border-color:rgba(255,99,116,.6);background:linear-gradient(180deg,rgba(92,20,31,.9),rgba(30,11,17,.82));box-shadow:0 0 28px rgba(255,99,116,.28);animation:comboPulse .8s ease-in-out infinite alternate}@keyframes comboPulse{from{transform:scale(1)}to{transform:scale(1.05)}}.hud-left{left:15px;right:180px;justify-content:flex-start}.hud-right{right:15px;max-width:150px;justify-content:flex-end}.hud-pill{padding:10px 14px;white-space:nowrap;border-radius:999px;background:rgba(12,19,46,.72);border:1px solid rgba(255,255,255,.15);font-weight:900;backdrop-filter:blur(8px)}.pause-btn{pointer-events:auto;padding:10px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.15);color:#fff;background:rgba(12,19,46,.72);font-weight:900}.tip{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);padding:9px 14px;border-radius:999px;background:rgba(12,19,46,.6);font-size:13px}
 .overlay{position:absolute;inset:0;z-index:100;display:none;align-items:center;justify-content:center;background:rgba(5,8,22,.55);backdrop-filter:blur(6px)}.overlay.active{display:flex}.dialog{width:min(560px,92vw);padding:28px;text-align:center;border-radius:28px;background:linear-gradient(180deg,#101837,#18234d);border:1px solid rgba(255,255,255,.15);box-shadow:0 20px 60px rgba(0,0,0,.45)}.dialog h2{margin:0 0 10px;font-size:clamp(40px,8vw,70px)}.dialog p{color:var(--muted)}.stats{display:flex;justify-content:center;flex-wrap:wrap;gap:25px;margin:20px 0}.stat strong{display:block;font-size:28px}.notice{padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);color:var(--muted);font-size:13px;margin-top:12px}
 .seasonPanel{margin:14px 0 18px;padding:16px;border-radius:20px;background:linear-gradient(135deg,rgba(94,231,255,.10),rgba(109,245,163,.08));border:1px solid rgba(94,231,255,.20)}.seasonTop{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.seasonTitle{font-size:20px;font-weight:1000}.seasonTimer{font-weight:1000;color:#6df5a3}.seasonSub{color:var(--muted);font-size:13px;margin-top:7px}.onlineNote{font-size:12px;color:var(--muted);margin-top:8px}
 .rewardOverlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;background:rgba(4,8,20,.72);backdrop-filter:blur(8px)}.rewardOverlay.active{display:flex}.rewardBox{width:min(560px,92vw);padding:30px;text-align:center;border-radius:30px;background:linear-gradient(180deg,#132042,#19295b);border:1px solid rgba(255,255,255,.16);box-shadow:0 30px 90px rgba(0,0,0,.55)}.rewardBox h2{margin:0;font-size:clamp(34px,8vw,62px)}.rewardRank{font-size:28px;font-weight:1000;margin:10px 0}.rewardCoins{font-size:40px;font-weight:1000;color:#ffd447;margin:12px 0}.rewardBox p{color:var(--muted)}
@@ -151,7 +151,7 @@ input{min-height:44px}
 
 <div id="authScreen" class="screen"><div class="menu"><div class="title">FLYYYY</div><div class="version">🔐 ACCOUNT</div><div class="subtitle">Mit E-Mail anmelden, neues Konto erstellen oder ohne Konto spielen.</div><div class="authBox"><h2 style="margin:0 0 12px">Anmelden / Registrieren</h2><input id="authEmail" class="authInput" type="email" autocomplete="email" placeholder="E-Mail"><input id="authPassword" class="authInput" type="password" autocomplete="current-password" placeholder="Passwort (mind. 6 Zeichen)" style="margin-top:10px"><div class="authGrid"><button id="loginBtn" class="btn blue">ANMELDEN</button><button id="registerBtn" class="btn green">REGISTRIEREN</button></div><button id="guestBtn" class="btn dark" style="width:100%;margin-top:10px">👤 OHNE KONTO SPIELEN</button><button id="adminLoginBtn" class="btn dark" style="width:100%;margin-top:10px">🛠️ ADMIN</button><div id="authStatus" class="authStatus">Gastmodus ist jederzeit möglich.</div><div class="tiny" style="margin-top:10px">🛡️ Adminrechte werden serverseitig mit Firebase geprüft.</div></div><button id="authBackBtn" class="btn dark" style="width:100%">← Zur Lobby</button></div></div>
 
-<div id="lobby" class="screen active"><div class="menu"><div class="title">FLYYYY</div><div class="version">🏆 UPDATE 2.8</div><div class="subtitle">Fly weiter. Sammle Coins. Schlage andere Spieler.</div><div class="accountLine"><div id="accountStatus" class="accountPill">👤 Gast</div><button id="accountBtn" class="btn dark">🔐 ANMELDEN</button><button id="logoutBtn" class="btn red" style="display:none">ABMELDEN</button><button id="myAccountBtn" class="btn dark">👤 MEIN KONTO</button></div><div class="credits"><div class="badge">🪙 <span id="lobbyCoins">0</span> Coins</div><div class="badge">🏆 Rekord: <span id="lobbyBest">0</span></div></div><div class="seasonPanel"><div class="seasonTop"><div class="seasonTitle">🌐 SEASON <span id="seasonNumberLobby">1</span></div><div class="seasonTimer" id="seasonTimerLobby">⏱️ Lädt...</div></div><div class="seasonSub">7-Tage-Online-Season · nur mit Konto spielbar</div><div class="onlineNote">🥇 1.000 Coins · 🥈 500 Coins · 🥉 300 Coins · Platz 4–10: 100 · Platz 11–25: 50</div></div><div class="button-grid"><button id="startBtn" class="btn">START</button><button id="onlineModeBtn" class="btn green">🌐 ONLINE-SEASON SPIELEN</button><button id="leaderboardBtn" class="btn blue">🏆 LEADERBOARD</button><button id="shopBtn" class="btn blue">🛒 SHOP <span id="shopLobbyNewBadge" class="newBadge">NEU</span></button><button id="inventoryBtn" class="btn blue">🎒 INVENTAR</button><button id="missionsBtn" class="btn blue">🎯 MISSIONEN</button><button id="musicToggleBtn" class="btn dark">🎵 Musik: AN</button></div><div class="notice">✅ Season-Punkte sind getrennt vom Allzeit-Highscore. Nur die aktuelle Season entscheidet über die Season-Belohnung.</div></div></div>
+<div id="lobby" class="screen active"><div class="menu"><div class="title">FLYYYY</div><div class="version">🔥 UPDATE 2.9 · COMBO</div><div class="subtitle">Fly weiter. Sammle Coins. Schlage andere Spieler.</div><div class="accountLine"><div id="accountStatus" class="accountPill">👤 Gast</div><button id="accountBtn" class="btn dark">🔐 ANMELDEN</button><button id="logoutBtn" class="btn red" style="display:none">ABMELDEN</button><button id="myAccountBtn" class="btn dark">👤 MEIN KONTO</button></div><div class="credits"><div class="badge">🪙 <span id="lobbyCoins">0</span> Coins</div><div class="badge">🏆 Rekord: <span id="lobbyBest">0</span></div></div><div class="seasonPanel"><div class="seasonTop"><div class="seasonTitle">🌐 SEASON <span id="seasonNumberLobby">1</span></div><div class="seasonTimer" id="seasonTimerLobby">⏱️ Lädt...</div></div><div class="seasonSub">7-Tage-Online-Season · nur mit Konto spielbar</div><div class="onlineNote">🥇 1.000 Coins · 🥈 500 Coins · 🥉 300 Coins · Platz 4–10: 100 · Platz 11–25: 50</div></div><div class="button-grid"><button id="startBtn" class="btn">START</button><button id="onlineModeBtn" class="btn green">🌐 ONLINE-SEASON SPIELEN</button><button id="leaderboardBtn" class="btn blue">🏆 LEADERBOARD</button><button id="shopBtn" class="btn blue">🛒 SHOP <span id="shopLobbyNewBadge" class="newBadge">NEU</span></button><button id="inventoryBtn" class="btn blue">🎒 INVENTAR</button><button id="missionsBtn" class="btn blue">🎯 MISSIONEN</button><button id="musicToggleBtn" class="btn dark">🎵 Musik: AN</button></div><div class="notice">✅ Season-Punkte sind getrennt vom Allzeit-Highscore. Nur die aktuelle Season entscheidet über die Season-Belohnung.</div></div></div>
 
 <div id="leaderboard" class="screen"><div class="menu"><div class="topbar"><div><h2>🏆 Leaderboard</h2><div class="tiny">Season und Allzeit werden getrennt angezeigt.</div></div><button id="leaderboardBack" class="btn dark">← Zurück</button></div><div class="seasonTabs"><button id="seasonTabBtn" class="seasonTab active">🌐 Season</button><button id="allTimeTabBtn" class="seasonTab">⭐ Allzeit</button></div><div class="seasonPanel"><div class="seasonTop"><div class="seasonTitle">SEASON <span id="seasonNumberBoard">1</span></div><div class="seasonTimer" id="seasonTimerBoard">⏱️ Lädt...</div></div><div class="seasonSub" id="seasonBoardSub">🌐 Nur Season-Punkte</div></div><div id="leaderboardStatus" class="leaderStatus">Lade Leaderboard...</div><div class="nameBox"><input id="playerName" class="nameInput" maxlength="20" placeholder="Dein Spielername"><button id="saveNameBtn" class="btn">NAME SPEICHERN</button></div><div id="leaderboardList" class="leaderboard"></div></div></div>
 
@@ -159,7 +159,7 @@ input{min-height:44px}
 <div id="inventory" class="screen"><div class="menu"><div class="topbar"><div><h2>🎒 Inventar</h2><div class="tiny">Deine gekauften Gegenstände.</div></div><button id="inventoryBack" class="btn dark">← Zurück</button></div><div id="inventoryTabs" class="tabs"></div><div id="inventoryCards" class="cards"></div></div></div>
 <div id="missions" class="screen"><div class="menu"><div class="topbar"><div><h2>🎯 Missionen</h2><div class="tiny">Schließe Aufgaben ab und verdiene Coins.</div></div><button id="missionsBack" class="btn dark">← Zurück</button></div><div id="missionList" class="missionList"></div></div></div>
 
-<div id="gameHud"><div id="creatorTag">@FlyyyyGame</div><div class="hud-left"><div class="hud-pill">⭐ <span id="scoreHud">0</span></div><div class="hud-pill">🪙 <span id="coinsHud">0</span></div><div class="hud-pill">🪽 Jumps: <span id="jumpHud">0</span></div></div><div class="hud-right"><div class="hud-pill">🌐 Season <span id="seasonHud">1</span></div><div class="hud-pill">🌍 <span id="worldHud">Gizeh</span></div><div class="hud-pill">🎵 <span id="musicHud">Classic</span></div><button id="abilityBtn" class="abilityHudBtn" disabled>⚡ Keine Fähigkeit</button><button id="pauseBtn" class="pause-btn">Ⅱ Pause</button></div><div class="tip">Klicken / Tippen / Leertaste = Fliegen</div></div>
+<div id="gameHud"><div id="creatorTag">@FlyyyyGame</div><div class="hud-left"><div class="hud-pill">⭐ <span id="scoreHud">0</span></div><div class="hud-pill comboHud" id="comboHud">🔥 Combo <span id="comboCountHud">0</span> · x<span id="comboMultHud">1</span></div><div class="hud-pill">🪙 <span id="coinsHud">0</span></div><div class="hud-pill">🪽 Jumps: <span id="jumpHud">0</span></div></div><div class="hud-right"><div class="hud-pill">🌐 Season <span id="seasonHud">1</span></div><div class="hud-pill">🌍 <span id="worldHud">Gizeh</span></div><div class="hud-pill">🎵 <span id="musicHud">Classic</span></div><button id="abilityBtn" class="abilityHudBtn" disabled>⚡ Keine Fähigkeit</button><button id="pauseBtn" class="pause-btn">Ⅱ Pause</button></div><div class="tip">Klicken / Tippen / Leertaste = Fliegen · T = Fähigkeit</div></div>
 
 <div id="pauseOverlay" class="overlay"><div class="dialog"><h2>PAUSE</h2><p>Dein Lauf wurde angehalten.</p><div class="button-grid"><button id="resumeBtn" class="btn">▶ WEITER</button><button id="pauseLobbyBtn" class="btn dark">🏠 ZUR LOBBY</button></div></div></div>
 <div id="gameOverOverlay" class="overlay"><div class="dialog"><h2>GAME OVER</h2><p id="gameOverText">Gut geflogen!</p><div class="stats"><div class="stat"><div class="tiny">Punkte</div><strong id="finalScore">0</strong></div><div class="stat"><div class="tiny">Coins</div><strong id="earnedCoins">0</strong></div><div class="stat"><div class="tiny">Rekord</div><strong id="bestScore">0</strong></div></div><div class="button-grid"><button id="retryBtn" class="btn green">🔄 NOCHMAL</button><button id="returnLobbyBtn" class="btn blue">🏠 ZUR LOBBY</button></div></div></div>
@@ -190,9 +190,9 @@ const seasonNumberLobby=$("seasonNumberLobby"),seasonTimerLobby=$("seasonTimerLo
 const seasonRewardOverlay=$("seasonRewardOverlay"),seasonRewardRank=$("seasonRewardRank"),seasonRewardCoins=$("seasonRewardCoins"),seasonRewardText=$("seasonRewardText"),claimSeasonRewardBtn=$("claimSeasonRewardBtn");
 const shop=$("shop"),shopBack=$("shopBack"),shopTabs=$("shopTabs"),shopCards=$("shopCards"),shopCoins=$("shopCoins"),inventory=$("inventory"),inventoryBack=$("inventoryBack"),inventoryTabs=$("inventoryTabs"),inventoryCards=$("inventoryCards"),missionsScreen=$("missions"),missionsBack=$("missionsBack"),missionList=$("missionList");
 const luckyConfirmOverlay=$("luckyConfirmOverlay"),confirmLuckyBuyBtn=$("confirmLuckyBuyBtn"),cancelLuckyBuyBtn=$("cancelLuckyBuyBtn"),jackpotOverlay=$("jackpotOverlay"),prizePopupIcon=$("prizePopupIcon"),prizePopupTitle=$("prizePopupTitle"),prizePopupText=$("prizePopupText"),prizePopupSub=$("prizePopupSub");
-const abilityBtn=$("abilityBtn"),gameHud=$("gameHud"),scoreHud=$("scoreHud"),coinsHud=$("coinsHud"),jumpHud=$("jumpHud"),worldHud=$("worldHud"),seasonHud=$("seasonHud"),musicHud=$("musicHud"),pauseBtn=$("pauseBtn"),pauseOverlay=$("pauseOverlay"),resumeBtn=$("resumeBtn"),pauseLobbyBtn=$("pauseLobbyBtn"),gameOverOverlay=$("gameOverOverlay"),gameOverText=$("gameOverText"),finalScore=$("finalScore"),earnedCoins=$("earnedCoins"),bestScore=$("bestScore"),retryBtn=$("retryBtn"),returnLobbyBtn=$("returnLobbyBtn"),onlineBadge=$("onlineBadge"),onlineCount=$("onlineCount"),onlineDot=$("onlineDot");
+const abilityBtn=$("abilityBtn"),gameHud=$("gameHud"),scoreHud=$("scoreHud"),coinsHud=$("coinsHud"),jumpHud=$("jumpHud"),worldHud=$("worldHud"),seasonHud=$("seasonHud"),musicHud=$("musicHud"),comboHud=$("comboHud"),comboCountHud=$("comboCountHud"),comboMultHud=$("comboMultHud"),pauseBtn=$("pauseBtn"),pauseOverlay=$("pauseOverlay"),resumeBtn=$("resumeBtn"),pauseLobbyBtn=$("pauseLobbyBtn"),gameOverOverlay=$("gameOverOverlay"),gameOverText=$("gameOverText"),finalScore=$("finalScore"),earnedCoins=$("earnedCoins"),bestScore=$("bestScore"),retryBtn=$("retryBtn"),returnLobbyBtn=$("returnLobbyBtn"),onlineBadge=$("onlineBadge"),onlineCount=$("onlineCount"),onlineDot=$("onlineDot");
 
-const APP_VERSION="2.3.0";storage.setItem("FLYYYY_APP_VERSION",APP_VERSION);
+const APP_VERSION="2.9.0";storage.setItem("FLYYYY_APP_VERSION",APP_VERSION);
 const firebaseConfig={apiKey:"AIzaSyA0ppKuSgxKKgHEMkX9kUlVhm8pjkVxgXk",authDomain:"flyyyy.firebaseapp.com",databaseURL:"https://flyyyy-default-rtdb.firebaseio.com",projectId:"flyyyy",storageBucket:"flyyyy.firebasestorage.app",messagingSenderId:"872479897522",appId:"1:872479897522:web:3c87b8afdebfc66d01d6ab",measurementId:"G-S8YE4S6L8L"};
 let F=null,firebaseApp=null,auth=null,db=null,currentUser=null,leaderboardStop=null,presenceStop=null,seasonLeaderboardStop=null;
 async function loadFirebase(){if(F)return F;const appMod=await import("https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js"),authMod=await import("https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js"),dbMod=await import("https://www.gstatic.com/firebasejs/12.16.0/firebase-database.js");return F={app:appMod,a:authMod,d:dbMod}};
@@ -204,13 +204,13 @@ function hideScreens(){document.querySelectorAll(".screen").forEach(s=>s.classLi
 function showMessage(t){const e=document.createElement("div");e.textContent=t;e.style.cssText="position:fixed;z-index:99999;left:50%;top:18%;transform:translate(-50%,-50%);padding:13px 18px;border-radius:999px;background:rgba(8,12,30,.97);border:1px solid rgba(255,255,255,.15);color:#fff;font-weight:900;box-shadow:0 15px 40px rgba(0,0,0,.3);white-space:nowrap";document.body.appendChild(e);setTimeout(()=>e.remove(),1800)}
 function setLeaderboardStatus(t){leaderboardStatus.textContent=t}
 
-const DEFAULT={coins:0,best:0,wins:0,ownedWorlds:["giza"],ownedSkins:["bird"],ownedSounds:["classic"],ownedMusic:["classicMusic"],selectedWorld:"giza",selectedSkin:"bird",selectedSound:"classic",selectedMusic:"classicMusic",selectedAbilities:{},ownedAbilities:[],shopNewSeen:{},shopNewRelease:"2.6.1",musicEnabled:true,sfxEnabled:true,missionProgress:{m1:0,m2:0,m3:0},missionClaimed:{m1:false,m2:false,m3:false},activeMissions:null,missionCycle:1,lastMissionIds:[],luckySpins:0,luckyLastResult:null,seasonScore:0,currentSeasonId:1,seasonRewardPending:null,seasonRewardClaimed:false,flyOwner1000Granted:false};
+const DEFAULT={coins:0,best:0,wins:0,ownedWorlds:["giza"],ownedSkins:["bird"],ownedSounds:["classic"],ownedMusic:["classicMusic"],selectedWorld:"giza",selectedSkin:"bird",selectedSound:"classic",selectedMusic:"classicMusic",selectedAbilities:{},selectedAbilityId:null,ownedAbilities:[],shopNewSeen:{},shopNewRelease:"2.6.1",musicEnabled:true,sfxEnabled:true,missionProgress:{m1:0,m2:0,m3:0},missionClaimed:{m1:false,m2:false,m3:false},activeMissions:null,missionCycle:1,lastMissionIds:[],luckySpins:0,luckyLastResult:null,seasonScore:0,currentSeasonId:1,seasonRewardPending:null,seasonRewardClaimed:false,flyOwner1000Granted:false};
 const SAVEKEYS=["FLYYYY_UPDATE14_SAVE","FLYYYY_UPDATE13_SAVE","FLYYYY_UPDATE12_SAVE","FLYYYY_UPDATE11_SAVE","flyyyy_save"];
 function defaultState(){return JSON.parse(JSON.stringify(DEFAULT))}
 function loadState(){for(const k of SAVEKEYS){const raw=storage.getItem(k);if(raw){try{const d=JSON.parse(raw),b=defaultState();return {...b,...d,ownedWorlds:Array.isArray(d.ownedWorlds)?d.ownedWorlds:b.ownedWorlds,ownedSkins:Array.isArray(d.ownedSkins)?d.ownedSkins:b.ownedSkins,ownedSounds:Array.isArray(d.ownedSounds)?d.ownedSounds:b.ownedSounds,ownedMusic:Array.isArray(d.ownedMusic)?d.ownedMusic:b.ownedMusic,missionProgress:{...b.missionProgress,...(d.missionProgress||{})},missionClaimed:{...b.missionClaimed,...(d.missionClaimed||{})},activeMissions:Array.isArray(d.activeMissions)?d.activeMissions:null,shopNewSeen:(d.shopNewSeen&&typeof d.shopNewSeen==="object")?d.shopNewSeen:{}}}catch{}}}return defaultState()}
 let state=loadState();
 state.ownedAbilities=Array.isArray(state.ownedAbilities)?state.ownedAbilities:[];
-state.selectedAbilities=(state.selectedAbilities&&typeof state.selectedAbilities==="object")?state.selectedAbilities:{};state.shopNewSeen=(state.shopNewSeen&&typeof state.shopNewSeen==="object")?state.shopNewSeen:{};
+state.selectedAbilities=(state.selectedAbilities&&typeof state.selectedAbilities==="object")?state.selectedAbilities:{};state.selectedAbilityId=typeof state.selectedAbilityId==="string"?state.selectedAbilityId:null;state.shopNewSeen=(state.shopNewSeen&&typeof state.shopNewSeen==="object")?state.shopNewSeen:{};
 function saveStateLocalOnly(){const s=JSON.stringify(state);SAVEKEYS.forEach(k=>storage.setItem(k,s))}
 let cloudSaveTimer=null;function saveState(){saveStateLocalOnly();if(currentUser&&db){clearTimeout(cloudSaveTimer);cloudSaveTimer=setTimeout(savePlayerStateCloud,700)}}
 
@@ -544,7 +544,27 @@ function getSkinById(id){return skins.find(x=>x.id===id)||skins[0]}
 function getAbility(id){return abilities[id]||null}
 function getSkinAbilities(skin){return (skin?.abilities||[]).map(getAbility).filter(Boolean)}
 function hasAbility(id){return state.ownedAbilities.includes(id)}
-function selectedAbilityForSkin(skin){const a=state.selectedAbilities?.[skin.id];return a&&hasAbility(a)?getAbility(a):null}
+function selectedAbilityForSkin(skin){
+  const globalId=state.selectedAbilityId;
+  if(globalId&&hasAbility(globalId)){
+    const ga=getAbility(globalId);
+    if(ga)return ga;
+  }
+  const localId=state.selectedAbilities?.[skin?.id];
+  return localId&&hasAbility(localId)?getAbility(localId):null;
+}
+function selectAbility(id){
+  const ability=getAbility(id);
+  if(!ability||!hasAbility(id))return;
+  state.selectedAbilityId=id;
+  if(!state.selectedAbilities||typeof state.selectedAbilities!=="object")state.selectedAbilities={};
+  const ownerSkin=skins.find(sk=>(sk.abilities||[]).includes(id));
+  if(ownerSkin)state.selectedAbilities[ownerSkin.id]=id;
+  saveState();
+  renderInventory();
+  updateHUD();
+  showMessage(`⚡ ${ability.name} ausgerüstet! · T zum Benutzen`);
+}
 function ensureAbilitySelection(){
   if(!state.selectedAbilities||typeof state.selectedAbilities!=="object")state.selectedAbilities={};
   if(!Array.isArray(state.ownedAbilities))state.ownedAbilities=[];
@@ -675,7 +695,7 @@ let ACtx=null,musicTimer=null,musicStep=0;function initAudio(){if(ACtx)return;co
 function jumpSound(type){if(!state.sfxEnabled)return;initAudio();if(!ACtx)return;if(type==="classic")tone(520,.08,.06,"square");else if(type==="arcade"){tone(440,.06,.05,"square");setTimeout(()=>tone(660,.07,.05,"square"),45)}else if(type==="laser"){tone(900,.12,.05,"sawtooth");setTimeout(()=>tone(1400,.09,.03,"sawtooth"),45)}else if(type==="bubble"){tone(300,.08,.04,"sine");setTimeout(()=>tone(650,.12,.04,"sine"),60)}else{tone(220,.13,.05,"sawtooth");setTimeout(()=>tone(520,.08,.05,"square"),65)}}function coinSound(){if(!state.sfxEnabled)return;initAudio();tone(784,.08,.05,"triangle");setTimeout(()=>tone(1046,.12,.05,"triangle"),70)}function scoreSound(){if(state.sfxEnabled){initAudio();tone(760,.04,.03,"triangle")}}function gameOverSound(){if(state.sfxEnabled){initAudio();tone(300,.15,.05,"sawtooth");setTimeout(()=>tone(210,.22,.04,"sawtooth"),130)}}function purchaseSound(){initAudio();tone(523,.08,.04,"triangle");setTimeout(()=>tone(784,.12,.04,"triangle"),70)}function selectedMusic(){return musicTracks.find(x=>x.id===state.selectedMusic)||musicTracks[0]}function stopMusic(){if(musicTimer){clearInterval(musicTimer);musicTimer=null}}function startMusic(){if(!state.musicEnabled)return;initAudio();if(!ACtx)return;if(ACtx.state==="suspended")ACtx.resume();stopMusic();musicStep=0;const m=selectedMusic();const tick=()=>{if(!state.musicEnabled){stopMusic();return}tone(m.melody[musicStep%m.melody.length],.28,.024,"triangle");if(musicStep%2===0)tone(m.bass[musicStep%m.bass.length],.4,.011,"sine");musicStep++};tick();musicTimer=setInterval(tick,m.tempo)}function previewMusic(m){initAudio();if(!ACtx)return;stopMusic();let i=0;const t=setInterval(()=>{if(i>=m.melody.length){clearInterval(t);if(game.running&&state.musicEnabled)startMusic();return}tone(m.melody[i++],.28,.03,"triangle")},m.tempo)}
 
 let W=innerWidth,H=innerHeight,dpr=Math.min(devicePixelRatio||1,2);function resize(){W=innerWidth;H=innerHeight;dpr=Math.min(devicePixelRatio||1,2);canvas.width=W*dpr;canvas.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}addEventListener("resize",resize);resize();
-const game={running:false,paused:false,over:false,score:0,runCoins:0,jumpCount:0,bonusCoinsRun:0,speed:165,spawnTimer:.9,obstacles:[],coins:[],player:{x:0,y:0,vy:0,r:22,hitR:16,rot:0},world:null,last:0,onlineRun:false,abilityActiveUntil:0,abilityCooldownUntil:0,abilityShield:0,abilityUsed:false,abilityBaseHitR:16};
+const game={running:false,paused:false,over:false,score:0,runCoins:0,jumpCount:0,bonusCoinsRun:0,combo:0,comboMultiplier:1,comboMilestones:{},speed:165,spawnTimer:.9,obstacles:[],coins:[],player:{x:0,y:0,vy:0,r:22,hitR:16,rot:0},world:null,last:0,onlineRun:false,abilityActiveUntil:0,abilityCooldownUntil:0,abilityShield:0,abilityUsed:false,abilityBaseHitR:16};
 function currentEquippedAbility(){const skin=getSkinById(state.selectedSkin);return selectedAbilityForSkin(skin)}
 function updateAbilityHUD(){
   if(!abilityBtn)return;
@@ -683,9 +703,13 @@ function updateAbilityHUD(){
   if(!a){abilityBtn.disabled=true;abilityBtn.className="abilityHudBtn";abilityBtn.textContent="⚡ Keine Fähigkeit";return}
   const left=Math.max(0,Number(game.abilityCooldownUntil||0)-Date.now());
   if(left>0){abilityBtn.disabled=true;abilityBtn.className="abilityHudBtn cooling";abilityBtn.textContent=`${a.icon} ${a.name} · ${Math.ceil(left/1000)}s`;return}
-  abilityBtn.disabled=!game.running||game.paused||game.over;abilityBtn.className="abilityHudBtn ready";abilityBtn.textContent=`${a.icon} ${a.name}`;
+  abilityBtn.disabled=!game.running||game.paused||game.over;abilityBtn.className="abilityHudBtn ready";abilityBtn.textContent=`${a.icon} ${a.name} · T`;
 }
-function updateHUD(){scoreHud.textContent=game.score;coinsHud.textContent=state.coins+game.runCoins;jumpHud.textContent=game.jumpCount;seasonHud.textContent=seasonInfo.id||1;updateAbilityHUD()}
+function comboMultiplierFor(count){if(count>=30)return 5;if(count>=20)return 4;if(count>=10)return 3;if(count>=5)return 2;return 1}
+function updateComboHUD(){if(!comboHud)return;const c=Math.max(0,Number(game.combo||0)),m=comboMultiplierFor(c);game.comboMultiplier=m;comboCountHud.textContent=c;comboMultHud.textContent=m;comboHud.classList.toggle("hot",c>=5&&c<30);comboHud.classList.toggle("mega",c>=30)}
+function breakCombo(reason=""){if(game.combo<=0)return;const lost=game.combo;game.combo=0;game.comboMultiplier=1;game.comboMilestones={};updateComboHUD();if(reason)showMessage(`💥 Combo verloren · x${lost}`)}
+function registerComboHit(){game.combo=Math.max(0,Number(game.combo||0))+1;const next=comboMultiplierFor(game.combo);const previous=game.comboMultiplier||1;game.comboMultiplier=next;const milestones=[5,10,20,30];if(milestones.includes(game.combo)&&!game.comboMilestones[game.combo]){game.comboMilestones[game.combo]=true;const bonus={5:5,10:10,20:20,30:40}[game.combo]||0;game.runCoins+=bonus;game.bonusCoinsRun+=bonus;coinSound();showMessage(`🔥 COMBO ${game.combo}! x${next} · +${bonus} Coins`)}else if(next>previous){showMessage(`🔥 COMBO x${next}!`)}updateComboHUD()}
+function updateHUD(){scoreHud.textContent=game.score;coinsHud.textContent=state.coins+game.runCoins;jumpHud.textContent=game.jumpCount;seasonHud.textContent=seasonInfo.id||1;updateComboHUD();updateAbilityHUD()}
 function flap(){if(!game.running||game.paused||game.over)return;const boost=game.abilityActiveEffect==="jumpBoost"||game.abilityActiveEffect==="quickFlap";game.player.vy=boost?-500:-405;game.jumpCount++;jumpSound((sounds.find(x=>x.id===state.selectedSound)||sounds[0]).type);updateHUD()}
 function dist(a,b,c,d){return Math.hypot(a-c,b-d)}const SPIKE_H=18,SPIKE_STEP=18;
 function circleRectHit(cx,cy,r,rx,ry,rw,rh){const nx=Math.max(rx,Math.min(cx,rx+rw)),ny=Math.max(ry,Math.min(cy,ry+rh));return dist(cx,cy,nx,ny)<r}function hitRadius(p){return Number(p.hitR||16)}
@@ -748,13 +772,16 @@ function updateGame(dt){
     o.x-=game.speed*dt;
     if(!o.passed&&o.x+o.width<p.x-p.r){
       o.passed=true;
-      game.score+=abilityActive("scoreSurge")?2:1;
+      registerComboHit();
+      const baseScore=abilityActive("scoreSurge")?2:1;
+      game.score+=baseScore*game.comboMultiplier;
       scoreSound();
       if(game.score===20){game.runCoins+=10;showMessage("🪙 Level 20! +10 Coins!");coinSound();worldHud.textContent="Eiswelt"}
     }
     if(obstacleCollision(p,o)){
       if(abilityActive("phase")){continue}
-      if(game.abilityShield>0){game.abilityShield--;showMessage(`🛡️ Treffer geschützt! ${game.abilityShield>0?game.abilityShield+" Schild(e) übrig":"Schild verbraucht"}`);p.vy=-260;continue}
+      if(game.abilityShield>0){game.abilityShield--;breakCombo("🛡️ Treffer");showMessage(`🛡️ Treffer geschützt! ${game.abilityShield>0?game.abilityShield+" Schild(e) übrig":"Schild verbraucht"}`);p.vy=-260;continue}
+      breakCombo();
       endGame();return
     }
   }
@@ -772,12 +799,12 @@ function updateGame(dt){
   }
   game.coins=game.coins.filter(c=>c.x>-50&&!c.collected);
   const hr=hitRadius(p);if(p.y-hr<0||p.y+hr>H){
-    if(game.abilityShield>0){game.abilityShield--;p.y=Math.max(hr+4,Math.min(H-hr-4,p.y));p.vy=-220;}else{endGame();return}
+    if(game.abilityShield>0){game.abilityShield--;breakCombo("🛡️ Randtreffer");p.y=Math.max(hr+4,Math.min(H-hr-4,p.y));p.vy=-220;}else{breakCombo();endGame();return}
   }
   if(game.score>state.best){state.best=game.score;saveState()}
   updateMissionProgress();updateHUD();
 }
-function startGame(online=false){if(online&&!currentUser){showMessage("🔐 Für den Online-Modus musst du angemeldet sein.");showScreen("authScreen");return}game.onlineRun=!!online;initAudio();startMusic();hideScreens();canvas.style.display="block";gameHud.style.display="block";pauseOverlay.classList.remove("active");gameOverOverlay.classList.remove("active");game.running=true;game.paused=false;game.over=false;game.score=0;game.runCoins=0;game.jumpCount=0;game.bonusCoinsRun=0;game.speed=165;game.spawnTimer=.9;game.obstacles=[];game.coins=[];game.player={x:W*.24,y:H*.45,vy:0,r:22,hitR:state.selectedSkin==="jeszx"?12:16,rot:0};game.abilityActiveUntil=0;game.abilityCooldownUntil=0;game.abilityShield=0;game.abilityUsed=false;game.abilityActiveEffect=null;game.abilityBaseHitR=state.selectedSkin==="jeszx"?12:16;game.player.hitR=game.abilityBaseHitR;game.world=worlds.find(w=>w.id===state.selectedWorld)||worlds[0];worldHud.textContent=game.world.name;musicHud.textContent=selectedMusic().name;updateHUD();game.last=performance.now();flap();requestAnimationFrame(gameLoop)}
+function startGame(online=false){if(online&&!currentUser){showMessage("🔐 Für den Online-Modus musst du angemeldet sein.");showScreen("authScreen");return}game.onlineRun=!!online;initAudio();startMusic();hideScreens();canvas.style.display="block";gameHud.style.display="block";pauseOverlay.classList.remove("active");gameOverOverlay.classList.remove("active");game.running=true;game.paused=false;game.over=false;game.score=0;game.runCoins=0;game.jumpCount=0;game.bonusCoinsRun=0;game.combo=0;game.comboMultiplier=1;game.comboMilestones={};game.speed=165;game.spawnTimer=.9;game.obstacles=[];game.coins=[];game.player={x:W*.24,y:H*.45,vy:0,r:22,hitR:state.selectedSkin==="jeszx"?12:16,rot:0};game.abilityActiveUntil=0;game.abilityCooldownUntil=0;game.abilityShield=0;game.abilityUsed=false;game.abilityActiveEffect=null;game.abilityBaseHitR=state.selectedSkin==="jeszx"?12:16;game.player.hitR=game.abilityBaseHitR;game.world=worlds.find(w=>w.id===state.selectedWorld)||worlds[0];worldHud.textContent=game.world.name;musicHud.textContent=selectedMusic().name;updateHUD();game.last=performance.now();flap();requestAnimationFrame(gameLoop)}
 async function endGame(){
   if(game.over)return;
   game.over=true;
@@ -830,7 +857,7 @@ async function endGame(){
     }
   }
 }
-function gameLoop(ts){if(!game.running){draw();return}const dt=Math.min(.033,(ts-game.last)/1000);game.last=ts;if(!game.paused)updateGame(dt);draw();if(game.running)requestAnimationFrame(gameLoop)}function togglePause(){if(!game.running||game.over)return;game.paused=!game.paused;pauseOverlay.classList.toggle("active",game.paused);if(!game.paused)game.last=performance.now()}function returnLobby(){game.running=false;game.paused=false;game.over=false;canvas.style.display="none";gameHud.style.display="none";document.querySelectorAll(".overlay").forEach(x=>x.classList.remove("active"));closeAdminLogin();showScreen("lobby");updateLobby()}
+function gameLoop(ts){if(!game.running){draw();return}const dt=Math.min(.033,(ts-game.last)/1000);game.last=ts;if(!game.paused)updateGame(dt);draw();if(game.running)requestAnimationFrame(gameLoop)}function togglePause(){if(!game.running||game.over)return;game.paused=!game.paused;pauseOverlay.classList.toggle("active",game.paused);if(!game.paused)game.last=performance.now()}function returnLobby(){game.running=false;game.paused=false;game.over=false;game.combo=0;game.comboMultiplier=1;game.comboMilestones={};canvas.style.display="none";gameHud.style.display="none";document.querySelectorAll(".overlay").forEach(x=>x.classList.remove("active"));closeAdminLogin();showScreen("lobby");updateLobby()}
 
 function drawSkin(c,type,x,y,r){c.save();c.translate(x,y);if(type==="bird")drawBird(c,r);else if(type==="dino")drawDino(c,r);else if(type==="pen")drawPen(c,r);else if(type==="carrot")drawCarrot(c,r);else if(type==="apple")drawApple(c,r);else if(type==="jeszx")drawDonkey(c,r);else if(type==="paperjet")drawPaperJet(c,r);else if(type==="voltfrog")drawVoltFrog(c,r);else if(type==="cyberfox")drawCyberFox(c,r);else if(type==="stormowl")drawStormOwl(c,r);else if(type==="magmoth")drawMagmaWing(c,r);else if(type==="astrion")drawAstrion(c,r);else if(type==="neonbat")drawNeonBat(c,r);else if(type==="aquaray")drawAquaRay(c,r);else if(type==="shadowcat")drawShadowCat(c,r);c.restore()}
 function drawBird(c,r){c.fillStyle="#ffd13b";c.beginPath();c.ellipse(0,0,r*1.05,r*.82,0,0,Math.PI*2);c.fill();c.fillStyle="#fff";c.beginPath();c.arc(r*.35,-r*.3,r*.21,0,Math.PI*2);c.fill();c.fillStyle="#17204a";c.beginPath();c.arc(r*.4,-r*.3,r*.08,0,Math.PI*2);c.fill();c.fillStyle="#ff7733";c.beginPath();c.moveTo(r*.9,-r*.05);c.lineTo(r*1.45,r*.1);c.lineTo(r*.9,r*.28);c.closePath();c.fill()}
@@ -1054,7 +1081,7 @@ function awardLucky(result){
     if(!state.ownedSkins.includes(result.item.id)){state.ownedSkins.push(result.item.id);p={icon:"🪽",title:`${rarityMeta[result.item.rarity].name}!`,text:result.item.name,sub:`${rarityMeta[result.item.rarity].name}-Skin freigeschaltet.`,jackpot:result.item.rarity==="legendary"};}
     else{state.coins+=150;p={icon:"🪙",title:"DOPPELTER SKIN",text:"+150 Coins",sub:"Der Skin war schon vorhanden."};}
   }else if(result.kind==="ability"){
-    if(!hasAbility(result.item.id)){state.ownedAbilities.push(result.item.id);if(!state.selectedAbilities[result.skin.id])state.selectedAbilities[result.skin.id]=result.item.id;p={icon:result.item.icon,title:"FÄHIGKEIT FREIGESCHALTET!",text:result.item.name,sub:`Für ${result.skin.name}.`};}
+    if(!hasAbility(result.item.id)){state.ownedAbilities.push(result.item.id);state.selectedAbilityId=result.item.id;if(!state.selectedAbilities[result.skin.id])state.selectedAbilities[result.skin.id]=result.item.id;p={icon:result.item.icon,title:"FÄHIGKEIT FREIGESCHALTET!",text:result.item.name,sub:`${result.skin.name}-Fähigkeit ist jetzt ausgerüstet und kann mit T aktiviert werden.`};}
     else{state.coins+=100;p={icon:"🪙",title:"DOPPELTE FÄHIGKEIT",text:"+100 Coins",sub:"Die Fähigkeit war schon vorhanden."};}
   }else if(result.kind==="world"){
     if(state.ownedWorlds.includes(result.item.id)){state.coins+=150;p={icon:"🪙",title:"DOPPELTE WELT",text:"+150 Coins",sub:"Die Welt war schon vorhanden."};}
@@ -1198,8 +1225,23 @@ function renderSoundInventory(cards){sounds.filter(x=>state.ownedSounds.includes
 function renderMusicInventory(cards){musicTracks.filter(x=>state.ownedMusic.includes(x.id)).forEach(m=>{const c=document.createElement("div");c.className="card";c.innerHTML=`<div class="preview"><div style="font-size:44px">${m.icon}</div></div><h3>${m.name}</h3>`;const t=document.createElement("button");t.className="smallbtn blue";t.textContent="▶ ANHÖREN";t.onclick=()=>previewMusic(m);c.appendChild(t);const b=document.createElement("button");b.className="smallbtn";const sel=state.selectedMusic===m.id;b.classList.toggle("selected",sel);b.textContent=sel?"✓ AUSGERÜSTET":"AUSRÜSTEN";b.onclick=()=>{state.selectedMusic=m.id;saveState();renderInventory();musicHud.textContent=m.name;if(game.running)startMusic()};c.appendChild(b);cards.appendChild(c)})}
 function renderInventory(){
   ensureAbilitySelection();
-  tabs(inventoryTabs,[{id:"skins",name:"🪽 Figuren"},{id:"worlds",name:"🌍 Welten"},{id:"sounds",name:"🔊 Sounds"},{id:"music",name:"🎵 Musik"}],inventoryTab,id=>{inventoryTab=id;renderInventory()});
+  tabs(inventoryTabs,[{id:"skins",name:"🪽 Figuren"},{id:"abilities",name:"⚡ Fähigkeiten"},{id:"worlds",name:"🌍 Welten"},{id:"sounds",name:"🔊 Sounds"},{id:"music",name:"🎵 Musik"}],inventoryTab,id=>{inventoryTab=id;renderInventory()});
   inventoryCards.innerHTML="";
+  if(inventoryTab==="abilities"){
+    const owned=state.ownedAbilities.map(getAbility).filter(Boolean);
+    if(!owned.length){
+      const e=document.createElement("div");e.className="leaderStatus";e.textContent="⚡ Du hast noch keine Fähigkeit. Gewinne eine im Shop oder Lucky Rad.";inventoryCards.appendChild(e);return;
+    }
+    owned.forEach(a=>{
+      const c=document.createElement("div");c.className="card";
+      const owner=skins.find(sk=>(sk.abilities||[]).includes(a.id));
+      const isActive=state.selectedAbilityId===a.id;
+      c.innerHTML=`<div class="preview"><div style="font-size:58px">${a.icon}</div></div><h3>${a.name}</h3><div class="tiny">Für Skin: ${owner?.name||"Spezialfähigkeit"}</div><div class="abilityDesc" style="font-size:13px">${a.desc}</div>`;
+      const b=document.createElement("button");b.className="smallbtn"+(isActive?" selected":"");b.textContent=isActive?"✓ AKTIV AUSGERÜSTET":"⚡ AKTIVIEREN";b.onclick=()=>selectAbility(a.id);c.appendChild(b);
+      inventoryCards.appendChild(c);
+    });
+    return;
+  }
   if(inventoryTab==="sounds")return renderSoundInventory(inventoryCards);
   if(inventoryTab==="music")return renderMusicInventory(inventoryCards);
   const items=inventoryTab==="skins"?skins.filter(x=>state.ownedSkins.includes(x.id)):worlds.filter(x=>state.ownedWorlds.includes(x.id));
@@ -1213,15 +1255,15 @@ function renderInventory(){
       c.insertAdjacentHTML("beforeend",rarityBadge(item.rarity||"basic"));
       const list=document.createElement("div");list.className="abilityList";
       getSkinAbilities(item).forEach(a=>{
-        const owned=hasAbility(a.id),selected=state.selectedAbilities[item.id]===a.id;
+        const owned=hasAbility(a.id),selected=state.selectedAbilityId===a.id||state.selectedAbilities[item.id]===a.id;
         const row=document.createElement("div");row.className="abilityRow"+(owned?"":" locked");
         row.innerHTML=`<div><div class="abilityName">${a.icon} ${a.name}</div><div class="abilityDesc">${a.desc}</div></div>`;
         const b=document.createElement("button");b.className="abilityBtn"+(selected?" selected":"");b.textContent=owned?(selected?"✓ AKTIV":"AUSRÜSTEN"):"🔒 GESPERRT";b.disabled=!owned;
-        if(owned)b.onclick=()=>{state.selectedAbilities[item.id]=a.id;saveState();renderInventory();updateHUD()};
+        if(owned)b.onclick=()=>selectAbility(a.id);
         row.appendChild(b);list.appendChild(row);
       });
       c.appendChild(list);
-      const hint=document.createElement("div");hint.className="abilityHint";hint.textContent=selectedAbilityForSkin(item)?`⚡ Aktiv: ${selectedAbilityForSkin(item).name}`:"⚡ Noch keine Fähigkeit dieses Skins freigeschaltet";c.appendChild(hint);
+      const hint=document.createElement("div");hint.className="abilityHint";hint.textContent=selectedAbilityForSkin(item)?`⚡ Aktiv: ${selectedAbilityForSkin(item).name} · Taste T`:"⚡ Noch keine Fähigkeit dieses Skins freigeschaltet";c.appendChild(hint);
     }
     const b=document.createElement("button");b.className="smallbtn";const sel=inventoryTab==="skins"?state.selectedSkin===item.id:state.selectedWorld===item.id;b.classList.toggle("selected",sel);b.textContent=sel?"✓ AUSGERÜSTET":"AUSRÜSTEN";b.onclick=()=>{if(inventoryTab==="skins")state.selectedSkin=item.id;else state.selectedWorld=item.id;saveState();renderInventory();updateLobby();updateHUD()};c.appendChild(b);
     inventoryCards.appendChild(c);
@@ -1412,7 +1454,14 @@ logoutBtn.onclick=async()=>{try{await setPresenceOffline();const {a}=await loadF
 onlineBadge.onclick=async()=>{loadPlayerName();showScreen("leaderboard");await ensureSeason();await startSeasonLeaderboardListener();switchLeaderboardMode("season");setTimeout(()=>leaderboardList.scrollIntoView({behavior:"smooth",block:"start"}),50)};
 claimSeasonRewardBtn.onclick=claimSeasonReward;musicToggleBtn.onclick=()=>{state.musicEnabled=!state.musicEnabled;saveState();if(state.musicEnabled)startMusic();else stopMusic();updateLobby()};
 confirmLuckyBuyBtn.onclick=confirmLuckyBuy;cancelLuckyBuyBtn.onclick=cancelLuckyBuy;abilityBtn.onclick=activateAbility;pauseBtn.onclick=togglePause;resumeBtn.onclick=togglePause;pauseLobbyBtn.onclick=returnLobby;retryBtn.onclick=()=>startGame(game.onlineRun);returnLobbyBtn.onclick=returnLobby;
-canvas.addEventListener("pointerdown",e=>{e.preventDefault();flap()});addEventListener("keydown",e=>{if(e.code==="Space"||e.code==="ArrowUp"){e.preventDefault();flap()}if(e.code==="Escape"||e.code==="KeyP")togglePause()});addEventListener("beforeunload",()=>{if(currentUser&&db)try{setPresenceOffline()}catch{}});
+canvas.addEventListener("pointerdown",e=>{e.preventDefault();flap()});addEventListener("keydown",e=>{
+  const tag=(e.target?.tagName||"").toLowerCase();
+  const typing=tag==="input"||tag==="textarea"||tag==="select"||e.target?.isContentEditable;
+  if(typing)return;
+  if(e.code==="KeyT"){e.preventDefault();activateAbility();return}
+  if(e.code==="Space"||e.code==="ArrowUp"){e.preventDefault();flap()}
+  if(e.code==="Escape"||e.code==="KeyP")togglePause()
+});addEventListener("beforeunload",()=>{if(currentUser&&db)try{setPresenceOffline()}catch{}});
 
 
 (()=>{
