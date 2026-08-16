@@ -7,7 +7,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <meta name="theme-color" content="#0d1430">
-<title>FLYYYY 2.0</title>
+<title>FLYYYY 2.9.2</title>
 <style>
 :root{--bg:#0d1430;--panel:#121a3d;--text:#fff;--muted:#b9c5ef;--yellow:#ffd447;--blue:#5ee7ff;--green:#6df5a3;--red:#ff6374}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{width:100%;height:100%;margin:0;overflow:hidden;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:#fff}button,input{font:inherit}button{cursor:pointer}
@@ -61,7 +61,7 @@ input{min-height:44px}
 .luckyInfoBox,.luckyMainPrize{overflow-wrap:anywhere}
 #shopCards{min-width:0}
 #shopCards>*{min-width:0}
-#gameHud{env(safe-area-inset-top)}
+#gameHud{padding-top:env(safe-area-inset-top)}
 
 @media (max-width:900px){
   .menu{width:97vw}
@@ -169,6 +169,14 @@ input{min-height:44px}
 <div id="adminOverlay" class="overlay"><div class="dialog" style="width:min(1100px,96vw);max-height:92vh;overflow:auto;text-align:left"><h2 style="font-size:42px;margin-bottom:6px">🛠️ ADMIN</h2><p id="adminStatusText">Bitte mit deinem FLYYYY-Konto anmelden.</p><div id="adminUnlockArea"><input id="adminCodeInput" class="authInput" type="password" autocomplete="off" placeholder="Admin-Aktivierungscode"><div class="button-grid" style="margin-top:12px"><button id="adminUnlockBtn" class="btn green">🔓 AKTIVIEREN</button><button id="adminCloseBtn" class="btn dark">← SCHLIESSEN</button></div></div><div id="adminPanel" style="display:none;margin-top:18px"><div class="notice">✅ Serverseitige Adminrechte aktiv. Personenbezogene Daten nur für die Administration verwenden.</div><div style="display:grid;grid-template-columns:minmax(180px,1fr) auto;gap:10px;margin:12px 0"><input id="adminUserSearch" class="authInput" placeholder="🔎 E-Mail oder UID suchen"><button id="adminRefreshUsersBtn" class="btn blue">↻ AKTUALISIEREN</button></div><div id="adminUsersStatus" class="leaderStatus">Lade Spieler...</div><div id="adminUsersList" class="leaderboard"></div><div class="button-grid" style="margin-top:14px"><button id="adminMyAccountBtn" class="btn dark">👤 MEIN KONTO</button><button id="adminClosePanelBtn" class="btn dark">🔒 SCHLIESSEN</button></div><div id="adminInfo" class="notice">Nur als Admin sichtbar.</div></div></div></div>
 </div>
 
+<!-- Lobby-Musik: beide MP3-Dateien -->
+<audio id="lobbyMusic1" preload="auto" loop>
+  <source src="music/Game Music.mp3" type="audio/mpeg">
+</audio>
+<audio id="lobbyMusic2" preload="auto" loop>
+  <source src="music/Credits 2.mp3" type="audio/mpeg">
+</audio>
+
 <script type="module">
 window.addEventListener("error",e=>{
   console.error("FLYYYY JS Fehler:",e.error||e.message);
@@ -182,7 +190,7 @@ const storage={getItem(k){try{return localStorage.getItem(k)}catch{return Object
 const $=id=>document.getElementById(id);
 const app=$("app"),canvas=$("gameCanvas"),ctx=canvas.getContext("2d");
 const authScreen=$("authScreen"),authEmail=$("authEmail"),authPassword=$("authPassword"),loginBtn=$("loginBtn"),registerBtn=$("registerBtn"),guestBtn=$("guestBtn"),authStatus=$("authStatus"),authBackBtn=$("authBackBtn"),adminLoginBtn=$("adminLoginBtn");
-const adminOverlay=$("adminOverlay"),adminCodeInput=$("adminCodeInput"),adminUnlockBtn=$("adminUnlockBtn"),adminCloseBtn=$("adminCloseBtn"),adminPanel=$("adminPanel"),adminStatusText=$("adminStatusText"),adminMyAccountBtn=$("adminMyAccountBtn"),adminCoinsBtn=$("adminCoinsBtn"),adminClosePanelBtn=$("adminClosePanelBtn"),adminInfo=$("adminInfo");
+const adminOverlay=$("adminOverlay"),adminCodeInput=$("adminCodeInput"),adminUnlockBtn=$("adminUnlockBtn"),adminCloseBtn=$("adminCloseBtn"),adminPanel=$("adminPanel"),adminStatusText=$("adminStatusText"),adminMyAccountBtn=$("adminMyAccountBtn"),adminClosePanelBtn=$("adminClosePanelBtn"),adminInfo=$("adminInfo");
 const lobby=$("lobby"),accountStatus=$("accountStatus"),accountBtn=$("accountBtn"),logoutBtn=$("logoutBtn"),myAccountBtn=$("myAccountBtn"),lobbyCoins=$("lobbyCoins"),lobbyBest=$("lobbyBest");
 const startBtn=$("startBtn"),onlineModeBtn=$("onlineModeBtn"),leaderboardBtn=$("leaderboardBtn"),shopBtn=$("shopBtn"),inventoryBtn=$("inventoryBtn"),missionsBtn=$("missionsBtn"),musicToggleBtn=$("musicToggleBtn");
 const leaderboard=$("leaderboard"),leaderboardBack=$("leaderboardBack"),leaderboardStatus=$("leaderboardStatus"),playerName=$("playerName"),saveNameBtn=$("saveNameBtn"),leaderboardList=$("leaderboardList"),onlineModeButton=$("onlineModeBtn");
@@ -192,7 +200,7 @@ const shop=$("shop"),shopBack=$("shopBack"),shopTabs=$("shopTabs"),shopCards=$("
 const luckyConfirmOverlay=$("luckyConfirmOverlay"),confirmLuckyBuyBtn=$("confirmLuckyBuyBtn"),cancelLuckyBuyBtn=$("cancelLuckyBuyBtn"),jackpotOverlay=$("jackpotOverlay"),prizePopupIcon=$("prizePopupIcon"),prizePopupTitle=$("prizePopupTitle"),prizePopupText=$("prizePopupText"),prizePopupSub=$("prizePopupSub");
 const abilityBtn=$("abilityBtn"),gameHud=$("gameHud"),scoreHud=$("scoreHud"),coinsHud=$("coinsHud"),jumpHud=$("jumpHud"),worldHud=$("worldHud"),seasonHud=$("seasonHud"),musicHud=$("musicHud"),comboHud=$("comboHud"),comboCountHud=$("comboCountHud"),comboMultHud=$("comboMultHud"),pauseBtn=$("pauseBtn"),pauseOverlay=$("pauseOverlay"),resumeBtn=$("resumeBtn"),pauseLobbyBtn=$("pauseLobbyBtn"),gameOverOverlay=$("gameOverOverlay"),gameOverText=$("gameOverText"),finalScore=$("finalScore"),earnedCoins=$("earnedCoins"),bestScore=$("bestScore"),retryBtn=$("retryBtn"),returnLobbyBtn=$("returnLobbyBtn"),onlineBadge=$("onlineBadge"),onlineCount=$("onlineCount"),onlineDot=$("onlineDot");
 
-const APP_VERSION="2.9.0";storage.setItem("FLYYYY_APP_VERSION",APP_VERSION);
+const APP_VERSION="2.9.2";storage.setItem("FLYYYY_APP_VERSION",APP_VERSION);
 const firebaseConfig={apiKey:"AIzaSyA0ppKuSgxKKgHEMkX9kUlVhm8pjkVxgXk",authDomain:"flyyyy.firebaseapp.com",databaseURL:"https://flyyyy-default-rtdb.firebaseio.com",projectId:"flyyyy",storageBucket:"flyyyy.firebasestorage.app",messagingSenderId:"872479897522",appId:"1:872479897522:web:3c87b8afdebfc66d01d6ab",measurementId:"G-S8YE4S6L8L"};
 let F=null,firebaseApp=null,auth=null,db=null,currentUser=null,leaderboardStop=null,presenceStop=null,seasonLeaderboardStop=null;
 async function loadFirebase(){if(F)return F;const appMod=await import("https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js"),authMod=await import("https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js"),dbMod=await import("https://www.gstatic.com/firebasejs/12.16.0/firebase-database.js");return F={app:appMod,a:authMod,d:dbMod}};
@@ -691,8 +699,19 @@ function updateMissionProgress(){
   saveState();
 }
 
-let ACtx=null,musicTimer=null,musicStep=0;function initAudio(){if(ACtx)return;const C=window.AudioContext||window.webkitAudioContext;if(C)ACtx=new C}function tone(f,d,v,t){if(!ACtx)return;const o=ACtx.createOscillator(),g=ACtx.createGain();o.type=t;o.frequency.value=f;g.gain.setValueAtTime(.0001,ACtx.currentTime);g.gain.exponentialRampToValueAtTime(v,ACtx.currentTime+.02);g.gain.exponentialRampToValueAtTime(.0001,ACtx.currentTime+d);o.connect(g);g.connect(ACtx.destination);o.start();o.stop(ACtx.currentTime+d+.02)}
-function jumpSound(type){if(!state.sfxEnabled)return;initAudio();if(!ACtx)return;if(type==="classic")tone(520,.08,.06,"square");else if(type==="arcade"){tone(440,.06,.05,"square");setTimeout(()=>tone(660,.07,.05,"square"),45)}else if(type==="laser"){tone(900,.12,.05,"sawtooth");setTimeout(()=>tone(1400,.09,.03,"sawtooth"),45)}else if(type==="bubble"){tone(300,.08,.04,"sine");setTimeout(()=>tone(650,.12,.04,"sine"),60)}else{tone(220,.13,.05,"sawtooth");setTimeout(()=>tone(520,.08,.05,"square"),65)}}function coinSound(){if(!state.sfxEnabled)return;initAudio();tone(784,.08,.05,"triangle");setTimeout(()=>tone(1046,.12,.05,"triangle"),70)}function scoreSound(){if(state.sfxEnabled){initAudio();tone(760,.04,.03,"triangle")}}function gameOverSound(){if(state.sfxEnabled){initAudio();tone(300,.15,.05,"sawtooth");setTimeout(()=>tone(210,.22,.04,"sawtooth"),130)}}function purchaseSound(){initAudio();tone(523,.08,.04,"triangle");setTimeout(()=>tone(784,.12,.04,"triangle"),70)}function selectedMusic(){return musicTracks.find(x=>x.id===state.selectedMusic)||musicTracks[0]}function stopMusic(){if(musicTimer){clearInterval(musicTimer);musicTimer=null}}function startMusic(){if(!state.musicEnabled)return;initAudio();if(!ACtx)return;if(ACtx.state==="suspended")ACtx.resume();stopMusic();musicStep=0;const m=selectedMusic();const tick=()=>{if(!state.musicEnabled){stopMusic();return}tone(m.melody[musicStep%m.melody.length],.28,.024,"triangle");if(musicStep%2===0)tone(m.bass[musicStep%m.bass.length],.4,.011,"sine");musicStep++};tick();musicTimer=setInterval(tick,m.tempo)}function previewMusic(m){initAudio();if(!ACtx)return;stopMusic();let i=0;const t=setInterval(()=>{if(i>=m.melody.length){clearInterval(t);if(game.running&&state.musicEnabled)startMusic();return}tone(m.melody[i++],.28,.03,"triangle")},m.tempo)}
+let ACtx=null,musicTimer=null,musicStep=0;
+const lobbyMusic1=document.getElementById("lobbyMusic1");
+const lobbyMusic2=document.getElementById("lobbyMusic2");
+let lobbyMusicStarted=false;
+function initAudio(){if(ACtx)return;const C=window.AudioContext||window.webkitAudioContext;if(C)ACtx=new C}
+function tone(f,d,v,t){if(!ACtx)return;const o=ACtx.createOscillator(),g=ACtx.createGain();o.type=t;o.frequency.value=f;g.gain.setValueAtTime(.0001,ACtx.currentTime);g.gain.exponentialRampToValueAtTime(v,ACtx.currentTime+.02);g.gain.exponentialRampToValueAtTime(.0001,ACtx.currentTime+d);o.connect(g);g.connect(ACtx.destination);o.start();o.stop(ACtx.currentTime+d+.02)}
+let lobbyTrackIndex=0;
+function stopLobbyMusic(){[lobbyMusic1,lobbyMusic2].forEach(a=>{if(!a)return;a.pause();a.currentTime=0});lobbyMusicStarted=false}
+function playLobbyTrack(index,reset=true){if(!state.musicEnabled)return;const tracks=[lobbyMusic1,lobbyMusic2];const a=tracks[index%tracks.length];if(!a)return;tracks.forEach((x,i)=>{if(x&&i!==index){x.pause();if(reset)x.currentTime=0}});if(reset)a.currentTime=0;a.volume=.55;lobbyTrackIndex=index%tracks.length;const p=a.play();if(p&&p.then)p.then(()=>{lobbyMusicStarted=true}).catch(()=>{lobbyMusicStarted=false});else lobbyMusicStarted=true}
+[lobbyMusic1,lobbyMusic2].forEach((a,i)=>{if(a)a.addEventListener("ended",()=>{if(!game.running&&state.musicEnabled)playLobbyTrack((i+1)%2,true)})});
+function startLobbyMusic(){if(!state.musicEnabled)return;if(musicTimer){clearInterval(musicTimer);musicTimer=null}stopLobbyMusic();playLobbyTrack(lobbyTrackIndex,true)}
+function stopMusic(){if(musicTimer){clearInterval(musicTimer);musicTimer=null}stopLobbyMusic()}
+function jumpSound(type){if(!state.sfxEnabled)return;initAudio();if(!ACtx)return;if(type==="classic")tone(520,.08,.06,"square");else if(type==="arcade"){tone(440,.06,.05,"square");setTimeout(()=>tone(660,.07,.05,"square"),45)}else if(type==="laser"){tone(900,.12,.05,"sawtooth");setTimeout(()=>tone(1400,.09,.03,"sawtooth"),45)}else if(type==="bubble"){tone(300,.08,.04,"sine");setTimeout(()=>tone(650,.12,.04,"sine"),60)}else{tone(220,.13,.05,"sawtooth");setTimeout(()=>tone(520,.08,.05,"square"),65)}}function coinSound(){if(!state.sfxEnabled)return;initAudio();tone(784,.08,.05,"triangle");setTimeout(()=>tone(1046,.12,.05,"triangle"),70)}function scoreSound(){if(state.sfxEnabled){initAudio();tone(760,.04,.03,"triangle")}}function gameOverSound(){if(state.sfxEnabled){initAudio();tone(300,.15,.05,"sawtooth");setTimeout(()=>tone(210,.22,.04,"sawtooth"),130)}}function purchaseSound(){initAudio();tone(523,.08,.04,"triangle");setTimeout(()=>tone(784,.12,.04,"triangle"),70)}function selectedMusic(){return musicTracks.find(x=>x.id===state.selectedMusic)||musicTracks[0]}function startMusic(){if(!state.musicEnabled)return;initAudio();if(!ACtx)return;if(ACtx.state==="suspended")ACtx.resume();stopLobbyMusic();if(musicTimer)clearInterval(musicTimer);musicTimer=null;musicStep=0;const m=selectedMusic();const tick=()=>{if(!state.musicEnabled||!game.running){if(musicTimer){clearInterval(musicTimer);musicTimer=null}return}tone(m.melody[musicStep%m.melody.length],.28,.024,"triangle");if(musicStep%2===0)tone(m.bass[musicStep%m.bass.length],.4,.011,"sine");musicStep++};tick();musicTimer=setInterval(tick,m.tempo)}function previewMusic(m){initAudio();if(!ACtx)return;stopMusic();let i=0;const t=setInterval(()=>{if(i>=m.melody.length){clearInterval(t);if(game.running&&state.musicEnabled)startMusic();else if(!game.running&&state.musicEnabled)startLobbyMusic();return}tone(m.melody[i++],.28,.03,"triangle")},m.tempo)}
 
 let W=innerWidth,H=innerHeight,dpr=Math.min(devicePixelRatio||1,2);function resize(){W=innerWidth;H=innerHeight;dpr=Math.min(devicePixelRatio||1,2);canvas.width=W*dpr;canvas.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}addEventListener("resize",resize);resize();
 const game={running:false,paused:false,over:false,score:0,runCoins:0,jumpCount:0,bonusCoinsRun:0,combo:0,comboMultiplier:1,comboMilestones:{},speed:165,spawnTimer:.9,obstacles:[],coins:[],player:{x:0,y:0,vy:0,r:22,hitR:16,rot:0},world:null,last:0,onlineRun:false,abilityActiveUntil:0,abilityCooldownUntil:0,abilityShield:0,abilityUsed:false,abilityBaseHitR:16};
@@ -804,7 +823,7 @@ function updateGame(dt){
   if(game.score>state.best){state.best=game.score;saveState()}
   updateMissionProgress();updateHUD();
 }
-function startGame(online=false){if(online&&!currentUser){showMessage("🔐 Für den Online-Modus musst du angemeldet sein.");showScreen("authScreen");return}game.onlineRun=!!online;initAudio();startMusic();hideScreens();canvas.style.display="block";gameHud.style.display="block";pauseOverlay.classList.remove("active");gameOverOverlay.classList.remove("active");game.running=true;game.paused=false;game.over=false;game.score=0;game.runCoins=0;game.jumpCount=0;game.bonusCoinsRun=0;game.combo=0;game.comboMultiplier=1;game.comboMilestones={};game.speed=165;game.spawnTimer=.9;game.obstacles=[];game.coins=[];game.player={x:W*.24,y:H*.45,vy:0,r:22,hitR:state.selectedSkin==="jeszx"?12:16,rot:0};game.abilityActiveUntil=0;game.abilityCooldownUntil=0;game.abilityShield=0;game.abilityUsed=false;game.abilityActiveEffect=null;game.abilityBaseHitR=state.selectedSkin==="jeszx"?12:16;game.player.hitR=game.abilityBaseHitR;game.world=worlds.find(w=>w.id===state.selectedWorld)||worlds[0];worldHud.textContent=game.world.name;musicHud.textContent=selectedMusic().name;updateHUD();game.last=performance.now();flap();requestAnimationFrame(gameLoop)}
+function startGame(online=false){stopLobbyMusic();if(online&&!currentUser){showMessage("🔐 Für den Online-Modus musst du angemeldet sein.");showScreen("authScreen");return}game.onlineRun=!!online;initAudio();startMusic();hideScreens();canvas.style.display="block";gameHud.style.display="block";pauseOverlay.classList.remove("active");gameOverOverlay.classList.remove("active");game.running=true;game.paused=false;game.over=false;game.score=0;game.runCoins=0;game.jumpCount=0;game.bonusCoinsRun=0;game.combo=0;game.comboMultiplier=1;game.comboMilestones={};game.speed=165;game.spawnTimer=.9;game.obstacles=[];game.coins=[];game.player={x:W*.24,y:H*.45,vy:0,r:22,hitR:state.selectedSkin==="jeszx"?12:16,rot:0};game.abilityActiveUntil=0;game.abilityCooldownUntil=0;game.abilityShield=0;game.abilityUsed=false;game.abilityActiveEffect=null;game.abilityBaseHitR=state.selectedSkin==="jeszx"?12:16;game.player.hitR=game.abilityBaseHitR;game.world=worlds.find(w=>w.id===state.selectedWorld)||worlds[0];worldHud.textContent=game.world.name;musicHud.textContent=selectedMusic().name;updateHUD();game.last=performance.now();flap();requestAnimationFrame(gameLoop)}
 async function endGame(){
   if(game.over)return;
   game.over=true;
@@ -857,7 +876,7 @@ async function endGame(){
     }
   }
 }
-function gameLoop(ts){if(!game.running){draw();return}const dt=Math.min(.033,(ts-game.last)/1000);game.last=ts;if(!game.paused)updateGame(dt);draw();if(game.running)requestAnimationFrame(gameLoop)}function togglePause(){if(!game.running||game.over)return;game.paused=!game.paused;pauseOverlay.classList.toggle("active",game.paused);if(!game.paused)game.last=performance.now()}function returnLobby(){game.running=false;game.paused=false;game.over=false;game.combo=0;game.comboMultiplier=1;game.comboMilestones={};canvas.style.display="none";gameHud.style.display="none";document.querySelectorAll(".overlay").forEach(x=>x.classList.remove("active"));closeAdminLogin();showScreen("lobby");updateLobby()}
+function gameLoop(ts){if(!game.running){draw();return}const dt=Math.min(.033,(ts-game.last)/1000);game.last=ts;if(!game.paused)updateGame(dt);draw();if(game.running)requestAnimationFrame(gameLoop)}function togglePause(){if(!game.running||game.over)return;game.paused=!game.paused;pauseOverlay.classList.toggle("active",game.paused);if(!game.paused)game.last=performance.now()}function returnLobby(){game.running=false;game.paused=false;game.over=false;game.combo=0;game.comboMultiplier=1;game.comboMilestones={};canvas.style.display="none";gameHud.style.display="none";document.querySelectorAll(".overlay").forEach(x=>x.classList.remove("active"));closeAdminLogin();showScreen("lobby");updateLobby();if(state.musicEnabled)startLobbyMusic()}
 
 function drawSkin(c,type,x,y,r){c.save();c.translate(x,y);if(type==="bird")drawBird(c,r);else if(type==="dino")drawDino(c,r);else if(type==="pen")drawPen(c,r);else if(type==="carrot")drawCarrot(c,r);else if(type==="apple")drawApple(c,r);else if(type==="jeszx")drawDonkey(c,r);else if(type==="paperjet")drawPaperJet(c,r);else if(type==="voltfrog")drawVoltFrog(c,r);else if(type==="cyberfox")drawCyberFox(c,r);else if(type==="stormowl")drawStormOwl(c,r);else if(type==="magmoth")drawMagmaWing(c,r);else if(type==="astrion")drawAstrion(c,r);else if(type==="neonbat")drawNeonBat(c,r);else if(type==="aquaray")drawAquaRay(c,r);else if(type==="shadowcat")drawShadowCat(c,r);c.restore()}
 function drawBird(c,r){c.fillStyle="#ffd13b";c.beginPath();c.ellipse(0,0,r*1.05,r*.82,0,0,Math.PI*2);c.fill();c.fillStyle="#fff";c.beginPath();c.arc(r*.35,-r*.3,r*.21,0,Math.PI*2);c.fill();c.fillStyle="#17204a";c.beginPath();c.arc(r*.4,-r*.3,r*.08,0,Math.PI*2);c.fill();c.fillStyle="#ff7733";c.beginPath();c.moveTo(r*.9,-r*.05);c.lineTo(r*1.45,r*.1);c.lineTo(r*.9,r*.28);c.closePath();c.fill()}
@@ -1074,7 +1093,7 @@ function chooseLuckyResult(){
   return luckyPool[idx];
 }
 function jackpotSound(){initAudio();if(!ACtx)return;[523.25,659.25,783.99,1046.5,1318.51,1567.98].forEach((n,i)=>setTimeout(()=>tone(n,.22,.07,"square"),i*95));setTimeout(()=>tone(2093,.5,.08,"triangle"),620)}
-function showPrizePopup(o){prizePopupIcon.textContent=o.icon||"🎁";prizePopupTitle.textContent=o.title||"DEIN PREIS!";prizePopupText.textContent=o.text||"Preis";prizePopupSub.textContent=o.sub||"Der Preis wurde deinem Konto gutgeschrieben.";jackpotOverlay.classList.add("active");if(o.jackpot)jackpotSound();clearTimeout(showPrizePopup.timer);showPrizePopup.timer=setTimeout(()=>jackpotOverlay.classList.remove("active"),5000)}
+function showPrizePopup(o){prizePopupIcon.textContent=o.icon||"🎁";prizePopupTitle.textContent=o.title||"DEIN PREIS!";prizePopupText.textContent=o.text||"Preis";prizePopupSub.textContent=""+(o.sub||"Der Preis wurde deinem Konto gutgeschrieben.")+" · TIPPE ZUM FORTFAHREN";jackpotOverlay.classList.add("active");if(o.jackpot)jackpotSound()}
 function awardLucky(result){
   let p={icon:"🎁",title:"DEIN PREIS!",text:"Preis",sub:"Der Preis wurde deinem Konto gutgeschrieben."};
   if(result.kind==="skin"){
@@ -1452,8 +1471,8 @@ registerBtn.onclick=async()=>{
 };
 logoutBtn.onclick=async()=>{try{await setPresenceOffline();const {a}=await loadFirebase();await a.signOut(auth);showMessage("👤 Gastmodus aktiviert.")}catch(e){console.error(e)}};
 onlineBadge.onclick=async()=>{loadPlayerName();showScreen("leaderboard");await ensureSeason();await startSeasonLeaderboardListener();switchLeaderboardMode("season");setTimeout(()=>leaderboardList.scrollIntoView({behavior:"smooth",block:"start"}),50)};
-claimSeasonRewardBtn.onclick=claimSeasonReward;musicToggleBtn.onclick=()=>{state.musicEnabled=!state.musicEnabled;saveState();if(state.musicEnabled)startMusic();else stopMusic();updateLobby()};
-confirmLuckyBuyBtn.onclick=confirmLuckyBuy;cancelLuckyBuyBtn.onclick=cancelLuckyBuy;abilityBtn.onclick=activateAbility;pauseBtn.onclick=togglePause;resumeBtn.onclick=togglePause;pauseLobbyBtn.onclick=returnLobby;retryBtn.onclick=()=>startGame(game.onlineRun);returnLobbyBtn.onclick=returnLobby;
+claimSeasonRewardBtn.onclick=claimSeasonReward;musicToggleBtn.onclick=()=>{state.musicEnabled=!state.musicEnabled;saveState();if(state.musicEnabled){if(game.running)startMusic();else startLobbyMusic()}else stopMusic();updateLobby()};
+confirmLuckyBuyBtn.onclick=confirmLuckyBuy;cancelLuckyBuyBtn.onclick=cancelLuckyBuy;jackpotOverlay.addEventListener("click",()=>{jackpotOverlay.classList.remove("active")});abilityBtn.onclick=activateAbility;pauseBtn.onclick=togglePause;resumeBtn.onclick=togglePause;pauseLobbyBtn.onclick=returnLobby;retryBtn.onclick=()=>startGame(game.onlineRun);returnLobbyBtn.onclick=returnLobby;
 canvas.addEventListener("pointerdown",e=>{e.preventDefault();flap()});addEventListener("keydown",e=>{
   const tag=(e.target?.tagName||"").toLowerCase();
   const typing=tag==="input"||tag==="textarea"||tag==="select"||e.target?.isContentEditable;
@@ -1477,6 +1496,8 @@ canvas.addEventListener("pointerdown",e=>{e.preventDefault();flap()});addEventLi
   try{updateSeasonUI();}catch(e){console.error(e)}
   try{startSeasonTimer();}catch(e){console.error(e)}
   try{setupFirebase();}catch(e){console.error("setupFirebase",e)}
+  if(state.musicEnabled){startLobbyMusic()}
+  ["pointerdown","keydown","touchstart"].forEach(ev=>window.addEventListener(ev,()=>{if(!game.running&&state.musicEnabled&&!lobbyMusicStarted)startLobbyMusic()},{once:false,passive:true}));
 })();
 </script>
 </body>
