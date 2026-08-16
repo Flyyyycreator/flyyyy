@@ -1500,5 +1500,678 @@ canvas.addEventListener("pointerdown",e=>{e.preventDefault();flap()});addEventLi
   ["pointerdown","keydown","touchstart"].forEach(ev=>window.addEventListener(ev,()=>{if(!game.running&&state.musicEnabled&&!lobbyMusicStarted)startLobbyMusic()},{once:false,passive:true}));
 })();
 </script>
+<script>
+/* =========================================================
+   FLYYYY – LUCKY RAD + BOXEN + FÄHIGKEITEN FIX
+   ========================================================= */
+
+(() => {
+  "use strict";
+
+  /* ---------- kleine Helfer ---------- */
+  function addAbilityToInventory(abilityId) {
+    if (!window.state || !abilityId) return false;
+
+    if (!Array.isArray(state.ownedAbilities)) {
+      state.ownedAbilities = [];
+    }
+
+    if (!state.ownedAbilities.includes(abilityId)) {
+      state.ownedAbilities.push(abilityId);
+    }
+
+    /*
+      Wichtig:
+      Fähigkeit wird NICHT nur als "gekauft" gespeichert,
+      sondern direkt als auswählbare Fähigkeit gesetzt.
+    */
+    state.selectedAbilityId = abilityId;
+
+    if (!state.selectedAbilities || typeof state.selectedAbilities !== "object") {
+      state.selectedAbilities = {};
+    }
+
+    const ownerSkin = (window.skins || []).find(
+      sk => Array.isArray(sk.abilities) && sk.abilities.includes(abilityId)
+    );
+
+    if (ownerSkin) {
+      state.selectedAbilities[ownerSkin.id] = abilityId;
+    }
+
+    if (typeof saveState === "function") saveState();
+    if (typeof updateHUD === "function") updateHUD();
+    if (typeof renderInventory === "function") renderInventory();
+
+    return true;
+  }
+
+  function addSkinToInventory(skinId) {
+    if (!window.state || !skinId) return false;
+
+    if (!Array.isArray(state.ownedSkins)) {
+      state.ownedSkins = [];
+    }
+
+    if (!state.ownedSkins.includes(skinId)) {
+      state.ownedSkins.push(skinId);
+    }
+
+    if (typeof saveState === "function") saveState();
+    if (typeof updateLobby === "function") updateLobby();
+
+    return true;
+  }
+
+  function giveCoins(amount) {
+    amount = Math.max(0, Number(amount) || 0);
+
+    if (!window.state) return;
+
+    state.coins = Number(state.coins || 0) + amount;
+
+    if (typeof saveState === "function") saveState();
+    if (typeof updateLobby === "function") updateLobby();
+  }
+
+  function randomItem(arr) {
+    if (!Array.isArray(arr) || !arr.length) return null;
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
+
+  /* =========================================================
+     SELTENE SKINS / FÄHIGKEITEN
+     ========================================================= */
+
+  function getUnlockedSkins() {
+    return (window.skins || []).filter(s =>
+      s &&
+      s.id &&
+      !(state?.ownedSkins || []).includes(s.id) &&
+      s.rarity !== "basic"
+    );
+  }
+
+  function getUnownedAbilities() {
+    const result = [];
+
+    for (const sk of (window.skins || [])) {
+      for (const abilityId of (sk.abilities || [])) {
+        if (!(state?.ownedAbilities || []).includes(abilityId)) {
+          const ab = window.abilities?.[abilityId];
+          if (ab) {
+            result.push({
+              id: abilityId,
+              ability: ab,
+              skin: sk
+            });
+          }
+        }
+      }
+    }
+
+    return result;
+  }
+
+  /*
+    Sehr seltene Skins:
+    92 % Coins
+    6 % Fähigkeit
+    2 % Skin
+  */
+  function rollBoxReward() {
+    const r = Math.random() * 100;
+
+    const skinsAvailable = getUnlockedSkins();
+    const abilitiesAvailable = getUnownedAbilities();
+
+    if (r < 92) {
+      return {
+        type: "coins",
+        amount: randomItem([25, 50, 75, 100, 150, 200]),
+        icon: "🪙"
+      };
+    }
+
+    if (r < 98 && abilitiesAvailable.length) {
+      const x = randomItem(abilitiesAvailable);
+
+      return {
+        type: "ability",
+        ability: x.ability,
+        abilityId: x.id,
+        skin: x.skin,
+        icon: x.ability.icon || "⚡"
+      };
+    }
+
+    if (skinsAvailable.length) {
+      const skin = randomItem(skinsAvailable);
+
+      return {
+        type: "skin",
+        skin,
+        icon: skin.icon || "🪽"
+      };
+    }
+
+    return {
+      type: "coins",
+      amount: 100,
+      icon: "🪙"
+    };
+  }
+
+  /* =========================================================
+     BOXEN
+     ========================================================= */
+
+  const FLYYYY_BOXES = [
+    {
+      id: "wood",
+      name: "Holz-Box",
+      icon: "📦",
+      price: 100,
+      min: 1,
+      max: 5
+    },
+    {
+      id: "rare",
+      name: "Rare-Box",
+      icon: "🎁",
+      price: 250,
+      min: 1,
+      max: 4
+    },
+    {
+      id: "epic",
+      name: "Epic-Box",
+      icon: "💎",
+      price: 500,
+      min: 1,
+      max: 3
+    }
+  ];
+
+  function getBoxCount(boxId) {
+    if (!state) return 0;
+
+    if (!state.boxes || typeof state.boxes !== "object") {
+      state.boxes = {};
+    }
+
+    return Number(state.boxes[boxId] || 0);
+  }
+
+  function buyBox(box) {
+    if (!state) return;
+
+    if (Number(state.coins || 0) < box.price) {
+      if (typeof showMessage === "function") {
+        showMessage("🪙 Nicht genug Coins!");
+      }
+      return;
+    }
+
+    state.coins -= box.price;
+
+    if (!state.boxes || typeof state.boxes !== "object") {
+      state.boxes = {};
+    }
+
+    /*
+      Zufällige Anzahl an Boxen:
+      z.B. 1–5 Stück.
+    */
+    const amount =
+      Math.floor(Math.random() * (box.max - box.min + 1)) + box.min;
+
+    state.boxes[box.id] = getBoxCount(box.id) + amount;
+
+    if (typeof saveState === "function") saveState();
+    if (typeof updateLobby === "function") updateLobby();
+
+    if (typeof showMessage === "function") {
+      showMessage(`🎁 Du bekommst ${amount}× ${box.name}!`);
+    }
+
+    renderFlyyyyBoxes();
+  }
+
+  function openBox(box) {
+    const count = getBoxCount(box.id);
+
+    if (count <= 0) {
+      if (typeof showMessage === "function") {
+        showMessage("❌ Du hast keine Box davon.");
+      }
+      return;
+    }
+
+    state.boxes[box.id] = count - 1;
+
+    const reward = rollBoxReward();
+
+    if (reward.type === "coins") {
+      giveCoins(reward.amount);
+
+      showMessage?.(
+        `🪙 BOX GEÖFFNET: +${reward.amount} Coins`
+      );
+    }
+
+    if (reward.type === "ability") {
+      addAbilityToInventory(reward.abilityId);
+
+      showMessage?.(
+        `⚡ GEWONNEN: ${reward.ability.icon} ${reward.ability.name} – direkt ausgerüstet!`
+      );
+    }
+
+    if (reward.type === "skin") {
+      addSkinToInventory(reward.skin.id);
+
+      showMessage?.(
+        `✨ ULTRA SELTEN: ${reward.skin.name} ${reward.icon}`
+      );
+    }
+
+    if (typeof saveState === "function") saveState();
+    if (typeof updateLobby === "function") updateLobby();
+    renderFlyyyyBoxes();
+  }
+
+  function renderFlyyyyBoxes() {
+    const shopCards = document.getElementById("shopCards");
+    if (!shopCards) return;
+
+    /*
+      Nur wenn der Nutzer im Boxen-Tab ist.
+    */
+    if (window.shopTab !== "boxes") return;
+
+    shopCards.innerHTML = `
+      <div style="
+        display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+        gap:16px;
+      ">
+        ${FLYYYY_BOXES.map(box => {
+          const count = getBoxCount(box.id);
+
+          return `
+            <div class="card" style="
+              padding:18px;
+              border-radius:20px;
+              border:1px solid rgba(255,255,255,.12);
+              background:rgba(255,255,255,.05);
+            ">
+              <div style="font-size:64px;text-align:center">${box.icon}</div>
+
+              <h3 style="text-align:center;margin:10px 0">
+                ${box.name}
+              </h3>
+
+              <div class="tiny" style="text-align:center">
+                Preis: 🪙 ${box.price}
+              </div>
+
+              <div class="tiny" style="
+                text-align:center;
+                margin:8px 0 14px;
+              ">
+                Im Besitz: <strong>${count}</strong>
+              </div>
+
+              <button
+                class="smallbtn blue"
+                style="width:100%;margin-bottom:8px"
+                onclick='window.buyFlyyyyBox("${box.id}")'
+              >
+                🪙 KAUFEN
+              </button>
+
+              <button
+                class="smallbtn"
+                style="width:100%"
+                ${count <= 0 ? "disabled" : ""}
+                onclick='window.openFlyyyyBox("${box.id}")'
+              >
+                🎁 BOX ÖFFNEN
+              </button>
+            </div>
+          `;
+        }).join("")}
+      </div>
+
+      <div style="
+        margin-top:20px;
+        padding:16px;
+        border-radius:18px;
+        background:rgba(0,0,0,.25);
+        text-align:center;
+      ">
+        <strong>🎲 Box-Chancen</strong>
+
+        <div class="tiny" style="margin-top:8px">
+          🪙 Coins: 92% · ⚡ Fähigkeit: 6% · 🪽 Skin: 2%
+        </div>
+
+        <div class="tiny" style="margin-top:4px">
+          Skins sind extra selten.
+        </div>
+      </div>
+    `;
+  }
+
+  window.buyFlyyyyBox = function(id) {
+    const box = FLYYYY_BOXES.find(x => x.id === id);
+    if (!box) return;
+    buyBox(box);
+  };
+
+  window.openFlyyyyBox = function(id) {
+    const box = FLYYYY_BOXES.find(x => x.id === id);
+    if (!box) return;
+    openBox(box);
+  };
+
+  /* =========================================================
+     LUCKY RAD REWARD FIX
+     ========================================================= */
+
+  function giveLuckyReward(entry) {
+    if (!entry) return;
+
+    if (entry.kind === "coins") {
+      giveCoins(entry.amount || 50);
+
+      showMessage?.(
+        `🪙 GEWONNEN: +${entry.amount || 50} Coins`
+      );
+
+      return;
+    }
+
+    if (entry.kind === "skin" && entry.item) {
+      const skin = entry.item;
+
+      addSkinToInventory(skin.id);
+
+      showMessage?.(
+        `🪽 GEWONNEN: ${skin.name}!`
+      );
+
+      return;
+    }
+
+    if (entry.kind === "ability" && entry.item) {
+      const abilityId = entry.item.id;
+
+      addAbilityToInventory(abilityId);
+
+      showMessage?.(
+        `⚡ GEWONNEN: ${entry.item.icon || "⚡"} ${entry.item.name} – ausgerüstet!`
+      );
+
+      return;
+    }
+
+    /*
+      Falls Welt/Sound/Musik gewonnen wird.
+    */
+    if (entry.kind === "world" && entry.item) {
+      state.ownedWorlds ||= [];
+
+      if (!state.ownedWorlds.includes(entry.item.id)) {
+        state.ownedWorlds.push(entry.item.id);
+      }
+
+      saveState?.();
+
+      showMessage?.(
+        `🌍 GEWONNEN: ${entry.item.name}`
+      );
+
+      return;
+    }
+
+    if (entry.kind === "sound" && entry.item) {
+      state.ownedSounds ||= [];
+
+      if (!state.ownedSounds.includes(entry.item.id)) {
+        state.ownedSounds.push(entry.item.id);
+      }
+
+      saveState?.();
+
+      showMessage?.(
+        `🔊 GEWONNEN: ${entry.item.name}`
+      );
+
+      return;
+    }
+
+    if (entry.kind === "music" && entry.item) {
+      state.ownedMusic ||= [];
+
+      if (!state.ownedMusic.includes(entry.item.id)) {
+        state.ownedMusic.push(entry.item.id);
+      }
+
+      saveState?.();
+
+      showMessage?.(
+        `🎵 GEWONNEN: ${entry.item.name}`
+      );
+    }
+  }
+
+  /*
+    Lucky-Rad-Funktion ersetzen.
+    Das Rad bleibt aufgeklappt und der Nutzer drückt selbst auf DREHEN.
+  */
+  window.spinLuckyFlyyyy = function() {
+    const wheel = document.getElementById("luckyWheelInner");
+    const result = document.getElementById("luckyResult");
+    const btn = document.getElementById("luckySpinBtn");
+
+    if (!wheel || !window.luckyPool || !window.luckyPool.length) {
+      showMessage?.("❌ Lucky Rad konnte nicht geladen werden.");
+      return;
+    }
+
+    if (window.flyyyyLuckySpinning) return;
+
+    window.flyyyyLuckySpinning = true;
+
+    if (btn) btn.disabled = true;
+
+    const index =
+      Math.floor(Math.random() * window.luckyPool.length);
+
+    const reward = window.luckyPool[index];
+
+    /*
+      8 Felder = 45 Grad pro Feld.
+    */
+    const turns = 6 * 360;
+    const target = index * 45 + 22.5;
+
+    wheel.style.transition =
+      "transform 4s cubic-bezier(.12,.75,.16,1)";
+
+    wheel.style.transform =
+      `rotate(${turns + target}deg)`;
+
+    setTimeout(() => {
+      giveLuckyReward(reward);
+
+      if (result) {
+        result.innerHTML = `
+          <div style="font-size:28px">
+            🎉 GEWONNEN!
+          </div>
+
+          <div style="
+            margin-top:8px;
+            font-size:20px;
+            font-weight:800;
+          ">
+            ${typeof luckyEntryText === "function"
+              ? luckyEntryText(reward)
+              : "Belohnung"}
+          </div>
+
+          <div class="tiny" style="margin-top:6px">
+            ${reward.kind === "ability"
+              ? "⚡ Fähigkeit wurde direkt ausgerüstet."
+              : reward.kind === "skin"
+              ? "🪽 Skin ist jetzt im Inventar."
+              : "✅ Belohnung wurde hinzugefügt."}
+          </div>
+        `;
+      }
+
+      saveState?.();
+      updateLobby?.();
+
+      if (typeof renderInventory === "function") {
+        renderInventory();
+      }
+
+      setTimeout(() => {
+        window.flyyyyLuckySpinning = false;
+        if (btn) btn.disabled = false;
+      }, 600);
+
+    }, 4200);
+  };
+
+  /* =========================================================
+     SHOP-TAB "BOXEN"
+     ========================================================= */
+
+  function addBoxesTab() {
+    const tabsEl = document.getElementById("shopTabs");
+
+    if (!tabsEl) return;
+
+    const old = tabsEl.querySelector('[data-box-tab="true"]');
+
+    if (!old) {
+      const boxBtn = document.createElement("button");
+
+      boxBtn.className = "tabBtn";
+      boxBtn.dataset.boxTab = "true";
+      boxBtn.textContent = "🎁 BOXEN";
+
+      boxBtn.onclick = () => {
+        window.shopTab = "boxes";
+
+        tabsEl.querySelectorAll("button").forEach(b =>
+          b.classList.remove("active")
+        );
+
+        boxBtn.classList.add("active");
+
+        renderFlyyyyBoxes();
+      };
+
+      tabsEl.appendChild(boxBtn);
+    }
+  }
+
+  /* =========================================================
+     TASTE T = FÄHIGKEIT
+     ========================================================= */
+
+  document.addEventListener("keydown", e => {
+    if (e.key.toLowerCase() !== "t") return;
+
+    /*
+      Nicht in Eingabefeldern auslösen.
+    */
+    const tag = document.activeElement?.tagName;
+
+    if (
+      tag === "INPUT" ||
+      tag === "TEXTAREA" ||
+      tag === "SELECT"
+    ) {
+      return;
+    }
+
+    const abilityId = state?.selectedAbilityId;
+    if (!abilityId) return;
+
+    /*
+      Dein vorhandener Code soll weiter benutzt werden.
+      Dadurch bleibt die eigentliche Ability-Logik erhalten.
+    */
+    if (typeof useAbility === "function") {
+      e.preventDefault();
+      useAbility();
+    } else if (
+      typeof activateAbility === "function"
+    ) {
+      e.preventDefault();
+      activateAbility();
+    }
+  });
+
+  /* =========================================================
+     AUTOMATISCH STARTEN
+     ========================================================= */
+
+  function initFlyyyyLootFix() {
+    if (!window.state) return;
+
+    if (!Array.isArray(state.ownedAbilities)) {
+      state.ownedAbilities = [];
+    }
+
+    if (!Array.isArray(state.ownedSkins)) {
+      state.ownedSkins = [];
+    }
+
+    if (!state.boxes || typeof state.boxes !== "object") {
+      state.boxes = {};
+    }
+
+    /*
+      Existierende Fähigkeiten bleiben erhalten.
+    */
+
+    /*
+      Boxen-Tab hinzufügen.
+    */
+    addBoxesTab();
+
+    /*
+      Lucky-Drehbutton auf neue Funktion umbiegen.
+    */
+    const luckyBtn = document.getElementById("luckySpinBtn");
+
+    if (luckyBtn) {
+      luckyBtn.onclick = window.spinLuckyFlyyyy;
+    }
+
+    /*
+      Lucky Rad bleibt geöffnet.
+      Es wird NICHT nach dem Kauf automatisch geschlossen.
+    */
+  }
+
+  /*
+    etwas verzögert, damit dein bestehender Spielcode zuerst
+    state / DOM / shop erzeugen kann.
+  */
+  setTimeout(initFlyyyyLootFix, 500);
+  setTimeout(addBoxesTab, 1500);
+  setTimeout(addBoxesTab, 3000);
+
+})();
+</script>
 </body>
 </html>
