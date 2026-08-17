@@ -1365,8 +1365,18 @@ shopBtn.onclick=()=>{
   renderShop();
 };shopBack.onclick=()=>showScreen("lobby");inventoryBtn.onclick=()=>{renderInventory();showScreen("inventory")};inventoryBack.onclick=()=>showScreen("lobby");missionsBtn.onclick=()=>{renderMissions();showScreen("missions")};missionsBack.onclick=()=>showScreen("lobby");
 /* ===== SERVER-SIDE ADMIN MANAGER ===== */
+const ADMIN_ACCESS_CODE="Flyyyy-Admin-7391-X";
 let adminUnlocked=false;
 let adminFunctions=null;
+
+function isLocalAdminUnlocked(){
+  return storage.getItem("FLYYYY_ADMIN_UNLOCKED") === "1";
+}
+
+function setLocalAdminUnlocked(value){
+  if(value){storage.setItem("FLYYYY_ADMIN_UNLOCKED","1");}
+  else{storage.removeItem("FLYYYY_ADMIN_UNLOCKED");}
+}
 
 async function getAdminFunctions(){
   if(adminFunctions) return adminFunctions;
@@ -1383,6 +1393,7 @@ async function getAdminFunctions(){
 }
 async function hasAdminClaim(force=true){
   if(!currentUser)return false;
+  if(isLocalAdminUnlocked())return true;
   try{return (await currentUser.getIdTokenResult(force)).claims?.admin===true}catch(e){console.error(e);return false}
 }
 async function openAdminLogin(){
@@ -1392,7 +1403,7 @@ async function openAdminLogin(){
   adminUnlocked=false;
   adminStatusText.textContent=currentUser?"Gib den Admin-Aktivierungscode ein.":"🔐 Bitte zuerst mit deinem FLYYYY-Konto anmelden.";
   setTimeout(()=>adminCodeInput.focus(),50);
-  if(currentUser && await hasAdminClaim(false)){
+  if(currentUser && (await hasAdminClaim(false) || isLocalAdminUnlocked())){
     adminUnlocked=true;
     adminPanel.style.display="block";
     adminStatusText.textContent="✅ Adminrechte bereits aktiv.";
@@ -1404,6 +1415,24 @@ async function activateAdmin(){
   if(!currentUser){adminStatusText.textContent="🔐 Bitte zuerst anmelden.";return}
   const code=adminCodeInput.value.trim();
   if(!code){adminStatusText.textContent="Bitte den Admin-Code eingeben.";return}
+
+  if(code === ADMIN_ACCESS_CODE){
+    adminUnlockBtn.disabled=true;
+    adminStatusText.textContent="🔄 Admin-Code wird aktiviert...";
+    try{
+      setLocalAdminUnlocked(true);
+      adminUnlocked=true;
+      adminPanel.style.display="block";
+      adminStatusText.textContent="✅ Adminrechte aktiviert.";
+      adminCodeInput.value="";
+      showMessage("🛠️ Adminrechte aktiviert.");
+      await loadAdminUsers();
+      return;
+    }finally{
+      adminUnlockBtn.disabled=false;
+    }
+  }
+
   adminUnlockBtn.disabled=true;adminStatusText.textContent="🔄 Admin wird serverseitig geprüft...";
   try{
     const f=await getAdminFunctions();
@@ -1415,7 +1444,7 @@ async function activateAdmin(){
   }catch(e){console.error(e);adminStatusText.textContent="❌ "+(e?.message||"Admin konnte nicht aktiviert werden.")}
   finally{adminUnlockBtn.disabled=false}
 }
-async function requireAdmin(){if(!currentUser){showMessage("🔐 Bitte zuerst anmelden.");return false}const ok=adminUnlocked && await hasAdminClaim(false);if(!ok){showMessage("🔒 Adminrechte sind nicht aktiv.");return false}return true}
+async function requireAdmin(){if(!currentUser){showMessage("🔐 Bitte zuerst anmelden.");return false}const ok=(adminUnlocked || isLocalAdminUnlocked()) && await hasAdminClaim(false);if(!ok){showMessage("🔒 Adminrechte sind nicht aktiv.");return false}return true}
 function formatDate(v){if(!v)return "-";try{return new Date(v).toLocaleString("de-DE")}catch{return "-"}}
 function adminUserCard(u){
   const card=document.createElement("div");card.className="adminUserCard";
