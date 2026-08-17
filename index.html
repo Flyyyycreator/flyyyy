@@ -142,6 +142,37 @@ input{min-height:44px}
 @media(max-width:600px){#creatorTag{top:8px;font-size:11px;padding:6px 10px}}
 .newBadge{pointer-events:none;display:inline-flex;align-items:center;justify-content:center;gap:5px;margin-left:8px;padding:4px 9px;border-radius:999px;background:#ff3b4e;color:#fff;font-size:11px;font-weight:1000;letter-spacing:.08em;box-shadow:0 0 14px rgba(255,59,78,.35);animation:newBlink 0.8s ease-in-out infinite alternate}.newBadge.cardBadge{position:absolute;top:10px;right:10px;z-index:4;margin:0}.shopNewCard{position:relative}.tabNew{display:inline-flex;align-items:center;margin-left:6px;padding:3px 6px;border-radius:999px;background:#ff3b4e;color:#fff;font-size:9px;font-weight:1000;letter-spacing:.08em;animation:newBlink 0.8s ease-in-out infinite alternate}@keyframes newBlink{from{opacity:.48;transform:scale(.96)}to{opacity:1;transform:scale(1.04);box-shadow:0 0 18px rgba(255,59,78,.55)}}
 .rarity-badge{margin-top:2px}.newSkinCard .preview{background:radial-gradient(circle at 50% 45%,rgba(255,255,255,.12),rgba(255,255,255,.035) 68%);}.newSkinCard .price{font-size:14px}.rarity-legendary .rarity-badge{box-shadow:0 0 14px rgba(255,212,71,.25)}.rarity-mythic .rarity-badge{box-shadow:0 0 14px rgba(255,99,116,.2)}
+
+/* ===== FLYYYY 2.9.2 NEON VISUAL OVERHAUL ===== */
+:root{--bg:#070711;--panel:#10101f;--panel2:#171329;--text:#fff;--muted:#c9c3df;--yellow:#ffe45e;--blue:#45e8ff;--green:#58ff9c;--red:#ff4f86;--purple:#b76cff;--pink:#ff4fd8;--orange:#ff9b3d;--cyan:#31f4ff}
+html,body{background:radial-gradient(circle at 15% 15%,rgba(255,79,216,.16),transparent 30%),radial-gradient(circle at 85% 20%,rgba(69,232,255,.16),transparent 30%),radial-gradient(circle at 50% 100%,rgba(183,108,255,.16),transparent 35%),#070711;color:#fff}
+body:before{content:"";position:fixed;inset:-30%;z-index:-1;pointer-events:none;background:conic-gradient(from 0deg,rgba(255,79,216,.10),rgba(69,232,255,.10),rgba(88,255,156,.08),rgba(255,228,94,.08),rgba(183,108,255,.10),rgba(255,79,216,.10));filter:blur(70px);animation:neonSpin 18s linear infinite}
+@keyframes neonSpin{to{transform:rotate(360deg)}}
+#app{background:transparent}
+.menu{background:linear-gradient(145deg,rgba(15,12,31,.96),rgba(20,13,38,.94));border:1px solid rgba(255,255,255,.16);box-shadow:0 0 0 1px rgba(255,79,216,.08),0 25px 80px rgba(0,0,0,.55),0 0 55px rgba(69,232,255,.12)}
+.title{background:linear-gradient(90deg,#45e8ff,#b76cff,#ff4fd8,#ffe45e,#58ff9c,#45e8ff);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:titleNeon 7s linear infinite;text-shadow:0 0 30px rgba(69,232,255,.22)}
+@keyframes titleNeon{to{background-position:300% 0}}
+.version,.badge,.accountPill{background:linear-gradient(90deg,rgba(69,232,255,.12),rgba(255,79,216,.12));border-color:rgba(255,255,255,.2);box-shadow:0 0 18px rgba(183,108,255,.12)}
+.btn{background:linear-gradient(135deg,#ffe45e,#ff9b3d,#ff4fd8);box-shadow:0 7px 0 #9b3a63,0 0 25px rgba(255,79,216,.22)}
+.btn.blue{background:linear-gradient(135deg,#45e8ff,#5b8cff,#b76cff);box-shadow:0 7px 0 #4b3a9a,0 0 25px rgba(69,232,255,.22)}
+.btn.green{background:linear-gradient(135deg,#58ff9c,#31f4ff,#45e8ff);box-shadow:0 7px 0 #198a83,0 0 25px rgba(88,255,156,.2)}
+.btn.red{background:linear-gradient(135deg,#ff4f86,#b76cff);box-shadow:0 7px 0 #722c69,0 0 25px rgba(255,79,134,.22)}
+.btn.dark{background:linear-gradient(135deg,rgba(255,255,255,.11),rgba(183,108,255,.12));border-color:rgba(255,255,255,.16)}
+.tab.active,.seasonTab.active{background:linear-gradient(90deg,#45e8ff,#b76cff,#ff4fd8);color:#fff;box-shadow:0 0 20px rgba(183,108,255,.25)}
+.tab,.seasonTab{background:linear-gradient(135deg,rgba(69,232,255,.07),rgba(255,79,216,.07));border-color:rgba(255,255,255,.15)}
+.card{background:linear-gradient(145deg,rgba(255,255,255,.10),rgba(183,108,255,.055) 45%,rgba(69,232,255,.045));border-color:rgba(255,255,255,.14);box-shadow:0 10px 30px rgba(0,0,0,.25),inset 0 0 25px rgba(183,108,255,.035)}
+.card:hover{transform:translateY(-3px);border-color:rgba(69,232,255,.45);box-shadow:0 15px 35px rgba(0,0,0,.32),0 0 28px rgba(69,232,255,.13)}
+.authInput,.broadcastInput,select{background:rgba(5,5,15,.72)!important;border:1px solid rgba(255,255,255,.17)!important;color:#fff!important;box-shadow:inset 0 0 18px rgba(183,108,255,.06)}
+.authInput:focus,.broadcastInput:focus,select:focus{outline:none;border-color:#45e8ff!important;box-shadow:0 0 0 3px rgba(69,232,255,.12),0 0 22px rgba(69,232,255,.15)}
+.notice,.leaderStatus{background:linear-gradient(135deg,rgba(69,232,255,.08),rgba(255,79,216,.08));border-color:rgba(255,255,255,.13)}
+.adminUserCard{background:linear-gradient(145deg,rgba(255,79,216,.075),rgba(69,232,255,.065));border:1px solid rgba(255,255,255,.15);box-shadow:0 0 25px rgba(183,108,255,.08)}
+.adminBadge.ok{background:rgba(88,255,156,.15)!important;color:#8dffc0!important}.adminBadge.banned{background:rgba(255,79,134,.16)!important;color:#ff9bb9!important}
+.rarity-badge{filter:drop-shadow(0 0 7px currentColor)}
+.newBadge,.tabNew{background:linear-gradient(90deg,#ff4f86,#ff9b3d,#ffe45e)!important;box-shadow:0 0 15px rgba(255,79,134,.35)}
+#adminOverlay .menu,#adminOverlay .modal,.adminPanel{box-shadow:0 0 35px rgba(183,108,255,.18),0 0 70px rgba(69,232,255,.08)}
+.broadcastComposer{background:linear-gradient(135deg,rgba(255,79,216,.08),rgba(69,232,255,.08));border-color:rgba(255,255,255,.15)!important}
+#globalBroadcastOverlay{background:linear-gradient(90deg,rgba(255,79,216,.96),rgba(183,108,255,.96),rgba(69,232,255,.96))!important;box-shadow:0 0 35px rgba(183,108,255,.45)!important}
+@media(max-width:650px){.menu{padding:18px;border-radius:22px}.title{font-size:clamp(48px,16vw,82px)}}
 </style>
 
 <style id="flyyyy-minimal-design">
