@@ -204,7 +204,13 @@ const APP_VERSION="2.9.2";storage.setItem("FLYYYY_APP_VERSION",APP_VERSION);
 const firebaseConfig={apiKey:"AIzaSyA0ppKuSgxKKgHEMkX9kUlVhm8pjkVxgXk",authDomain:"flyyyy.firebaseapp.com",databaseURL:"https://flyyyy-default-rtdb.firebaseio.com",projectId:"flyyyy",storageBucket:"flyyyy.firebasestorage.app",messagingSenderId:"872479897522",appId:"1:872479897522:web:3c87b8afdebfc66d01d6ab",measurementId:"G-S8YE4S6L8L"};
 let F=null,firebaseApp=null,auth=null,db=null,currentUser=null,leaderboardStop=null,presenceStop=null,seasonLeaderboardStop=null;
 async function loadFirebase(){if(F)return F;const appMod=await import("https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js"),authMod=await import("https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js"),dbMod=await import("https://www.gstatic.com/firebasejs/12.16.0/firebase-database.js");return F={app:appMod,a:authMod,d:dbMod}};
-function setOnlineUI(count,connected=true){const n=Math.max(0,Number(count)||0);onlineCount.textContent=n;onlineDot.classList.toggle("off",!connected);onlineBadge.title=connected?`${n} Spieler sind online`:"Online-Status nicht verfügbar"}
+function setOnlineUI(count,connected=true){
+  const parsed=Number(count);
+  const n=Number.isFinite(parsed)&&parsed>=0?Math.floor(parsed):0;
+  onlineCount.textContent=String(n);
+  onlineDot.classList.toggle("off",!connected||n===0);
+  onlineBadge.title=connected?`${n} Spieler sind online`:"Online-Status nicht verfügbar";
+}
 function safeName(n){return String(n||"").replace(/[<>]/g,"").replace(/\s+/g," ").trim().slice(0,20)}
 function defaultNameForUser(u){return safeName((u?.email||"Spieler").split("@")[0].replace(/[^a-zA-Z0-9äöüÄÖÜß._-]/g,"").slice(0,20)||"Spieler")}
 function showScreen(id){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));$(id)?.classList.add("active")}
@@ -287,9 +293,27 @@ async function startSeasonLeaderboardListener(){
 }
 
 async function startLeaderboardListener(){if(!db)return;try{const {d}=await loadFirebase();if(leaderboardStop){leaderboardStop();leaderboardStop=null}const ref=d.ref(db,"leaderboard");leaderboardStop=d.onValue(ref,s=>{const raw=s.val()||{};allTimeLeaderboardCache=Object.entries(raw).filter(([uid,v])=>v&&v.update19ResetDone===true).map(([uid,v])=>({uid,name:safeName(v.name||"Spieler"),score:Number(v.score||0),wins:Number(v.wins||0),updatedAt:Number(v.updatedAt||0)})).sort((a,b)=>b.score-a.score||b.wins-a.wins||a.name.localeCompare(b.name));if(seasonMode==="alltime")renderLeaderboard(allTimeLeaderboardCache.slice(0,50))},e=>{console.error(e);setLeaderboardStatus("🔴 Allzeit-Leaderboard konnte nicht geladen werden.")})}catch(e){console.error(e)}}
-async function startOnlineListener(){if(!db)return;try{const {d}=await loadFirebase();if(presenceStop){presenceStop();presenceStop=null}presenceStop=d.onValue(d.ref(db,"presence"),s=>{const raw=s.val()||{};onlineCache=new Set(Object.keys(raw).filter(uid=>raw[uid]?.online!==false));setOnlineUI(onlineCache.size,true);if(leaderboard.classList.contains("active"))renderLeaderboard((seasonMode==="season"?seasonLeaderboardCache:allTimeLeaderboardCache).slice(0,50))},()=>setOnlineUI(0,false))}catch(e){console.error(e);setOnlineUI(0,false)}}
+async function startOnlineListener(){
+  if(!db)return;
+  try{
+    const {d}=await loadFirebase();
+    if(presenceStop){presenceStop();presenceStop=null}
+    presenceStop=d.onValue(d.ref(db,"presence"),s=>{
+      const raw=s&&typeof s.val==="function"?s.val():null;
+      const entries=raw&&typeof raw==="object"?Object.entries(raw):[];
+      const onlineUsers=entries.filter(([,value])=>value&&typeof value==="object"&&value.online!==false);
+      onlineCache=new Set(onlineUsers.map(([uid])=>uid));
+      const visibleCount=onlineCache.size || (currentUser ? 1 : 0);
+      setOnlineUI(visibleCount,true);
+      if(leaderboard.classList.contains("active"))renderLeaderboard((seasonMode==="season"?seasonLeaderboardCache:allTimeLeaderboardCache).slice(0,50));
+    },()=>setOnlineUI(currentUser?1:0,false));
+  }catch(e){
+    console.error(e);
+    setOnlineUI(currentUser?1:0,false);
+  }
+}
 
-async function setPresenceOnline(){if(!currentUser||!db)return;try{const {d}=await loadFirebase();const pres=d.ref(db,"presence/"+currentUser.uid);await d.onDisconnect(pres).remove();await d.set(pres,{online:true,name:getPlayerName()||defaultNameForUser(currentUser),since:d.serverTimestamp()})}catch(e){console.error(e)}}
+async function setPresenceOnline(){if(!currentUser||!db)return;try{const {d}=await loadFirebase();const pres=d.ref(db,"presence/"+currentUser.uid);await d.onDisconnect(pres).remove();await d.set(pres,{online:true,name:getPlayerName()||defaultNameForUser(currentUser),since:d.serverTimestamp(),lastSeenAt:Date.now()})}catch(e){console.error(e)}}
 async function setPresenceOffline(){if(!db||!currentUser)return;try{const {d}=await loadFirebase();await d.remove(d.ref(db,"presence/"+currentUser.uid))}catch(e){console.error(e)}}
 
 function updateAccountUI(){if(currentUser){accountStatus.textContent="✅ "+(currentUser.email||"Konto");accountBtn.style.display="none";logoutBtn.style.display=""}else{accountStatus.textContent="👤 Gast";accountBtn.style.display="";logoutBtn.style.display="none"}}
