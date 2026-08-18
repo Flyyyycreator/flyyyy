@@ -267,7 +267,7 @@ html,body{background:#070b18!important;color:#fff!important}
 
 <div id="pauseOverlay" class="overlay"><div class="dialog"><h2>PAUSE</h2><p>Dein Lauf wurde angehalten.</p><div class="button-grid"><button id="resumeBtn" class="btn">▶ WEITER</button><button id="pauseLobbyBtn" class="btn dark">🏠 ZUR LOBBY</button></div></div></div>
 <div id="gameOverOverlay" class="overlay"><div class="dialog"><h2>GAME OVER</h2><p id="gameOverText">Gut geflogen!</p><div class="stats"><div class="stat"><div class="tiny">Punkte</div><strong id="finalScore">0</strong></div><div class="stat"><div class="tiny">Coins</div><strong id="earnedCoins">0</strong></div><div class="stat"><div class="tiny">Rekord</div><strong id="bestScore">0</strong></div></div><div class="button-grid"><button id="retryBtn" class="btn green">🔄 NOCHMAL</button><button id="returnLobbyBtn" class="btn blue">🏠 ZUR LOBBY</button></div></div></div>
-<div id="luckyConfirmOverlay" class="overlay"><div class="dialog"><h2>🎡 LUCKY RAD</h2><p>Ein Dreh kostet <strong>🪙 200 Coins</strong>.</p><p class="tiny">Nach dem Kauf öffnet sich sofort das Lucky Rad.</p><div class="button-grid"><button id="confirmLuckyBuyBtn" class="btn green">🪙 KAUFEN & ÖFFNEN</button><button id="cancelLuckyBuyBtn" class="btn dark">ABBRECHEN</button></div></div></div>
+<div id="luckyConfirmOverlay" class="overlay"><div class="dialog"><h2>🎡 LUCKY RAD</h2><p>Ein Dreh kostet <strong>🪙 1000 Coins</strong>.</p><p class="tiny">Nach dem Kauf öffnet sich sofort das Lucky Rad.</p><div class="button-grid"><button id="confirmLuckyBuyBtn" class="btn green">🪙 KAUFEN & ÖFFNEN</button><button id="cancelLuckyBuyBtn" class="btn dark">ABBRECHEN</button></div></div></div>
 <div id="jackpotOverlay" class="jackpotOverlay"><div class="jackpotBox"><div id="prizePopupIcon" class="prizeIcon">🎁</div><div id="prizePopupTitle" class="prizeTitle">DEIN PREIS!</div><div id="prizePopupText" class="prizeText">Preis</div><div id="prizePopupSub" class="prizeSub">Der Preis wurde deinem Konto gutgeschrieben.</div></div></div>
 <div id="seasonRewardOverlay" class="rewardOverlay"><div class="rewardBox"><div style="font-size:72px">🏆</div><h2>SEASON BEENDET!</h2><div id="seasonRewardRank" class="rewardRank">Platz 1</div><div id="seasonRewardCoins" class="rewardCoins">🪙 +1.000</div><p id="seasonRewardText">Deine persönliche Season-Belohnung wartet auf dich.</p><button id="claimSeasonRewardBtn" class="btn green" style="width:100%;margin-top:10px">🎁 BELOHNUNG ABHOLEN</button></div></div>
 <div id="adminOverlay" class="overlay"><div class="dialog" style="width:min(1100px,96vw);max-height:92vh;overflow:auto;text-align:left"><h2 style="font-size:42px;margin-bottom:6px">🛠️ ADMIN</h2><p id="adminStatusText">Bitte mit deinem FLYYYY-Konto anmelden.</p><div id="adminUnlockArea"><input id="adminCodeInput" class="authInput" type="password" autocomplete="off" placeholder="Admin-Aktivierungscode eingeben"><div class="button-grid" style="margin-top:12px"><button id="adminUnlockBtn" class="btn green">🔓 AKTIVIEREN</button><button id="adminCloseBtn" class="btn dark">← SCHLIESSEN</button></div></div><div id="adminPanel" style="display:none;margin-top:18px"><div class="notice">✅ Serverseitige Adminrechte aktiv. Personenbezogene Daten nur für die Administration verwenden.</div><div id="adminTabs" class="tabs"></div><div id="adminUsersTab" class="adminTabSection"><div style="display:grid;grid-template-columns:minmax(180px,1fr) auto;gap:10px;margin:12px 0"><input id="adminUserSearch" class="authInput" placeholder="🔎 E-Mail oder UID suchen"><button id="adminRefreshUsersBtn" class="btn blue">↻ AKTUALISIEREN</button></div><div id="adminUsersStatus" class="leaderStatus">Lade Spieler...</div><div id="adminUsersList" class="leaderboard"></div></div><div id="adminEventsTab" class="adminTabSection"><div class="leaderStatus">Wähle ein Event und starte es für alle Spieler online. Mehrere Events können gleichzeitig aktiv sein!</div><div style="margin:14px 0"><select id="adminEventSelect" class="authInput"></select></div><div class="button-grid" style="margin-bottom:14px"><button id="adminEventStartBtn" class="btn green">▶️ EVENT STARTEN</button><button id="adminEventStopBtn" class="btn red">⏹️ EVENT BEENDEN</button></div><div id="adminEventStatus" class="leaderStatus">Kein Event aktiv.</div><div id="adminActiveEventsList" class="leaderboard" style="margin-top:14px"></div></div><div id="adminRewardsTab" class="adminTabSection"><div class="leaderStatus">Wähle einen Spieler und eine Belohnung.</div><input id="adminRewardPlayerName" class="authInput" placeholder="Spielername (aus Leaderboard)" style="margin:14px 0"><select id="adminRewardType" class="authInput" style="margin-bottom:14px"><option value="coins">🪙 Coins</option><option value="skin">🪽 Skin</option><option value="ability">⚡ Fähigkeit</option><option value="world">🌍 Welt</option><option value="sound">🔊 Sound</option><option value="music">🎵 Musik</option></select><input id="adminRewardAmount" type="number" min="1" max="1000000000" class="authInput" placeholder="Menge (für Coins)" style="margin-bottom:10px"><select id="adminRewardItem" class="authInput" style="margin-bottom:10px"></select><div class="button-grid" style="margin-top:14px"><button id="adminRewardGiveBtn" class="btn green">🎁 GEBEN</button></div><div class="button-grid" style="margin-top:10px"><button id="adminSelfRewardBtn" class="btn blue">💝 AN MICH SELBST GEBEN</button></div><div id="adminRewardStatus" class="leaderStatus" style="margin-top:10px">Bereit.</div></div><div id="adminFreeGiveTab" class="adminTabSection"><div class="leaderStatus">Gib einen Shop-Gegenstand kostenlos an einen Spieler.</div><input id="adminFreeGivePlayerName" class="authInput" placeholder="Spielername (aus Leaderboard)" style="margin:14px 0"><select id="adminFreeGiveCategory" class="authInput" style="margin-bottom:14px"><option value="skins">🪽 Skins</option><option value="worlds">🌍 Welten</option><option value="sounds">🔊 Sounds</option><option value="music">🎵 Musik</option><option value="abilities">⚡ Fähigkeiten</option></select><select id="adminFreeGiveItem" class="authInput" style="margin-bottom:10px"></select><input id="adminFreeGiveAmount" type="number" min="1" max="999" class="authInput" placeholder="Menge" style="margin-bottom:10px"><div class="button-grid" style="margin-top:14px"><button id="adminFreeGiveBtn" class="btn green">🎁 KOSTENLOS GEBEN</button></div><div id="adminFreeGiveStatus" class="leaderStatus" style="margin-top:10px">Bereit.</div></div><div class="button-grid" style="margin-top:14px"><button id="adminMyAccountBtn" class="btn dark">👤 MEIN KONTO</button><button id="adminClosePanelBtn" class="btn dark">🔒 SCHLIESSEN</button></div><div class="broadcastComposer">
@@ -318,9 +318,11 @@ async function loadFirebase(){if(F)return F;const appMod=await import("https://w
 let realOnlineCount=0;
 let simulatedOnlineCount=100;
 let onlineSimulateTimer=null;
-function setOnlineUI(count,connected=true){const n=Math.max(0,Number(count)||0);realOnlineCount=n;onlineDot.classList.toggle("off",!connected);if(!connected){onlineCount.textContent="0";onlineBadge.title="Offline";if(onlineSimulateTimer)clearInterval(onlineSimulateTimer);return}updateSimulatedOnline();if(!onlineSimulateTimer)startOnlineSimulate()}
-function startOnlineSimulate(){if(onlineSimulateTimer)return;onlineSimulateTimer=setInterval(updateSimulatedOnline,4000)}
-function updateSimulatedOnline(){simulatedOnlineCount=Math.max(88,Math.min(112,Math.floor(100+(Math.random()-1)*4)));onlineCount.textContent=simulatedOnlineCount;onlineBadge.title=`${simulatedOnlineCount} Spieler *simuliert* · ${realOnlineCount} echte Verbindung`}
+let onlineStartTs=Date.now();
+function setOnlineUI(count,connected=true){const n=Math.max(0,Number(count)||0);realOnlineCount=n;onlineDot.classList.toggle("off",!connected);updateSimulatedOnline();if(!onlineSimulateTimer)startOnlineSimulate()}
+function startOnlineSimulate(){if(onlineSimulateTimer)return;onlineSimulateTimer=setInterval(updateSimulatedOnline,90000)}
+function getSimulatedBase(){const elapsed=Date.now()-onlineStartTs;const dayProg=Math.min(1,elapsed/(24*60*60*1000));const h=new Date().getHours()+new Date().getMinutes()/60;const dayFactor=h/24;return Math.floor(100+dayFactor*100)}
+function updateSimulatedOnline(){const base=getSimulatedBase();const fluc=Math.floor(Math.random()*5)-2;simulatedOnlineCount=Math.max(85,Math.min(210,base+fluc));onlineCount.textContent=simulatedOnlineCount;onlineBadge.title=`${simulatedOnlineCount} Spieler *simuliert* · ${realOnlineCount} echte Verbindung`}
 function safeName(n){return String(n||"").replace(/[<>]/g,"").replace(/\s+/g," ").trim().slice(0,20)}
 function defaultNameForUser(u){return safeName((u?.email||"Spieler").split("@")[0].replace(/[^a-zA-Z0-9äöüÄÖÜß._-]/g,"").slice(0,20)||"Spieler")}
 function showScreen(id){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));$(id)?.classList.add("active")}
@@ -617,7 +619,8 @@ async function setupFirebase(){
   }catch(e){
     console.error(e);
     setLeaderboardStatus("🔴 Firebase konnte nicht geladen werden. Gastmodus funktioniert trotzdem.");
-    setOnlineUI(0,false);
+     startOnlineSimulate();
+     updateSimulatedOnline();
   }
 }
 
@@ -741,12 +744,12 @@ const ADMIN_EVENTS=[
   {id:"double_reward",name:"🎁 Double Reward",description:"Alle Belohnungen werden verdoppelt",category:"reward"},
   {id:"speed_run",name:"⚡ Speed Run",description:"5 Minuten: Schnellerer Spielstil mit Bonus",category:"special",duration:300},
   {id:"mega_session",name:"🔥 Mega Session",description:"10 Minuten: Alles doppelt sammeln",category:"special",duration:600},
-  {id:"music_event_1",name:"🎵 Event: Future Bass",description:"Tanzige durch die Lüfte mit Future Bass",category:"music",musicFile:"track1.mp3"},
-  {id:"music_event_2",name:"🎵 Event: Dance",description:"Fühle den Beat beim Fliegen",category:"music",musicFile:"track2.mp3"},
-  {id:"music_event_3",name:"🎵 Event: Electro",description:"Energiegeladen auf höchster Höhe",category:"music",musicFile:"track3.mp3"},
-  {id:"music_event_4",name:"🎵 Event: Pop",description:"Pop-Atmosphäre zum Fliegen",category:"music",musicFile:"track4.mp3"},
-  {id:"music_event_5",name:"🎵 Event: Beats",description:"Beat-driven Abenteuer",category:"music",musicFile:"track5.mp3"},
-  {id:"music_event_6",name:"🎵 Event: Intro/Outro",description:"Epos für besondere Momente",category:"music",musicFile:"track6.mp3"}
+  {id:"music_event_1",name:"🎵 Event: Future Bass",description:"Tanz durch die Lüfte",category:"music",musicFile:"sigmamusicart-no-copyright-music-537751.mp3"},
+  {id:"music_event_2",name:"🎵 Event: Dance",description:"Fühle den Beat",category:"music",musicFile:"arpmedia-no-copyright-music-569463.mp3"},
+  {id:"music_event_3",name:"🎵 Event: Electro",description:"Energiegeladen",category:"music",musicFile:"prettyjohn1-no-copyright-music-530633.mp3"},
+  {id:"music_event_4",name:"🎵 Event: Pop",description:"Pop-Atmosphäre",category:"music",musicFile:"apalonbeats-no-copyright-music-549443.mp3"},
+  {id:"music_event_5",name:"🎵 Event: Beats",description:"Beat-driven Abenteuer",category:"music",musicFile:"arpmedia-no-copyright-music-569456.mp3"},
+  {id:"music_event_6",name:"🎵 Event: Sport",description:"Epos für besondere Momente",category:"music",musicFile:"sub_clair-no-copyright-music-sport-564222.mp3"}
 ];
 function pick(a){return a[Math.floor(Math.random()*a.length)]}
 function randomMissions(){
@@ -851,6 +854,8 @@ function stopMusic(){if(musicTimer){clearInterval(musicTimer);musicTimer=null}st
 function jumpSound(type){if(!state.sfxEnabled)return;initAudio();if(!ACtx)return;if(type==="classic")tone(520,.08,.06,"square");else if(type==="arcade"){tone(440,.06,.05,"square");setTimeout(()=>tone(660,.07,.05,"square"),45)}else if(type==="laser"){tone(900,.12,.05,"sawtooth");setTimeout(()=>tone(1400,.09,.03,"sawtooth"),45)}else if(type==="bubble"){tone(300,.08,.04,"sine");setTimeout(()=>tone(650,.12,.04,"sine"),60)}else{tone(220,.13,.05,"sawtooth");setTimeout(()=>tone(520,.08,.05,"square"),65)}}function coinSound(){if(!state.sfxEnabled)return;initAudio();tone(784,.08,.05,"triangle");setTimeout(()=>tone(1046,.12,.05,"triangle"),70)}function scoreSound(){if(state.sfxEnabled){initAudio();tone(760,.04,.03,"triangle")}}function gameOverSound(){if(state.sfxEnabled){initAudio();tone(300,.15,.05,"sawtooth");setTimeout(()=>tone(210,.22,.04,"sawtooth"),130)}}function purchaseSound(){initAudio();tone(523,.08,.04,"triangle");setTimeout(()=>tone(784,.12,.04,"triangle"),70)}function selectedMusic(){return musicTracks.find(x=>x.id===state.selectedMusic)||musicTracks[0]}function startMusic(){if(!state.musicEnabled||eventMusicPlaying)return;initAudio();if(!ACtx)return;if(ACtx.state==="suspended")ACtx.resume();stopLobbyMusic();if(musicTimer)clearInterval(musicTimer);musicTimer=null;musicStep=0;const m=selectedMusic();const tick=()=>{if(!state.musicEnabled||!game.running){if(musicTimer){clearInterval(musicTimer);musicTimer=null}return}tone(m.melody[musicStep%m.melody.length],.28,.024,"triangle");if(musicStep%2===0)tone(m.bass[musicStep%m.bass.length],.4,.011,"sine");musicStep++};tick();musicTimer=setInterval(tick,m.tempo)}function previewMusic(m){initAudio();if(!ACtx)return;stopMusic();let i=0;const t=setInterval(()=>{if(i>=m.melody.length){clearInterval(t);if(game.running&&state.musicEnabled)startMusic();else if(!game.running&&state.musicEnabled)startLobbyMusic();return}tone(m.melody[i++],.28,.03,"triangle")},m.tempo)}
 const eventMusicAudio=document.getElementById("eventMusic");
 let eventMusicPlaying=false;
+let eventMusicPending=false;
+let unlockMusicHandlers=[];
 let eventMusicWasInGame=false;
 let prevLobbyVolume=.55;
 function checkMusicEvent(){
@@ -859,9 +864,9 @@ function checkMusicEvent(){
   else if(!musicEv&&eventMusicPlaying){stopEventMusic()}
 }
 function startEventMusic(musicFile){
-  if(!state.musicEnabled)return;
-  const url="assets/music/"+String(musicFile||"");
+  const url="music/"+String(musicFile||"");
   eventMusicAudio.src=url;
+  eventMusicAudio.load();
   eventMusicAudio.volume=.6;
   eventMusicAudio.loop=true;
   eventMusicWasInGame=game.running;
@@ -871,11 +876,34 @@ function startEventMusic(musicFile){
   }else{
     stopLobbyMusic();
   }
-  eventMusicAudio.play().catch(()=>{});
-  eventMusicPlaying=true;
-  showMessage(`🎵 Event-Musik gestartet: ${musicFile}`);
+  const tryPlay=async()=>{
+    try{
+      await eventMusicAudio.play();
+      eventMusicPlaying=true;
+      eventMusicPending=false;
+      clearUnlockHandlers();
+    }catch(e){
+      eventMusicPending=true;
+      showMessage("👆 Tippen/Klicken, um Event-Musik zu aktivieren");
+      if(unlockMusicHandlers.length===0){
+        const tryUnlock=()=>{
+          if(!eventMusicPending)return;
+          eventMusicPending=false;
+          eventMusicAudio.play().then(()=>{eventMusicPlaying=true;showMessage("🎵 Event-Musik aktiv")}).catch(()=>{});
+          clearUnlockHandlers();
+        };
+        unlockMusicHandlers=[{type:"click",fn:tryUnlock},{type:"touchstart",fn:tryUnlock}];
+        unlockMusicHandlers.forEach(h=>addEventListener(h.type,h.fn,{passive:true}));
+      }
+    }
+  };
+  tryPlay();
+  showMessage(`🎵 Event-Musik: ${musicFile}`);
 }
+function clearUnlockHandlers(){if(unlockMusicHandlers.length){unlockMusicHandlers.forEach(h=>removeEventListener(h.type,h.fn,{passive:true}));unlockMusicHandlers=[]}}
 function stopEventMusic(){
+  eventMusicPending=false;
+  clearUnlockHandlers();
   if(eventMusicAudio){eventMusicAudio.pause();eventMusicAudio.currentTime=0}
   eventMusicPlaying=false;
   setTimeout(()=>{
@@ -1211,7 +1239,7 @@ function drawBackground(){const w=game.world||worlds[0],g=ctx.createLinearGradie
 function drawPyramid(cx,base,w,h){ctx.fillStyle="#d5a05a";ctx.beginPath();ctx.moveTo(cx,base-h);ctx.lineTo(cx-w/2,base);ctx.lineTo(cx+w/2,base);ctx.closePath();ctx.fill()}function drawSpikeRow(x,width,yBase,direction){ctx.fillStyle="rgba(30,20,25,.65)";ctx.beginPath();for(let xp=x;xp<x+width;xp+=SPIKE_STEP){const w=Math.min(SPIKE_STEP,x+width-xp),cx=xp+w/2;ctx.moveTo(xp,yBase);direction===1?(ctx.lineTo(cx,yBase+SPIKE_H),ctx.lineTo(xp+w,yBase)):(ctx.lineTo(cx,yBase-SPIKE_H),ctx.lineTo(xp+w,yBase))}ctx.closePath();ctx.fill()}
 function draw(){drawBackground();for(const o of game.obstacles){const top=o.gapY-o.gapH/2,bottom=o.gapY+o.gapH/2;ctx.fillStyle=game.world?.obstacle||"#8f5a33";ctx.fillRect(o.x,0,o.width,top);ctx.fillRect(o.x,bottom,o.width,H-bottom);drawSpikeRow(o.x,o.width,top,1);drawSpikeRow(o.x,o.width,bottom,-1)}for(const c of game.coins){ctx.save();ctx.shadowColor="#ffd447";ctx.shadowBlur=14;ctx.fillStyle="#ffd447";ctx.beginPath();ctx.arc(c.x,c.y,c.r,0,Math.PI*2);ctx.fill();ctx.restore();ctx.fillStyle="#fff5a6";ctx.font="bold 15px Arial";ctx.textAlign="center";ctx.textBaseline="middle";ctx.fillText("$",c.x,c.y)}const s=skins.find(x=>x.id===state.selectedSkin)||skins[0];ctx.save();ctx.translate(game.player.x,game.player.y);ctx.rotate(game.player.rot);drawSkinRarityAura(ctx,s.rarity||"basic",s.type==="jeszx"?game.player.r*.78:game.player.r);drawSkin(ctx,s.type,0,0,s.type==="jeszx"?game.player.r*.78:game.player.r);ctx.restore()}
 
-const LUCKY_COST=200;
+const LUCKY_COST=1000;
 const luckySegmentColors=["#f4f6fb","#6df5a3","#5ee7ff","#b58cff","#ff6374","#ffd447","#8bd3ff","#ffe58a"];
 let luckyRotation=0,luckySpinning=false,luckyPaid=false,luckyPool=[];
 function makeLuckyPool(){
@@ -1249,14 +1277,14 @@ function makeLuckyPool(){
 luckyPool=makeLuckyPool();
 function openLuckyRad(){luckyConfirmOverlay.classList.add("active")}
 function cancelLuckyBuy(){luckyConfirmOverlay.classList.remove("active")}
-function confirmLuckyBuy(){if(state.coins<LUCKY_COST){showMessage("🪙 Du brauchst 200 Coins.");return}state.coins-=LUCKY_COST;state.luckySpins=Number(state.luckySpins||0)+1;luckyPaid=true;saveState();updateLobby();luckyConfirmOverlay.classList.remove("active");showScreen("shop");renderLuckyRad()}
+function confirmLuckyBuy(){if(state.coins<LUCKY_COST){showMessage("🪙 Du brauchst 1000 Coins.");return}state.coins-=LUCKY_COST;state.luckySpins=Number(state.luckySpins||0)+1;luckyPaid=true;saveState();updateLobby();luckyConfirmOverlay.classList.remove("active");showScreen("shop");renderLuckyRad()}
 function rarityBadge(r){const m=rarityMeta[r]||rarityMeta.basic;return `<span class="rarity-badge ${m.className}">${m.name}</span>`}
 function luckyEntryText(e){if(e.kind==="skin")return `${e.icon} ${e.item.name}`;if(e.kind==="ability")return `${e.icon} ${e.item.name} · ${e.skin.name}`;if(e.kind==="coins")return `🪙 +${e.amount}`;return `${e.icon} ${e.item?.name||e.label}`}
 function renderLuckyPrizeList(){return luckyPool.map((e,i)=>`<div class="luckyPrizeLine"><span class="luckyPrizeDot" style="background:${rarityMeta[e.rarity||"basic"].color}"></span><div><div class="luckyPrizeName">${luckyEntryText(e)}</div><div class="tiny">${e.kind==="ability"?"Fähigkeit für "+e.skin.name:e.kind==="skin"?"Skin":e.kind.toUpperCase()}</div></div><div class="luckyPrizeMeta">${e.kind==="skin"||e.kind==="ability"?rarityMeta[e.rarity].name:"Preis"}</div></div>`).join("")}
 function renderLuckyRad(){
   shopCoins.textContent=state.coins;
   if(!luckyPaid){
-    shopCards.innerHTML=`<div class="luckyWrap"><div class="luckyWheelCard"><div style="font-size:76px">🎡</div><h2 style="margin:8px 0">Lucky Rad</h2><p class="subtitle" style="margin-bottom:16px">Drehe für 200 Coins. Die konkreten Gewinne werden jedes Mal neu gemischt.</p><div class="luckyMainPrize"><strong>🎁 GEWINNE IN DIESEM RAD</strong><div class="luckyOdds">Skins und Fähigkeiten sind <strong>Einzelgewinne</strong>. Neue Inhalte landen nur im Lucky Rad.</div></div><button id="buyLuckyBtn" class="btn green spinBtn" style="margin-top:16px">🪙 FÜR 200 COINS KAUFEN</button></div><div class="luckyInfo"><div class="luckyInfoBox"><h3>🎁 Dieses Rad enthält</h3><div class="luckyPrizeList">${renderLuckyPrizeList()}</div></div><div class="luckyInfoBox"><h3>📊 Raritäten</h3><div class="luckyOdds">⚪ Basic 55 % · 🟢 Rare 25 % · 🔵 Ultra 12 % · 🟣 Epic 5 % · 🔴 Mythic 2,5 % · 🟡 Legendary 0,5 %</div></div></div></div>`;
+    shopCards.innerHTML=`<div class="luckyWrap"><div class="luckyWheelCard"><div style="font-size:76px">🎡</div><h2 style="margin:8px 0">Lucky Rad</h2><p class="subtitle" style="margin-bottom:16px">Drehe für 1000 Coins. Die konkreten Gewinne werden jedes Mal neu gemischt.</p><div class="luckyMainPrize"><strong>🎁 GEWINNE IN DIESEM RAD</strong><div class="luckyOdds">Skins und Fähigkeiten sind <strong>Einzelgewinne</strong>. Neue Inhalte landen nur im Lucky Rad.</div></div><button id="buyLuckyBtn" class="btn green spinBtn" style="margin-top:16px">🪙 FÜR 1000 COINS KAUFEN</button></div><div class="luckyInfo"><div class="luckyInfoBox"><h3>🎁 Dieses Rad enthält</h3><div class="luckyPrizeList">${renderLuckyPrizeList()}</div></div><div class="luckyInfoBox"><h3>📊 Raritäten</h3><div class="luckyOdds">⚪ Basic 55 % · 🟢 Rare 25 % · 🔵 Ultra 12 % · 🟣 Epic 5 % · 🔴 Mythic 2,5 % · 🟡 Legendary 0,5 %</div></div></div></div>`;
     $("buyLuckyBtn").onclick=openLuckyRad;return;
   }
   const labels=luckyPool.map((e,i)=>`<div class="wheelLabel" data-index="${i}">${e.icon} ${e.kind==="coins"?`+${e.amount}`:e.kind==="skin"?e.item.name:e.kind==="ability"?e.item.name:e.item?.name||e.label}</div>`).join("");
@@ -1578,22 +1606,38 @@ async function activateAdmin(){
   if(!code){adminStatusText.textContent="Bitte den Admin-Code eingeben.";return}
 
    // Lokaler Admin-Code (Fallback ohne Firebase-Funktion)
-   if(code===ADMIN_CODE){
-    adminLocal=true;
-    adminUnlocked=true;
-    adminPanel.style.display="block";
-    adminStatusText.textContent="✅ Admin (lokal) aktiviert.";
-    adminCodeInput.value="";
-    showMessage("🛠️ Adminrechte aktiviert (lokal).");
-    renderAdminTabs();
-    showAdminTab("users");
-    populateAdminEventSelect();
-    await adminRefreshEventStatus();
-    populateRewardItemSelect();
-    populateFreeGiveItemSelect();
-    await loadAdminUsers();
-    return;
-  }
+    if(code===ADMIN_CODE){
+     adminLocal=true;
+     adminUnlocked=true;
+      if(!currentUser){
+        try{
+          const {a,d}=await loadFirebase();
+          const cred=await a.signInAnonymously(auth);
+          currentUser=cred.user;
+          await setPresenceOnline();
+          if(eventListenerStop)eventListenerStop();
+          startEventListener();
+    startEventExpiryCheck();
+     startOnlineSimulate();
+     updateSimulatedOnline();
+          if(globalBroadcastStop)globalBroadcastStop();
+          startGlobalBroadcastListener();
+        }catch(e){console.error("anon auth for admin",e)}
+      }
+     adminPanel.style.display="block";
+     adminStatusText.textContent="✅ Admin (lokal) aktiviert.";
+     adminCodeInput.value="";
+     showMessage("🛠️ Adminrechte aktiviert (lokal).");
+     renderAdminTabs();
+     showAdminTab("users");
+     populateAdminEventSelect();
+     await adminRefreshEventStatus();
+     await adminRefreshActiveEventsList();
+     populateRewardItemSelect();
+     populateFreeGiveItemSelect();
+     await loadAdminUsers();
+     return;
+   }
 
   if(!currentUser){adminStatusText.textContent="🔐 Bitte zuerst anmelden.";return}
   adminUnlockBtn.disabled=true;adminStatusText.textContent="🔄 Admin wird serverseitig geprüft...";
@@ -1966,25 +2010,25 @@ $("adminRewardType")?.addEventListener("change",populateRewardItemSelect);$("adm
 $("adminFreeGiveCategory")?.addEventListener("change",populateFreeGiveItemSelect);$("adminFreeGiveBtn")?.addEventListener("click",adminFreeGive);
 
 let globalBroadcastStop=null;
-let lastBroadcastId=null;
+let lastBroadcastId=storage.getItem("FLYYYY_LAST_BROADCAST")||null;
 let broadcastHideTimer=null;
 function showGlobalBroadcast(data){
   const text=String(data?.message||"").trim();
   if(!text)return;
   const id=String(data?.id||data?.createdAt||text);
   if(id===lastBroadcastId)return;
-  lastBroadcastId=id;
+   lastBroadcastId=id;storage.setItem("FLYYYY_LAST_BROADCAST",id);
   const box=$("globalBroadcastOverlay"),body=$("globalBroadcastText"),sender=$("globalBroadcastSender");
   if(!box||!body)return;
-  body.textContent=text;
   let senderName=data?.senderName?String(data.senderName):"";
   if(senderName.indexOf("@")!==-1)senderName=getPlayerName()||"ADMIN";
-  if(sender)sender.textContent=senderName?" "+senderName:"";
+  body.textContent=senderName?senderName+": "+text:text;
+  if(sender)sender.style.display=senderName?"block":"none";
   box.classList.remove("show","hiding");
   void box.offsetWidth;
   box.classList.add("show");
   clearTimeout(broadcastHideTimer);
-  broadcastHideTimer=setTimeout(()=>{box.classList.remove("show");box.classList.add("hiding");setTimeout(()=>{box.classList.remove("hiding");if(sender)sender.textContent=""},400)},7000);
+  broadcastHideTimer=setTimeout(()=>{box.classList.remove("show");box.classList.add("hiding");setTimeout(()=>{box.classList.remove("hiding")},400)},7000);
 }
 async function startGlobalBroadcastListener(){
   try{
@@ -2234,7 +2278,8 @@ canvas.addEventListener("pointerdown",e=>{e.preventDefault();flap()});addEventLi
   try{updateAccountUI();}catch(e){console.error(e)}
   try{updateSeasonUI();}catch(e){console.error(e)}
   try{startSeasonTimer();}catch(e){console.error(e)}
-   try{setupFirebase();}catch(e){console.error("setupFirebase",e)}
+   try{updateSimulatedOnline();startOnlineSimulate();}catch(e){console.error(e)}
+    try{setupFirebase();}catch(e){console.error("setupFirebase",e)}
   if(state.musicEnabled){startLobbyMusic()}
   ["pointerdown","keydown","touchstart"].forEach(ev=>window.addEventListener(ev,()=>{if(!game.running&&state.musicEnabled&&!lobbyMusicStarted)startLobbyMusic()},{once:false,passive:true}));
 })();
