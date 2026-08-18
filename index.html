@@ -20,7 +20,7 @@
 .authBox{padding:16px;border-radius:18px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);margin-bottom:15px}.authInput,.nameInput{width:100%;padding:13px 14px;border:1px solid rgba(255,255,255,.14);border-radius:14px;outline:none;background:rgba(255,255,255,.07);color:#fff}.authGrid,.nameBox{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}.authStatus{margin-top:10px;color:var(--muted);font-size:13px}.leaderStatus{padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);color:var(--muted);margin-bottom:14px}.leaderboard{display:grid;gap:10px}.leaderRow{display:grid;grid-template-columns:55px 1fr auto;align-items:center;gap:12px;padding:14px 16px;border-radius:17px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09)}.leaderRow.me{background:rgba(94,231,255,.08);border-color:rgba(94,231,255,.35)}.leaderRank{text-align:center;font-size:23px;font-weight:1000}.leaderName{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-weight:900}.leaderScore{font-size:20px;font-weight:1000}.leaderMeta{text-align:right;min-width:120px}.leaderWins{font-size:13px;color:var(--muted);font-weight:800;margin-top:2px}.onlineMini{font-size:12px;font-weight:900;margin-top:4px}.onlineMini.online{color:var(--green)}.onlineMini.offline{color:#8790ad}
 .missionList{display:grid;gap:10px}.mission{padding:14px;border-radius:16px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1)}.mission.done{background:rgba(109,245,163,.1);border-color:rgba(109,245,163,.25)}.missionTop{display:flex;justify-content:space-between;gap:10px}.missionProgress{height:8px;margin-top:9px;overflow:hidden;border-radius:999px;background:rgba(255,255,255,.08)}.missionFill{height:100%;background:linear-gradient(90deg,#5ee7ff,#6df5a3)}
 #onlineBadge{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:5000;display:flex;align-items:center;gap:8px;padding:9px 13px;border-radius:999px;background:rgba(8,15,34,.9);border:1px solid rgba(109,245,163,.35);box-shadow:0 10px 30px rgba(0,0,0,.3);font-weight:900;backdrop-filter:blur(8px);white-space:nowrap}#onlineDot{width:10px;height:10px;border-radius:50%;background:#42e879;box-shadow:0 0 12px rgba(66,232,121,.8)}#onlineDot.off{background:#ff6374;box-shadow:0 0 12px rgba(255,99,116,.5)}
-#gameHud{position:absolute;inset:0;z-index:30;display:none;pointer-events:none}.hud-left,.hud-right{position:absolute;top:15px;display:flex;flex-wrap:wrap;align-items:center;gap:10px}.comboHud{border-color:rgba(255,212,71,.45);background:linear-gradient(180deg,rgba(76,54,8,.88),rgba(24,20,8,.78));transition:transform .12s,box-shadow .12s;color:#fff}.comboHud.hot{box-shadow:0 0 24px rgba(255,212,71,.28)}.comboHud.mega{border-color:rgba(255,99,116,.6);background:linear-gradient(180deg,rgba(92,20,31,.9),rgba(30,11,17,.82));box-shadow:0 0 28px rgba(255,99,116,.28);animation:comboPulse .8s ease-in-out infinite alternate}@keyframes comboPulse{from{transform:scale(1)}to{transform:scale(1.05)}}.hud-left{left:15px;right:180px;justify-content:flex-start}.hud-right{right:15px;max-width:150px;justify-content:flex-end}.hud-pill{padding:10px 14px;white-space:nowrap;border-radius:999px;background:rgba(12,19,46,.72);border:1px solid rgba(255,255,255,.15);font-weight:900;backdrop-filter:blur(8px)}.pause-btn{pointer-events:auto;padding:10px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.15);color:#fff;background:rgba(12,19,46,.72);font-weight:900}.tip{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);padding:9px 14px;border-radius:999px;background:rgba(12,19,46,.6);font-size:13px}
+#gameHud{position:absolute;inset:0;z-index:30;display:none;pointer-events:none}.hud-left,.hud-right{position:absolute;top:15px;display:flex;flex-wrap:wrap;align-items:center;gap:10px}.comboHud{border-color:rgba(255,212,71,.45);background:linear-gradient(180deg,rgba(76,54,8,.88),rgba(24,20,8,.78));transition:transform .12s,box-shadow .12s;color:#fff}.comboHud.hot{box-shadow:0 0 24px rgba(255,212,71,.28)}.comboHud.mega{border-color:rgba(255,99,116,.6);background:linear-gradient(180deg,rgba(92,20,31,.9),rgba(30,11,17,.82));box-shadow:0 0 28px rgba(255,99,116,.28);animation:comboPulse .8s ease-in-out infinite alternate}@keyframes comboPulse{from{transform:scale(1)}to{transform:scale(1.05)}}.hud-left{left:15px;right:180px;justify-content:flex-start}.hud-right{right:15px;max-width:150px;justify-content:flex-end}.hud-pill{padding:10px 14px;white-space:nowrap;border-radius:999px;background:rgba(12,19,46,.72);border:1px solid rgba(255,255,255,.15);font-weight:900;backdrop-filter:blur(8px)}#eventBadge{position:absolute;left:50%;top:15px;transform:translateX(-50%);z-index:31;border:1px solid rgba(255,79,216,.35);background:linear-gradient(135deg,rgba(255,79,134,.85),rgba(255,212,71,.85));color:#fff;font-size:13px;padding:8px 14px;box-shadow:0 0 20px rgba(255,99,116,.4),0 0 30px rgba(255,212,71,.2);animation:eventPulse 1.5s ease-in-out infinite alternate}@keyframes eventPulse{from{box-shadow:0 0 20px rgba(255,99,116,.4),0 0 30px rgba(255,212,71,.2)}to{box-shadow:0 0 30px rgba(255,99,116,.6),0 0 40px rgba(255,212,71,.4)}}.pause-btn{pointer-events:auto;padding:10px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.15);color:#fff;background:rgba(12,19,46,.72);font-weight:900}.tip{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);padding:9px 14px;border-radius:999px;background:rgba(12,19,46,.6);font-size:13px}
 .overlay{position:absolute;inset:0;z-index:100;display:none;align-items:center;justify-content:center;background:rgba(5,8,22,.55);backdrop-filter:blur(6px)}.overlay.active{display:flex}.dialog{width:min(560px,92vw);padding:28px;text-align:center;border-radius:28px;background:linear-gradient(180deg,#101837,#18234d);border:1px solid rgba(255,255,255,.15);box-shadow:0 20px 60px rgba(0,0,0,.45)}.dialog h2{margin:0 0 10px;font-size:clamp(40px,8vw,70px)}.dialog p{color:var(--muted)}.stats{display:flex;justify-content:center;flex-wrap:wrap;gap:25px;margin:20px 0}.stat strong{display:block;font-size:28px}.notice{padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);color:var(--muted);font-size:13px;margin-top:12px}
 .seasonPanel{margin:14px 0 18px;padding:16px;border-radius:20px;background:linear-gradient(135deg,rgba(94,231,255,.10),rgba(109,245,163,.08));border:1px solid rgba(94,231,255,.20)}.seasonTop{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.seasonTitle{font-size:20px;font-weight:1000}.seasonTimer{font-weight:1000;color:#6df5a3}.seasonSub{color:var(--muted);font-size:13px;margin-top:7px}.onlineNote{font-size:12px;color:var(--muted);margin-top:8px}
 .rewardOverlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;background:rgba(4,8,20,.72);backdrop-filter:blur(8px)}.rewardOverlay.active{display:flex}.rewardBox{width:min(560px,92vw);padding:30px;text-align:center;border-radius:30px;background:linear-gradient(180deg,#132042,#19295b);border:1px solid rgba(255,255,255,.16);box-shadow:0 30px 90px rgba(0,0,0,.55)}.rewardBox h2{margin:0;font-size:clamp(34px,8vw,62px)}.rewardRank{font-size:28px;font-weight:1000;margin:10px 0}.rewardCoins{font-size:40px;font-weight:1000;color:#ffd447;margin:12px 0}.rewardBox p{color:var(--muted)}
@@ -170,8 +170,9 @@ body:before{content:"";position:fixed;inset:-30%;z-index:-1;pointer-events:none;
 .rarity-badge{filter:drop-shadow(0 0 7px currentColor)}
 .newBadge,.tabNew{background:linear-gradient(90deg,#ff4f86,#ff9b3d,#ffe45e)!important;box-shadow:0 0 15px rgba(255,79,134,.35)}
 #adminOverlay .menu,#adminOverlay .modal,.adminPanel{box-shadow:0 0 35px rgba(183,108,255,.18),0 0 70px rgba(69,232,255,.08)}
+.adminTabSection{display:none}.adminTabSection.active{display:block}
+#adminOverlay .tabs{margin-top:14px}
 .broadcastComposer{background:linear-gradient(135deg,rgba(255,79,216,.08),rgba(69,232,255,.08));border-color:rgba(255,255,255,.15)!important}
-#globalBroadcastOverlay{background:linear-gradient(90deg,rgba(255,79,216,.96),rgba(183,108,255,.96),rgba(69,232,255,.96))!important;box-shadow:0 0 35px rgba(183,108,255,.45)!important}
 @media(max-width:650px){.menu{padding:18px;border-radius:22px}.title{font-size:clamp(48px,16vw,82px)}}
 </style>
 
@@ -231,8 +232,15 @@ html,body{background:#070b18!important;color:#fff!important}
 .rewardCoins{color:#ffd447!important;text-shadow:0 0 16px rgba(255,212,71,.35)!important}
 .broadcastComposer{background:linear-gradient(135deg,rgba(94,231,255,.08),rgba(255,79,216,.08))!important;border-color:rgba(255,255,255,.15)!important;box-shadow:0 0 25px rgba(94,231,255,.06)!important}
 .broadcastSend{background:linear-gradient(135deg,#ff55db,#8f5cff)!important;color:#fff!important;border-color:#ff9fea!important;box-shadow:0 0 24px rgba(255,79,216,.32)!important}
-.broadcastOverlay{background:linear-gradient(135deg,rgba(14,25,55,.98),rgba(40,10,45,.98))!important;border-color:rgba(255,79,216,.5)!important;box-shadow:0 16px 60px rgba(0,0,0,.5),0 0 35px rgba(255,79,216,.2),0 0 55px rgba(94,231,255,.12)!important}
-.broadcastHeader{color:#7cf2ff!important;text-shadow:0 0 12px rgba(94,231,255,.35)}
+.broadcastOverlay{position:fixed;top:24px;left:50%;transform:translateX(-50%);z-index:9999;pointer-events:none;opacity:0;transition:opacity .4s ease-in-out,transform .4s ease-in-out}
+.broadcastOverlay.show{opacity:1;pointer-events:none;transform:translateX(-50%) scale(1)}
+.broadcastOverlay.hiding{opacity:0;transform:translateX(-50%) scale(.96)}
+.broadcastOverlay .broadcastHeader{display:none}
+.broadcastOverlay .broadcastBody{font-size:clamp(22px,6vw,36px);font-weight:800;text-align:center;color:#fff;padding:14px 32px;border-radius:18px;background:linear-gradient(90deg,rgba(255,79,216,.92),rgba(69,232,255,.92));box-shadow:0 0 20px rgba(255,79,216,.45),0 0 30px rgba(69,232,255,.35);white-space:nowrap;animation:broadcastSlideIn .5s ease-out}
+.broadcastOverlay .broadcastSender{color:#ffe066;font-size:14px;font-weight:700;margin-top:5px;display:block;text-shadow:0 0 8px rgba(255,224,102,.4)}
+@keyframes broadcastPulse{from{filter:brightness(1)}to{filter:brightness(1.08) drop-shadow(0 0 20px rgba(255,79,216,.4)) drop-shadow(0 0 30px rgba(69,232,255,.3)}}
+@keyframes broadcastSlideIn{from{opacity:0;transform:translateY(-20px) scale(.9)}to{opacity:1;transform:translateY(0) scale(1)}}
+.broadcastOverlay .broadcastBody{animation:broadcastSlideIn .5s ease-out,broadcastPulse 1s ease-in-out .5s infinite alternate}
 .tip{box-shadow:0 0 18px rgba(94,231,255,.08)}
 /* Remove the temporary monochrome line-icon layer. Emojis remain visible. */
 [data-icon]::before{display:none!important}
@@ -240,7 +248,8 @@ html,body{background:#070b18!important;color:#fff!important}
 </style>
 </head>
 <body>
-<div id="app"><div id="globalBroadcastOverlay" class="broadcastOverlay" aria-live="polite"><div class="broadcastHeader"><span>📢 GLOBAL BROADCAST</span><span id="globalBroadcastTime"></span></div><div id="globalBroadcastText" class="broadcastBody"></div></div><div id="appErrorNotice" style="display:none;position:fixed;left:50%;top:10px;transform:translateX(-50%);z-index:100000;padding:10px 14px;border-radius:12px;background:#2a1730;border:1px solid #ff6374;color:#fff;font-weight:900">⚠️ Ein Spielfehler ist aufgetreten. Bitte Seite neu laden.</div>
+<div id="globalBroadcastOverlay" class="broadcastOverlay" aria-live="polite"><div class="broadcastHeader"><span>📢 GLOBAL BROADCAST</span><span id="globalBroadcastTime"></span></div><div id="globalBroadcastText" class="broadcastBody"></div><div id="globalBroadcastSender" class="broadcastSender"></div></div>
+<div id="app"><div id="appErrorNotice" style="display:none;position:fixed;left:50%;top:10px;transform:translateX(-50%);z-index:100000;padding:10px 14px;border-radius:12px;background:#2a1730;border:1px solid #ff6374;color:#fff;font-weight:900">⚠️ Ein Spielfehler ist aufgetreten. Bitte Seite neu laden.</div>
 <div id="onlineBadge"><span id="onlineDot"></span><span>🟢 <b id="onlineCount">0</b> Online</span></div>
 <canvas id="gameCanvas"></canvas>
 
@@ -254,14 +263,14 @@ html,body{background:#070b18!important;color:#fff!important}
 <div id="inventory" class="screen"><div class="menu"><div class="topbar"><div><h2>🎒 Inventar</h2><div class="tiny">Deine gekauften Gegenstände.</div></div><button id="inventoryBack" class="btn dark">← Zurück</button></div><div id="inventoryTabs" class="tabs"></div><div id="inventoryCards" class="cards"></div></div></div>
 <div id="missions" class="screen"><div class="menu"><div class="topbar"><div><h2>🎯 Missionen</h2><div class="tiny">Schließe Aufgaben ab und verdiene Coins.</div></div><button id="missionsBack" class="btn dark">← Zurück</button></div><div id="missionList" class="missionList"></div></div></div>
 
-<div id="gameHud"><div id="creatorTag">@FlyyyyGame</div><div class="hud-left"><div class="hud-pill">⭐ <span id="scoreHud">0</span></div><div class="hud-pill comboHud" id="comboHud">🔥 Combo <span id="comboCountHud">0</span> · x<span id="comboMultHud">1</span></div><div class="hud-pill">🪙 <span id="coinsHud">0</span></div><div class="hud-pill">🪽 Jumps: <span id="jumpHud">0</span></div></div><div class="hud-right"><div class="hud-pill">🌐 Season <span id="seasonHud">1</span></div><div class="hud-pill">🌍 <span id="worldHud">Gizeh</span></div><div class="hud-pill">🎵 <span id="musicHud">Classic</span></div><button id="abilityBtn" class="abilityHudBtn" disabled>⚡ Keine Fähigkeit</button><button id="pauseBtn" class="pause-btn">Ⅱ Pause</button></div><div class="tip">Klicken / Tippen / Leertaste = Fliegen · T = Fähigkeit</div></div>
+<div id="gameHud"><div id="creatorTag">@FlyyyyGame</div><div id="eventBadge" class="hud-pill" style="display:none"></div><div class="hud-left"><div class="hud-pill">⭐ <span id="scoreHud">0</span></div><div class="hud-pill comboHud" id="comboHud">🔥 Combo <span id="comboCountHud">0</span> · x<span id="comboMultHud">1</span></div><div class="hud-pill">🪙 <span id="coinsHud">0</span></div><div class="hud-pill">🪽 Jumps: <span id="jumpHud">0</span></div></div><div class="hud-right"><div class="hud-pill">🌐 Season <span id="seasonHud">1</span></div><div class="hud-pill">🌍 <span id="worldHud">Gizeh</span></div><div class="hud-pill">🎵 <span id="musicHud">Classic</span></div><button id="abilityBtn" class="abilityHudBtn" disabled>⚡ Keine Fähigkeit</button><button id="pauseBtn" class="pause-btn">Ⅱ Pause</button></div><div class="tip">Klicken / Tippen / Leertaste = Fliegen · T = Fähigkeit</div></div>
 
 <div id="pauseOverlay" class="overlay"><div class="dialog"><h2>PAUSE</h2><p>Dein Lauf wurde angehalten.</p><div class="button-grid"><button id="resumeBtn" class="btn">▶ WEITER</button><button id="pauseLobbyBtn" class="btn dark">🏠 ZUR LOBBY</button></div></div></div>
 <div id="gameOverOverlay" class="overlay"><div class="dialog"><h2>GAME OVER</h2><p id="gameOverText">Gut geflogen!</p><div class="stats"><div class="stat"><div class="tiny">Punkte</div><strong id="finalScore">0</strong></div><div class="stat"><div class="tiny">Coins</div><strong id="earnedCoins">0</strong></div><div class="stat"><div class="tiny">Rekord</div><strong id="bestScore">0</strong></div></div><div class="button-grid"><button id="retryBtn" class="btn green">🔄 NOCHMAL</button><button id="returnLobbyBtn" class="btn blue">🏠 ZUR LOBBY</button></div></div></div>
 <div id="luckyConfirmOverlay" class="overlay"><div class="dialog"><h2>🎡 LUCKY RAD</h2><p>Ein Dreh kostet <strong>🪙 200 Coins</strong>.</p><p class="tiny">Nach dem Kauf öffnet sich sofort das Lucky Rad.</p><div class="button-grid"><button id="confirmLuckyBuyBtn" class="btn green">🪙 KAUFEN & ÖFFNEN</button><button id="cancelLuckyBuyBtn" class="btn dark">ABBRECHEN</button></div></div></div>
 <div id="jackpotOverlay" class="jackpotOverlay"><div class="jackpotBox"><div id="prizePopupIcon" class="prizeIcon">🎁</div><div id="prizePopupTitle" class="prizeTitle">DEIN PREIS!</div><div id="prizePopupText" class="prizeText">Preis</div><div id="prizePopupSub" class="prizeSub">Der Preis wurde deinem Konto gutgeschrieben.</div></div></div>
 <div id="seasonRewardOverlay" class="rewardOverlay"><div class="rewardBox"><div style="font-size:72px">🏆</div><h2>SEASON BEENDET!</h2><div id="seasonRewardRank" class="rewardRank">Platz 1</div><div id="seasonRewardCoins" class="rewardCoins">🪙 +1.000</div><p id="seasonRewardText">Deine persönliche Season-Belohnung wartet auf dich.</p><button id="claimSeasonRewardBtn" class="btn green" style="width:100%;margin-top:10px">🎁 BELOHNUNG ABHOLEN</button></div></div>
-<div id="adminOverlay" class="overlay"><div class="dialog" style="width:min(1100px,96vw);max-height:92vh;overflow:auto;text-align:left"><h2 style="font-size:42px;margin-bottom:6px">🛠️ ADMIN</h2><p id="adminStatusText">Bitte mit deinem FLYYYY-Konto anmelden.</p><div id="adminUnlockArea"><input id="adminCodeInput" class="authInput" type="password" autocomplete="off" placeholder="Admin-Aktivierungscode eingeben"><div class="button-grid" style="margin-top:12px"><button id="adminUnlockBtn" class="btn green">🔓 AKTIVIEREN</button><button id="adminCloseBtn" class="btn dark">← SCHLIESSEN</button></div></div><div id="adminPanel" style="display:none;margin-top:18px"><div class="notice">✅ Serverseitige Adminrechte aktiv. Personenbezogene Daten nur für die Administration verwenden.</div><div style="display:grid;grid-template-columns:minmax(180px,1fr) auto;gap:10px;margin:12px 0"><input id="adminUserSearch" class="authInput" placeholder="🔎 E-Mail oder UID suchen"><button id="adminRefreshUsersBtn" class="btn blue">↻ AKTUALISIEREN</button></div><div id="adminUsersStatus" class="leaderStatus">Lade Spieler...</div><div id="adminUsersList" class="leaderboard"></div><div class="button-grid" style="margin-top:14px"><button id="adminMyAccountBtn" class="btn dark">👤 MEIN KONTO</button><button id="adminClosePanelBtn" class="btn dark">🔒 SCHLIESSEN</button></div><div class="broadcastComposer">
+<div id="adminOverlay" class="overlay"><div class="dialog" style="width:min(1100px,96vw);max-height:92vh;overflow:auto;text-align:left"><h2 style="font-size:42px;margin-bottom:6px">🛠️ ADMIN</h2><p id="adminStatusText">Bitte mit deinem FLYYYY-Konto anmelden.</p><div id="adminUnlockArea"><input id="adminCodeInput" class="authInput" type="password" autocomplete="off" placeholder="Admin-Aktivierungscode eingeben"><div class="button-grid" style="margin-top:12px"><button id="adminUnlockBtn" class="btn green">🔓 AKTIVIEREN</button><button id="adminCloseBtn" class="btn dark">← SCHLIESSEN</button></div></div><div id="adminPanel" style="display:none;margin-top:18px"><div class="notice">✅ Serverseitige Adminrechte aktiv. Personenbezogene Daten nur für die Administration verwenden.</div><div id="adminTabs" class="tabs"></div><div id="adminUsersTab" class="adminTabSection"><div style="display:grid;grid-template-columns:minmax(180px,1fr) auto;gap:10px;margin:12px 0"><input id="adminUserSearch" class="authInput" placeholder="🔎 E-Mail oder UID suchen"><button id="adminRefreshUsersBtn" class="btn blue">↻ AKTUALISIEREN</button></div><div id="adminUsersStatus" class="leaderStatus">Lade Spieler...</div><div id="adminUsersList" class="leaderboard"></div></div><div id="adminEventsTab" class="adminTabSection"><div class="leaderStatus">Wähle ein Event und starte es für alle Spieler online. Mehrere Events können gleichzeitig aktiv sein!</div><div style="margin:14px 0"><select id="adminEventSelect" class="authInput"></select></div><div class="button-grid" style="margin-bottom:14px"><button id="adminEventStartBtn" class="btn green">▶️ EVENT STARTEN</button><button id="adminEventStopBtn" class="btn red">⏹️ EVENT BEENDEN</button></div><div id="adminEventStatus" class="leaderStatus">Kein Event aktiv.</div><div id="adminActiveEventsList" class="leaderboard" style="margin-top:14px"></div></div><div id="adminRewardsTab" class="adminTabSection"><div class="leaderStatus">Wähle einen Spieler und eine Belohnung.</div><input id="adminRewardPlayerName" class="authInput" placeholder="Spielername (aus Leaderboard)" style="margin:14px 0"><select id="adminRewardType" class="authInput" style="margin-bottom:14px"><option value="coins">🪙 Coins</option><option value="skin">🪽 Skin</option><option value="ability">⚡ Fähigkeit</option><option value="world">🌍 Welt</option><option value="sound">🔊 Sound</option><option value="music">🎵 Musik</option></select><input id="adminRewardAmount" type="number" min="1" max="1000000000" class="authInput" placeholder="Menge (für Coins)" style="margin-bottom:10px"><select id="adminRewardItem" class="authInput" style="margin-bottom:10px"></select><div class="button-grid" style="margin-top:14px"><button id="adminRewardGiveBtn" class="btn green">🎁 GEBEN</button></div><div class="button-grid" style="margin-top:10px"><button id="adminSelfRewardBtn" class="btn blue">💝 AN MICH SELBST GEBEN</button></div><div id="adminRewardStatus" class="leaderStatus" style="margin-top:10px">Bereit.</div></div><div id="adminFreeGiveTab" class="adminTabSection"><div class="leaderStatus">Gib einen Shop-Gegenstand kostenlos an einen Spieler.</div><input id="adminFreeGivePlayerName" class="authInput" placeholder="Spielername (aus Leaderboard)" style="margin:14px 0"><select id="adminFreeGiveCategory" class="authInput" style="margin-bottom:14px"><option value="skins">🪽 Skins</option><option value="worlds">🌍 Welten</option><option value="sounds">🔊 Sounds</option><option value="music">🎵 Musik</option><option value="abilities">⚡ Fähigkeiten</option></select><select id="adminFreeGiveItem" class="authInput" style="margin-bottom:10px"></select><input id="adminFreeGiveAmount" type="number" min="1" max="999" class="authInput" placeholder="Menge" style="margin-bottom:10px"><div class="button-grid" style="margin-top:14px"><button id="adminFreeGiveBtn" class="btn green">🎁 KOSTENLOS GEBEN</button></div><div id="adminFreeGiveStatus" class="leaderStatus" style="margin-top:10px">Bereit.</div></div><div class="button-grid" style="margin-top:14px"><button id="adminMyAccountBtn" class="btn dark">👤 MEIN KONTO</button><button id="adminClosePanelBtn" class="btn dark">🔒 SCHLIESSEN</button></div><div class="broadcastComposer">
 <h3>📢 Global Broadcast</h3>
 <p>Nachricht hier eingeben. Sie wird über Firebase an alle aktiven Spieler verteilt.</p>
 <div class="broadcastGrid"><textarea id="adminBroadcastInput" class="broadcastInput" maxlength="240" placeholder="Nachricht für alle Spieler …"></textarea><button id="adminBroadcastSendBtn" class="btn broadcastSend">📢 BROADCAST SENDEN</button></div>
@@ -277,6 +286,7 @@ html,body{background:#070b18!important;color:#fff!important}
 <audio id="lobbyMusic2" preload="auto" loop>
   <source src="music/Credits 2.mp3" type="audio/mpeg">
 </audio>
+<audio id="eventMusic" preload="auto" loop></audio>
 
 <script type="module">
 window.addEventListener("error",e=>{
@@ -299,13 +309,18 @@ const seasonNumberLobby=$("seasonNumberLobby"),seasonTimerLobby=$("seasonTimerLo
 const seasonRewardOverlay=$("seasonRewardOverlay"),seasonRewardRank=$("seasonRewardRank"),seasonRewardCoins=$("seasonRewardCoins"),seasonRewardText=$("seasonRewardText"),claimSeasonRewardBtn=$("claimSeasonRewardBtn");
 const shop=$("shop"),shopBack=$("shopBack"),shopTabs=$("shopTabs"),shopCards=$("shopCards"),shopCoins=$("shopCoins"),inventory=$("inventory"),inventoryBack=$("inventoryBack"),inventoryTabs=$("inventoryTabs"),inventoryCards=$("inventoryCards"),missionsScreen=$("missions"),missionsBack=$("missionsBack"),missionList=$("missionList");
 const luckyConfirmOverlay=$("luckyConfirmOverlay"),confirmLuckyBuyBtn=$("confirmLuckyBuyBtn"),cancelLuckyBuyBtn=$("cancelLuckyBuyBtn"),jackpotOverlay=$("jackpotOverlay"),prizePopupIcon=$("prizePopupIcon"),prizePopupTitle=$("prizePopupTitle"),prizePopupText=$("prizePopupText"),prizePopupSub=$("prizePopupSub");
-const abilityBtn=$("abilityBtn"),gameHud=$("gameHud"),scoreHud=$("scoreHud"),coinsHud=$("coinsHud"),jumpHud=$("jumpHud"),worldHud=$("worldHud"),seasonHud=$("seasonHud"),musicHud=$("musicHud"),comboHud=$("comboHud"),comboCountHud=$("comboCountHud"),comboMultHud=$("comboMultHud"),pauseBtn=$("pauseBtn"),pauseOverlay=$("pauseOverlay"),resumeBtn=$("resumeBtn"),pauseLobbyBtn=$("pauseLobbyBtn"),gameOverOverlay=$("gameOverOverlay"),gameOverText=$("gameOverText"),finalScore=$("finalScore"),earnedCoins=$("earnedCoins"),bestScore=$("bestScore"),retryBtn=$("retryBtn"),returnLobbyBtn=$("returnLobbyBtn"),onlineBadge=$("onlineBadge"),onlineCount=$("onlineCount"),onlineDot=$("onlineDot");
+const abilityBtn=$("abilityBtn"),gameHud=$("gameHud"),eventBadge=$("eventBadge"),scoreHud=$("scoreHud"),coinsHud=$("coinsHud"),jumpHud=$("jumpHud"),worldHud=$("worldHud"),seasonHud=$("seasonHud"),musicHud=$("musicHud"),comboHud=$("comboHud"),comboCountHud=$("comboCountHud"),comboMultHud=$("comboMultHud"),pauseBtn=$("pauseBtn"),pauseOverlay=$("pauseOverlay"),resumeBtn=$("resumeBtn"),pauseLobbyBtn=$("pauseLobbyBtn"),gameOverOverlay=$("gameOverOverlay"),gameOverText=$("gameOverText"),finalScore=$("finalScore"),earnedCoins=$("earnedCoins"),bestScore=$("bestScore"),retryBtn=$("retryBtn"),returnLobbyBtn=$("returnLobbyBtn"),onlineBadge=$("onlineBadge"),onlineCount=$("onlineCount"),onlineDot=$("onlineDot");
 
 const APP_VERSION="2.9.2";storage.setItem("FLYYYY_APP_VERSION",APP_VERSION);
 const firebaseConfig={apiKey:"AIzaSyA0ppKuSgxKKgHEMkX9kUlVhm8pjkVxgXk",authDomain:"flyyyy.firebaseapp.com",databaseURL:"https://flyyyy-default-rtdb.firebaseio.com",projectId:"flyyyy",storageBucket:"flyyyy.firebasestorage.app",messagingSenderId:"872479897522",appId:"1:872479897522:web:3c87b8afdebfc66d01d6ab",measurementId:"G-S8YE4S6L8L"};
 let F=null,firebaseApp=null,auth=null,db=null,currentUser=null,leaderboardStop=null,presenceStop=null,seasonLeaderboardStop=null;
 async function loadFirebase(){if(F)return F;const appMod=await import("https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js"),authMod=await import("https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js"),dbMod=await import("https://www.gstatic.com/firebasejs/12.16.0/firebase-database.js");return F={app:appMod,a:authMod,d:dbMod}};
-function setOnlineUI(count,connected=true){const n=Math.max(0,Number(count)||0);onlineCount.textContent=n;onlineDot.classList.toggle("off",!connected);onlineBadge.title=connected?`${n} Spieler sind online`:"Online-Status nicht verfügbar"}
+let realOnlineCount=0;
+let simulatedOnlineCount=100;
+let onlineSimulateTimer=null;
+function setOnlineUI(count,connected=true){const n=Math.max(0,Number(count)||0);realOnlineCount=n;onlineDot.classList.toggle("off",!connected);if(!connected){onlineCount.textContent="0";onlineBadge.title="Offline";if(onlineSimulateTimer)clearInterval(onlineSimulateTimer);return}updateSimulatedOnline();if(!onlineSimulateTimer)startOnlineSimulate()}
+function startOnlineSimulate(){if(onlineSimulateTimer)return;onlineSimulateTimer=setInterval(updateSimulatedOnline,4000)}
+function updateSimulatedOnline(){simulatedOnlineCount=Math.max(88,Math.min(112,Math.floor(100+(Math.random()-1)*4)));onlineCount.textContent=simulatedOnlineCount;onlineBadge.title=`${simulatedOnlineCount} Spieler *simuliert* · ${realOnlineCount} echte Verbindung`}
 function safeName(n){return String(n||"").replace(/[<>]/g,"").replace(/\s+/g," ").trim().slice(0,20)}
 function defaultNameForUser(u){return safeName((u?.email||"Spieler").split("@")[0].replace(/[^a-zA-Z0-9äöüÄÖÜß._-]/g,"").slice(0,20)||"Spieler")}
 function showScreen(id){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));$(id)?.classList.add("active")}
@@ -330,7 +345,7 @@ let allTimeLeaderboardCache=[],seasonLeaderboardCache=[],onlineCache=new Set(),l
 function rewardForRank(rank){if(rank===1)return 1000;if(rank===2)return 500;if(rank===3)return 300;if(rank>=4&&rank<=10)return 100;if(rank>=11&&rank<=25)return 50;return 0}
 function formatSeasonTime(ms){const safe=Math.max(0,Number(ms)||0),total=Math.floor(safe/1000),d=Math.floor(total/86400),h=Math.floor((total%86400)/3600),m=Math.floor((total%3600)/60),s=total%60;return `${d}T ${String(h).padStart(2,"0")}Std ${String(m).padStart(2,"0")}Min ${String(s).padStart(2,"0")}Sek`}
 function updateSeasonUI(){const left=Math.max(0,Number(seasonInfo.endsAt||0)-Date.now());const txt=formatSeasonTime(left);seasonNumberLobby.textContent=seasonInfo.id;seasonNumberBoard.textContent=seasonInfo.id;seasonTimerLobby.textContent=`⏱️ ${txt}`;seasonTimerBoard.textContent=`⏱️ ${txt}`;if(seasonHud)seasonHud.textContent=seasonInfo.id}
-function startSeasonTimer(){clearInterval(seasonInterval);seasonInterval=setInterval(updateSeasonUI,1000);updateSeasonUI()}
+function startSeasonTimer(){clearInterval(seasonInterval);seasonInterval=setInterval(updateSeasonUI,1000);updateSeasonUI();updateEventHUD()}
 
 async function ensureSeason(forceCheck=false){
   try{
@@ -474,7 +489,7 @@ async function savePlayerName(){const n=safeName(playerName.value);if(!n){showMe
 
 async function loadPlayerStateCloud(){if(!currentUser||!db)return;try{const {d}=await loadFirebase();const snap=await d.get(d.ref(db,"playerStates/"+currentUser.uid));if(snap.exists()){const c=snap.val()||{},b=defaultState();state={...b,...c,ownedWorlds:Array.isArray(c.ownedWorlds)?c.ownedWorlds:b.ownedWorlds,ownedSkins:Array.isArray(c.ownedSkins)?c.ownedSkins:b.ownedSkins,ownedSounds:Array.isArray(c.ownedSounds)?c.ownedSounds:b.ownedSounds,ownedMusic:Array.isArray(c.ownedMusic)?c.ownedMusic:b.ownedMusic,missionProgress:{...b.missionProgress,...(c.missionProgress||{})},missionClaimed:{...b.missionClaimed,...(c.missionClaimed||{})},shopNewSeen:(c.shopNewSeen&&typeof c.shopNewSeen==="object")?c.shopNewSeen:{}};saveStateLocalOnly();updateLobby();renderShop();renderInventory();renderMissions()}}catch(e){console.error(e)}}
 async function savePlayerStateCloud(){if(!currentUser||!db)return;try{const {d}=await loadFirebase();await d.set(d.ref(db,"playerStates/"+currentUser.uid),JSON.parse(JSON.stringify(state)))}catch(e){console.error(e)}}
-async function grantFlyOwnerCoins(){if(!currentUser||!db)return;try{const raw=(getPlayerName()||((currentUser.email||"").split("@")[0]||"")).trim();const normalized=raw.toLowerCase().replace(/[^a-z0-9]/g,"");if(normalized!=="flyyyyowner")return;const {d}=await loadFirebase(),ref=d.ref(db,"playerStates/"+currentUser.uid),snap=await d.get(ref),cloud=snap.exists()?snap.val():{};if(cloud.flyOwner1000Granted===true)return;const newCoins=Number(cloud.coins??state.coins??0)+1000;await d.update(ref,{coins:newCoins,flyOwner1000Granted:true,updatedAt:d.serverTimestamp()});state.coins=newCoins;saveStateLocalOnly();showMessage("🪙 FlyyyyOwner: +1000 Coins!");updateLobby()}catch(e){console.error(e)}}
+async function grantFlyOwnerCoins(){if(!currentUser||!db)return;try{const raw=(getPlayerName()||((currentUser.email||"").split("@")[0]||"")).trim();const normalized=raw.toLowerCase().replace(/[^a-z0-9]/g,"");if(normalized!=="flyyyyowner")return;const {d}=await loadFirebase(),ref=d.ref(db,"playerStates/"+currentUser.uid),snap=await d.get(ref);const cloud=snap.exists()?snap.val():{};if(cloud.flyOwner1000Granted===true)return;await d.update(ref,{flyOwner1000Granted:true,updatedAt:d.serverTimestamp()})}catch(e){console.error(e)}}
 
 async function claimSeasonReward(){
   if(!currentUser||!db||!state.seasonRewardPending)return;
@@ -569,30 +584,34 @@ async function waitForAuthReady(){
 async function setupFirebase(){
   try{
     const {a}=await initFirebaseCore();
-    startGlobalBroadcastListener();
-    a.onAuthStateChanged(auth,async u=>{
-      currentUser=u||null;
-      updateAccountUI();
-      if(currentUser){
-        if(!getPlayerName())storage.setItem("FLYYYY_PLAYER_NAME",defaultNameForUser(currentUser));
-        await loadPlayerStateCloud();
-        await grantFlyOwnerCoins();
-        await ensurePlayerEntry(getPlayerName());
-        await ensureSeason();
-        await ensureSeasonScoreEntry();
-        await setPresenceOnline();
-        await savePlayerStateCloud();
-        await startLeaderboardListener();
-        await startSeasonLeaderboardListener();
-        await startOnlineListener();
-        await checkSeasonReward(Math.max(1,Number(seasonInfo.id)-1));
-      }else{
-        await setPresenceOffline();
-        await ensureSeason();
-        await startLeaderboardListener();
-        await startSeasonLeaderboardListener();
-        await startOnlineListener();
-      }
+   startGlobalBroadcastListener();
+    startEventListener();
+    startEventExpiryCheck();
+     a.onAuthStateChanged(auth,async u=>{
+       currentUser=u||null;
+       updateAccountUI();
+       if(currentUser){
+         if(!getPlayerName())storage.setItem("FLYYYY_PLAYER_NAME",defaultNameForUser(currentUser));
+         await loadPlayerStateCloud();
+         await grantFlyOwnerCoins();
+         await ensurePlayerEntry(getPlayerName());
+         await ensureSeason();
+         await ensureSeasonScoreEntry();
+         await setPresenceOnline();
+         await savePlayerStateCloud();
+         await startLeaderboardListener();
+         await startSeasonLeaderboardListener();
+         await startOnlineListener();
+         await startNotificationListener();
+         await checkSeasonReward(Math.max(1,Number(seasonInfo.id)-1));
+       }else{
+         if(notificationListenerStop){notificationListenerStop();notificationListenerStop=null}
+         await setPresenceOffline();
+         await ensureSeason();
+         await startLeaderboardListener();
+         await startSeasonLeaderboardListener();
+         await startOnlineListener();
+       }
       startSeasonTimer();
     });
   }catch(e){
@@ -713,6 +732,22 @@ const skins=[
 const sounds=[{id:"classic",name:"Classic",price:0,icon:"🔔",type:"classic"},{id:"arcade",name:"Arcade",price:50,icon:"👾",type:"arcade"},{id:"laser",name:"Laser",price:100,icon:"⚡",type:"laser"},{id:"bubble",name:"Bubble",price:150,icon:"🫧",type:"bubble"},{id:"power",name:"Power",price:200,icon:"🔥",type:"power"}];
 const musicTracks=[{id:"classicMusic",name:"Classic",price:0,icon:"🎵",melody:[261.63,329.63,392,523.25,392,329.63,293.66,349.23,440,523.25,440,349.23,392,329.63,261.63,293.66],bass:[130.81,130.81,164.81,164.81,146.83,146.83,174.61,174.61],tempo:380},{id:"arcadeMusic",name:"Arcade",price:50,icon:"👾",melody:[392,392,523.25,659.25,523.25,392,329.63,392,440,523.25,659.25,783.99,659.25,523.25,440,392],bass:[196,196,261.63,261.63,220,220,174.61,196],tempo:300},{id:"speedMusic",name:"Speed",price:100,icon:"⚡",melody:[329.63,392,493.88,659.25,493.88,392,329.63,493.88,392,493.88,587.33,783.99,587.33,493.88,392,329.63],bass:[164.81,196,164.81,196,146.83,174.61,164.61,196],tempo:250},{id:"spaceMusic",name:"Space",price:150,icon:"🚀",melody:[220,261.63,329.63,392,493.88,392,329.63,261.63,246.94,293.66,369.99,440,554.37,440,369.99,293.66],bass:[110,110,130.81,130.81,146.83,146.83,123.47,123.47],tempo:420},{id:"chillMusic",name:"Chill",price:200,icon:"🌙",melody:[261.63,329.63,392,329.63,293.66,349.23,440,349.23,261.63,329.63,392,493.88,440,392,329.63,293.66],bass:[130.81,130.81,146.83,146.83,110,110,123.47,123.47],tempo:500},{id:"finalMusic",name:"Final Boss",price:250,icon:"🔥",melody:[196,246.94,293.66,392,293.66,246.94,220,329.63,261.63,329.63,392,523.25,392,329.63,293.66,246.94],bass:[98,98,123.47,123.47,110,110,146.83,146.83],tempo:280}];
 const missionPool=[{id:"obstacles10",name:"Überfliege 10 Hindernisse",target:10,reward:20,source:"score",icon:"🚧"},{id:"obstacles25",name:"Überfliege 25 Hindernisse",target:25,reward:40,source:"score",icon:"🚧"},{id:"obstacles40",name:"Überfliege 40 Hindernisse",target:40,reward:60,source:"score",icon:"🔥"},{id:"bonus5",name:"Sammle 5 Bonus-Coins in einem Lauf",target:5,reward:25,source:"bonus",icon:"🪙"},{id:"bonus10",name:"Sammle 10 Bonus-Coins in einem Lauf",target:10,reward:50,source:"bonus",icon:"💰"},{id:"score20",name:"Erreiche 20 Punkte in einem Lauf",target:20,reward:30,source:"score",icon:"⭐"},{id:"score35",name:"Erreiche 35 Punkte in einem Lauf",target:35,reward:55,source:"score",icon:"🏆"},{id:"jumps15",name:"Fliege 15-mal",target:15,reward:20,source:"jumps",icon:"🪽"},{id:"jumps30",name:"Fliege 30-mal",target:30,reward:35,source:"jumps",icon:"🪽"},{id:"score50",name:"Schaffe 50 Punkte in einem Lauf",target:50,reward:80,source:"score",icon:"👑"}];
+const ADMIN_EVENTS=[
+  {id:"double_coins",name:"🪙 2x Coins",description:"Im Lauf doppelte Bonus-Coins sammeln",category:"coins"},
+  {id:"double_score",name:"⭐ 2x Score",description:"Doppelte Punkte pro Hindernis",category:"score"},
+  {id:"coin_rain",name:"🌧️ Coin Regen",description:"Bonus-Coins erscheinen häufiger",category:"coins"},
+  {id:"mega_combo",name:"🔥 Mega Combo",description:"Combo-Multiplikatoren werden verdoppelt",category:"combo"},
+  {id:"xp_boost",name:"⭐ XP-Boost",description:"Sammle 2x Season-Punkte",category:"xp"},
+  {id:"double_reward",name:"🎁 Double Reward",description:"Alle Belohnungen werden verdoppelt",category:"reward"},
+  {id:"speed_run",name:"⚡ Speed Run",description:"5 Minuten: Schnellerer Spielstil mit Bonus",category:"special",duration:300},
+  {id:"mega_session",name:"🔥 Mega Session",description:"10 Minuten: Alles doppelt sammeln",category:"special",duration:600},
+  {id:"music_event_1",name:"🎵 Event: Future Bass",description:"Tanzige durch die Lüfte mit Future Bass",category:"music",musicFile:"track1.mp3"},
+  {id:"music_event_2",name:"🎵 Event: Dance",description:"Fühle den Beat beim Fliegen",category:"music",musicFile:"track2.mp3"},
+  {id:"music_event_3",name:"🎵 Event: Electro",description:"Energiegeladen auf höchster Höhe",category:"music",musicFile:"track3.mp3"},
+  {id:"music_event_4",name:"🎵 Event: Pop",description:"Pop-Atmosphäre zum Fliegen",category:"music",musicFile:"track4.mp3"},
+  {id:"music_event_5",name:"🎵 Event: Beats",description:"Beat-driven Abenteuer",category:"music",musicFile:"track5.mp3"},
+  {id:"music_event_6",name:"🎵 Event: Intro/Outro",description:"Epos für besondere Momente",category:"music",musicFile:"track6.mp3"}
+];
 function pick(a){return a[Math.floor(Math.random()*a.length)]}
 function randomMissions(){
   const previous=new Set(Array.isArray(state.lastMissionIds)?state.lastMissionIds:[]);
@@ -810,10 +845,46 @@ function tone(f,d,v,t){if(!ACtx)return;const o=ACtx.createOscillator(),g=ACtx.cr
 let lobbyTrackIndex=0;
 function stopLobbyMusic(){[lobbyMusic1,lobbyMusic2].forEach(a=>{if(!a)return;a.pause();a.currentTime=0});lobbyMusicStarted=false}
 function playLobbyTrack(index,reset=true){if(!state.musicEnabled)return;const tracks=[lobbyMusic1,lobbyMusic2];const a=tracks[index%tracks.length];if(!a)return;tracks.forEach((x,i)=>{if(x&&i!==index){x.pause();if(reset)x.currentTime=0}});if(reset)a.currentTime=0;a.volume=.55;lobbyTrackIndex=index%tracks.length;const p=a.play();if(p&&p.then)p.then(()=>{lobbyMusicStarted=true}).catch(()=>{lobbyMusicStarted=false});else lobbyMusicStarted=true}
-[lobbyMusic1,lobbyMusic2].forEach((a,i)=>{if(a)a.addEventListener("ended",()=>{if(!game.running&&state.musicEnabled)playLobbyTrack((i+1)%2,true)})});
-function startLobbyMusic(){if(!state.musicEnabled)return;if(musicTimer){clearInterval(musicTimer);musicTimer=null}stopLobbyMusic();playLobbyTrack(lobbyTrackIndex,true)}
+[lobbyMusic1,lobbyMusic2].forEach((a,i)=>{if(a)a.addEventListener("ended",()=>{if(!game.running&&state.musicEnabled&&!eventMusicPlaying)playLobbyTrack((i+1)%2,true)})});
+function startLobbyMusic(){if(!state.musicEnabled||eventMusicPlaying)return;if(musicTimer){clearInterval(musicTimer);musicTimer=null}stopLobbyMusic();playLobbyTrack(lobbyTrackIndex,true)}
 function stopMusic(){if(musicTimer){clearInterval(musicTimer);musicTimer=null}stopLobbyMusic()}
-function jumpSound(type){if(!state.sfxEnabled)return;initAudio();if(!ACtx)return;if(type==="classic")tone(520,.08,.06,"square");else if(type==="arcade"){tone(440,.06,.05,"square");setTimeout(()=>tone(660,.07,.05,"square"),45)}else if(type==="laser"){tone(900,.12,.05,"sawtooth");setTimeout(()=>tone(1400,.09,.03,"sawtooth"),45)}else if(type==="bubble"){tone(300,.08,.04,"sine");setTimeout(()=>tone(650,.12,.04,"sine"),60)}else{tone(220,.13,.05,"sawtooth");setTimeout(()=>tone(520,.08,.05,"square"),65)}}function coinSound(){if(!state.sfxEnabled)return;initAudio();tone(784,.08,.05,"triangle");setTimeout(()=>tone(1046,.12,.05,"triangle"),70)}function scoreSound(){if(state.sfxEnabled){initAudio();tone(760,.04,.03,"triangle")}}function gameOverSound(){if(state.sfxEnabled){initAudio();tone(300,.15,.05,"sawtooth");setTimeout(()=>tone(210,.22,.04,"sawtooth"),130)}}function purchaseSound(){initAudio();tone(523,.08,.04,"triangle");setTimeout(()=>tone(784,.12,.04,"triangle"),70)}function selectedMusic(){return musicTracks.find(x=>x.id===state.selectedMusic)||musicTracks[0]}function startMusic(){if(!state.musicEnabled)return;initAudio();if(!ACtx)return;if(ACtx.state==="suspended")ACtx.resume();stopLobbyMusic();if(musicTimer)clearInterval(musicTimer);musicTimer=null;musicStep=0;const m=selectedMusic();const tick=()=>{if(!state.musicEnabled||!game.running){if(musicTimer){clearInterval(musicTimer);musicTimer=null}return}tone(m.melody[musicStep%m.melody.length],.28,.024,"triangle");if(musicStep%2===0)tone(m.bass[musicStep%m.bass.length],.4,.011,"sine");musicStep++};tick();musicTimer=setInterval(tick,m.tempo)}function previewMusic(m){initAudio();if(!ACtx)return;stopMusic();let i=0;const t=setInterval(()=>{if(i>=m.melody.length){clearInterval(t);if(game.running&&state.musicEnabled)startMusic();else if(!game.running&&state.musicEnabled)startLobbyMusic();return}tone(m.melody[i++],.28,.03,"triangle")},m.tempo)}
+function jumpSound(type){if(!state.sfxEnabled)return;initAudio();if(!ACtx)return;if(type==="classic")tone(520,.08,.06,"square");else if(type==="arcade"){tone(440,.06,.05,"square");setTimeout(()=>tone(660,.07,.05,"square"),45)}else if(type==="laser"){tone(900,.12,.05,"sawtooth");setTimeout(()=>tone(1400,.09,.03,"sawtooth"),45)}else if(type==="bubble"){tone(300,.08,.04,"sine");setTimeout(()=>tone(650,.12,.04,"sine"),60)}else{tone(220,.13,.05,"sawtooth");setTimeout(()=>tone(520,.08,.05,"square"),65)}}function coinSound(){if(!state.sfxEnabled)return;initAudio();tone(784,.08,.05,"triangle");setTimeout(()=>tone(1046,.12,.05,"triangle"),70)}function scoreSound(){if(state.sfxEnabled){initAudio();tone(760,.04,.03,"triangle")}}function gameOverSound(){if(state.sfxEnabled){initAudio();tone(300,.15,.05,"sawtooth");setTimeout(()=>tone(210,.22,.04,"sawtooth"),130)}}function purchaseSound(){initAudio();tone(523,.08,.04,"triangle");setTimeout(()=>tone(784,.12,.04,"triangle"),70)}function selectedMusic(){return musicTracks.find(x=>x.id===state.selectedMusic)||musicTracks[0]}function startMusic(){if(!state.musicEnabled||eventMusicPlaying)return;initAudio();if(!ACtx)return;if(ACtx.state==="suspended")ACtx.resume();stopLobbyMusic();if(musicTimer)clearInterval(musicTimer);musicTimer=null;musicStep=0;const m=selectedMusic();const tick=()=>{if(!state.musicEnabled||!game.running){if(musicTimer){clearInterval(musicTimer);musicTimer=null}return}tone(m.melody[musicStep%m.melody.length],.28,.024,"triangle");if(musicStep%2===0)tone(m.bass[musicStep%m.bass.length],.4,.011,"sine");musicStep++};tick();musicTimer=setInterval(tick,m.tempo)}function previewMusic(m){initAudio();if(!ACtx)return;stopMusic();let i=0;const t=setInterval(()=>{if(i>=m.melody.length){clearInterval(t);if(game.running&&state.musicEnabled)startMusic();else if(!game.running&&state.musicEnabled)startLobbyMusic();return}tone(m.melody[i++],.28,.03,"triangle")},m.tempo)}
+const eventMusicAudio=document.getElementById("eventMusic");
+let eventMusicPlaying=false;
+let eventMusicWasInGame=false;
+let prevLobbyVolume=.55;
+function checkMusicEvent(){
+  const musicEv=Object.values(activeEvents).find(e=>e.category==="music"&&e.musicFile);
+  if(musicEv&&!eventMusicPlaying){startEventMusic(musicEv.musicFile)}
+  else if(!musicEv&&eventMusicPlaying){stopEventMusic()}
+}
+function startEventMusic(musicFile){
+  if(!state.musicEnabled)return;
+  const url="assets/music/"+String(musicFile||"");
+  eventMusicAudio.src=url;
+  eventMusicAudio.volume=.6;
+  eventMusicAudio.loop=true;
+  eventMusicWasInGame=game.running;
+  prevLobbyVolume=.55;
+  if(game.running){
+    if(musicTimer){clearInterval(musicTimer);musicTimer=null}
+  }else{
+    stopLobbyMusic();
+  }
+  eventMusicAudio.play().catch(()=>{});
+  eventMusicPlaying=true;
+  showMessage(`🎵 Event-Musik gestartet: ${musicFile}`);
+}
+function stopEventMusic(){
+  if(eventMusicAudio){eventMusicAudio.pause();eventMusicAudio.currentTime=0}
+  eventMusicPlaying=false;
+  setTimeout(()=>{
+    if(state.musicEnabled){
+      if(eventMusicWasInGame){startMusic()}else{startLobbyMusic()}
+    }
+  },200);
+  showMessage("🎵 Normale Musik wird fortgesetzt.");
+}
 
 let W=innerWidth,H=innerHeight,dpr=Math.min(devicePixelRatio||1,2);function resize(){W=innerWidth;H=innerHeight;dpr=Math.min(devicePixelRatio||1,2);canvas.width=W*dpr;canvas.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}addEventListener("resize",resize);resize();
 const game={running:false,paused:false,over:false,score:0,runCoins:0,jumpCount:0,bonusCoinsRun:0,combo:0,comboMultiplier:1,comboMilestones:{},speed:165,spawnTimer:.9,obstacles:[],coins:[],player:{x:0,y:0,vy:0,r:22,hitR:16,rot:0},world:null,last:0,onlineRun:false,abilityActiveUntil:0,abilityCooldownUntil:0,abilityShield:0,abilityUsed:false,abilityBaseHitR:16};
@@ -829,8 +900,15 @@ function updateAbilityHUD(){
 function comboMultiplierFor(count){if(count>=30)return 5;if(count>=20)return 4;if(count>=10)return 3;if(count>=5)return 2;return 1}
 function updateComboHUD(){if(!comboHud)return;const c=Math.max(0,Number(game.combo||0)),m=comboMultiplierFor(c);game.comboMultiplier=m;comboCountHud.textContent=c;comboMultHud.textContent=m;comboHud.classList.toggle("hot",c>=5&&c<30);comboHud.classList.toggle("mega",c>=30)}
 function breakCombo(reason=""){if(game.combo<=0)return;const lost=game.combo;game.combo=0;game.comboMultiplier=1;game.comboMilestones={};updateComboHUD();if(reason)showMessage(`💥 Combo verloren · x${lost}`)}
-function registerComboHit(){game.combo=Math.max(0,Number(game.combo||0))+1;const next=comboMultiplierFor(game.combo);const previous=game.comboMultiplier||1;game.comboMultiplier=next;const milestones=[5,10,20,30];if(milestones.includes(game.combo)&&!game.comboMilestones[game.combo]){game.comboMilestones[game.combo]=true;const bonus={5:5,10:10,20:20,30:40}[game.combo]||0;game.runCoins+=bonus;game.bonusCoinsRun+=bonus;coinSound();showMessage(`🔥 COMBO ${game.combo}! x${next} · +${bonus} Coins`)}else if(next>previous){showMessage(`🔥 COMBO x${next}!`)}updateComboHUD()}
-function updateHUD(){scoreHud.textContent=game.score;coinsHud.textContent=state.coins+game.runCoins;jumpHud.textContent=game.jumpCount;seasonHud.textContent=seasonInfo.id||1;updateComboHUD();updateAbilityHUD()}
+function registerComboHit(){game.combo=Math.max(0,Number(game.combo||0))+1;const next=comboMultiplierFor(game.combo);const previous=game.comboMultiplier||1;game.comboMultiplier=next;const milestones=[5,10,20,30];if(milestones.includes(game.combo)&&!game.comboMilestones[game.combo]){game.comboMilestones[game.combo]=true;const bonus={5:5,10:10,20:20,30:40}[game.combo]||0;const rb=Math.round(bonus*eventRewardMult());game.runCoins+=rb;game.bonusCoinsRun+=rb;coinSound();showMessage(`🔥 COMBO ${game.combo}! x${next} · +${rb} Coins`)}else if(next>previous){showMessage(`🔥 COMBO x${next}!`)}updateComboHUD()}
+function updateHUD(){scoreHud.textContent=game.score;coinsHud.textContent=state.coins+game.runCoins;jumpHud.textContent=game.jumpCount;seasonHud.textContent=seasonInfo.id||1;updateComboHUD();updateAbilityHUD();updateEventHUD()}
+function updateEventHUD(){if(!eventBadge)return;const active=Object.keys(activeEvents);if(active.length>0){eventBadge.style.display="";const names=active.map(k=>activeEvents[k].name||k).join(", ");eventBadge.textContent=`🔴 EVENTS: ${names}`}else{eventBadge.style.display="none"}}
+function isEventActive(id){return !!activeEvents[id]}
+function eventCoinMult(){return isEventActive("double_coins")?2:1}
+function eventScoreMult(){return isEventActive("double_score")?2:1}
+function eventComboMult(){return isEventActive("mega_combo")?2:1}
+function eventXPMult(){return isEventActive("xp_boost")?2:1}
+function eventRewardMult(){return isEventActive("double_reward")?2:1}
 function flap(){if(!game.running||game.paused||game.over)return;const boost=game.abilityActiveEffect==="jumpBoost"||game.abilityActiveEffect==="quickFlap";game.player.vy=boost?-500:-405;game.jumpCount++;jumpSound((sounds.find(x=>x.id===state.selectedSound)||sounds[0]).type);updateHUD()}
 function dist(a,b,c,d){return Math.hypot(a-c,b-d)}const SPIKE_H=18,SPIKE_STEP=18;
 function circleRectHit(cx,cy,r,rx,ry,rw,rh){const nx=Math.max(rx,Math.min(cx,rx+rw)),ny=Math.max(ry,Math.min(cy,ry+rh));return dist(cx,cy,nx,ny)<r}function hitRadius(p){return Number(p.hitR||16)}
@@ -853,7 +931,7 @@ function activateAbility(){
   else if(a.effect==="doubleShield")game.abilityShield=Math.max(game.abilityShield,2);
   else if(a.effect==="tripleShield")game.abilityShield=Math.max(game.abilityShield,3);
   else if(a.effect==="coinBurst"){
-    game.runCoins+=3;game.bonusCoinsRun+=3;showMessage("🪙 +3 Bonus-Coins!");
+    const rb=3*eventRewardMult();game.runCoins+=rb;game.bonusCoinsRun+=rb;showMessage(`🪙 +${rb} Bonus-Coins!`);
   }
   else if(a.effect==="coinMagnet")showMessage(`${a.icon} ${a.name} aktiviert!`);
   else if(a.effect==="phase"||a.effect==="timeBrake"||a.effect==="timeRift"||a.effect==="coinStorm"||a.effect==="bonusRush"||a.effect==="doubleCoins"||a.effect==="coinEcho"||a.effect==="scoreSurge"||a.effect==="speedBoost"||a.effect==="precision"||a.effect==="jumpBoost"||a.effect==="quickFlap")showMessage(`${a.icon} ${a.name} aktiviert!`);
@@ -887,17 +965,17 @@ function updateGame(dt){
     const topM=Math.max(75,H*.11),bottomM=Math.max(75,H*.12),minG=topM+gapH/2,maxG=H-bottomM-gapH/2,gapY=minG+Math.random()*Math.max(1,maxG-minG),width=Math.max(70,W*.075);
     const o={x:W+30,width,gapY,gapH,passed:false};game.obstacles.push(o);
     game.spawnTimer=Math.max(ice?.68:.88,ice?1.25-game.score*.006:1.62-game.score*.005);
-    if(Math.random()<(abilityActive("bonusRush")?.9:(ice?.7:.55)))spawnCoin(o);
+    if(Math.random()<(abilityActive("bonusRush")?.9:(ice?.7:.55))*(isEventActive("coin_rain")?1.8:1))spawnCoin(o);
   }
   for(const o of game.obstacles){
     o.x-=game.speed*dt;
     if(!o.passed&&o.x+o.width<p.x-p.r){
       o.passed=true;
       registerComboHit();
-      const baseScore=abilityActive("scoreSurge")?2:1;
-      game.score+=baseScore*game.comboMultiplier;
+      const baseScore=(abilityActive("scoreSurge")?2:1)*eventScoreMult();
+      game.score+=baseScore*game.comboMultiplier*eventComboMult();
       scoreSound();
-      if(game.score===20){game.runCoins+=10;showMessage("🪙 Level 20! +10 Coins!");coinSound();worldHud.textContent="Eiswelt"}
+      if(game.score===20){const rb=10*eventRewardMult();game.runCoins+=rb;showMessage(`🪙 Level 20! +${rb} Coins!`);coinSound();worldHud.textContent="Eiswelt"}
     }
     if(obstacleCollision(p,o)){
       if(abilityActive("phase")){continue}
@@ -914,7 +992,7 @@ function updateGame(dt){
     c.x-=game.speed*dt;
     if(dist(p.x,p.y,c.x,c.y)<hitRadius(p)+c.r+10&&!c.collected){
       c.collected=true;
-      const mult=abilityActive("coinStorm")?3:abilityActive("doubleCoins")?2:abilityActive("coinEcho")?2:1;
+      const mult=(abilityActive("coinStorm")?3:abilityActive("doubleCoins")?2:abilityActive("coinEcho")?2:1)*eventCoinMult()*eventRewardMult();
       game.runCoins+=mult;game.bonusCoinsRun+=mult;showMessage(`🪙 +${mult} Bonus-Coin${mult>1?"s":""}!`);coinSound();
     }
   }
@@ -930,7 +1008,7 @@ async function endGame(){
   if(game.over)return;
   game.over=true;
   game.running=false;
-  state.coins+=game.runCoins;
+  state.coins+=Math.round(game.runCoins*eventRewardMult());
   if(game.score>state.best)state.best=game.score;
   updateMissionProgress();
   saveState();
@@ -952,7 +1030,7 @@ async function endGame(){
 
       if(game.onlineRun){
         const seasonSaved=await Promise.race([
-          submitSeasonScore(game.score),
+          submitSeasonScore(Math.round(game.score*eventXPMult())),
           new Promise(r=>setTimeout(()=>r(false),3500))
         ]);
 
@@ -1443,8 +1521,16 @@ shopBtn.onclick=()=>{
   renderShop();
 };shopBack.onclick=()=>showScreen("lobby");inventoryBtn.onclick=()=>{renderInventory();showScreen("inventory")};inventoryBack.onclick=()=>showScreen("lobby");missionsBtn.onclick=()=>{renderMissions();showScreen("missions")};missionsBack.onclick=()=>showScreen("lobby");
 /* ===== SERVER-SIDE ADMIN MANAGER ===== */
+const ADMIN_CODE="Flyyyy-Admin-7391-X";
 let adminUnlocked=false;
+let adminLocal=false;
 let adminFunctions=null;
+let adminTab="users";
+let activeEvents={};
+let eventListenerStop=null;
+let notificationListenerStop=null;
+let adminActiveEventsList=$("adminActiveEventsList");
+let adminSelfRewardBtn=$("adminSelfRewardBtn");
 
 async function getAdminFunctions(){
   if(adminFunctions) return adminFunctions;
@@ -1461,6 +1547,7 @@ async function getAdminFunctions(){
   return adminFunctions;
 }
 async function hasAdminClaim(force=true){
+  if(adminLocal)return true;
   if(!currentUser)return false;
   try{return (await currentUser.getIdTokenResult(force)).claims?.admin===true}catch(e){console.error(e);return false}
 }
@@ -1469,20 +1556,46 @@ async function openAdminLogin(){
   adminCodeInput.value="";
   adminPanel.style.display="none";
   adminUnlocked=false;
-  adminStatusText.textContent=currentUser?"Gib den Admin-Aktivierungscode ein.":"🔐 Bitte zuerst mit deinem FLYYYY-Konto anmelden.";
+  adminLocal=false;
+  adminStatusText.textContent=currentUser?"Gib den Admin-Aktivierungscode ein.":"🔐 Gib den Admin-Code ein oder melde dich an.";
   setTimeout(()=>adminCodeInput.focus(),50);
-  if(currentUser && await hasAdminClaim(false)){
+  if(await hasAdminClaim(false)){
     adminUnlocked=true;
     adminPanel.style.display="block";
     adminStatusText.textContent="✅ Adminrechte bereits aktiv.";
+    renderAdminTabs();
+    showAdminTab("users");
+    populateAdminEventSelect();
+    await adminRefreshEventStatus();
+    populateRewardItemSelect();
+    populateFreeGiveItemSelect();
     await loadAdminUsers();
   }
 }
 function closeAdminLogin(){adminOverlay.classList.remove("active");adminCodeInput.value="";adminPanel.style.display="none";adminUnlocked=false}
 async function activateAdmin(){
-  if(!currentUser){adminStatusText.textContent="🔐 Bitte zuerst anmelden.";return}
   const code=adminCodeInput.value.trim();
   if(!code){adminStatusText.textContent="Bitte den Admin-Code eingeben.";return}
+
+   // Lokaler Admin-Code (Fallback ohne Firebase-Funktion)
+   if(code===ADMIN_CODE){
+    adminLocal=true;
+    adminUnlocked=true;
+    adminPanel.style.display="block";
+    adminStatusText.textContent="✅ Admin (lokal) aktiviert.";
+    adminCodeInput.value="";
+    showMessage("🛠️ Adminrechte aktiviert (lokal).");
+    renderAdminTabs();
+    showAdminTab("users");
+    populateAdminEventSelect();
+    await adminRefreshEventStatus();
+    populateRewardItemSelect();
+    populateFreeGiveItemSelect();
+    await loadAdminUsers();
+    return;
+  }
+
+  if(!currentUser){adminStatusText.textContent="🔐 Bitte zuerst anmelden.";return}
   adminUnlockBtn.disabled=true;adminStatusText.textContent="🔄 Admin wird serverseitig geprüft...";
   try{
     const f=await getAdminFunctions();
@@ -1490,11 +1603,11 @@ async function activateAdmin(){
     await currentUser.getIdToken(true);
     const ok=await hasAdminClaim(true);
     if(!ok)throw new Error("Admin-Token wurde noch nicht übernommen. Seite neu laden und erneut anmelden.");
-    adminUnlocked=true;adminPanel.style.display="block";adminStatusText.textContent="✅ Adminrechte aktiviert.";adminCodeInput.value="";showMessage("🛠️ Adminrechte aktiviert.");await loadAdminUsers();
+    adminUnlocked=true;adminPanel.style.display="block";adminStatusText.textContent="✅ Adminrechte aktiviert.";adminCodeInput.value="";showMessage("🛠️ Adminrechte aktiviert.");renderAdminTabs();showAdminTab("users");populateAdminEventSelect();await adminRefreshEventStatus();await adminRefreshActiveEventsList();populateRewardItemSelect();populateFreeGiveItemSelect();await loadAdminUsers();
   }catch(e){console.error(e);adminStatusText.textContent="❌ "+(e?.message||"Admin konnte nicht aktiviert werden.")}
   finally{adminUnlockBtn.disabled=false}
 }
-async function requireAdmin(){if(!currentUser){showMessage("🔐 Bitte zuerst anmelden.");return false}const ok=adminUnlocked && await hasAdminClaim(false);if(!ok){showMessage("🔒 Adminrechte sind nicht aktiv.");return false}return true}
+async function requireAdmin(){if(adminLocal)return true;if(!currentUser){showMessage("🔐 Bitte zuerst anmelden.");return false}const ok=adminUnlocked && await hasAdminClaim(false);if(!ok){showMessage("🔒 Adminrechte sind nicht aktiv.");return false}return true}
 function formatDate(v){if(!v)return "-";try{return new Date(v).toLocaleString("de-DE")}catch{return "-"}}
 function adminUserCard(u){
   const card=document.createElement("div");card.className="adminUserCard";
@@ -1519,13 +1632,338 @@ function adminUserCard(u){
 }
 async function loadAdminUsers(){
   if(!await requireAdmin())return;
-  const list=$("adminUsersList"),status=$("adminUsersStatus");list.innerHTML="";status.textContent="🔄 Spieler werden geladen...";
+  const list=$("adminUsersList"),status=$("adminUsersStatus");list.innerHTML="";
+
+  if(adminLocal && !db){
+    status.textContent="📱 Lokaler Admin-Modus (keine Firebase-Verbindung)";
+    const placeholder=document.createElement("div");
+    placeholder.className="leaderStatus";
+    placeholder.textContent="🛡️ Lokaler Admin-Modus aktiv. Verbinde Firebase für Live-Spielerverwaltung.";
+    list.appendChild(placeholder);
+    return;
+  }
+
+  status.textContent="🔄 Spieler werden geladen...";
   try{const f=await getAdminFunctions();const r=await f.listUsers({});const users=Array.isArray(r.data?.users)?r.data.users:[];const q=($("adminUserSearch").value||"").trim().toLowerCase();const filtered=users.filter(u=>(u.email||"").toLowerCase().includes(q)||String(u.uid||"").toLowerCase().includes(q));status.textContent=`👥 ${filtered.length} von ${users.length} Spieler(n)`;filtered.forEach(u=>list.appendChild(adminUserCard(u)))}catch(e){console.error(e);status.textContent="🔴 "+(e?.message||"Spieler konnten nicht geladen werden.")}
 }
 async function adminAdjust(uid,delta){if(!await requireAdmin())return;if(!delta){showMessage("Bitte eine Coin-Anzahl eingeben.");return}try{const f=await getAdminFunctions();const r=await f.adjustCoins({uid,delta});showMessage(`🪙 Neuer Kontostand: ${Number(r.data?.coins||0).toLocaleString("de-DE")}`);await loadAdminUsers()}catch(e){console.error(e);showMessage("❌ Coins konnten nicht geändert werden.")}}
 async function adminBan(uid,minutes){if(!await requireAdmin())return;try{const f=await getAdminFunctions();await f.banUser({uid,durationMinutes:minutes});showMessage(minutes===0?"✅ Spieler entsperrt.":minutes===-1?"🚫 Spieler dauerhaft gesperrt.":`🚫 Spieler für ${minutes} Minuten gesperrt.`);await loadAdminUsers()}catch(e){console.error(e);showMessage("❌ Sperre konnte nicht geändert werden.")}}
 async function adminDelete(u){if(!await requireAdmin())return;if(u.uid===currentUser.uid){showMessage("❌ Deinen eigenen Admin-Account nicht löschen.");return}if(!confirm(`Account ${u.email||u.uid} wirklich löschen? Dieser Vorgang kann nicht rückgängig gemacht werden.`))return;try{const f=await getAdminFunctions();await f.deleteUser({uid:u.uid});showMessage("🗑️ Account gelöscht.");await loadAdminUsers()}catch(e){console.error(e);showMessage("❌ Account konnte nicht gelöscht werden.")}}
+
+const adminTabItems=[{id:"users",name:"👥 Spieler"},{id:"events",name:"🎁 Events"},{id:"rewards",name:"🎁 Belohnungen"},{id:"freegive",name:"💝 Kostenlos geben"}];
+function renderAdminTabs(){tabs($("adminTabs"),adminTabItems,adminTab,tabId=>{adminTab=tabId;showAdminTab(tabId)})}
+function showAdminTab(tabId){
+  adminTab=tabId;
+  document.querySelectorAll('.adminTabSection').forEach(s=>s.style.display="none");
+  const map={users:"adminUsersTab",events:"adminEventsTab",rewards:"adminRewardsTab",freegive:"adminFreeGiveTab"};
+  const target=$(map[tabId]);
+  if(target)target.style.display="block";
+}
+
+function populateAdminEventSelect(){
+  const sel=$("adminEventSelect");
+  if(!sel)return;
+  sel.innerHTML="";
+  ADMIN_EVENTS.forEach(ev=>{const opt=document.createElement("option");opt.value=ev.id;opt.textContent=ev.name;sel.appendChild(opt)});
+}
+
+async function adminRefreshEventStatus(){
+  if(!db){if($("adminEventStatus"))$("adminEventStatus").textContent="📱 Lokaler Modus – Events brauchen Firebase.";return}
+  try{
+    const {d}=await loadFirebase();
+    const snap=await d.get(d.ref(db,"events/active"));
+    if(snap.exists()){
+      const v=snap.val();
+      const activeIds=Object.keys(v).filter(k=>v[k]?.active!==false);
+      if(activeIds.length>0){
+        const labels=activeIds.map(k=>{const ev=ADMIN_EVENTS.find(e=>e.id===k);return ev?ev.name:k});
+        $("adminEventStatus").textContent="🔴 AKTIV ("+activeIds.length+"): "+labels.join(", ");
+      }else{
+        if($("adminEventStatus"))$("adminEventStatus").textContent="Kein Event aktiv.";
+      }
+    }else{
+      if($("adminEventStatus"))$("adminEventStatus").textContent="Kein Event aktiv.";
+    }
+  }catch(e){console.error(e);if($("adminEventStatus"))$("adminEventStatus").textContent="Status nicht verfügbar."}
+}
+
+async function adminStartEvent(){
+  if(!await requireAdmin())return;
+  const sel=$("adminEventSelect");
+  const eventId=sel?.value;
+  if(!eventId){showMessage("Bitte wähle ein Event.");return}
+  const ev=ADMIN_EVENTS.find(e=>e.id===eventId);
+  if(!ev){showMessage("Event nicht gefunden.");return}
+  if(adminLocal && !db){showMessage("🔴 Keine Firebase-Verbindung. Event kann nicht online gestartet werden.");return}
+  try{
+    const {d}=await loadFirebase();
+    const eventData={id:ev.id,name:ev.name,description:ev.description,category:ev.category,active:true,startedAt:d.serverTimestamp(),startedBy:currentUser?.uid||"local-admin"};
+    if(ev.musicFile)eventData.musicFile=ev.musicFile;
+    if(ev.duration)eventData.expiresAt=Date.now()+ev.duration*1000;
+    await d.set(d.ref(db,"events/active/"+ev.id),eventData);
+    showMessage(`▶️ Event "${ev.name}" gestartet!`);
+    await adminRefreshEventStatus();
+  }catch(e){console.error(e);showMessage("❌ Event konnte nicht gestartet werden.")}
+}
+
+async function adminStopEvent(){
+  if(!await requireAdmin())return;
+  const sel=$("adminEventSelect");
+  const eventId=sel?.value;
+  if(!eventId){showMessage("Bitte wähle ein Event aus, das beendet werden soll.");return}
+  if(adminLocal && !db){showMessage("🔴 Keine Firebase-Verbindung.");return}
+  try{
+    const {d}=await loadFirebase();
+    await d.remove(d.ref(db,"events/active/"+eventId));
+    delete activeEvents[eventId];
+    checkMusicEvent();
+    updateEventHUD();
+    showMessage("⏹️ Event wurde beendet.");
+    await adminRefreshEventStatus();
+    await adminRefreshActiveEventsList();
+  }catch(e){console.error(e);showMessage("❌ Event konnte nicht beendet werden.")}
+}
+
+async function adminRefreshActiveEventsList(){
+  if(!db||!adminActiveEventsList)return;
+  try{
+    const {d}=await loadFirebase();
+    const snap=await d.get(d.ref(db,"events/active"));
+    adminActiveEventsList.innerHTML="";
+    if(!snap.exists()){adminActiveEventsList.innerHTML='<div class="leaderStatus">Keine aktiven Events.</div>';return}
+    const v=snap.val();
+    const activeIds=Object.keys(v).filter(k=>v[k]?.active!==false);
+    if(activeIds.length===0){adminActiveEventsList.innerHTML='<div class="leaderStatus">Keine aktiven Events.</div>';return}
+    adminActiveEventsList.innerHTML="";
+    activeIds.forEach(id=>{
+      const evData=v[id];
+      const meta=ADMIN_EVENTS.find(e=>e.id===id);
+      const evName=meta?meta.name:evData.name||id;
+      const card=document.createElement("div");
+      card.className="adminUserCard";
+      card.style.padding="10px";
+      const left=document.createElement("div");
+      left.className="adminUserTop";
+      const title=document.createElement("div");
+      title.className="adminUserEmail";
+      title.textContent=evName;
+      const desc=document.createElement("div");
+      desc.className="adminMeta";
+      desc.textContent=meta?.description||evData.description||"";
+      left.append(title,desc);
+      const right=document.createElement("div");
+      const stopBtn=document.createElement("button");
+      stopBtn.className="btn red";
+      stopBtn.textContent="⏹️ BEENDEN";
+      stopBtn.style.fontSize="11px";
+      stopBtn.onclick=()=>adminStopSpecificEvent(id);
+      right.appendChild(stopBtn);
+      left.appendChild(right);
+      card.appendChild(left);
+      adminActiveEventsList.appendChild(card);
+    });
+  }catch(e){console.error(e);adminActiveEventsList.innerHTML='<div class="leaderStatus">🔴 Fehler beim Laden.</div>'}
+}
+
+async function adminStopSpecificEvent(eventId){
+  if(!await requireAdmin())return;
+  try{
+    const {d}=await loadFirebase();
+    await d.remove(d.ref(db,"events/active/"+eventId));
+    delete activeEvents[eventId];
+    checkMusicEvent();
+    updateEventHUD();
+    showMessage(`⏹️ Event "${eventId}" wurde beendet.`);
+    await adminRefreshEventStatus();
+    await adminRefreshActiveEventsList();
+  }catch(e){console.error(e);showMessage("❌ Event konnte nicht beendet werden.")}
+}
+
+async function adminSelfReward(){
+  if(!await requireAdmin())return;
+  if(!currentUser){showMessage("🔐 Bitte anmelden.");return}
+  const type=$("adminRewardType")?.value;
+  const amount=Number($("adminRewardAmount")?.value||0);
+  const itemId=$("adminRewardItem")?.value;
+  const status=$("adminRewardStatus");
+  if(type==="coins"&&amount<=0){if(status)status.textContent="Bitte Coin-Menge eingeben.";return}
+  if(type!=="coins"&&!itemId){if(status)status.textContent="Bitte Gegenstand auswählen.";return}
+  if(!db){if(status)status.textContent="🔴 Keine Firebase-Verbindung.";return}
+  if(status)status.textContent="🔄 Verarbeite...";
+  try{
+    const {d}=await loadFirebase();
+    const ref=d.ref(db,"playerStates/"+currentUser.uid);
+    const snap=await d.get(ref);
+    const current=snap.exists()?(snap.val()||{}):{};
+    const b=defaultState();
+    const merged={...b,...current,ownedWorlds:Array.isArray(current.ownedWorlds)?current.ownedWorlds:b.ownedWorlds,ownedSkins:Array.isArray(current.ownedSkins)?current.ownedSkins:b.ownedSkins,ownedSounds:Array.isArray(current.ownedSounds)?current.ownedSounds:b.ownedSounds,ownedMusic:Array.isArray(current.ownedMusic)?current.ownedMusic:b.ownedMusic,ownedAbilities:Array.isArray(current.ownedAbilities)?current.ownedAbilities:b.ownedAbilities};
+    const update={};
+    if(type==="coins"){update.coins=Number(merged.coins||0)+amount;state.coins=update.coins}
+    else if(type==="skin"){const owned=[...merged.ownedSkins];if(!owned.includes(itemId))owned.push(itemId);update.ownedSkins=owned;state.ownedSkins=owned}
+    else if(type==="ability"){const owned=[...merged.ownedAbilities];if(!owned.includes(itemId))owned.push(itemId);update.ownedAbilities=owned;state.ownedAbilities=owned}
+    else if(type==="world"){const owned=[...merged.ownedWorlds];if(!owned.includes(itemId))owned.push(itemId);update.ownedWorlds=owned;state.ownedWorlds=owned}
+    else if(type==="sound"){const owned=[...merged.ownedSounds];if(!owned.includes(itemId))owned.push(itemId);update.ownedSounds=owned;state.ownedSounds=owned}
+    else if(type==="music"){const owned=[...merged.ownedMusic];if(!owned.includes(itemId))owned.push(itemId);update.ownedMusic=owned;state.ownedMusic=owned}
+    update.updatedAt=d.serverTimestamp();
+    await d.update(ref,update);
+    saveState();
+    if(status)status.textContent=`✅ Belohnung auf deinen Account angewendet.`;
+    showMessage(`✅ Selbst-Belohnung erhalten!`);
+  }catch(e){console.error(e);if(status)status.textContent="❌ Fehler: "+(e?.message||"unbekannt")}
+}
+
+async function findPlayerByName(name){
+  if(!db)return null;
+  try{
+    const {d}=await loadFirebase();
+    const snap=await d.get(d.ref(db,"leaderboard"));
+    if(!snap.exists())return null;
+    const data=snap.val();
+    const target=String(name||"").toLowerCase();
+    for(const [uid,v] of Object.entries(data)){
+      const playerName=safeName(v?.name||"Spieler").toLowerCase();
+      if(playerName===target)return {uid,state:v};
+    }
+    return null;
+  }catch(e){console.error(e);return null}
+}
+
+function populateRewardItemSelect(){
+  const type=$("adminRewardType")?.value;
+  const sel=$("adminRewardItem");
+  const amtInput=$("adminRewardAmount");
+  if(!sel)return;
+  sel.innerHTML="";
+  sel.style.display="none";
+  if(amtInput){amtInput.style.display="block"}
+  if(type==="coins"){if(amtInput)amtInput.placeholder="Coin-Menge (z.B. 500)";return}
+  if(amtInput)amtInput.style.display="none";
+  sel.style.display="block";
+  let items=[];
+  if(type==="skin")items=skins.filter(s=>s.price>0);
+  else if(type==="ability")items=Object.entries(abilities).map(([id,a])=>({id,item:a}));
+  else if(type==="world")items=worlds.filter(w=>w.price>0);
+  else if(type==="sound")items=sounds.filter(s=>s.id!=="classic");
+  else if(type==="music")items=musicTracks.filter(m=>m.id!=="classicMusic");
+  items.forEach(item=>{
+    const opt=document.createElement("option");
+    if(type==="skin"){opt.value=item.id;opt.textContent=`${item.name} (${rarityMeta[item.rarity]?.name||item.rarity})`}
+    else if(type==="ability"){opt.value=item.id;opt.textContent=`${item.item.icon} ${item.item.name}`}
+    else if(type==="world"){opt.value=item.id;opt.textContent=item.name}
+    else if(type==="sound"){opt.value=item.id;opt.textContent=item.name}
+    else if(type==="music"){opt.value=item.id;opt.textContent=item.name}
+    sel.appendChild(opt);
+  });
+}
+
+async function adminGiveReward(){
+  if(!await requireAdmin())return;
+  const name=$("adminRewardPlayerName")?.value.trim();
+  const type=$("adminRewardType")?.value;
+  const amount=Number($("adminRewardAmount")?.value||0);
+  const itemId=$("adminRewardItem")?.value;
+  const status=$("adminRewardStatus");
+  if(!name){if(status)status.textContent="Bitte Spielername eingeben.";return}
+  if(type==="coins"&&amount<=0){if(status)status.textContent="Bitte eine gültige Coin-Menge eingeben.";return}
+  if(type!=="coins"&&!itemId){if(status)status.textContent="Bitte einen Gegenstand auswählen.";return}
+  const player=await findPlayerByName(name);
+  if(!player){if(status)status.textContent="❌ Spieler nicht gefunden.";return}
+  if(!db){if(status)status.textContent="🔴 Keine Firebase-Verbindung.";return}
+  if(status)status.textContent="🔄 Verarbeite...";
+  try{
+    const {d}=await loadFirebase();
+    const ref=d.ref(db,"playerStates/"+player.uid);
+    const snap=await d.get(ref);
+    const current=snap.exists()?(snap.val()||{}):{};
+    const b=defaultState();
+    const merged={...b,...current,ownedWorlds:Array.isArray(current.ownedWorlds)?current.ownedWorlds:b.ownedWorlds,ownedSkins:Array.isArray(current.ownedSkins)?current.ownedSkins:b.ownedSkins,ownedSounds:Array.isArray(current.ownedSounds)?current.ownedSounds:b.ownedSounds,ownedMusic:Array.isArray(current.ownedMusic)?current.ownedMusic:b.ownedMusic,ownedAbilities:Array.isArray(current.ownedAbilities)?current.ownedAbilities:b.ownedAbilities,missionProgress:{...b.missionProgress,...(current.missionProgress||{})},missionClaimed:{...b.missionClaimed,...(current.missionClaimed||{})},shopNewSeen:(current.shopNewSeen&&typeof current.shopNewSeen==="object")?current.shopNewSeen:{}};
+    const update={};
+    if(type==="coins"){update.coins=Number(merged.coins||0)+amount}
+    else if(type==="skin"){const owned=[...merged.ownedSkins];if(!owned.includes(itemId))owned.push(itemId);update.ownedSkins=owned}
+    else if(type==="ability"){const owned=[...merged.ownedAbilities];if(!owned.includes(itemId))owned.push(itemId);update.ownedAbilities=owned}
+    else if(type==="world"){const owned=[...merged.ownedWorlds];if(!owned.includes(itemId))owned.push(itemId);update.ownedWorlds=owned}
+    else if(type==="sound"){const owned=[...merged.ownedSounds];if(!owned.includes(itemId))owned.push(itemId);update.ownedSounds=owned}
+    else if(type==="music"){const owned=[...merged.ownedMusic];if(!owned.includes(itemId))owned.push(itemId);update.ownedMusic=owned}
+    update.updatedAt=d.serverTimestamp();
+    await d.update(ref,update);
+
+    const notifRef=d.ref(db,"notifications/"+player.uid);
+    const newNotif=d.push(notifRef);
+    await d.set(newNotif,{type:type,amount:type==="coins"?amount:1,itemId:type!=="coins"?itemId:null,message:type==="coins"?"Admin hat "+amount+" Coins gegeben":"Admin hat einen Gegenstand gegeben",createdAt:d.serverTimestamp()});
+
+    if(status)status.textContent=`✅ Belohnung an UID ${player.uid} gesendet.`;
+    showMessage(`✅ Belohnung verschickt.`);
+  }catch(e){console.error(e);if(status)status.textContent="❌ Fehler: "+(e?.message||"unbekannt")}
+}
+
+function populateFreeGiveItemSelect(){
+  const category=$("adminFreeGiveCategory")?.value;
+  const sel=$("adminFreeGiveItem");
+  if(!sel)return;
+  sel.innerHTML="";
+  let items=[];
+  if(category==="skins")items=skins.filter(s=>s.price>0);
+  else if(category==="worlds")items=worlds.filter(w=>w.price>0);
+  else if(category==="sounds")items=sounds.filter(s=>s.id!=="classic");
+  else if(category==="music")items=musicTracks.filter(m=>m.id!=="classicMusic");
+  else if(category==="abilities")items=Object.entries(abilities).map(([id,a])=>({id,item:a}));
+  items.forEach(item=>{
+    const opt=document.createElement("option");
+    if(category==="skins"){opt.value=item.id;opt.textContent=`${item.name} (${rarityMeta[item.rarity]?.name||item.rarity})`}
+    else if(category==="abilities"){opt.value=item.id;opt.textContent=`${item.item.icon} ${item.item.name}`}
+    else{opt.value=item.id;opt.textContent=item.name}
+    sel.appendChild(opt);
+  });
+}
+
+async function adminFreeGive(){
+  if(!await requireAdmin())return;
+  const name=$("adminFreeGivePlayerName")?.value.trim();
+  const category=$("adminFreeGiveCategory")?.value;
+  const itemId=$("adminFreeGiveItem")?.value;
+  const amount=Number($("adminFreeGiveAmount")?.value||1);
+  const status=$("adminFreeGiveStatus");
+  if(!name){if(status)status.textContent="Bitte Spielername eingeben.";return}
+  if(!itemId){if(status)status.textContent="Bitte einen Gegenstand auswählen.";return}
+  const player=await findPlayerByName(name);
+  if(!player){if(status)status.textContent="❌ Spieler nicht gefunden.";return}
+  if(!db){if(status)status.textContent="🔴 Keine Firebase-Verbindung.";return}
+  if(status)status.textContent="🔄 Verarbeite...";
+  try{
+    const {d}=await loadFirebase();
+    const ref=d.ref(db,"playerStates/"+player.uid);
+    const snap=await d.get(ref);
+    const current=snap.exists()?(snap.val()||{}):{};
+    const b=defaultState();
+    const merged={...b,...current,ownedWorlds:Array.isArray(current.ownedWorlds)?current.ownedWorlds:b.ownedWorlds,ownedSkins:Array.isArray(current.ownedSkins)?current.ownedSkins:b.ownedSkins,ownedSounds:Array.isArray(current.ownedSounds)?current.ownedSounds:b.ownedSounds,ownedMusic:Array.isArray(current.ownedMusic)?current.ownedMusic:b.ownedMusic,ownedAbilities:Array.isArray(current.ownedAbilities)?current.ownedAbilities:b.ownedAbilities,missionProgress:{...b.missionProgress,...(current.missionProgress||{})},missionClaimed:{...b.missionClaimed,...(current.missionClaimed||{})},shopNewSeen:(current.shopNewSeen&&typeof current.shopNewSeen==="object")?current.shopNewSeen:{}};
+    const update={};
+    const giveItem=(owned)=>Array.isArray(owned)?[...owned]:[];
+    if(category==="skins"){const owned=giveItem(merged.ownedSkins);for(let i=0;i<amount;i++)if(!owned.includes(itemId))owned.push(itemId);update.ownedSkins=owned}
+    else if(category==="worlds"){const owned=giveItem(merged.ownedWorlds);for(let i=0;i<amount;i++)if(!owned.includes(itemId))owned.push(itemId);update.ownedWorlds=owned}
+    else if(category==="sounds"){const owned=giveItem(merged.ownedSounds);for(let i=0;i<amount;i++)if(!owned.includes(itemId))owned.push(itemId);update.ownedSounds=owned}
+    else if(category==="music"){const owned=giveItem(merged.ownedMusic);for(let i=0;i<amount;i++)if(!owned.includes(itemId))owned.push(itemId);update.ownedMusic=owned}
+    else if(category==="abilities"){const owned=giveItem(merged.ownedAbilities);for(let i=0;i<amount;i++)if(!owned.includes(itemId))owned.push(itemId);update.ownedAbilities=owned}
+    update.updatedAt=d.serverTimestamp();
+    await d.update(ref,update);
+
+    const notifRef=d.ref(db,"notifications/"+player.uid);
+    const newNotif=d.push(notifRef);
+    let typeName="",notifType="";
+    if(category==="skins"){typeName=skins.find(s=>s.id===itemId)?.name||itemId;notifType="skin"}
+    else if(category==="worlds"){typeName=worlds.find(w=>w.id===itemId)?.name||itemId;notifType="world"}
+    else if(category==="sounds"){typeName=sounds.find(s=>s.id===itemId)?.name||itemId;notifType="sound"}
+    else if(category==="music"){typeName=musicTracks.find(m=>m.id===itemId)?.name||itemId;notifType="music"}
+    else if(category==="abilities"){typeName=abilities[itemId]?.name||itemId;notifType="ability"}
+    await d.set(newNotif,{type:notifType,amount:1,itemId:itemId,message:`Admin hat ${typeName} kostenlos gegeben`,createdAt:d.serverTimestamp()});
+
+    if(status)status.textContent=`✅ ${typeName} an UID ${player.uid} gegeben.`;
+    showMessage(`✅ Gegenstand verschickt.`);
+  }catch(e){console.error(e);if(status)status.textContent="❌ Fehler: "+(e?.message||"unbekannt")}
+}
 adminLoginBtn.onclick=openAdminLogin;adminUnlockBtn.onclick=activateAdmin;adminBroadcastSendBtn?.addEventListener("click",sendGlobalBroadcast);adminBroadcastInput?.addEventListener("keydown",e=>{if((e.ctrlKey||e.metaKey)&&e.key==="Enter")sendGlobalBroadcast()});adminCloseBtn.onclick=closeAdminLogin;adminClosePanelBtn.onclick=closeAdminLogin;adminMyAccountBtn.onclick=async()=>{if(await requireAdmin())adminInfo.textContent=`Firebase UID: ${currentUser.uid} · E-Mail: ${currentUser.email||"-"}`};$("adminRefreshUsersBtn").onclick=loadAdminUsers;$("adminUserSearch").addEventListener("input",()=>loadAdminUsers());adminCodeInput.addEventListener("keydown",e=>{if(e.key==="Enter")activateAdmin();if(e.key==="Escape")closeAdminLogin()});
+$("adminEventStartBtn")?.addEventListener("click",adminStartEvent);$("adminEventStopBtn")?.addEventListener("click",adminStopEvent);
+$("adminRewardType")?.addEventListener("change",populateRewardItemSelect);$("adminRewardGiveBtn")?.addEventListener("click",adminGiveReward);$("adminSelfRewardBtn")?.addEventListener("click",adminSelfReward);
+$("adminFreeGiveCategory")?.addEventListener("change",populateFreeGiveItemSelect);$("adminFreeGiveBtn")?.addEventListener("click",adminFreeGive);
 
 let globalBroadcastStop=null;
 let lastBroadcastId=null;
@@ -1536,13 +1974,17 @@ function showGlobalBroadcast(data){
   const id=String(data?.id||data?.createdAt||text);
   if(id===lastBroadcastId)return;
   lastBroadcastId=id;
-  const box=$("globalBroadcastOverlay"),body=$("globalBroadcastText"),time=$("globalBroadcastTime");
-  if(!box||!body||!time)return;
+  const box=$("globalBroadcastOverlay"),body=$("globalBroadcastText"),sender=$("globalBroadcastSender");
+  if(!box||!body)return;
   body.textContent=text;
-  time.textContent=data?.senderName?String(data.senderName):"ADMIN";
+  let senderName=data?.senderName?String(data.senderName):"";
+  if(senderName.indexOf("@")!==-1)senderName=getPlayerName()||"ADMIN";
+  if(sender)sender.textContent=senderName?" "+senderName:"";
+  box.classList.remove("show","hiding");
+  void box.offsetWidth;
   box.classList.add("show");
   clearTimeout(broadcastHideTimer);
-  broadcastHideTimer=setTimeout(()=>box.classList.remove("show"),9000);
+  broadcastHideTimer=setTimeout(()=>{box.classList.remove("show");box.classList.add("hiding");setTimeout(()=>{box.classList.remove("hiding");if(sender)sender.textContent=""},400)},7000);
 }
 async function startGlobalBroadcastListener(){
   try{
@@ -1551,9 +1993,139 @@ async function startGlobalBroadcastListener(){
     globalBroadcastStop=d.onValue(d.ref(db,"globalBroadcast/current"),snap=>{
       const v=snap.val();
       if(v&&v.message)showGlobalBroadcast(v);
-    },err=>console.error("globalBroadcast listener",err));
-  }catch(e){console.error("globalBroadcast setup",e)}
+   },err=>console.error("globalBroadcast listener",err));
+   }catch(e){console.error("globalBroadcast setup",e)}
 }
+async function startEventListener(){
+  if(!db)return;
+  try{
+    const {d}=await loadFirebase();
+    if(eventListenerStop){eventListenerStop();eventListenerStop=null}
+    eventListenerStop=d.onValue(d.ref(db,"events/active"),async snap=>{
+      const raw=snap.val()||{};
+      const prevIds=Object.keys(activeEvents);
+      const newEvents={};
+      const newIds=[];
+      for(const [id,v] of Object.entries(raw)){
+        if(v&&v.active!==false){
+          const meta=ADMIN_EVENTS.find(e=>e.id===id);
+          newEvents[id]={
+            id,
+            name:v.name||meta?.name||id,
+            description:v.description||meta?.description||"",
+            category:v.category||meta?.category||"",
+            musicFile:v.musicFile||meta?.musicFile||null,
+            startedAt:v.startedAt||null,
+            startedBy:v.startedBy||"admin",
+            expiresAt:v.expiresAt||null,
+            duration:meta?.duration||null
+          };
+          newIds.push(id);
+        }
+      }
+      activeEvents=newEvents;
+      updateEventHUD();
+      for(const id of newIds){
+        if(!prevIds.includes(id)){
+          showMessage(`🔴 EVENT AKTIV: ${newEvents[id].name} – ${newEvents[id].description}`);
+        }
+      }
+      for(const id of prevIds){
+        if(!newEvents[id]){
+          showMessage(`⏹️ Event "${id}" wurde beendet.`);
+        }
+      }
+      checkMusicEvent();
+    },err=>console.error("event listener",err));
+   }catch(e){console.error("startEventListener",e)}
+}
+let eventExpiryTimer=null;
+async function startEventExpiryCheck(){
+  if(!db)return;
+  try{
+    const {d}=await loadFirebase();
+    const check=async()=>{
+      try{
+        const snap=await d.get(d.ref(db,"events/active"));
+        if(snap.exists()){
+          const v=snap.val();
+          const now=Date.now();
+          for(const [id,ev] of Object.entries(v)){
+            if(ev&&ev.expiresAt&&ev.active!==false){
+              const exp=Number(ev.expiresAt||0);
+              if(exp>0&&now>exp){
+                await d.remove(d.ref(db,"events/active/"+id));
+                delete activeEvents[id];
+                showMessage(`⏰ Event "${id}" ist abgelaufen.`);
+              }
+            }
+          }
+        }
+      }catch(e){console.error("event expiry check",e)}
+    };
+    await check();
+    if(eventExpiryTimer)clearInterval(eventExpiryTimer);
+    eventExpiryTimer=setInterval(check,30000);
+  }catch(e){console.error("startEventExpiryCheck",e)}
+}
+let notificationProcessed=new Set();
+async function startNotificationListener(){
+  if(!currentUser||!db)return;
+  try{
+    const {d}=await loadFirebase();
+    if(notificationListenerStop){notificationListenerStop();notificationListenerStop=null}
+    notificationListenerStop=d.onChildAdded(d.ref(db,"notifications/"+currentUser.uid),snap=>{
+      const v=snap.val();
+      if(!v)return;
+      const key=snap.key;
+      if(notificationProcessed.has(key))return;
+      notificationProcessed.add(key);
+      applyNotification(v);
+      d.remove(d.ref(db,"notifications/"+currentUser.uid+"/"+key));
+    },err=>console.error("notification listener",err));
+  }catch(e){console.error("startNotificationListener",e)}
+}
+function applyNotification(v){
+  if(v.type==="coins"){
+    state.coins+=Number(v.amount||0);
+    saveState();
+    updateLobby();
+    showMessage(`🪙 +${Number(v.amount||0)} Coins erhalten!`);
+  }
+  else if(v.type==="skin"){
+    if(!state.ownedSkins.includes(v.itemId)){state.ownedSkins.push(v.itemId);showMessage(`🪽 Skin "${getSkinById(v.itemId).name}" erhalten!`);}
+    saveState();
+    renderShop();
+    renderInventory();
+    updateLobby();
+  }
+  else if(v.type==="ability"){
+    if(!state.ownedAbilities.includes(v.itemId)){state.ownedAbilities.push(v.itemId);state.selectedAbilityId=v.itemId;ensureAbilitySelection();}
+    saveState();
+    renderInventory();
+    updateLobby();
+    showMessage(`⚡ Fähigkeit "${getAbility(v.itemId).name}" erhalten!`);
+  }
+  else if(v.type==="world"){
+    if(!state.ownedWorlds.includes(v.itemId)){state.ownedWorlds.push(v.itemId);showMessage(`🌍 Welt "${worlds.find(w=>w.id===v.itemId)?.name||v.itemId}" erhalten!`);}
+    saveState();
+    updateLobby();
+  }
+  else if(v.type==="sound"){
+    if(!state.ownedSounds.includes(v.itemId)){state.ownedSounds.push(v.itemId);showMessage(`🔊 Sound erhalten!`);}
+    saveState();
+    renderInventory();
+    updateLobby();
+  }
+  else if(v.type==="music"){
+    if(!state.ownedMusic.includes(v.itemId)){state.ownedMusic.push(v.itemId);showMessage(`🎵 Musik erhalten!`);}
+    saveState();
+    renderShop();
+    renderInventory();
+    updateLobby();
+  }
+}
+
 async function sendGlobalBroadcast(){
   const status=$("adminBroadcastStatus"),input=$("adminBroadcastInput"),btn=$("adminBroadcastSendBtn");
   if(!await requireAdmin())return;
@@ -1561,15 +2133,34 @@ async function sendGlobalBroadcast(){
   if(!message){if(status)status.textContent="Bitte eine Nachricht eingeben.";return}
   btn.disabled=true;
   if(status)status.textContent="🔄 Broadcast wird an Firebase gesendet …";
+  let sent=false;
   try{
     const f=await getAdminFunctions();
     await f.sendBroadcast({message});
+    sent=true;
+  }catch(e){
+    try{
+      const {d}=await loadFirebase();
+      if(d&&db){
+        await d.set(d.ref(db,"globalBroadcast/current"),{
+          message,
+          senderName:getPlayerName()||(adminLocal?"FlyOwner":"ADMIN"),
+          createdAt:d.serverTimestamp(),
+          id:Date.now().toString()
+        });
+        sent=true;
+      }
+    }catch(e2){
+      console.error("sendGlobalBroadcast fallback",e2);
+    }
+  }
+  if(sent){
     input.value="";
     if(status)status.textContent="✅ Broadcast wurde global veröffentlicht.";
-  }catch(e){
-    console.error("sendGlobalBroadcast",e);
-    if(status)status.textContent="❌ Broadcast konnte nicht gesendet werden. Prüfe, ob die Firebase-Funktion adminSendBroadcast deployed ist.";
-  }finally{btn.disabled=false}
+  }else{
+    if(status)status.textContent="❌ Broadcast konnte nicht gesendet werden. Prüfe Firebase-Verbindung.";
+  }
+  btn.disabled=false;
 }
 
 accountBtn.onclick=()=>showScreen("authScreen");
@@ -1643,7 +2234,7 @@ canvas.addEventListener("pointerdown",e=>{e.preventDefault();flap()});addEventLi
   try{updateAccountUI();}catch(e){console.error(e)}
   try{updateSeasonUI();}catch(e){console.error(e)}
   try{startSeasonTimer();}catch(e){console.error(e)}
-  try{setupFirebase();}catch(e){console.error("setupFirebase",e)}
+   try{setupFirebase();}catch(e){console.error("setupFirebase",e)}
   if(state.musicEnabled){startLobbyMusic()}
   ["pointerdown","keydown","touchstart"].forEach(ev=>window.addEventListener(ev,()=>{if(!game.running&&state.musicEnabled&&!lobbyMusicStarted)startLobbyMusic()},{once:false,passive:true}));
 })();
