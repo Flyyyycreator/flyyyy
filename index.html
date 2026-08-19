@@ -294,8 +294,8 @@ html,body{background:#070b18!important;color:#fff!important}
 </div>
 
 <!-- Lobby-Musik: MP3-Player für dynamische Tracks -->
-<audio id="lobbyMusic1" preload="auto" loop></audio>
-<audio id="lobbyMusic2" preload="auto" loop></audio>
+<audio id="lobbyMusic1" preload="auto" loop><source src="assets/music/sigmamusicart-no-copyright-music-537751.mp3" type="audio/mpeg"></audio>
+<audio id="lobbyMusic2" preload="auto" loop><source src="assets/music/prettyjohn1-no-copyright-music-530633.mp3" type="audio/mpeg"></audio>
 <audio id="mp3Audio" preload="auto" loop></audio>
 <audio id="eventMusic" preload="auto" loop></audio>
 
@@ -870,39 +870,27 @@ function getTrackById(id){return getMusicTracks().find(x=>x.id===id)}
 function isMp3Track(m){return m&&!!m.file&&!m.melody}
 function stopMp3Audio(){if(mp3Audio){mp3Audio.pause();mp3Audio.currentTime=0}}
 function playMp3Track(m,vol=.45){
-  if(!mp3Audio||!m.file)return;
-  if(!state.musicEnabled)return;
+  if(!mp3Audio||!m.file)return Promise.reject("no mp3Audio");
+  if(!state.musicEnabled)return Promise.reject("music disabled");
   mp3Audio.src="assets/music/"+m.file;
+  mp3Audio.load();
   mp3Audio.volume=vol;
   mp3Audio.loop=true;
-  mp3Audio.play().catch(()=>{});
+  return mp3Audio.play();
 }
 function initAudio(){if(ACtx)return;const C=window.AudioContext||window.webkitAudioContext;if(C)ACtx=new C}
 function tone(f,d,v,t){if(!ACtx)return;const o=ACtx.createOscillator(),g=ACtx.createGain();o.type=t;o.frequency.value=f;g.gain.setValueAtTime(.0001,ACtx.currentTime);g.gain.exponentialRampToValueAtTime(v,ACtx.currentTime+.02);g.gain.exponentialRampToValueAtTime(.0001,ACtx.currentTime+d);o.connect(g);g.connect(ACtx.destination);o.start();o.stop(ACtx.currentTime+d+.02)}
 let lobbyTrackIndex=0;
 function stopLobbyMusic(){[lobbyMusic1,lobbyMusic2].forEach(a=>{if(!a)return;a.pause();a.currentTime=0});stopMp3Audio();lobbyMusicStarted=false}
 function playLobbyTrack(index,reset=true){if(!state.musicEnabled)return;const tracks=[lobbyMusic1,lobbyMusic2];const a=tracks[index%tracks.length];if(!a)return;tracks.forEach((x,i)=>{if(x&&i!==index){x.pause();if(reset)x.currentTime=0}});if(reset)a.currentTime=0;a.volume=.55;lobbyTrackIndex=index%tracks.length;const p=a.play();if(p&&p.then)p.then(()=>{lobbyMusicStarted=true}).catch(()=>{lobbyMusicStarted=false});else lobbyMusicStarted=true}
-function startLobbyMusicWithTrack(m){
-  if(!state.musicEnabled||eventMusicPlaying)return;
-  if(isMp3Track(m)){
-    if(musicTimer){clearInterval(musicTimer);musicTimer=null}
-    stopLobbyMusic();
-    playMp3Track(m,.55);
-    lobbyMusicStarted=true;
-    return;
-  }
-  if(musicTimer){clearInterval(musicTimer);musicTimer=null}
-  stopMp3Audio();
-  stopLobbyMusic();
-  playLobbyTrack(lobbyTrackIndex,true);
-}
+function startLobbyMusicWithTrack(m){if(!state.musicEnabled||eventMusicPlaying)return;if(isMp3Track(m)){if(musicTimer){clearInterval(musicTimer);musicTimer=null}stopLobbyMusic();playMp3Track(m,.55).then(()=>{lobbyMusicStarted=true}).catch(()=>{lobbyMusicStarted=false});return}if(musicTimer){clearInterval(musicTimer);musicTimer=null}stopMp3Audio();stopLobbyMusic();playLobbyTrack(lobbyTrackIndex,true)}
 [lobbyMusic1,lobbyMusic2].forEach((a,i)=>{if(a)a.addEventListener("ended",()=>{if(!game.running&&state.musicEnabled&&!eventMusicPlaying)playLobbyTrack((i+1)%2,true)})});
-function startLobbyMusic(){if(!state.musicEnabled||eventMusicPlaying)return;if(musicTimer){clearInterval(musicTimer);musicTimer=null}const m=selectedMusic();if(isMp3Track(m)){stopLobbyMusic();playMp3Track(m,.55);lobbyMusicStarted=true}else{stopMp3Audio();playLobbyTrack(lobbyTrackIndex,true)}}
+function startLobbyMusic(){if(!state.musicEnabled||eventMusicPlaying)return;if(musicTimer){clearInterval(musicTimer);musicTimer=null}const m=selectedMusic();if(isMp3Track(m)){stopLobbyMusic();playMp3Track(m,.55).then(()=>{lobbyMusicStarted=true}).catch(()=>{lobbyMusicStarted=false});return}stopMp3Audio();playLobbyTrack(lobbyTrackIndex,true)}
 function stopMusic(){if(musicTimer){clearInterval(musicTimer);musicTimer=null}stopLobbyMusic();stopMp3Audio()}
 function jumpSound(type){if(!state.sfxEnabled)return;initAudio();if(!ACtx)return;if(type==="classic")tone(520,.08,.06,"square");else if(type==="arcade"){tone(440,.06,.05,"square");setTimeout(()=>tone(660,.07,.05,"square"),45)}else if(type==="laser"){tone(900,.12,.05,"sawtooth");setTimeout(()=>tone(1400,.09,.03,"sawtooth"),45)}else if(type==="bubble"){tone(300,.08,.04,"sine");setTimeout(()=>tone(650,.12,.04,"sine"),60)}else{tone(220,.13,.05,"sawtooth");setTimeout(()=>tone(520,.08,.05,"square"),65)}}function coinSound(){if(!state.sfxEnabled)return;initAudio();tone(784,.08,.05,"triangle");setTimeout(()=>tone(1046,.12,.05,"triangle"),70)}function scoreSound(){if(state.sfxEnabled){initAudio();tone(760,.04,.03,"triangle")}}function gameOverSound(){if(state.sfxEnabled){initAudio();tone(300,.15,.05,"sawtooth");setTimeout(()=>tone(210,.22,.04,"sawtooth"),130)}}function purchaseSound(){initAudio();tone(523,.08,.04,"triangle");setTimeout(()=>tone(784,.12,.04,"triangle"),70)}
 function selectedMusic(){return getTrackById(state.selectedMusic)||getMusicTracks()[0]}
-function startMusic(){if(!state.musicEnabled||eventMusicPlaying)return;const m=selectedMusic();if(isMp3Track(m)){stopLobbyMusic();stopMp3Audio();playMp3Track(m,.35);return;}initAudio();if(!ACtx)return;if(ACtx.state==="suspended")ACtx.resume();stopLobbyMusic();stopMp3Audio();if(musicTimer)clearInterval(musicTimer);musicTimer=null;musicStep=0;const tick=()=>{if(!state.musicEnabled||!game.running){if(musicTimer){clearInterval(musicTimer);musicTimer=null}return}tone(m.melody[musicStep%m.melody.length],.28,.024,"triangle");if(musicStep%2===0)tone(m.bass[musicStep%m.bass.length],.4,.011,"sine");musicStep++};tick();musicTimer=setInterval(tick,m.tempo)}
-function previewMusic(m){initAudio();if(isMp3Track(m)){stopMusic();playMp3Track(m,.5);setTimeout(()=>{if(game.running&&state.musicEnabled)startMusic();else if(!game.running&&state.musicEnabled)startLobbyMusic()},100);return;}if(!ACtx)return;stopMusic();let i=0;const t=setInterval(()=>{if(i>=m.melody.length){clearInterval(t);if(game.running&&state.musicEnabled)startMusic();else if(!game.running&&state.musicEnabled)startLobbyMusic();return}tone(m.melody[i++],.28,.03,"triangle")},m.tempo)}
+function startMusic(){if(!state.musicEnabled||eventMusicPlaying)return;const m=selectedMusic();if(isMp3Track(m)){stopLobbyMusic();stopMp3Audio();playMp3Track(m,.35).catch(()=>{});return;}initAudio();if(!ACtx)return;if(ACtx.state==="suspended")ACtx.resume();stopLobbyMusic();stopMp3Audio();if(musicTimer)clearInterval(musicTimer);musicTimer=null;musicStep=0;const tick=()=>{if(!state.musicEnabled||!game.running){if(musicTimer){clearInterval(musicTimer);musicTimer=null}return}tone(m.melody[musicStep%m.melody.length],.28,.024,"triangle");if(musicStep%2===0)tone(m.bass[musicStep%m.bass.length],.4,.011,"sine");musicStep++};tick();musicTimer=setInterval(tick,m.tempo)}
+function previewMusic(m){initAudio();if(isMp3Track(m)){stopMusic();playMp3Track(m,.5).catch(()=>{});setTimeout(()=>{if(game.running&&state.musicEnabled)startMusic();else if(!game.running&&state.musicEnabled)startLobbyMusic()},100);return;}if(!ACtx)return;stopMusic();let i=0;const t=setInterval(()=>{if(i>=m.melody.length){clearInterval(t);if(game.running&&state.musicEnabled)startMusic();else if(!game.running&&state.musicEnabled)startLobbyMusic();return}tone(m.melody[i++],.28,.03,"triangle")},m.tempo)}
 const eventMusicAudio=document.getElementById("eventMusic");
 let eventMusicPlaying=false;
 let eventMusicPending=false;
@@ -2671,7 +2659,7 @@ canvas.addEventListener("pointerdown",e=>{e.preventDefault();flap()});addEventLi
 
 (()=>{
   try{ensureShopNewState();}catch(e){console.error(e)}
-  loadMusicManifest().then(()=>{try{renderShop()}catch(e){console.error("renderShop",e)};try{renderInventory()}catch(e){console.error("renderInventory",e)}})
+  loadMusicManifest().then(()=>{try{renderShop()}catch(e){console.error("renderShop",e)};try{renderInventory()}catch(e){console.error("renderInventory",e)};if(state.musicEnabled&&!game.running){startLobbyMusic()}})
   try{updateLobby();}catch(e){console.error(e)}
   try{updateShopLobbyNewBadge();}catch(e){console.error(e)}
   try{renderShop();}catch(e){console.error("renderShop",e)}
@@ -2683,8 +2671,7 @@ canvas.addEventListener("pointerdown",e=>{e.preventDefault();flap()});addEventLi
   try{updateSeasonUI();}catch(e){console.error(e)}
   try{startSeasonTimer();}catch(e){console.error(e)}
    try{updateSimulatedOnline();startOnlineSimulate();}catch(e){console.error(e)}
-     try{setupFirebase();}catch(e){console.error("setupFirebase",e)}
-  if(state.musicEnabled){startLobbyMusic()}
+      try{setupFirebase();}catch(e){console.error("setupFirebase",e)}
    ["pointerdown","keydown","touchstart"].forEach(ev=>window.addEventListener(ev,()=>{if(!game.running&&state.musicEnabled&&!lobbyMusicStarted)startLobbyMusic()},{once:false,passive:true}));
 })();
 </script>
