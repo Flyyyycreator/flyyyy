@@ -7,7 +7,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <meta name="theme-color" content="#0d1430">
-<title>FLYYYY 2.9.2</title>
+<title>FLYYYY 3.0</title>
 <style>
 :root{--bg:#0d1430;--panel:#121a3d;--text:#fff;--muted:#b9c5ef;--yellow:#ffd447;--blue:#5ee7ff;--green:#6df5a3;--red:#ff6374}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{width:100%;height:100%;margin:0;overflow:hidden;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:#fff}button,input{font:inherit}button{cursor:pointer}
@@ -17,10 +17,24 @@
 .button-grid{display:grid;gap:12px}.btn{border:0;border-radius:17px;padding:15px 18px;color:#111;font-weight:900;background:linear-gradient(180deg,#ffe570,#ffc82c);box-shadow:0 7px 0 #c99415,0 12px 22px rgba(0,0,0,.18);transition:.12s}.btn:active{transform:translateY(5px);box-shadow:0 2px 0 #c99415}.btn.blue{background:linear-gradient(180deg,#6ceeff,#39c9ea);box-shadow:0 7px 0 #1b8aa7}.btn.green{background:linear-gradient(180deg,#86ffbd,#4de89b);box-shadow:0 7px 0 #239a60}.btn.red{background:linear-gradient(180deg,#ff8995,#ff5e72);box-shadow:0 7px 0 #a62f43;color:#fff}.btn.dark{color:#fff;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.13);box-shadow:none}
 .credits,.accountLine{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-bottom:18px}.badge,.accountPill{padding:10px 16px;border-radius:999px;background:rgba(255,212,71,.12);border:1px solid rgba(255,212,71,.3);font-weight:900}.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}.topbar h2{margin:0;font-size:30px}
 .tabs,.seasonTabs{display:flex;gap:8px;overflow:auto;margin-bottom:15px;padding-bottom:6px}.tab,.seasonTab{white-space:nowrap;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:#fff;border-radius:999px;padding:10px 15px;font-weight:900}.tab.active,.seasonTab.active{background:#fff;color:#17204a}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}.card{min-height:220px;display:flex;flex-direction:column;gap:10px;padding:14px;border-radius:22px;background:linear-gradient(180deg,rgba(255,255,255,.095),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.12)}.card h3{margin:0;font-size:18px}.preview{width:100%;height:145px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:10px;border-radius:17px;background:linear-gradient(135deg,rgba(255,255,255,.11),rgba(255,255,255,.035));border:1px solid rgba(255,255,255,.08)}.preview canvas{width:100%;height:100%;object-fit:contain;display:block}.price{font-size:13px;font-weight:900;color:#ffe27b}.smallbtn{margin-top:auto;border:0;border-radius:12px;padding:10px 12px;font-weight:950;background:linear-gradient(180deg,#fff,#e9efff);color:#17204a}.smallbtn.blue{background:linear-gradient(180deg,#6ceeff,#39c9ea)}.smallbtn.selected{background:linear-gradient(180deg,#83ffc0,#4de89b);color:#0b3423}.smallbtn:disabled{opacity:.55;cursor:not-allowed}
-.authBox{padding:16px;border-radius:18px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);margin-bottom:15px}.authInput,.nameInput{width:100%;padding:13px 14px;border:1px solid rgba(255,255,255,.14);border-radius:14px;outline:none;background:rgba(255,255,255,.07);color:#fff}.authGrid,.nameBox{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}.authStatus{margin-top:10px;color:var(--muted);font-size:13px}.leaderStatus{padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);color:var(--muted);margin-bottom:14px}.leaderboard{display:grid;gap:10px}.leaderRow{display:grid;grid-template-columns:55px 1fr auto;align-items:center;gap:12px;padding:14px 16px;border-radius:17px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09)}.leaderRow.me{background:rgba(94,231,255,.08);border-color:rgba(94,231,255,.35)}.leaderRank{text-align:center;font-size:23px;font-weight:1000}.leaderName{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-weight:900}.leaderScore{font-size:20px;font-weight:1000}.leaderMeta{text-align:right;min-width:120px}.leaderWins{font-size:13px;color:var(--muted);font-weight:800;margin-top:2px}.onlineMini{font-size:12px;font-weight:900;margin-top:4px}.onlineMini.online{color:var(--green)}.onlineMini.offline{color:#8790ad}
+.authBox{padding:16px;border-radius:18px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);margin-bottom:15px}.authInput,.nameInput{width:100%;padding:13px 14px;border:1px solid rgba(255,255,255,.14);border-radius:14px;outline:none;background:rgba(255,255,255,.07);color:#fff}.authGrid,.nameBox{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}.authStatus{margin-top:10px;color:var(--muted);font-size:13px}.leaderStatus{padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);color:var(--muted);margin-bottom:14px}.leaderboard{display:grid;gap:10px}.leaderRow{display:grid;grid-template-columns:55px 1fr auto;align-items:center;gap:12px;padding:14px 16px;border-radius:17px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09)}.leaderRow.me{background:rgba(94,231,255,.08);border-color:rgba(94,231,255,.35)}.leaderRow.npcRow{opacity:.75}.leaderRow.npcRow .leaderName{color:var(--muted)}.leaderRank{text-align:center;font-size:23px;font-weight:1000}.leaderName{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-weight:900}.leaderScore{font-size:20px;font-weight:1000}.leaderMeta{text-align:right;min-width:120px}.leaderWins{font-size:13px;color:var(--muted);font-weight:800;margin-top:2px}.onlineMini{font-size:12px;font-weight:900;margin-top:4px}.onlineMini.online{color:var(--green)}.onlineMini.offline{color:#8790ad}
+
+/* Chat */
+#chatOverlay{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);z-index:5001;width:min(480px,90vw);max-height:min(400px,50vh);display:none;flex-direction:column;background:linear-gradient(180deg,rgba(15,20,45,.95),rgba(10,15,35,.95));border:1px solid rgba(109,245,163,.3);border-radius:18px;box-shadow:0 20px 60px rgba(0,0,0,.5);backdrop-filter:blur(10px)}
+#chatOverlay.active{display:flex}
+#chatMessages{flex:1;overflow-y:auto;padding:14px 16px;display:flex;flex-direction:column;gap:8px}
+.chatMsg{padding:8px 12px;border-radius:12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);font-size:13px;line-height:1.4;word-break:break-word;max-width:85%}
+.chatMsg.sender{color:#6df5a3;font-weight:900;margin-bottom:3px}
+.chatMsg.banned{color:#ff6374;font-style:italic}
+#chatInputRow{display:flex;gap:8px;padding:10px;border-top:1px solid rgba(255,255,255,.1)}
+#chatInput{flex:1;padding:10px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.08);color:#fff;font-size:14px;outline:none}
+#chatSendBtn{border:0;border-radius:12px;padding:10px 16px;font-weight:900;background:linear-gradient(135deg,#6df5a3,#5ee7ff);color:#071430;cursor:pointer}
+#chatSendBtn:disabled{opacity:.5;cursor:not-allowed}
+.chatToggle{position:fixed;bottom:14px;left:14px;z-index:5000;width:min(44px,8vw);height:44px;border-radius:999px;background:linear-gradient(135deg,#6df5a3,#5ee7ff);border:1px solid rgba(109,245,163,.4);display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 8px 24px rgba(0,0,0,.3);cursor:pointer;backdrop-filter:blur(6px)}
 .missionList{display:grid;gap:10px}.mission{padding:14px;border-radius:16px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1)}.mission.done{background:rgba(109,245,163,.1);border-color:rgba(109,245,163,.25)}.missionTop{display:flex;justify-content:space-between;gap:10px}.missionProgress{height:8px;margin-top:9px;overflow:hidden;border-radius:999px;background:rgba(255,255,255,.08)}.missionFill{height:100%;background:linear-gradient(90deg,#5ee7ff,#6df5a3)}
 #onlineBadge{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:5000;display:flex;align-items:center;gap:8px;padding:9px 13px;border-radius:999px;background:rgba(8,15,34,.9);border:1px solid rgba(109,245,163,.35);box-shadow:0 10px 30px rgba(0,0,0,.3);font-weight:900;backdrop-filter:blur(8px);white-space:nowrap}#onlineDot{width:10px;height:10px;border-radius:50%;background:#42e879;box-shadow:0 0 12px rgba(66,232,121,.8)}#onlineDot.off{background:#ff6374;box-shadow:0 0 12px rgba(255,99,116,.5)}
 #gameHud{position:absolute;inset:0;z-index:30;display:none;pointer-events:none}.hud-left,.hud-right{position:absolute;top:15px;display:flex;flex-wrap:wrap;align-items:center;gap:10px}.comboHud{border-color:rgba(255,212,71,.45);background:linear-gradient(180deg,rgba(76,54,8,.88),rgba(24,20,8,.78));transition:transform .12s,box-shadow .12s;color:#fff}.comboHud.hot{box-shadow:0 0 24px rgba(255,212,71,.28)}.comboHud.mega{border-color:rgba(255,99,116,.6);background:linear-gradient(180deg,rgba(92,20,31,.9),rgba(30,11,17,.82));box-shadow:0 0 28px rgba(255,99,116,.28);animation:comboPulse .8s ease-in-out infinite alternate}@keyframes comboPulse{from{transform:scale(1)}to{transform:scale(1.05)}}.hud-left{left:15px;right:180px;justify-content:flex-start}.hud-right{right:15px;max-width:150px;justify-content:flex-end}.hud-pill{padding:10px 14px;white-space:nowrap;border-radius:999px;background:rgba(12,19,46,.72);border:1px solid rgba(255,255,255,.15);font-weight:900;backdrop-filter:blur(8px)}#eventBadge{position:absolute;left:50%;top:15px;transform:translateX(-50%);z-index:31;border:1px solid rgba(255,79,216,.35);background:linear-gradient(135deg,rgba(255,79,134,.85),rgba(255,212,71,.85));color:#fff;font-size:13px;padding:8px 14px;box-shadow:0 0 20px rgba(255,99,116,.4),0 0 30px rgba(255,212,71,.2);animation:eventPulse 1.5s ease-in-out infinite alternate}@keyframes eventPulse{from{box-shadow:0 0 20px rgba(255,99,116,.4),0 0 30px rgba(255,212,71,.2)}to{box-shadow:0 0 30px rgba(255,99,116,.6),0 0 40px rgba(255,212,71,.4)}}.pause-btn{pointer-events:auto;padding:10px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.15);color:#fff;background:rgba(12,19,46,.72);font-weight:900}.tip{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);padding:9px 14px;border-radius:999px;background:rgba(12,19,46,.6);font-size:13px}
+#copyrightFooter{position:fixed;bottom:0;left:0;width:100%;z-index:5;display:flex;justify-content:center;align-items:center;padding:10px 0;font-size:12px;color:var(--muted);background:rgba(8,15,34,.85);backdrop-filter:blur(8px);border-top:1px solid rgba(255,255,255,.12);pointer-events:none}@media(max-width:600px){#copyrightFooter{font-size:11px;padding:8px 0}}
 .overlay{position:absolute;inset:0;z-index:100;display:none;align-items:center;justify-content:center;background:rgba(5,8,22,.55);backdrop-filter:blur(6px)}.overlay.active{display:flex}.dialog{width:min(560px,92vw);padding:28px;text-align:center;border-radius:28px;background:linear-gradient(180deg,#101837,#18234d);border:1px solid rgba(255,255,255,.15);box-shadow:0 20px 60px rgba(0,0,0,.45)}.dialog h2{margin:0 0 10px;font-size:clamp(40px,8vw,70px)}.dialog p{color:var(--muted)}.stats{display:flex;justify-content:center;flex-wrap:wrap;gap:25px;margin:20px 0}.stat strong{display:block;font-size:28px}.notice{padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);color:var(--muted);font-size:13px;margin-top:12px}
 .seasonPanel{margin:14px 0 18px;padding:16px;border-radius:20px;background:linear-gradient(135deg,rgba(94,231,255,.10),rgba(109,245,163,.08));border:1px solid rgba(94,231,255,.20)}.seasonTop{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.seasonTitle{font-size:20px;font-weight:1000}.seasonTimer{font-weight:1000;color:#6df5a3}.seasonSub{color:var(--muted);font-size:13px;margin-top:7px}.onlineNote{font-size:12px;color:var(--muted);margin-top:8px}
 .rewardOverlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;background:rgba(4,8,20,.72);backdrop-filter:blur(8px)}.rewardOverlay.active{display:flex}.rewardBox{width:min(560px,92vw);padding:30px;text-align:center;border-radius:30px;background:linear-gradient(180deg,#132042,#19295b);border:1px solid rgba(255,255,255,.16);box-shadow:0 30px 90px rgba(0,0,0,.55)}.rewardBox h2{margin:0;font-size:clamp(34px,8vw,62px)}.rewardRank{font-size:28px;font-weight:1000;margin:10px 0}.rewardCoins{font-size:40px;font-weight:1000;color:#ffd447;margin:12px 0}.rewardBox p{color:var(--muted)}
@@ -250,12 +264,12 @@ html,body{background:#070b18!important;color:#fff!important}
 <body>
 <div id="globalBroadcastOverlay" class="broadcastOverlay" aria-live="polite"><div class="broadcastHeader"><span>📢 GLOBAL BROADCAST</span><span id="globalBroadcastTime"></span></div><div id="globalBroadcastText" class="broadcastBody"></div><div id="globalBroadcastSender" class="broadcastSender"></div></div>
 <div id="app"><div id="appErrorNotice" style="display:none;position:fixed;left:50%;top:10px;transform:translateX(-50%);z-index:100000;padding:10px 14px;border-radius:12px;background:#2a1730;border:1px solid #ff6374;color:#fff;font-weight:900">⚠️ Ein Spielfehler ist aufgetreten. Bitte Seite neu laden.</div>
-<div id="onlineBadge"><span id="onlineDot"></span><span>🟢 <b id="onlineCount">0</b> Online</span></div>
+<div id="onlineBadge"><span id="onlineDot"></span><span>🟢 <b id="onlineCount">10</b> Online</span></div>
 <canvas id="gameCanvas"></canvas>
 
 <div id="authScreen" class="screen"><div class="menu"><div class="title">FLYYYY</div><div class="version">🔐 ACCOUNT</div><div class="subtitle">Mit E-Mail anmelden, neues Konto erstellen oder ohne Konto spielen.</div><div class="authBox"><h2 style="margin:0 0 12px">Anmelden / Registrieren</h2><input id="authEmail" class="authInput" type="email" autocomplete="email" placeholder="E-Mail"><input id="authPassword" class="authInput" type="password" autocomplete="current-password" placeholder="Passwort (mind. 6 Zeichen)" style="margin-top:10px"><div class="authGrid"><button id="loginBtn" class="btn blue">ANMELDEN</button><button id="registerBtn" class="btn green">REGISTRIEREN</button></div><button id="guestBtn" class="btn dark" style="width:100%;margin-top:10px">👤 OHNE KONTO SPIELEN</button><button id="adminLoginBtn" class="btn dark" style="width:100%;margin-top:10px">🛠️ ADMIN</button><div id="authStatus" class="authStatus">Gastmodus ist jederzeit möglich.</div><div class="tiny" style="margin-top:10px">🛡️ Adminrechte werden serverseitig mit Firebase geprüft.</div></div><button id="authBackBtn" class="btn dark" style="width:100%">← Zur Lobby</button></div></div>
 
-<div id="lobby" class="screen active"><div class="menu"><div class="title">FLYYYY</div><div class="version">🔥 UPDATE 2.9 · COMBO</div><div class="subtitle">Fly weiter. Sammle Coins. Schlage andere Spieler.</div><div class="accountLine"><div id="accountStatus" class="accountPill">👤 Gast</div><button id="accountBtn" class="btn dark">🔐 ANMELDEN</button><button id="logoutBtn" class="btn red" style="display:none">ABMELDEN</button><button id="myAccountBtn" class="btn dark">👤 MEIN KONTO</button></div><div class="credits"><div class="badge">🪙 <span id="lobbyCoins">0</span> Coins</div><div class="badge">🏆 Rekord: <span id="lobbyBest">0</span></div></div><div class="seasonPanel"><div class="seasonTop"><div class="seasonTitle">🌐 SEASON <span id="seasonNumberLobby">1</span></div><div class="seasonTimer" id="seasonTimerLobby">⏱️ Lädt...</div></div><div class="seasonSub">7-Tage-Online-Season · nur mit Konto spielbar</div><div class="onlineNote">🥇 1.000 Coins · 🥈 500 Coins · 🥉 300 Coins · Platz 4–10: 100 · Platz 11–25: 50</div></div><div class="button-grid"><button id="startBtn" class="btn">START</button><button id="onlineModeBtn" class="btn green">🌐 ONLINE-SEASON SPIELEN</button><button id="leaderboardBtn" class="btn blue">🏆 LEADERBOARD</button><button id="shopBtn" class="btn blue">🛒 SHOP <span id="shopLobbyNewBadge" class="newBadge">NEU</span></button><button id="inventoryBtn" class="btn blue">🎒 INVENTAR</button><button id="missionsBtn" class="btn blue">🎯 MISSIONEN</button><button id="musicToggleBtn" class="btn dark">🎵 Musik: AN</button></div><div class="notice">✅ Season-Punkte sind getrennt vom Allzeit-Highscore. Nur die aktuelle Season entscheidet über die Season-Belohnung.</div></div></div>
+<div id="lobby" class="screen active"><div class="menu"><div class="title">FLYYYY</div><div class="version">🔥 UPDATE 3.0 · COMBO</div><div class="subtitle">Fly weiter. Sammle Coins. Schlage andere Spieler.</div><div class="accountLine"><div id="accountStatus" class="accountPill">👤 Gast</div><button id="accountBtn" class="btn dark">🔐 ANMELDEN</button><button id="logoutBtn" class="btn red" style="display:none">ABMELDEN</button><button id="myAccountBtn" class="btn dark">👤 MEIN KONTO</button></div><div class="credits"><div class="badge">🪙 <span id="lobbyCoins">0</span> Coins</div><div class="badge">🏆 Rekord: <span id="lobbyBest">0</span></div></div><div class="seasonPanel"><div class="seasonTop"><div class="seasonTitle">🌐 SEASON <span id="seasonNumberLobby">1</span></div><div class="seasonTimer" id="seasonTimerLobby">⏱️ Lädt...</div></div><div class="seasonSub">7-Tage-Online-Season · nur mit Konto spielbar</div><div class="onlineNote">🥇 1.000 Coins · 🥈 500 Coins · 🥉 300 Coins · Platz 4–10: 100 · Platz 11–25: 50</div></div><div class="button-grid"><button id="startBtn" class="btn">START</button><button id="onlineModeBtn" class="btn green">🌐 ONLINE-SEASON SPIELEN</button><button id="leaderboardBtn" class="btn blue">🏆 LEADERBOARD</button><button id="shopBtn" class="btn blue">🛒 SHOP <span id="shopLobbyNewBadge" class="newBadge">NEU</span></button><button id="inventoryBtn" class="btn blue">🎒 INVENTAR</button><button id="missionsBtn" class="btn blue">🎯 MISSIONEN</button><button id="musicToggleBtn" class="btn dark">🎵 Musik: AN</button></div><div class="notice">✅ Season-Punkte sind getrennt vom Allzeit-Highscore. Nur die aktuelle Season entscheidet über die Season-Belohnung.</div></div></div>
 
 <div id="leaderboard" class="screen"><div class="menu"><div class="topbar"><div><h2>Leaderboard</h2><div class="tiny">Season und Allzeit werden getrennt angezeigt.</div></div><button id="leaderboardBack" class="btn dark">← Zurück</button></div><div class="seasonTabs"><button id="seasonTabBtn" class="seasonTab active">🌐 Season</button><button id="allTimeTabBtn" class="seasonTab">⭐ Allzeit</button></div><div class="seasonPanel"><div class="seasonTop"><div class="seasonTitle">SEASON <span id="seasonNumberBoard">1</span></div><div class="seasonTimer" id="seasonTimerBoard">⏱️ Lädt...</div></div><div class="seasonSub" id="seasonBoardSub">🌐 Nur Season-Punkte</div></div><div id="leaderboardStatus" class="leaderStatus">Lade Leaderboard...</div><div class="nameBox"><input id="playerName" class="nameInput" maxlength="20" placeholder="Dein Spielername"><button id="saveNameBtn" class="btn">NAME SPEICHERN</button></div><div id="leaderboardList" class="leaderboard"></div></div></div>
 
@@ -270,23 +284,23 @@ html,body{background:#070b18!important;color:#fff!important}
 <div id="luckyConfirmOverlay" class="overlay"><div class="dialog"><h2>🎡 LUCKY RAD</h2><p>Ein Dreh kostet <strong>🪙 1000 Coins</strong>.</p><p class="tiny">Nach dem Kauf öffnet sich sofort das Lucky Rad.</p><div class="button-grid"><button id="confirmLuckyBuyBtn" class="btn green">🪙 KAUFEN & ÖFFNEN</button><button id="cancelLuckyBuyBtn" class="btn dark">ABBRECHEN</button></div></div></div>
 <div id="jackpotOverlay" class="jackpotOverlay"><div class="jackpotBox"><div id="prizePopupIcon" class="prizeIcon">🎁</div><div id="prizePopupTitle" class="prizeTitle">DEIN PREIS!</div><div id="prizePopupText" class="prizeText">Preis</div><div id="prizePopupSub" class="prizeSub">Der Preis wurde deinem Konto gutgeschrieben.</div></div></div>
 <div id="seasonRewardOverlay" class="rewardOverlay"><div class="rewardBox"><div style="font-size:72px">🏆</div><h2>SEASON BEENDET!</h2><div id="seasonRewardRank" class="rewardRank">Platz 1</div><div id="seasonRewardCoins" class="rewardCoins">🪙 +1.000</div><p id="seasonRewardText">Deine persönliche Season-Belohnung wartet auf dich.</p><button id="claimSeasonRewardBtn" class="btn green" style="width:100%;margin-top:10px">🎁 BELOHNUNG ABHOLEN</button></div></div>
-<div id="adminOverlay" class="overlay"><div class="dialog" style="width:min(1100px,96vw);max-height:92vh;overflow:auto;text-align:left"><h2 style="font-size:42px;margin-bottom:6px">🛠️ ADMIN</h2><p id="adminStatusText">Bitte mit deinem FLYYYY-Konto anmelden.</p><div id="adminUnlockArea"><input id="adminCodeInput" class="authInput" type="password" autocomplete="off" placeholder="Admin-Aktivierungscode eingeben"><div class="button-grid" style="margin-top:12px"><button id="adminUnlockBtn" class="btn green">🔓 AKTIVIEREN</button><button id="adminCloseBtn" class="btn dark">← SCHLIESSEN</button></div></div><div id="adminPanel" style="display:none;margin-top:18px"><div class="notice">✅ Serverseitige Adminrechte aktiv. Personenbezogene Daten nur für die Administration verwenden.</div><div id="adminTabs" class="tabs"></div><div id="adminUsersTab" class="adminTabSection"><div style="display:grid;grid-template-columns:minmax(180px,1fr) auto;gap:10px;margin:12px 0"><input id="adminUserSearch" class="authInput" placeholder="🔎 E-Mail oder UID suchen"><button id="adminRefreshUsersBtn" class="btn blue">↻ AKTUALISIEREN</button></div><div id="adminUsersStatus" class="leaderStatus">Lade Spieler...</div><div id="adminUsersList" class="leaderboard"></div></div><div id="adminEventsTab" class="adminTabSection"><div class="leaderStatus">Wähle ein Event und starte es für alle Spieler online. Mehrere Events können gleichzeitig aktiv sein!</div><div style="margin:14px 0"><select id="adminEventSelect" class="authInput"></select></div><div class="button-grid" style="margin-bottom:14px"><button id="adminEventStartBtn" class="btn green">▶️ EVENT STARTEN</button><button id="adminEventStopBtn" class="btn red">⏹️ EVENT BEENDEN</button></div><div id="adminEventStatus" class="leaderStatus">Kein Event aktiv.</div><div id="adminActiveEventsList" class="leaderboard" style="margin-top:14px"></div></div><div id="adminRewardsTab" class="adminTabSection"><div class="leaderStatus">Wähle einen Spieler und eine Belohnung.</div><input id="adminRewardPlayerName" class="authInput" placeholder="Spielername (aus Leaderboard)" style="margin:14px 0"><select id="adminRewardType" class="authInput" style="margin-bottom:14px"><option value="coins">🪙 Coins</option><option value="skin">🪽 Skin</option><option value="ability">⚡ Fähigkeit</option><option value="world">🌍 Welt</option><option value="sound">🔊 Sound</option><option value="music">🎵 Musik</option></select><input id="adminRewardAmount" type="number" min="1" max="1000000000" class="authInput" placeholder="Menge (für Coins)" style="margin-bottom:10px"><select id="adminRewardItem" class="authInput" style="margin-bottom:10px"></select><div class="button-grid" style="margin-top:14px"><button id="adminRewardGiveBtn" class="btn green">🎁 GEBEN</button></div><div class="button-grid" style="margin-top:10px"><button id="adminSelfRewardBtn" class="btn blue">💝 AN MICH SELBST GEBEN</button></div><div id="adminRewardStatus" class="leaderStatus" style="margin-top:10px">Bereit.</div></div><div id="adminFreeGiveTab" class="adminTabSection"><div class="leaderStatus">Gib einen Shop-Gegenstand kostenlos an einen Spieler.</div><input id="adminFreeGivePlayerName" class="authInput" placeholder="Spielername (aus Leaderboard)" style="margin:14px 0"><select id="adminFreeGiveCategory" class="authInput" style="margin-bottom:14px"><option value="skins">🪽 Skins</option><option value="worlds">🌍 Welten</option><option value="sounds">🔊 Sounds</option><option value="music">🎵 Musik</option><option value="abilities">⚡ Fähigkeiten</option></select><select id="adminFreeGiveItem" class="authInput" style="margin-bottom:10px"></select><input id="adminFreeGiveAmount" type="number" min="1" max="999" class="authInput" placeholder="Menge" style="margin-bottom:10px"><div class="button-grid" style="margin-top:14px"><button id="adminFreeGiveBtn" class="btn green">🎁 KOSTENLOS GEBEN</button></div><div id="adminFreeGiveStatus" class="leaderStatus" style="margin-top:10px">Bereit.</div></div><div class="button-grid" style="margin-top:14px"><button id="adminMyAccountBtn" class="btn dark">👤 MEIN KONTO</button><button id="adminClosePanelBtn" class="btn dark">🔒 SCHLIESSEN</button></div><div class="broadcastComposer">
+<div id="adminOverlay" class="overlay"><div class="dialog" style="width:min(1100px,96vw);max-height:92vh;overflow:auto;text-align:left"><h2 style="font-size:42px;margin-bottom:6px">🛠️ ADMIN</h2><p id="adminStatusText">Bitte mit deinem FLYYYY-Konto anmelden.</p><div id="adminUnlockArea"><input id="adminCodeInput" class="authInput" type="password" autocomplete="off" placeholder="Admin-Aktivierungscode eingeben"><div class="button-grid" style="margin-top:12px"><button id="adminUnlockBtn" class="btn green">🔓 AKTIVIEREN</button><button id="adminCloseBtn" class="btn dark">← SCHLIESSEN</button></div></div><div id="adminPanel" style="display:none;margin-top:18px"><div class="notice">✅ Serverseitige Adminrechte aktiv. Personenbezogene Daten nur für die Administration verwenden.</div><div id="adminTabs" class="tabs"></div><div id="adminUsersTab" class="adminTabSection"><div style="display:grid;grid-template-columns:minmax(180px,1fr) auto;gap:10px;margin:12px 0"><input id="adminUserSearch" class="authInput" placeholder="🔎 E-Mail oder UID suchen"><button id="adminRefreshUsersBtn" class="btn blue">↻ AKTUALISIEREN</button></div><div id="adminUsersStatus" class="leaderStatus">Lade Spieler...</div><div id="adminUsersList" class="leaderboard"></div></div><div id="adminEventsTab" class="adminTabSection"><div class="leaderStatus">Wähle ein Event und starte es für alle Spieler online. Mehrere Events können gleichzeitig aktiv sein!</div><div style="margin:14px 0"><select id="adminEventSelect" class="authInput"></select></div><div class="button-grid" style="margin-bottom:14px"><button id="adminEventStartBtn" class="btn green">▶️ EVENT STARTEN</button><button id="adminEventStopBtn" class="btn red">⏹️ EVENT BEENDEN</button></div><div id="adminEventStatus" class="leaderStatus">Kein Event aktiv.</div><div id="adminActiveEventsList" class="leaderboard" style="margin-top:14px"></div></div><div id="adminRewardsTab" class="adminTabSection"><div class="leaderStatus">Wähle einen Spieler und eine Belohnung.</div><input id="adminRewardPlayerName" class="authInput" placeholder="Spielername (aus Leaderboard)" style="margin:14px 0"><select id="adminRewardType" class="authInput" style="margin-bottom:14px"><option value="coins">🪙 Coins</option><option value="skin">🪽 Skin</option><option value="ability">⚡ Fähigkeit</option><option value="world">🌍 Welt</option><option value="sound">🔊 Sound</option><option value="music">🎵 Musik</option></select><input id="adminRewardAmount" type="number" min="1" max="1000000000" class="authInput" placeholder="Menge (für Coins)" style="margin-bottom:10px"><select id="adminRewardItem" class="authInput" style="margin-bottom:10px"></select><div class="button-grid" style="margin-top:14px"><button id="adminRewardGiveBtn" class="btn green">🎁 GEBEN</button></div><div class="button-grid" style="margin-top:10px"><button id="adminSelfRewardBtn" class="btn blue">💝 AN MICH SELBST GEBEN</button><button id="adminRewardAllBtn" class="btn red">🌍 ALLEN SPIELERN GEBEN</button></div><div id="adminRewardStatus" class="leaderStatus" style="margin-top:10px">Bereit.</div></div><div id="adminFreeGiveTab" class="adminTabSection"><div class="leaderStatus">Gib einen Shop-Gegenstand kostenlos an einen Spieler.</div><input id="adminFreeGivePlayerName" class="authInput" placeholder="Spielername (aus Leaderboard)" style="margin:14px 0"><select id="adminFreeGiveCategory" class="authInput" style="margin-bottom:14px"><option value="skins">🪽 Skins</option><option value="worlds">🌍 Welten</option><option value="sounds">🔊 Sounds</option><option value="music">🎵 Musik</option><option value="abilities">⚡ Fähigkeiten</option></select><select id="adminFreeGiveItem" class="authInput" style="margin-bottom:10px"></select><input id="adminFreeGiveAmount" type="number" min="1" max="999" class="authInput" placeholder="Menge" style="margin-bottom:10px"><div class="button-grid" style="margin-top:14px"><button id="adminFreeGiveBtn" class="btn green">🎁 KOSTENLOS GEBEN</button></div><div id="adminFreeGiveStatus" class="leaderStatus" style="margin-top:10px">Bereit.</div></div><div class="button-grid" style="margin-top:14px"><button id="adminMyAccountBtn" class="btn dark">👤 MEIN KONTO</button><button id="adminClosePanelBtn" class="btn dark">🔒 SCHLIESSEN</button></div><div class="broadcastComposer">
 <h3>📢 Global Broadcast</h3>
 <p>Nachricht hier eingeben. Sie wird über Firebase an alle aktiven Spieler verteilt.</p>
 <div class="broadcastGrid"><textarea id="adminBroadcastInput" class="broadcastInput" maxlength="240" placeholder="Nachricht für alle Spieler …"></textarea><button id="adminBroadcastSendBtn" class="btn broadcastSend">📢 BROADCAST SENDEN</button></div>
 <div id="adminBroadcastStatus" class="broadcastStatus"></div>
 </div>
-<div id="adminInfo" class="notice">Nur als Admin sichtbar.</div></div></div></div>
+<div id="adminInfo" class="notice">Nur als Admin sichtbar.</div><div id="adminChatTab" class="adminTabSection"><div class="leaderStatus">Gesperrte Spieler verwalten.</div><div style="display:grid;grid-template-columns:minmax(140px,1fr) auto;gap:10px;margin:12px 0"><input id="adminChatBanName" class="authInput" placeholder="Spielername (oder UID)"><input id="adminChatBanReason" class="authInput" placeholder="Grund (optional)"><button id="adminChatBanBtn" class="btn red">🔇 Sperren (10 Min)</button></div><button id="adminChatRefreshBtn" class="btn blue" style="margin-bottom:12px">↻ Aktualisieren</button><div id="adminChatBanList" class="leaderboard"></div></div></div></div></div>
 </div>
 
-<!-- Lobby-Musik: beide MP3-Dateien -->
-<audio id="lobbyMusic1" preload="auto" loop>
-  <source src="music/Game Music.mp3" type="audio/mpeg">
-</audio>
-<audio id="lobbyMusic2" preload="auto" loop>
-  <source src="music/Credits 2.mp3" type="audio/mpeg">
-</audio>
+<!-- Lobby-Musik: MP3-Player für dynamische Tracks -->
+<audio id="lobbyMusic1" preload="auto" loop></audio>
+<audio id="lobbyMusic2" preload="auto" loop></audio>
+<audio id="mp3Audio" preload="auto" loop></audio>
 <audio id="eventMusic" preload="auto" loop></audio>
+
+<div id="chatOverlay"><div id="chatMessages"></div><div id="chatInputRow"><input id="chatInput" maxlength="300" placeholder="Nachricht ..."><button id="chatSendBtn" class="btn blue">➤</button></div></div>
+<div id="chatToggle" class="chatToggle">💬</div>
 
 <script type="module">
 window.addEventListener("error",e=>{
@@ -311,18 +325,11 @@ const shop=$("shop"),shopBack=$("shopBack"),shopTabs=$("shopTabs"),shopCards=$("
 const luckyConfirmOverlay=$("luckyConfirmOverlay"),confirmLuckyBuyBtn=$("confirmLuckyBuyBtn"),cancelLuckyBuyBtn=$("cancelLuckyBuyBtn"),jackpotOverlay=$("jackpotOverlay"),prizePopupIcon=$("prizePopupIcon"),prizePopupTitle=$("prizePopupTitle"),prizePopupText=$("prizePopupText"),prizePopupSub=$("prizePopupSub");
 const abilityBtn=$("abilityBtn"),gameHud=$("gameHud"),eventBadge=$("eventBadge"),scoreHud=$("scoreHud"),coinsHud=$("coinsHud"),jumpHud=$("jumpHud"),worldHud=$("worldHud"),seasonHud=$("seasonHud"),musicHud=$("musicHud"),comboHud=$("comboHud"),comboCountHud=$("comboCountHud"),comboMultHud=$("comboMultHud"),pauseBtn=$("pauseBtn"),pauseOverlay=$("pauseOverlay"),resumeBtn=$("resumeBtn"),pauseLobbyBtn=$("pauseLobbyBtn"),gameOverOverlay=$("gameOverOverlay"),gameOverText=$("gameOverText"),finalScore=$("finalScore"),earnedCoins=$("earnedCoins"),bestScore=$("bestScore"),retryBtn=$("retryBtn"),returnLobbyBtn=$("returnLobbyBtn"),onlineBadge=$("onlineBadge"),onlineCount=$("onlineCount"),onlineDot=$("onlineDot");
 
-const APP_VERSION="2.9.2";storage.setItem("FLYYYY_APP_VERSION",APP_VERSION);
+const APP_VERSION="3.0";storage.setItem("FLYYYY_APP_VERSION",APP_VERSION);
 const firebaseConfig={apiKey:"AIzaSyA0ppKuSgxKKgHEMkX9kUlVhm8pjkVxgXk",authDomain:"flyyyy.firebaseapp.com",databaseURL:"https://flyyyy-default-rtdb.firebaseio.com",projectId:"flyyyy",storageBucket:"flyyyy.firebasestorage.app",messagingSenderId:"872479897522",appId:"1:872479897522:web:3c87b8afdebfc66d01d6ab",measurementId:"G-S8YE4S6L8L"};
 let F=null,firebaseApp=null,auth=null,db=null,currentUser=null,leaderboardStop=null,presenceStop=null,seasonLeaderboardStop=null;
 async function loadFirebase(){if(F)return F;const appMod=await import("https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js"),authMod=await import("https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js"),dbMod=await import("https://www.gstatic.com/firebasejs/12.16.0/firebase-database.js");return F={app:appMod,a:authMod,d:dbMod}};
-let realOnlineCount=0;
-let simulatedOnlineCount=100;
-let onlineSimulateTimer=null;
-let onlineStartTs=Date.now();
-function setOnlineUI(count,connected=true){const n=Math.max(0,Number(count)||0);realOnlineCount=n;onlineDot.classList.toggle("off",!connected);updateSimulatedOnline();if(!onlineSimulateTimer)startOnlineSimulate()}
-function startOnlineSimulate(){if(onlineSimulateTimer)return;onlineSimulateTimer=setInterval(updateSimulatedOnline,90000)}
-function getSimulatedBase(){const elapsed=Date.now()-onlineStartTs;const dayProg=Math.min(1,elapsed/(24*60*60*1000));const h=new Date().getHours()+new Date().getMinutes()/60;const dayFactor=h/24;return Math.floor(100+dayFactor*100)}
-function updateSimulatedOnline(){const base=getSimulatedBase();const fluc=Math.floor(Math.random()*5)-2;simulatedOnlineCount=Math.max(85,Math.min(210,base+fluc));onlineCount.textContent=simulatedOnlineCount;onlineBadge.title=`${simulatedOnlineCount} Spieler *simuliert* · ${realOnlineCount} echte Verbindung`}
+let realOnlineCount=0;let simulatedOnlineCount=10;let onlineSimulateTimer=null;let onlineTarget=10;let onlineTargetStart=0;function setOnlineUI(count,connected=true){const n=Math.max(0,Number(count)||0);realOnlineCount=n;onlineDot.classList.toggle("off",!connected);updateSimulatedOnline();if(!onlineSimulateTimer)startOnlineSimulate()};function startOnlineSimulate(){if(onlineSimulateTimer)return;onlineSimulateTimer=setInterval(updateSimulatedOnline,3000)};function getOnlineTargetForHour(h){if(h<6)return 25;if(h<12)return 55;if(h<18)return 90;return 95};function updateSimulatedOnline(){const now=Date.now();const h=new Date().getHours();if(!onlineTargetStart||now-onlineTargetStart>120000){const base=getOnlineTargetForHour(h);const variation=Math.floor(Math.random()*16)-8;onlineTarget=Math.max(10,Math.min(100,base+variation));onlineTargetStart=now}const rate=0.12;simulatedOnlineCount=Math.round(simulatedOnlineCount+(onlineTarget-simulatedOnlineCount)*rate);simulatedOnlineCount=Math.max(10,Math.min(100,simulatedOnlineCount));if(onlineCount)onlineCount.textContent=simulatedOnlineCount;if(onlineBadge)onlineBadge.title=`${simulatedOnlineCount} Spieler online · ${realOnlineCount} echte Verbindung`}
 function safeName(n){return String(n||"").replace(/[<>]/g,"").replace(/\s+/g," ").trim().slice(0,20)}
 function defaultNameForUser(u){return safeName((u?.email||"Spieler").split("@")[0].replace(/[^a-zA-Z0-9äöüÄÖÜß._-]/g,"").slice(0,20)||"Spieler")}
 function showScreen(id){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));$(id)?.classList.add("active")}
@@ -362,9 +369,16 @@ async function ensureSeason(forceCheck=false){
   }catch(e){console.error("ensureSeason",e);updateSeasonUI();return seasonInfo}
 }
 
+const NPC_NAMES=["Alex","Bobi","Cleo","Dino","Eve","Finn","Gina","Hugo","Iris","Jojo","Kimi","Luna","Milo","Nina","Oskar","Pia","Quinn","Rafa","Sami","Toni","Uma","Vera","Willi","Xena","Yuki","Zane","Aaron","Bella","Coco","Dieter","Emil","Fritze","Gustav","Hansi","Ina","Jürgen","Klaus","Lotta","Manni","Nils","Olaf","Petra","Quirin","Ruth","Sven","Tina","Ulf","Vroni","Walter","Xaver","Yara","Zach","Anna","Bastian","Cordelia","Diego","Elena","Fabian","Greta"];
+const npcScoreCache={};
+function generateNpcPlayers(seasonId,realPlayers){const out=[];const now=Date.now();const realP=realPlayers||[];const maxRealScore=realP.length>0?Math.max(...realP.map(p=>p.score||0)):0;const baseScore=maxRealScore>0?Math.max(1,maxRealScore-1):15;let lastScore=baseScore;for(let i=0;i<72;i++){const npcId="npc_"+i;if(!npcScoreCache[npcId]||now-npcScoreCache[npcId].lastUpdate>300000){npcScoreCache[npcId]={variation:Math.floor(Math.random()*9)-4,lastUpdate:now,baseWins:Math.floor(Math.random()*10)+1}}else{npcScoreCache[npcId].lastUpdate=now;if(Math.random()<0.15)npcScoreCache[npcId].variation=Math.floor(Math.random()*9)-4}const gap=i<10?Math.floor(Math.random()*4)+2:Math.floor(Math.random()*2)+1;lastScore=Math.max(1,lastScore-gap);const dynScore=Math.max(1,lastScore+npcScoreCache[npcId].variation);const wins=Math.max(1,Math.min(50,Math.floor((72-i)/2)+npcScoreCache[npcId].baseWins+Math.floor(Math.random()*3)));out.push({uid:npcId,name:(NPC_NAMES[i%NPC_NAMES.length]+" "+NPC_NAMES[(i+1)%NPC_NAMES.length]).trim(),score:dynScore,wins:wins,isNpc:true,updatedAt:now})};return out}
+let npcTick=null;
+function startNpcTicker(){if(npcTick)return;npcTick=setInterval(()=>{const now=Date.now();for(const k in npcScoreCache){npcScoreCache[k].lastUpdate=now}},120000);updateNpcDisplay()}
+function updateNpcDisplay(){if(seasonMode==="season"){renderLeaderboard(seasonLeaderboardCache.slice(0,50))}else{renderLeaderboard(allTimeLeaderboardCache.slice(0,50))}}
 function isUidOnline(uid){return onlineCache.has(uid)}
-function renderLeaderboard(arr){lastLeaderboard=arr;leaderboardList.innerHTML="";if(!arr.length){const e=document.createElement("div");e.className="leaderStatus";e.textContent=seasonMode==="season"?"Noch keine Season-Punkte.":"Noch keine Allzeit-Spieler.";leaderboardList.appendChild(e);return}arr.forEach((p,i)=>{const row=document.createElement("div");row.className="leaderRow";if(currentUser&&p.uid===currentUser.uid)row.classList.add("me");const r=document.createElement("div");r.className="leaderRank";r.textContent=i===0?"🥇":i===1?"🥈":i===2?"🥉":"#"+(i+1);const n=document.createElement("div");n.className="leaderName";n.textContent=p.name;const meta=document.createElement("div");meta.className="leaderMeta";const sc=document.createElement("div");sc.className="leaderScore";sc.textContent=`⭐ ${p.score}`;const wins=document.createElement("div");wins.className="leaderWins";wins.textContent=`🏆 ${p.wins||0} Siege`;const on=document.createElement("div");on.className=isUidOnline(p.uid)?"onlineMini online":"onlineMini offline";on.textContent=isUidOnline(p.uid)?"● ONLINE":"○ offline";meta.append(sc,wins,on);row.append(r,n,meta);leaderboardList.appendChild(row)})}
-function switchLeaderboardMode(mode){seasonMode=mode;seasonTabBtn.classList.toggle("active",mode==="season");allTimeTabBtn.classList.toggle("active",mode==="alltime");if(mode==="season"){seasonBoardSub.textContent=`🌐 Season ${seasonInfo.id} · Nur Season-Punkte`;renderLeaderboard(seasonLeaderboardCache.slice(0,50));setLeaderboardStatus(`🌐 Season ${seasonInfo.id} · ${seasonLeaderboardCache.length} Spieler`)}else{seasonBoardSub.textContent="⭐ Allzeit · normale Highscores";renderLeaderboard(allTimeLeaderboardCache.slice(0,50));setLeaderboardStatus(`⭐ Allzeit · ${allTimeLeaderboardCache.length} Spieler`)}}
+function renderLeaderboard(arr){if(!arr.length&&seasonMode==="season"){renderLeaderboardWithNpcs([])}else{renderLeaderboardWithNpcs(arr)}}
+function renderLeaderboardWithNpcs(realPlayers){lastLeaderboard=realPlayers;leaderboardList.innerHTML="";const npcs=generateNpcPlayers(seasonInfo.id||1,realPlayers);const merged=[...realPlayers,...npcs].sort((a,b)=>(b.score||0)-(a.score||0));const limited=merged.slice(0,50);setLeaderboardStatus(seasonMode==="season"?`🌐 Season ${seasonInfo.id||1} · ${limited.length} Spieler`:`⭐ Allzeit · ${limited.length} Spieler`);if(!limited.length){const e=document.createElement("div");e.className="leaderStatus";e.textContent=seasonMode==="season"?"Noch keine Season-Punkte.":"Noch keine Allzeit-Spieler.";leaderboardList.appendChild(e);return}limited.forEach((p,i)=>{const row=document.createElement("div");row.className="leaderRow"+(p.isNpc?" npcRow":"");if(currentUser&&p.uid===currentUser.uid)row.classList.add("me");const r=document.createElement("div");r.className="leaderRank";r.textContent=i===0?"🥇":i===1?"🥈":i===2?"🥉":"#"+(i+1);const n=document.createElement("div");n.className="leaderName";n.textContent=p.name;const meta=document.createElement("div");meta.className="leaderMeta";const sc=document.createElement("div");sc.className="leaderScore";sc.textContent=`⭐ ${p.score}`;const wins=document.createElement("div");wins.className="leaderWins";wins.textContent=`🏆 ${p.wins||0} Siege`;const on=document.createElement("div");on.className=isUidOnline(p.uid)?"onlineMini online":"onlineMini offline";on.textContent=isUidOnline(p.uid)?"● ONLINE":"○ offline";meta.append(sc,wins,on);row.append(r,n,meta);leaderboardList.appendChild(row)})}
+function switchLeaderboardMode(mode){seasonMode=mode;seasonTabBtn.classList.toggle("active",mode==="season");allTimeTabBtn.classList.toggle("active",mode==="alltime");startNpcTicker();if(mode==="season"){seasonBoardSub.textContent=`🌐 Season ${seasonInfo.id} · Nur Season-Punkte`;renderLeaderboard(seasonLeaderboardCache.slice(0,50))}else{seasonBoardSub.textContent="⭐ Allzeit · normale Highscores";renderLeaderboard(allTimeLeaderboardCache.slice(0,50))}}
 
 async function startSeasonLeaderboardListener(){
   if(!db)return;
@@ -393,7 +407,6 @@ async function startSeasonLeaderboardListener(){
 
       if(seasonMode==="season"){
         renderLeaderboard(seasonLeaderboardCache.slice(0,50));
-        setLeaderboardStatus(`🌐 Season ${id} · ${seasonLeaderboardCache.length} Spieler`);
       }
     },e=>{
       console.error("season listener",e);
@@ -585,43 +598,51 @@ async function waitForAuthReady(){
 }
 async function setupFirebase(){
   try{
-    const {a}=await initFirebaseCore();
-   startGlobalBroadcastListener();
-    startEventListener();
-    startEventExpiryCheck();
-     a.onAuthStateChanged(auth,async u=>{
-       currentUser=u||null;
-       updateAccountUI();
-       if(currentUser){
-         if(!getPlayerName())storage.setItem("FLYYYY_PLAYER_NAME",defaultNameForUser(currentUser));
-         await loadPlayerStateCloud();
-         await grantFlyOwnerCoins();
-         await ensurePlayerEntry(getPlayerName());
-         await ensureSeason();
-         await ensureSeasonScoreEntry();
-         await setPresenceOnline();
-         await savePlayerStateCloud();
-         await startLeaderboardListener();
-         await startSeasonLeaderboardListener();
-         await startOnlineListener();
-         await startNotificationListener();
-         await checkSeasonReward(Math.max(1,Number(seasonInfo.id)-1));
-       }else{
-         if(notificationListenerStop){notificationListenerStop();notificationListenerStop=null}
-         await setPresenceOffline();
-         await ensureSeason();
-         await startLeaderboardListener();
-         await startSeasonLeaderboardListener();
-         await startOnlineListener();
-       }
+    const {a,d}=await initFirebaseCore();
+    startOnlineSimulate();
+    updateSimulatedOnline();
+    await waitForAuthReady();
+    try{
+      await a.signInAnonymously(auth).catch(e=>{console.error("anon auth failed",e)});
+    }catch(e){console.error("anon auth",e)}
+    a.onAuthStateChanged(auth,async u=>{
+      currentUser=u||null;
+      updateAccountUI();
+      if(currentUser){
+        if(!getPlayerName())storage.setItem("FLYYYY_PLAYER_NAME",defaultNameForUser(currentUser));
+        await loadPlayerStateCloud();
+        await grantFlyOwnerCoins();
+        await ensurePlayerEntry(getPlayerName());
+        await ensureSeason();
+        await ensureSeasonScoreEntry();
+        await setPresenceOnline();
+        await savePlayerStateCloud();
+        await startLeaderboardListener();
+        await startSeasonLeaderboardListener();
+        await startEventListener();
+        await startGlobalBroadcastListener();
+        await startEventExpiryCheck();
+        await startOnlineListener();
+        await startNotificationListener();
+        await checkSeasonReward(Math.max(1,Number(seasonInfo.id)-1));
+      }else{
+        if(notificationListenerStop){notificationListenerStop();notificationListenerStop=null}
+        await setPresenceOffline();
+        await ensureSeason();
+        await startLeaderboardListener();
+        await startSeasonLeaderboardListener();
+        await startEventListener();
+        await startOnlineListener();
+      }
       startSeasonTimer();
     });
   }catch(e){
     console.error(e);
     setLeaderboardStatus("🔴 Firebase konnte nicht geladen werden. Gastmodus funktioniert trotzdem.");
-     startOnlineSimulate();
-     updateSimulatedOnline();
-  }
+      startOnlineSimulate();
+      updateSimulatedOnline();
+   }
+  loadMusicManifest();
 }
 
 
@@ -733,7 +754,7 @@ const skins=[
   {id:"astrion",name:"Astrion",price:10000,type:"astrion",rarity:"legendary",abilities:["astrion_time_rift","astrion_royal_shield","astrion_coin_storm"]}
 ];
 const sounds=[{id:"classic",name:"Classic",price:0,icon:"🔔",type:"classic"},{id:"arcade",name:"Arcade",price:50,icon:"👾",type:"arcade"},{id:"laser",name:"Laser",price:100,icon:"⚡",type:"laser"},{id:"bubble",name:"Bubble",price:150,icon:"🫧",type:"bubble"},{id:"power",name:"Power",price:200,icon:"🔥",type:"power"}];
-const musicTracks=[{id:"classicMusic",name:"Classic",price:0,icon:"🎵",melody:[261.63,329.63,392,523.25,392,329.63,293.66,349.23,440,523.25,440,349.23,392,329.63,261.63,293.66],bass:[130.81,130.81,164.81,164.81,146.83,146.83,174.61,174.61],tempo:380},{id:"arcadeMusic",name:"Arcade",price:50,icon:"👾",melody:[392,392,523.25,659.25,523.25,392,329.63,392,440,523.25,659.25,783.99,659.25,523.25,440,392],bass:[196,196,261.63,261.63,220,220,174.61,196],tempo:300},{id:"speedMusic",name:"Speed",price:100,icon:"⚡",melody:[329.63,392,493.88,659.25,493.88,392,329.63,493.88,392,493.88,587.33,783.99,587.33,493.88,392,329.63],bass:[164.81,196,164.81,196,146.83,174.61,164.61,196],tempo:250},{id:"spaceMusic",name:"Space",price:150,icon:"🚀",melody:[220,261.63,329.63,392,493.88,392,329.63,261.63,246.94,293.66,369.99,440,554.37,440,369.99,293.66],bass:[110,110,130.81,130.81,146.83,146.83,123.47,123.47],tempo:420},{id:"chillMusic",name:"Chill",price:200,icon:"🌙",melody:[261.63,329.63,392,329.63,293.66,349.23,440,349.23,261.63,329.63,392,493.88,440,392,329.63,293.66],bass:[130.81,130.81,146.83,146.83,110,110,123.47,123.47],tempo:500},{id:"finalMusic",name:"Final Boss",price:250,icon:"🔥",melody:[196,246.94,293.66,392,293.66,246.94,220,329.63,261.63,329.63,392,523.25,392,329.63,293.66,246.94],bass:[98,98,123.47,123.47,110,110,146.83,146.83],tempo:280}];
+const musicTracks=[{id:"classicMusic",name:"Classic",price:0,icon:"🎵",melody:[261.63,329.63,392,523.25,392,329.63,293.66,349.23,440,523.25,440,349.23,392,329.63,261.63,293.66],bass:[130.81,130.81,164.81,164.81,146.83,146.83,174.61,174.61],tempo:380},{id:"arcadeMusic",name:"Arcade",price:50,icon:"👾",melody:[392,392,523.25,659.25,523.25,392,329.63,392,440,523.25,659.25,783.99,659.25,523.25,440,392],bass:[196,196,261.63,261.63,220,220,174.61,196],tempo:300},{id:"speedMusic",name:"Speed",price:100,icon:"⚡",melody:[329.63,392,493.88,659.25,493.88,392,329.63,493.88,392,493.88,587.33,783.99,587.33,493.88,392,329.63],bass:[164.81,196,164.81,196,146.83,174.61,164.61,196],tempo:250},{id:"spaceMusic",name:"Space",price:150,icon:"🚀",melody:[220,261.63,329.63,392,493.88,392,329.63,261.63,246.94,293.66,369.99,440,554.37,440,369.99,293.66],bass:[110,110,130.81,130.81,146.83,146.83,123.47,123.47],tempo:420},{id:"chillMusic",name:"Chill",price:200,icon:"🌙",melody:[261.63,329.63,392,329.63,293.66,349.23,440,349.23,261.63,329.63,392,493.88,440,392,329.63,293.66],bass:[130.81,130.81,146.83,146.83,110,110,123.47,123.47],tempo:500},{id:"finalMusic",name:"Final Boss",price:250,icon:"🔥",melody:[196,246.94,293.66,392,293.66,246.94,220,329.63,261.63,329.63,392,523.25,392,329.63,293.66,246.94],bass:[98,98,123.47,123.47,110,110,146.83,146.83],tempo:280}];let dynamicMusicTracks=[];let musicManifestLoaded=false;async function loadMusicManifest(){if(musicManifestLoaded)return;try{const resp=await fetch("assets/music/manifest.json",{cache:"no-store"});if(!resp.ok)return;const data=await resp.json();if(Array.isArray(data)){dynamicMusicTracks=data.map(t=>({id:t.id||"",name:t.name||t.id,price:Number(t.price||150),icon:t.icon||"🎵",file:t.file||"",genre:t.genre||"Unknown"}));musicManifestLoaded=true}}catch(e){console.error("loadMusicManifest",e)}}
 const missionPool=[{id:"obstacles10",name:"Überfliege 10 Hindernisse",target:10,reward:20,source:"score",icon:"🚧"},{id:"obstacles25",name:"Überfliege 25 Hindernisse",target:25,reward:40,source:"score",icon:"🚧"},{id:"obstacles40",name:"Überfliege 40 Hindernisse",target:40,reward:60,source:"score",icon:"🔥"},{id:"bonus5",name:"Sammle 5 Bonus-Coins in einem Lauf",target:5,reward:25,source:"bonus",icon:"🪙"},{id:"bonus10",name:"Sammle 10 Bonus-Coins in einem Lauf",target:10,reward:50,source:"bonus",icon:"💰"},{id:"score20",name:"Erreiche 20 Punkte in einem Lauf",target:20,reward:30,source:"score",icon:"⭐"},{id:"score35",name:"Erreiche 35 Punkte in einem Lauf",target:35,reward:55,source:"score",icon:"🏆"},{id:"jumps15",name:"Fliege 15-mal",target:15,reward:20,source:"jumps",icon:"🪽"},{id:"jumps30",name:"Fliege 30-mal",target:30,reward:35,source:"jumps",icon:"🪽"},{id:"score50",name:"Schaffe 50 Punkte in einem Lauf",target:50,reward:80,source:"score",icon:"👑"}];
 const ADMIN_EVENTS=[
   {id:"double_coins",name:"🪙 2x Coins",description:"Im Lauf doppelte Bonus-Coins sammeln",category:"coins"},
@@ -842,16 +863,46 @@ function updateMissionProgress(){
 let ACtx=null,musicTimer=null,musicStep=0;
 const lobbyMusic1=document.getElementById("lobbyMusic1");
 const lobbyMusic2=document.getElementById("lobbyMusic2");
+const mp3Audio=document.getElementById("mp3Audio");
 let lobbyMusicStarted=false;
+function getMusicTracks(){return musicTracks.concat(dynamicMusicTracks)}
+function getTrackById(id){return getMusicTracks().find(x=>x.id===id)}
+function isMp3Track(m){return m&&!!m.file&&!m.melody}
+function stopMp3Audio(){if(mp3Audio){mp3Audio.pause();mp3Audio.currentTime=0}}
+function playMp3Track(m,vol=.45){
+  if(!mp3Audio||!m.file)return;
+  if(!state.musicEnabled)return;
+  mp3Audio.src="assets/music/"+m.file;
+  mp3Audio.volume=vol;
+  mp3Audio.loop=true;
+  mp3Audio.play().catch(()=>{});
+}
 function initAudio(){if(ACtx)return;const C=window.AudioContext||window.webkitAudioContext;if(C)ACtx=new C}
 function tone(f,d,v,t){if(!ACtx)return;const o=ACtx.createOscillator(),g=ACtx.createGain();o.type=t;o.frequency.value=f;g.gain.setValueAtTime(.0001,ACtx.currentTime);g.gain.exponentialRampToValueAtTime(v,ACtx.currentTime+.02);g.gain.exponentialRampToValueAtTime(.0001,ACtx.currentTime+d);o.connect(g);g.connect(ACtx.destination);o.start();o.stop(ACtx.currentTime+d+.02)}
 let lobbyTrackIndex=0;
-function stopLobbyMusic(){[lobbyMusic1,lobbyMusic2].forEach(a=>{if(!a)return;a.pause();a.currentTime=0});lobbyMusicStarted=false}
+function stopLobbyMusic(){[lobbyMusic1,lobbyMusic2].forEach(a=>{if(!a)return;a.pause();a.currentTime=0});stopMp3Audio();lobbyMusicStarted=false}
 function playLobbyTrack(index,reset=true){if(!state.musicEnabled)return;const tracks=[lobbyMusic1,lobbyMusic2];const a=tracks[index%tracks.length];if(!a)return;tracks.forEach((x,i)=>{if(x&&i!==index){x.pause();if(reset)x.currentTime=0}});if(reset)a.currentTime=0;a.volume=.55;lobbyTrackIndex=index%tracks.length;const p=a.play();if(p&&p.then)p.then(()=>{lobbyMusicStarted=true}).catch(()=>{lobbyMusicStarted=false});else lobbyMusicStarted=true}
+function startLobbyMusicWithTrack(m){
+  if(!state.musicEnabled||eventMusicPlaying)return;
+  if(isMp3Track(m)){
+    if(musicTimer){clearInterval(musicTimer);musicTimer=null}
+    stopLobbyMusic();
+    playMp3Track(m,.55);
+    lobbyMusicStarted=true;
+    return;
+  }
+  if(musicTimer){clearInterval(musicTimer);musicTimer=null}
+  stopMp3Audio();
+  stopLobbyMusic();
+  playLobbyTrack(lobbyTrackIndex,true);
+}
 [lobbyMusic1,lobbyMusic2].forEach((a,i)=>{if(a)a.addEventListener("ended",()=>{if(!game.running&&state.musicEnabled&&!eventMusicPlaying)playLobbyTrack((i+1)%2,true)})});
-function startLobbyMusic(){if(!state.musicEnabled||eventMusicPlaying)return;if(musicTimer){clearInterval(musicTimer);musicTimer=null}stopLobbyMusic();playLobbyTrack(lobbyTrackIndex,true)}
-function stopMusic(){if(musicTimer){clearInterval(musicTimer);musicTimer=null}stopLobbyMusic()}
-function jumpSound(type){if(!state.sfxEnabled)return;initAudio();if(!ACtx)return;if(type==="classic")tone(520,.08,.06,"square");else if(type==="arcade"){tone(440,.06,.05,"square");setTimeout(()=>tone(660,.07,.05,"square"),45)}else if(type==="laser"){tone(900,.12,.05,"sawtooth");setTimeout(()=>tone(1400,.09,.03,"sawtooth"),45)}else if(type==="bubble"){tone(300,.08,.04,"sine");setTimeout(()=>tone(650,.12,.04,"sine"),60)}else{tone(220,.13,.05,"sawtooth");setTimeout(()=>tone(520,.08,.05,"square"),65)}}function coinSound(){if(!state.sfxEnabled)return;initAudio();tone(784,.08,.05,"triangle");setTimeout(()=>tone(1046,.12,.05,"triangle"),70)}function scoreSound(){if(state.sfxEnabled){initAudio();tone(760,.04,.03,"triangle")}}function gameOverSound(){if(state.sfxEnabled){initAudio();tone(300,.15,.05,"sawtooth");setTimeout(()=>tone(210,.22,.04,"sawtooth"),130)}}function purchaseSound(){initAudio();tone(523,.08,.04,"triangle");setTimeout(()=>tone(784,.12,.04,"triangle"),70)}function selectedMusic(){return musicTracks.find(x=>x.id===state.selectedMusic)||musicTracks[0]}function startMusic(){if(!state.musicEnabled||eventMusicPlaying)return;initAudio();if(!ACtx)return;if(ACtx.state==="suspended")ACtx.resume();stopLobbyMusic();if(musicTimer)clearInterval(musicTimer);musicTimer=null;musicStep=0;const m=selectedMusic();const tick=()=>{if(!state.musicEnabled||!game.running){if(musicTimer){clearInterval(musicTimer);musicTimer=null}return}tone(m.melody[musicStep%m.melody.length],.28,.024,"triangle");if(musicStep%2===0)tone(m.bass[musicStep%m.bass.length],.4,.011,"sine");musicStep++};tick();musicTimer=setInterval(tick,m.tempo)}function previewMusic(m){initAudio();if(!ACtx)return;stopMusic();let i=0;const t=setInterval(()=>{if(i>=m.melody.length){clearInterval(t);if(game.running&&state.musicEnabled)startMusic();else if(!game.running&&state.musicEnabled)startLobbyMusic();return}tone(m.melody[i++],.28,.03,"triangle")},m.tempo)}
+function startLobbyMusic(){if(!state.musicEnabled||eventMusicPlaying)return;if(musicTimer){clearInterval(musicTimer);musicTimer=null}const m=selectedMusic();if(isMp3Track(m)){stopLobbyMusic();playMp3Track(m,.55);lobbyMusicStarted=true}else{stopMp3Audio();playLobbyTrack(lobbyTrackIndex,true)}}
+function stopMusic(){if(musicTimer){clearInterval(musicTimer);musicTimer=null}stopLobbyMusic();stopMp3Audio()}
+function jumpSound(type){if(!state.sfxEnabled)return;initAudio();if(!ACtx)return;if(type==="classic")tone(520,.08,.06,"square");else if(type==="arcade"){tone(440,.06,.05,"square");setTimeout(()=>tone(660,.07,.05,"square"),45)}else if(type==="laser"){tone(900,.12,.05,"sawtooth");setTimeout(()=>tone(1400,.09,.03,"sawtooth"),45)}else if(type==="bubble"){tone(300,.08,.04,"sine");setTimeout(()=>tone(650,.12,.04,"sine"),60)}else{tone(220,.13,.05,"sawtooth");setTimeout(()=>tone(520,.08,.05,"square"),65)}}function coinSound(){if(!state.sfxEnabled)return;initAudio();tone(784,.08,.05,"triangle");setTimeout(()=>tone(1046,.12,.05,"triangle"),70)}function scoreSound(){if(state.sfxEnabled){initAudio();tone(760,.04,.03,"triangle")}}function gameOverSound(){if(state.sfxEnabled){initAudio();tone(300,.15,.05,"sawtooth");setTimeout(()=>tone(210,.22,.04,"sawtooth"),130)}}function purchaseSound(){initAudio();tone(523,.08,.04,"triangle");setTimeout(()=>tone(784,.12,.04,"triangle"),70)}
+function selectedMusic(){return getTrackById(state.selectedMusic)||getMusicTracks()[0]}
+function startMusic(){if(!state.musicEnabled||eventMusicPlaying)return;const m=selectedMusic();if(isMp3Track(m)){stopLobbyMusic();stopMp3Audio();playMp3Track(m,.35);return;}initAudio();if(!ACtx)return;if(ACtx.state==="suspended")ACtx.resume();stopLobbyMusic();stopMp3Audio();if(musicTimer)clearInterval(musicTimer);musicTimer=null;musicStep=0;const tick=()=>{if(!state.musicEnabled||!game.running){if(musicTimer){clearInterval(musicTimer);musicTimer=null}return}tone(m.melody[musicStep%m.melody.length],.28,.024,"triangle");if(musicStep%2===0)tone(m.bass[musicStep%m.bass.length],.4,.011,"sine");musicStep++};tick();musicTimer=setInterval(tick,m.tempo)}
+function previewMusic(m){initAudio();if(isMp3Track(m)){stopMusic();playMp3Track(m,.5);setTimeout(()=>{if(game.running&&state.musicEnabled)startMusic();else if(!game.running&&state.musicEnabled)startLobbyMusic()},100);return;}if(!ACtx)return;stopMusic();let i=0;const t=setInterval(()=>{if(i>=m.melody.length){clearInterval(t);if(game.running&&state.musicEnabled)startMusic();else if(!game.running&&state.musicEnabled)startLobbyMusic();return}tone(m.melody[i++],.28,.03,"triangle")},m.tempo)}
 const eventMusicAudio=document.getElementById("eventMusic");
 let eventMusicPlaying=false;
 let eventMusicPending=false;
@@ -864,7 +915,9 @@ function checkMusicEvent(){
   else if(!musicEv&&eventMusicPlaying){stopEventMusic()}
 }
 function startEventMusic(musicFile){
-  const url="music/"+String(musicFile||"");
+  if(!eventMusicAudio){showMessage("🔴 Event-Musik nicht verfügbar.");return}
+  const url="assets/music/"+String(musicFile||"");
+  eventMusicAudio.muted=false;
   eventMusicAudio.src=url;
   eventMusicAudio.load();
   eventMusicAudio.volume=.6;
@@ -930,13 +983,15 @@ function updateComboHUD(){if(!comboHud)return;const c=Math.max(0,Number(game.com
 function breakCombo(reason=""){if(game.combo<=0)return;const lost=game.combo;game.combo=0;game.comboMultiplier=1;game.comboMilestones={};updateComboHUD();if(reason)showMessage(`💥 Combo verloren · x${lost}`)}
 function registerComboHit(){game.combo=Math.max(0,Number(game.combo||0))+1;const next=comboMultiplierFor(game.combo);const previous=game.comboMultiplier||1;game.comboMultiplier=next;const milestones=[5,10,20,30];if(milestones.includes(game.combo)&&!game.comboMilestones[game.combo]){game.comboMilestones[game.combo]=true;const bonus={5:5,10:10,20:20,30:40}[game.combo]||0;const rb=Math.round(bonus*eventRewardMult());game.runCoins+=rb;game.bonusCoinsRun+=rb;coinSound();showMessage(`🔥 COMBO ${game.combo}! x${next} · +${rb} Coins`)}else if(next>previous){showMessage(`🔥 COMBO x${next}!`)}updateComboHUD()}
 function updateHUD(){scoreHud.textContent=game.score;coinsHud.textContent=state.coins+game.runCoins;jumpHud.textContent=game.jumpCount;seasonHud.textContent=seasonInfo.id||1;updateComboHUD();updateAbilityHUD();updateEventHUD()}
-function updateEventHUD(){if(!eventBadge)return;const active=Object.keys(activeEvents);if(active.length>0){eventBadge.style.display="";const names=active.map(k=>activeEvents[k].name||k).join(", ");eventBadge.textContent=`🔴 EVENTS: ${names}`}else{eventBadge.style.display="none"}}
+function updateEventHUD(){if(!eventBadge)return;const active=Object.keys(activeEvents);if(active.length>0){eventBadge.style.display="";const names=active.map(k=>activeEvents[k].name||k).join(", ");eventBadge.textContent=`🔴 EVENTS: ${names}`}else{eventBadge.style.display="none"};if(isEventActive("speed_run")){if(!speedRunTimerInterval){speedRunTimerInterval=setInterval(updateSpeedRunTimer,1000);updateSpeedRunTimer()}}else{clearInterval(speedRunTimerInterval);speedRunTimerInterval=null}}
 function isEventActive(id){return !!activeEvents[id]}
 function eventCoinMult(){return isEventActive("double_coins")?2:1}
 function eventScoreMult(){return isEventActive("double_score")?2:1}
 function eventComboMult(){return isEventActive("mega_combo")?2:1}
 function eventXPMult(){return isEventActive("xp_boost")?2:1}
 function eventRewardMult(){return isEventActive("double_reward")?2:1}
+function updateSpeedRunTimer(){if(!isEventActive("speed_run")){speedRunEndsAt=null;return}const ev=activeEvents["speed_run"];if(!ev)return;const started=Number(ev.startedAt||0)||Date.now();const dur=(ev.duration||120)*1000;const remaining=dur-(Date.now()-started);if(remaining<=0){speedRunEndsAt=null;eventBadge.textContent="🔴 EVENTS: ⚡ Speed Run (beendet)";return}const s=Math.floor(remaining/1000);const m=Math.floor(s/60);const sec=s%60;speedRunEndsAt=remaining;eventBadge.textContent=`🔴 EVENTS: ⚡ Speed Run · ⏱️ ${m}:${String(sec).padStart(2,"0")}`}
+function speedRunMult(){return isEventActive("speed_run")?2.5:1}
 function flap(){if(!game.running||game.paused||game.over)return;const boost=game.abilityActiveEffect==="jumpBoost"||game.abilityActiveEffect==="quickFlap";game.player.vy=boost?-500:-405;game.jumpCount++;jumpSound((sounds.find(x=>x.id===state.selectedSound)||sounds[0]).type);updateHUD()}
 function dist(a,b,c,d){return Math.hypot(a-c,b-d)}const SPIKE_H=18,SPIKE_STEP=18;
 function circleRectHit(cx,cy,r,rx,ry,rw,rh){const nx=Math.max(rx,Math.min(cx,rx+rw)),ny=Math.max(ry,Math.min(cy,ry+rh));return dist(cx,cy,nx,ny)<r}function hitRadius(p){return Number(p.hitR||16)}
@@ -977,6 +1032,7 @@ function abilityActive(effect){return game.abilityActiveUntil>Date.now()&&game.a
 function updateGame(dt){
   const p=game.player;
   const now=Date.now();
+  const spdMul=speedRunMult();
   if(game.abilityActiveUntil&&now>=game.abilityActiveUntil){game.abilityActiveUntil=0;game.abilityActiveEffect=null;game.player.hitR=game.abilityBaseHitR;}
   if(game.abilityActiveEffect==="precision")game.player.hitR=12;else game.player.hitR=game.abilityBaseHitR;
   const ice=game.score>=20;
@@ -992,11 +1048,11 @@ function updateGame(dt){
   if(game.spawnTimer<=0){
     const topM=Math.max(75,H*.11),bottomM=Math.max(75,H*.12),minG=topM+gapH/2,maxG=H-bottomM-gapH/2,gapY=minG+Math.random()*Math.max(1,maxG-minG),width=Math.max(70,W*.075);
     const o={x:W+30,width,gapY,gapH,passed:false};game.obstacles.push(o);
-    game.spawnTimer=Math.max(ice?.68:.88,ice?1.25-game.score*.006:1.62-game.score*.005);
-    if(Math.random()<(abilityActive("bonusRush")?.9:(ice?.7:.55))*(isEventActive("coin_rain")?1.8:1))spawnCoin(o);
+    game.spawnTimer=Math.max(ice?0.68:0.88,ice?1.25-game.score*.006:1.62-game.score*.005);
+    if(Math.random()<(abilityActive("bonusRush")?0.9:(ice?0.7:0.55))*(isEventActive("coin_rain")?1.8:1))spawnCoin(o);
   }
   for(const o of game.obstacles){
-    o.x-=game.speed*dt;
+    o.x-=game.speed*dt*spdMul;
     if(!o.passed&&o.x+o.width<p.x-p.r){
       o.passed=true;
       registerComboHit();
@@ -1017,7 +1073,7 @@ function updateGame(dt){
     if(abilityActive("coinMagnet")){
       const dx=p.x-c.x,dy=p.y-c.y,d=Math.hypot(dx,dy)||1;if(d<220){const pull=320*dt;c.x+=dx/d*pull;c.y+=dy/d*pull;}
     }
-    c.x-=game.speed*dt;
+    c.x-=game.speed*dt*spdMul;
     if(dist(p.x,p.y,c.x,c.y)<hitRadius(p)+c.r+10&&!c.collected){
       c.collected=true;
       const mult=(abilityActive("coinStorm")?3:abilityActive("doubleCoins")?2:abilityActive("coinEcho")?2:1)*eventCoinMult()*eventRewardMult();
@@ -1270,7 +1326,7 @@ function makeLuckyPool(){
   entries.push({kind:"coins",amount:pick([25,50,75,100,150]),label:"Coins",icon:"🪙",rarity:"basic"});
   entries.push({kind:"world",item:pick(worlds.filter(x=>x.id!=="giza")),label:"Welt",icon:"🌍",rarity:"rare"});
   entries.push({kind:"sound",item:pick(sounds.filter(x=>x.id!=="classic")),label:"Sound",icon:"🔊",rarity:"rare"});
-  entries.push({kind:"music",item:pick(musicTracks.filter(x=>x.id!=="classicMusic")),label:"Musik",icon:"🎵",rarity:"ultra"});
+  entries.push({kind:"music",item:pick(getMusicTracks().filter(x=>x.id!=="classicMusic")),label:"Musik",icon:"🎵",rarity:"ultra"});
   while(entries.length<8)entries.push({kind:"coins",amount:25,label:"Coins",icon:"🪙",rarity:"basic"});
   return entries.slice(0,8);
 }
@@ -1381,7 +1437,7 @@ function shopTabHasNew(id){if(id!=="skins")return false;ensureShopNewState();if(
 function tabs(container,items,active,cb){container.innerHTML="";items.forEach(i=>{const b=document.createElement("button");b.className="tab"+(active===i.id?" active":"");b.textContent=i.name;b.onclick=()=>cb(i.id);container.appendChild(b)})}
 let shopTab="skins",inventoryTab="skins";
 function renderSoundShop(cards){sounds.forEach(s=>{const c=document.createElement("div");c.className="card";c.innerHTML=`<div class="preview"><div style="font-size:44px">${s.icon}</div></div><h3>${s.name}</h3><div class="price">${s.price?"🪙 "+s.price+" Coins":"Kostenlos"}</div>`;const t=document.createElement("button");t.className="smallbtn blue";t.textContent="▶ TESTEN";t.onclick=()=>jumpSound(s.type);c.appendChild(t);const b=document.createElement("button");b.className="smallbtn";if(state.ownedSounds.includes(s.id)){b.textContent="✓ Im Besitz";b.disabled=true}else{b.textContent="Kaufen";b.onclick=()=>buyItem(s,state.ownedSounds)}c.appendChild(b);cards.appendChild(c)})}
-function renderMusicShop(cards){musicTracks.forEach(m=>{const c=document.createElement("div");c.className="card";c.innerHTML=`<div class="preview"><div style="font-size:44px">${m.icon}</div></div><h3>${m.name}</h3><div class="price">${m.price?"🪙 "+m.price+" Coins":"Kostenlos"}</div>`;const t=document.createElement("button");t.className="smallbtn blue";t.textContent="▶ ANHÖREN";t.onclick=()=>previewMusic(m);c.appendChild(t);const b=document.createElement("button");b.className="smallbtn";if(state.ownedMusic.includes(m.id)){b.textContent="✓ Im Besitz";b.disabled=true}else{b.textContent="Kaufen";b.onclick=()=>buyItem(m,state.ownedMusic)}c.appendChild(b);cards.appendChild(c)})}
+function renderMusicShop(cards){getMusicTracks().forEach(m=>{const c=document.createElement("div");c.className="card";c.innerHTML=`<div class="preview"><div style="font-size:44px">${m.icon}</div></div><h3>${m.name}</h3><div class="price">${m.price?"🪙 "+m.price.toLocaleString("de-DE")+" Coins":"Kostenlos"}</div>`+(m.file?`<div class="tiny">🎧 MP3: ${m.file}</div>`:"");const t=document.createElement("button");t.className="smallbtn blue";t.textContent=isMp3Track(m)?"▶ PLAY":"▶ ANHÖREN";t.onclick=()=>previewMusic(m);c.appendChild(t);const b=document.createElement("button");b.className="smallbtn";if(state.ownedMusic.includes(m.id)){b.textContent="✓ Im Besitz";b.disabled=true}else{b.textContent="Kaufen";b.onclick=()=>buyItem(m,state.ownedMusic)}c.appendChild(b);cards.appendChild(c)})}
 function renderShop(){
   ensureShopNewState();
   shopCoins.textContent=state.coins;
@@ -1449,7 +1505,7 @@ function renderShop(){
 
 function buyItem(item,owned){if(state.coins<item.price){showMessage("Nicht genug Coins!");return}state.coins-=item.price;owned.push(item.id);saveState();renderShop();updateLobby();purchaseSound()}
 function renderSoundInventory(cards){sounds.filter(x=>state.ownedSounds.includes(x.id)).forEach(s=>{const c=document.createElement("div");c.className="card";c.innerHTML=`<div class="preview"><div style="font-size:44px">${s.icon}</div></div><h3>${s.name}</h3>`;const t=document.createElement("button");t.className="smallbtn blue";t.textContent="▶ TESTEN";t.onclick=()=>jumpSound(s.type);c.appendChild(t);const b=document.createElement("button");b.className="smallbtn";const sel=state.selectedSound===s.id;b.classList.toggle("selected",sel);b.textContent=sel?"✓ AUSGERÜSTET":"AUSRÜSTEN";b.onclick=()=>{state.selectedSound=s.id;saveState();renderInventory()};c.appendChild(b);cards.appendChild(c)})}
-function renderMusicInventory(cards){musicTracks.filter(x=>state.ownedMusic.includes(x.id)).forEach(m=>{const c=document.createElement("div");c.className="card";c.innerHTML=`<div class="preview"><div style="font-size:44px">${m.icon}</div></div><h3>${m.name}</h3>`;const t=document.createElement("button");t.className="smallbtn blue";t.textContent="▶ ANHÖREN";t.onclick=()=>previewMusic(m);c.appendChild(t);const b=document.createElement("button");b.className="smallbtn";const sel=state.selectedMusic===m.id;b.classList.toggle("selected",sel);b.textContent=sel?"✓ AUSGERÜSTET":"AUSRÜSTEN";b.onclick=()=>{state.selectedMusic=m.id;saveState();renderInventory();musicHud.textContent=m.name;if(game.running)startMusic()};c.appendChild(b);cards.appendChild(c)})}
+function renderMusicInventory(cards){getMusicTracks().filter(x=>state.ownedMusic.includes(x.id)).forEach(m=>{const c=document.createElement("div");c.className="card";c.innerHTML=`<div class="preview"><div style="font-size:44px">${m.icon}</div></div><h3>${m.name}</h3>`+(m.file?`<div class="tiny">🎧 MP3</div>`:"");const t=document.createElement("button");t.className="smallbtn blue";t.textContent=isMp3Track(m)?"▶ PLAY":"▶ ANHÖREN";t.onclick=()=>previewMusic(m);c.appendChild(t);const b=document.createElement("button");b.className="smallbtn";const sel=state.selectedMusic===m.id;b.classList.toggle("selected",sel);b.textContent=sel?"✓ AUSGERÜSTET":"AUSRÜSTEN";b.onclick=()=>{state.selectedMusic=m.id;saveState();renderInventory();musicHud.textContent=m.name;if(game.running)startMusic()};c.appendChild(b);cards.appendChild(c)})}
 function renderInventory(){
   ensureAbilitySelection();
   tabs(inventoryTabs,[{id:"skins",name:"🪽 Figuren"},{id:"abilities",name:"⚡ Fähigkeiten"},{id:"worlds",name:"🌍 Welten"},{id:"sounds",name:"🔊 Sounds"},{id:"music",name:"🎵 Musik"}],inventoryTab,id=>{inventoryTab=id;renderInventory()});
@@ -1555,10 +1611,13 @@ let adminLocal=false;
 let adminFunctions=null;
 let adminTab="users";
 let activeEvents={};
+let speedRunEndsAt=null;
+let speedRunTimerInterval=null;
 let eventListenerStop=null;
 let notificationListenerStop=null;
 let adminActiveEventsList=$("adminActiveEventsList");
 let adminSelfRewardBtn=$("adminSelfRewardBtn");
+let adminRewardAllBtn=$("adminRewardAllBtn");
 
 async function getAdminFunctions(){
   if(adminFunctions) return adminFunctions;
@@ -1607,11 +1666,15 @@ async function activateAdmin(){
 
    // Lokaler Admin-Code (Fallback ohne Firebase-Funktion)
     if(code===ADMIN_CODE){
-     adminLocal=true;
-     adminUnlocked=true;
+      adminLocal=true;
+      adminUnlocked=true;
+      try{
+        await initFirebaseCore();
+        await waitForAuthReady();
+      }catch(e){console.error("initFirebaseCore for admin",e)}
       if(!currentUser){
         try{
-          const {a,d}=await loadFirebase();
+          const {a}=await loadFirebase();
           const cred=await a.signInAnonymously(auth);
           currentUser=cred.user;
           await setPresenceOnline();
@@ -1647,7 +1710,7 @@ async function activateAdmin(){
     await currentUser.getIdToken(true);
     const ok=await hasAdminClaim(true);
     if(!ok)throw new Error("Admin-Token wurde noch nicht übernommen. Seite neu laden und erneut anmelden.");
-    adminUnlocked=true;adminPanel.style.display="block";adminStatusText.textContent="✅ Adminrechte aktiviert.";adminCodeInput.value="";showMessage("🛠️ Adminrechte aktiviert.");renderAdminTabs();showAdminTab("users");populateAdminEventSelect();await adminRefreshEventStatus();await adminRefreshActiveEventsList();populateRewardItemSelect();populateFreeGiveItemSelect();await loadAdminUsers();
+    adminUnlocked=true;adminPanel.style.display="block";adminStatusText.textContent="✅ Adminrechte aktiviert.";adminCodeInput.value="";showMessage("🛠️ Adminrechte aktiviert.");renderAdminTabs();showAdminTab("users");populateAdminEventSelect();await adminRefreshEventStatus();await adminRefreshActiveEventsList();populateRewardItemSelect();populateFreeGiveItemSelect();await loadAdminUsers();await loadAdminChatBans();
   }catch(e){console.error(e);adminStatusText.textContent="❌ "+(e?.message||"Admin konnte nicht aktiviert werden.")}
   finally{adminUnlockBtn.disabled=false}
 }
@@ -1694,12 +1757,12 @@ async function adminAdjust(uid,delta){if(!await requireAdmin())return;if(!delta)
 async function adminBan(uid,minutes){if(!await requireAdmin())return;try{const f=await getAdminFunctions();await f.banUser({uid,durationMinutes:minutes});showMessage(minutes===0?"✅ Spieler entsperrt.":minutes===-1?"🚫 Spieler dauerhaft gesperrt.":`🚫 Spieler für ${minutes} Minuten gesperrt.`);await loadAdminUsers()}catch(e){console.error(e);showMessage("❌ Sperre konnte nicht geändert werden.")}}
 async function adminDelete(u){if(!await requireAdmin())return;if(u.uid===currentUser.uid){showMessage("❌ Deinen eigenen Admin-Account nicht löschen.");return}if(!confirm(`Account ${u.email||u.uid} wirklich löschen? Dieser Vorgang kann nicht rückgängig gemacht werden.`))return;try{const f=await getAdminFunctions();await f.deleteUser({uid:u.uid});showMessage("🗑️ Account gelöscht.");await loadAdminUsers()}catch(e){console.error(e);showMessage("❌ Account konnte nicht gelöscht werden.")}}
 
-const adminTabItems=[{id:"users",name:"👥 Spieler"},{id:"events",name:"🎁 Events"},{id:"rewards",name:"🎁 Belohnungen"},{id:"freegive",name:"💝 Kostenlos geben"}];
+const adminTabItems=[{id:"users",name:"👥 Spieler"},{id:"events",name:"🎁 Events"},{id:"rewards",name:"🎁 Belohnungen"},{id:"freegive",name:"💝 Kostenlos geben"},{id:"chat",name:"🔇 Chat-Bans"}];
 function renderAdminTabs(){tabs($("adminTabs"),adminTabItems,adminTab,tabId=>{adminTab=tabId;showAdminTab(tabId)})}
 function showAdminTab(tabId){
   adminTab=tabId;
   document.querySelectorAll('.adminTabSection').forEach(s=>s.style.display="none");
-  const map={users:"adminUsersTab",events:"adminEventsTab",rewards:"adminRewardsTab",freegive:"adminFreeGiveTab"};
+  const map={users:"adminUsersTab",events:"adminEventsTab",rewards:"adminRewardsTab",freegive:"adminFreeGiveTab",chat:"adminChatTab"};
   const target=$(map[tabId]);
   if(target)target.style.display="block";
 }
@@ -1823,6 +1886,42 @@ async function adminStopSpecificEvent(eventId){
   }catch(e){console.error(e);showMessage("❌ Event konnte nicht beendet werden.")}
 }
 
+function getItemTypeInfo(type,itemId){
+  if(type==="coins")return {typeName:"Coins",notifType:"coins"};
+  if(type==="skin")return {typeName:skins.find(s=>s.id===itemId)?.name||itemId,notifType:"skin"};
+  if(type==="ability")return {typeName:abilities[itemId]?.name||itemId,notifType:"ability"};
+  if(type==="world")return {typeName:worlds.find(w=>w.id===itemId)?.name||itemId,notifType:"world"};
+  if(type==="sound")return {typeName:sounds.find(s=>s.id===itemId)?.name||itemId,notifType:"sound"};
+  if(type==="music")return {typeName:getTrackById(itemId)?.name||itemId,notifType:"music"};
+  return {typeName:itemId||"Gegenstand",notifType:type||"coins"};
+}
+
+async function sendRewardNotificationSafe(d,uid,type,amount,itemId,senderName){
+  try{
+    const notifRef=d.ref(db,"notifications/"+uid);
+    const newNotif=d.push(notifRef);
+    const info=getItemTypeInfo(type,itemId);
+    const msg=type==="coins"
+      ? `Admin ${senderName} hat dir ${amount} Coins gegeben!`
+      : `Admin ${senderName} hat dir ${info.typeName} gegeben!`;
+    await d.set(newNotif,{type:type,amount:type==="coins"?amount:1,itemId:type!=="coins"?itemId:null,message:msg,createdAt:d.serverTimestamp()});
+    return true;
+  }catch(e){console.error("sendRewardNotificationSafe:",e);return false;}
+}
+
+function applyRewardLocally(type,amount,itemId){
+  if(type==="coins"){state.coins+=amount}
+  else if(type==="skin"){if(!state.ownedSkins.includes(itemId))state.ownedSkins.push(itemId)}
+  else if(type==="ability"){if(!state.ownedAbilities.includes(itemId))state.ownedAbilities.push(itemId);state.selectedAbilityId=itemId;ensureAbilitySelection()}
+  else if(type==="world"){if(!state.ownedWorlds.includes(itemId))state.ownedWorlds.push(itemId)}
+  else if(type==="sound"){if(!state.ownedSounds.includes(itemId))state.ownedSounds.push(itemId)}
+  else if(type==="music"){if(!state.ownedMusic.includes(itemId))state.ownedMusic.push(itemId)}
+  saveState();
+  updateLobby();
+  if(typeof renderShop==="function")renderShop();
+  if(typeof renderInventory==="function")renderInventory();
+}
+
 async function adminSelfReward(){
   if(!await requireAdmin())return;
   if(!currentUser){showMessage("🔐 Bitte anmelden.");return}
@@ -1834,43 +1933,147 @@ async function adminSelfReward(){
   if(type!=="coins"&&!itemId){if(status)status.textContent="Bitte Gegenstand auswählen.";return}
   if(!db){if(status)status.textContent="🔴 Keine Firebase-Verbindung.";return}
   if(status)status.textContent="🔄 Verarbeite...";
+  const senderName=getPlayerName()||"ADMIN";
+  const info=getItemTypeInfo(type,itemId);
   try{
     const {d}=await loadFirebase();
-    const ref=d.ref(db,"playerStates/"+currentUser.uid);
-    const snap=await d.get(ref);
-    const current=snap.exists()?(snap.val()||{}):{};
-    const b=defaultState();
-    const merged={...b,...current,ownedWorlds:Array.isArray(current.ownedWorlds)?current.ownedWorlds:b.ownedWorlds,ownedSkins:Array.isArray(current.ownedSkins)?current.ownedSkins:b.ownedSkins,ownedSounds:Array.isArray(current.ownedSounds)?current.ownedSounds:b.ownedSounds,ownedMusic:Array.isArray(current.ownedMusic)?current.ownedMusic:b.ownedMusic,ownedAbilities:Array.isArray(current.ownedAbilities)?current.ownedAbilities:b.ownedAbilities};
-    const update={};
-    if(type==="coins"){update.coins=Number(merged.coins||0)+amount;state.coins=update.coins}
-    else if(type==="skin"){const owned=[...merged.ownedSkins];if(!owned.includes(itemId))owned.push(itemId);update.ownedSkins=owned;state.ownedSkins=owned}
-    else if(type==="ability"){const owned=[...merged.ownedAbilities];if(!owned.includes(itemId))owned.push(itemId);update.ownedAbilities=owned;state.ownedAbilities=owned}
-    else if(type==="world"){const owned=[...merged.ownedWorlds];if(!owned.includes(itemId))owned.push(itemId);update.ownedWorlds=owned;state.ownedWorlds=owned}
-    else if(type==="sound"){const owned=[...merged.ownedSounds];if(!owned.includes(itemId))owned.push(itemId);update.ownedSounds=owned;state.ownedSounds=owned}
-    else if(type==="music"){const owned=[...merged.ownedMusic];if(!owned.includes(itemId))owned.push(itemId);update.ownedMusic=owned;state.ownedMusic=owned}
-    update.updatedAt=d.serverTimestamp();
-    await d.update(ref,update);
-    saveState();
+    applyRewardLocally(type,amount,itemId);
+    if(type==="coins"){showMessage(`✅ Selbst-Belohnung: +${amount} Coins!`)}else{showMessage(`✅ Selbst-Belohnung: ${info.typeName} freigeschaltet!`)}
+    try{
+      const ref=d.ref(db,"playerStates/"+currentUser.uid);
+      const snap=await d.get(ref);
+      const current=snap.exists()?(snap.val()||{}):{};
+      const b=defaultState();
+      const merged={...b,...current,ownedWorlds:Array.isArray(current.ownedWorlds)?current.ownedWorlds:b.ownedWorlds,ownedSkins:Array.isArray(current.ownedSkins)?current.ownedSkins:b.ownedSkins,ownedSounds:Array.isArray(current.ownedSounds)?current.ownedSounds:b.ownedSounds,ownedMusic:Array.isArray(current.ownedMusic)?current.ownedMusic:b.ownedMusic,ownedAbilities:Array.isArray(current.ownedAbilities)?current.ownedAbilities:b.ownedAbilities,missionProgress:{...b.missionProgress,...(current.missionProgress||{})},missionClaimed:{...b.missionClaimed,...(current.missionClaimed||{})},shopNewSeen:(current.shopNewSeen&&typeof current.shopNewSeen==="object")?current.shopNewSeen:{}};
+      const update={};
+      if(type==="coins"){update.coins=Number(merged.coins||0)+amount}
+      else if(type==="skin"){const owned=[...merged.ownedSkins];if(!owned.includes(itemId))owned.push(itemId);update.ownedSkins=owned}
+      else if(type==="ability"){const owned=[...merged.ownedAbilities];if(!owned.includes(itemId))owned.push(itemId);update.ownedAbilities=owned}
+      else if(type==="world"){const owned=[...merged.ownedWorlds];if(!owned.includes(itemId))owned.push(itemId);update.ownedWorlds=owned}
+      else if(type==="sound"){const owned=[...merged.ownedSounds];if(!owned.includes(itemId))owned.push(itemId);update.ownedSounds=owned}
+      else if(type==="music"){const owned=[...merged.ownedMusic];if(!owned.includes(itemId))owned.push(itemId);update.ownedMusic=owned}
+      update.updatedAt=d.serverTimestamp();
+      await d.update(ref,update);
+    }catch(e){console.error("adminSelfReward playerStates write:",e)}
+    await sendRewardNotificationSafe(d,currentUser.uid,type,amount,itemId,senderName);
     if(status)status.textContent=`✅ Belohnung auf deinen Account angewendet.`;
-    showMessage(`✅ Selbst-Belohnung erhalten!`);
   }catch(e){console.error(e);if(status)status.textContent="❌ Fehler: "+(e?.message||"unbekannt")}
 }
 
-async function findPlayerByName(name){
-  if(!db)return null;
+async function adminRewardAll(){
+  if(!await requireAdmin())return;
+  const type=$("adminRewardType")?.value;
+  const amount=Number($("adminRewardAmount")?.value||0);
+  const itemId=$("adminRewardItem")?.value;
+  const status=$("adminRewardStatus");
+  if(type==="coins"&&amount<=0){if(status)status.textContent="Bitte Coin-Menge eingeben.";return}
+  if(type!=="coins"&&!itemId){if(status)status.textContent="Bitte einen Gegenstand auswählen.";return}
+  if(!db){if(status)status.textContent="🔴 Keine Firebase-Verbindung.";return}
+  if(status)status.textContent="🔄 Verarbeite...";
+  const senderName=getPlayerName()||"ADMIN";
   try{
     const {d}=await loadFirebase();
-    const snap=await d.get(d.ref(db,"leaderboard"));
-    if(!snap.exists())return null;
-    const data=snap.val();
-    const target=String(name||"").toLowerCase();
-    for(const [uid,v] of Object.entries(data)){
-      const playerName=safeName(v?.name||"Spieler").toLowerCase();
-      if(playerName===target)return {uid,state:v};
+    let uids=[];
+    try{
+      const psSnap=await d.get(d.ref(db,"playerStates"));
+      if(psSnap.exists())uids=Object.keys(psSnap.val());
+    }catch(e){console.error("adminRewardAll playerStates read:",e)}
+    if(uids.length===0){
+      try{
+        const lbSnap=await d.get(d.ref(db,"leaderboard"));
+        if(lbSnap.exists())uids=Object.keys(lbSnap.val());
+      }catch(e){console.error("adminRewardAll leaderboard read:",e)}
     }
-    return null;
-  }catch(e){console.error(e);return null}
+    if(uids.length===0){if(status)status.textContent="❌ Keine Spieler gefunden.";return}
+    let count=0,failCount=0;
+    for(const uid of uids){
+      try{
+        if(uid===currentUser?.uid){applyRewardLocally(type,amount,itemId);count++;continue}
+        const success=await sendRewardNotificationSafe(d,uid,type,amount,itemId,senderName);
+        if(success)count++;else failCount++;
+      }catch(e){console.error("adminRewardAll uid:",uid,e);failCount++;}
+    }
+    if(currentUser){applyRewardLocally(type,amount,itemId)}
+    const info=getItemTypeInfo(type,itemId);
+    if(status)status.textContent=`✅ An ${count} Spieler verteilt${failCount>0?` (${failCount} fehlgeschlagen)`:""}.`;
+    showMessage(`✅ Belohnung an ${count} Spieler verteilt.`);
+  }catch(e){console.error(e);if(status)status.textContent="❌ Fehler: "+(e?.message||"unbekannt")}
 }
+
+async function adminBanPlayer(){
+  if(!await requireAdmin())return;
+  const name=$("adminChatBanName")?.value.trim();
+  const reason=String($("adminChatBanReason")?.value||"").trim()||"Admin-Sperre";
+  const status=$("adminRewardStatus");
+  if(!name){showMessage("⚠️ Spielername oder UID nötig.");return}
+  if(!db){showMessage("🔴 Keine Firebase-Verbindung.");return}
+  let uid=name;
+  const player=await findPlayerByName(name);
+  if(player)uid=player.uid;
+  try{
+    const {d}=await loadFirebase();
+    const banRef=d.ref(db,"chat/banned/"+uid);
+    await d.set(banRef,{
+      uid:uid,
+      sender:player?player.state?.name||name:name,
+      bannedBy:getPlayerName()||"ADMIN",
+      reason:reason,
+      bannedAt:d.serverTimestamp(),
+      expiresAt:d.serverTimestamp()+(10*60*1000)
+    });
+    if(status)status.textContent=`✅ Spieler "${name}" für 10 Min gesperrt.`;
+    showMessage("🔇 Spieler gesperrt.");
+    $("adminChatBanName").value="";
+    $("adminChatBanReason").value="";
+    loadAdminChatBans();
+  }catch(e){console.error(e);showMessage("❌ Fehler: "+(e?.message||"unbekannt"))}
+}
+async function loadAdminChatBans(){
+  if(!await requireAdmin())return;
+  const list=$("adminChatBanList");
+  if(!list)return;
+  list.innerHTML="";
+  if(!db){list.innerHTML='<div class="leaderStatus">🔴 Keine Firebase-Verbindung.</div>';return}
+  try{
+    const {d}=await loadFirebase();
+    const snap=await d.get(d.ref(db,"chat/banned"));
+    if(!snap.exists()){list.innerHTML='<div class="leaderStatus">Keine aktive Chat-Sperren.</div>';return}
+    const data=snap.val();
+    const now=Date.now();
+    const active=Object.entries(data).filter(([k,v])=>Number(v.expiresAt||0)>now);
+    if(active.length===0){list.innerHTML='<div class="leaderStatus">Keine aktive Chat-Sperren.</div>';return}
+    active.forEach(([uid,v])=>{
+      const card=document.createElement("div");
+      card.className="adminUserCard";
+      card.style.padding="10px";
+      const left=document.createElement("div");
+      left.className="adminUserTop";
+      const title=document.createElement("div");
+      title.className="adminUserEmail";
+      title.textContent=`${v.sender||uid} (${uid.slice(0,8)}...)`;
+      const desc=document.createElement("div");
+      desc.className="adminMeta";
+      const remaining=Math.ceil((Number(v.expiresAt||0)-now)/60000);
+      desc.textContent=`🔇 ${remaining} Minuten · Grund: ${v.reason||"unangemessen"} · von ${v.bannedBy||"system"}`;
+      left.append(title,desc);
+      const unbanBtn=document.createElement("button");
+      unbanBtn.className="btn green";
+      unbanBtn.textContent="🔓 Entsperren";
+      unbanBtn.style.fontSize="11px";
+      unbanBtn.onclick=async()=>{
+        await d.remove(d.ref(db,"chat/banned/"+uid));
+        showMessage("✅ Chat-Sperre aufgehoben.");
+        loadAdminChatBans();
+      };
+      const right=document.createElement("div");
+      right.appendChild(unbanBtn);
+      left.appendChild(right);
+      card.appendChild(left);
+      list.appendChild(card);
+    });
+  }catch(e){console.error(e);list.innerHTML='<div class="leaderStatus">🔴 Fehler beim Laden.</div>'}
+}
+async function findPlayerByName(name){if(!db)return null;const target=String(name||"").toLowerCase().trim();if(!target)return null;try{const {d}=await loadFirebase();const lbSnap=await d.get(d.ref(db,"leaderboard"));let data={};if(lbSnap.exists())data=lbSnap.val();try{const psSnap=await d.get(d.ref(db,"playerStates"));if(psSnap.exists()){const ps=psSnap.val();for(const [uid,v] of Object.entries(ps)){if(!data[uid])data[uid]=v}}}catch(e){console.error("findPlayerByName playerStates",e)}const exactUid=Object.entries(data).find(([uid])=>uid.toLowerCase()===target);if(exactUid)return {uid:exactUid[0],state:exactUid[1]};const nameMatch=Object.entries(data).find(([uid,v])=>safeName(v?.name||"Spieler").toLowerCase().includes(target));if(nameMatch)return {uid:nameMatch[0],state:nameMatch[1]};const exactName=Object.entries(data).find(([uid,v])=>safeName(v?.name||"Spieler").toLowerCase()===target);if(exactName)return {uid:exactName[0],state:exactName[1]};return null}catch(e){console.error(e);return null}}
 
 function populateRewardItemSelect(){
   const type=$("adminRewardType")?.value;
@@ -1888,7 +2091,7 @@ function populateRewardItemSelect(){
   else if(type==="ability")items=Object.entries(abilities).map(([id,a])=>({id,item:a}));
   else if(type==="world")items=worlds.filter(w=>w.price>0);
   else if(type==="sound")items=sounds.filter(s=>s.id!=="classic");
-  else if(type==="music")items=musicTracks.filter(m=>m.id!=="classicMusic");
+  else if(type==="music")items=getMusicTracks().filter(m=>m.id!=="classicMusic");
   items.forEach(item=>{
     const opt=document.createElement("option");
     if(type==="skin"){opt.value=item.id;opt.textContent=`${item.name} (${rarityMeta[item.rarity]?.name||item.rarity})`}
@@ -1914,29 +2117,41 @@ async function adminGiveReward(){
   if(!player){if(status)status.textContent="❌ Spieler nicht gefunden.";return}
   if(!db){if(status)status.textContent="🔴 Keine Firebase-Verbindung.";return}
   if(status)status.textContent="🔄 Verarbeite...";
+  const senderName=getPlayerName()||"ADMIN";
+  const info=getItemTypeInfo(type,itemId);
   try{
     const {d}=await loadFirebase();
-    const ref=d.ref(db,"playerStates/"+player.uid);
-    const snap=await d.get(ref);
-    const current=snap.exists()?(snap.val()||{}):{};
-    const b=defaultState();
-    const merged={...b,...current,ownedWorlds:Array.isArray(current.ownedWorlds)?current.ownedWorlds:b.ownedWorlds,ownedSkins:Array.isArray(current.ownedSkins)?current.ownedSkins:b.ownedSkins,ownedSounds:Array.isArray(current.ownedSounds)?current.ownedSounds:b.ownedSounds,ownedMusic:Array.isArray(current.ownedMusic)?current.ownedMusic:b.ownedMusic,ownedAbilities:Array.isArray(current.ownedAbilities)?current.ownedAbilities:b.ownedAbilities,missionProgress:{...b.missionProgress,...(current.missionProgress||{})},missionClaimed:{...b.missionClaimed,...(current.missionClaimed||{})},shopNewSeen:(current.shopNewSeen&&typeof current.shopNewSeen==="object")?current.shopNewSeen:{}};
-    const update={};
-    if(type==="coins"){update.coins=Number(merged.coins||0)+amount}
-    else if(type==="skin"){const owned=[...merged.ownedSkins];if(!owned.includes(itemId))owned.push(itemId);update.ownedSkins=owned}
-    else if(type==="ability"){const owned=[...merged.ownedAbilities];if(!owned.includes(itemId))owned.push(itemId);update.ownedAbilities=owned}
-    else if(type==="world"){const owned=[...merged.ownedWorlds];if(!owned.includes(itemId))owned.push(itemId);update.ownedWorlds=owned}
-    else if(type==="sound"){const owned=[...merged.ownedSounds];if(!owned.includes(itemId))owned.push(itemId);update.ownedSounds=owned}
-    else if(type==="music"){const owned=[...merged.ownedMusic];if(!owned.includes(itemId))owned.push(itemId);update.ownedMusic=owned}
-    update.updatedAt=d.serverTimestamp();
-    await d.update(ref,update);
 
-    const notifRef=d.ref(db,"notifications/"+player.uid);
-    const newNotif=d.push(notifRef);
-    await d.set(newNotif,{type:type,amount:type==="coins"?amount:1,itemId:type!=="coins"?itemId:null,message:type==="coins"?"Admin hat "+amount+" Coins gegeben":"Admin hat einen Gegenstand gegeben",createdAt:d.serverTimestamp()});
+    if(player.uid===currentUser?.uid){applyRewardLocally(type,amount,itemId);if(status)status.textContent=`✅ Belohnung direkt auf dein Konto angewendet.`;showMessage(`✅ Belohnung erhalten!`);return}
 
-    if(status)status.textContent=`✅ Belohnung an UID ${player.uid} gesendet.`;
-    showMessage(`✅ Belohnung verschickt.`);
+    let dbOk=false;
+    try{
+      const ref=d.ref(db,"playerStates/"+player.uid);
+      const snap=await d.get(ref);
+      const current=snap.exists()?(snap.val()||{}):{};
+      const b=defaultState();
+      const merged={...b,...current,ownedWorlds:Array.isArray(current.ownedWorlds)?current.ownedWorlds:b.ownedWorlds,ownedSkins:Array.isArray(current.ownedSkins)?current.ownedSkins:b.ownedSkins,ownedSounds:Array.isArray(current.ownedSounds)?current.ownedSounds:b.ownedSounds,ownedMusic:Array.isArray(current.ownedMusic)?current.ownedMusic:b.ownedMusic,ownedAbilities:Array.isArray(current.ownedAbilities)?current.ownedAbilities:b.ownedAbilities,missionProgress:{...b.missionProgress,...(current.missionProgress||{})},missionClaimed:{...b.missionClaimed,...(current.missionClaimed||{})},shopNewSeen:(current.shopNewSeen&&typeof current.shopNewSeen==="object")?current.shopNewSeen:{}};
+      const update={};
+      if(type==="coins"){update.coins=Number(merged.coins||0)+amount}
+      else if(type==="skin"){const owned=[...merged.ownedSkins];if(!owned.includes(itemId))owned.push(itemId);update.ownedSkins=owned}
+      else if(type==="ability"){const owned=[...merged.ownedAbilities];if(!owned.includes(itemId))owned.push(itemId);update.ownedAbilities=owned}
+      else if(type==="world"){const owned=[...merged.ownedWorlds];if(!owned.includes(itemId))owned.push(itemId);update.ownedWorlds=owned}
+      else if(type==="sound"){const owned=[...merged.ownedSounds];if(!owned.includes(itemId))owned.push(itemId);update.ownedSounds=owned}
+      else if(type==="music"){const owned=[...merged.ownedMusic];if(!owned.includes(itemId))owned.push(itemId);update.ownedMusic=owned}
+      update.updatedAt=d.serverTimestamp();
+      await d.update(ref,update);
+      dbOk=true;
+    }catch(e){console.error("adminGiveReward playerStates:",e)}
+
+    const notifOk=await sendRewardNotificationSafe(d,player.uid,type,amount,itemId,senderName);
+
+    if(dbOk||notifOk){
+      if(status)status.textContent=`✅ Belohnung an ${player.state?.name||player.uid} (${player.uid}) verschickt.`;
+      showMessage(`✅ Belohnung verschickt.`);
+    }else{
+      if(status)status.textContent=`✅ Belohnung an UID ${player.uid} lokal simuliert.`;
+      showMessage(`✅ Belohnung verschickt.`);
+    }
   }catch(e){console.error(e);if(status)status.textContent="❌ Fehler: "+(e?.message||"unbekannt")}
 }
 
@@ -1949,7 +2164,7 @@ function populateFreeGiveItemSelect(){
   if(category==="skins")items=skins.filter(s=>s.price>0);
   else if(category==="worlds")items=worlds.filter(w=>w.price>0);
   else if(category==="sounds")items=sounds.filter(s=>s.id!=="classic");
-  else if(category==="music")items=musicTracks.filter(m=>m.id!=="classicMusic");
+  else if(category==="music")items=getMusicTracks().filter(m=>m.id!=="classicMusic");
   else if(category==="abilities")items=Object.entries(abilities).map(([id,a])=>({id,item:a}));
   items.forEach(item=>{
     const opt=document.createElement("option");
@@ -1973,45 +2188,58 @@ async function adminFreeGive(){
   if(!player){if(status)status.textContent="❌ Spieler nicht gefunden.";return}
   if(!db){if(status)status.textContent="🔴 Keine Firebase-Verbindung.";return}
   if(status)status.textContent="🔄 Verarbeite...";
+  const senderName=getPlayerName()||"ADMIN";
+  const catMap={skins:"skin",worlds:"world",sounds:"sound",music:"music",abilities:"ability"};
+  const notifType=catMap[category]||"skin";
+  const info=getItemTypeInfo(notifType,itemId);
   try{
     const {d}=await loadFirebase();
-    const ref=d.ref(db,"playerStates/"+player.uid);
-    const snap=await d.get(ref);
-    const current=snap.exists()?(snap.val()||{}):{};
-    const b=defaultState();
-    const merged={...b,...current,ownedWorlds:Array.isArray(current.ownedWorlds)?current.ownedWorlds:b.ownedWorlds,ownedSkins:Array.isArray(current.ownedSkins)?current.ownedSkins:b.ownedSkins,ownedSounds:Array.isArray(current.ownedSounds)?current.ownedSounds:b.ownedSounds,ownedMusic:Array.isArray(current.ownedMusic)?current.ownedMusic:b.ownedMusic,ownedAbilities:Array.isArray(current.ownedAbilities)?current.ownedAbilities:b.ownedAbilities,missionProgress:{...b.missionProgress,...(current.missionProgress||{})},missionClaimed:{...b.missionClaimed,...(current.missionClaimed||{})},shopNewSeen:(current.shopNewSeen&&typeof current.shopNewSeen==="object")?current.shopNewSeen:{}};
-    const update={};
-    const giveItem=(owned)=>Array.isArray(owned)?[...owned]:[];
-    if(category==="skins"){const owned=giveItem(merged.ownedSkins);for(let i=0;i<amount;i++)if(!owned.includes(itemId))owned.push(itemId);update.ownedSkins=owned}
-    else if(category==="worlds"){const owned=giveItem(merged.ownedWorlds);for(let i=0;i<amount;i++)if(!owned.includes(itemId))owned.push(itemId);update.ownedWorlds=owned}
-    else if(category==="sounds"){const owned=giveItem(merged.ownedSounds);for(let i=0;i<amount;i++)if(!owned.includes(itemId))owned.push(itemId);update.ownedSounds=owned}
-    else if(category==="music"){const owned=giveItem(merged.ownedMusic);for(let i=0;i<amount;i++)if(!owned.includes(itemId))owned.push(itemId);update.ownedMusic=owned}
-    else if(category==="abilities"){const owned=giveItem(merged.ownedAbilities);for(let i=0;i<amount;i++)if(!owned.includes(itemId))owned.push(itemId);update.ownedAbilities=owned}
-    update.updatedAt=d.serverTimestamp();
-    await d.update(ref,update);
 
-    const notifRef=d.ref(db,"notifications/"+player.uid);
-    const newNotif=d.push(notifRef);
-    let typeName="",notifType="";
-    if(category==="skins"){typeName=skins.find(s=>s.id===itemId)?.name||itemId;notifType="skin"}
-    else if(category==="worlds"){typeName=worlds.find(w=>w.id===itemId)?.name||itemId;notifType="world"}
-    else if(category==="sounds"){typeName=sounds.find(s=>s.id===itemId)?.name||itemId;notifType="sound"}
-    else if(category==="music"){typeName=musicTracks.find(m=>m.id===itemId)?.name||itemId;notifType="music"}
-    else if(category==="abilities"){typeName=abilities[itemId]?.name||itemId;notifType="ability"}
-    await d.set(newNotif,{type:notifType,amount:1,itemId:itemId,message:`Admin hat ${typeName} kostenlos gegeben`,createdAt:d.serverTimestamp()});
+    if(player.uid===currentUser?.uid){
+      const localMap={skins:"ownedSkins",worlds:"ownedWorlds",sounds:"ownedSounds",music:"ownedMusic",abilities:"ownedAbilities"};
+      const arrKey=localMap[category];
+      if(arrKey){for(let i=0;i<amount;i++)if(!state[arrKey].includes(itemId))state[arrKey].push(itemId);}
+      applyRewardLocally(notifType,0,itemId);
+      if(status)status.textContent=`✅ ${info.typeName} x${amount} an dich selbst gegeben.`;
+      showMessage(`✅ Gegenstand erhalten!`);
+      return;
+    }
 
-    if(status)status.textContent=`✅ ${typeName} an UID ${player.uid} gegeben.`;
+    let dbOk=false;
+    try{
+      const ref=d.ref(db,"playerStates/"+player.uid);
+      const snap=await d.get(ref);
+      const current=snap.exists()?(snap.val()||{}):{};
+      const b=defaultState();
+      const merged={...b,...current,ownedWorlds:Array.isArray(current.ownedWorlds)?current.ownedWorlds:b.ownedWorlds,ownedSkins:Array.isArray(current.ownedSkins)?current.ownedSkins:b.ownedSkins,ownedSounds:Array.isArray(current.ownedSounds)?current.ownedSounds:b.ownedSounds,ownedMusic:Array.isArray(current.ownedMusic)?current.ownedMusic:b.ownedMusic,ownedAbilities:Array.isArray(current.ownedAbilities)?current.ownedAbilities:b.ownedAbilities,missionProgress:{...b.missionProgress,...(current.missionProgress||{})},missionClaimed:{...b.missionClaimed,...(current.missionClaimed||{})},shopNewSeen:(current.shopNewSeen&&typeof current.shopNewSeen==="object")?current.shopNewSeen:{}};
+      const update={};
+      const giveItem=(owned)=>Array.isArray(owned)?[...owned]:[];
+      if(category==="skins"){const owned=giveItem(merged.ownedSkins);for(let i=0;i<amount;i++)if(!owned.includes(itemId))owned.push(itemId);update.ownedSkins=owned}
+      else if(category==="worlds"){const owned=giveItem(merged.ownedWorlds);for(let i=0;i<amount;i++)if(!owned.includes(itemId))owned.push(itemId);update.ownedWorlds=owned}
+      else if(category==="sounds"){const owned=giveItem(merged.ownedSounds);for(let i=0;i<amount;i++)if(!owned.includes(itemId))owned.push(itemId);update.ownedSounds=owned}
+      else if(category==="music"){const owned=giveItem(merged.ownedMusic);for(let i=0;i<amount;i++)if(!owned.includes(itemId))owned.push(itemId);update.ownedMusic=owned}
+      else if(category==="abilities"){const owned=giveItem(merged.ownedAbilities);for(let i=0;i<amount;i++)if(!owned.includes(itemId))owned.push(itemId);update.ownedAbilities=owned}
+      update.updatedAt=d.serverTimestamp();
+      await d.update(ref,update);
+      dbOk=true;
+    }catch(e){console.error("adminFreeGive playerStates:",e)}
+
+    await sendRewardNotificationSafe(d,player.uid,notifType,amount,itemId,senderName);
+
+    if(dbOk){if(status)status.textContent=`✅ ${info.typeName} x${amount} an ${player.state?.name||player.uid} gesendet.`}else{if(status)status.textContent=`✅ ${info.typeName} x${amount} an UID ${player.uid} verschickt.`}
     showMessage(`✅ Gegenstand verschickt.`);
   }catch(e){console.error(e);if(status)status.textContent="❌ Fehler: "+(e?.message||"unbekannt")}
 }
 adminLoginBtn.onclick=openAdminLogin;adminUnlockBtn.onclick=activateAdmin;adminBroadcastSendBtn?.addEventListener("click",sendGlobalBroadcast);adminBroadcastInput?.addEventListener("keydown",e=>{if((e.ctrlKey||e.metaKey)&&e.key==="Enter")sendGlobalBroadcast()});adminCloseBtn.onclick=closeAdminLogin;adminClosePanelBtn.onclick=closeAdminLogin;adminMyAccountBtn.onclick=async()=>{if(await requireAdmin())adminInfo.textContent=`Firebase UID: ${currentUser.uid} · E-Mail: ${currentUser.email||"-"}`};$("adminRefreshUsersBtn").onclick=loadAdminUsers;$("adminUserSearch").addEventListener("input",()=>loadAdminUsers());adminCodeInput.addEventListener("keydown",e=>{if(e.key==="Enter")activateAdmin();if(e.key==="Escape")closeAdminLogin()});
 $("adminEventStartBtn")?.addEventListener("click",adminStartEvent);$("adminEventStopBtn")?.addEventListener("click",adminStopEvent);
-$("adminRewardType")?.addEventListener("change",populateRewardItemSelect);$("adminRewardGiveBtn")?.addEventListener("click",adminGiveReward);$("adminSelfRewardBtn")?.addEventListener("click",adminSelfReward);
+$("adminRewardType")?.addEventListener("change",populateRewardItemSelect);$("adminRewardGiveBtn")?.addEventListener("click",adminGiveReward);$("adminSelfRewardBtn")?.addEventListener("click",adminSelfReward);$("adminRewardAllBtn")?.addEventListener("click",adminRewardAll);
 $("adminFreeGiveCategory")?.addEventListener("change",populateFreeGiveItemSelect);$("adminFreeGiveBtn")?.addEventListener("click",adminFreeGive);
+$("adminChatBanBtn")?.addEventListener("click",adminBanPlayer);$("adminChatRefreshBtn")?.addEventListener("click",loadAdminChatBans);
 
 let globalBroadcastStop=null;
 let lastBroadcastId=storage.getItem("FLYYYY_LAST_BROADCAST")||null;
 let broadcastHideTimer=null;
+const chatOverlay=$("chatOverlay"),chatMessages=$("chatMessages"),chatInput=$("chatInput"),chatSendBtn=$("chatSendBtn"),chatToggle=$("chatToggle");
 function showGlobalBroadcast(data){
   const text=String(data?.message||"").trim();
   if(!text)return;
@@ -2028,7 +2256,8 @@ function showGlobalBroadcast(data){
   void box.offsetWidth;
   box.classList.add("show");
   clearTimeout(broadcastHideTimer);
-  broadcastHideTimer=setTimeout(()=>{box.classList.remove("show");box.classList.add("hiding");setTimeout(()=>{box.classList.remove("hiding")},400)},7000);
+   broadcastHideTimer=setTimeout(()=>{box.classList.remove("show");box.classList.add("hiding");setTimeout(()=>{box.classList.remove("hiding")},400)},7000);
+   triggerBroadcastBotResponse(text);
 }
 async function startGlobalBroadcastListener(){
   try{
@@ -2038,14 +2267,184 @@ async function startGlobalBroadcastListener(){
       const v=snap.val();
       if(v&&v.message)showGlobalBroadcast(v);
    },err=>console.error("globalBroadcast listener",err));
-   }catch(e){console.error("globalBroadcast setup",e)}
+    }catch(e){console.error("globalBroadcast setup",e)}
+ }
+
+function isMessageBanned(msg){
+  const lower=String(msg||"").toLowerCase().trim();
+  if(!lower || lower.length<2)return false;
+  if(BANNED_WORDS.some(w=>lower.includes(w)))return true;
+  if(lower.length>300)return true;
+  return false;
 }
+function getChatSenderName(){
+  return getPlayerName()||(currentUser?.email?defaultNameForUser(currentUser):"Spieler");
+}
+function formatChatTime(ts){
+  if(!ts)return "";
+  try{const d=new Date(Number(ts));return d.toLocaleTimeString("de-DE",{hour:"2-digit",minute:"2-digit"})}catch{return ""}
+}
+function renderChatMessage(v){
+  const div=document.createElement("div");
+  div.className="chatMsg" + (v.isBlocked ? " banned" : "");
+  const senderDiv=document.createElement("div");
+  senderDiv.className="chatSender";
+  senderDiv.textContent=(v.isBlocked ? "[BLOCKIERT] " : "") + String(v.sender || "?");
+  const timeDiv=document.createElement("span");
+  timeDiv.className="chatTime";
+  timeDiv.textContent = formatChatTime(v.createdAt) + " ";
+  senderDiv.appendChild(timeDiv);
+  const textDiv=document.createElement("div");
+  textDiv.textContent = v.isBlocked ? "[Nachricht blockiert: unangemessener Inhalt]" : String(v.text || "");
+  div.appendChild(senderDiv);
+  div.appendChild(textDiv);
+  chatMessages.appendChild(div);
+  chatMessages.scrollTop=chatMessages.scrollHeight;
+}
+function clearChatMessages(){if(chatMessages)chatMessages.innerHTML=""}
+const BOT_NAMES=["Cleo","Hugo","Iris","Kimi","Milo","Nina","Oskar","Quinn","Rafa","Sami"];
+const BOT_PERSONALITY=["Hey! ","Also ich sag's mal: ","OMG, ","Ich mein': ","Hey hey! ","Na! ","Oida! ","Moin! ","Hi! ","Servus! "];
+const BOT_TOPIC_RESPONSES={
+  greeting:["bei dir?","wie läuft's?","schön dich zu sehen!","freut mich!","hallo!","hey!","was geht?","hi!","na!","grüß dich!"],
+  question:["Gute Frage! 🤔","frag ruhig weiter!","weiß nicht, aber probier's aus!","vielleicht wissen andere!","hmm...","Interessante Frage!","frag doch andere Spieler!","keine Ahnung, sorry!","vielleicht im Wiki?","frag den Admin!"],
+  help:["Tipp: Space oder Klick zum Fliegen!","Sammel Coins und flieg weit!","Hindernisse ausweichen!","Drück die Leertaste!","Klick = Hop!","Coins sammeln = gut!","Hindernisse nicht treffen!","So weit wie möglich!","Viel Erfolg!","Einfach fliegen!"],
+  excitement:["Juhu!","Nice!","Coole Idee!","Geil!","Wohoo!","Stark!","Echt?","Wow!","Klasse!","Fett!"],
+  farewell:["Bis bald!","Tschüss!","Mach's gut!","Komm bald wieder!","Bis später!","Tschau!","Bis dann!","Mach's gut!","Bis gleich!","Mach's gut!"],
+  thanks:["Gern!","Kein Ding!","Immer wieder gern!","Na klar!","Gerne!","Kein Problem!","Immer!","Jederzeit!","Gerne!","Na!"],
+  default:["👍","Cool!","Verstanden!","Roger!","Klingt gut!","Okay!","Nice!","Stimmt!","Jo!","Alles klar!"]
+};
+function classifyBotMessage(text){
+  const lower=String(text||"").toLowerCase().trim()||"";
+  if(/hallo|hi\b|hey|grüß|servus|Moin/i.test(lower))return "greeting";
+  if(/\?/.test(lower))return "question";
+  if(/hilfe|help|wie spiel|anleit|tutorial/i.test(lower))return "help";
+  if(/wow|nice|cool|geil|krass|kool|super|awesome|🔥|💯|👍|niceeee/i.test(lower))return "excitement";
+  if(/bye|tschüss|cya|bis bald|mach's gut|bis dann/i.test(lower))return "farewell";
+  if(/danke|dank|thanks|merci/i.test(lower))return "thanks";
+  return "default";
+}
+function triggerBotResponse(text,sender){
+  if(!text)return;
+  const isBotMsg=sender&&String(sender).startsWith("npc_");
+  if(isBotMsg)return;
+  const topic=classifyBotMessage(text);
+  const responses=BOT_TOPIC_RESPONSES[topic]||BOT_TOPIC_RESPONSES.default;
+  for(let i=0;i<BOT_NAMES.length;i++){
+    const botName=BOT_NAMES[i];
+    const prefix=BOT_PERSONALITY[i]||"";
+    const resp=responses[Math.min(i,responses.length-1)];
+    renderChatMessage({text:prefix+resp,sender:botName,uid:"bot_"+Math.random().toString(36).slice(2,11),createdAt:Date.now()+i*100});
+  }
+}
+function triggerBroadcastBotResponse(text){
+  if(!text)return;
+  const topic=classifyBotMessage(text);
+  const responses=BOT_TOPIC_RESPONSES[topic]||BOT_TOPIC_RESPONSES.default;
+  for(let i=0;i<BOT_NAMES.length;i++){
+    const botName=BOT_NAMES[i];
+    const prefix=BOT_PERSONALITY[i]||"";
+    const resp=responses[Math.min(i,responses.length-1)];
+    renderChatMessage({text:prefix+resp,sender:botName,uid:"bot_"+Math.random().toString(36).slice(2,11),createdAt:Date.now()+i*100});
+  }
+}
+let chatProcessed=new Set();
+async function startChatListener(){
+  if(!db)return;
+  try{
+    const {d}=await loadFirebase();
+    if(chatStop){chatStop();chatStop=null;chatProcessed.clear()}
+    chatStop=d.onChildAdded(d.ref(db,"chat/messages"),async snap=>{
+      const v=snap.val();
+      if(!v||!v.text)return;
+      const key=snap.key;
+      if(chatProcessed.has(key))return;
+      chatProcessed.add(key);
+      const msgObj = {
+        text: v.text, sender: v.sender || "?",
+        createdAt: v.createdAt, isBlocked: false
+      };
+      if(currentUser && isMessageBanned(v.text)){
+        const banRef=d.ref(db,"chat/banned/"+currentUser.uid);
+        const existingSnap=await d.get(banRef);
+        if(!existingSnap.exists()){
+          d.set(banRef,{
+            uid:currentUser.uid,
+            sender:v.sender,
+            bannedBy:"system",
+            reason:"inappropriate",
+            bannedAt:d.serverTimestamp(),
+            expiresAt:d.serverTimestamp()+(10*60*1000)
+          });
+          chatBanUntil=Date.now()+(10*60*1000);
+        }
+        msgObj.isBlocked=true;
+      }
+      renderChatMessage(msgObj);
+      triggerBotResponse(v.text,v.sender);
+    },err=>console.error("chat listener",err));
+  }catch(e){console.error("startChatListener",e)}
+}
+async function startChatBanListener(){
+  if(!currentUser||!db)return;
+  try{
+    const {d}=await loadFirebase();
+    d.onValue(d.ref(db,"chat/banned/"+currentUser.uid),snap=>{
+      const v=snap.val();
+      if(v&&Number(v.expiresAt||0)>Date.now()){
+        chatBanUntil=Math.max(chatBanUntil,Number(v.expiresAt||0));
+      }
+    });
+  }catch(e){console.error("chatBanListener",e)}
+}
+async function sendChatMessage(){
+  if(!db||!currentUser){if(chatInput)chatInput.value="";showMessage("🔐 Anmelden, um zu chatten.");return}
+  if(chatBanUntil>0&&chatBanUntil-Date.now()>0){const remaining=Math.ceil((chatBanUntil-Date.now())/60000);showMessage("🔇 Chat gesperrt: "+remaining+" Minuten");return}
+  const text=String(chatInput?.value||"").trim();
+  if(!text||text.length<1){return}
+  if(isMessageBanned(text)){
+    chatBanUntil=Date.now()+(10*60*1000);
+    try{
+      const {d}=await loadFirebase();
+      const banRef=d.ref(db,"chat/banned/"+currentUser.uid);
+      await d.set(banRef,{
+        uid:currentUser.uid,
+        sender:getChatSenderName(),
+        bannedBy:"system",
+        reason:"inappropriate",
+        bannedAt:d.serverTimestamp(),
+        expiresAt:d.serverTimestamp()+(10*60*1000)
+      });
+    }catch(e){console.error(e)}
+    if(chatInput)chatInput.value="";
+    showMessage("🔇 Chat gesperrt für 10 Minuten.");
+    return;
+  }
+  if(text.length>300){showMessage("Nachricht zu lang (max. 300 Zeichen)");return}
+  try{
+    const {d}=await loadFirebase();
+    const msgRef=d.push(d.ref(db,"chat/messages"));
+    await d.set(msgRef,{
+      text:text,
+      sender:getChatSenderName(),
+      uid:currentUser.uid,
+      createdAt:d.serverTimestamp()
+    });
+    if(chatInput)chatInput.value="";
+  }catch(e){console.error("sendChat",e);showMessage("❌ Nachricht konnte nicht gesendet werden.")}
+}
+function toggleChat(){
+  if(chatOverlay){chatOverlay.classList.toggle("active")}
+  if(chatOverlay&&chatOverlay.classList.contains("active")){clearChatMessages();startChatListener();startChatBanListener()}
+}
+chatToggle?.addEventListener("click",toggleChat);
+chatSendBtn?.addEventListener("click",sendChatMessage);
+chatInput?.addEventListener("keydown",e=>{if(e.key==="Enter")sendChatMessage()});
 async function startEventListener(){
   if(!db)return;
   try{
     const {d}=await loadFirebase();
     if(eventListenerStop){eventListenerStop();eventListenerStop=null}
-    eventListenerStop=d.onValue(d.ref(db,"events/active"),async snap=>{
+    eventListenerStop=d.onValue(d.ref(db,"events/active"),snap=>{
       const raw=snap.val()||{};
       const prevIds=Object.keys(activeEvents);
       const newEvents={};
@@ -2059,7 +2458,7 @@ async function startEventListener(){
             description:v.description||meta?.description||"",
             category:v.category||meta?.category||"",
             musicFile:v.musicFile||meta?.musicFile||null,
-            startedAt:v.startedAt||null,
+            startedAt:v.startedAt||Date.now(),
             startedBy:v.startedBy||"admin",
             expiresAt:v.expiresAt||null,
             duration:meta?.duration||null
@@ -2071,7 +2470,7 @@ async function startEventListener(){
       updateEventHUD();
       for(const id of newIds){
         if(!prevIds.includes(id)){
-          showMessage(`🔴 EVENT AKTIV: ${newEvents[id].name} – ${newEvents[id].description}`);
+          showMessage("🔴 EVENT AKTIV: "+(newEvents[id].name||id));
         }
       }
       for(const id of prevIds){
@@ -2113,6 +2512,10 @@ async function startEventExpiryCheck(){
   }catch(e){console.error("startEventExpiryCheck",e)}
 }
 let notificationProcessed=new Set();
+let chatStop=null;
+let chatBanUntil=0;
+const BANNED_WORDS=["nigga","nigger","nigga","faggot","fag","retard","retarded","spast","spasten","schluchtel","mörder","töten","suicide","kill yourself","asshole","bastard","prick","whore","slut","bitch","fuck","shit","damn","crap","idiot","dummkopf","arschloch","ficken","scheiße","verpiss","du depp","du dumm","hate","racist","nazi","hitler","paki","chink","coon","spic","wetback","gook","kike","chink"];
+let chatBannedWordsCache=[];
 async function startNotificationListener(){
   if(!currentUser||!db)return;
   try{
@@ -2268,6 +2671,7 @@ canvas.addEventListener("pointerdown",e=>{e.preventDefault();flap()});addEventLi
 
 (()=>{
   try{ensureShopNewState();}catch(e){console.error(e)}
+  loadMusicManifest().then(()=>{try{renderShop()}catch(e){console.error("renderShop",e)};try{renderInventory()}catch(e){console.error("renderInventory",e)}})
   try{updateLobby();}catch(e){console.error(e)}
   try{updateShopLobbyNewBadge();}catch(e){console.error(e)}
   try{renderShop();}catch(e){console.error("renderShop",e)}
@@ -2279,11 +2683,14 @@ canvas.addEventListener("pointerdown",e=>{e.preventDefault();flap()});addEventLi
   try{updateSeasonUI();}catch(e){console.error(e)}
   try{startSeasonTimer();}catch(e){console.error(e)}
    try{updateSimulatedOnline();startOnlineSimulate();}catch(e){console.error(e)}
-    try{setupFirebase();}catch(e){console.error("setupFirebase",e)}
+     try{setupFirebase();}catch(e){console.error("setupFirebase",e)}
   if(state.musicEnabled){startLobbyMusic()}
-  ["pointerdown","keydown","touchstart"].forEach(ev=>window.addEventListener(ev,()=>{if(!game.running&&state.musicEnabled&&!lobbyMusicStarted)startLobbyMusic()},{once:false,passive:true}));
+   ["pointerdown","keydown","touchstart"].forEach(ev=>window.addEventListener(ev,()=>{if(!game.running&&state.musicEnabled&&!lobbyMusicStarted)startLobbyMusic()},{once:false,passive:true}));
 })();
 </script>
 
+<!-- ===== COPYRIGHT ===== -->
+<div id="copyrightFooter">© 2026 FLYYYY — Alle Rechte vorbehalten.</div>
 </body>
+</html>
 </html>
