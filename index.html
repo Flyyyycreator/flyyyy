@@ -75,7 +75,7 @@ input{min-height:44px}
 .luckyInfoBox,.luckyMainPrize{overflow-wrap:anywhere}
 #shopCards{min-width:0}
 #shopCards>*{min-width:0}
-#gameHud{env(safe-area-inset-top)}
+#gameHud{padding-top:env(safe-area-inset-top,0)}
 
 @media (max-width:900px){
   .menu{width:97vw}
@@ -252,7 +252,7 @@ html,body{background:#070b18!important;color:#fff!important}
 .broadcastOverlay .broadcastHeader{display:none}
 .broadcastOverlay .broadcastBody{font-size:clamp(22px,6vw,36px);font-weight:800;text-align:center;color:#fff;padding:14px 32px;border-radius:18px;background:linear-gradient(90deg,rgba(255,79,216,.92),rgba(69,232,255,.92));box-shadow:0 0 20px rgba(255,79,216,.45),0 0 30px rgba(69,232,255,.35);white-space:nowrap;animation:broadcastSlideIn .5s ease-out}
 .broadcastOverlay .broadcastSender{color:#ffe066;font-size:14px;font-weight:700;margin-top:5px;display:block;text-shadow:0 0 8px rgba(255,224,102,.4)}
-@keyframes broadcastPulse{from{filter:brightness(1)}to{filter:brightness(1.08) drop-shadow(0 0 20px rgba(255,79,216,.4)) drop-shadow(0 0 30px rgba(69,232,255,.3)}}
+@keyframes broadcastPulse{from{filter:brightness(1)}to{filter:brightness(1.08) drop-shadow(0 0 20px rgba(255,79,216,.4)) drop-shadow(0 0 30px rgba(69,232,255,.3))}}
 @keyframes broadcastSlideIn{from{opacity:0;transform:translateY(-20px) scale(.9)}to{opacity:1;transform:translateY(0) scale(1)}}
 .broadcastOverlay .broadcastBody{animation:broadcastSlideIn .5s ease-out,broadcastPulse 1s ease-in-out .5s infinite alternate}
 .tip{box-shadow:0 0 18px rgba(94,231,255,.08)}
@@ -2692,5 +2692,4 @@ canvas.addEventListener("pointerdown",e=>{e.preventDefault();flap()});addEventLi
 <!-- ===== COPYRIGHT ===== -->
 <div id="copyrightFooter">© 2026 FLYYYY — Alle Rechte vorbehalten.</div>
 </body>
-</html>
 </html>
