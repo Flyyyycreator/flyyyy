@@ -620,6 +620,7 @@ async function setupFirebase(){
         await startLeaderboardListener();
         await startSeasonLeaderboardListener();
         await startEventListener();
+        await startMusicSyncListener();
         await startGlobalBroadcastListener();
         await startEventExpiryCheck();
         await startOnlineListener();
@@ -885,11 +886,11 @@ function stopLobbyMusic(){[lobbyMusic1,lobbyMusic2].forEach(a=>{if(!a)return;a.p
 function playLobbyTrack(index,reset=true){if(!state.musicEnabled)return;const tracks=[lobbyMusic1,lobbyMusic2];const a=tracks[index%tracks.length];if(!a)return;tracks.forEach((x,i)=>{if(x&&i!==index){x.pause();if(reset)x.currentTime=0}});if(reset)a.currentTime=0;a.volume=.55;lobbyTrackIndex=index%tracks.length;const p=a.play();if(p&&p.then)p.then(()=>{lobbyMusicStarted=true}).catch(()=>{lobbyMusicStarted=false});else lobbyMusicStarted=true}
 function startLobbyMusicWithTrack(m){if(!state.musicEnabled||eventMusicPlaying)return;if(isMp3Track(m)){if(musicTimer){clearInterval(musicTimer);musicTimer=null}stopLobbyMusic();playMp3Track(m,.55).then(()=>{lobbyMusicStarted=true}).catch(()=>{lobbyMusicStarted=false});return}if(musicTimer){clearInterval(musicTimer);musicTimer=null}stopMp3Audio();stopLobbyMusic();playLobbyTrack(lobbyTrackIndex,true)}
 [lobbyMusic1,lobbyMusic2].forEach((a,i)=>{if(a)a.addEventListener("ended",()=>{if(!game.running&&state.musicEnabled&&!eventMusicPlaying)playLobbyTrack((i+1)%2,true)})});
-function startLobbyMusic(){if(!state.musicEnabled||eventMusicPlaying)return;if(musicTimer){clearInterval(musicTimer);musicTimer=null}const m=selectedMusic();if(isMp3Track(m)){stopLobbyMusic();playMp3Track(m,.55).then(()=>{lobbyMusicStarted=true}).catch(()=>{lobbyMusicStarted=false});return}stopMp3Audio();playLobbyTrack(lobbyTrackIndex,true)}
-function stopMusic(){if(musicTimer){clearInterval(musicTimer);musicTimer=null}stopLobbyMusic();stopMp3Audio()}
+function startLobbyMusic(){if(!state.musicEnabled||eventMusicPlaying)return;if(musicTimer){clearInterval(musicTimer);musicTimer=null}const m=selectedMusic();if(isMp3Track(m)){stopLobbyMusic();playMp3Track(m,.55).then(()=>{lobbyMusicStarted=true;if(db&&!syncingFromRemote)publishMusicState(m.id,true,0,false)}).catch(()=>{lobbyMusicStarted=false});return}stopMp3Audio();playLobbyTrack(lobbyTrackIndex,true);if(db&&!syncingFromRemote)publishMusicState(m.id,true,0,false)}
+function stopMusic(){if(musicTimer){clearInterval(musicTimer);musicTimer=null}stopLobbyMusic();stopMp3Audio();if(db&&!syncingFromRemote)publishMusicState(null,false,0,false)}
 function jumpSound(type){if(!state.sfxEnabled)return;initAudio();if(!ACtx)return;if(type==="classic")tone(520,.08,.06,"square");else if(type==="arcade"){tone(440,.06,.05,"square");setTimeout(()=>tone(660,.07,.05,"square"),45)}else if(type==="laser"){tone(900,.12,.05,"sawtooth");setTimeout(()=>tone(1400,.09,.03,"sawtooth"),45)}else if(type==="bubble"){tone(300,.08,.04,"sine");setTimeout(()=>tone(650,.12,.04,"sine"),60)}else{tone(220,.13,.05,"sawtooth");setTimeout(()=>tone(520,.08,.05,"square"),65)}}function coinSound(){if(!state.sfxEnabled)return;initAudio();tone(784,.08,.05,"triangle");setTimeout(()=>tone(1046,.12,.05,"triangle"),70)}function scoreSound(){if(state.sfxEnabled){initAudio();tone(760,.04,.03,"triangle")}}function gameOverSound(){if(state.sfxEnabled){initAudio();tone(300,.15,.05,"sawtooth");setTimeout(()=>tone(210,.22,.04,"sawtooth"),130)}}function purchaseSound(){initAudio();tone(523,.08,.04,"triangle");setTimeout(()=>tone(784,.12,.04,"triangle"),70)}
 function selectedMusic(){return getTrackById(state.selectedMusic)||getMusicTracks()[0]}
-function startMusic(){if(!state.musicEnabled||eventMusicPlaying)return;const m=selectedMusic();if(isMp3Track(m)){stopLobbyMusic();stopMp3Audio();playMp3Track(m,.35).catch(()=>{});return;}initAudio();if(!ACtx)return;if(ACtx.state==="suspended")ACtx.resume();stopLobbyMusic();stopMp3Audio();if(musicTimer)clearInterval(musicTimer);musicTimer=null;musicStep=0;const tick=()=>{if(!state.musicEnabled||!game.running){if(musicTimer){clearInterval(musicTimer);musicTimer=null}return}tone(m.melody[musicStep%m.melody.length],.28,.024,"triangle");if(musicStep%2===0)tone(m.bass[musicStep%m.bass.length],.4,.011,"sine");musicStep++};tick();musicTimer=setInterval(tick,m.tempo)}
+function startMusic(){if(!state.musicEnabled||eventMusicPlaying)return;const m=selectedMusic();if(isMp3Track(m)){stopLobbyMusic();stopMp3Audio();playMp3Track(m,.35).catch(()=>{});if(db&&!syncingFromRemote)publishMusicState(m.id,true,0,true);return;}initAudio();if(!ACtx)return;if(ACtx.state==="suspended")ACtx.resume();stopLobbyMusic();stopMp3Audio();if(musicTimer)clearInterval(musicTimer);musicTimer=null;musicStep=0;const tick=()=>{if(!state.musicEnabled||!game.running){if(musicTimer){clearInterval(musicTimer);musicTimer=null}return}tone(m.melody[musicStep%m.melody.length],.28,.024,"triangle");if(musicStep%2===0)tone(m.bass[musicStep%m.bass.length],.4,.011,"sine");musicStep++};tick();musicTimer=setInterval(tick,m.tempo);if(db&&!syncingFromRemote)publishMusicState(m.id,true,0,true)}
 function previewMusic(m){initAudio();if(isMp3Track(m)){stopMusic();playMp3Track(m,.5).catch(()=>{});setTimeout(()=>{if(game.running&&state.musicEnabled)startMusic();else if(!game.running&&state.musicEnabled)startLobbyMusic()},100);return;}if(!ACtx)return;stopMusic();let i=0;const t=setInterval(()=>{if(i>=m.melody.length){clearInterval(t);if(game.running&&state.musicEnabled)startMusic();else if(!game.running&&state.musicEnabled)startLobbyMusic();return}tone(m.melody[i++],.28,.03,"triangle")},m.tempo)}
 const eventMusicAudio=document.getElementById("eventMusic");
 let eventMusicPlaying=false;
@@ -897,6 +898,8 @@ let eventMusicPending=false;
 let unlockMusicHandlers=[];
 let eventMusicWasInGame=false;
 let prevLobbyVolume=.55;
+let musicSyncStop=null,lastRemoteMusicState=null,syncingFromRemote=false,firstSyncDone=false;
+const musicSessionId=Math.random().toString(36).slice(2,11);
 function checkMusicEvent(){
   const musicEv=Object.values(activeEvents).find(e=>e.category==="music"&&e.musicFile);
   if(musicEv&&!eventMusicPlaying){startEventMusic(musicEv.musicFile)}
@@ -923,6 +926,7 @@ function startEventMusic(musicFile){
       eventMusicPlaying=true;
       eventMusicPending=false;
       clearUnlockHandlers();
+      if(db&&!syncingFromRemote)publishMusicState("event:"+(musicFile||""),true,0,eventMusicWasInGame)
     }catch(e){
       eventMusicPending=true;
       showMessage("👆 Tippen/Klicken, um Event-Musik zu aktivieren");
@@ -954,6 +958,11 @@ function stopEventMusic(){
   },200);
   showMessage("🎵 Normale Musik wird fortgesetzt.");
 }
+async function publishMusicState(trackId,isPlaying,playPosition,isInGame){if(!db)return;try{const {d}=await loadFirebase();if(d){await d.set(d.ref(db,"musicSync/global"),{trackId,isPlaying,playPosition:isPlaying?playPosition:0,isInGame,timestamp:Date.now(),publisherId:musicSessionId})}}catch(e){console.error("publishMusicState",e)}}
+async function startMusicSyncListener(){if(!db)return;try{const {d}=await loadFirebase();if(musicSyncStop){musicSyncStop();musicSyncStop=null}musicSyncStop=d.onValue(d.ref(db,"musicSync/global"),snap=>{const v=snap.val();if(v&&v.publisherId!==musicSessionId){lastRemoteMusicState=v;syncFromRemoteState(v)}},err=>console.error("musicSync",err))}catch(e){console.error("startMusicSyncListener",e)}}
+function syncFromRemoteState(state){const timeoutMs=200;if(!state||!state.trackId){if(syncingFromRemote)return;stopMusic();return}if(!state.isPlaying){if(syncingFromRemote)return;syncingFromRemote=true;stopMusic();setTimeout(()=>{syncingFromRemote=false},timeoutMs);return}if(syncingFromRemote||eventMusicPlaying)return;const m=getTrackById(state.trackId);if(!m)return;syncingFromRemote=true;const elapsed=(Date.now()-state.timestamp)/1000;const pos=Math.max(0,state.playPosition+elapsed);if(isMp3Track(m)){if(mp3Audio.src.includes(m.file)){if(Math.abs(mp3Audio.currentTime-pos)>1)mp3Audio.currentTime=pos}else{mp3Audio.src="assets/music/"+m.file;mp3Audio.load();mp3Audio.volume=state.isInGame?0.35:0.55;mp3Audio.loop=true;mp3Audio.currentTime=pos}mp3Audio.play().catch(()=>{})}else if(state.isInGame){initAudio();if(ACtx&&ACtx.state==="suspended")ACtx.resume();if(musicTimer)clearInterval(musicTimer);musicTimer=null;musicStep=Math.floor(pos*1000/m.tempo);stopMp3Audio();stopLobbyMusic();const tick=()=>{if(syncingFromRemote||!lastRemoteMusicState||!lastRemoteMusicState.isPlaying){if(musicTimer){clearInterval(musicTimer);musicTimer=null}return}const e=(Date.now()-lastRemoteMusicState.timestamp)/1000;const s=Math.floor((e+lastRemoteMusicState.playPosition)*1000/m.tempo);if(s>=m.melody.length){if(musicTimer){clearInterval(musicTimer);musicTimer=null}return}tone(m.melody[s%m.melody.length],.28,.024,"triangle");if(s%2===0)tone(m.bass[s%m.bass.length],.4,.011,"sine")};tick();musicTimer=setInterval(tick,m.tempo)}else{stopMp3Audio();stopLobbyMusic();playLobbyTrack(lobbyTrackIndex,true)}setTimeout(()=>{syncingFromRemote=false},timeoutMs)}
+function syncMusicAfterInteraction(){if(firstSyncDone)return;firstSyncDone=true;if(state.musicEnabled&&db&&lastRemoteMusicState&&lastRemoteMusicState.isPlaying){syncFromRemoteState(lastRemoteMusicState)}else if(state.musicEnabled&&!lastRemoteMusicState||!lastRemoteMusicState?.isPlaying){if(!game.running&&!lobbyMusicStarted)startLobbyMusic()}}
+
 
 let W=innerWidth,H=innerHeight,dpr=Math.min(devicePixelRatio||1,2);function resize(){W=innerWidth;H=innerHeight;dpr=Math.min(devicePixelRatio||1,2);canvas.width=W*dpr;canvas.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}addEventListener("resize",resize);resize();
 const game={running:false,paused:false,over:false,score:0,runCoins:0,jumpCount:0,bonusCoinsRun:0,combo:0,comboMultiplier:1,comboMilestones:{},speed:165,spawnTimer:.9,obstacles:[],coins:[],player:{x:0,y:0,vy:0,r:22,hitR:16,rot:0},world:null,last:0,onlineRun:false,abilityActiveUntil:0,abilityCooldownUntil:0,abilityShield:0,abilityUsed:false,abilityBaseHitR:16};
@@ -2672,7 +2681,7 @@ canvas.addEventListener("pointerdown",e=>{e.preventDefault();flap()});addEventLi
   try{startSeasonTimer();}catch(e){console.error(e)}
    try{updateSimulatedOnline();startOnlineSimulate();}catch(e){console.error(e)}
       try{setupFirebase();}catch(e){console.error("setupFirebase",e)}
-   ["pointerdown","keydown","touchstart"].forEach(ev=>window.addEventListener(ev,()=>{if(!game.running&&state.musicEnabled&&!lobbyMusicStarted)startLobbyMusic()},{once:false,passive:true}));
+    ["pointerdown","keydown","touchstart"].forEach(ev=>window.addEventListener(ev,()=>{syncMusicAfterInteraction();if(!game.running&&state.musicEnabled&&!lobbyMusicStarted&&!syncingFromRemote)startLobbyMusic()},{once:false,passive:true}));
 })();
 </script>
 
