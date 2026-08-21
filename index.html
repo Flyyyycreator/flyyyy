@@ -372,6 +372,7 @@ let cloudSaveTimer=null;function saveState(){saveStateLocalOnly();if(currentUser
 const SEASON_LENGTH_MS=7*24*60*60*1000;
 const SEASON_RELEASE_MS=Date.parse("2026-08-21T23:03:58+02:00");
 let seasonInfo={id:2,startsAt:SEASON_RELEASE_MS,endsAt:SEASON_RELEASE_MS+SEASON_LENGTH_MS},seasonInterval=null,seasonMode="season";
+function syncLocalSeasonScore(id){const sid=Number(id||2);if(Number(state.seasonScoreSeasonId||0)!==sid){state.seasonScore=0;state.seasonScoreSeasonId=sid;saveStateLocalOnly();}}
 let allTimeLeaderboardCache=[],seasonLeaderboardCache=[],onlineCache=new Set(),lastLeaderboard=[];
 function rewardForRank(rank){if(rank===1)return 1000;if(rank===2)return 500;if(rank===3)return 300;if(rank>=4&&rank<=10)return 100;if(rank>=11&&rank<=25)return 50;return 0}
 function formatSeasonTime(ms){const safe=Math.max(0,Number(ms)||0),total=Math.floor(safe/1000),d=Math.floor(total/86400),h=Math.floor((total%86400)/3600),m=Math.floor((total%3600)/60),s=total%60;return `${d}T ${String(h).padStart(2,"0")}Std ${String(m).padStart(2,"0")}Min ${String(s).padStart(2,"0")}Sek`}
@@ -387,6 +388,7 @@ async function ensureSeason(forceCheck=false){
     if(Number(cur.endsAt||0)<=Date.now()&&(forceCheck||Number(cur.endsAt||0)>0))await finalizeExpiredSeason(cur);
     snap=await d.get(ref);cur=snap.val()||cur;
     seasonInfo={id:Number(cur.id||2),startsAt:Number(cur.startsAt||SEASON_RELEASE_MS),endsAt:Number(cur.endsAt||SEASON_RELEASE_MS+SEASON_LENGTH_MS)};
+    syncLocalSeasonScore(seasonInfo.id);
     storage.setItem("FLYYYY_SEASON_INFO",JSON.stringify(seasonInfo));updateSeasonUI();return seasonInfo;
   }catch(e){console.error("ensureSeason",e);updateSeasonUI();return seasonInfo}
 }
@@ -448,7 +450,7 @@ function renderLeaderboard(arr){
   leaderboardList.innerHTML="";
   const limited=combined.slice(0,200);
   const realCount=realPlayers.length;
-  setLeaderboardStatus(seasonMode==="season"?`🌐 Season ${seasonInfo.id||1} · ${realCount} echte Spieler + ${bots.length} Leaderboard-Spieler`:`⭐ Allzeit · ${realCount} echte Spieler + ${bots.length} Leaderboard-Spieler`);
+  setLeaderboardStatus(seasonMode==="season"?`Spieler`:`Spieler`);
   if(!limited.length){const e=document.createElement("div");e.className="leaderStatus";e.textContent=seasonMode==="season"?"Noch keine echten Season-Spieler vorhanden.":"Noch keine echten Allzeit-Spieler vorhanden.";leaderboardList.appendChild(e);return;}
   limited.forEach((p,i)=>{
     const row=document.createElement("div");row.className="leaderRow";
@@ -459,11 +461,10 @@ function renderLeaderboard(arr){
     const meta=document.createElement("div");meta.className="leaderMeta";
     const sc=document.createElement("div");sc.className="leaderScore";sc.textContent=`⭐ ${p.score||0}`;
     const wins=document.createElement("div");wins.className="leaderWins";wins.textContent=`🏆 ${p.wins||0} Siege`;
-    const on=document.createElement("div");on.className="onlineMini";on.textContent=p.npc?"🤖 LEADERBOARD":"";
-    meta.append(sc,wins,on);row.append(r,n,meta);leaderboardList.appendChild(row);
+    meta.append(sc,wins);row.append(r,n,meta);leaderboardList.appendChild(row);
   });
 }
-function switchLeaderboardMode(mode){seasonMode=mode;seasonTabBtn.classList.toggle("active",mode==="season");allTimeTabBtn.classList.toggle("active",mode==="alltime");if(mode==="season"){seasonBoardSub.textContent=`🌐 Season ${seasonInfo.id} · Nur echte Spieler`;renderLeaderboard(seasonLeaderboardCache.slice(0,200))}else{seasonBoardSub.textContent="⭐ Allzeit · nur echte Spieler";renderLeaderboard(allTimeLeaderboardCache.slice(0,200))}}
+function switchLeaderboardMode(mode){seasonMode=mode;seasonTabBtn.classList.toggle("active",mode==="season");allTimeTabBtn.classList.toggle("active",mode==="alltime");if(mode==="season"){seasonBoardSub.textContent="Spieler";renderLeaderboard(seasonLeaderboardCache.slice(0,200))}else{seasonBoardSub.textContent="Spieler";renderLeaderboard(allTimeLeaderboardCache.slice(0,200))}}
 
 async function startSeasonLeaderboardListener(){
   if(!db)return;
@@ -482,7 +483,7 @@ async function startSeasonLeaderboardListener(){
           return {
             uid,
             name:safeName(season.name||v?.name||"Spieler"),
-            score:Number(season.score||0),
+            score:Number(season.updatedAt||0)>=Number(seasonInfo.startsAt||0)?Number(season.score||0):0,
             wins:0,
             updatedAt:Number(season.updatedAt||0)
           };
