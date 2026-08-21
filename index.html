@@ -32,14 +32,14 @@
 #chatSendBtn:disabled{opacity:.5;cursor:not-allowed}
 .chatToggle{position:fixed;bottom:14px;left:14px;z-index:5000;width:min(44px,8vw);height:44px;border-radius:999px;background:linear-gradient(135deg,#6df5a3,#5ee7ff);border:1px solid rgba(109,245,163,.4);display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 8px 24px rgba(0,0,0,.3);cursor:pointer;backdrop-filter:blur(6px)}
 .missionList{display:grid;gap:10px}.mission{padding:14px;border-radius:16px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1)}.mission.done{background:rgba(109,245,163,.1);border-color:rgba(109,245,163,.25)}.missionTop{display:flex;justify-content:space-between;gap:10px}.missionProgress{height:8px;margin-top:9px;overflow:hidden;border-radius:999px;background:rgba(255,255,255,.08)}.missionFill{height:100%;background:linear-gradient(90deg,#5ee7ff,#6df5a3)}
-#onlineBadge{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:5000;display:flex;align-items:center;gap:8px;padding:9px 13px;border-radius:999px;background:rgba(8,15,34,.9);border:1px solid rgba(109,245,163,.35);box-shadow:0 10px 30px rgba(0,0,0,.3);font-weight:900;backdrop-filter:blur(8px);white-space:nowrap}#onlineDot{width:10px;height:10px;border-radius:50%;background:#42e879;box-shadow:0 0 12px rgba(66,232,121,.8)}#onlineDot.off{background:#ff6374;box-shadow:0 0 12px rgba(255,99,116,.5)}
+
 #gameHud{position:absolute;inset:0;z-index:30;display:none;pointer-events:none}.hud-left,.hud-right{position:absolute;top:15px;display:flex;flex-wrap:wrap;align-items:center;gap:10px}.comboHud{border-color:rgba(255,212,71,.45);background:linear-gradient(180deg,rgba(76,54,8,.88),rgba(24,20,8,.78));transition:transform .12s,box-shadow .12s;color:#fff}.comboHud.hot{box-shadow:0 0 24px rgba(255,212,71,.28)}.comboHud.mega{border-color:rgba(255,99,116,.6);background:linear-gradient(180deg,rgba(92,20,31,.9),rgba(30,11,17,.82));box-shadow:0 0 28px rgba(255,99,116,.28);animation:comboPulse .8s ease-in-out infinite alternate}@keyframes comboPulse{from{transform:scale(1)}to{transform:scale(1.05)}}.hud-left{left:15px;right:180px;justify-content:flex-start}.hud-right{right:15px;max-width:150px;justify-content:flex-end}.hud-pill{padding:10px 14px;white-space:nowrap;border-radius:999px;background:rgba(12,19,46,.72);border:1px solid rgba(255,255,255,.15);font-weight:900;backdrop-filter:blur(8px)}#eventBadge{position:absolute;left:50%;top:15px;transform:translateX(-50%);z-index:31;border:1px solid rgba(255,79,216,.35);background:linear-gradient(135deg,rgba(255,79,134,.85),rgba(255,212,71,.85));color:#fff;font-size:13px;padding:8px 14px;box-shadow:0 0 20px rgba(255,99,116,.4),0 0 30px rgba(255,212,71,.2);animation:eventPulse 1.5s ease-in-out infinite alternate}@keyframes eventPulse{from{box-shadow:0 0 20px rgba(255,99,116,.4),0 0 30px rgba(255,212,71,.2)}to{box-shadow:0 0 30px rgba(255,99,116,.6),0 0 40px rgba(255,212,71,.4)}}.pause-btn{pointer-events:auto;padding:10px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.15);color:#fff;background:rgba(12,19,46,.72);font-weight:900}.tip{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);padding:9px 14px;border-radius:999px;background:rgba(12,19,46,.6);font-size:13px}
 #copyrightFooter{position:fixed;bottom:0;left:0;width:100%;z-index:5;display:flex;justify-content:center;align-items:center;padding:10px 0;font-size:12px;color:var(--muted);background:rgba(8,15,34,.85);backdrop-filter:blur(8px);border-top:1px solid rgba(255,255,255,.12);pointer-events:none}@media(max-width:600px){#copyrightFooter{font-size:11px;padding:8px 0}}
 .overlay{position:absolute;inset:0;z-index:100;display:none;align-items:center;justify-content:center;background:rgba(5,8,22,.55);backdrop-filter:blur(6px)}.overlay.active{display:flex}.dialog{width:min(560px,92vw);padding:28px;text-align:center;border-radius:28px;background:linear-gradient(180deg,#101837,#18234d);border:1px solid rgba(255,255,255,.15);box-shadow:0 20px 60px rgba(0,0,0,.45)}.dialog h2{margin:0 0 10px;font-size:clamp(40px,8vw,70px)}.dialog p{color:var(--muted)}.stats{display:flex;justify-content:center;flex-wrap:wrap;gap:25px;margin:20px 0}.stat strong{display:block;font-size:28px}.notice{padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);color:var(--muted);font-size:13px;margin-top:12px}
 .seasonPanel{margin:14px 0 18px;padding:16px;border-radius:20px;background:linear-gradient(135deg,rgba(94,231,255,.10),rgba(109,245,163,.08));border:1px solid rgba(94,231,255,.20)}.seasonTop{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.seasonTitle{font-size:20px;font-weight:1000}.seasonTimer{font-weight:1000;color:#6df5a3}.seasonSub{color:var(--muted);font-size:13px;margin-top:7px}.onlineNote{font-size:12px;color:var(--muted);margin-top:8px}
 .rewardOverlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;background:rgba(4,8,20,.72);backdrop-filter:blur(8px)}.rewardOverlay.active{display:flex}.rewardBox{width:min(560px,92vw);padding:30px;text-align:center;border-radius:30px;background:linear-gradient(180deg,#132042,#19295b);border:1px solid rgba(255,255,255,.16);box-shadow:0 30px 90px rgba(0,0,0,.55)}.rewardBox h2{margin:0;font-size:clamp(34px,8vw,62px)}.rewardRank{font-size:28px;font-weight:1000;margin:10px 0}.rewardCoins{font-size:40px;font-weight:1000;color:#ffd447;margin:12px 0}.rewardBox p{color:var(--muted)}
 .luckyWrap{display:grid;grid-template-columns:minmax(280px,430px) minmax(260px,1fr);gap:20px;align-items:center}.luckyWheelCard{padding:20px;border-radius:24px;background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.035));border:1px solid rgba(255,255,255,.12);text-align:center}.wheelStage{position:relative;width:min(390px,80vw);aspect-ratio:1/1;margin:0 auto 16px;display:grid;place-items:center}.luckyWheel{position:relative;width:100%;height:100%;border-radius:50%;border:10px solid #fff;box-shadow:0 15px 45px rgba(0,0,0,.35),0 0 35px rgba(255,212,71,.25);overflow:hidden;background:#fff}.luckyWheelInner{position:absolute;inset:0;border-radius:50%;transform:rotate(0deg);transition:transform 4.8s cubic-bezier(.12,.78,.18,1);background:conic-gradient(#ffd447 0 45deg,#5ee7ff 45deg 90deg,#6df5a3 90deg 135deg,#ff8c6b 135deg 180deg,#b58cff 180deg 225deg,#7dd3fc 225deg 270deg,#fda4af 270deg 315deg,#ffe58a 315deg 360deg)}.wheelLabels{position:absolute;inset:0;pointer-events:none;font-size:clamp(14px,2.4vw,20px);font-weight:1000}.wheelLabel{position:absolute;left:50%;top:50%;width:90px;margin-left:-45px;margin-top:-12px;text-align:center;color:#17204a;text-shadow:0 1px 0 rgba(255,255,255,.5)}.wheelLabel:nth-child(1){transform:rotate(22.5deg) translateY(-145px)}.wheelLabel:nth-child(2){transform:rotate(67.5deg) translateY(-145px)}.wheelLabel:nth-child(3){transform:rotate(112.5deg) translateY(-145px)}.wheelLabel:nth-child(4){transform:rotate(157.5deg) translateY(-145px)}.wheelLabel:nth-child(5){transform:rotate(202.5deg) translateY(-145px)}.wheelLabel:nth-child(6){transform:rotate(247.5deg) translateY(-145px)}.wheelLabel:nth-child(7){transform:rotate(292.5deg) translateY(-145px)}.wheelLabel:nth-child(8){transform:rotate(337.5deg) translateY(-145px)}.wheelPointer{position:absolute;top:-2px;left:50%;transform:translateX(-50%);z-index:5;font-size:44px;filter:drop-shadow(0 6px 5px rgba(0,0,0,.25))}.luckyInfo{display:grid;gap:12px}.luckyInfoBox,.luckyMainPrize{padding:16px;border-radius:18px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09)}.luckyInfoBox h3{margin:0 0 8px}.luckyMainPrize{background:linear-gradient(180deg,rgba(255,212,71,.16),rgba(255,255,255,.05));border-color:rgba(255,212,71,.35)}.luckyMainPrize strong{display:block;font-size:26px;margin-bottom:6px}.luckyOdds{font-size:13px;color:var(--muted);line-height:1.5}.spinBtn{width:100%;font-size:20px}.luckyResult{margin-top:12px;min-height:50px;padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09);font-weight:900}.jackpotOverlay{position:absolute;inset:0;display:none;align-items:center;justify-content:center;background:rgba(6,8,24,.72);backdrop-filter:blur(8px);z-index:300}.jackpotOverlay.active{display:flex}.jackpotBox{width:min(620px,92vw);padding:34px 24px;text-align:center;border-radius:30px;background:linear-gradient(180deg,#33245d,#151b3d);border:2px solid rgba(255,212,71,.7);box-shadow:0 20px 80px rgba(0,0,0,.5),0 0 60px rgba(255,212,71,.25);animation:jackpotPulse .8s ease-in-out infinite alternate}.prizeIcon{font-size:72px}.prizeTitle{font-size:clamp(40px,8vw,82px);font-weight:1000;letter-spacing:.05em;color:#ffd447;text-shadow:0 0 25px rgba(255,212,71,.55)}.prizeText{font-size:clamp(24px,5vw,44px);font-weight:1000;margin:10px 0}.prizeSub{color:var(--muted);font-size:16px}@keyframes jackpotPulse{from{transform:scale(1)}to{transform:scale(1.02)}}
-@media(max-width:760px){.luckyWrap{grid-template-columns:1fr}.wheelStage{width:min(360px,82vw)}}@media(max-width:600px){.hud-left{left:8px;right:145px;gap:6px}.hud-right{right:8px;max-width:125px;gap:6px}.hud-left .hud-pill,.hud-right .hud-pill,.pause-btn{padding:7px 9px;font-size:12px}.menu{padding:20px;border-radius:22px}.title{font-size:58px}.preview{height:125px}.tip{font-size:12px;bottom:10px}.authGrid,.nameBox{grid-template-columns:1fr}.leaderRow{grid-template-columns:45px 1fr auto}.leaderMeta{min-width:95px}#onlineBadge{top:10px;font-size:12px}}
+@media(max-width:760px){.luckyWrap{grid-template-columns:1fr}.wheelStage{width:min(360px,82vw)}}@media(max-width:600px){.hud-left{left:8px;right:145px;gap:6px}.hud-right{right:8px;max-width:125px;gap:6px}.hud-left .hud-pill,.hud-right .hud-pill,.pause-btn{padding:7px 9px;font-size:12px}.menu{padding:20px;border-radius:22px}.title{font-size:58px}.preview{height:125px}.tip{font-size:12px;bottom:10px}.authGrid,.nameBox{grid-template-columns:1fr}.leaderRow{grid-template-columns:45px 1fr auto}.leaderMeta{min-width:95px}}
 
 .adminUserCard{padding:14px;border-radius:18px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.1)}
 .adminUserTop{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap}.adminUserEmail{font-weight:900;word-break:break-word}.adminMeta{font-size:12px;color:var(--muted);margin-top:4px}.adminActions{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:8px;margin-top:12px}.adminActions input,.adminActions select{width:100%;padding:10px 11px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.07);color:#fff}.adminBadge{display:inline-block;padding:5px 9px;border-radius:999px;font-size:11px;font-weight:900;background:rgba(255,255,255,.08);margin:3px 5px 0 0}.adminBadge.banned{background:rgba(255,99,116,.16);color:#ff8995}.adminBadge.ok{background:rgba(109,245,163,.12);color:#6df5a3}
@@ -221,9 +221,9 @@ html,body{background:#070b18!important;color:#fff!important}
 .btn.red{background:linear-gradient(180deg,#ff8796,#ff4d68)!important;border-color:#ff9baa!important;color:#fff!important;box-shadow:0 0 20px rgba(255,99,116,.24),0 8px 22px rgba(0,0,0,.18)!important}
 .btn.dark{background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.035))!important;color:#fff!important;border-color:rgba(255,255,255,.18)!important}
 #startBtn{background:linear-gradient(135deg,#ffd447,#ff9f32)!important;border-color:#ffe47b!important;color:#211400!important;box-shadow:0 0 26px rgba(255,212,71,.38),0 8px 24px rgba(0,0,0,.2)!important}
-#onlineModeBtn{background:linear-gradient(135deg,#ff55db,#9b5cff)!important;border-color:#ff9fea!important;color:#fff!important;box-shadow:0 0 30px rgba(255,79,216,.4),0 8px 24px rgba(0,0,0,.2)!important}
+
 #startBtn:hover{box-shadow:0 0 36px rgba(255,212,71,.55),0 10px 28px rgba(0,0,0,.25)!important}
-#onlineModeBtn:hover{box-shadow:0 0 40px rgba(255,79,216,.55),0 10px 28px rgba(0,0,0,.25)!important}
+
 .smallbtn{background:linear-gradient(180deg,#fff,#e7efff)!important;color:#17204a!important;border:1px solid rgba(255,255,255,.55)!important;box-shadow:0 0 12px rgba(94,231,255,.08)!important}
 .smallbtn.blue{background:linear-gradient(180deg,#6ceeff,#39c9ea)!important;color:#071324!important}
 .smallbtn.selected{background:linear-gradient(180deg,#8effc4,#4de89b)!important;color:#072018!important}
@@ -232,8 +232,8 @@ html,body{background:#070b18!important;color:#fff!important}
 .authInput,.nameInput,.adminActions input,.adminActions select,.broadcastInput{background:rgba(7,11,24,.78)!important;border:1px solid rgba(94,231,255,.22)!important;color:#fff!important}
 .authInput:focus,.nameInput:focus,.broadcastInput:focus{border-color:#ff55db!important;box-shadow:0 0 0 3px rgba(255,79,216,.16),0 0 20px rgba(255,79,216,.1)!important}
 #onlineBadge{background:rgba(8,15,34,.92)!important;border:1px solid rgba(109,245,163,.4)!important;box-shadow:0 0 22px rgba(109,245,163,.16),0 10px 30px rgba(0,0,0,.35)!important}
-#onlineDot{background:#42e879!important;box-shadow:0 0 14px rgba(66,232,121,.85)!important}
-#onlineDot.off{background:#ff6374!important;box-shadow:0 0 14px rgba(255,99,116,.65)!important}
+
+
 .newBadge,.tabNew{background:linear-gradient(90deg,#ff3b4e,#ff55db)!important;color:#fff!important;box-shadow:0 0 18px rgba(255,59,78,.42)!important;animation:newBlink .8s ease-in-out infinite alternate!important}
 .rarity-basic{color:#e9edf7!important}.rarity-rare{color:#6df5a3!important}.rarity-ultra{color:#5ee7ff!important}.rarity-epic{color:#b58cff!important}.rarity-mythic{color:#ff6374!important}.rarity-legendary{color:#ffd447!important}
 .rarity-glow-basic{box-shadow:0 0 14px rgba(233,237,247,.15)!important}.rarity-glow-rare{box-shadow:0 0 18px rgba(109,245,163,.18)!important}.rarity-glow-ultra{box-shadow:0 0 20px rgba(94,231,255,.22)!important}.rarity-glow-epic{box-shadow:0 0 24px rgba(181,140,255,.24)!important}.rarity-glow-mythic{box-shadow:0 0 28px rgba(255,99,116,.28)!important}.rarity-glow-legendary{box-shadow:0 0 34px rgba(255,212,71,.35)!important}
@@ -276,12 +276,11 @@ html,body{background:#070b18!important;color:#fff!important}
 <body>
 <div id="globalBroadcastOverlay" class="broadcastOverlay" aria-live="polite"><div class="broadcastHeader"><span>📢 GLOBAL BROADCAST</span><span id="globalBroadcastTime"></span></div><div id="globalBroadcastText" class="broadcastBody"></div><div id="globalBroadcastSender" class="broadcastSender"></div></div>
 <div id="app"><div id="appErrorNotice" style="display:none;position:fixed;left:50%;top:10px;transform:translateX(-50%);z-index:100000;padding:10px 14px;border-radius:12px;background:#2a1730;border:1px solid #ff6374;color:#fff;font-weight:900">⚠️ Ein Spielfehler ist aufgetreten. Bitte Seite neu laden.</div>
-<div id="onlineBadge"><span id="onlineDot"></span><span>🟢 <b id="onlineCount">10</b> Online</span></div>
 <canvas id="gameCanvas"></canvas>
 
 <div id="authScreen" class="screen"><div class="menu"><div class="title">FLYYYY</div><div class="version">🔐 ACCOUNT</div><div class="subtitle">Mit E-Mail anmelden, neues Konto erstellen oder ohne Konto spielen.</div><div class="authBox"><h2 style="margin:0 0 12px">Anmelden / Registrieren</h2><input id="authEmail" class="authInput" type="email" autocomplete="email" placeholder="E-Mail"><input id="authPassword" class="authInput" type="password" autocomplete="current-password" placeholder="Passwort (mind. 6 Zeichen)" style="margin-top:10px"><div class="authGrid"><button id="loginBtn" class="btn blue">ANMELDEN</button><button id="registerBtn" class="btn green">REGISTRIEREN</button></div><button id="guestBtn" class="btn dark" style="width:100%;margin-top:10px">👤 OHNE KONTO SPIELEN</button><button id="adminLoginBtn" class="btn dark" style="width:100%;margin-top:10px">🛠️ ADMIN</button><div id="authStatus" class="authStatus">Gastmodus ist jederzeit möglich.</div><div class="tiny" style="margin-top:10px">🛡️ Adminrechte werden serverseitig mit Firebase geprüft.</div></div><button id="authBackBtn" class="btn dark" style="width:100%">← Zur Lobby</button></div></div>
 
-<div id="lobby" class="screen active"><div class="menu"><div class="title">FLYYYY</div><div class="version">🔥 UPDATE 3.0 · COMBO</div><div class="subtitle">Fly weiter. Sammle Coins. Schlage andere Spieler.</div><div class="accountLine"><div id="accountStatus" class="accountPill">👤 Gast</div><button id="accountBtn" class="btn dark">🔐 ANMELDEN</button><button id="logoutBtn" class="btn red" style="display:none">ABMELDEN</button><button id="myAccountBtn" class="btn dark">👤 MEIN KONTO</button></div><div class="credits"><div class="badge">🪙 <span id="lobbyCoins">0</span> Coins</div><div class="badge">🏆 Rekord: <span id="lobbyBest">0</span></div></div><div class="seasonPanel"><div class="seasonTop"><div class="seasonTitle">🌐 SEASON <span id="seasonNumberLobby">1</span></div><div class="seasonTimer" id="seasonTimerLobby">⏱️ Lädt...</div></div><div class="seasonSub">7-Tage-Online-Season · nur mit Konto spielbar</div><div class="onlineNote">🥇 1.000 Coins · 🥈 500 Coins · 🥉 300 Coins · Platz 4–10: 100 · Platz 11–25: 50</div></div><div class="button-grid"><button id="startBtn" class="btn">START</button><button id="onlineModeBtn" class="btn green">🌐 ONLINE-SEASON SPIELEN</button><button id="leaderboardBtn" class="btn blue">🏆 LEADERBOARD</button><button id="shopBtn" class="btn blue">🛒 SHOP <span id="shopLobbyNewBadge" class="newBadge">NEU</span></button><button id="inventoryBtn" class="btn blue">🎒 INVENTAR</button><button id="missionsBtn" class="btn blue">🎯 MISSIONEN</button><button id="settingsBtn" class="btn dark">⚙️ EINSTELLUNGEN</button><button id="musicToggleBtn" class="btn dark">🎵 Musik: AN</button></div><div class="notice">✅ Season-Punkte sind getrennt vom Allzeit-Highscore. Nur die aktuelle Season entscheidet über die Season-Belohnung.</div></div></div>
+<div id="lobby" class="screen active"><div class="menu"><div class="title">FLYYYY</div><div class="version">🔥 UPDATE 3.0 · COMBO</div><div class="subtitle">Fly weiter. Sammle Coins. Schlage andere Spieler.</div><div class="accountLine"><div id="accountStatus" class="accountPill">👤 Gast</div><button id="accountBtn" class="btn dark">🔐 ANMELDEN</button><button id="logoutBtn" class="btn red" style="display:none">ABMELDEN</button><button id="myAccountBtn" class="btn dark">👤 MEIN KONTO</button></div><div class="credits"><div class="badge">🪙 <span id="lobbyCoins">0</span> Coins</div><div class="badge">🏆 Rekord: <span id="lobbyBest">0</span></div></div><div class="seasonPanel"><div class="seasonTop"><div class="seasonTitle">🌐 SEASON <span id="seasonNumberLobby">1</span></div><div class="seasonTimer" id="seasonTimerLobby">⏱️ Lädt...</div></div><div class="seasonSub">7-Tage-Season</div><div class="onlineNote">🥇 1.000 Coins · 🥈 500 Coins · 🥉 300 Coins · Platz 4–10: 100 · Platz 11–25: 50</div></div><div class="button-grid"><button id="startBtn" class="btn">START</button><button id="leaderboardBtn" class="btn blue">🏆 LEADERBOARD</button><button id="shopBtn" class="btn blue">🛒 SHOP <span id="shopLobbyNewBadge" class="newBadge">NEU</span></button><button id="inventoryBtn" class="btn blue">🎒 INVENTAR</button><button id="missionsBtn" class="btn blue">🎯 MISSIONEN</button><button id="settingsBtn" class="btn dark">⚙️ EINSTELLUNGEN</button><button id="musicToggleBtn" class="btn dark">🎵 Musik: AN</button></div><div class="notice">✅ Season-Punkte sind getrennt vom Allzeit-Highscore. Nur die aktuelle Season entscheidet über die Season-Belohnung.</div></div></div>
 
 <div id="leaderboard" class="screen"><div class="menu"><div class="topbar"><div><h2>Leaderboard</h2><div class="tiny">Season und Allzeit werden getrennt angezeigt.</div></div><button id="leaderboardBack" class="btn dark">← Zurück</button></div><div class="seasonTabs"><button id="seasonTabBtn" class="seasonTab active">🌐 Season</button><button id="allTimeTabBtn" class="seasonTab">⭐ Allzeit</button></div><div class="seasonPanel"><div class="seasonTop"><div class="seasonTitle">SEASON <span id="seasonNumberBoard">1</span></div><div class="seasonTimer" id="seasonTimerBoard">⏱️ Lädt...</div></div><div class="seasonSub" id="seasonBoardSub">🌐 Nur Season-Punkte</div></div><div id="leaderboardStatus" class="leaderStatus">Lade Leaderboard...</div><div class="nameBox"><input id="playerName" class="nameInput" maxlength="20" placeholder="Dein Spielername"><button id="saveNameBtn" class="btn">NAME SPEICHERN</button></div><div id="leaderboardList" class="leaderboard"></div></div></div>
 
@@ -336,20 +335,22 @@ const app=$("app"),canvas=$("gameCanvas"),ctx=canvas.getContext("2d");
 const authScreen=$("authScreen"),authEmail=$("authEmail"),authPassword=$("authPassword"),loginBtn=$("loginBtn"),registerBtn=$("registerBtn"),guestBtn=$("guestBtn"),authStatus=$("authStatus"),authBackBtn=$("authBackBtn"),adminLoginBtn=$("adminLoginBtn");
 const adminOverlay=$("adminOverlay"),adminCodeInput=$("adminCodeInput"),adminUnlockBtn=$("adminUnlockBtn"),adminCloseBtn=$("adminCloseBtn"),adminPanel=$("adminPanel"),adminStatusText=$("adminStatusText"),adminMyAccountBtn=$("adminMyAccountBtn"),adminCoinsBtn=$("adminCoinsBtn"),adminClosePanelBtn=$("adminClosePanelBtn"),adminInfo=$("adminInfo");
 const lobby=$("lobby"),accountStatus=$("accountStatus"),accountBtn=$("accountBtn"),logoutBtn=$("logoutBtn"),myAccountBtn=$("myAccountBtn"),lobbyCoins=$("lobbyCoins"),lobbyBest=$("lobbyBest");
-const startBtn=$("startBtn"),onlineModeBtn=$("onlineModeBtn"),leaderboardBtn=$("leaderboardBtn"),shopBtn=$("shopBtn"),inventoryBtn=$("inventoryBtn"),missionsBtn=$("missionsBtn"),settingsBtn=$("settingsBtn"),musicToggleBtn=$("musicToggleBtn");
+const startBtn=$("startBtn"),leaderboardBtn=$("leaderboardBtn"),shopBtn=$("shopBtn"),inventoryBtn=$("inventoryBtn"),missionsBtn=$("missionsBtn"),settingsBtn=$("settingsBtn"),musicToggleBtn=$("musicToggleBtn");
 const settingsScreen=$("settings"),settingsBack=$("settingsBack"),langDeBtn=$("langDeBtn"),langEnBtn=$("langEnBtn"),musicVolumeRange=$("musicVolumeRange"),sfxVolumeRange=$("sfxVolumeRange"),musicVolumeValue=$("musicVolumeValue"),sfxVolumeValue=$("sfxVolumeValue");
-const leaderboard=$("leaderboard"),leaderboardBack=$("leaderboardBack"),leaderboardStatus=$("leaderboardStatus"),playerName=$("playerName"),saveNameBtn=$("saveNameBtn"),leaderboardList=$("leaderboardList"),onlineModeButton=$("onlineModeBtn");
+const leaderboard=$("leaderboard"),leaderboardBack=$("leaderboardBack"),leaderboardStatus=$("leaderboardStatus"),playerName=$("playerName"),saveNameBtn=$("saveNameBtn"),leaderboardList=$("leaderboardList");
 const seasonNumberLobby=$("seasonNumberLobby"),seasonTimerLobby=$("seasonTimerLobby"),seasonNumberBoard=$("seasonNumberBoard"),seasonTimerBoard=$("seasonTimerBoard"),seasonBoardSub=$("seasonBoardSub"),seasonTabBtn=$("seasonTabBtn"),allTimeTabBtn=$("allTimeTabBtn");
 const seasonRewardOverlay=$("seasonRewardOverlay"),seasonRewardRank=$("seasonRewardRank"),seasonRewardCoins=$("seasonRewardCoins"),seasonRewardText=$("seasonRewardText"),claimSeasonRewardBtn=$("claimSeasonRewardBtn");
 const shop=$("shop"),shopBack=$("shopBack"),shopTabs=$("shopTabs"),shopCards=$("shopCards"),shopCoins=$("shopCoins"),inventory=$("inventory"),inventoryBack=$("inventoryBack"),inventoryTabs=$("inventoryTabs"),inventoryCards=$("inventoryCards"),missionsScreen=$("missions"),missionsBack=$("missionsBack"),missionList=$("missionList");
 const luckyConfirmOverlay=$("luckyConfirmOverlay"),confirmLuckyBuyBtn=$("confirmLuckyBuyBtn"),cancelLuckyBuyBtn=$("cancelLuckyBuyBtn"),jackpotOverlay=$("jackpotOverlay"),prizePopupIcon=$("prizePopupIcon"),prizePopupTitle=$("prizePopupTitle"),prizePopupText=$("prizePopupText"),prizePopupSub=$("prizePopupSub");
-const abilityBtn=$("abilityBtn"),gameHud=$("gameHud"),eventBadge=$("eventBadge"),scoreHud=$("scoreHud"),coinsHud=$("coinsHud"),jumpHud=$("jumpHud"),worldHud=$("worldHud"),seasonHud=$("seasonHud"),musicHud=$("musicHud"),comboHud=$("comboHud"),comboCountHud=$("comboCountHud"),comboMultHud=$("comboMultHud"),pauseBtn=$("pauseBtn"),pauseOverlay=$("pauseOverlay"),resumeBtn=$("resumeBtn"),pauseLobbyBtn=$("pauseLobbyBtn"),gameOverOverlay=$("gameOverOverlay"),gameOverText=$("gameOverText"),finalScore=$("finalScore"),earnedCoins=$("earnedCoins"),bestScore=$("bestScore"),retryBtn=$("retryBtn"),returnLobbyBtn=$("returnLobbyBtn"),onlineBadge=$("onlineBadge"),onlineCount=$("onlineCount"),onlineDot=$("onlineDot");
+const abilityBtn=$("abilityBtn"),gameHud=$("gameHud"),eventBadge=$("eventBadge"),scoreHud=$("scoreHud"),coinsHud=$("coinsHud"),jumpHud=$("jumpHud"),worldHud=$("worldHud"),seasonHud=$("seasonHud"),musicHud=$("musicHud"),comboHud=$("comboHud"),comboCountHud=$("comboCountHud"),comboMultHud=$("comboMultHud"),pauseBtn=$("pauseBtn"),pauseOverlay=$("pauseOverlay"),resumeBtn=$("resumeBtn"),pauseLobbyBtn=$("pauseLobbyBtn"),gameOverOverlay=$("gameOverOverlay"),gameOverText=$("gameOverText"),finalScore=$("finalScore"),earnedCoins=$("earnedCoins"),bestScore=$("bestScore"),retryBtn=$("retryBtn"),returnLobbyBtn=$("returnLobbyBtn");
 
-const APP_VERSION="3.0";storage.setItem("FLYYYY_APP_VERSION",APP_VERSION);
+const APP_VERSION="3.1";storage.setItem("FLYYYY_APP_VERSION",APP_VERSION);
 const firebaseConfig={apiKey:"AIzaSyA0ppKuSgxKKgHEMkX9kUlVhm8pjkVxgXk",authDomain:"flyyyy.firebaseapp.com",databaseURL:"https://flyyyy-default-rtdb.firebaseio.com",projectId:"flyyyy",storageBucket:"flyyyy.firebasestorage.app",messagingSenderId:"872479897522",appId:"1:872479897522:web:3c87b8afdebfc66d01d6ab",measurementId:"G-S8YE4S6L8L"};
 let F=null,firebaseApp=null,auth=null,db=null,currentUser=null,leaderboardStop=null,presenceStop=null,seasonLeaderboardStop=null;
 async function loadFirebase(){if(F)return F;const appMod=await import("https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js"),authMod=await import("https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js"),dbMod=await import("https://www.gstatic.com/firebasejs/12.16.0/firebase-database.js");return F={app:appMod,a:authMod,d:dbMod}};
-let realOnlineCount=0;let simulatedOnlineCount=10;let onlineSimulateTimer=null;let onlineTarget=10;let onlineTargetStart=0;function setOnlineUI(count,connected=true){const n=Math.max(0,Number(count)||0);realOnlineCount=n;onlineDot.classList.toggle("off",!connected);updateSimulatedOnline();if(!onlineSimulateTimer)startOnlineSimulate()};function startOnlineSimulate(){if(onlineSimulateTimer)return;onlineSimulateTimer=setInterval(updateSimulatedOnline,3000)};function getOnlineTargetForHour(h){if(h<6)return 25;if(h<12)return 55;if(h<18)return 90;return 95};function updateSimulatedOnline(){const now=Date.now();const h=new Date().getHours();if(!onlineTargetStart||now-onlineTargetStart>120000){const base=getOnlineTargetForHour(h);const variation=Math.floor(Math.random()*16)-8;onlineTarget=Math.max(10,Math.min(100,base+variation));onlineTargetStart=now}const rate=0.12;simulatedOnlineCount=Math.round(simulatedOnlineCount+(onlineTarget-simulatedOnlineCount)*rate);simulatedOnlineCount=Math.max(10,Math.min(100,simulatedOnlineCount));if(onlineCount)onlineCount.textContent=simulatedOnlineCount;if(onlineBadge)onlineBadge.title=`${simulatedOnlineCount} Spieler online · ${realOnlineCount} echte Verbindung`}
+let realOnlineCount=0;function setOnlineUI(count,connected=true){const n=Math.max(0,Number(count)||0);realOnlineCount=n;onlineDot.classList.toggle("off",!connected);if(onlineCount)onlineCount.textContent=n;if(onlineBadge)onlineBadge.title=`${n} echte Spieler online`;}
+function startOnlineSimulate(){}
+function updateSimulatedOnline(){if(onlineCount)onlineCount.textContent=realOnlineCount;if(onlineBadge)onlineBadge.title=`${realOnlineCount} echte Spieler online`;}
 function safeName(n){return String(n||"").replace(/[<>]/g,"").replace(/\s+/g," ").trim().slice(0,20)}
 function defaultNameForUser(u){return safeName((u?.email||"Spieler").split("@")[0].replace(/[^a-zA-Z0-9äöüÄÖÜß._-]/g,"").slice(0,20)||"Spieler")}
 function showScreen(id){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));$(id)?.classList.add("active")}
@@ -357,7 +358,7 @@ function hideScreens(){document.querySelectorAll(".screen").forEach(s=>s.classLi
 function showMessage(t){const e=document.createElement("div");e.textContent=t;e.style.cssText="position:fixed;z-index:99999;left:50%;top:18%;transform:translate(-50%,-50%);padding:13px 18px;border-radius:999px;background:rgba(8,12,30,.97);border:1px solid rgba(255,255,255,.15);color:#fff;font-weight:900;box-shadow:0 15px 40px rgba(0,0,0,.3);white-space:nowrap";document.body.appendChild(e);setTimeout(()=>e.remove(),1800)}
 function setLeaderboardStatus(t){leaderboardStatus.textContent=t}
 
-const DEFAULT={coins:0,best:0,wins:0,ownedWorlds:["giza"],ownedSkins:["bird"],ownedSounds:["classic"],ownedMusic:["classicMusic"],selectedWorld:"giza",selectedSkin:"bird",selectedSound:"classic",selectedMusic:"classicMusic",selectedAbilities:{},selectedAbilityId:null,ownedAbilities:[],ownedAbilitiesBySkin:{},lastNonIceWorld:"giza",shopNewSeen:{},shopNewRelease:"2.8.0",musicEnabled:true,sfxEnabled:true,musicVolume:70,sfxVolume:70,language:"de",missionProgress:{m1:0,m2:0,m3:0},missionClaimed:{m1:false,m2:false,m3:false},activeMissions:null,missionCycle:1,lastMissionIds:[],luckySpins:0,luckyLastResult:null,seasonScore:0,currentSeasonId:1,seasonRewardPending:null,seasonRewardClaimed:false,flyOwner1000Granted:false};
+const DEFAULT={coins:0,best:0,wins:0,ownedWorlds:["giza"],ownedSkins:["bird"],ownedSounds:["classic"],ownedMusic:["classicMusic"],selectedWorld:"giza",selectedSkin:"bird",selectedSound:"classic",selectedMusic:"classicMusic",selectedAbilities:{},selectedAbilityId:null,ownedAbilities:[],ownedAbilitiesBySkin:{},lastNonIceWorld:"giza",shopNewSeen:{},shopNewRelease:"2.8.0",musicEnabled:true,sfxEnabled:true,musicVolume:70,sfxVolume:70,language:"de",missionProgress:{m1:0,m2:0,m3:0},missionClaimed:{m1:false,m2:false,m3:false},activeMissions:null,missionCycle:1,lastMissionIds:[],luckySpins:0,luckyLastResult:null,seasonScore:0,currentSeasonId:2,seasonRewardPending:null,seasonRewardClaimed:false,flyOwner1000Granted:false};
 const SAVEKEYS=["FLYYYY_UPDATE14_SAVE","FLYYYY_UPDATE13_SAVE","FLYYYY_UPDATE12_SAVE","FLYYYY_UPDATE11_SAVE","flyyyy_save"];
 function defaultState(){return JSON.parse(JSON.stringify(DEFAULT))}
 function loadState(){for(const k of SAVEKEYS){const raw=storage.getItem(k);if(raw){try{const d=JSON.parse(raw),b=defaultState();return {...b,...d,ownedWorlds:Array.isArray(d.ownedWorlds)?d.ownedWorlds:b.ownedWorlds,ownedSkins:Array.isArray(d.ownedSkins)?d.ownedSkins:b.ownedSkins,ownedSounds:Array.isArray(d.ownedSounds)?d.ownedSounds:b.ownedSounds,ownedMusic:Array.isArray(d.ownedMusic)?d.ownedMusic:b.ownedMusic,missionProgress:{...b.missionProgress,...(d.missionProgress||{})},missionClaimed:{...b.missionClaimed,...(d.missionClaimed||{})},activeMissions:Array.isArray(d.activeMissions)?d.activeMissions:null,shopNewSeen:(d.shopNewSeen&&typeof d.shopNewSeen==="object")?d.shopNewSeen:{}}}catch{}}}return defaultState()}
@@ -369,8 +370,8 @@ function saveStateLocalOnly(){const s=JSON.stringify(state);SAVEKEYS.forEach(k=>
 let cloudSaveTimer=null;function saveState(){saveStateLocalOnly();if(currentUser&&db){clearTimeout(cloudSaveTimer);cloudSaveTimer=setTimeout(savePlayerStateCloud,700)}}
 
 const SEASON_LENGTH_MS=7*24*60*60*1000;
-const SEASON_RELEASE_MS=Date.parse("2026-08-14T17:37:00+02:00");
-let seasonInfo={id:1,startsAt:SEASON_RELEASE_MS,endsAt:SEASON_RELEASE_MS+SEASON_LENGTH_MS},seasonInterval=null,seasonMode="season";
+const SEASON_RELEASE_MS=Date.parse("2026-08-21T23:03:58+02:00");
+let seasonInfo={id:2,startsAt:SEASON_RELEASE_MS,endsAt:SEASON_RELEASE_MS+SEASON_LENGTH_MS},seasonInterval=null,seasonMode="season";
 let allTimeLeaderboardCache=[],seasonLeaderboardCache=[],onlineCache=new Set(),lastLeaderboard=[];
 function rewardForRank(rank){if(rank===1)return 1000;if(rank===2)return 500;if(rank===3)return 300;if(rank>=4&&rank<=10)return 100;if(rank>=11&&rank<=25)return 50;return 0}
 function formatSeasonTime(ms){const safe=Math.max(0,Number(ms)||0),total=Math.floor(safe/1000),d=Math.floor(total/86400),h=Math.floor((total%86400)/3600),m=Math.floor((total%3600)/60),s=total%60;return `${d}T ${String(h).padStart(2,"0")}Std ${String(m).padStart(2,"0")}Min ${String(s).padStart(2,"0")}Sek`}
@@ -379,27 +380,90 @@ function startSeasonTimer(){clearInterval(seasonInterval);seasonInterval=setInte
 
 async function ensureSeason(forceCheck=false){
   try{
-    if(!db){const cached=storage.getItem("FLYYYY_SEASON_INFO");if(cached){try{const v=JSON.parse(cached);if(v&&Number(v.endsAt)>Date.now())seasonInfo={id:Number(v.id||1),startsAt:Number(v.startsAt||SEASON_RELEASE_MS),endsAt:Number(v.endsAt)}}catch{}}updateSeasonUI();return seasonInfo}
+    if(!db){const cached=storage.getItem("FLYYYY_SEASON_INFO");if(cached){try{const v=JSON.parse(cached);if(v&&Number(v.id||0)>=2&&Number(v.endsAt)>Date.now())seasonInfo={id:Number(v.id||2),startsAt:Number(v.startsAt||SEASON_RELEASE_MS),endsAt:Number(v.endsAt)}}catch{}}updateSeasonUI();return seasonInfo}
     const {d}=await loadFirebase();const ref=d.ref(db,"season/current");let snap=await d.get(ref);
-    if(!snap.exists()){const initial={id:1,startsAt:SEASON_RELEASE_MS,endsAt:SEASON_RELEASE_MS+SEASON_LENGTH_MS};await d.runTransaction(ref,c=>c||initial);snap=await d.get(ref)}
+    if(!snap.exists()){const initial={id:2,startsAt:SEASON_RELEASE_MS,endsAt:SEASON_RELEASE_MS+SEASON_LENGTH_MS};await d.runTransaction(ref,c=>c||initial);snap=await d.get(ref)}
     let cur=snap.val()||{};
     if(Number(cur.endsAt||0)<=Date.now()&&(forceCheck||Number(cur.endsAt||0)>0))await finalizeExpiredSeason(cur);
     snap=await d.get(ref);cur=snap.val()||cur;
-    seasonInfo={id:Number(cur.id||1),startsAt:Number(cur.startsAt||Date.now()),endsAt:Number(cur.endsAt||Date.now()+SEASON_LENGTH_MS)};
+    seasonInfo={id:Number(cur.id||2),startsAt:Number(cur.startsAt||SEASON_RELEASE_MS),endsAt:Number(cur.endsAt||SEASON_RELEASE_MS+SEASON_LENGTH_MS)};
     storage.setItem("FLYYYY_SEASON_INFO",JSON.stringify(seasonInfo));updateSeasonUI();return seasonInfo;
   }catch(e){console.error("ensureSeason",e);updateSeasonUI();return seasonInfo}
 }
 
-const NPC_NAMES=["Alex","Bobi","Cleo","Dino","Eve","Finn","Gina","Hugo","Iris","Jojo","Kimi","Luna","Milo","Nina","Oskar","Pia","Quinn","Rafa","Sami","Toni","Uma","Vera","Willi","Xena","Yuki","Zane","Aaron","Bella","Coco","Dieter","Emil","Fritze","Gustav","Hansi","Ina","Jürgen","Klaus","Lotta","Manni","Nils","Olaf","Petra","Quirin","Ruth","Sven","Tina","Ulf","Vroni","Walter","Xaver","Yara","Zach","Anna","Bastian","Cordelia","Diego","Elena","Fabian","Greta"];
-const npcScoreCache={};
-function generateNpcPlayers(seasonId,realPlayers){const out=[];const now=Date.now();const realP=realPlayers||[];const maxRealScore=realP.length>0?Math.max(...realP.map(p=>p.score||0)):0;const baseScore=maxRealScore>0?Math.max(1,maxRealScore-1):15;let lastScore=baseScore;for(let i=0;i<72;i++){const npcId="npc_"+i;if(!npcScoreCache[npcId]||now-npcScoreCache[npcId].lastUpdate>300000){npcScoreCache[npcId]={variation:Math.floor(Math.random()*9)-4,lastUpdate:now,baseWins:Math.floor(Math.random()*10)+1}}else{npcScoreCache[npcId].lastUpdate=now;if(Math.random()<0.15)npcScoreCache[npcId].variation=Math.floor(Math.random()*9)-4}const gap=i<10?Math.floor(Math.random()*4)+2:Math.floor(Math.random()*2)+1;lastScore=Math.max(1,lastScore-gap);const dynScore=Math.max(1,lastScore+npcScoreCache[npcId].variation);const wins=Math.max(1,Math.min(50,Math.floor((72-i)/2)+npcScoreCache[npcId].baseWins+Math.floor(Math.random()*3)));out.push({uid:npcId,name:(NPC_NAMES[i%NPC_NAMES.length]+" "+NPC_NAMES[(i+1)%NPC_NAMES.length]).trim(),score:dynScore,wins:wins,isNpc:true,updatedAt:now})};return out}
-let npcTick=null;
-function startNpcTicker(){if(npcTick)return;npcTick=setInterval(()=>{const now=Date.now();for(const k in npcScoreCache){npcScoreCache[k].lastUpdate=now}},120000);updateNpcDisplay()}
-function updateNpcDisplay(){if(seasonMode==="season"){renderLeaderboard(seasonLeaderboardCache.slice(0,50))}else{renderLeaderboard(allTimeLeaderboardCache.slice(0,50))}}
-function isUidOnline(uid){return onlineCache.has(uid)}
-function renderLeaderboard(arr){if(!arr.length&&seasonMode==="season"){renderLeaderboardWithNpcs([])}else{renderLeaderboardWithNpcs(arr)}}
-function renderLeaderboardWithNpcs(realPlayers){lastLeaderboard=realPlayers;leaderboardList.innerHTML="";const npcs=generateNpcPlayers(seasonInfo.id||1,realPlayers);const merged=[...realPlayers,...npcs].sort((a,b)=>(b.score||0)-(a.score||0));const limited=merged.slice(0,50);setLeaderboardStatus(seasonMode==="season"?`🌐 Season ${seasonInfo.id||1} · ${limited.length} Spieler`:`⭐ Allzeit · ${limited.length} Spieler`);if(!limited.length){const e=document.createElement("div");e.className="leaderStatus";e.textContent=seasonMode==="season"?"Noch keine Season-Punkte.":"Noch keine Allzeit-Spieler.";leaderboardList.appendChild(e);return}limited.forEach((p,i)=>{const row=document.createElement("div");row.className="leaderRow"+(p.isNpc?" npcRow":"");if(currentUser&&p.uid===currentUser.uid)row.classList.add("me");const r=document.createElement("div");r.className="leaderRank";r.textContent=i===0?"🥇":i===1?"🥈":i===2?"🥉":"#"+(i+1);const n=document.createElement("div");n.className="leaderName";n.textContent=p.name;const meta=document.createElement("div");meta.className="leaderMeta";const sc=document.createElement("div");sc.className="leaderScore";sc.textContent=`⭐ ${p.score}`;const wins=document.createElement("div");wins.className="leaderWins";wins.textContent=`🏆 ${p.wins||0} Siege`;const on=document.createElement("div");on.className=isUidOnline(p.uid)?"onlineMini online":"onlineMini offline";on.textContent=isUidOnline(p.uid)?"● ONLINE":"○ offline";meta.append(sc,wins,on);row.append(r,n,meta);leaderboardList.appendChild(row)})}
-function switchLeaderboardMode(mode){seasonMode=mode;seasonTabBtn.classList.toggle("active",mode==="season");allTimeTabBtn.classList.toggle("active",mode==="alltime");startNpcTicker();if(mode==="season"){seasonBoardSub.textContent=`🌐 Season ${seasonInfo.id} · Nur Season-Punkte`;renderLeaderboard(seasonLeaderboardCache.slice(0,50))}else{seasonBoardSub.textContent="⭐ Allzeit · normale Highscores";renderLeaderboard(allTimeLeaderboardCache.slice(0,50))}}
+// Leaderboard: echte Spieler + feste NPC/Bot-Einträge.
+// Die NPCs gehören NUR ins Leaderboard und werden NICHT als Online-Spieler gezählt.
+const LEADERBOARD_BOTS = [
+  ["FlyMaster", 986, 24], ["SkyKing", 942, 21], ["BaconBoss", 901, 19], ["FlappyPro", 875, 18],
+  ["NeonFly", 844, 17], ["CloudRunner", 812, 16], ["WingLegend", 790, 15], ["PixelPilot", 766, 14],
+  ["StormFly", 742, 14], ["RocketBird", 721, 13], ["NightWing", 698, 13], ["CoinHunter", 675, 12],
+  ["SkyWalker", 653, 12], ["TurboFly", 631, 11], ["BaconKing", 612, 11], ["FlameWing", 590, 10],
+  ["IceBird", 568, 10], ["JungleFly", 547, 9], ["SpaceBird", 529, 9], ["LuckyFly", 510, 9],
+  ["FastBacon", 492, 8], ["FlyBoy", 475, 8], ["FlyGirl", 459, 8], ["ProWing", 442, 8],
+  ["MegaFlap", 427, 7], ["AirAce", 412, 7], ["SkyPro", 398, 7], ["Birdy", 384, 7],
+  ["CoinKing", 371, 6], ["FlapKing", 359, 6], ["CloudAce", 347, 6], ["NeonBird", 335, 6],
+  ["BaconFly", 323, 6], ["WingBoss", 311, 5], ["FlyLegend", 300, 5], ["AirMaster", 289, 5],
+  ["SkyAce", 278, 5], ["TurboBird", 267, 5], ["JumpPro", 256, 5], ["FlapStar", 245, 4],
+  ["BaconStar", 235, 4], ["CloudKing", 225, 4], ["NightFly", 215, 4], ["StormKing", 205, 4],
+  ["IceWing", 195, 4], ["LavaFly", 185, 3], ["OceanBird", 176, 3], ["JungleBird", 167, 3],
+  ["SpaceFly", 158, 3], ["GoldenWing", 149, 3], ["SilverFly", 140, 3], ["BronzeBird", 131, 3],
+  ["MiniFly", 123, 2], ["FastWing", 115, 2], ["FlyAce", 107, 2], ["BirdPro", 99, 2],
+  ["SkyRunner", 91, 2], ["AirRunner", 84, 2], ["BaconRunner", 77, 2], ["NeonRunner", 70, 2],
+  ["CloudFly", 64, 1], ["StormBird", 58, 1], ["LuckyBird", 52, 1], ["CoinFly", 46, 1],
+  ["WingRunner", 40, 1], ["FlapMaster", 35, 1], ["TinyWing", 30, 1], ["FlyStarter", 25, 1],
+  ["BaconStarter", 20, 1], ["SkyStarter", 15, 1], ["AirStarter", 10, 1], ["NewFlyer", 5, 1]
+].map((x,i)=>({uid:`npc-${i+1}`,name:x[0],score:x[1],wins:x[2],npc:true}));
+
+function dedupePlayers(players){
+  const byUid=new Map(), byName=new Map();
+  for(const p of (players||[])){
+    if(!p||!p.uid)continue;
+    const name=safeName(p.name||"Spieler");
+    const clean={...p,name};
+    if(byUid.has(p.uid)){
+      const old=byUid.get(p.uid);
+      if(Number(clean.score||0)>Number(old.score||0))byUid.set(p.uid,clean);
+      continue;
+    }
+    const nk=name.toLowerCase();
+    if(byName.has(nk)){
+      const oldUid=byName.get(nk);
+      const old=byUid.get(oldUid);
+      if(Number(clean.score||0)>Number(old?.score||0)){byUid.delete(oldUid);byUid.set(p.uid,clean);byName.set(nk,p.uid);}
+      continue;
+    }
+    byUid.set(p.uid,clean);
+    byName.set(nk,p.uid);
+  }
+  return Array.from(byUid.values());
+}
+function renderLeaderboard(arr){
+  // Echte Spieler und die festen Leaderboard-NPCs werden gemeinsam angezeigt.
+  // NPCs werden niemals in Presence/Online-Zählung übernommen.
+  const realPlayers=dedupePlayers(arr);
+  const realNames=new Set(realPlayers.map(p=>safeName(p.name||"").toLowerCase()));
+  const bots=LEADERBOARD_BOTS.filter(b=>!realNames.has(b.name.toLowerCase()));
+  const combined=dedupePlayers([...realPlayers,...bots]).sort((a,b)=>Number(b.score||0)-Number(a.score||0));
+  lastLeaderboard=combined;
+  leaderboardList.innerHTML="";
+  const limited=combined.slice(0,200);
+  const realCount=realPlayers.length;
+  setLeaderboardStatus(seasonMode==="season"?`🌐 Season ${seasonInfo.id||1} · ${realCount} echte Spieler + ${bots.length} Leaderboard-Spieler`:`⭐ Allzeit · ${realCount} echte Spieler + ${bots.length} Leaderboard-Spieler`);
+  if(!limited.length){const e=document.createElement("div");e.className="leaderStatus";e.textContent=seasonMode==="season"?"Noch keine echten Season-Spieler vorhanden.":"Noch keine echten Allzeit-Spieler vorhanden.";leaderboardList.appendChild(e);return;}
+  limited.forEach((p,i)=>{
+    const row=document.createElement("div");row.className="leaderRow";
+    if(p.npc)row.classList.add("npcRow");
+    if(currentUser&&p.uid===currentUser.uid)row.classList.add("me");
+    const r=document.createElement("div");r.className="leaderRank";r.textContent=i===0?"🥇":i===1?"🥈":i===2?"🥉":"#"+(i+1);
+    const n=document.createElement("div");n.className="leaderName";n.textContent=p.name;
+    const meta=document.createElement("div");meta.className="leaderMeta";
+    const sc=document.createElement("div");sc.className="leaderScore";sc.textContent=`⭐ ${p.score||0}`;
+    const wins=document.createElement("div");wins.className="leaderWins";wins.textContent=`🏆 ${p.wins||0} Siege`;
+    const on=document.createElement("div");on.className="onlineMini";on.textContent=p.npc?"🤖 LEADERBOARD":"";
+    meta.append(sc,wins,on);row.append(r,n,meta);leaderboardList.appendChild(row);
+  });
+}
+function switchLeaderboardMode(mode){seasonMode=mode;seasonTabBtn.classList.toggle("active",mode==="season");allTimeTabBtn.classList.toggle("active",mode==="alltime");if(mode==="season"){seasonBoardSub.textContent=`🌐 Season ${seasonInfo.id} · Nur echte Spieler`;renderLeaderboard(seasonLeaderboardCache.slice(0,200))}else{seasonBoardSub.textContent="⭐ Allzeit · nur echte Spieler";renderLeaderboard(allTimeLeaderboardCache.slice(0,200))}}
 
 async function startSeasonLeaderboardListener(){
   if(!db)return;
@@ -427,7 +491,7 @@ async function startSeasonLeaderboardListener(){
         .sort((a,b)=>b.score-a.score||a.name.localeCompare(b.name));
 
       if(seasonMode==="season"){
-        renderLeaderboard(seasonLeaderboardCache.slice(0,50));
+        renderLeaderboard(seasonLeaderboardCache.slice(0,200));
       }
     },e=>{
       console.error("season listener",e);
@@ -438,8 +502,8 @@ async function startSeasonLeaderboardListener(){
   }
 }
 
-async function startLeaderboardListener(){if(!db)return;try{const {d}=await loadFirebase();if(leaderboardStop){leaderboardStop();leaderboardStop=null}const ref=d.ref(db,"leaderboard");leaderboardStop=d.onValue(ref,s=>{const raw=s.val()||{};allTimeLeaderboardCache=Object.entries(raw).filter(([uid,v])=>v&&v.update19ResetDone===true).map(([uid,v])=>({uid,name:safeName(v.name||"Spieler"),score:Number(v.score||0),wins:Number(v.wins||0),updatedAt:Number(v.updatedAt||0)})).sort((a,b)=>b.score-a.score||b.wins-a.wins||a.name.localeCompare(b.name));if(seasonMode==="alltime")renderLeaderboard(allTimeLeaderboardCache.slice(0,50))},e=>{console.error(e);setLeaderboardStatus("🔴 Allzeit-Leaderboard konnte nicht geladen werden.")})}catch(e){console.error(e)}}
-async function startOnlineListener(){if(!db)return;try{const {d}=await loadFirebase();if(presenceStop){presenceStop();presenceStop=null}presenceStop=d.onValue(d.ref(db,"presence"),s=>{const raw=s.val()||{};onlineCache=new Set(Object.keys(raw).filter(uid=>raw[uid]?.online!==false));setOnlineUI(onlineCache.size,true);if(leaderboard.classList.contains("active"))renderLeaderboard((seasonMode==="season"?seasonLeaderboardCache:allTimeLeaderboardCache).slice(0,50))},()=>setOnlineUI(0,false))}catch(e){console.error(e);setOnlineUI(0,false)}}
+async function startLeaderboardListener(){if(!db)return;try{const {d}=await loadFirebase();if(leaderboardStop){leaderboardStop();leaderboardStop=null}const ref=d.ref(db,"leaderboard");leaderboardStop=d.onValue(ref,s=>{const raw=s.val()||{};allTimeLeaderboardCache=Object.entries(raw).filter(([uid,v])=>v&&v.update19ResetDone===true).map(([uid,v])=>({uid,name:safeName(v.name||"Spieler"),score:Number(v.score||0),wins:Number(v.wins||0),updatedAt:Number(v.updatedAt||0)})).sort((a,b)=>b.score-a.score||b.wins-a.wins||a.name.localeCompare(b.name));if(seasonMode==="alltime")renderLeaderboard(allTimeLeaderboardCache.slice(0,200))},e=>{console.error(e);setLeaderboardStatus("🔴 Allzeit-Leaderboard konnte nicht geladen werden.")})}catch(e){console.error(e)}}
+async function startOnlineListener(){if(!db)return;try{const {d}=await loadFirebase();if(presenceStop){presenceStop();presenceStop=null}presenceStop=d.onValue(d.ref(db,"presence"),s=>{const raw=s.val()||{};onlineCache=new Set(Object.keys(raw).filter(uid=>raw[uid]?.online!==false));setOnlineUI(onlineCache.size,true);if(leaderboard.classList.contains("active"))renderLeaderboard((seasonMode==="season"?seasonLeaderboardCache:allTimeLeaderboardCache).slice(0,200))},()=>setOnlineUI(0,false))}catch(e){console.error(e);setOnlineUI(0,false)}}
 
 async function setPresenceOnline(){if(!currentUser||!db)return;try{const {d}=await loadFirebase();const pres=d.ref(db,"presence/"+currentUser.uid);await d.onDisconnect(pres).remove();await d.set(pres,{online:true,name:getPlayerName()||defaultNameForUser(currentUser),since:d.serverTimestamp()})}catch(e){console.error(e)}}
 async function setPresenceOffline(){if(!db||!currentUser)return;try{const {d}=await loadFirebase();await d.remove(d.ref(db,"presence/"+currentUser.uid))}catch(e){console.error(e)}}
@@ -620,8 +684,6 @@ async function waitForAuthReady(){
 async function setupFirebase(){
   try{
     const {a,d}=await initFirebaseCore();
-    startOnlineSimulate();
-    updateSimulatedOnline();
     await waitForAuthReady();
     try{
       await a.signInAnonymously(auth).catch(e=>{console.error("anon auth failed",e)});
@@ -662,9 +724,7 @@ async function setupFirebase(){
   }catch(e){
     console.error(e);
     setLeaderboardStatus("🔴 Firebase konnte nicht geladen werden. Gastmodus funktioniert trotzdem.");
-      startOnlineSimulate();
-      updateSimulatedOnline();
-   }
+     }
   loadMusicManifest();
 }
 
@@ -992,20 +1052,11 @@ function drawEventVisuals(now){
     }
   }else{lightningNextAt=0;lightningActiveUntil=0}
   if(disco){
-    discoPhase=(now%5000)/5000;
-    const hue=(now/9)%360;
-    ctx.save();
-    ctx.globalCompositeOperation="screen";
-    ctx.globalAlpha=.11;
-    ctx.fillStyle=`hsl(${hue},100%,60%)`;ctx.fillRect(0,0,W,H);
-    for(let i=0;i<5;i++){
-      const a=discoPhase*Math.PI*2+i*Math.PI*2/5;
-      const x=W*.5+Math.cos(a)*W*.72,y=H*.18;
-      const grad=ctx.createLinearGradient(x,y,W*.5,H);
-      grad.addColorStop(0,`hsla(${(hue+i*72)%360},100%,70%,.7)`);grad.addColorStop(1,"rgba(255,255,255,0)");
-      ctx.fillStyle=grad;ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(W*.5-35,H);ctx.lineTo(W*.5+35,H);ctx.closePath();ctx.fill();
+    // Die eigentliche Disco-Animation läuft als CSS-Overlay; Canvas malt nur einen sehr günstigen Farbschimmer.
+    if(Math.min(W,H)>800 || (Math.floor(now/120)%2===0)){
+      const hue=(now/12)%360;
+      ctx.save();ctx.globalAlpha=.055;ctx.fillStyle=`hsl(${hue},100%,60%)`;ctx.fillRect(0,0,W,H);ctx.restore();
     }
-    ctx.restore();
   }
   if(eventVisualOverlay){
     eventVisualOverlay.classList.toggle("active",disco);
@@ -1086,12 +1137,12 @@ function syncMusicAfterInteraction(){if(firstSyncDone)return;firstSyncDone=true;
 
 const I18N={de:{settingsTitle:"⚙️ Einstellungen",settingsSubtitle:"Sprache, Musik und Effekte",languageTitle:"🌐 Sprache",languageHint:"Die Sprache wird sofort geändert und gespeichert.",audioTitle:"🔊 Lautstärke",music:"🎵 Musik",sfx:"🔔 Sounds / Effekte",gameTitle:"🎮 Spiel",performance:"📱 Handy-Optimierung",performanceHint:"Reduziertes Rendering unnötiger Effekte auf kleinen Geräten.",saveNotice:"✅ Einstellungen werden automatisch gespeichert.",infoTitle:"💾 Speicherung",infoText:"Sprache und Lautstärke bleiben nach dem Neuladen erhalten.",back:"← Zurück",start:"START",online:"🌐 ONLINE-SEASON SPIELEN",leaderboard:"🏆 LEADERBOARD",shop:"🛒 SHOP",inventory:"🎒 INVENTAR",missions:"🎯 MISSIONEN",settings:"⚙️ EINSTELLUNGEN",login:"🔐 ANMELDEN",account:"👤 MEIN KONTO",logout:"ABMELDEN",musicOn:"🎵 Musik: AN",musicOff:"🔇 Musik: AUS",figures:"🪽 Figuren",abilities:"⚡ Fähigkeiten",worlds:"🌍 Welten",sounds:"🔊 Sounds",musicTab:"🎵 Musik",lucky:"🎡 Lucky Rad",equipped:"✓ AUSGERÜSTET",equip:"AUSRÜSTEN",active:"✓ AKTIV",activate:"⚡ AKTIVIEREN",locked:"🔒 GESPERRT",pause:"Ⅱ Pause",resume:"▶ WEITER",toLobby:"🏠 ZUR LOBBY",retry:"🔄 NOCHMAL",tip:"Klicken / Tippen / Leertaste = Fliegen · T = Fähigkeit"},en:{settingsTitle:"⚙️ Settings",settingsSubtitle:"Language, music and effects",languageTitle:"🌐 Language",languageHint:"Changes apply immediately and are saved.",audioTitle:"🔊 Volume",music:"🎵 Music",sfx:"🔔 Sounds / Effects",gameTitle:"🎮 Game",performance:"📱 Mobile optimization",performanceHint:"Reduces unnecessary rendering effects on small devices.",saveNotice:"✅ Settings are saved automatically.",infoTitle:"💾 Storage",infoText:"Language and volume stay saved after reloading.",back:"← Back",start:"START",online:"🌐 PLAY ONLINE SEASON",leaderboard:"🏆 LEADERBOARD",shop:"🛒 SHOP",inventory:"🎒 INVENTORY",missions:"🎯 MISSIONS",settings:"⚙️ SETTINGS",login:"🔐 LOGIN",account:"👤 MY ACCOUNT",logout:"LOG OUT",musicOn:"🎵 Music: ON",musicOff:"🔇 Music: OFF",figures:"🪽 Skins",abilities:"⚡ Abilities",worlds:"🌍 Worlds",sounds:"🔊 Sounds",musicTab:"🎵 Music",lucky:"🎡 Lucky Wheel",equipped:"✓ EQUIPPED",equip:"EQUIP",active:"✓ ACTIVE",activate:"⚡ ACTIVATE",locked:"🔒 LOCKED",pause:"Ⅱ Pause",resume:"▶ RESUME",toLobby:"🏠 BACK TO LOBBY",retry:"🔄 RETRY",tip:"Click / Tap / Space = Fly · T = Ability"}};
 function lang(){return state.language==="en"?"en":"de"} function t(k){return I18N[lang()][k]||I18N.de[k]||k}
-function applyLanguage(){document.documentElement.lang=lang();const map={settingsTitle:"settingsTitle",settingsSubtitle:"settingsSubtitle",settingsLanguageTitle:"languageTitle",settingsLanguageHint:"languageHint",settingsAudioTitle:"audioTitle",musicVolumeLabel:"music",sfxVolumeLabel:"sfx",settingsGameTitle:"gameTitle",settingsPerformanceLabel:"performance",settingsPerformanceHint:"performanceHint",settingsSaveNotice:"saveNotice",settingsInfoTitle:"infoTitle",settingsInfoText:"infoText",settingsBack:"back",startBtn:"start",onlineModeBtn:"online",leaderboardBtn:"leaderboard",shopBtn:"shop",inventoryBtn:"inventory",missionsBtn:"missions",settingsBtn:"settings",accountBtn:"login",myAccountBtn:"account",logoutBtn:"logout",musicToggleBtn:state.musicEnabled?"musicOn":"musicOff",shopBack:"back",inventoryBack:"back",missionsBack:"back",pauseBtn:"pause",resumeBtn:"resume",pauseLobbyBtn:"toLobby",retryBtn:"retry",returnLobbyBtn:"toLobby"};for(const [id,key] of Object.entries(map)){const el=$(id);if(!el)continue;if(id==="shopBtn"){el.innerHTML=t(key)+` <span id="shopLobbyNewBadge" class="newBadge">NEU</span>`}else el.textContent=t(key)}const tipEl=document.querySelector(".tip");if(tipEl)tipEl.textContent=t("tip");if(musicVolumeValue)musicVolumeValue.textContent=`${state.musicVolume} %`;if(sfxVolumeValue)sfxVolumeValue.textContent=`${state.sfxVolume} %`;if(musicVolumeRange)musicVolumeRange.value=String(state.musicVolume);if(sfxVolumeRange)sfxVolumeRange.value=String(state.sfxVolume);if(langDeBtn)langDeBtn.classList.toggle("selected",lang()==="de");if(langEnBtn)langEnBtn.classList.toggle("selected",lang()==="en");if(typeof renderShop==="function")renderShop();if(typeof renderInventory==="function")renderInventory()}
+function applyLanguage(){document.documentElement.lang=lang();const map={settingsTitle:"settingsTitle",settingsSubtitle:"settingsSubtitle",settingsLanguageTitle:"languageTitle",settingsLanguageHint:"languageHint",settingsAudioTitle:"audioTitle",musicVolumeLabel:"music",sfxVolumeLabel:"sfx",settingsGameTitle:"gameTitle",settingsPerformanceLabel:"performance",settingsPerformanceHint:"performanceHint",settingsSaveNotice:"saveNotice",settingsInfoTitle:"infoTitle",settingsInfoText:"infoText",settingsBack:"back",startBtn:"start",leaderboardBtn:"leaderboard",shopBtn:"shop",inventoryBtn:"inventory",missionsBtn:"missions",settingsBtn:"settings",accountBtn:"login",myAccountBtn:"account",logoutBtn:"logout",musicToggleBtn:state.musicEnabled?"musicOn":"musicOff",shopBack:"back",inventoryBack:"back",missionsBack:"back",pauseBtn:"pause",resumeBtn:"resume",pauseLobbyBtn:"toLobby",retryBtn:"retry",returnLobbyBtn:"toLobby"};for(const [id,key] of Object.entries(map)){const el=$(id);if(!el)continue;if(id==="shopBtn"){el.innerHTML=t(key)+` <span id="shopLobbyNewBadge" class="newBadge">NEU</span>`}else el.textContent=t(key)}const tipEl=document.querySelector(".tip");if(tipEl)tipEl.textContent=t("tip");if(musicVolumeValue)musicVolumeValue.textContent=`${state.musicVolume} %`;if(sfxVolumeValue)sfxVolumeValue.textContent=`${state.sfxVolume} %`;if(musicVolumeRange)musicVolumeRange.value=String(state.musicVolume);if(sfxVolumeRange)sfxVolumeRange.value=String(state.sfxVolume);if(langDeBtn)langDeBtn.classList.toggle("selected",lang()==="de");if(langEnBtn)langEnBtn.classList.toggle("selected",lang()==="en");if(typeof renderShop==="function")renderShop();if(typeof renderInventory==="function")renderInventory()}
 function setLanguage(v){state.language=v==="en"?"en":"de";saveState();applyLanguage();showMessage(state.language==="en"?"🇬🇧 Language changed":"🇩🇪 Sprache geändert")}
 function setMusicVolume(v){state.musicVolume=Math.max(0,Math.min(100,Number(v)||0));saveState();applyAudioVolumes();if(musicVolumeValue)musicVolumeValue.textContent=`${state.musicVolume} %`}
 function setSfxVolume(v){state.sfxVolume=Math.max(0,Math.min(100,Number(v)||0));saveState();if(sfxVolumeValue)sfxVolumeValue.textContent=`${state.sfxVolume} %`}
 function applyAudioVolumes(){const mf=Math.max(0,Math.min(1,Number(state.musicVolume??70)/100));[lobbyMusic1,lobbyMusic2].forEach(a=>{if(a)a.volume=.55*mf});if(mp3Audio)mp3Audio.volume=.55*mf;if(eventMusicAudio)eventMusicAudio.volume=.6*mf}
-let W=innerWidth,H=innerHeight,dpr=Math.min(devicePixelRatio||1,1.5);function resize(){W=innerWidth;H=innerHeight;const mobile=Math.min(W,H)<=800;dpr=Math.min(devicePixelRatio||1,mobile?1.25:1.5);canvas.width=Math.max(1,Math.round(W*dpr));canvas.height=Math.max(1,Math.round(H*dpr));ctx.setTransform(dpr,0,0,dpr,0,0)}addEventListener("resize",resize,{passive:true});resize();
+let W=innerWidth,H=innerHeight,dpr=Math.min(devicePixelRatio||1,1.5);function resize(){W=innerWidth;H=innerHeight;const mobile=Math.min(W,H)<=800;dpr=Math.min(devicePixelRatio||1,mobile?1.25:1.5);canvas.width=Math.max(1,Math.round(W*dpr));canvas.height=Math.max(1,Math.round(H*dpr));ctx.setTransform(dpr,0,0,dpr,0,0)}addEventListener("resize",()=>{backgroundCache=null;backgroundCacheKey="";resize()},{passive:true});resize();
 const game={running:false,paused:false,over:false,score:0,runCoins:0,jumpCount:0,bonusCoinsRun:0,combo:0,comboMultiplier:1,comboMilestones:{},speed:165,spawnTimer:.9,obstacles:[],coins:[],player:{x:0,y:0,vy:0,r:22,hitR:16,rot:0},world:null,last:0,onlineRun:false,abilityActiveUntil:0,abilityCooldownUntil:0,abilityShield:0,abilityUsed:false,abilityBaseHitR:16,baseWorldId:"giza",iceActive:false,iceLevelsRemaining:0,iceReturnWorldId:"giza",iceTriggered:false,animTime:0};
 function currentEquippedAbility(){const skin=getSkinById(state.selectedSkin);return selectedAbilityForSkin(skin)}
 function updateAbilityHUD(){
@@ -1120,7 +1171,15 @@ function flap(){if(!game.running||game.paused||game.over)return;const boost=game
 function dist(a,b,c,d){return Math.hypot(a-c,b-d)}const SPIKE_H=18,SPIKE_STEP=18;
 function circleRectHit(cx,cy,r,rx,ry,rw,rh){const nx=Math.max(rx,Math.min(cx,rx+rw)),ny=Math.max(ry,Math.min(cy,ry+rh));return dist(cx,cy,nx,ny)<r}function hitRadius(p){return Number(p.hitR||16)}
 function spikeCollision(p,o){const hr=hitRadius(p),top=o.gapY-o.gapH/2,bottom=o.gapY+o.gapH/2;if(p.x+hr<o.x||p.x-hr>o.x+o.width)return false;const band=SPIKE_H+hr*.35;return (p.y-hr<top+band&&p.y+hr>top)||(p.y+hr>bottom-band&&p.y-hr<bottom)}function obstacleCollision(p,o){const hr=hitRadius(p),top=o.gapY-o.gapH/2,bottom=o.gapY+o.gapH/2;if(p.x+hr<o.x||p.x-hr>o.x+o.width)return false;return p.y-hr<top||p.y+hr>bottom||spikeCollision(p,o)}
-function spawnCoin(o){const margin=Math.max(32,Math.min(55,o.gapH*.18)),minY=o.gapY-o.gapH/2+margin,maxY=o.gapY+o.gapH/2-margin,y=minY+Math.random()*Math.max(1,maxY-minY),x=o.x+o.width+Math.max(55,W*.04);game.coins.push({x,y,r:17,collected:false})}
+function spawnCoin(o){
+  const airTop=Math.max(70,o.gapY-o.gapH/2+34);
+  const airBottom=Math.min(H-70,o.gapY+o.gapH/2-34);
+  if(airBottom<=airTop)return;
+  // Extra Abstand zum Hindernis: Coins liegen ausschließlich frei in der Luft.
+  const x=o.x+o.width+Math.max(85,W*.07);
+  const y=airTop+Math.random()*(airBottom-airTop);
+  game.coins.push({x,y,r:17,collected:false});
+}
 
 function activateAbility(){
   if(!game.running||game.paused||game.over)return;
@@ -1502,18 +1561,18 @@ function drawBackground(){
   const w=game.world||worlds[0],g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,w.id==="johnbacon"?"#f47d6c":w.sky1);g.addColorStop(1,w.id==="johnbacon"?"#dc5b54":w.sky2);ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
   if(w.id==="giza"){ctx.fillStyle="#d9a35a";ctx.fillRect(0,H*.69,W,H*.31);drawPyramid(W*.57,H*.69,200,130)}
   if(w.id==="mountains"){ctx.fillStyle="#5b70aa";ctx.beginPath();ctx.moveTo(0,H*.75);ctx.lineTo(W*.2,H*.42);ctx.lineTo(W*.4,H*.7);ctx.lineTo(W*.58,H*.3);ctx.lineTo(W*.8,H*.68);ctx.lineTo(W,H*.4);ctx.lineTo(W,H);ctx.lineTo(0,H);ctx.closePath();ctx.fill();ctx.fillStyle="#527951";ctx.fillRect(0,H*.8,W,H*.2)}
-  if(w.id==="ocean"){ctx.strokeStyle="rgba(255,255,255,.14)";for(let y=80;y<H*.85;y+=80){ctx.beginPath();for(let x=0;x<W;x+=45){ctx.moveTo(x,y);ctx.quadraticCurveTo(x+12,y-10,x+24,y)}ctx.stroke()}ctx.fillStyle="#157c86";ctx.fillRect(0,H*.88,W,H*.12)}
+  if(w.id==="ocean"){ctx.strokeStyle="rgba(255,255,255,.14)";for(let y=120;y<H*.85;y+=120){ctx.beginPath();for(let x=0;x<W;x+=45){ctx.moveTo(x,y);ctx.quadraticCurveTo(x+12,y-10,x+24,y)}ctx.stroke()}ctx.fillStyle="#157c86";ctx.fillRect(0,H*.88,W,H*.12)}
   if(w.id==="jungle"){ctx.fillStyle="#2b753d";ctx.fillRect(0,H*.78,W,H*.22);for(let i=0;i<=(Math.min(W,H)<=800?10:18);i++){const x=(i*97)%W,h=100+(i%4)*35;ctx.fillStyle=i%2?"#1c5a31":"#348746";ctx.fillRect(x,H*.78-h,20,h);ctx.beginPath();ctx.arc(x+10,H*.78-h,38,Math.PI,Math.PI*2);ctx.fill()}}
-  if(w.id==="space"){ctx.fillStyle="#fff";for(let i=0;i<=(Math.min(W,H)<=800?45:100);i++){ctx.globalAlpha=.25+(i%5)*.1;ctx.fillRect((i*83)%W,(i*47)%H,2,2)}ctx.globalAlpha=1}
-  if(w.id==="ice"){ctx.fillStyle="rgba(255,255,255,.45)";for(let i=0;i<8;i++){const x=i*190;ctx.beginPath();ctx.moveTo(x,H*.82);ctx.lineTo(x+80,H*.25);ctx.lineTo(x+150,H*.82);ctx.closePath();ctx.fill()}ctx.fillStyle="#a7deef";ctx.fillRect(0,H*.82,W,H*.18)}
-  if(w.id==="lava"){ctx.fillStyle="#5f171d";ctx.fillRect(0,H*.82,W,H*.18);ctx.fillStyle="#ff7a18";for(let i=0;i<10;i++){const x=(i*131)%W,y=H*.84+(i%3)*16;ctx.beginPath();ctx.arc(x,y,18+(i%3)*5,0,Math.PI*2);ctx.fill()}}
+  if(w.id==="space"){ctx.fillStyle="#fff";for(let i=0;i<=(Math.min(W,H)<=800?20:55);i++){ctx.globalAlpha=.25+(i%5)*.1;ctx.fillRect((i*83)%W,(i*47)%H,2,2)}ctx.globalAlpha=1}
+  if(w.id==="ice"){ctx.fillStyle="rgba(255,255,255,.45)";for(let i=0;i<=(Math.min(W,H)<=800?4:8);i++){const x=i*190;ctx.beginPath();ctx.moveTo(x,H*.82);ctx.lineTo(x+80,H*.25);ctx.lineTo(x+150,H*.82);ctx.closePath();ctx.fill()}ctx.fillStyle="#a7deef";ctx.fillRect(0,H*.82,W,H*.18)}
+  if(w.id==="lava"){ctx.fillStyle="#5f171d";ctx.fillRect(0,H*.82,W,H*.18);ctx.fillStyle="#ff7a18";for(let i=0;i<=(Math.min(W,H)<=800?5:10);i++){const x=(i*131)%W,y=H*.84+(i%3)*16;ctx.beginPath();ctx.arc(x,y,18+(i%3)*5,0,Math.PI*2);ctx.fill()}}
   if(w.id==="johnbacon"){
     ctx.fillStyle="rgba(170,54,45,.22)";ctx.fillRect(0,H*.78,W,H*.22);
     drawBaconCloud(ctx,W*.03,H*.22,W*.28,Math.max(16,W*.012),.85);
     drawBaconCloud(ctx,W*.42,H*.18,W*.30,Math.max(15,W*.011),.78);
     drawBaconCloud(ctx,W*.72,H*.29,W*.23,Math.max(14,W*.01),.72);
     drawBaconCloud(ctx,W*.18,H*.43,W*.18,Math.max(11,W*.008),.55);
-    for(let i=0;i<6;i++)drawBaconStrip(ctx,-30,H*.80+i*18,W+60,Math.max(9,W*.007),i*.7);
+    for(let i=0;i<=(Math.min(W,H)<=800?3:6);i++)drawBaconStrip(ctx,-30,H*.80+i*18,W+60,Math.max(9,W*.007),i*.7);
     ctx.fillStyle="rgba(255,240,220,.22)";for(let i=0;i<16;i++){const x=(i*97)%W,y=H*.58+(i%3)*18;ctx.beginPath();ctx.arc(x,y,3+(i%3),0,Math.PI*2);ctx.fill()}
   }
 }
@@ -1521,14 +1580,25 @@ function drawPyramid(cx,base,w,h){ctx.fillStyle="#d5a05a";ctx.beginPath();ctx.mo
 function drawSpikeRow(x,width,yBase,direction){ctx.fillStyle="rgba(30,20,25,.65)";ctx.beginPath();for(let xp=x;xp<x+width;xp+=SPIKE_STEP){const w=Math.min(SPIKE_STEP,x+width-xp),cx=xp+w/2;ctx.moveTo(xp,yBase);direction===1?(ctx.lineTo(cx,yBase+SPIKE_H),ctx.lineTo(xp+w,yBase)):(ctx.lineTo(cx,yBase-SPIKE_H),ctx.lineTo(xp+w,yBase))}ctx.closePath();ctx.fill()}
 function drawBaconObstacle(c,x,y,w,h){if(h<=0)return;drawBaconColumn(c,x,y,w,h);if(y>0)drawBaconColumnEnd(c,x,y,w);else drawBaconColumnEnd(c,x,y+h,w)}
 function drawBaconSpikes(c,x,width,yBase,direction){c.save();c.fillStyle="#8f302c";c.beginPath();for(let xp=x;xp<x+width;xp+=SPIKE_STEP){const w=Math.min(SPIKE_STEP,x+width-xp),cx=xp+w/2;c.moveTo(xp,yBase);direction===1?(c.lineTo(cx,yBase+SPIKE_H*.55),c.lineTo(xp+w,yBase)):(c.lineTo(cx,yBase-SPIKE_H*.55),c.lineTo(xp+w,yBase))}c.closePath();c.fill();c.restore()}
+let backgroundCache=null,backgroundCacheKey="";
+function backgroundKey(){const w=game.world||worlds[0];return `${w.id}|${W}|${H}|${dpr}`;}
 function draw(){
-  drawBackground();
+  const bgKey=backgroundKey();
+  if(backgroundCache && backgroundCacheKey===bgKey){
+    ctx.clearRect(0,0,W,H);
+    ctx.drawImage(backgroundCache,0,0,W,H);
+  }else{
+    ctx.clearRect(0,0,W,H);
+    drawBackground();
+    backgroundCacheKey=bgKey;
+    try{createImageBitmap(canvas).then(b=>{if(backgroundCache)backgroundCache.close?.();backgroundCache=b;});}catch(e){backgroundCache=null;}
+  }
   for(const o of game.obstacles){
     const top=o.gapY-o.gapH/2,bottom=o.gapY+o.gapH/2;
     if(game.world?.id==="johnbacon"){drawBaconObstacle(ctx,o.x,0,o.width,top);drawBaconObstacle(ctx,o.x,bottom,o.width,H-bottom);drawBaconSpikes(ctx,o.x,o.width,top,1);drawBaconSpikes(ctx,o.x,o.width,bottom,-1)}
     else{ctx.fillStyle=game.world?.obstacle||"#8f5a33";ctx.fillRect(o.x,0,o.width,top);ctx.fillRect(o.x,bottom,o.width,H-bottom);drawSpikeRow(o.x,o.width,top,1);drawSpikeRow(o.x,o.width,bottom,-1)}
   }
-  for(const c of game.coins){ctx.save();ctx.shadowColor="#ffd447";ctx.shadowBlur=Math.min(14,Math.min(W,H)<=800?6:14);ctx.fillStyle="#ffd447";ctx.beginPath();ctx.arc(c.x,c.y,c.r,0,Math.PI*2);ctx.fill();ctx.restore();ctx.fillStyle="#fff5a6";ctx.font="bold 15px Arial";ctx.textAlign="center";ctx.textBaseline="middle";ctx.fillText("$",c.x,c.y)}
+  for(const c of game.coins){ctx.save();ctx.shadowColor="#ffd447";ctx.shadowBlur=Math.min(14,Math.min(W,H)<=800?6:14);ctx.fillStyle="#ffd447";ctx.beginPath();ctx.arc(c.x,c.y,c.r,0,Math.PI*2);ctx.fill();ctx.restore();ctx.fillStyle="#fff5a6";ctx.font="bold 14px Arial";ctx.textAlign="center";ctx.textBaseline="middle";ctx.fillText("$",c.x,c.y)}
   const s=skins.find(x=>x.id===state.selectedSkin)||skins[0];
   ctx.save();
   ctx.translate(game.player.x,game.player.y);
@@ -1809,37 +1879,6 @@ function updateShopLobbyNewBadge(){
 function updateLobby(){lobbyCoins.textContent=state.coins;lobbyBest.textContent=state.best;musicToggleBtn.textContent=state.musicEnabled?"🎵 Musik: AN":"🔇 Musik: AUS";updateShopLobbyNewBadge()}
 
 startBtn.onclick=()=>startGame(false);
-onlineModeBtn.onclick=async()=>{
-  if(!currentUser){
-    showMessage("🔐 Für den Online-Modus anmelden.");
-    showScreen("authScreen");
-    return;
-  }
-
-  await ensureSeason();
-
-  // Nicht mehr vom Start abhalten, falls Firebase kurzfristig langsam ist.
-  const ok=await Promise.race([
-    ensureSeasonScoreEntry(),
-    new Promise(resolve=>setTimeout(()=>resolve(false),4000))
-  ]);
-
-  await startSeasonLeaderboardListener();
-  switchLeaderboardMode("season");
-  startGame(true);
-
-  if(!ok){
-    showMessage("⚠️ Online gestartet – Season-Speicherung wird erneut versucht.");
-    setTimeout(async()=>{
-      const retry=await ensureSeasonScoreEntry();
-      if(retry){
-        await startSeasonLeaderboardListener();
-        if(seasonMode==="season")switchLeaderboardMode("season");
-        showMessage("✅ Season-Daten gespeichert.");
-      }
-    },1000);
-  }
-};
 leaderboardBtn.onclick=async()=>{loadPlayerName();showScreen("leaderboard");await ensureSeason();await startSeasonLeaderboardListener();switchLeaderboardMode("season")};
 leaderboardBack.onclick=()=>showScreen("lobby");saveNameBtn.onclick=savePlayerName;settingsBtn.onclick=()=>{showScreen("settings");applyLanguage()};settingsBack.onclick=()=>showScreen("lobby");langDeBtn.onclick=()=>setLanguage("de");langEnBtn.onclick=()=>setLanguage("en");musicVolumeRange.oninput=e=>setMusicVolume(e.target.value);sfxVolumeRange.oninput=e=>setSfxVolume(e.target.value);
 seasonTabBtn.onclick=async()=>{await startSeasonLeaderboardListener();switchLeaderboardMode("season")};allTimeTabBtn.onclick=()=>switchLeaderboardMode("alltime");
@@ -1930,9 +1969,7 @@ async function activateAdmin(){
           if(eventListenerStop)eventListenerStop();
           startEventListener();
     startEventExpiryCheck();
-     startOnlineSimulate();
-     updateSimulatedOnline();
-          if(globalBroadcastStop)globalBroadcastStop();
+           if(globalBroadcastStop)globalBroadcastStop();
           startGlobalBroadcastListener();
         }catch(e){console.error("anon auth for admin",e)}
       }
@@ -2507,7 +2544,6 @@ function showGlobalBroadcast(data){
   box.classList.add("show");
   clearTimeout(broadcastHideTimer);
    broadcastHideTimer=setTimeout(()=>{box.classList.remove("show");box.classList.add("hiding");setTimeout(()=>{box.classList.remove("hiding")},400)},7000);
-   triggerBroadcastBotResponse(text);
 }
 async function startGlobalBroadcastListener(){
   try{
@@ -2552,55 +2588,9 @@ function renderChatMessage(v){
   chatMessages.scrollTop=chatMessages.scrollHeight;
 }
 function clearChatMessages(){if(chatMessages)chatMessages.innerHTML=""}
-const BOT_NAMES=["Cleo","Hugo","Iris","Kimi","Milo","Nina","Oskar","Quinn","Rafa","Sami"];
-const BOT_PERSONALITY=["Hey! ","Also ich sag's mal: ","OMG, ","Ich mein': ","Hey hey! ","Na! ","Oida! ","Moin! ","Hi! ","Servus! "];
-const BOT_TOPIC_RESPONSES={
-  greeting:["bei dir?","wie läuft's?","schön dich zu sehen!","freut mich!","hallo!","hey!","was geht?","hi!","na!","grüß dich!"],
-  question:["Gute Frage! 🤔","frag ruhig weiter!","weiß nicht, aber probier's aus!","vielleicht wissen andere!","hmm...","Interessante Frage!","frag doch andere Spieler!","keine Ahnung, sorry!","vielleicht im Wiki?","frag den Admin!"],
-  help:["Tipp: Space oder Klick zum Fliegen!","Sammel Coins und flieg weit!","Hindernisse ausweichen!","Drück die Leertaste!","Klick = Hop!","Coins sammeln = gut!","Hindernisse nicht treffen!","So weit wie möglich!","Viel Erfolg!","Einfach fliegen!"],
-  excitement:["Juhu!","Nice!","Coole Idee!","Geil!","Wohoo!","Stark!","Echt?","Wow!","Klasse!","Fett!"],
-  farewell:["Bis bald!","Tschüss!","Mach's gut!","Komm bald wieder!","Bis später!","Tschau!","Bis dann!","Mach's gut!","Bis gleich!","Mach's gut!"],
-  thanks:["Gern!","Kein Ding!","Immer wieder gern!","Na klar!","Gerne!","Kein Problem!","Immer!","Jederzeit!","Gerne!","Na!"],
-  default:["👍","Cool!","Verstanden!","Roger!","Klingt gut!","Okay!","Nice!","Stimmt!","Jo!","Alles klar!"]
-};
-function classifyBotMessage(text){
-  const lower=String(text||"").toLowerCase().trim()||"";
-  if(/hallo|hi\b|hey|grüß|servus|Moin/i.test(lower))return "greeting";
-  if(/\?/.test(lower))return "question";
-  if(/hilfe|help|wie spiel|anleit|tutorial/i.test(lower))return "help";
-  if(/wow|nice|cool|geil|krass|kool|super|awesome|🔥|💯|👍|niceeee/i.test(lower))return "excitement";
-  if(/bye|tschüss|cya|bis bald|mach's gut|bis dann/i.test(lower))return "farewell";
-  if(/danke|dank|thanks|merci/i.test(lower))return "thanks";
-  return "default";
-}
-let botResponseTimers=[];
-function clearBotResponseTimers(){botResponseTimers.forEach(t=>clearTimeout(t));botResponseTimers=[];}
-function scheduleBotResponses(text,offsetMs=0){
-  if(!text)return;
-  const topic=classifyBotMessage(text);
-  const responses=BOT_TOPIC_RESPONSES[topic]||BOT_TOPIC_RESPONSES.default;
-  BOT_NAMES.forEach((botName,i)=>{
-    const timer=setTimeout(()=>{
-      const prefix=BOT_PERSONALITY[i]||"";
-      const resp=responses[Math.min(i,responses.length-1)];
-      renderChatMessage({text:prefix+resp,sender:botName,uid:"bot_"+Math.random().toString(36).slice(2,11),createdAt:Date.now()});
-    },offsetMs+i*3000);
-    botResponseTimers.push(timer);
-  });
-}
-function triggerBotResponse(text,sender){
-  if(!text)return;
-  const isBotMsg=sender&&String(sender).startsWith("npc_");
-  if(isBotMsg)return;
-  // Bereits geplante Antworten nicht abbrechen: Bots antworten strikt nacheinander alle 3 Sekunden.
-  if(botResponseTimers.length)return;
-  scheduleBotResponses(text,3000);
-}
-function triggerBroadcastBotResponse(text){
-  if(!text)return;
-  clearBotResponseTimers();
-  scheduleBotResponses(text,3000);
-}
+// Kein Fake-Chat: Nur echte Spieler-Nachrichten werden im globalen Chat angezeigt.
+function triggerBotResponse(){ /* absichtlich deaktiviert */ }
+function triggerBroadcastBotResponse(){ /* absichtlich deaktiviert */ }
 let chatProcessed=new Set();
 async function startChatListener(){
   if(!db)return;
@@ -2634,8 +2624,7 @@ async function startChatListener(){
         msgObj.isBlocked=true;
       }
       renderChatMessage(msgObj);
-      triggerBotResponse(v.text,v.sender);
-    },err=>console.error("chat listener",err));
+      },err=>console.error("chat listener",err));
   }catch(e){console.error("startChatListener",e)}
 }
 async function startChatBanListener(){
@@ -2688,7 +2677,11 @@ async function sendChatMessage(){
 }
 function toggleChat(){
   if(chatOverlay){chatOverlay.classList.toggle("active")}
-  if(chatOverlay&&chatOverlay.classList.contains("active")){clearChatMessages();startChatListener();startChatBanListener()}
+  if(chatOverlay&&chatOverlay.classList.contains("active")){
+    clearChatMessages();
+    startChatListener();
+    startChatBanListener();
+  }
 }
 chatToggle?.addEventListener("click",toggleChat);
 chatSendBtn?.addEventListener("click",sendChatMessage);
@@ -2913,7 +2906,6 @@ registerBtn.onclick=async()=>{
   }
 };
 logoutBtn.onclick=async()=>{try{await setPresenceOffline();const {a}=await loadFirebase();await a.signOut(auth);showMessage("👤 Gastmodus aktiviert.")}catch(e){console.error(e)}};
-onlineBadge.onclick=async()=>{loadPlayerName();showScreen("leaderboard");await ensureSeason();await startSeasonLeaderboardListener();switchLeaderboardMode("season");setTimeout(()=>leaderboardList.scrollIntoView({behavior:"smooth",block:"start"}),50)};
 claimSeasonRewardBtn.onclick=claimSeasonReward;musicToggleBtn.onclick=()=>{state.musicEnabled=!state.musicEnabled;saveState();if(state.musicEnabled){if(game.running)startMusic();else startLobbyMusic()}else stopMusic();updateLobby()};
 confirmLuckyBuyBtn.onclick=confirmLuckyBuy;cancelLuckyBuyBtn.onclick=cancelLuckyBuy;jackpotOverlay.addEventListener("click",()=>{jackpotOverlay.classList.remove("active")});abilityBtn.onclick=activateAbility;pauseBtn.onclick=togglePause;resumeBtn.onclick=togglePause;pauseLobbyBtn.onclick=returnLobby;retryBtn.onclick=()=>startGame(game.onlineRun);returnLobbyBtn.onclick=returnLobby;
 canvas.addEventListener("pointerdown",e=>{e.preventDefault();flap()});addEventListener("keydown",e=>{
@@ -2941,7 +2933,7 @@ canvas.addEventListener("pointerdown",e=>{e.preventDefault();flap()});addEventLi
   try{updateSeasonUI();}catch(e){console.error(e)}
   try{startSeasonTimer();}catch(e){console.error(e)}
   try{loadJohnBaconImage();}catch(e){console.error(e)}
-   try{updateSimulatedOnline();startOnlineSimulate();}catch(e){console.error(e)}
+   try{updateSimulatedOnline();}catch(e){console.error(e)}
       try{setupFirebase();}catch(e){console.error("setupFirebase",e)}
      ["pointerdown","keydown","touchstart"].forEach(ev=>window.addEventListener(ev,()=>{syncMusicAfterInteraction()},{once:false,passive:true}));
 })();
