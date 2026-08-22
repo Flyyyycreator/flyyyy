@@ -1522,28 +1522,95 @@ function drawShadowCat(c,r){
 }
 function drawBaconBaron(c,r){
   c.save();
-  c.shadowColor="#ffd447";c.shadowBlur=r*.38;
-  // Eigenständiger FLYYYY-Charakter: keine John-Pork-Vorlage, keine fremden Logos/Assets,
-  // blaue Fliegerbrille und Bacon-Schärpe. Keine externe Bildvorlage.
-  c.fillStyle="#f2a06f";
-  c.beginPath();c.ellipse(0,r*.08,r*.9,r*.72,0,0,Math.PI*2);c.fill();
-  c.fillStyle="#d77a54";
+  const pulse=0.5+0.5*Math.sin((game.animTime||0)/150);
+  const tilt=Math.sin((game.animTime||0)/180)*0.04;
+  c.rotate(tilt);
+
+  // Original FLYYYY Bacon character. No third-party logos, names or artwork.
+  // Premium legendary look: crispy bacon body, neon visor, crown crest and energy wings.
+  c.shadowColor=`rgba(255,212,71,${0.42+0.25*pulse})`;
+  c.shadowBlur=r*(0.55+0.18*pulse);
+
+  // Outer energy halo
+  c.globalAlpha=0.16+0.08*pulse;
+  c.strokeStyle="#5ee7ff"; c.lineWidth=Math.max(2,r*.08);
+  c.beginPath(); c.arc(0,0,r*1.12+Math.sin((game.animTime||0)/120)*r*.04,0,Math.PI*2); c.stroke();
+  c.globalAlpha=1;
+
+  // Bacon body
+  const body=c.createLinearGradient(-r,-r*.7,r,r*.8);
+  body.addColorStop(0,"#ffb09a");
+  body.addColorStop(.34,"#ef765f");
+  body.addColorStop(.68,"#c94e43");
+  body.addColorStop(1,"#8e3433");
+  c.fillStyle=body;
+  c.beginPath(); c.ellipse(0,r*.06,r*.92,r*.69,0,0,Math.PI*2); c.fill();
+
+  // Crispy highlight bands
+  c.save(); c.globalAlpha=.75; c.lineCap="round";
+  c.strokeStyle="#ffd1bd"; c.lineWidth=Math.max(2,r*.075);
+  for(let i=-2;i<=2;i++){
+    c.beginPath();
+    c.moveTo(-r*.65, i*r*.18);
+    c.quadraticCurveTo(0, i*r*.18 + Math.sin(i*2)*r*.08, r*.65, i*r*.18);
+    c.stroke();
+  }
+  c.restore();
+
+  // Bacon edge texture
+  c.strokeStyle="#70252b"; c.lineWidth=Math.max(3,r*.07); c.globalAlpha=.85;
+  c.beginPath(); c.ellipse(0,r*.06,r*.92,r*.69,0,0,Math.PI*2); c.stroke();
+  c.globalAlpha=1;
+
+  // Fun little side fins / ears
+  const wing=c.createLinearGradient(0,-r,0,r);
+  wing.addColorStop(0,"#5ee7ff"); wing.addColorStop(.5,"#7f8cff"); wing.addColorStop(1,"#ff4f86");
+  c.fillStyle=wing;
   c.beginPath();
-  c.moveTo(-r*.58,-r*.45);c.lineTo(-r*.72,-r*1.05);c.lineTo(-r*.18,-r*.72);c.closePath();
-  c.moveTo(r*.58,-r*.45);c.lineTo(r*.72,-r*1.05);c.lineTo(r*.18,-r*.72);c.closePath();c.fill();
-  // Fliegerbrille
-  c.fillStyle="#203052";c.strokeStyle="#5ee7ff";c.lineWidth=Math.max(2,r*.07);
-  c.beginPath();c.roundRect(-r*.62,-r*.38,r*.48,r*.36,r*.09);c.roundRect(r*.14,-r*.38,r*.48,r*.36,r*.09);c.stroke();c.fill();
-  c.strokeStyle="#5ee7ff";c.beginPath();c.moveTo(-r*.14,-r*.2);c.lineTo(r*.14,-r*.2);c.stroke();
-  c.fillStyle="#bdefff";c.beginPath();c.arc(-r*.39,-r*.2,r*.09,0,Math.PI*2);c.arc(r*.39,-r*.2,r*.09,0,Math.PI*2);c.fill();
-  // Schnauze
-  c.fillStyle="#e87f6b";c.beginPath();c.ellipse(0,r*.08,r*.36,r*.25,0,0,Math.PI*2);c.fill();
-  c.fillStyle="#6f3440";c.beginPath();c.ellipse(-r*.12,r*.08,r*.055,r*.07,0,0,Math.PI*2);c.ellipse(r*.12,r*.08,r*.055,r*.07,0,0,Math.PI*2);c.fill();
-  // Bacon-Schärpe
-  c.strokeStyle="#8f332e";c.lineWidth=Math.max(5,r*.22);c.beginPath();c.moveTo(-r*.72,r*.43);c.lineTo(r*.72,r*.72);c.stroke();
-  c.strokeStyle="#f4a08a";c.lineWidth=Math.max(2,r*.09);c.beginPath();c.moveTo(-r*.72,r*.40);c.lineTo(r*.72,r*.69);c.stroke();
-  // kleiner Stern als eigenes Markenzeichen
-  c.fillStyle="#ffd447";c.beginPath();for(let i=0;i<10;i++){const a=-Math.PI/2+i*Math.PI/5,rr=i%2?r*.14:r*.3;const px=r*.52+Math.cos(a)*rr,py=-r*.65+Math.sin(a)*rr;i?c.lineTo(px,py):c.moveTo(px,py)}c.closePath();c.fill();
+  c.moveTo(-r*.62,-r*.12); c.lineTo(-r*1.02,-r*.62); c.lineTo(-r*.92,-r*.02); c.lineTo(-r*1.02,r*.36); c.lineTo(-r*.56,r*.25); c.closePath(); c.fill();
+  c.beginPath();
+  c.moveTo(r*.62,-r*.12); c.lineTo(r*1.02,-r*.62); c.lineTo(r*.92,-r*.02); c.lineTo(r*1.02,r*.36); c.lineTo(r*.56,r*.25); c.closePath(); c.fill();
+
+  // Neon visor
+  c.shadowColor="#5ee7ff"; c.shadowBlur=r*.22;
+  c.fillStyle="#101933"; c.strokeStyle="#5ee7ff"; c.lineWidth=Math.max(2.5,r*.075);
+  c.beginPath(); c.roundRect(-r*.64,-r*.43,r*1.28,r*.40,r*.12); c.fill(); c.stroke();
+  c.shadowBlur=0;
+  const visor=c.createLinearGradient(-r*.55,-r*.24,r*.55,r*.15);
+  visor.addColorStop(0,"#bff7ff"); visor.addColorStop(.25,"#5ee7ff"); visor.addColorStop(.68,"#8f86ff"); visor.addColorStop(1,"#ff6da7");
+  c.globalAlpha=.88; c.fillStyle=visor;
+  c.beginPath(); c.roundRect(-r*.52,-r*.37,r*1.04,r*.20,r*.08); c.fill(); c.globalAlpha=1;
+
+  // Cute snout / smile
+  c.fillStyle="#e87c6d"; c.beginPath(); c.ellipse(0,r*.10,r*.36,r*.25,0,0,Math.PI*2); c.fill();
+  c.fillStyle="#742c38"; c.beginPath(); c.ellipse(-r*.12,r*.08,r*.055,r*.065,0,0,Math.PI*2); c.ellipse(r*.12,r*.08,r*.055,r*.065,0,0,Math.PI*2); c.fill();
+  c.strokeStyle="#70252b"; c.lineWidth=Math.max(2,r*.055); c.beginPath(); c.arc(0,r*.12,r*.16,.18*Math.PI,.82*Math.PI); c.stroke();
+
+  // Legendary neon scarf
+  c.lineCap="round"; c.shadowColor="#ff4f86"; c.shadowBlur=r*.22;
+  c.strokeStyle="#ff4f86"; c.lineWidth=Math.max(7,r*.19);
+  c.beginPath(); c.moveTo(-r*.70,r*.42); c.quadraticCurveTo(0,r*.70,r*.70,r*.50); c.stroke();
+  c.shadowBlur=0;
+  c.strokeStyle="#ffd0b8"; c.lineWidth=Math.max(2,r*.06);
+  c.beginPath(); c.moveTo(-r*.70,r*.39); c.quadraticCurveTo(0,r*.67,r*.70,r*.47); c.stroke();
+
+  // Crown crest: original FLYYYY badge, not a logo from elsewhere
+  c.fillStyle="#ffd447"; c.shadowColor="#ffd447"; c.shadowBlur=r*.16;
+  c.beginPath();
+  c.moveTo(-r*.34,-r*.82); c.lineTo(-r*.16,-r*1.06); c.lineTo(0,-r*.82); c.lineTo(r*.17,-r*1.06); c.lineTo(r*.34,-r*.82); c.lineTo(r*.28,-r*.60); c.lineTo(-r*.28,-r*.60); c.closePath(); c.fill();
+  c.fillStyle="#fff0a0"; c.beginPath(); c.arc(0,-r*.76,r*.055,0,Math.PI*2); c.fill();
+  c.shadowBlur=0;
+
+  // Spark particles around the legendary skin
+  const t=(game.animTime||0)/220;
+  const sparks=[[-1.18,-.70],[1.18,-.46],[-1.08,.70],[1.14,.72],[0,-1.23]];
+  for(let i=0;i<sparks.length;i++){
+    const [sx,sy]=sparks[i]; const tw=.45+.55*Math.sin(t+i*1.7);
+    c.globalAlpha=.35+.5*tw; c.fillStyle=i%2?"#5ee7ff":"#ffd447";
+    const sz=r*(.045+.025*tw);
+    c.translate(sx*r,sy*r); c.rotate(t+i); c.fillRect(-sz/2,-sz*2,sz,sz*4); c.rotate(-(t+i)); c.translate(-sx*r,-sy*r);
+  }
+  c.globalAlpha=1;
   c.restore();
 }
 function drawBaconBaronTrail(c,r){
