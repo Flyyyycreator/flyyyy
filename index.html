@@ -1161,9 +1161,131 @@ function syncMusicAfterInteraction(){if(firstSyncDone)return;firstSyncDone=true;
 
 
 const I18N={de:{settingsTitle:"⚙️ Einstellungen",settingsSubtitle:"Sprache, Musik und Effekte",languageTitle:"🌐 Sprache",languageHint:"Die Sprache wird sofort geändert und gespeichert.",audioTitle:"🔊 Lautstärke",music:"🎵 Musik",sfx:"🔔 Sounds / Effekte",gameTitle:"🎮 Spiel",performance:"📱 Handy-Optimierung",performanceHint:"Reduziertes Rendering unnötiger Effekte auf kleinen Geräten.",saveNotice:"✅ Einstellungen werden automatisch gespeichert.",infoTitle:"💾 Speicherung",infoText:"Sprache und Lautstärke bleiben nach dem Neuladen erhalten.",back:"← Zurück",start:"START",online:"🌐 ONLINE-SEASON SPIELEN",leaderboard:"🏆 LEADERBOARD",shop:"🛒 SHOP",inventory:"🎒 INVENTAR",missions:"🎯 MISSIONEN",settings:"⚙️ EINSTELLUNGEN",login:"🔐 ANMELDEN",account:"👤 MEIN KONTO",logout:"ABMELDEN",musicOn:"🎵 Musik: AN",musicOff:"🔇 Musik: AUS",figures:"🪽 Figuren",abilities:"⚡ Fähigkeiten",worlds:"🌍 Welten",sounds:"🔊 Sounds",musicTab:"🎵 Musik",lucky:"🎡 Lucky Rad",equipped:"✓ AUSGERÜSTET",equip:"AUSRÜSTEN",active:"✓ AKTIV",activate:"⚡ AKTIVIEREN",locked:"🔒 GESPERRT",pause:"Ⅱ Pause",resume:"▶ WEITER",toLobby:"🏠 ZUR LOBBY",retry:"🔄 NOCHMAL",tip:"Klicken / Tippen / Leertaste = Fliegen · T = Fähigkeit"},en:{settingsTitle:"⚙️ Settings",settingsSubtitle:"Language, music and effects",languageTitle:"🌐 Language",languageHint:"Changes apply immediately and are saved.",audioTitle:"🔊 Volume",music:"🎵 Music",sfx:"🔔 Sounds / Effects",gameTitle:"🎮 Game",performance:"📱 Mobile optimization",performanceHint:"Reduces unnecessary rendering effects on small devices.",saveNotice:"✅ Settings are saved automatically.",infoTitle:"💾 Storage",infoText:"Language and volume stay saved after reloading.",back:"← Back",start:"START",online:"🌐 PLAY ONLINE SEASON",leaderboard:"🏆 LEADERBOARD",shop:"🛒 SHOP",inventory:"🎒 INVENTORY",missions:"🎯 MISSIONS",settings:"⚙️ SETTINGS",login:"🔐 LOGIN",account:"👤 MY ACCOUNT",logout:"LOG OUT",musicOn:"🎵 Music: ON",musicOff:"🔇 Music: OFF",figures:"🪽 Skins",abilities:"⚡ Abilities",worlds:"🌍 Worlds",sounds:"🔊 Sounds",musicTab:"🎵 Music",lucky:"🎡 Lucky Wheel",equipped:"✓ EQUIPPED",equip:"EQUIP",active:"✓ ACTIVE",activate:"⚡ ACTIVATE",locked:"🔒 LOCKED",pause:"Ⅱ Pause",resume:"▶ RESUME",toLobby:"🏠 BACK TO LOBBY",retry:"🔄 RETRY",tip:"Click / Tap / Space = Fly · T = Ability"}};
-function lang(){return state.language==="en"?"en":"de"} function t(k){return I18N[lang()][k]||I18N.de[k]||k}
-function applyLanguage(){document.documentElement.lang=lang();const map={settingsTitle:"settingsTitle",settingsSubtitle:"settingsSubtitle",settingsLanguageTitle:"languageTitle",settingsLanguageHint:"languageHint",settingsAudioTitle:"audioTitle",musicVolumeLabel:"music",sfxVolumeLabel:"sfx",settingsGameTitle:"gameTitle",settingsPerformanceLabel:"performance",settingsPerformanceHint:"performanceHint",settingsSaveNotice:"saveNotice",settingsInfoTitle:"infoTitle",settingsInfoText:"infoText",settingsBack:"back",startBtn:"start",leaderboardBtn:"leaderboard",shopBtn:"shop",inventoryBtn:"inventory",missionsBtn:"missions",settingsBtn:"settings",accountBtn:"login",myAccountBtn:"account",logoutBtn:"logout",musicToggleBtn:state.musicEnabled?"musicOn":"musicOff",shopBack:"back",inventoryBack:"back",missionsBack:"back",pauseBtn:"pause",resumeBtn:"resume",pauseLobbyBtn:"toLobby",retryBtn:"retry",returnLobbyBtn:"toLobby"};for(const [id,key] of Object.entries(map)){const el=$(id);if(!el)continue;if(id==="shopBtn"){el.innerHTML=t(key)+` <span id="shopLobbyNewBadge" class="newBadge">NEU</span>`}else el.textContent=t(key)}const tipEl=document.querySelector(".tip");if(tipEl)tipEl.textContent=t("tip");if(musicVolumeValue)musicVolumeValue.textContent=`${state.musicVolume} %`;if(sfxVolumeValue)sfxVolumeValue.textContent=`${state.sfxVolume} %`;if(musicVolumeRange)musicVolumeRange.value=String(state.musicVolume);if(sfxVolumeRange)sfxVolumeRange.value=String(state.sfxVolume);if(langDeBtn)langDeBtn.classList.toggle("selected",lang()==="de");if(langEnBtn)langEnBtn.classList.toggle("selected",lang()==="en");if(typeof renderShop==="function")renderShop();if(typeof renderInventory==="function")renderInventory()}
+function lang(){return state.language==="en"?"en":"de"}
+function t(k){return I18N[lang()][k]||I18N.de[k]||k}
+
+/* ===== FLYYYY FULL UI TRANSLATION ===== */
+const UI_TRANSLATIONS={
+  "Fly weiter. Sammle Coins. Schlage andere Spieler.":"Fly farther. Collect coins. Beat other players.",
+  "🔥 UPDATE 3.0 · COMBO":"🔥 UPDATE 3.0 · COMBO",
+  "👤 Gast":"👤 Guest","👤 Gastmodus":"👤 Guest mode",
+  "Rekord:":"Best:","🏆 Rekord:":"🏆 Best:",
+  "🎁 Tagesbelohnung":"🎁 Daily Reward","🎁 ABHOLEN":"🎁 CLAIM","✅ HEUTE ABGEHOLT":"✅ CLAIMED TODAY",
+  "🔥 Tag":"🔥 Day","🎮 Spielmodus":"🎮 Game Mode","Classic":"Classic","⚡ Speedrun":"⚡ Speedrun","💀 Hardcore":"💀 Hardcore",
+  "7-Tage-Season":"7-Day Season","Platz 4–10: 100 · Platz 11–25: 50":"Places 4–10: 100 · Places 11–25: 50",
+  "🌐 Season":"🌐 Season","⭐ Allzeit":"⭐ All-Time","🌐 Nur Season-Punkte":"🌐 Season points only",
+  "Season und Allzeit werden getrennt angezeigt.":"Season and all-time are shown separately.",
+  "Lade Leaderboard...":"Loading leaderboard...","Dein Spielername":"Your player name","NAME SPEICHERN":"SAVE NAME",
+  "Deine gekauften Gegenstände.":"Your purchased items.","Schließe Aufgaben ab und verdiene Coins.":"Complete tasks and earn coins.",
+  "⚙️ Einstellungen":"⚙️ Settings","Sprache, Musik und Effekte":"Language, music and effects","🌐 Sprache":"🌐 Language",
+  "Die Sprache wird sofort geändert und gespeichert.":"The language changes immediately and is saved.",
+  "🔊 Lautstärke":"🔊 Volume","🎮 Spiel":"🎮 Game","📱 Handy-Optimierung":"📱 Mobile optimization",
+  "Reduziertes Rendering unnötiger Effekte auf kleinen Geräten.":"Reduces unnecessary rendering effects on small devices.",
+  "✅ Einstellungen werden automatisch gespeichert.":"✅ Settings are saved automatically.",
+  "💾 Speicherung":"💾 Storage","Sprache und Lautstärke bleiben nach dem Neuladen erhalten.":"Language and volume stay saved after reloading.",
+  "0–100 %":"0–100 %","AUTO":"AUTO",
+  "Anmelden / Registrieren":"Sign in / Register","Mit E-Mail anmelden, neues Konto erstellen oder ohne Konto spielen.":"Sign in with email, create a new account, or play without an account.",
+  "E-Mail":"Email","Passwort (mind. 6 Zeichen)":"Password (min. 6 characters)","ANMELDEN":"SIGN IN","REGISTRIEREN":"REGISTER",
+  "👤 OHNE KONTO SPIELEN":"👤 PLAY WITHOUT ACCOUNT","Gastmodus ist jederzeit möglich.":"Guest mode is always available.",
+  "🛡️ Adminrechte werden serverseitig mit Firebase geprüft.":"🛡️ Admin privileges are verified server-side with Firebase.",
+  "📄 Impressum":"📄 Legal Notice","🔒 Datenschutz":"🔒 Privacy Policy","📜 Nutzungsbedingungen":"📜 Terms of Use","🛒 Kaufhinweise":"🛒 Purchase Info",
+  "← Zur Lobby":"← Back to Lobby","🛒 SHOP":"🛒 SHOP","🎒 INVENTAR":"🎒 INVENTORY","🎯 MISSIONEN":"🎯 MISSIONS","⚙️ EINSTELLUNGEN":"⚙️ SETTINGS",
+  "🎵 Musik: AN":"🎵 Music: ON","🔇 Musik: AUS":"🔇 Music: OFF","🪽 Figuren":"🪽 Skins","⚡ Fähigkeiten":"⚡ Abilities","🌍 Welten":"🌍 Worlds","🔊 Sounds":"🔊 Sounds","🎡 Lucky Rad":"🎡 Lucky Wheel",
+  "✓ AUSGERÜSTET":"✓ EQUIPPED","AUSRÜSTEN":"EQUIP","✓ AKTIV":"✓ ACTIVE","⚡ AKTIVIEREN":"⚡ ACTIVATE","🔒 GESPERRT":"🔒 LOCKED",
+  "Ⅱ Pause":"Ⅱ Pause","▶ WEITER":"▶ RESUME","🏠 ZUR LOBBY":"🏠 BACK TO LOBBY","🔄 NOCHMAL":"🔄 RETRY",
+  "Klicken / Tippen / Leertaste = Fliegen · T = Fähigkeit":"Click / Tap / Space = Fly · T = Ability",
+  "NEU":"NEW","Kostenlos":"Free","Im Besitz":"Owned","Kaufen":"Buy","▶ TESTEN":"▶ TEST","▶ ANHÖREN":"▶ LISTEN","▶ PLAY":"▶ PLAY",
+  "🪽 Skins":"🪽 Skins","🪙 Coins":"🪙 Coins","🪙 1000 Coins":"🪙 1000 Coins","🪙 KAUFEN & ÖFFNEN":"🪙 BUY & OPEN",
+  "Ein Dreh kostet":"One spin costs","Nach dem Kauf öffnet sich sofort das Lucky Rad.":"The Lucky Wheel opens immediately after purchase.",
+  "⚡ Du hast noch keine Fähigkeit. Gewinne eine im Shop oder Lucky Rad.":"⚡ You don't have an ability yet. Win one in the Shop or Lucky Wheel.",
+  "⚡ Du hast noch keine Fähigkeit. Gewinne eine im Lucky Rad oder erhalte eine vom Admin.":"⚡ You don't have an ability yet. Win one in the Lucky Wheel or receive one from an admin.",
+  "⚡ FÜR DIESEN SKIN AUSRÜSTEN":"⚡ EQUIP FOR THIS SKIN","⚡ Keine Fähigkeit":"⚡ No ability","⚡ Keine Fähigkeit freigeschaltet.":"⚡ No ability unlocked.",
+  "⚡ Noch keine Fähigkeit dieses Skins freigeschaltet":"⚡ No ability unlocked for this skin yet",
+  "Bereit.":"Ready.","Kein Event aktiv.":"No event active.","Lade Spieler...":"Loading players...",
+  "← Zurück":"← Back","📢 GLOBAL BROADCAST":"📢 GLOBAL BROADCAST","Nachricht für alle Spieler …":"Message for all players …",
+  "Nur als Admin sichtbar.":"Visible to admins only.","Gesperrte Spieler verwalten.":"Manage banned players.",
+  "🔇 Sperren (10 Min)":"🔇 Ban (10 min)","Grund (optional)":"Reason (optional)","↻ AKTUALISIEREN":"↻ REFRESH",
+  "🔓 AKTIVIEREN":"🔓 ACTIVATE","🔒 SCHLIESSEN":"🔒 CLOSE","Bitte mit deinem FLYYYY-Konto anmelden.":"Please sign in with your FLYYYY account.",
+  "E-Mail oder UID suchen":"Search email or UID","Spielername (aus Leaderboard)":"Player name (from leaderboard)",
+  "Gib einen Shop-Gegenstand kostenlos an einen Spieler.":"Give a Shop item to a player for free.","🎁 KOSTENLOS GEBEN":"🎁 GIVE FOR FREE",
+  "🪙 Coins":"🪙 Coins","🪽 Skin":"🪽 Skin","⚡ Fähigkeit":"⚡ Ability","🌍 Welt":"🌍 World","🔊 Sound":"🔊 Sound","🎵 Musik":"🎵 Music",
+  "🎁 GEBEN":"🎁 GIVE","💝 AN MICH SELBST GEBEN":"💝 GIVE TO MYSELF","🌍 ALLEN SPIELERN GEBEN":"🌍 GIVE TO ALL PLAYERS",
+  "📢 BROADCAST SENDEN":"📢 SEND BROADCAST","🔄 Anmeldung läuft...":"🔄 Signing in...","🔄 Konto wird erstellt...":"🔄 Creating account...",
+  "✅ Konto erstellt!":"✅ Account created!","✅ Angemeldet!":"✅ Signed in!","👤 Gastmodus aktiviert.":"👤 Guest mode activated.",
+  "Bitte E-Mail und Passwort eingeben.":"Please enter email and password.","Passwort: mindestens 6 Zeichen.":"Password: at least 6 characters.",
+  "🔐 Für den Online-Modus musst du angemeldet sein.":"🔐 You must be signed in to play online.","🔐 Bitte anmelden.":"🔐 Please sign in.",
+  "🔐 Bitte zuerst anmelden.":"🔐 Please sign in first.","Bitte den Admin-Code eingeben.":"Please enter the admin code.",
+  "❌ Spieler nicht gefunden.":"❌ Player not found.","❌ Keine Spieler gefunden.":"❌ No players found.","❌ Nicht genug Coins!":"❌ Not enough coins!","Nicht genug Coins!":"Not enough coins!",
+  "🪙 +100 Coins erhalten!":"🪙 +100 coins received!","🎁 Heute schon abgeholt!":"🎁 Already claimed today!",
+  "🌐 ONLINE-SEASON SPIELEN":"🌐 PLAY ONLINE SEASON","🏆 LEADERBOARD":"🏆 LEADERBOARD","START":"START",
+  "✅ Season-Punkte sind getrennt vom Allzeit-Highscore. Nur die aktuelle Season entscheidet über die Season-Belohnung.":"✅ Season points are separate from the all-time high score. Only the current season determines the season reward.",
+  "🌐 Online-Modus: Season-Score wird über Firebase gespeichert. Anmeldung erforderlich.":"🌐 Online mode: Season score is saved via Firebase. Sign-in required.",
+  "⏱️ Lädt...":"⏱️ Loading...","👤 MEIN KONTO":"👤 MY ACCOUNT","ABMELDEN":"LOG OUT","🔐 ANMELDEN":"🔐 SIGN IN",
+  "🛠️ ADMIN":"🛠️ ADMIN","🛠️ ADMIN":"🛠️ ADMIN",
+  "⚠️ Ein Spielfehler ist aufgetreten. Bitte Seite neu laden.":"⚠️ A game error occurred. Please reload the page.",
+  "FÄHIGKEIT FREIGESCHALTET!":"ABILITY UNLOCKED!","🎵 Event-Musik aktiv":"🎵 Event music active","🎵 Normale Musik wird fortgesetzt.":"🎵 Normal music resumed.",
+  "🌐 Season-Score gespeichert.":"🌐 Season score saved.","🌐 Season-Score wird gespeichert...":"🌐 Saving season score...",
+  "🔴 Season-Leaderboard konnte nicht geladen werden.":"🔴 Season leaderboard could not be loaded.","🔴 Allzeit-Leaderboard konnte nicht geladen werden.":"🔴 All-time leaderboard could not be loaded.",
+  "🧊 EISWELT! 10 Level, danach zurück zu deiner Welt.":"🧊 ICE WORLD! 10 levels, then back to your world.",
+  "Eiswelt": "Ice World", "7-Tage-Season":"7-Day Season", "Lade Spieler...":"Loading players...",
+  "Season-Belohnung":"Season reward","Deine persönliche Season-Belohnung wartet auf dich.":"Your personal season reward is waiting for you.",
+  "Der Preis wurde deinem Konto gutgeschrieben.":"The prize has been credited to your account."
+}
+const UI_TRANSLATIONS_REV=Object.fromEntries(Object.entries(UI_TRANSLATIONS).map(([de,en])=>[en,de]));
+function translateRuntimeText(text){
+  if(typeof text!=="string")return text;
+  const clean=text.trim();
+  if(lang()==="en" && UI_TRANSLATIONS[clean]) return text.replace(clean,UI_TRANSLATIONS[clean]);
+  if(lang()==="de" && UI_TRANSLATIONS_REV[clean]) return text.replace(clean,UI_TRANSLATIONS_REV[clean]);
+  if(lang()==="en"){
+    return text
+      .replace(/Nicht genug Coins!/g,"Not enough coins!")
+      .replace(/Heute schon abgeholt!/g,"Already claimed today!")
+      .replace(/Spieler nicht gefunden/g,"Player not found")
+      .replace(/Keine Spieler gefunden/g,"No players found")
+      .replace(/Season-Score gespeichert/g,"Season score saved")
+      .replace(/Season-Score wird gespeichert/g,"Saving season score")
+      .replace(/Gesperrt bis:/g,"Banned until:")
+      .replace(/Dauerhaft/g,"Permanent")
+      .replace(/Spieler/g,"Players")
+      .replace(/Coins/g,"Coins");
+  }
+  return text;
+}
+function translateDOM(){
+  const root=document.body;if(!root)return;
+  const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);
+  const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);
+  for(const n of nodes){const p=n.parentElement;if(!p||["SCRIPT","STYLE","NOSCRIPT"].includes(p.tagName))continue;const tr=translateRuntimeText(n.nodeValue);if(tr!==n.nodeValue)n.nodeValue=tr;}
+  document.querySelectorAll("input[placeholder],textarea[placeholder],select option,[title],[aria-label]").forEach(el=>{
+    if(el.hasAttribute("placeholder")){const v=el.getAttribute("placeholder");const nv=translateRuntimeText(v);if(nv!==v)el.setAttribute("placeholder",nv)}
+    if(el.tagName==="OPTION"){const v=el.textContent,nv=translateRuntimeText(v);if(nv!==v)el.textContent=nv}
+    for(const a of ["title","aria-label"]){if(el.hasAttribute(a)){const v=el.getAttribute(a),nv=translateRuntimeText(v);if(nv!==v)el.setAttribute(a,nv)}}
+  });
+}
+function applyLanguage(){
+  document.documentElement.lang=lang();
+  const map={settingsTitle:"settingsTitle",settingsSubtitle:"settingsSubtitle",settingsLanguageTitle:"languageTitle",settingsLanguageHint:"languageHint",settingsAudioTitle:"audioTitle",musicVolumeLabel:"music",sfxVolumeLabel:"sfx",settingsGameTitle:"gameTitle",settingsPerformanceLabel:"performance",settingsPerformanceHint:"performanceHint",settingsSaveNotice:"saveNotice",settingsInfoTitle:"infoTitle",settingsInfoText:"infoText",settingsBack:"back",startBtn:"start",onlineStartBtn:"online",leaderboardBtn:"leaderboard",shopBtn:"shop",inventoryBtn:"inventory",missionsBtn:"missions",settingsBtn:"settings",accountBtn:"login",myAccountBtn:"account",logoutBtn:"logout",musicToggleBtn:state.musicEnabled?"musicOn":"musicOff",shopBack:"back",inventoryBack:"back",missionsBack:"back",pauseBtn:"pause",resumeBtn:"resume",pauseLobbyBtn:"toLobby",retryBtn:"retry",returnLobbyBtn:"toLobby"};
+  for(const [id,key] of Object.entries(map)){const el=$(id);if(!el)continue;if(id==="shopBtn")el.innerHTML=t(key)+` <span id="shopLobbyNewBadge" class="newBadge">${lang()==="en"?"NEW":"NEU"}</span>`;else el.textContent=t(key)}
+  const tipEl=document.querySelector(".tip");if(tipEl)tipEl.textContent=t("tip");
+  if(musicVolumeValue)musicVolumeValue.textContent=`${state.musicVolume} %`;if(sfxVolumeValue)sfxVolumeValue.textContent=`${state.sfxVolume} %`;
+  if(musicVolumeRange)musicVolumeRange.value=String(state.musicVolume);if(sfxVolumeRange)sfxVolumeRange.value=String(state.sfxVolume);
+  if(langDeBtn)langDeBtn.classList.toggle("selected",lang()==="de");if(langEnBtn)langEnBtn.classList.toggle("selected",lang()==="en");
+  const gm=$("gameModeSelect");if(gm){const labels=lang()==="en"?{classic:"Classic",speedrun:"⚡ Speedrun",hardcore:"💀 Hardcore"}:{classic:"Classic",speedrun:"⚡ Speedrun",hardcore:"💀 Hardcore"};[...gm.options].forEach(o=>o.textContent=labels[o.value]||o.textContent)}
+  if(typeof renderShop==="function")renderShop();if(typeof renderInventory==="function")renderInventory();if(typeof renderMissions==="function")renderMissions();
+  const copyrightText=$("copyrightText");if(copyrightText)copyrightText.textContent=lang()==="en"?"© 2026 FLYYYY — All rights reserved.":"© 2026 FLYYYY — Alle Rechte vorbehalten.";
+  translateDOM();
+  if(typeof legalOverlay!=="undefined"&&legalOverlay?.classList.contains("active")&&typeof openLegalPage==="function"&&typeof currentLegalType!=="undefined")openLegalPage(currentLegalType);
+}
 function setLanguage(v){state.language=v==="en"?"en":"de";saveState();applyLanguage();showMessage(state.language==="en"?"🇬🇧 Language changed":"🇩🇪 Sprache geändert")}
+
+const __flyyyyShowMessage=showMessage;
+showMessage=function(text){return __flyyyyShowMessage(translateRuntimeText(String(text)));}
+const __flyyyySetLeaderboardStatus=setLeaderboardStatus;
+setLeaderboardStatus=function(text){return __flyyyySetLeaderboardStatus(translateRuntimeText(String(text)));}
+
+const __flyyyyTranslateObserver=new MutationObserver(()=>{if(window.__flyyyyTranslating)return;window.__flyyyyTranslating=true;requestAnimationFrame(()=>{try{translateDOM()}finally{window.__flyyyyTranslating=false}})});
+__flyyyyTranslateObserver.observe(document.body,{subtree:true,childList:true,characterData:true});
 function setMusicVolume(v){state.musicVolume=Math.max(0,Math.min(100,Number(v)||0));saveState();applyAudioVolumes();if(musicVolumeValue)musicVolumeValue.textContent=`${state.musicVolume} %`}
 function setSfxVolume(v){state.sfxVolume=Math.max(0,Math.min(100,Number(v)||0));saveState();if(sfxVolumeValue)sfxVolumeValue.textContent=`${state.sfxVolume} %`}
 function applyAudioVolumes(){const mf=Math.max(0,Math.min(1,Number(state.musicVolume??70)/100));[lobbyMusic1,lobbyMusic2].forEach(a=>{if(a)a.volume=.55*mf});if(mp3Audio)mp3Audio.volume=.55*mf;if(eventMusicAudio)eventMusicAudio.volume=.6*mf}
@@ -3080,80 +3202,23 @@ const legalTitle=document.getElementById("legalTitle");
 const legalContent=document.getElementById("legalContent");
 const legalClose=document.getElementById("legalClose");
 
+let currentLegalType="privacy";
 function openLegalPage(type){
+  currentLegalType=type;
   if(!legalOverlay||!legalContent)return;
+  const en=lang()==="en";
   if(type==="imprint"){
-    legalTitle.textContent="Impressum";
-    legalContent.innerHTML=`
-      <h3>Angaben gemäß § 5 DDG</h3>
-      <p><strong>Verantwortlicher / Anbieter:</strong><br>
-      Noel Bond<br>
-      ${FLYYYY_LEGAL_ADDRESS}<br>
-      Deutschland</p>
-      <p><strong>E-Mail:</strong> <a href="mailto:${FLYYYY_EMAIL}" style="color:#5ee7ff">${FLYYYY_EMAIL}</a></p>
-      <h3>Verantwortlich für den Inhalt</h3>
-      <p>Verantwortlich für die Inhalte dieses digitalen Angebots ist die oben genannte Person, soweit gesetzlich nichts anderes bestimmt ist.</p>
-      <div class="legalNote"><strong>Wichtig vor dem kommerziellen Start:</strong> Die verantwortliche Person, Anschrift und sonstigen Angaben müssen mit der tatsächlichen Betreiberstruktur übereinstimmen. Bei einem Betrieb durch eine andere Person, ein Unternehmen oder einen Erziehungsberechtigten muss das Impressum entsprechend angepasst werden.</div>
-    `;
+    legalTitle.textContent=en?"Legal Notice":"Impressum";
+    legalContent.innerHTML=en?`<h3>Information according to Section 5 DDG</h3><p><strong>Provider / Responsible person:</strong><br>Noel Bond<br>${FLYYYY_LEGAL_ADDRESS}<br>Germany</p><p><strong>Email:</strong> <a href="mailto:${FLYYYY_EMAIL}" style="color:#5ee7ff">${FLYYYY_EMAIL}</a></p><h3>Responsible for content</h3><p>The person named above is responsible for the content of this digital service unless the law provides otherwise.</p><div class="legalNote"><strong>Important before commercial launch:</strong> The responsible person, address and all other details must match the actual operator structure. If FLYYYY is operated by another person, company or legal guardian, this notice must be adjusted accordingly.</div>`:`<h3>Angaben gemäß § 5 DDG</h3><p><strong>Verantwortlicher / Anbieter:</strong><br>Noel Bond<br>${FLYYYY_LEGAL_ADDRESS}<br>Deutschland</p><p><strong>E-Mail:</strong> <a href="mailto:${FLYYYY_EMAIL}" style="color:#5ee7ff">${FLYYYY_EMAIL}</a></p><h3>Verantwortlich für den Inhalt</h3><p>Verantwortlich für die Inhalte dieses digitalen Angebots ist die oben genannte Person, soweit gesetzlich nichts anderes bestimmt ist.</p><div class="legalNote"><strong>Wichtig vor dem kommerziellen Start:</strong> Die verantwortliche Person, Anschrift und sonstigen Angaben müssen mit der tatsächlichen Betreiberstruktur übereinstimmen. Bei einem Betrieb durch eine andere Person, ein Unternehmen oder einen Erziehungsberechtigten muss das Impressum entsprechend angepasst werden.</div>`;
   }else if(type==="terms"){
-    legalTitle.textContent="Nutzungsbedingungen";
-    legalContent.innerHTML=`
-      <p><strong>Stand: 22.08.2026</strong></p>
-      <h3>1. Geltungsbereich</h3>
-      <p>Diese Nutzungsbedingungen gelten für die Nutzung des Spiels FLYYYY und der darin angebotenen Funktionen.</p>
-      <h3>2. Nutzung</h3>
-      <p>Spieler dürfen FLYYYY nur im Rahmen der geltenden Gesetze und dieser Bedingungen nutzen. Missbrauch, Manipulation, automatisierte Angriffe, das Umgehen technischer Schutzmaßnahmen und die absichtliche Störung anderer Spieler sind nicht erlaubt.</p>
-      <h3>3. Konten und Chat</h3>
-      <p>Accountdaten müssen wahrheitsgemäß und geschützt behandelt werden. Im Chat dürfen keine rechtswidrigen, beleidigenden, diskriminierenden oder sonst unzulässigen Inhalte verbreitet werden. FLYYYY kann Inhalte im Rahmen der technischen und gesetzlichen Möglichkeiten moderieren und Accounts bzw. Chatrechte bei Verstößen zeitweise oder dauerhaft sperren.</p>
-      <h3>4. Verfügbarkeit</h3>
-      <p>Ein Anspruch auf eine ununterbrochene Verfügbarkeit des Spiels, von Online-Funktionen oder des Leaderboards besteht nicht.</p>
-      <h3>5. Änderungen</h3>
-      <p>Funktionen, Inhalte und diese Bedingungen können geändert werden, soweit dies rechtlich zulässig ist. Wesentliche Änderungen werden angemessen kommuniziert.</p>
-      <div class="legalNote"><strong>Hinweis:</strong> Diese Nutzungsbedingungen sind eine technische Vorlage und sollten vor dem kommerziellen Start an die konkrete Betreiber-, Alters- und Angebotsstruktur angepasst werden.</div>
-    `;
+    legalTitle.textContent=en?"Terms of Use":"Nutzungsbedingungen";
+    legalContent.innerHTML=en?`<p><strong>Version: 22 Aug 2026</strong></p><h3>1. Scope</h3><p>These terms apply to the use of FLYYYY and its available features.</p><h3>2. Use</h3><p>Players may use FLYYYY only in compliance with applicable law and these terms. Abuse, manipulation, automated attacks, bypassing technical protection measures and intentionally disrupting other players are prohibited.</p><h3>3. Accounts and chat</h3><p>Account details must be truthful and protected. The chat may not be used for unlawful, abusive, discriminatory or otherwise prohibited content. FLYYYY may moderate content and temporarily or permanently suspend accounts or chat rights where permitted by law.</p><h3>4. Availability</h3><p>There is no guarantee of uninterrupted availability of the game, online features or leaderboard.</p><h3>5. Changes</h3><p>Features, content and these terms may be changed where legally permitted. Material changes will be communicated appropriately.</p><div class="legalNote"><strong>Note:</strong> These terms are a technical template and should be adapted to the actual operator, age and commercial structure before launch.</div>`:`<p><strong>Stand: 22.08.2026</strong></p><h3>1. Geltungsbereich</h3><p>Diese Nutzungsbedingungen gelten für die Nutzung des Spiels FLYYYY und der darin angebotenen Funktionen.</p><h3>2. Nutzung</h3><p>Spieler dürfen FLYYYY nur im Rahmen der geltenden Gesetze und dieser Bedingungen nutzen. Missbrauch, Manipulation, automatisierte Angriffe, das Umgehen technischer Schutzmaßnahmen und die absichtliche Störung anderer Spieler sind nicht erlaubt.</p><h3>3. Konten und Chat</h3><p>Accountdaten müssen wahrheitsgemäß und geschützt behandelt werden. Im Chat dürfen keine rechtswidrigen, beleidigenden, diskriminierenden oder sonst unzulässigen Inhalte verbreitet werden. FLYYYY kann Inhalte im Rahmen der technischen und gesetzlichen Möglichkeiten moderieren und Accounts bzw. Chatrechte bei Verstößen zeitweise oder dauerhaft sperren.</p><h3>4. Verfügbarkeit</h3><p>Ein Anspruch auf eine ununterbrochene Verfügbarkeit des Spiels, von Online-Funktionen oder des Leaderboards besteht nicht.</p><h3>5. Änderungen</h3><p>Funktionen, Inhalte und diese Bedingungen können geändert werden, soweit dies rechtlich zulässig ist. Wesentliche Änderungen werden angemessen kommuniziert.</p><div class="legalNote"><strong>Hinweis:</strong> Diese Nutzungsbedingungen sind eine technische Vorlage und sollten vor dem kommerziellen Start an die konkrete Betreiber-, Alters- und Angebotsstruktur angepasst werden.</div>`;
   }else if(type==="purchase"){
-    legalTitle.textContent="Kaufhinweise";
-    legalContent.innerHTML=`
-      <div class="legalNote"><strong>Aktueller Status:</strong> In dieser FLYYYY-Version sind keine Echtgeldkäufe aktiviert. Coins und andere virtuelle Gegenstände werden aktuell nur innerhalb des Spiels verwendet.</div>
-      <h3>Keine Echtgeldzahlungen</h3>
-      <p>Es werden derzeit keine kostenpflichtigen Käufe, Abonnements oder Zahlungsabwicklungen über FLYYYY angeboten.</p>
-      <h3>Spätere Monetarisierung</h3>
-      <p>Sollten später Echtgeldkäufe, Premium-Währung, Abonnements oder Werbung aktiviert werden, muss FLYYYY vor dem Start um die dafür erforderlichen Preis-, Vertrags-, Verbraucher- und Datenschutzinformationen sowie eine geeignete Zahlungsabwicklung erweitert und rechtlich geprüft werden.</p>
-      <p>Insbesondere müssen Preise und Bedingungen klar erkennbar sein und kommerzielle Kommunikation als solche erkennbar sein.</p>
-    `;
+    legalTitle.textContent=en?"Purchase Information":"Kaufhinweise";
+    legalContent.innerHTML=en?`<div class="legalNote"><strong>Current status:</strong> This FLYYYY version does not have real-money purchases enabled. Coins and other virtual items are currently used only inside the game.</div><h3>No real-money payments</h3><p>No paid purchases, subscriptions or payment processing are currently offered through FLYYYY.</p><h3>Future monetization</h3><p>If real-money purchases, premium currency, subscriptions or advertising are activated later, FLYYYY must be expanded before launch with the required price, contract, consumer and privacy information and a suitable payment setup.</p><p>Prices and conditions must be clearly presented, and commercial communication must be clearly identifiable.</p>`:`<div class="legalNote"><strong>Aktueller Status:</strong> In dieser FLYYYY-Version sind keine Echtgeldkäufe aktiviert. Coins und andere virtuelle Gegenstände werden aktuell nur innerhalb des Spiels verwendet.</div><h3>Keine Echtgeldzahlungen</h3><p>Es werden derzeit keine kostenpflichtigen Käufe, Abonnements oder Zahlungsabwicklungen über FLYYYY angeboten.</p><h3>Spätere Monetarisierung</h3><p>Sollten später Echtgeldkäufe, Premium-Währung, Abonnements oder Werbung aktiviert werden, muss FLYYYY vor dem Start um die dafür erforderlichen Preis-, Vertrags-, Verbraucher- und Datenschutzinformationen sowie eine geeignete Zahlungsabwicklung erweitert und rechtlich geprüft werden.</p><p>Insbesondere müssen Preise und Bedingungen klar erkennbar sein und kommerzielle Kommunikation als solche erkennbar sein.</p>`;
   }else{
-    legalTitle.textContent="Datenschutzerklärung";
-    legalContent.innerHTML=`
-      <p><strong>Stand: 22.08.2026</strong></p>
-      <h3>1. Verantwortlicher</h3>
-      <p>Noel Bond<br>${FLYYYY_LEGAL_ADDRESS}<br>E-Mail: <a href="mailto:${FLYYYY_EMAIL}" style="color:#5ee7ff">${FLYYYY_EMAIL}</a></p>
-      <h3>2. Welche Daten FLYYYY verarbeiten kann</h3>
-      <ul>
-        <li>Kontodaten bzw. technische Kennungen der Anmeldung;</li>
-        <li>Spielername und Spielstände;</li>
-        <li>Leaderboard-Daten wie Punktestand, Siege und Season-Punkte;</li>
-        <li>Chatnachrichten, die vom Nutzer selbst übertragen werden;</li>
-        <li>lokal im Browser gespeicherte Einstellungen und Spielfortschritte;</li>
-        <li>technische Daten, die durch tatsächlich eingesetztes Hosting oder Firebase verarbeitet werden.</li>
-      </ul>
-      <h3>3. Firebase</h3>
-      <p>Für Login-/Account-Funktionen sowie Online-Spielstände, Leaderboard- und Season-Daten verwendet FLYYYY Firebase-Dienste von Google. Die konkrete Firebase-Konfiguration, Speicherorte, Aufbewahrungszeiten und aktivierten Dienste müssen vor dem öffentlichen Start anhand der tatsächlichen Konfiguration geprüft werden.</p>
-      <h3>4. LocalStorage</h3>
-      <p>FLYYYY kann den Browser-Speicher verwenden, um lokale Einstellungen und Spielfortschritte zu speichern.</p>
-      <h3>5. Chat</h3>
-      <p>Bei Nutzung des In-Game-Chats werden die eingegebenen Nachrichten an den für den Chat verwendeten Online-Dienst übertragen. Bitte keine sensiblen persönlichen Daten eingeben.</p>
-      <h3>6. Cookies, Analyse und Werbung</h3>
-      <p>Die aktuelle Version aktiviert keine ausdrücklich eingerichtete Echtgeld-Werbe- oder Analyseplattform. Werden später nicht notwendige Cookies, Tracking oder personalisierte Werbung eingebunden, muss die Datenschutzerklärung an den konkreten Anbieter und die erforderliche Einwilligungslösung angepasst werden.</p>
-      <h3>7. Rechtsgrundlagen</h3>
-      <p>Die jeweils geltende Rechtsgrundlage hängt von der konkreten Verarbeitung ab. Nicht erforderliche Einwilligungen müssen vor der entsprechenden Verarbeitung eingeholt werden, soweit dies gesetzlich erforderlich ist.</p>
-      <h3>8. Speicherdauer</h3>
-      <p>Die Speicherdauer richtet sich nach der jeweiligen Funktion und dem eingesetzten Dienst. Lokale Daten können durch das Löschen der Browserdaten entfernt werden; Online-Daten richten sich nach der jeweiligen Server-/Firebase-Konfiguration und gesetzlichen Pflichten.</p>
-      <h3>9. Rechte betroffener Personen</h3>
-      <p>Betroffene Personen können nach den gesetzlichen Voraussetzungen insbesondere Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch verlangen. Anfragen können an <a href="mailto:${FLYYYY_EMAIL}" style="color:#5ee7ff">${FLYYYY_EMAIL}</a> gerichtet werden.</p>
-      <h3>10. Änderungen</h3>
-      <p>Diese Datenschutzerklärung kann angepasst werden, wenn sich Funktionen, Dienste oder rechtliche Anforderungen ändern.</p>
-      <div class="legalNote"><strong>Wichtig:</strong> Diese Erklärung ist eine technische Vorlage auf Grundlage der aktuell erkennbaren FLYYYY-Funktionen. Vor dem kommerziellen Start müssen Firebase, Hosting, eventuelle Werbung, Analyse, Zahlungsdienste und deren konkrete Datenverarbeitung abschließend geprüft und eingetragen werden.</div>
-    `;
+    legalTitle.textContent=en?"Privacy Policy":"Datenschutzerklärung";
+    legalContent.innerHTML=en?`<p><strong>Version: 22 Aug 2026</strong></p><h3>1. Controller</h3><p>Noel Bond<br>${FLYYYY_LEGAL_ADDRESS}<br>Email: <a href="mailto:${FLYYYY_EMAIL}" style="color:#5ee7ff">${FLYYYY_EMAIL}</a></p><h3>2. Data FLYYYY may process</h3><ul><li>account data and technical login identifiers;</li><li>player name and game progress;</li><li>leaderboard data such as score, wins and season points;</li><li>chat messages submitted by the user;</li><li>settings and local progress stored in the browser;</li><li>technical data processed by the hosting or Firebase services actually used.</li></ul><h3>3. Firebase</h3><p>FLYYYY uses Google Firebase services for login/account functions and online game progress, leaderboard and season data. The actual Firebase configuration, storage locations, retention periods and enabled services must be checked against the live configuration before public launch.</p><h3>4. LocalStorage</h3><p>FLYYYY may use browser storage to save local settings and game progress.</p><h3>5. Chat</h3><p>When using the in-game chat, entered messages are transmitted to the online service used for chat. Do not enter sensitive personal data.</p><h3>6. Cookies, analytics and advertising</h3><p>The current version does not activate a dedicated real-money advertising or analytics platform. If non-essential cookies, tracking or personalised advertising are later added, this privacy notice must be adapted to the actual provider and consent solution.</p><h3>7. Legal bases</h3><p>The applicable legal basis depends on the specific processing. Where legally required, non-essential consent must be obtained before the corresponding processing takes place.</p><h3>8. Retention</h3><p>Retention depends on the respective feature and service. Local data can be removed by deleting browser data; online data depends on the server/Firebase configuration and legal obligations.</p><h3>9. Data subject rights</h3><p>Subject to legal requirements, data subjects may request access, rectification, erasure, restriction, portability and object to processing. Requests may be sent to <a href="mailto:${FLYYYY_EMAIL}" style="color:#5ee7ff">${FLYYYY_EMAIL}</a>.</p><h3>10. Changes</h3><p>This privacy notice may be updated when features, services or legal requirements change.</p><div class="legalNote"><strong>Important:</strong> This notice is a technical template based on the currently identifiable FLYYYY functions. Before commercial launch, Firebase, hosting, advertising, analytics, payment services and their actual data processing must be reviewed and completed.</div>`:`<p><strong>Stand: 22.08.2026</strong></p><h3>1. Verantwortlicher</h3><p>Noel Bond<br>${FLYYYY_LEGAL_ADDRESS}<br>E-Mail: <a href="mailto:${FLYYYY_EMAIL}" style="color:#5ee7ff">${FLYYYY_EMAIL}</a></p><h3>2. Welche Daten FLYYYY verarbeiten kann</h3><ul><li>Kontodaten bzw. technische Kennungen der Anmeldung;</li><li>Spielername und Spielstände;</li><li>Leaderboard-Daten wie Punktestand, Siege und Season-Punkte;</li><li>Chatnachrichten, die vom Nutzer selbst übertragen werden;</li><li>lokal im Browser gespeicherte Einstellungen und Spielfortschritte;</li><li>technische Daten, die durch tatsächlich eingesetztes Hosting oder Firebase verarbeitet werden.</li></ul><h3>3. Firebase</h3><p>Für Login-/Account-Funktionen sowie Online-Spielstände, Leaderboard- und Season-Daten verwendet FLYYYY Firebase-Dienste von Google. Die konkrete Firebase-Konfiguration, Speicherorte, Aufbewahrungszeiten und aktivierten Dienste müssen vor dem öffentlichen Start anhand der tatsächlichen Konfiguration geprüft werden.</p><h3>4. LocalStorage</h3><p>FLYYYY kann den Browser-Speicher verwenden, um lokale Einstellungen und Spielfortschritte zu speichern.</p><h3>5. Chat</h3><p>Bei Nutzung des In-Game-Chats werden die eingegebenen Nachrichten an den für den Chat verwendeten Online-Dienst übertragen. Bitte keine sensiblen persönlichen Daten eingeben.</p><h3>6. Cookies, Analyse und Werbung</h3><p>Die aktuelle Version aktiviert keine ausdrücklich eingerichtete Echtgeld-Werbe- oder Analyseplattform. Werden später nicht notwendige Cookies, Tracking oder personalisierte Werbung eingebunden, muss die Datenschutzerklärung an den konkreten Anbieter und die erforderliche Einwilligungslösung angepasst werden.</p><h3>7. Rechtsgrundlagen</h3><p>Die jeweils geltende Rechtsgrundlage hängt von der konkreten Verarbeitung ab. Nicht erforderliche Einwilligungen müssen vor der entsprechenden Verarbeitung eingeholt werden, soweit dies gesetzlich erforderlich ist.</p><h3>8. Speicherdauer</h3><p>Die Speicherdauer richtet sich nach der jeweiligen Funktion und dem eingesetzten Dienst. Lokale Daten können durch das Löschen der Browserdaten entfernt werden; Online-Daten richten sich nach der jeweiligen Server-/Firebase-Konfiguration und gesetzlichen Pflichten.</p><h3>9. Rechte betroffener Personen</h3><p>Betroffene Personen können nach den gesetzlichen Voraussetzungen insbesondere Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch verlangen. Anfragen können an <a href="mailto:${FLYYYY_EMAIL}" style="color:#5ee7ff">${FLYYYY_EMAIL}</a> gerichtet werden.</p><h3>10. Änderungen</h3><p>Diese Datenschutzerklärung kann angepasst werden, wenn sich Funktionen, Dienste oder rechtliche Anforderungen ändern.</p><div class="legalNote"><strong>Wichtig:</strong> Diese Erklärung ist eine technische Vorlage auf Grundlage der aktuell erkennbaren FLYYYY-Funktionen. Vor dem kommerziellen Start müssen Firebase, Hosting, eventuelle Werbung, Analyse, Zahlungsdienste und deren konkrete Datenverarbeitung abschließend geprüft und eingetragen werden.</div>`;
   }
   legalOverlay.classList.add("active");
   legalDialog.scrollTop=0;
@@ -3171,7 +3236,7 @@ window.addEventListener("keydown",e=>{if(e.key==="Escape")closeLegalPage()});
 
 <!-- ===== COPYRIGHT ===== -->
 <div id="copyrightFooter">
-  <span>© 2026 FLYYYY — Alle Rechte vorbehalten.</span>
+  <span id="copyrightText">© 2026 FLYYYY — Alle Rechte vorbehalten.</span>
 </div>
 </body>
 </html>
