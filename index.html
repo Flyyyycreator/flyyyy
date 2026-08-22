@@ -307,7 +307,7 @@ html,body{background:#070b18!important;color:#fff!important}
 <div id="app"><div id="appErrorNotice" style="display:none;position:fixed;left:50%;top:10px;transform:translateX(-50%);z-index:100000;padding:10px 14px;border-radius:12px;background:#2a1730;border:1px solid #ff6374;color:#fff;font-weight:900">⚠️ Ein Spielfehler ist aufgetreten. Bitte Seite neu laden.</div>
 <canvas id="gameCanvas"></canvas>
 
-<div id="authScreen" class="screen"><div class="menu"><div class="title">FLYYYY</div><div class="version">🔐 ACCOUNT</div><div class="subtitle">Mit E-Mail anmelden, neues Konto erstellen oder ohne Konto spielen.</div><div class="authBox"><h2 style="margin:0 0 12px">Anmelden / Registrieren</h2><input id="authEmail" class="authInput" type="email" autocomplete="email" placeholder="E-Mail"><input id="authPassword" class="authInput" type="password" autocomplete="current-password" placeholder="Passwort (mind. 6 Zeichen)" style="margin-top:10px"><div class="authGrid"><button id="loginBtn" class="btn blue">ANMELDEN</button><button id="registerBtn" class="btn green">REGISTRIEREN</button></div><button id="guestBtn" class="btn dark" style="width:100%;margin-top:10px">👤 OHNE KONTO SPIELEN</button><button id="adminLoginBtn" class="btn dark" style="width:100%;margin-top:10px">🛠️ ADMIN</button><div id="authStatus" class="authStatus">Gastmodus ist jederzeit möglich.</div><div class="tiny" style="margin-top:10px">🛡️ Adminrechte werden serverseitig mit Firebase geprüft.</div></div><button id="authBackBtn" class="btn dark" style="width:100%">← Zur Lobby</button></div></div>
+<div id="authScreen" class="screen"><div class="menu"><div class="title">FLYYYY</div><div class="version">🔐 ACCOUNT</div><div class="subtitle">Mit E-Mail anmelden, neues Konto erstellen oder ohne Konto spielen.</div><div class="authBox"><h2 style="margin:0 0 12px">Anmelden / Registrieren</h2><input id="authEmail" class="authInput" type="email" autocomplete="email" placeholder="E-Mail"><input id="authPassword" class="authInput" type="password" autocomplete="current-password" placeholder="Passwort (mind. 6 Zeichen)" style="margin-top:10px"><div class="authGrid"><button id="loginBtn" class="btn blue">ANMELDEN</button><button id="registerBtn" class="btn green">REGISTRIEREN</button></div><button id="guestBtn" class="btn dark" style="width:100%;margin-top:10px">👤 OHNE KONTO SPIELEN</button><button id="adminLoginBtn" class="btn dark" style="width:100%;margin-top:10px">🛠️ ADMIN</button><div id="authStatus" class="authStatus">Gastmodus ist jederzeit möglich.</div><div class="tiny" style="margin-top:10px">🛡️ Adminrechte werden serverseitig mit Firebase geprüft.</div></div><div class="legalMenuRow" style="margin-top:14px"><button class="legalLink" id="openImprintBtn" type="button">📄 Impressum</button><button class="legalLink" id="openPrivacyBtn" type="button">🔒 Datenschutz</button></div><button id="authBackBtn" class="btn dark" style="width:100%;margin-top:10px">← Zur Lobby</button></div></div>
 
 <div id="lobby" class="screen active"><div class="menu"><div class="title">FLYYYY</div><div class="version">🔥 UPDATE 3.0 · COMBO</div><div class="subtitle">Fly weiter. Sammle Coins. Schlage andere Spieler.</div><div class="accountLine"><div id="accountStatus" class="accountPill">👤 Gast</div><button id="accountBtn" class="btn dark">🔐 ANMELDEN</button><button id="logoutBtn" class="btn red" style="display:none">ABMELDEN</button><button id="myAccountBtn" class="btn dark">👤 MEIN KONTO</button></div><div class="credits"><div class="badge">🪙 <span id="lobbyCoins">0</span> Coins</div><div class="badge">🏆 Rekord: <span id="lobbyBest">0</span></div></div><div class="progressPanel">
 <div class="progressTop"><div class="progressLevel">⭐ Level <span id="playerLevel">1</span></div><div class="tiny"><span id="playerXp">0</span> / <span id="playerXpNext">100</span> XP</div></div>
@@ -315,7 +315,7 @@ html,body{background:#070b18!important;color:#fff!important}
 <div class="progressGrid">
 <div class="progressCard"><div class="tiny">🎁 Tagesbelohnung</div><div class="dailyStreak">🔥 Tag <span id="dailyStreak">1</span></div><button id="dailyRewardBtn" class="btn green dailyBtn" style="width:100%;margin-top:8px">🎁 ABHOLEN</button></div>
 <div class="progressCard"><div class="tiny">🎮 Spielmodus</div><select id="gameModeSelect" class="modeSelect" style="margin-top:8px"><option value="classic">Classic</option><option value="speedrun">⚡ Speedrun</option><option value="hardcore">💀 Hardcore</option></select></div>
-</div></div><div class="seasonPanel"><div class="seasonTop"><div class="seasonTitle">🌐 SEASON <span id="seasonNumberLobby">1</span></div><div class="seasonTimer" id="seasonTimerLobby">⏱️ Lädt...</div></div><div class="seasonSub">7-Tage-Season</div><div class="tiny">🥇 1.000 Coins · 🥈 500 Coins · 🥉 300 Coins · Platz 4–10: 100 · Platz 11–25: 50</div></div><div class="button-grid"><button id="startBtn" class="btn">START</button><button id="leaderboardBtn" class="btn blue">🏆 LEADERBOARD</button><button id="shopBtn" class="btn blue">🛒 SHOP <span id="shopLobbyNewBadge" class="newBadge">NEU</span></button><button id="inventoryBtn" class="btn blue">🎒 INVENTAR</button><button id="missionsBtn" class="btn blue">🎯 MISSIONEN</button><button id="settingsBtn" class="btn dark">⚙️ EINSTELLUNGEN</button><button id="musicToggleBtn" class="btn dark">🎵 Musik: AN</button><div class="legalMenuRow"><button class="legalLink" id="openImprintBtn" type="button">📄 Impressum</button><button class="legalLink" id="openPrivacyBtn" type="button">🔒 Datenschutz</button></div></div><div class="notice">✅ Season-Punkte sind getrennt vom Allzeit-Highscore. Nur die aktuelle Season entscheidet über die Season-Belohnung.</div></div></div>
+</div></div><div class="seasonPanel"><div class="seasonTop"><div class="seasonTitle">🌐 SEASON <span id="seasonNumberLobby">1</span></div><div class="seasonTimer" id="seasonTimerLobby">⏱️ Lädt...</div></div><div class="seasonSub">7-Tage-Season</div><div class="tiny">🥇 1.000 Coins · 🥈 500 Coins · 🥉 300 Coins · Platz 4–10: 100 · Platz 11–25: 50</div></div><div class="button-grid"><button id="startBtn" class="btn">START</button><button id="leaderboardBtn" class="btn blue">🏆 LEADERBOARD</button><button id="shopBtn" class="btn blue">🛒 SHOP <span id="shopLobbyNewBadge" class="newBadge">NEU</span></button><button id="inventoryBtn" class="btn blue">🎒 INVENTAR</button><button id="missionsBtn" class="btn blue">🎯 MISSIONEN</button><button id="settingsBtn" class="btn dark">⚙️ EINSTELLUNGEN</button><button id="musicToggleBtn" class="btn dark">🎵 Musik: AN</button></div><div class="notice">✅ Season-Punkte sind getrennt vom Allzeit-Highscore. Nur die aktuelle Season entscheidet über die Season-Belohnung.</div></div></div>
 
 <div id="leaderboard" class="screen"><div class="menu"><div class="topbar"><div><h2>Leaderboard</h2><div class="tiny">Season und Allzeit werden getrennt angezeigt.</div></div><button id="leaderboardBack" class="btn dark">← Zurück</button></div><div class="seasonTabs"><button id="seasonTabBtn" class="seasonTab active">🌐 Season</button><button id="allTimeTabBtn" class="seasonTab">⭐ Allzeit</button></div><div class="seasonPanel"><div class="seasonTop"><div class="seasonTitle">SEASON <span id="seasonNumberBoard">1</span></div><div class="seasonTimer" id="seasonTimerBoard">⏱️ Lädt...</div></div><div class="seasonSub" id="seasonBoardSub">🌐 Nur Season-Punkte</div></div><div id="leaderboardStatus" class="leaderStatus">Lade Leaderboard...</div><div class="nameBox"><input id="playerName" class="nameInput" maxlength="20" placeholder="Dein Spielername"><button id="saveNameBtn" class="btn">NAME SPEICHERN</button></div><div id="leaderboardList" class="leaderboard"></div></div></div>
 
@@ -3004,11 +3004,9 @@ if(dailyRewardBtn)dailyRewardBtn.onclick=claimDailyReward;
 })();
 
 /* ===== FLYYYY LEGAL PAGES =====
-   WICHTIG: Die öffentliche Anschrift ist absichtlich ein Platzhalter.
-   Vor dem endgültigen Publish muss der Betreiber / Erziehungsberechtigte
-   eine rechtlich geeignete ladungsfähige Anschrift eintragen.
+   Impressum und Datenschutz sind im Bereich ACCOUNT erreichbar.
 */
-const FLYYYY_LEGAL_ADDRESS="[ANSCHRIFT DES VERANTWORTLICHEN EINTRAGEN]";
+const FLYYYY_LEGAL_ADDRESS="Goerdeler Straße 47, 36037 Fulda, Deutschland";
 const FLYYYY_EMAIL="noelbond75@gmail.com";
 const legalOverlay=document.getElementById("legalOverlay");
 const legalTitle=document.getElementById("legalTitle");
@@ -3020,7 +3018,7 @@ function openLegalPage(type){
   if(type==="imprint"){
     legalTitle.textContent="Impressum";
     legalContent.innerHTML=`
-      <div class="legalNote"><strong>Bitte vor der Veröffentlichung ausfüllen:</strong> Die Anschrift ist aktuell bewusst als Platzhalter eingetragen, damit deine private Wohnadresse nicht versehentlich öffentlich veröffentlicht wird.</div>
+      <div class="legalNote"><strong>Hinweis:</strong> Die Angaben müssen vor dem öffentlichen Betrieb mit der tatsächlich verantwortlichen Person und den tatsächlich eingesetzten Diensten abgeglichen werden.</div>
       <h3>Angaben gemäß § 5 DDG</h3>
       <p><strong>Verantwortlicher / Anbieter:</strong><br>
       Noel Bond<br>
@@ -3030,7 +3028,7 @@ function openLegalPage(type){
       <p><strong>Website:</strong> FLYYYY / flyyyy.com</p>
       <h3>Verantwortlich für den Inhalt</h3>
       <p>Verantwortlich für die Inhalte dieses Angebots ist die oben genannte Person, soweit gesetzlich nichts anderes bestimmt ist.</p>
-      <div class="legalNote">Dieses Impressum ist eine technische Vorlage für FLYYYY und sollte vor dem öffentlichen Betrieb von einem Erziehungsberechtigten bzw. rechtlich fachkundig geprüft und mit der tatsächlich zuständigen Person sowie einer geeigneten ladungsfähigen Anschrift vervollständigt werden.</div>
+      <div class="legalNote">Dieses Impressum muss vor dem öffentlichen Betrieb mit der tatsächlich verantwortlichen Person und den tatsächlich zutreffenden Angaben abgeglichen werden.</div>
     `;
   }else{
     legalTitle.textContent="Datenschutzerklärung";
@@ -3079,7 +3077,7 @@ function openLegalPage(type){
       <h3>11. Änderungen</h3>
       <p>Diese Datenschutzerklärung kann angepasst werden, wenn sich Funktionen, eingesetzte Dienste oder rechtliche Anforderungen ändern.</p>
 
-      <div class="legalNote"><strong>Hinweis:</strong> Diese Datenschutzerklärung ist eine technische Vorlage auf Grundlage der aktuell im FLYYYY-Code erkennbaren Funktionen. Vor dem endgültigen öffentlichen Betrieb sollte dein Vater prüfen, welche Firebase-, Werbe-, Analytics- und Hosting-Dienste tatsächlich aktiv sind und die Angaben entsprechend vervollständigen.</div>
+      <div class="legalNote"><strong>Hinweis:</strong> Diese Datenschutzerklärung basiert auf den im FLYYYY-Code erkennbaren Funktionen. Vor dem öffentlichen Betrieb müssen die tatsächlich eingesetzten Firebase-, Hosting-, Werbe- und Analyse-Dienste sowie deren konkrete Datenverarbeitung geprüft und die Angaben entsprechend angepasst werden.</div>
     `;
   }
   legalOverlay.classList.add("active");
