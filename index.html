@@ -307,7 +307,7 @@ html,body{background:#070b18!important;color:#fff!important}
 <div id="app"><div id="appErrorNotice" style="display:none;position:fixed;left:50%;top:10px;transform:translateX(-50%);z-index:100000;padding:10px 14px;border-radius:12px;background:#2a1730;border:1px solid #ff6374;color:#fff;font-weight:900">⚠️ Ein Spielfehler ist aufgetreten. Bitte Seite neu laden.</div>
 <canvas id="gameCanvas"></canvas>
 
-<div id="authScreen" class="screen"><div class="menu"><div class="title">FLYYYY</div><div class="version">🔐 ACCOUNT</div><div class="subtitle">Mit E-Mail anmelden, neues Konto erstellen oder ohne Konto spielen.</div><div class="authBox"><h2 style="margin:0 0 12px">Anmelden / Registrieren</h2><input id="authEmail" class="authInput" type="email" autocomplete="email" placeholder="E-Mail"><input id="authPassword" class="authInput" type="password" autocomplete="current-password" placeholder="Passwort (mind. 6 Zeichen)" style="margin-top:10px"><div class="authGrid"><button id="loginBtn" class="btn blue">ANMELDEN</button><button id="registerBtn" class="btn green">REGISTRIEREN</button></div><button id="guestBtn" class="btn dark" style="width:100%;margin-top:10px">👤 OHNE KONTO SPIELEN</button><button id="adminLoginBtn" class="btn dark" style="width:100%;margin-top:10px">🛠️ ADMIN</button><div id="authStatus" class="authStatus">Gastmodus ist jederzeit möglich.</div><div class="tiny" style="margin-top:10px">🛡️ Adminrechte werden serverseitig mit Firebase geprüft.</div></div><div class="legalMenuRow" style="margin-top:14px"><button class="legalLink" id="openImprintBtn" type="button">📄 Impressum</button><button class="legalLink" id="openPrivacyBtn" type="button">🔒 Datenschutz</button></div><button id="authBackBtn" class="btn dark" style="width:100%;margin-top:10px">← Zur Lobby</button></div></div>
+<div id="authScreen" class="screen"><div class="menu"><div class="title">FLYYYY</div><div class="version">🔐 ACCOUNT</div><div class="subtitle">Mit E-Mail anmelden, neues Konto erstellen oder ohne Konto spielen.</div><div class="authBox"><h2 style="margin:0 0 12px">Anmelden / Registrieren</h2><input id="authEmail" class="authInput" type="email" autocomplete="email" placeholder="E-Mail"><input id="authPassword" class="authInput" type="password" autocomplete="current-password" placeholder="Passwort (mind. 6 Zeichen)" style="margin-top:10px"><div class="authGrid"><button id="loginBtn" class="btn blue">ANMELDEN</button><button id="registerBtn" class="btn green">REGISTRIEREN</button></div><button id="guestBtn" class="btn dark" style="width:100%;margin-top:10px">👤 OHNE KONTO SPIELEN</button><button id="adminLoginBtn" class="btn dark" style="width:100%;margin-top:10px">🛠️ ADMIN</button><div id="authStatus" class="authStatus">Gastmodus ist jederzeit möglich.</div><div class="tiny" style="margin-top:10px">🛡️ Adminrechte werden serverseitig mit Firebase geprüft.</div></div><div class="legalMenuRow" style="margin-top:14px"><button class="legalLink" id="openImprintBtn" type="button">📄 Impressum</button><button class="legalLink" id="openPrivacyBtn" type="button">🔒 Datenschutz</button><button class="legalLink" id="openTermsBtn" type="button">📜 Nutzungsbedingungen</button><button class="legalLink" id="openPurchaseBtn" type="button">🛒 Kaufhinweise</button></div><button id="authBackBtn" class="btn dark" style="width:100%;margin-top:10px">← Zur Lobby</button></div></div>
 
 <div id="lobby" class="screen active"><div class="menu"><div class="title">FLYYYY</div><div class="version">🔥 UPDATE 3.0 · COMBO</div><div class="subtitle">Fly weiter. Sammle Coins. Schlage andere Spieler.</div><div class="accountLine"><div id="accountStatus" class="accountPill">👤 Gast</div><button id="accountBtn" class="btn dark">🔐 ANMELDEN</button><button id="logoutBtn" class="btn red" style="display:none">ABMELDEN</button><button id="myAccountBtn" class="btn dark">👤 MEIN KONTO</button></div><div class="credits"><div class="badge">🪙 <span id="lobbyCoins">0</span> Coins</div><div class="badge">🏆 Rekord: <span id="lobbyBest">0</span></div></div><div class="progressPanel">
 <div class="progressTop"><div class="progressLevel">⭐ Level <span id="playerLevel">1</span></div><div class="tiny"><span id="playerXp">0</span> / <span id="playerXpNext">100</span> XP</div></div>
@@ -315,7 +315,7 @@ html,body{background:#070b18!important;color:#fff!important}
 <div class="progressGrid">
 <div class="progressCard"><div class="tiny">🎁 Tagesbelohnung</div><div class="dailyStreak">🔥 Tag <span id="dailyStreak">1</span></div><button id="dailyRewardBtn" class="btn green dailyBtn" style="width:100%;margin-top:8px">🎁 ABHOLEN</button></div>
 <div class="progressCard"><div class="tiny">🎮 Spielmodus</div><select id="gameModeSelect" class="modeSelect" style="margin-top:8px"><option value="classic">Classic</option><option value="speedrun">⚡ Speedrun</option><option value="hardcore">💀 Hardcore</option></select></div>
-</div></div><div class="seasonPanel"><div class="seasonTop"><div class="seasonTitle">🌐 SEASON <span id="seasonNumberLobby">1</span></div><div class="seasonTimer" id="seasonTimerLobby">⏱️ Lädt...</div></div><div class="seasonSub">7-Tage-Season</div><div class="tiny">🥇 1.000 Coins · 🥈 500 Coins · 🥉 300 Coins · Platz 4–10: 100 · Platz 11–25: 50</div></div><div class="button-grid"><button id="startBtn" class="btn">START</button><button id="leaderboardBtn" class="btn blue">🏆 LEADERBOARD</button><button id="shopBtn" class="btn blue">🛒 SHOP <span id="shopLobbyNewBadge" class="newBadge">NEU</span></button><button id="inventoryBtn" class="btn blue">🎒 INVENTAR</button><button id="missionsBtn" class="btn blue">🎯 MISSIONEN</button><button id="settingsBtn" class="btn dark">⚙️ EINSTELLUNGEN</button><button id="musicToggleBtn" class="btn dark">🎵 Musik: AN</button></div><div class="notice">✅ Season-Punkte sind getrennt vom Allzeit-Highscore. Nur die aktuelle Season entscheidet über die Season-Belohnung.</div></div></div>
+</div></div><div class="seasonPanel"><div class="seasonTop"><div class="seasonTitle">🌐 SEASON <span id="seasonNumberLobby">1</span></div><div class="seasonTimer" id="seasonTimerLobby">⏱️ Lädt...</div></div><div class="seasonSub">7-Tage-Season</div><div class="tiny">🥇 1.000 Coins · 🥈 500 Coins · 🥉 300 Coins · Platz 4–10: 100 · Platz 11–25: 50</div></div><div class="button-grid"><button id="startBtn" class="btn">START</button><button id="onlineStartBtn" class="btn blue">🌐 ONLINE-SEASON SPIELEN</button><button id="leaderboardBtn" class="btn blue">🏆 LEADERBOARD</button><button id="shopBtn" class="btn blue">🛒 SHOP <span id="shopLobbyNewBadge" class="newBadge">NEU</span></button><button id="inventoryBtn" class="btn blue">🎒 INVENTAR</button><button id="missionsBtn" class="btn blue">🎯 MISSIONEN</button><button id="settingsBtn" class="btn dark">⚙️ EINSTELLUNGEN</button><button id="musicToggleBtn" class="btn dark">🎵 Musik: AN</button></div><div class="notice">✅ Season-Punkte sind getrennt vom Allzeit-Highscore. Nur die aktuelle Season entscheidet über die Season-Belohnung.</div><div class="tiny" style="margin-top:8px;text-align:center;opacity:.82">🌐 Online-Modus: Season-Score wird über Firebase gespeichert. Anmeldung erforderlich.</div></div></div>
 
 <div id="leaderboard" class="screen"><div class="menu"><div class="topbar"><div><h2>Leaderboard</h2><div class="tiny">Season und Allzeit werden getrennt angezeigt.</div></div><button id="leaderboardBack" class="btn dark">← Zurück</button></div><div class="seasonTabs"><button id="seasonTabBtn" class="seasonTab active">🌐 Season</button><button id="allTimeTabBtn" class="seasonTab">⭐ Allzeit</button></div><div class="seasonPanel"><div class="seasonTop"><div class="seasonTitle">SEASON <span id="seasonNumberBoard">1</span></div><div class="seasonTimer" id="seasonTimerBoard">⏱️ Lädt...</div></div><div class="seasonSub" id="seasonBoardSub">🌐 Nur Season-Punkte</div></div><div id="leaderboardStatus" class="leaderStatus">Lade Leaderboard...</div><div class="nameBox"><input id="playerName" class="nameInput" maxlength="20" placeholder="Dein Spielername"><button id="saveNameBtn" class="btn">NAME SPEICHERN</button></div><div id="leaderboardList" class="leaderboard"></div></div></div>
 
@@ -380,7 +380,7 @@ const app=$("app"),canvas=$("gameCanvas"),ctx=canvas.getContext("2d");
 const authScreen=$("authScreen"),authEmail=$("authEmail"),authPassword=$("authPassword"),loginBtn=$("loginBtn"),registerBtn=$("registerBtn"),guestBtn=$("guestBtn"),authStatus=$("authStatus"),authBackBtn=$("authBackBtn"),adminLoginBtn=$("adminLoginBtn");
 const adminOverlay=$("adminOverlay"),adminCodeInput=$("adminCodeInput"),adminUnlockBtn=$("adminUnlockBtn"),adminCloseBtn=$("adminCloseBtn"),adminPanel=$("adminPanel"),adminStatusText=$("adminStatusText"),adminMyAccountBtn=$("adminMyAccountBtn"),adminCoinsBtn=$("adminCoinsBtn"),adminClosePanelBtn=$("adminClosePanelBtn"),adminInfo=$("adminInfo");
 const lobby=$("lobby"),accountStatus=$("accountStatus"),accountBtn=$("accountBtn"),logoutBtn=$("logoutBtn"),myAccountBtn=$("myAccountBtn"),lobbyCoins=$("lobbyCoins"),lobbyBest=$("lobbyBest");
-const startBtn=$("startBtn"),leaderboardBtn=$("leaderboardBtn"),shopBtn=$("shopBtn"),inventoryBtn=$("inventoryBtn"),missionsBtn=$("missionsBtn"),settingsBtn=$("settingsBtn"),musicToggleBtn=$("musicToggleBtn");
+const startBtn=$("startBtn"),onlineStartBtn=$("onlineStartBtn"),leaderboardBtn=$("leaderboardBtn"),shopBtn=$("shopBtn"),inventoryBtn=$("inventoryBtn"),missionsBtn=$("missionsBtn"),settingsBtn=$("settingsBtn"),musicToggleBtn=$("musicToggleBtn");
 const settingsScreen=$("settings"),settingsBack=$("settingsBack"),langDeBtn=$("langDeBtn"),langEnBtn=$("langEnBtn"),musicVolumeRange=$("musicVolumeRange"),sfxVolumeRange=$("sfxVolumeRange"),musicVolumeValue=$("musicVolumeValue"),sfxVolumeValue=$("sfxVolumeValue");
 const leaderboard=$("leaderboard"),leaderboardBack=$("leaderboardBack"),leaderboardStatus=$("leaderboardStatus"),playerName=$("playerName"),saveNameBtn=$("saveNameBtn"),leaderboardList=$("leaderboardList");
 const seasonNumberLobby=$("seasonNumberLobby"),seasonTimerLobby=$("seasonTimerLobby"),seasonNumberBoard=$("seasonNumberBoard"),seasonTimerBoard=$("seasonTimerBoard"),seasonBoardSub=$("seasonBoardSub"),seasonTabBtn=$("seasonTabBtn"),allTimeTabBtn=$("allTimeTabBtn");
@@ -1992,7 +1992,7 @@ function addXP(amount){const n=Math.max(0,Math.floor(Number(amount)||0));if(!n)r
 function claimDailyReward(){const today=new Date().toISOString().slice(0,10);if(state.dailyRewardDate===today){showMessage("🎁 Heute schon abgeholt!");return}const yesterday=new Date(Date.now()-86400000).toISOString().slice(0,10);state.dailyStreak=state.dailyRewardDate===yesterday?Math.min(7,Math.max(1,state.dailyStreak||1)+1):1;const rewards=[100,150,200,300,400,600,1000];const reward=rewards[state.dailyStreak-1]||100;state.coins+=reward;state.dailyRewardDate=today;state.dailyRewardCycle=(Number(state.dailyRewardCycle||1)%7)+1;addXP(25+state.dailyStreak*5);saveState();updateLobby();showMessage(`🎁 +${reward} Coins · 🔥 Tag ${state.dailyStreak}`);}
 function updateLobby(){lobbyCoins.textContent=state.coins;lobbyBest.textContent=state.best;musicToggleBtn.textContent=state.musicEnabled?"🎵 Musik: AN":"🔇 Musik: AUS";updateShopLobbyNewBadge();renderProgression()}
 
-startBtn.onclick=()=>startGame(false);
+startBtn.onclick=()=>startGame(false);onlineStartBtn.onclick=()=>startGame(true);
 leaderboardBtn.onclick=async()=>{loadPlayerName();showScreen("leaderboard");await ensureSeason();await startSeasonLeaderboardListener();switchLeaderboardMode("season")};
 leaderboardBack.onclick=()=>showScreen("lobby");saveNameBtn.onclick=savePlayerName;settingsBtn.onclick=()=>{showScreen("settings");applyLanguage()};settingsBack.onclick=()=>showScreen("lobby");langDeBtn.onclick=()=>setLanguage("de");langEnBtn.onclick=()=>setLanguage("en");musicVolumeRange.oninput=e=>setMusicVolume(e.target.value);sfxVolumeRange.oninput=e=>setSfxVolume(e.target.value);
 seasonTabBtn.onclick=async()=>{await startSeasonLeaderboardListener();switchLeaderboardMode("season")};allTimeTabBtn.onclick=()=>switchLeaderboardMode("alltime");
@@ -3085,66 +3085,74 @@ function openLegalPage(type){
   if(type==="imprint"){
     legalTitle.textContent="Impressum";
     legalContent.innerHTML=`
-      <div class="legalNote"><strong>Hinweis:</strong> Die Angaben müssen vor dem öffentlichen Betrieb mit der tatsächlich verantwortlichen Person und den tatsächlich eingesetzten Diensten abgeglichen werden.</div>
       <h3>Angaben gemäß § 5 DDG</h3>
       <p><strong>Verantwortlicher / Anbieter:</strong><br>
       Noel Bond<br>
       ${FLYYYY_LEGAL_ADDRESS}<br>
       Deutschland</p>
       <p><strong>E-Mail:</strong> <a href="mailto:${FLYYYY_EMAIL}" style="color:#5ee7ff">${FLYYYY_EMAIL}</a></p>
-      <p><strong>Website:</strong> FLYYYY / flyyyy.com</p>
       <h3>Verantwortlich für den Inhalt</h3>
-      <p>Verantwortlich für die Inhalte dieses Angebots ist die oben genannte Person, soweit gesetzlich nichts anderes bestimmt ist.</p>
-      <div class="legalNote">Dieses Impressum muss vor dem öffentlichen Betrieb mit der tatsächlich verantwortlichen Person und den tatsächlich zutreffenden Angaben abgeglichen werden.</div>
+      <p>Verantwortlich für die Inhalte dieses digitalen Angebots ist die oben genannte Person, soweit gesetzlich nichts anderes bestimmt ist.</p>
+      <div class="legalNote"><strong>Wichtig vor dem kommerziellen Start:</strong> Die verantwortliche Person, Anschrift und sonstigen Angaben müssen mit der tatsächlichen Betreiberstruktur übereinstimmen. Bei einem Betrieb durch eine andere Person, ein Unternehmen oder einen Erziehungsberechtigten muss das Impressum entsprechend angepasst werden.</div>
+    `;
+  }else if(type==="terms"){
+    legalTitle.textContent="Nutzungsbedingungen";
+    legalContent.innerHTML=`
+      <p><strong>Stand: 22.08.2026</strong></p>
+      <h3>1. Geltungsbereich</h3>
+      <p>Diese Nutzungsbedingungen gelten für die Nutzung des Spiels FLYYYY und der darin angebotenen Funktionen.</p>
+      <h3>2. Nutzung</h3>
+      <p>Spieler dürfen FLYYYY nur im Rahmen der geltenden Gesetze und dieser Bedingungen nutzen. Missbrauch, Manipulation, automatisierte Angriffe, das Umgehen technischer Schutzmaßnahmen und die absichtliche Störung anderer Spieler sind nicht erlaubt.</p>
+      <h3>3. Konten und Chat</h3>
+      <p>Accountdaten müssen wahrheitsgemäß und geschützt behandelt werden. Im Chat dürfen keine rechtswidrigen, beleidigenden, diskriminierenden oder sonst unzulässigen Inhalte verbreitet werden. FLYYYY kann Inhalte im Rahmen der technischen und gesetzlichen Möglichkeiten moderieren und Accounts bzw. Chatrechte bei Verstößen zeitweise oder dauerhaft sperren.</p>
+      <h3>4. Verfügbarkeit</h3>
+      <p>Ein Anspruch auf eine ununterbrochene Verfügbarkeit des Spiels, von Online-Funktionen oder des Leaderboards besteht nicht.</p>
+      <h3>5. Änderungen</h3>
+      <p>Funktionen, Inhalte und diese Bedingungen können geändert werden, soweit dies rechtlich zulässig ist. Wesentliche Änderungen werden angemessen kommuniziert.</p>
+      <div class="legalNote"><strong>Hinweis:</strong> Diese Nutzungsbedingungen sind eine technische Vorlage und sollten vor dem kommerziellen Start an die konkrete Betreiber-, Alters- und Angebotsstruktur angepasst werden.</div>
+    `;
+  }else if(type==="purchase"){
+    legalTitle.textContent="Kaufhinweise";
+    legalContent.innerHTML=`
+      <div class="legalNote"><strong>Aktueller Status:</strong> In dieser FLYYYY-Version sind keine Echtgeldkäufe aktiviert. Coins und andere virtuelle Gegenstände werden aktuell nur innerhalb des Spiels verwendet.</div>
+      <h3>Keine Echtgeldzahlungen</h3>
+      <p>Es werden derzeit keine kostenpflichtigen Käufe, Abonnements oder Zahlungsabwicklungen über FLYYYY angeboten.</p>
+      <h3>Spätere Monetarisierung</h3>
+      <p>Sollten später Echtgeldkäufe, Premium-Währung, Abonnements oder Werbung aktiviert werden, muss FLYYYY vor dem Start um die dafür erforderlichen Preis-, Vertrags-, Verbraucher- und Datenschutzinformationen sowie eine geeignete Zahlungsabwicklung erweitert und rechtlich geprüft werden.</p>
+      <p>Insbesondere müssen Preise und Bedingungen klar erkennbar sein und kommerzielle Kommunikation als solche erkennbar sein.</p>
     `;
   }else{
     legalTitle.textContent="Datenschutzerklärung";
     legalContent.innerHTML=`
       <p><strong>Stand: 22.08.2026</strong></p>
       <h3>1. Verantwortlicher</h3>
-      <p>Noel Bond<br>${FLYYYY_LEGAL_ADDRESS}<br>
-      E-Mail: <a href="mailto:${FLYYYY_EMAIL}" style="color:#5ee7ff">${FLYYYY_EMAIL}</a></p>
-
-      <h3>2. Welche Daten FLYYYY verarbeitet</h3>
-      <p>FLYYYY kann je nach verwendeten Funktionen insbesondere folgende Daten verarbeiten:</p>
+      <p>Noel Bond<br>${FLYYYY_LEGAL_ADDRESS}<br>E-Mail: <a href="mailto:${FLYYYY_EMAIL}" style="color:#5ee7ff">${FLYYYY_EMAIL}</a></p>
+      <h3>2. Welche Daten FLYYYY verarbeiten kann</h3>
       <ul>
-        <li>Kontodaten bzw. technische Kennungen, die bei der Anmeldung entstehen;</li>
+        <li>Kontodaten bzw. technische Kennungen der Anmeldung;</li>
         <li>Spielername und Spielstände;</li>
         <li>Leaderboard-Daten wie Punktestand, Siege und Season-Punkte;</li>
-        <li>Nachrichten, die im In-Game-Chat selbst eingegeben und übertragen werden;</li>
-        <li>lokal im Browser gespeicherte Spieleinstellungen und Spielstände, soweit LocalStorage verwendet wird;</li>
-        <li>technische Daten, die durch die für das Hosting, Firebase, Werbung oder Analyse eingesetzten Dienste verarbeitet werden können.</li>
+        <li>Chatnachrichten, die vom Nutzer selbst übertragen werden;</li>
+        <li>lokal im Browser gespeicherte Einstellungen und Spielfortschritte;</li>
+        <li>technische Daten, die durch tatsächlich eingesetztes Hosting oder Firebase verarbeitet werden.</li>
       </ul>
-
       <h3>3. Firebase</h3>
-      <p>Für Login-/Account-Funktionen sowie Online-Spielstände, Leaderboard- und Season-Daten verwendet FLYYYY Firebase-Dienste von Google. Je nach Konfiguration können dabei insbesondere Authentifizierungsdaten, eine technische Nutzerkennung und von dir erzeugte Spieldaten verarbeitet werden.</p>
-      <p>Die konkrete Firebase-Konfiguration und die dort geltenden Datenschutzinformationen sollten vor dem endgültigen Publish geprüft werden.</p>
-
+      <p>Für Login-/Account-Funktionen sowie Online-Spielstände, Leaderboard- und Season-Daten verwendet FLYYYY Firebase-Dienste von Google. Die konkrete Firebase-Konfiguration, Speicherorte, Aufbewahrungszeiten und aktivierten Dienste müssen vor dem öffentlichen Start anhand der tatsächlichen Konfiguration geprüft werden.</p>
       <h3>4. LocalStorage</h3>
-      <p>FLYYYY kann den Browser-Speicher (LocalStorage) verwenden, um beispielsweise Spielername, Einstellungen, Besitz von Gegenständen und lokalen Spielfortschritt auf deinem Gerät zu speichern. Diese Daten werden grundsätzlich nicht dadurch zu einem Firebase-Konto, solange sie nicht ausdrücklich an einen Online-Dienst übertragen werden.</p>
-
+      <p>FLYYYY kann den Browser-Speicher verwenden, um lokale Einstellungen und Spielfortschritte zu speichern.</p>
       <h3>5. Chat</h3>
-      <p>Wenn du den In-Game-Chat verwendest, wird die von dir eingegebene Nachricht zur Bereitstellung der Chat-Funktion an den dafür verwendeten Online-Dienst übertragen. Schreibe deshalb keine privaten oder sensiblen Informationen in den Chat.</p>
-
-      <h3>6. Werbung</h3>
-      <p>Falls in der veröffentlichten Version Werbeanbieter eingebunden sind, können diese für die Auslieferung von Werbung eigene technische Daten, Geräteinformationen oder Kennungen verarbeiten. Welche Daten tatsächlich verarbeitet werden, hängt vom konkret eingebundenen Werbedienst ab. Die konkrete Werbeintegration muss vor dem endgültigen Publish ergänzt und rechtlich geprüft werden.</p>
-
-      <h3>7. Analyse / Tracking</h3>
-      <p>Falls Analyse- oder Tracking-Dienste aktiviert sind, können dabei Nutzungs- und technische Daten zur Reichweitenmessung oder Verbesserung des Spiels verarbeitet werden. Die konkrete Rechtsgrundlage, Einwilligungslösung und Anbieterangaben müssen an den tatsächlich eingesetzten Dienst angepasst werden.</p>
-
-      <h3>8. Rechtsgrundlagen und Einwilligungen</h3>
-      <p>Welche Rechtsgrundlage jeweils gilt, hängt von der konkreten Funktion und Konfiguration ab. Soweit für nicht notwendige Cookies, Tracking oder personalisierte Werbung eine Einwilligung erforderlich ist, sollte diese vor der entsprechenden Verarbeitung über eine geeignete Einwilligungslösung eingeholt werden.</p>
-
-      <h3>9. Speicherdauer</h3>
-      <p>Die Speicherdauer richtet sich nach der jeweiligen Funktion und den Einstellungen der eingesetzten Dienste. Lokale Spieldaten können durch das Löschen der Browserdaten entfernt werden. Online gespeicherte Daten werden nach den Regeln des jeweiligen Systems gelöscht, soweit keine gesetzlichen Aufbewahrungspflichten entgegenstehen.</p>
-
-      <h3>10. Rechte betroffener Personen</h3>
-      <p>Betroffene Personen können nach den gesetzlichen Voraussetzungen insbesondere Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung und Datenübertragbarkeit verlangen sowie einer Verarbeitung widersprechen. Anfragen können an <a href="mailto:${FLYYYY_EMAIL}" style="color:#5ee7ff">${FLYYYY_EMAIL}</a> gerichtet werden.</p>
-
-      <h3>11. Änderungen</h3>
-      <p>Diese Datenschutzerklärung kann angepasst werden, wenn sich Funktionen, eingesetzte Dienste oder rechtliche Anforderungen ändern.</p>
-
-      <div class="legalNote"><strong>Hinweis:</strong> Diese Datenschutzerklärung basiert auf den im FLYYYY-Code erkennbaren Funktionen. Vor dem öffentlichen Betrieb müssen die tatsächlich eingesetzten Firebase-, Hosting-, Werbe- und Analyse-Dienste sowie deren konkrete Datenverarbeitung geprüft und die Angaben entsprechend angepasst werden.</div>
+      <p>Bei Nutzung des In-Game-Chats werden die eingegebenen Nachrichten an den für den Chat verwendeten Online-Dienst übertragen. Bitte keine sensiblen persönlichen Daten eingeben.</p>
+      <h3>6. Cookies, Analyse und Werbung</h3>
+      <p>Die aktuelle Version aktiviert keine ausdrücklich eingerichtete Echtgeld-Werbe- oder Analyseplattform. Werden später nicht notwendige Cookies, Tracking oder personalisierte Werbung eingebunden, muss die Datenschutzerklärung an den konkreten Anbieter und die erforderliche Einwilligungslösung angepasst werden.</p>
+      <h3>7. Rechtsgrundlagen</h3>
+      <p>Die jeweils geltende Rechtsgrundlage hängt von der konkreten Verarbeitung ab. Nicht erforderliche Einwilligungen müssen vor der entsprechenden Verarbeitung eingeholt werden, soweit dies gesetzlich erforderlich ist.</p>
+      <h3>8. Speicherdauer</h3>
+      <p>Die Speicherdauer richtet sich nach der jeweiligen Funktion und dem eingesetzten Dienst. Lokale Daten können durch das Löschen der Browserdaten entfernt werden; Online-Daten richten sich nach der jeweiligen Server-/Firebase-Konfiguration und gesetzlichen Pflichten.</p>
+      <h3>9. Rechte betroffener Personen</h3>
+      <p>Betroffene Personen können nach den gesetzlichen Voraussetzungen insbesondere Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch verlangen. Anfragen können an <a href="mailto:${FLYYYY_EMAIL}" style="color:#5ee7ff">${FLYYYY_EMAIL}</a> gerichtet werden.</p>
+      <h3>10. Änderungen</h3>
+      <p>Diese Datenschutzerklärung kann angepasst werden, wenn sich Funktionen, Dienste oder rechtliche Anforderungen ändern.</p>
+      <div class="legalNote"><strong>Wichtig:</strong> Diese Erklärung ist eine technische Vorlage auf Grundlage der aktuell erkennbaren FLYYYY-Funktionen. Vor dem kommerziellen Start müssen Firebase, Hosting, eventuelle Werbung, Analyse, Zahlungsdienste und deren konkrete Datenverarbeitung abschließend geprüft und eingetragen werden.</div>
     `;
   }
   legalOverlay.classList.add("active");
@@ -3153,6 +3161,8 @@ function openLegalPage(type){
 function closeLegalPage(){legalOverlay?.classList.remove("active")}
 document.getElementById("openImprintBtn")?.addEventListener("click",()=>openLegalPage("imprint"));
 document.getElementById("openPrivacyBtn")?.addEventListener("click",()=>openLegalPage("privacy"));
+document.getElementById("openTermsBtn")?.addEventListener("click",()=>openLegalPage("terms"));
+document.getElementById("openPurchaseBtn")?.addEventListener("click",()=>openLegalPage("purchase"));
 legalClose?.addEventListener("click",closeLegalPage);
 legalOverlay?.addEventListener("click",e=>{if(e.target===legalOverlay)closeLegalPage()});
 window.addEventListener("keydown",e=>{if(e.key==="Escape")closeLegalPage()});
