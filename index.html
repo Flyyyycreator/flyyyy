@@ -193,12 +193,27 @@ body:before{content:"";position:fixed;inset:-30%;z-index:-1;pointer-events:none;
 
 /* ===== FLYYYY LEGAL / PRIVACY ===== */
 .legalMenuRow{grid-column:1/-1;display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;margin-top:-2px;padding-top:2px}
+.legalSection{margin-top:22px;padding-top:14px;border-top:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;align-items:center;gap:10px}
+.legalSectionTitle{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.35);margin:0}
 .legalMenuRow .legalLink{border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.06);color:var(--muted);font-weight:900;font-size:12px;cursor:pointer;text-decoration:none;padding:8px 12px;border-radius:12px;transition:.18s}
 .legalMenuRow .legalLink:hover{background:rgba(255,255,255,.12);color:#fff;transform:translateY(-1px)}
 
-#copyrightFooter{pointer-events:auto;gap:10px;flex-wrap:wrap;padding:9px 12px}
-#copyrightFooter .legalLink{border:0;background:transparent;color:var(--muted);font-weight:900;font-size:12px;cursor:pointer;text-decoration:underline;text-underline-offset:3px;padding:3px 6px}
-#copyrightFooter .legalLink:hover{color:#fff}
+#copyrightFooter{position:fixed;bottom:0;left:0;right:0;z-index:50;display:flex;justify-content:center;align-items:center;gap:6px;flex-wrap:wrap;padding:6px 10px;background:rgba(6,8,20,.85);backdrop-filter:blur(6px);border-top:1px solid rgba(255,255,255,.06);font-size:10px}
+#copyrightFooter .legalLink{border:0;background:transparent;color:rgba(201,195,223,.6);font-weight:400;font-size:10px;cursor:pointer;text-decoration:none;padding:2px 4px;transition:color .15s}
+#copyrightFooter .legalLink:hover{color:#fff;text-decoration:underline}
+#copyrightFooter .sep{color:rgba(201,195,223,.3);font-size:10px;pointer-events:none}
+#cookieBanner{position:fixed;bottom:50px;left:50%;transform:translateX(-50%);z-index:60;width:min(600px,92vw);display:none;padding:16px 18px;border-radius:16px;background:rgba(15,18,40,.96);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.14);box-shadow:0 10px 40px rgba(0,0,0,.5);gap:12px}
+#cookieBanner.active{display:flex}
+#cookieBanner .cookieText{color:#d7d3e8;font-size:13px;line-height:1.5;flex:1}
+#cookieBanner .cookieBtns{display:flex;gap:8px;flex-wrap:wrap}
+@media(max-width:600px){
+  #legalDialog{padding:18px;border-radius:18px;max-height:92vh}
+  #legalDialog h2{font-size:24px}
+  #legalDialog p,#legalDialog li{font-size:13px}
+  #copyrightFooter{font-size:9px;gap:4px;padding:5px 8px}
+  #copyrightFooter .legalLink{font-size:9px}
+  #cookieBanner{bottom:60px;width:95vw;padding:12px}
+}
 #legalOverlay{position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(4,6,18,.78);backdrop-filter:blur(10px)}
 #legalOverlay.active{display:flex}
 #legalDialog{width:min(900px,96vw);max-height:90vh;overflow:auto;padding:24px;border-radius:24px;background:linear-gradient(145deg,rgba(15,12,31,.98),rgba(24,20,48,.98));border:1px solid rgba(255,255,255,.16);box-shadow:0 25px 80px rgba(0,0,0,.55);color:#fff}
@@ -298,6 +313,58 @@ html,body{background:#070b18!important;color:#fff!important}
 </style>
 <style id="bacon-baron-special-style">
 .baconBaronSpecial{border-color:rgba(255,79,134,.7)!important;box-shadow:0 0 32px rgba(255,79,134,.25),0 0 55px rgba(255,212,71,.12)!important}
+/* ===== SECRET SHOP + ADMIN ABUSE EVENTS ===== */
+.secretShopTab{background:linear-gradient(90deg,#ff4fd8,#b76cff,#45e8ff)!important;color:#fff!important;animation:secretTabGlow 2.2s ease-in-out infinite alternate}
+@keyframes secretTabGlow{from{box-shadow:0 0 14px rgba(255,79,216,.25)}to{box-shadow:0 0 28px rgba(183,108,255,.45)}}
+.secretShopCard{position:relative;overflow:hidden;border-color:rgba(255,79,216,.55)!important;animation:secretCardPulse 2.4s ease-in-out infinite alternate}
+@keyframes secretCardPulse{from{box-shadow:0 0 22px rgba(255,79,216,.22),inset 0 0 18px rgba(183,108,255,.10)}to{box-shadow:0 0 44px rgba(255,79,216,.42),inset 0 0 30px rgba(69,232,255,.14)}}
+.secretShopCard::before{content:"";position:absolute;inset:-50%;background:conic-gradient(from 0deg,transparent,rgba(255,79,216,.18),transparent,rgba(69,232,255,.18),transparent);animation:secretSpin 4s linear infinite;pointer-events:none}
+@keyframes secretSpin{to{transform:rotate(360deg)}}
+.secretShopCard .preview{background:radial-gradient(circle at 50% 40%,rgba(255,79,216,.22),rgba(183,108,255,.08) 70%)!important}
+.secretShopBadge{position:absolute;top:8px;left:8px;z-index:5;padding:4px 10px;border-radius:999px;background:linear-gradient(90deg,#ff4fd8,#b76cff);color:#fff;font-size:10px;font-weight:1000;letter-spacing:.06em;box-shadow:0 0 16px rgba(255,79,216,.5);animation:newBlink .7s ease-in-out infinite alternate}
+.secretOfferCard{border-color:rgba(255,212,71,.5)!important}
+.secretOfferCard .offerCountdown{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);z-index:5;padding:3px 10px;border-radius:999px;background:rgba(0,0,0,.7);color:#ffd447;font-size:11px;font-weight:1000;white-space:nowrap;box-shadow:0 0 12px rgba(255,212,71,.3)}
+.secretAdminOnlyBadge{background:linear-gradient(90deg,#ff3b4e,#ff9b3d)!important}
+/* ===== ENHANCED ABUSE EVENT EFFECTS ===== */
+.discoParticle{position:fixed;z-index:28;pointer-events:none;border-radius:50%;animation:discoParticleFly 1.6s ease-out forwards}
+@keyframes discoParticleFly{0%{opacity:1;transform:scale(1) translateY(0)}100%{opacity:0;transform:scale(.2) translateY(-180px)}}
+.discoRay{position:fixed;z-index:27;pointer-events:none;mix-blend-mode:screen;transform-origin:bottom center;animation:discoRaySweep 3s ease-in-out infinite}
+@keyframes discoRaySweep{0%,100%{transform:rotate(-25deg) scaleY(.8);opacity:.3}50%{transform:rotate(25deg) scaleY(1.1);opacity:.7}}
+.discoFlash{position:fixed;inset:0;z-index:26;pointer-events:none;animation:discoFlashFade .4s ease-out forwards}
+@keyframes discoFlashFade{0%{opacity:.6}100%{opacity:0}}
+.johnInvasionFigure{position:absolute;z-index:32;pointer-events:none;animation:JohnFloat 2.5s ease-in-out infinite alternate,JohnSpin 4s linear infinite}
+@keyframes JohnFloat{0%{transform:translateY(0) scale(1)}100%{transform:translateY(-18px) scale(1.05)}}
+@keyframes JohnSpin{0%{filter:hue-rotate(0deg)}100%{filter:hue-rotate(360deg)}}
+.johnInvasionParticle{position:fixed;z-index:31;pointer-events:none;animation:JohnParticleUp 1.8s ease-out forwards}
+@keyframes JohnParticleUp{0%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-120px) scale(.3)}}
+.screenShake{animation:shake .3s ease-in-out}
+@keyframes shake{0%,100%{transform:translate(0,0)}25%{transform:translate(-4px,2px)}50%{transform:translate(3px,-3px)}75%{transform:translate(-2px,3px)}}
+.bossKillOverlay{position:fixed;inset:0;z-index:9998;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 50%,rgba(255,79,134,.4),rgba(0,0,0,.85));animation:fadeIn .3s ease-out}
+@keyframes fadeIn{0%{opacity:0}100%{opacity:1}}
+@keyframes pulse{0%,100%{transform:translateX(-50%) scale(1)}50%{transform:translateX(-50%) scale(1.05)}}
+.bossKillFigure{font-size:120px;animation:BossDie 2s ease-in forwards}
+@keyframes BossDie{0%{transform:scale(1.5) rotate(0deg);opacity:1}30%{transform:scale(1.2) rotate(-10deg);opacity:1}60%{transform:scale(.8) rotate(15deg) translateY(40px);opacity:.8}100%{transform:scale(.3) rotate(45deg) translateY(150px);opacity:0}}
+.bossKillReward{font-size:28px;font-weight:1000;color:#ffd447;text-align:center;animation:RewardPop .5s ease-out 1s both}
+@keyframes RewardPop{0%{transform:scale(0);opacity:0}60%{transform:scale(1.2);opacity:1}100%{transform:scale(1);opacity:1}}
+.eventAnnounceBanner{position:fixed;top:0;left:0;right:0;z-index:9999;padding:14px 18px;text-align:center;font-weight:1000;font-size:16px;background:linear-gradient(90deg,rgba(255,79,216,.92),rgba(183,108,255,.92),rgba(69,232,255,.92));background-size:200% 100%;animation:announceSlideIn .5s ease-out,announceBgShift 3s linear infinite;box-shadow:0 8px 32px rgba(0,0,0,.4);backdrop-filter:blur(8px)}
+@keyframes announceSlideIn{from{transform:translateY(-100%)}to{transform:translateY(0)}}
+@keyframes announceBgShift{to{background-position:200% 0}}
+.eventAnnounceBanner .eventCountdown{display:inline-block;margin-left:12px;padding:4px 10px;border-radius:999px;background:rgba(0,0,0,.35);font-size:14px}
+.chaosModeVignette{position:fixed;inset:0;z-index:28;pointer-events:none;background:radial-gradient(circle at 50% 50%,transparent 40%,rgba(255,79,216,.18) 100%);animation:chaosPulse .8s ease-in-out infinite alternate}
+@keyframes chaosPulse{from{opacity:.4}to{opacity:.9}}
+.secretHuntFigure{position:absolute;z-index:35;width:54px;height:54px;border-radius:50%;background:radial-gradient(circle at 50% 40%,#b76cff,#45e8ff);box-shadow:0 0 30px rgba(183,108,255,.6);cursor:pointer;animation:secretHuntBob 1s ease-in-out infinite alternate;pointer-events:auto}
+@keyframes secretHuntBob{from{transform:translateY(-6px) scale(1)}to{transform:translateY(6px) scale(1.08)}}
+.secretHuntFigure::after{content:"🕵️";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:30px}
+.secretPortal{position:absolute;z-index:30;width:46px;height:46px;border-radius:50%;background:conic-gradient(from 0deg,#ff4fd8,#b76cff,#45e8ff,#ff4fd8);animation:portalSpin 1.5s linear infinite;box-shadow:0 0 24px rgba(255,79,255,.5);pointer-events:auto;cursor:pointer}
+@keyframes portalSpin{to{transform:rotate(360deg)}}
+.secretPortal::after{content:"";position:absolute;inset:6px;border-radius:50%;background:#070711}
+.bossHealthBar{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);z-index:36;width:min(420px,80vw);height:22px;border-radius:999px;background:rgba(0,0,0,.6);border:2px solid rgba(255,79,134,.6);overflow:hidden;box-shadow:0 0 20px rgba(255,79,134,.3)}
+.bossHealthFill{height:100%;width:100%;background:linear-gradient(90deg,#ff4f86,#ff3b4e);transition:width .3s ease}
+.bossHealthLabel{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:1000;text-shadow:0 1px 4px rgba(0,0,0,.8)}
+.secretRewardPopup{position:fixed;z-index:9999;left:50%;top:50%;transform:translate(-50%,-50%);padding:22px 32px;border-radius:22px;background:linear-gradient(135deg,rgba(255,79,216,.95),rgba(183,108,255,.95));color:#fff;font-weight:1000;font-size:22px;text-align:center;box-shadow:0 0 60px rgba(255,79,216,.5);animation:secretRewardIn .4s ease-out}
+@keyframes secretRewardIn{from{transform:translate(-50%,-50%) scale(.5);opacity:0}to{transform:translate(-50%,-50%) scale(1);opacity:1}}
+.adminAbuseLog{max-height:200px;overflow-y:auto;padding:10px;border-radius:12px;background:rgba(0,0,0,.25);border:1px solid rgba(255,255,255,.08);font-size:12px}
+.adminAbuseLog .logEntry{padding:4px 0;border-bottom:1px solid rgba(255,255,255,.05)}
 <style id="progression-update-style">
 .progressPanel{margin:14px 0;padding:16px;border-radius:20px;background:linear-gradient(135deg,rgba(255,212,71,.10),rgba(94,231,255,.08));border:1px solid rgba(255,255,255,.12)}
 .progressTop{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}.progressLevel{font-size:20px;font-weight:1000}.xpBar{height:10px;border-radius:999px;background:rgba(255,255,255,.09);overflow:hidden;margin:10px 0}.xpFill{height:100%;width:0%;background:linear-gradient(90deg,#ffd447,#5ee7ff,#b76cff);transition:width .25s ease}.progressGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.progressCard{padding:12px;border-radius:15px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.08)}.modeRow{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:end}.modeSelect{width:100%;min-height:48px;border-radius:14px;border:1px solid rgba(255,255,255,.15);background:#111a3b;color:#fff;padding:10px;font-weight:900}.dailyBtn.claimed{opacity:.6}.dailyStreak{color:#ffd447;font-weight:1000}@media(max-width:650px){.progressGrid,.modeRow{grid-template-columns:1fr}}
@@ -311,14 +378,13 @@ html,body{background:#070b18!important;color:#fff!important}
 <div id="app"><div id="appErrorNotice" style="display:none;position:fixed;left:50%;top:10px;transform:translateX(-50%);z-index:100000;padding:10px 14px;border-radius:12px;background:#2a1730;border:1px solid #ff6374;color:#fff;font-weight:900">⚠️ Ein Spielfehler ist aufgetreten. Bitte Seite neu laden.</div>
 <canvas id="gameCanvas"></canvas>
 
-<div id="authScreen" class="screen"><div class="menu"><div class="title">FLYYYY</div><div class="version">🔐 ACCOUNT</div><div class="subtitle">Mit E-Mail anmelden, neues Konto erstellen oder ohne Konto spielen.</div><div class="authBox"><h2 style="margin:0 0 12px">Anmelden / Registrieren</h2><input id="authEmail" class="authInput" type="email" autocomplete="email" placeholder="E-Mail"><input id="authPassword" class="authInput" type="password" autocomplete="current-password" placeholder="Passwort (mind. 6 Zeichen)" style="margin-top:10px"><div class="authGrid"><button id="loginBtn" class="btn blue">ANMELDEN</button><button id="registerBtn" class="btn green">REGISTRIEREN</button></div><button id="guestBtn" class="btn dark" style="width:100%;margin-top:10px">👤 OHNE KONTO SPIELEN</button><button id="adminLoginBtn" class="btn dark" style="width:100%;margin-top:10px">🛠️ ADMIN</button><div id="authStatus" class="authStatus">Gastmodus ist jederzeit möglich.</div><div class="tiny" style="margin-top:10px">🛡️ Adminrechte werden serverseitig mit Firebase geprüft.</div></div><div class="legalMenuRow" style="margin-top:14px"><button class="legalLink" id="openImprintBtn" type="button">📄 Impressum</button><button class="legalLink" id="openPrivacyBtn" type="button">🔒 Datenschutz</button><button class="legalLink" id="openTermsBtn" type="button">📜 Nutzungsbedingungen</button><button class="legalLink" id="openPurchaseBtn" type="button">🛒 Kaufhinweise</button></div><button id="authBackBtn" class="btn dark" style="width:100%;margin-top:10px">← Zur Lobby</button></div></div>
+<div id="authScreen" class="screen"><div class="menu"><div class="title">FLYYYY</div><div class="version">🔐 ACCOUNT</div><div class="subtitle">Mit E-Mail anmelden, neues Konto erstellen oder ohne Konto spielen.</div><div class="authBox"><h2 style="margin:0 0 12px">Anmelden / Registrieren</h2><input id="authEmail" class="authInput" type="email" autocomplete="email" placeholder="E-Mail"><input id="authPassword" class="authInput" type="password" autocomplete="current-password" placeholder="Passwort (mind. 6 Zeichen)" style="margin-top:10px"><div class="authGrid"><button id="loginBtn" class="btn blue">ANMELDEN</button><button id="registerBtn" class="btn green">REGISTRIEREN</button></div><button id="guestBtn" class="btn dark" style="width:100%;margin-top:10px">👤 OHNE KONTO SPIELEN</button><button id="adminLoginBtn" class="btn dark" style="width:100%;margin-top:10px">🛠️ ADMIN</button><div id="authStatus" class="authStatus">Gastmodus ist jederzeit möglich.</div><div class="tiny" style="margin-top:10px">🛡️ Adminrechte werden serverseitig mit Firebase geprüft.</div></div><div class="legalSection"><div class="legalSectionTitle">Rechtliches</div><div class="legalMenuRow"><button class="legalLink" id="openImprintBtn" type="button">📄 Impressum</button><button class="legalLink" id="openPrivacyBtn" type="button">🔒 Datenschutz</button><button class="legalLink" id="openTermsBtn" type="button">📜 Nutzungsbedingungen</button><button class="legalLink" id="openPurchaseBtn" type="button">🛒 Kaufhinweise</button></div></div><button id="authBackBtn" class="btn dark" style="width:100%;margin-top:10px">← Zur Lobby</button></div></div>
 
 <div id="lobby" class="screen active"><div class="menu"><div class="title">FLYYYY</div><div class="version">🔥 UPDATE 3.0 · COMBO</div><div class="subtitle">Fly weiter. Sammle Coins. Schlage andere Spieler.</div><div class="accountLine"><div id="accountStatus" class="accountPill">👤 Gast</div><button id="accountBtn" class="btn dark">🔐 ANMELDEN</button><button id="logoutBtn" class="btn red" style="display:none">ABMELDEN</button><button id="myAccountBtn" class="btn dark">👤 MEIN KONTO</button></div><div class="credits"><div class="badge">🪙 <span id="lobbyCoins">0</span> Coins</div><div class="badge">🏆 Rekord: <span id="lobbyBest">0</span></div></div><div class="progressPanel">
 <div class="progressTop"><div class="progressLevel">⭐ Level <span id="playerLevel">1</span></div><div class="tiny"><span id="playerXp">0</span> / <span id="playerXpNext">100</span> XP</div></div>
 <div class="xpBar"><div id="playerXpFill" class="xpFill"></div></div>
 <div class="progressGrid">
 <div class="progressCard"><div class="tiny">🎁 Tagesbelohnung</div><div class="dailyStreak">🔥 Tag <span id="dailyStreak">1</span></div><button id="dailyRewardBtn" class="btn green dailyBtn" style="width:100%;margin-top:8px">🎁 ABHOLEN</button></div>
-<div class="progressCard"><div class="tiny">🎮 Spielmodus</div><select id="gameModeSelect" class="modeSelect" style="margin-top:8px"><option value="classic">Classic</option><option value="speedrun">⚡ Speedrun</option><option value="hardcore">💀 Hardcore</option></select></div>
 </div></div><div class="seasonPanel"><div class="seasonTop"><div class="seasonTitle">🌐 SEASON <span id="seasonNumberLobby">1</span></div><div class="seasonTimer" id="seasonTimerLobby">⏱️ Lädt...</div></div><div class="seasonSub">7-Tage-Season</div><div class="tiny">🥇 1.000 Coins · 🥈 500 Coins · 🥉 300 Coins · Platz 4–10: 100 · Platz 11–25: 50</div></div><div class="button-grid"><button id="startBtn" class="btn">START</button><button id="onlineStartBtn" class="btn blue">🌐 ONLINE-SEASON SPIELEN</button><button id="leaderboardBtn" class="btn blue">🏆 LEADERBOARD</button><button id="shopBtn" class="btn blue">🛒 SHOP <span id="shopLobbyNewBadge" class="newBadge">NEU</span></button><button id="inventoryBtn" class="btn blue">🎒 INVENTAR</button><button id="missionsBtn" class="btn blue">🎯 MISSIONEN</button><button id="settingsBtn" class="btn dark">⚙️ EINSTELLUNGEN</button><button id="musicToggleBtn" class="btn dark">🎵 Musik: AN</button></div><div class="notice">✅ Season-Punkte sind getrennt vom Allzeit-Highscore. Nur die aktuelle Season entscheidet über die Season-Belohnung.</div><div class="tiny" style="margin-top:8px;text-align:center;opacity:.82">🌐 Online-Modus: Season-Score wird über Firebase gespeichert. Anmeldung erforderlich.</div></div></div>
 
 <div id="leaderboard" class="screen"><div class="menu"><div class="topbar"><div><h2>Leaderboard</h2><div class="tiny">Season und Allzeit werden getrennt angezeigt.</div></div><button id="leaderboardBack" class="btn dark">← Zurück</button></div><div class="seasonTabs"><button id="seasonTabBtn" class="seasonTab active">🌐 Season</button><button id="allTimeTabBtn" class="seasonTab">⭐ Allzeit</button></div><div class="seasonPanel"><div class="seasonTop"><div class="seasonTitle">SEASON <span id="seasonNumberBoard">1</span></div><div class="seasonTimer" id="seasonTimerBoard">⏱️ Lädt...</div></div><div class="seasonSub" id="seasonBoardSub">🌐 Nur Season-Punkte</div></div><div id="leaderboardStatus" class="leaderStatus">Lade Leaderboard...</div><div class="nameBox"><input id="playerName" class="nameInput" maxlength="20" placeholder="Dein Spielername"><button id="saveNameBtn" class="btn">NAME SPEICHERN</button></div><div id="leaderboardList" class="leaderboard"></div></div></div>
@@ -347,7 +413,7 @@ html,body{background:#070b18!important;color:#fff!important}
 <div class="broadcastGrid"><textarea id="adminBroadcastInput" class="broadcastInput" maxlength="240" placeholder="Nachricht für alle Spieler …"></textarea><button id="adminBroadcastSendBtn" class="btn broadcastSend">📢 BROADCAST SENDEN</button></div>
 <div id="adminBroadcastStatus" class="broadcastStatus"></div>
 </div>
-<div id="adminInfo" class="notice">Nur als Admin sichtbar.</div><div id="adminChatTab" class="adminTabSection"><div class="leaderStatus">Gesperrte Spieler verwalten.</div><div style="display:grid;grid-template-columns:minmax(140px,1fr) auto;gap:10px;margin:12px 0"><input id="adminChatBanName" class="authInput" placeholder="Spielername (oder UID)"><input id="adminChatBanReason" class="authInput" placeholder="Grund (optional)"><button id="adminChatBanBtn" class="btn red">🔇 Sperren (10 Min)</button></div><button id="adminChatRefreshBtn" class="btn blue" style="margin-bottom:12px">↻ Aktualisieren</button><div id="adminChatBanList" class="leaderboard"></div></div></div></div></div>
+<div id="adminInfo" class="notice">Nur als Admin sichtbar.</div><div id="adminSecretShopTab" class="adminTabSection"><div class="leaderStatus">🔒 Secret Shop verwalten – Skins hinzufügen, Preise festlegen, Angebote aktivieren/deaktivieren.</div><div id="adminSecretShopStatus" class="leaderStatus" style="margin-top:10px">Lade Secret Shop...</div><div id="adminSecretShopList" class="leaderboard" style="margin-top:12px"></div><div style="margin-top:16px;padding:14px;border-radius:14px;background:rgba(255,79,216,.08);border:1px solid rgba(255,79,216,.2)"><h4 style="margin:0 0 8px">⏱️ Zeitliches Angebot erstellen</h4><div style="display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center"><select id="adminSecretOfferSkin" class="authInput"></select><input id="adminSecretOfferDuration" class="authInput" type="number" min="1" max="1440" placeholder="Minuten" style="width:90px"><button id="adminSecretOfferBtn" class="btn green">⏱️ Angebot erstellen</button></div><button id="adminSecretShopRefreshBtn" class="btn blue" style="margin-top:12px;width:100%">↻ Secret Shop aktualisieren</button></div></div><div id="adminAbuseLogTab" class="adminTabSection"><div class="leaderStatus">📋 Admin-Abuse Event Protokoll – zeigt aktive Events und vergangene Aktionen.</div><div id="adminAbuseLogStatus" class="leaderStatus" style="margin-top:10px">Keine Einträge.</div><div id="adminAbuseLog" class="adminAbuseLog" style="margin-top:12px"></div><button id="adminAbuseLogRefreshBtn" class="btn blue" style="margin-top:10px;width:100%">↻ Protokoll aktualisieren</button></div><div id="adminChatTab" class="adminTabSection"><div class="leaderStatus">Gesperrte Spieler verwalten.</div><div style="display:grid;grid-template-columns:minmax(140px,1fr) auto;gap:10px;margin:12px 0"><input id="adminChatBanName" class="authInput" placeholder="Spielername (oder UID)"><input id="adminChatBanReason" class="authInput" placeholder="Grund (optional)"><button id="adminChatBanBtn" class="btn red">🔇 Sperren (10 Min)</button></div><button id="adminChatRefreshBtn" class="btn blue" style="margin-bottom:12px">↻ Aktualisieren</button><div id="adminChatBanList" class="leaderboard"></div></div></div></div></div>
 </div>
 
 
@@ -395,7 +461,7 @@ const abilityBtn=$("abilityBtn"),gameHud=$("gameHud"),eventBadge=$("eventBadge")
 
 const APP_VERSION="3.1";storage.setItem("FLYYYY_APP_VERSION",APP_VERSION);
 const firebaseConfig={apiKey:"AIzaSyA0ppKuSgxKKgHEMkX9kUlVhm8pjkVxgXk",authDomain:"flyyyy.firebaseapp.com",databaseURL:"https://flyyyy-default-rtdb.firebaseio.com",projectId:"flyyyy",storageBucket:"flyyyy.firebasestorage.app",messagingSenderId:"872479897522",appId:"1:872479897522:web:3c87b8afdebfc66d01d6ab",measurementId:"G-S8YE4S6L8L"};
-const playerLevelEl=$("playerLevel"),playerXpEl=$("playerXp"),playerXpNextEl=$("playerXpNext"),playerXpFillEl=$("playerXpFill"),dailyRewardBtn=$("dailyRewardBtn"),dailyStreakEl=$("dailyStreak"),gameModeSelect=$("gameModeSelect");
+const playerLevelEl=$("playerLevel"),playerXpEl=$("playerXp"),playerXpNextEl=$("playerXpNext"),playerXpFillEl=$("playerXpFill"),dailyRewardBtn=$("dailyRewardBtn"),dailyStreakEl=$("dailyStreak");
 let F=null,firebaseApp=null,auth=null,db=null,currentUser=null,leaderboardStop=null,presenceStop=null,seasonLeaderboardStop=null;
 async function loadFirebase(){if(F)return F;const appMod=await import("https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js"),authMod=await import("https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js"),dbMod=await import("https://www.gstatic.com/firebasejs/12.16.0/firebase-database.js");return F={app:appMod,a:authMod,d:dbMod}};
 function setOnlineUI(){}
@@ -408,7 +474,7 @@ function hideScreens(){document.querySelectorAll(".screen").forEach(s=>s.classLi
 function showMessage(t){const e=document.createElement("div");e.textContent=t;e.style.cssText="position:fixed;z-index:99999;left:50%;top:18%;transform:translate(-50%,-50%);padding:13px 18px;border-radius:999px;background:rgba(8,12,30,.97);border:1px solid rgba(255,255,255,.15);color:#fff;font-weight:900;box-shadow:0 15px 40px rgba(0,0,0,.3);white-space:nowrap";document.body.appendChild(e);setTimeout(()=>e.remove(),1800)}
 function setLeaderboardStatus(t){leaderboardStatus.textContent=t}
 
-const DEFAULT={coins:0,best:0,wins:0,ownedWorlds:["giza"],ownedSkins:["bird"],ownedSounds:["classic"],ownedMusic:["classicMusic"],selectedWorld:"giza",selectedSkin:"bird",selectedSound:"classic",selectedMusic:"classicMusic",selectedAbilities:{},selectedAbilityId:null,ownedAbilities:[],ownedAbilitiesBySkin:{},lastNonIceWorld:"giza",shopNewSeen:{},shopNewRelease:"2.8.0",musicEnabled:true,sfxEnabled:true,musicVolume:70,sfxVolume:70,language:"de",missionProgress:{m1:0,m2:0,m3:0},missionClaimed:{m1:false,m2:false,m3:false},activeMissions:null,missionCycle:1,lastMissionIds:[],luckySpins:0,luckyLastResult:null,seasonScore:0,currentSeasonId:2,seasonRewardPending:null,seasonRewardClaimed:false,flyOwner1000Granted:false,playerXP:0,playerLevel:1,dailyRewardDate:"",dailyStreak:0,selectedGameMode:"classic",dailyRewardCycle:1};
+const DEFAULT={coins:0,best:0,wins:0,ownedWorlds:["giza"],ownedSkins:["bird"],ownedSounds:["classic"],ownedMusic:["classicMusic"],selectedWorld:"giza",selectedSkin:"bird",selectedSound:"classic",selectedMusic:"classicMusic",selectedAbilities:{},selectedAbilityId:null,ownedAbilities:[],ownedAbilitiesBySkin:{},lastNonIceWorld:"giza",shopNewSeen:{},shopNewRelease:"2.8.0",musicEnabled:true,sfxEnabled:true,musicVolume:70,sfxVolume:70,language:"de",missionProgress:{m1:0,m2:0,m3:0},missionClaimed:{m1:false,m2:false,m3:false},activeMissions:null,missionCycle:1,lastMissionIds:[],luckySpins:0,luckyLastResult:null,seasonScore:0,currentSeasonId:2,seasonRewardPending:null,seasonRewardClaimed:false,flyOwner1000Granted:false,playerXP:0,playerLevel:1,playerXPBoost:0,playerXpEarnedTotal:0,levelRewardsPending:[],levelRewardsClaimed:[],dailyRewardDate:"",dailyStreak:0,dailyRewardCycle:1,secretShopItems:[],secretShopPublished:false,secretHuntFound:0,bossDamageDealt:0,bossGlobalRewardsClaimed:[]};
 const SAVEKEYS=["FLYYYY_UPDATE14_SAVE","FLYYYY_UPDATE13_SAVE","FLYYYY_UPDATE12_SAVE","FLYYYY_UPDATE11_SAVE","flyyyy_save"];
 function defaultState(){return JSON.parse(JSON.stringify(DEFAULT))}
 function loadState(){for(const k of SAVEKEYS){const raw=storage.getItem(k);if(raw){try{const d=JSON.parse(raw),b=defaultState();return {...b,...d,ownedWorlds:Array.isArray(d.ownedWorlds)?d.ownedWorlds:b.ownedWorlds,ownedSkins:Array.isArray(d.ownedSkins)?d.ownedSkins:b.ownedSkins,ownedSounds:Array.isArray(d.ownedSounds)?d.ownedSounds:b.ownedSounds,ownedMusic:Array.isArray(d.ownedMusic)?d.ownedMusic:b.ownedMusic,missionProgress:{...b.missionProgress,...(d.missionProgress||{})},missionClaimed:{...b.missionClaimed,...(d.missionClaimed||{})},activeMissions:Array.isArray(d.activeMissions)?d.activeMissions:null,shopNewSeen:(d.shopNewSeen&&typeof d.shopNewSeen==="object")?d.shopNewSeen:{}}}catch{}}}return defaultState()}
@@ -416,6 +482,10 @@ let state=loadState();
 state.ownedAbilities=Array.isArray(state.ownedAbilities)?state.ownedAbilities:[];state.ownedAbilitiesBySkin=(state.ownedAbilitiesBySkin&&typeof state.ownedAbilitiesBySkin==="object")?state.ownedAbilitiesBySkin:{};
 state.selectedAbilities=(state.selectedAbilities&&typeof state.selectedAbilities==="object")?state.selectedAbilities:{};state.selectedAbilityId=typeof state.selectedAbilityId==="string"?state.selectedAbilityId:null;state.lastNonIceWorld=typeof state.lastNonIceWorld==="string"?state.lastNonIceWorld:"giza";state.musicVolume=Math.max(0,Math.min(100,Number(state.musicVolume??70)));state.sfxVolume=Math.max(0,Math.min(100,Number(state.sfxVolume??70)));state.language=state.language==="en"?"en":"de";state.shopNewSeen=(state.shopNewSeen&&typeof state.shopNewSeen==="object")?state.shopNewSeen:{};
 state.musicVolume=Math.max(0,Math.min(100,Number(state.musicVolume??70)));state.sfxVolume=Math.max(0,Math.min(100,Number(state.sfxVolume??70)));state.language=state.language==="en"?"en":"de";
+state.secretShopItems=Array.isArray(state.secretShopItems)?state.secretShopItems:[];
+state.secretHuntFound=Number(state.secretHuntFound||0);
+state.bossDamageDealt=Number(state.bossDamageDealt||0);
+state.secretShopPublished=!!state.secretShopPublished;
 function saveStateLocalOnly(){const s=JSON.stringify(state);SAVEKEYS.forEach(k=>storage.setItem(k,s))}
 let cloudSaveTimer=null;function saveState(){saveStateLocalOnly();if(currentUser&&db){clearTimeout(cloudSaveTimer);cloudSaveTimer=setTimeout(savePlayerStateCloud,700)}}
 
@@ -451,10 +521,7 @@ const LEADERBOARD_BOT_NAMES = [
   "IceBird","JungleFly","SpaceBird","LuckyFly","FastBacon","FlyBoy","FlyGirl","ProWing",
   "MegaFlap","AirAce","SkyPro","Birdy","CoinKing","FlapKing","CloudAce","NeonBird",
   "BaconFly","WingBoss","FlyLegend","AirMaster","SkyAce","TurboBird","JumpPro","FlapStar",
-  "BaconStar","CloudKing","NightFly","StormKing","IceWing","LavaFly","OceanBird","JungleBird",
-  "SpaceFly","GoldenWing","SilverFly","BronzeBird","MiniFly","FastWing","FlyAce","BirdPro",
-  "SkyRunner","AirRunner","BaconRunner","NeonRunner","CloudFly","StormBird","LuckyBird","CoinFly",
-  "WingRunner","FlapMaster","TinyWing","FlyStarter","BaconStarter","SkyStarter","AirStarter","NewFlyer"
+  "BaconStar","CloudKing","NightFly","StormKing","IceWing","LavaFly","OceanBird","JungleBird"
 ];
 function makeLeaderboardBots(realPlayers){
   const realMax=Math.max(0,...(realPlayers||[]).map(p=>Number(p.score)||0));
@@ -625,12 +692,9 @@ async function submitSeasonScore(score){
   }
 }
 
-async function savePlayerName(){const n=safeName(playerName.value);if(!n){showMessage("Bitte einen Namen eingeben.");return}storage.setItem("FLYYYY_PLAYER_NAME",n);if(!currentUser){setLeaderboardStatus("💾 Lokal gespeichert.");return}setLeaderboardStatus(await ensurePlayerEntry(n)?`✅ ${n} gespeichert.`:"🔴 Speichern fehlgeschlagen.");
-    await ensureSeason();
-    await ensureSeasonScoreEntry();
-}
+async function savePlayerName(){const n=safeName(playerName.value);if(!n){showMessage("Bitte einen Namen eingeben.");return}storage.setItem("FLYYYY_PLAYER_NAME",n);autoGrantOwnerSkin();saveState();if(currentUser&&db){await savePlayerStateCloud()}if(!currentUser){setLeaderboardStatus("💾 Lokal gespeichert.");return}setLeaderboardStatus(await ensurePlayerEntry(n)?`✅ ${n} gespeichert.`:"🔴 Speichern fehlgeschlagen.");await ensureSeason();await ensureSeasonScoreEntry();}
 
-async function loadPlayerStateCloud(){if(!currentUser||!db)return;try{const {d}=await loadFirebase();const snap=await d.get(d.ref(db,"playerStates/"+currentUser.uid));if(snap.exists()){const c=snap.val()||{},b=defaultState();state={...b,...c,ownedWorlds:Array.isArray(c.ownedWorlds)?c.ownedWorlds:b.ownedWorlds,ownedSkins:Array.isArray(c.ownedSkins)?c.ownedSkins:b.ownedSkins,ownedSounds:Array.isArray(c.ownedSounds)?c.ownedSounds:b.ownedSounds,ownedMusic:Array.isArray(c.ownedMusic)?c.ownedMusic:b.ownedMusic,missionProgress:{...b.missionProgress,...(c.missionProgress||{})},missionClaimed:{...b.missionClaimed,...(c.missionClaimed||{})},shopNewSeen:(c.shopNewSeen&&typeof c.shopNewSeen==="object")?c.shopNewSeen:{}};saveStateLocalOnly();updateLobby();renderShop();renderInventory();renderMissions()}}catch(e){console.error(e)}}
+async function loadPlayerStateCloud(){if(!currentUser||!db)return;try{const {d}=await loadFirebase();const snap=await d.get(d.ref(db,"playerStates/"+currentUser.uid));if(snap.exists()){const c=snap.val()||{},b=defaultState();state={...b,...c,ownedWorlds:Array.isArray(c.ownedWorlds)?c.ownedWorlds:b.ownedWorlds,ownedSkins:Array.isArray(c.ownedSkins)?c.ownedSkins:b.ownedSkins,ownedSounds:Array.isArray(c.ownedSounds)?c.ownedSounds:b.ownedSounds,ownedMusic:Array.isArray(c.ownedMusic)?c.ownedMusic:b.ownedMusic,missionProgress:{...b.missionProgress,...(c.missionProgress||{})},missionClaimed:{...b.missionClaimed,...(c.missionClaimed||{})},shopNewSeen:(c.shopNewSeen&&typeof c.shopNewSeen==="object")?c.shopNewSeen:{}};autoGrantOwnerSkin();saveStateLocalOnly();updateLobby();renderShop();renderInventory();renderMissions()}}catch(e){console.error(e)}}
 async function savePlayerStateCloud(){if(!currentUser||!db)return;try{const {d}=await loadFirebase();await d.set(d.ref(db,"playerStates/"+currentUser.uid),JSON.parse(JSON.stringify(state)))}catch(e){console.error(e)}}
 async function grantFlyOwnerCoins(){if(!currentUser||!db)return;try{const raw=(getPlayerName()||((currentUser.email||"").split("@")[0]||"")).trim();const normalized=raw.toLowerCase().replace(/[^a-z0-9]/g,"");if(normalized!=="flyyyyowner")return;const {d}=await loadFirebase(),ref=d.ref(db,"playerStates/"+currentUser.uid),snap=await d.get(ref);const cloud=snap.exists()?snap.val():{};if(cloud.flyOwner1000Granted===true)return;await d.update(ref,{flyOwner1000Granted:true,updatedAt:d.serverTimestamp()})}catch(e){console.error(e)}}
 
@@ -741,24 +805,26 @@ async function setupFirebase(){
         await ensurePlayerEntry(getPlayerName());
         await ensureSeason();
         await ensureSeasonScoreEntry();
-        await savePlayerStateCloud();
-        await startLeaderboardListener();
-        await startSeasonLeaderboardListener();
-        await startEventListener();
-        await startMusicSyncListener();
-        await startGlobalBroadcastListener();
-        await startEventExpiryCheck();
-        await startNotificationListener();
-        await checkSeasonReward(Math.max(1,Number(seasonInfo.id)-1));
-      }else{
-        if(notificationListenerStop){notificationListenerStop();notificationListenerStop=null}
-        await ensureSeason();
-        await startLeaderboardListener();
-        await startSeasonLeaderboardListener();
-        // Keep global events visible even in guest/local state when Firebase rules allow public reads.
-        await startEventListener();
-      }
-      startSeasonTimer();
+         await savePlayerStateCloud();
+         await startLeaderboardListener();
+         await startSeasonLeaderboardListener();
+         await startEventListener();
+         await startMusicSyncListener();
+         await startGlobalBroadcastListener();
+         await startEventExpiryCheck();
+         await startNotificationListener();
+         await loadSecretShopFromFirebase();
+         await checkSeasonReward(Math.max(1,Number(seasonInfo.id)-1));
+        }else{
+         if(notificationListenerStop){notificationListenerStop();notificationListenerStop=null}
+         await ensureSeason();
+         await startLeaderboardListener();
+         await startSeasonLeaderboardListener();
+         // Keep global events visible even in guest/local state when Firebase rules allow public reads.
+         await startEventListener();
+         await loadSecretShopFromFirebase();
+       }
+       startSeasonTimer();
     });
   }catch(e){
     console.error(e);
@@ -816,9 +882,23 @@ const abilities={
    shadowcat_score_hunt:{name:"Shadow Hunt",icon:"🎯",desc:"6 Sekunden bringt jedes Hindernis +2 Punkte.",effect:"scoreSurge",duration:6000,cooldown:60000},
    bacon_baron_truffle:{name:"Trüffelsuche",icon:"🥓",desc:"8 Sekunden erscheinen viel häufiger Bonus-Coins.",effect:"bonusRush",duration:8000,cooldown:42000},
    bacon_baron_mud_wallow:{name:"Bacon-Schild",icon:"🛡️",desc:"Schützt dich vor einer Kollision.",effect:"shield",cooldown:40000},
-   bacon_baron_oomph:{name:"Turbo-Biss",icon:"💨",desc:"6 Sekunden lang stärkere Flüge.",effect:"jumpBoost",duration:6000,cooldown:35000}
+    bacon_baron_oomph:{name:"Turbo-Biss",icon:"💨",desc:"6 Sekunden lang stärkere Flüge.",effect:"jumpBoost",duration:6000,cooldown:35000},
+    phoenix_rebirth:{name:"Phoenix Rebirth",icon:"🔥",desc:"Werde einmal wiederbelebt nach Game Over.",effect:"phoenixRebirth",cooldown:90000},
+    phoenix_flame_wings:{Name:"Flammenflügel",icon:"🔥",desc:"8 Sekunden doppelte Score.",effect:"scoreSurge",duration:8000,cooldown:55000},
+    phoenix_ash_storm:{name:"Asche-Sturm",icon:"🌋",desc:"10 Sekunden dreifache Bonus-Coins.",effect:"coinStorm",duration:10000,cooldown:60000},
+    reaper_harvest:{name:"Seernte",icon:"💀",desc:"Sammle 5 Bonus-Coins sofort.",effect:"coinBurst",cooldown:48000},
+    reaper_soul_dash:{name:"Seelen-Dash",icon:"👻",desc:"7 Sekunden durch Hindernisse.",effect:"phase",duration:7000,cooldown:52000},
+    reaper_death_lotus:{name:"Todes-Lotus",icon:"🌸",desc:"Schützt vor 2 Kollisionen.",effect:"doubleShield",cooldown:70000},
+    overlord_dominion:{name:"Herrschaft",icon:"👑",desc:"10 Sekunden dreifache Bonus-Coins und Score.",effect:"coinStorm",duration:10000,cooldown:70000},
+    overlord_supreme_shield:{name:"Supremes Schild",icon:"🛡️",desc:"Schützt vor 3 Kollisionen.",effect:"tripleShield",cooldown:80000},
+    overlord_coin_tsunami:{name:"Coin-Tsunami",icon:"🌊",desc:"Erschwellt 8 Bonus-Coins sofort.",effect:"coinBurst",cooldown:65000},
+    glitch_phase:{name:"Glitch-Phase",icon:"⚡",desc:"6 Sekunden durch alles fliegen.",effect:"phase",duration:6000,cooldown:45000},
+    glitch_duplicate:{name:"Duplikat",icon:"✨",desc:"Alle Bonus-Münzen zählen doppelt.",effect:"doubleCoins",duration:8000,cooldown:50000},
+    glitch_coin_bend:{name:"Coin-Bend",icon:"🌀",desc:"8 Sekunden Bonus-Coins werden 4x gezählt.",effect:"coinStorm",duration:8000,cooldown:60000},
+    owner_glow:{name:"Owner Glow",icon:"👑",desc:"Pulsierender Gold-Aura um den Owner.",effect:"ownerGlow",duration:0,cooldown:0},
+    owner_shield:{name:"Owner Shield",icon:"🛡️",desc:"Schützt vor einer Kollision.",effect:"shield",cooldown:60000}
 };
-function getSkinById(id){return skins.find(x=>x.id===id)||skins[0]}
+function getSkinById(id){const found=skins.find(x=>x.id===id);if(found&&isOwnerSkin(found.id)&&!canUseOwnerSkin(found.id)){return skins[0]}return found||skins[0]}
 function skinHitRadius(id){return id==="jeszx"?12:16;}
 function getAbility(id){return abilities[id]||null}
 function getSkinForAbility(id){return skins.find(sk=>(sk.abilities||[]).includes(id))||null}
@@ -905,7 +985,33 @@ const skins=[
   {id:"voltfrog",name:"VoltFrog",price:2000,type:"voltfrog",rarity:"rare",abilities:["volt_double_coin","volt_quick_flap","volt_coin_echo"]},
   {id:"stormowl",name:"StormOwl",price:4000,type:"stormowl",rarity:"epic",abilities:["storm_time_brake","storm_ghost_flight","storm_score_surge"]},
   {id:"astrion",name:"Astrion",price:10000,type:"astrion",rarity:"legendary",abilities:["astrion_time_rift","astrion_royal_shield","astrion_coin_storm"]},
-  {id:"johnbacon",name:"Bacon Baron",price:10000,type:"baconbaron",rarity:"legendary",original:true,abilities:["bacon_baron_truffle","bacon_baron_mud_wallow","bacon_baron_oomph"]}
+   {id:"johnbacon",name:"Bacon Baron",price:10000,type:"baconbaron",rarity:"legendary",original:true,abilities:["bacon_baron_truffle","bacon_baron_mud_wallow","bacon_baron_oomph"]},
+  {id:"shadow_phoenix",name:"Shadow Phoenix",price:25000,type:"phoenix",rarity:"mythic",secret:true,secretShop:true,abilities:["phoenix_rebirth","phoenix_flame_wings","phoenix_ash_storm"]},
+  {id:"neon_reaper",name:"Neon Reaper",price:35000,type:"reaper",rarity:"legendary",secret:true,secretShop:true,abilities:["reaper_harvest","reaper_soul_dash","reaper_death_lotus"]},
+  {id:"admin_overlord",name:"👑 Admin Overlord",price:77777,type:"overlord",rarity:"mythic",secret:true,secretShop:true,adminOnly:true,abilities:["overlord_dominion","overlord_supreme_shield","overlord_coin_tsunami"]},
+   {id:"glitch_king",name:"Glitch King",price:50000,type:"glitch",rarity:"legendary",secret:true,secretShop:true,abilities:["glitch_phase","glitch_duplicate","glitch_coin_bend"]},
+   {id:"flyyyy_owner",name:"FLYYYYOwner",price:0,type:"owner",rarity:"legendary",owner:true,ownerAccount:"flyyyyOwner",abilities:["owner_glow","owner_shield"]}
+];
+const OWNER_SKIN_IDS=new Set(["flyyyy_owner"]);
+const OWNER_PLAYER_NAME="flyyyyOwner";
+function isOwnerSkin(skinId){return OWNER_SKIN_IDS.has(skinId)}
+function canUseOwnerSkin(skinId){
+  if(!isOwnerSkin(skinId))return true;
+  const name=(getPlayerName()||"").trim();
+  return name===OWNER_PLAYER_NAME||isAdmin();
+}
+function autoGrantOwnerSkin(){
+  const name=(getPlayerName()||"").trim();
+  if(name===OWNER_PLAYER_NAME&&!state.ownedSkins.includes("flyyyy_owner")){
+    state.ownedSkins.push("flyyyy_owner");
+    saveStateLocalOnly();
+  }
+}
+const SECRET_SHOP_DEFAULTS=[
+  {skinId:"shadow_phoenix",price:25000,active:true,offerExpiresAt:null},
+  {skinId:"neon_reaper",price:35000,active:true,offerExpiresAt:null},
+  {skinId:"admin_overlord",price:77777,active:false,offerExpiresAt:null},
+  {skinId:"glitch_king",price:50000,active:true,offerExpiresAt:null}
 ];
 const sounds=[{id:"classic",name:"Classic",price:0,icon:"🔔",type:"classic"},{id:"arcade",name:"Arcade",price:50,icon:"👾",type:"arcade"},{id:"laser",name:"Laser",price:100,icon:"⚡",type:"laser"},{id:"bubble",name:"Bubble",price:150,icon:"🫧",type:"bubble"},{id:"power",name:"Power",price:200,icon:"🔥",type:"power"}];
 const musicTracks=[{id:"classicMusic",name:"Classic",price:0,icon:"🎵",melody:[261.63,329.63,392,523.25,392,329.63,293.66,349.23,440,523.25,440,349.23,392,329.63,261.63,293.66],bass:[130.81,130.81,164.81,164.81,146.83,146.83,174.61,174.61],tempo:380},{id:"arcadeMusic",name:"Arcade",price:50,icon:"👾",melody:[392,392,523.25,659.25,523.25,392,329.63,392,440,523.25,659.25,783.99,659.25,523.25,440,392],bass:[196,196,261.63,261.63,220,220,174.61,196],tempo:300},{id:"speedMusic",name:"Speed",price:100,icon:"⚡",melody:[329.63,392,493.88,659.25,493.88,392,329.63,493.88,392,493.88,587.33,783.99,587.33,493.88,392,329.63],bass:[164.81,196,164.81,196,146.83,174.61,164.61,196],tempo:250},{id:"spaceMusic",name:"Space",price:150,icon:"🚀",melody:[220,261.63,329.63,392,493.88,392,329.63,261.63,246.94,293.66,369.99,440,554.37,440,369.99,293.66],bass:[110,110,130.81,130.81,146.83,146.83,123.47,123.47],tempo:420},{id:"chillMusic",name:"Chill",price:200,icon:"🌙",melody:[261.63,329.63,392,329.63,293.66,349.23,440,349.23,261.63,329.63,392,493.88,440,392,329.63,293.66],bass:[130.81,130.81,146.83,146.83,110,110,123.47,123.47],tempo:500},{id:"finalMusic",name:"Final Boss",price:250,icon:"🔥",melody:[196,246.94,293.66,392,293.66,246.94,220,329.63,261.63,329.63,392,523.25,392,329.63,293.66,246.94],bass:[98,98,123.47,123.47,110,110,146.83,146.83],tempo:280}];let dynamicMusicTracks=[];let musicManifestLoaded=false;async function loadMusicManifest(){if(musicManifestLoaded)return;try{const resp=await fetch("./assets/music/manifest.json",{cache:"no-store"});if(!resp.ok)return;const data=await resp.json();if(Array.isArray(data)){dynamicMusicTracks=data.map(t=>({id:t.id||"",name:t.name||t.id,price:Number(t.price||150),icon:t.icon||"🎵",file:t.file||"",genre:t.genre||"Unknown"}));musicManifestLoaded=true}}catch(e){console.error("loadMusicManifest",e)}}
@@ -925,8 +1031,16 @@ const ADMIN_EVENTS=[
   {id:"music_event_4",name:"🎵 Event: Pop",description:"Pop-Atmosphäre",category:"music",musicFile:"apalonbeats-no-copyright-music-549443.mp3"},
   {id:"music_event_5",name:"🎵 Event: Beats",description:"Beat-driven Abenteuer",category:"music",musicFile:"arpmedia-no-copyright-music-569456.mp3"},
   {id:"music_event_6",name:"🎵 Event: Sport",description:"Epos für besondere Momente",category:"music",musicFile:"sub_clair-no-copyright-music-sport-564222.mp3"},
-  {id:"lightning_storm",name:"⚡ Blitz-Sturm",description:"Einzelne Blitze schlagen überall auf der Map ein",category:"visual",duration:180},
-  {id:"disco",name:"🪩 Disco Event",description:"Die komplette Map wird zur Disco – mit wechselnden Lichtfarben und Dance-Musik",category:"disco",musicFile:"arpmedia-no-copyright-music-569463.mp3",duration:180}
+   {id:"lightning_storm",name:"⚡ Blitz-Sturm",description:"Einzelne Blitze schlagen überall auf der Map ein",category:"visual",duration:180},
+   {id:"disco",name:"🪩 Disco Event",description:"Die komplette Map wird zur Disco – mit wechselnden Lichtfarben und Dance-Musik",category:"disco",musicFile:"arpmedia-no-copyright-music-569463.mp3",duration:180},
+   {id:"secret_hunt",name:"🕵️ Secret Hunt",description:"Finde die geheimnisvolle Admin-Figur für Belohnungen!",category:"abuse",duration:300},
+   {id:"admin_skin_event",name:"👑 Secret Admin Skin",description:"Extrem seltener Admin-Skin wird im Secret Shop verfügbar",category:"abuse",duration:600},
+   {id:"john_bacon_invasion",name:"🐷 John Bacon Invasion",description:"Bacon-Hindernisse übernehmen die Map mit Spezialeffekten!",category:"abuse",duration:240,musicFile:"arpmedia-no-copyright-music-569463.mp3"},
+   {id:"admin_boss",name:"👹 Admin Boss Event",description:"Gemeinsames Boss-Event – besiegt den Admin Boss für Belohnungen!",category:"abuse",duration:300},
+   {id:"chaos_mode",name:"🌪️ Chaos Mode",description:"Schnelleres Gameplay, verrückte Effekte und Bonus-Coins!",category:"abuse",duration:180},
+   {id:"secret_portals",name:"🌀 Secret Portals",description:"Seltene Portals spawnen mit Secret-Skins und Drops!",category:"abuse",duration:240},
+   {id:"xp_rush",name:"⚡ XP Rush",description:"1 Coin = 10 XP! Verdoppelte XP für Levelaufstiege!",category:"xp",duration:300},
+  {id:"fragment_rain",name:"🎁 Fragment Regen",description:"Zufällige Coins, Skin-Fragmente und seltene Belohnungen!",category:"abuse",duration:300}
 ];
 function pick(a){return a[Math.floor(Math.random()*a.length)]}
 function randomMissions(){
@@ -1088,8 +1202,9 @@ function drawEventVisuals(now){
     }
   }
   if(eventVisualOverlay){
-    eventVisualOverlay.classList.toggle("active",disco);
-    eventVisualOverlay.innerHTML=disco?'<div class="discoOverlay"></div>':'';
+    const showDisco=disco&&game.running;
+    eventVisualOverlay.classList.toggle("active",showDisco);
+    eventVisualOverlay.innerHTML=showDisco?'<div class="discoOverlay"></div>':'';
   }
 }
 
@@ -1275,7 +1390,6 @@ function applyLanguage(){
   if(musicVolumeValue)musicVolumeValue.textContent=`${state.musicVolume} %`;if(sfxVolumeValue)sfxVolumeValue.textContent=`${state.sfxVolume} %`;
   if(musicVolumeRange)musicVolumeRange.value=String(state.musicVolume);if(sfxVolumeRange)sfxVolumeRange.value=String(state.sfxVolume);
   if(langDeBtn)langDeBtn.classList.toggle("selected",lang()==="de");if(langEnBtn)langEnBtn.classList.toggle("selected",lang()==="en");
-  const gm=$("gameModeSelect");if(gm){const labels=lang()==="en"?{classic:"Classic",speedrun:"⚡ Speedrun",hardcore:"💀 Hardcore"}:{classic:"Classic",speedrun:"⚡ Speedrun",hardcore:"💀 Hardcore"};[...gm.options].forEach(o=>o.textContent=labels[o.value]||o.textContent)}
   if(typeof renderShop==="function")renderShop();if(typeof renderInventory==="function")renderInventory();if(typeof renderMissions==="function")renderMissions();
   const copyrightText=$("copyrightText");if(copyrightText)copyrightText.textContent=lang()==="en"?"© 2026 FLYYYY — All rights reserved.":"© 2026 FLYYYY — Alle Rechte vorbehalten.";
   translateDOM();
@@ -1308,14 +1422,45 @@ function comboMultiplierFor(count){if(count>=30)return 5;if(count>=20)return 4;i
 function updateComboHUD(){if(!comboHud)return;const c=Math.max(0,Number(game.combo||0)),m=comboMultiplierFor(c);game.comboMultiplier=m;comboCountHud.textContent=c;comboMultHud.textContent=m;comboHud.classList.toggle("hot",c>=5&&c<30);comboHud.classList.toggle("mega",c>=30)}
 function breakCombo(reason=""){if(game.combo<=0)return;const lost=game.combo;game.combo=0;game.comboMultiplier=1;game.comboMilestones={};updateComboHUD();if(reason)showMessage(`💥 Combo verloren · x${lost}`)}
 function registerComboHit(){game.combo=Math.max(0,Number(game.combo||0))+1;const next=comboMultiplierFor(game.combo);const previous=game.comboMultiplier||1;game.comboMultiplier=next;const milestones=[5,10,20,30];if(milestones.includes(game.combo)&&!game.comboMilestones[game.combo]){game.comboMilestones[game.combo]=true;const bonus={5:5,10:10,20:20,30:40}[game.combo]||0;const rb=Math.round(bonus*eventRewardMult());game.runCoins+=rb;game.bonusCoinsRun+=rb;coinSound();showMessage(`🔥 COMBO ${game.combo}! x${next} · +${rb} Coins`)}else if(next>previous){showMessage(`🔥 COMBO x${next}!`)}updateComboHUD()}
-function updateHUD(){scoreHud.textContent=game.score;coinsHud.textContent=state.coins+game.runCoins;jumpHud.textContent=game.jumpCount;seasonHud.textContent=seasonInfo.id||1;updateComboHUD();updateAbilityHUD();updateEventHUD()}
-function updateEventHUD(){if(!eventBadge)return;const active=Object.keys(activeEvents);if(active.length>0){eventBadge.style.display="";const names=active.map(k=>activeEvents[k].name||k).join(", ");eventBadge.textContent=`🔴 EVENTS: ${names}`}else{eventBadge.style.display="none"};if(isEventActive("speed_run")){if(!speedRunTimerInterval){speedRunTimerInterval=setInterval(updateSpeedRunTimer,1000);updateSpeedRunTimer()}}else{clearInterval(speedRunTimerInterval);speedRunTimerInterval=null}}
+function updateHUD(){
+  scoreHud.textContent=game.score;
+  coinsHud.textContent=state.coins+game.runCoins;
+  jumpHud.textContent=game.jumpCount;
+  seasonHud.textContent=seasonInfo.id||1;
+  updateComboHUD();updateAbilityHUD();updateEventHUD()
+}
+function updateEventHUD(){if(!eventBadge)return;const active=Object.keys(activeEvents);if(active.length>0){eventBadge.style.display="";const names=active.map(k=>activeEvents[k].name||k).join(", ");eventBadge.textContent=`🔴 EVENTS: ${names}`;updateEventCountdown()}else{eventBadge.style.display="none"}}
+function updateEventCountdown(){
+  if(!eventBadge)return;
+  const active=Object.keys(activeEvents);
+  if(active.length===0)return;
+  let countdownText="";
+  active.forEach(id=>{
+    const ev=activeEvents[id];
+    if(ev&&ev.expiresAt){
+      const remaining=Number(ev.expiresAt)-Date.now();
+      if(remaining>0){
+        const s=Math.floor(remaining/1000);
+        const m=Math.floor(s/60);
+        const sec=s%60;
+        countdownText+=` · ${id==="xp_rush"?"⚡":"⏱️"} ${m}:${String(sec).padStart(2,"0")}`;
+      }
+    }
+  });
+  if(countdownText){
+    const names=active.map(k=>activeEvents[k].name||k).join(", ");
+    eventBadge.textContent=`🔴 ${names}${countdownText}`;
+  }
+}
 function isEventActive(id){return !!activeEvents[id]}
 function eventCoinMult(){return isEventActive("double_coins")?2:1}
 function eventScoreMult(){return isEventActive("double_score")?2:1}
 function eventComboMult(){return isEventActive("mega_combo")?2:1}
 function eventXPMult(){return isEventActive("xp_boost")?2:1}
 function eventRewardMult(){return isEventActive("double_reward")?2:1}
+function isXPRushActive(){return isEventActive("xp_rush")}
+function xpRushCoinXP(){return isEventActive("xp_rush")?10:0}
+function xpRushGameBonus(){return isEventActive("xp_rush")?2:1}
 function updateSpeedRunTimer(){if(!isEventActive("speed_run")){speedRunEndsAt=null;return}const ev=activeEvents["speed_run"];if(!ev)return;const started=Number(ev.startedAt||0)||Date.now();const dur=(ev.duration||120)*1000;const remaining=dur-(Date.now()-started);if(remaining<=0){speedRunEndsAt=null;eventBadge.textContent="🔴 EVENTS: ⚡ Speed Run (beendet)";return}const s=Math.floor(remaining/1000);const m=Math.floor(s/60);const sec=s%60;speedRunEndsAt=remaining;eventBadge.textContent=`🔴 EVENTS: ⚡ Speed Run · ⏱️ ${m}:${String(sec).padStart(2,"0")}`}
 function speedRunMult(){return isEventActive("speed_run")?2.5:1}
 function flap(){if(!game.running||game.paused||game.over)return;const boost=game.abilityActiveEffect==="jumpBoost"||game.abilityActiveEffect==="quickFlap";game.player.vy=boost?-500:-405;game.jumpCount++;jumpSound((sounds.find(x=>x.id===state.selectedSound)||sounds[0]).type);updateHUD()}
@@ -1402,6 +1547,7 @@ function updateGame(dt){
       const baseScore=(abilityActive("scoreSurge")?2:1)*eventScoreMult();
       game.score+=baseScore*game.comboMultiplier*eventComboMult();
       scoreSound();
+      if(bossActive&&typeof damageBoss==="function"){damageBoss(1);if(Math.random()<.1)triggerScreenShake();}
       if(game.score===20&&!game.iceActive&&state.selectedWorld!=="ice"){const rb=10*eventRewardMult();game.runCoins+=rb;showMessage(`🪙 Level 20! +${rb} Coins!`);coinSound();}
       if(game.iceActive){
         game.iceLevelsRemaining=Math.max(0,Number(game.iceLevelsRemaining||0)-1);
@@ -1418,6 +1564,7 @@ function updateGame(dt){
       }
     }
     if(obstacleCollision(p,o)){
+      if(bossActive&&typeof damageBoss==="function"){damageBoss(2);showMessage("💥 -2 Boss HP!")}
       if(abilityActive("phase")){continue}
       if(game.abilityShield>0){game.abilityShield--;breakCombo("🛡️ Treffer");showMessage(`🛡️ Treffer geschützt! ${game.abilityShield>0?game.abilityShield+" Schild(e) übrig":"Schild verbraucht"}`);p.vy=-260;continue}
       breakCombo();
@@ -1434,6 +1581,7 @@ function updateGame(dt){
       c.collected=true;
       const mult=(abilityActive("coinStorm")?3:abilityActive("doubleCoins")?2:abilityActive("coinEcho")?2:1)*eventCoinMult()*eventRewardMult();
       game.runCoins+=mult;game.bonusCoinsRun+=mult;showMessage(`🪙 +${mult} Bonus-Coin${mult>1?"s":""}!`);coinSound();
+      if(typeof xpRushCoinXP==="function"&&xpRushCoinXP()>0){addXP(xpRushCoinXP()*mult)}
     }
   }
   game.coins=game.coins.filter(c=>c.x>-50&&!c.collected);
@@ -1442,8 +1590,10 @@ function updateGame(dt){
   }
   if(game.score>state.best){state.best=game.score;saveState()}
   updateMissionProgress();updateHUD();
-}
-function startGame(online=false){stopLobbyMusic();if(online&&!currentUser){showMessage("🔐 Für den Online-Modus musst du angemeldet sein.");showScreen("authScreen");return}game.onlineRun=!!online;initAudio();startMusic();hideScreens();canvas.style.display="block";gameHud.style.display="block";pauseOverlay.classList.remove("active");gameOverOverlay.classList.remove("active");game.running=true;game.paused=false;game.over=false;game.score=0;game.runCoins=0;game.jumpCount=0;game.bonusCoinsRun=0;game.combo=0;game.comboMultiplier=1;game.comboMilestones={};game.speed=165;game.spawnTimer=.9;game.obstacles=[];game.coins=[];game.player={x:W*.24,y:H*.45,vy:0,r:22,hitR:skinHitRadius(state.selectedSkin),rot:0};game.abilityActiveUntil=0;game.abilityCooldownUntil=0;game.abilityShield=0;game.abilityUsed=false;game.abilityActiveEffect=null;game.abilityBaseHitR=skinHitRadius(state.selectedSkin);game.player.hitR=game.abilityBaseHitR;game.baseWorldId=state.selectedWorld==="ice"?(state.lastNonIceWorld||"giza"):state.selectedWorld;game.iceReturnWorldId=game.baseWorldId;game.iceActive=state.selectedWorld==="ice";game.iceTriggered=game.iceActive;game.iceLevelsRemaining=game.iceActive?10:0;game.world=worlds.find(w=>w.id===state.selectedWorld)||worlds.find(w=>w.id===game.baseWorldId)||worlds[0];worldHud.textContent=game.world.name;musicHud.textContent=selectedMusic().name;updateHUD();game.last=performance.now();flap();requestAnimationFrame(gameLoop)}
+   if(typeof checkAbuseEvents==="function")checkAbuseEvents();
+   if(typeof updateAbuseGameMechanics==="function")updateAbuseGameMechanics(dt);
+ }
+function startGame(online=false){stopLobbyMusic();if(online&&!currentUser){showMessage("🔐 Für den Online-Modus musst du angemeldet sein.");showScreen("authScreen");return}game.onlineRun=!!online;initAudio();startMusic();hideScreens();canvas.style.display="block";gameHud.style.display="block";pauseOverlay.classList.remove("active");gameOverOverlay.classList.remove("active");game.running=true;game.paused=false;game.over=false;game.score=0;game.runCoins=0;game.jumpCount=0;game.bonusCoinsRun=0;game.combo=0;game.comboMultiplier=1;game.comboMilestones={};game.speed=165;game.spawnTimer=.9;game.obstacles=[];game.coins=[];game.player={x:W*.24,y:H*.45,vy:0,r:22,hitR:skinHitRadius(state.selectedSkin),rot:0};game.abilityActiveUntil=0;game.abilityCooldownUntil=0;game.abilityShield=0;game.abilityUsed=false;game.abilityActiveEffect=null;game.abilityBaseHitR=skinHitRadius(state.selectedSkin);game.player.hitR=game.abilityBaseHitR;game.baseWorldId=state.selectedWorld==="ice"?(state.lastNonIceWorld||"giza"):state.selectedWorld;game.iceReturnWorldId=game.baseWorldId;game.iceActive=state.selectedWorld==="ice";game.iceTriggered=game.iceActive;game.iceLevelsRemaining=game.iceActive?10:0;game.world=worlds.find(w=>w.id===state.selectedWorld)||worlds.find(w=>w.id===game.baseWorldId)||worlds[0];worldHud.textContent=game.world.name;musicHud.textContent=selectedMusic().name;updateHUD();loadBossStateFromFirebase();game.last=performance.now();flap();requestAnimationFrame(gameLoop)}
 async function endGame(){
   if(game.over)return;
   game.over=true;
@@ -1496,9 +1646,9 @@ async function endGame(){
     }
   }
 }
-function gameLoop(ts){if(!game.running){draw();return}const dt=Math.min(.033,(ts-game.last)/1000);game.last=ts;if(!game.paused)updateGame(dt);draw();if(game.running)requestAnimationFrame(gameLoop)}function togglePause(){if(!game.running||game.over)return;game.paused=!game.paused;pauseOverlay.classList.toggle("active",game.paused);if(!game.paused)game.last=performance.now()}function returnLobby(){game.running=false;game.paused=false;game.over=false;game.combo=0;game.comboMultiplier=1;game.comboMilestones={};canvas.style.display="none";gameHud.style.display="none";document.querySelectorAll(".overlay").forEach(x=>x.classList.remove("active"));closeAdminLogin();showScreen("lobby");updateLobby()}
+function gameLoop(ts){if(!game.running){draw();return}const dt=Math.min(.033,(ts-game.last)/1000);game.last=ts;if(!game.paused)updateGame(dt);draw();if(typeof renderSecretShopCountdown==="function")renderSecretShopCountdown();if(game.running)requestAnimationFrame(gameLoop)}function togglePause(){if(!game.running||game.over)return;game.paused=!game.paused;pauseOverlay.classList.toggle("active",game.paused);if(!game.paused)game.last=performance.now()}function returnLobby(){game.running=false;game.paused=false;game.over=false;game.combo=0;game.comboMultiplier=1;game.comboMilestones={};canvas.style.display="none";gameHud.style.display="none";document.querySelectorAll(".overlay").forEach(x=>x.classList.remove("active"));closeAdminLogin();showScreen("lobby");updateLobby();if(typeof resetAbuseState==="function")resetAbuseState()}
 
-function drawSkin(c,type,x,y,r){c.save();c.translate(x,y);if(type==="bird")drawBird(c,r);else if(type==="dino")drawDino(c,r);else if(type==="pen")drawPen(c,r);else if(type==="carrot")drawCarrot(c,r);else if(type==="apple")drawApple(c,r);else if(type==="jeszx")drawDonkey(c,r);else if(type==="paperjet")drawPaperJet(c,r);else if(type==="voltfrog")drawVoltFrog(c,r);else if(type==="cyberfox")drawCyberFox(c,r);else if(type==="stormowl")drawStormOwl(c,r);else if(type==="magmoth")drawMagmaWing(c,r);else if(type==="astrion")drawAstrion(c,r);else if(type==="neonbat")drawNeonBat(c,r);else if(type==="aquaray")drawAquaRay(c,r);else if(type==="shadowcat")drawShadowCat(c,r);else if(type==="baconbaron")drawBaconBaron(c,r);c.restore()}
+function drawSkin(c,type,x,y,r){c.save();c.translate(x,y);if(type==="bird")drawBird(c,r);else if(type==="dino")drawDino(c,r);else if(type==="pen")drawPen(c,r);else if(type==="carrot")drawCarrot(c,r);else if(type==="apple")drawApple(c,r);else if(type==="jeszx")drawDonkey(c,r);else if(type==="paperjet")drawPaperJet(c,r);else if(type==="voltfrog")drawVoltFrog(c,r);else if(type==="cyberfox")drawCyberFox(c,r);else if(type==="stormowl")drawStormOwl(c,r);else if(type==="magmoth")drawMagmaWing(c,r);else if(type==="astrion")drawAstrion(c,r);else if(type==="neonbat")drawNeonBat(c,r);else if(type==="aquaray")drawAquaRay(c,r);else if(type==="shadowcat")drawShadowCat(c,r);else if(type==="baconbaron")drawBaconBaron(c,r);else if(type==="phoenix")drawPhoenix(c,r);else if(type==="reaper")drawReaper(c,r);else if(type==="overlord")drawOverlord(c,r);else if(type==="glitch")drawGlitch(c,r);else if(type==="owner")drawOwnerSkin(c,r,state.selectedSkin);c.restore()}
 function drawBird(c,r){c.fillStyle="#ffd13b";c.beginPath();c.ellipse(0,0,r*1.05,r*.82,0,0,Math.PI*2);c.fill();c.fillStyle="#fff";c.beginPath();c.arc(r*.35,-r*.3,r*.21,0,Math.PI*2);c.fill();c.fillStyle="#17204a";c.beginPath();c.arc(r*.4,-r*.3,r*.08,0,Math.PI*2);c.fill();c.fillStyle="#ff7733";c.beginPath();c.moveTo(r*.9,-r*.05);c.lineTo(r*1.45,r*.1);c.lineTo(r*.9,r*.28);c.closePath();c.fill()}
 function drawDino(c,r){c.fillStyle="#58d26b";c.beginPath();c.ellipse(0,0,r*1.05,r*.72,0,0,Math.PI*2);c.fill();c.fillStyle="#4baa59";c.beginPath();c.moveTo(-r*.7,-r*.25);c.lineTo(-r*1.4,-r*.05);c.lineTo(-r*.8,r*.3);c.closePath();c.fill();c.fillStyle="#fff";c.beginPath();c.arc(r*.4,-r*.2,r*.2,0,Math.PI*2);c.fill();c.fillStyle="#17204a";c.beginPath();c.arc(r*.45,-r*.2,r*.08,0,Math.PI*2);c.fill()}
 function drawPen(c,r){c.rotate(-.35);c.fillStyle="#ffdf4e";c.fillRect(-r*.25,-r*1.1,r*.5,r*1.6);c.fillStyle="#4d75ff";c.fillRect(-r*.25,-r*1.1,r*.5,r*.35);c.fillStyle="#e9bd91";c.beginPath();c.moveTo(-r*.25,r*.5);c.lineTo(0,r*1.05);c.lineTo(r*.25,r*.5);c.closePath();c.fill()}
@@ -1628,24 +1778,133 @@ function drawAquaRay(c,r){
   for(let i=0;i<3;i++){ c.beginPath(); c.arc(-r*.55+i*r*.45,r*.34, r*.06,0,Math.PI*2); c.fill(); }
   c.restore();
 }
-function drawShadowCat(c,r){
+function drawOwnerSkin(c,r,skinId){
   c.save();
-  c.shadowColor="#b58cff"; c.shadowBlur=r*.5;
-  c.fillStyle="#252344";
-  c.beginPath(); c.ellipse(0,r*.05,r*.92,r*.62,0,0,Math.PI*2); c.fill();
-  c.fillStyle="#392f5f";
-  c.beginPath(); c.moveTo(-r*.58,-r*.18); c.lineTo(-r*.74,-r*.98); c.lineTo(-r*.1,-r*.48); c.closePath();
-  c.moveTo(r*.58,-r*.18); c.lineTo(r*.74,-r*.98); c.lineTo(r*.1,-r*.48); c.closePath(); c.fill();
-  c.fillStyle="#b58cff";
-  c.beginPath(); c.arc(-r*.28,-r*.2,r*.16,0,Math.PI*2); c.arc(r*.28,-r*.2,r*.16,0,Math.PI*2); c.fill();
-  c.fillStyle="#11162e";
-  c.beginPath(); c.arc(-r*.28,-r*.2,r*.06,0,Math.PI*2); c.arc(r*.28,-r*.2,r*.06,0,Math.PI*2); c.fill();
-  c.strokeStyle="#ff6374"; c.lineWidth=r*.08;
-  c.beginPath(); c.moveTo(-r*.62,r*.32); c.quadraticCurveTo(0,r*.62,r*.62,r*.32); c.stroke();
-  c.fillStyle="#5ee7ff";
-  for(let i=0;i<4;i++){c.beginPath();c.arc(-r*.78+i*r*.52,r*.45+(i%2)*r*.08,r*.045,0,Math.PI*2);c.fill();}
-  c.restore();
-}
+  const t=(game.animTime||0)/200;
+  if(skinId==="flyyyy_owner"){
+    const pulse=0.5+0.5*Math.sin(t*.8);
+    c.shadowColor=`rgba(255,212,71,${0.5+0.4*pulse})`;c.shadowBlur=r*.8;
+    const body=c.createLinearGradient(-r,-r,r,r);
+    body.addColorStop(0,"#ffd447");body.addColorStop(.4,"#ff9b3d");body.addColorStop(.7,"#ff4fd8");body.addColorStop(1,"#45e8ff");
+    c.fillStyle=body;c.beginPath();c.ellipse(0,r*.04,r*.95,r*.72,0,0,Math.PI*2);c.fill();
+    c.fillStyle="#fff";c.shadowColor="#fff";c.shadowBlur=r*.3;
+    c.beginPath();c.moveTo(-r*.35,-r*.85);c.lineTo(0,r*1.1);c.lineTo(r*.35,-r*.85);c.closePath();c.fill();
+    c.shadowBlur=0;c.fillStyle="#1a0a2e";
+    c.beginPath();c.arc(-r*.28,-r*.1,r*.12,0,Math.PI*2);c.arc(r*.28,-r*.1,r*.12,0,Math.PI*2);c.fill();
+    c.fillStyle="#ffd447";c.beginPath();c.arc(-r*.28,-r*.1,r*.04,0,Math.PI*2);c.arc(r*.28,-r*.1,r*.04,0,Math.PI*2);c.fill();
+  } else {
+    const glitch=Math.sin(t*3);
+    c.shadowColor="#ff4fd8";c.shadowBlur=r*.6;
+    c.fillStyle="#0a0a1a";c.beginPath();c.ellipse(0,r*.05,r*.9,r*.68,0,0,Math.PI*2);c.fill();
+    c.strokeStyle="#ff4fd8";c.lineWidth=r*.08;c.beginPath();c.moveTo(-r*.7,-r*.3);c.lineTo(r*.7,-r*.3);c.stroke();
+    c.strokeStyle="#45e8ff";c.beginPath();c.moveTo(-r*.7,-r*.3+glitch*r*.1);c.lineTo(r*.7,-r*.3+glitch*r*.1);c.stroke();
+    c.fillStyle="#ff4fd8";c.beginPath();c.arc(-r*.25,-r*.1,r*.1,0,Math.PI*2);c.fill();
+    c.fillStyle="#45e8ff";c.beginPath();c.arc(r*.25,-r*.1,r*.1,0,Math.PI*2);c.fill();
+    c.fillStyle="#fff";c.font=`bold ${r*.5}px Arial`;c.textAlign="center";c.textBaseline="middle";
+    c.fillText("AJ",0,r*.2);
+  }
+  for(let i=0;i<8;i++){const ang=t+i*Math.PI/4;c.fillStyle=i%2?"#ffd447":"#ff4fd8";c.globalAlpha=.4+0.4*Math.sin(t+i);c.beginPath();c.arc(Math.cos(ang)*r*1.2,Math.sin(ang)*r*.9,r*.04,0,Math.PI*2);c.fill();}
+  c.globalAlpha=1;c.restore();
+ }
+function drawShadowCat(c,r){
+   c.save();
+   c.shadowColor="#b58cff"; c.shadowBlur=r*.5;
+   c.fillStyle="#252344";
+   c.beginPath(); c.ellipse(0,r*.05,r*.92,r*.62,0,0,Math.PI*2); c.fill();
+   c.fillStyle="#392f5f";
+   c.beginPath(); c.moveTo(-r*.58,-r*.18); c.lineTo(-r*.74,-r*.98); c.lineTo(-r*.1,-r*.48); c.closePath();
+   c.moveTo(r*.58,-r*.18); c.lineTo(r*.74,-r*.98); c.lineTo(r*.1,-r*.48); c.closePath(); c.fill();
+   c.fillStyle="#b58cff";
+   c.beginPath(); c.arc(-r*.28,-r*.2,r*.16,0,Math.PI*2); c.arc(r*.28,-r*.2,r*.16,0,Math.PI*2); c.fill();
+   c.fillStyle="#11162e";
+   c.beginPath(); c.arc(-r*.28,-r*.2,r*.06,0,Math.PI*2); c.arc(r*.28,-r*.2,r*.06,0,Math.PI*2); c.fill();
+   c.strokeStyle="#ff6374"; c.lineWidth=r*.08;
+   c.beginPath(); c.moveTo(-r*.62,r*.32); c.quadraticCurveTo(0,r*.62,r*.62,r*.32); c.stroke();
+   c.fillStyle="#5ee7ff";
+   for(let i=0;i<4;i++){c.beginPath();c.arc(-r*.78+i*r*.52,r*.45+(i%2)*r*.08,r*.045,0,Math.PI*2);c.fill();}
+   c.restore();
+ }
+ function drawPhoenix(c,r){
+   c.save();
+   const pulse=0.5+0.5*Math.sin((game.animTime||0)/120);
+   c.shadowColor=`rgba(255,120,40,${0.5+0.3*pulse})`; c.shadowBlur=r*.6;
+   const body=c.createLinearGradient(-r,-r,r,r);
+   body.addColorStop(0,"#ff4f12"); body.addColorStop(.4,"#ff9b3d"); body.addColorStop(.7,"#ffe45e"); body.addColorStop(1,"#fff5a0");
+   c.fillStyle=body;
+   c.beginPath(); c.ellipse(0,r*.04,r*.95,r*.7,0,0,Math.PI*2); c.fill();
+   c.fillStyle="#ff3b00"; c.globalAlpha=.7;
+   for(let i=0;i<5;i++){c.beginPath();c.moveTo(-r*.7+i*r*.3,-r*.3);c.quadraticCurveTo(-r*.5+i*r*.3,-r*.8,-r*.3+i*r*.3,-r*.3);c.fill();}
+   c.globalAlpha=1;
+   c.fillStyle="#1a0500";
+   c.beginPath(); c.arc(-r*.28,-r*.15,r*.1,0,Math.PI*2); c.arc(r*.28,-r*.15,r*.1,0,Math.PI*2); c.fill();
+   c.fillStyle="#ffea00"; c.shadowColor="#ffea00"; c.shadowBlur=r*.15;
+   c.beginPath(); c.arc(-r*.28,-r*.15,r*.04,0,Math.PI*2); c.arc(r*.28,-r*.15,r*.04,0,Math.PI*2); c.fill(); c.shadowBlur=0;
+   c.fillStyle="rgba(255,200,80,.25)"; c.beginPath(); c.ellipse(0,r*.04,r*1.15,r*.85,0,0,Math.PI*2); c.fill();
+   const t=(game.animTime||0)/180;
+   for(let i=0;i<6;i++){const ang=t+i*Math.PI/3;const dist=r*(0.9+0.15*Math.sin(t*2+i));c.fillStyle=i%2?"#ffe45e":"#ff4f12";c.globalAlpha=.4+0.4*Math.sin(t+i);c.beginPath();c.arc(Math.cos(ang)*dist,Math.sin(ang)*dist,r*.06,0,Math.PI*2);c.fill();}
+   c.globalAlpha=1; c.restore();
+ }
+ function drawReaper(c,r){
+   c.save();
+   c.shadowColor="#5ee7ff"; c.shadowBlur=r*.4;
+   c.fillStyle="#0a0a1a";
+   c.beginPath(); c.ellipse(0,r*.05,r*.9,r*.68,0,0,Math.PI*2); c.fill();
+   c.fillStyle="#1a1a3a";
+   c.beginPath(); c.moveTo(-r*.5,-r*.2); c.lineTo(-r*.8,-r*.95); c.lineTo(0,-r*.5); c.lineTo(r*.8,-r*.95); c.lineTo(r*.5,-r*.2); c.closePath(); c.fill();
+   c.strokeStyle="#5ee7ff"; c.lineWidth=r*.07;
+   c.beginPath(); c.moveTo(-r*.4,-r*.35); c.lineTo(-r*.1,-r*.25); c.stroke();
+   c.beginPath(); c.moveTo(r*.4,-r*.35); c.lineTo(r*.1,-r*.25); c.stroke();
+   c.fillStyle="#5ee7ff";
+   c.beginPath(); c.arc(-r*.25,-r*.3,r*.08,0,Math.PI*2); c.arc(r*.25,-r*.3,r*.08,0,Math.PI*2); c.fill();
+   c.fillStyle="#ff4f86";
+   c.beginPath(); c.arc(-r*.25,-r*.3,r*.03,0,Math.PI*2); c.arc(r*.25,-r*.3,r*.03,0,Math.PI*2); c.fill();
+   c.strokeStyle="#b58cff"; c.lineWidth=r*.1;
+   c.beginPath(); c.moveTo(-r*.6,r*.42); c.quadraticCurveTo(0,r*.72,r*.6,r*.42); c.stroke();
+   const t=(game.animTime||0)/200;
+   for(let i=0;i<8;i++){const ang=t+i*Math.PI/4;c.fillStyle=i%2?"#5ee7ff":"#b58cff";c.globalAlpha=.3+0.3*Math.sin(t+i);c.beginPath();c.arc(Math.cos(ang)*r*1.05,Math.sin(ang)*r*.8,r*.03,0,Math.PI*2);c.fill();}
+   c.globalAlpha=1; c.restore();
+ }
+ function drawOverlord(c,r){
+   c.save();
+   const pulse=0.5+0.5*Math.sin((game.animTime||0)/100);
+   c.shadowColor=`rgba(255,79,216,${0.5+0.4*pulse})`; c.shadowBlur=r*.7;
+   const body=c.createLinearGradient(-r,-r,r,r);
+   body.addColorStop(0,"#1a0a2e"); body.addColorStop(.3,"#3d1a6e"); body.addColorStop(.6,"#7b2ff7"); body.addColorStop(1,"#ff4fd8");
+   c.fillStyle=body;
+   c.beginPath(); c.ellipse(0,r*.05,r*.95,r*.72,0,0,Math.PI*2); c.fill();
+   c.fillStyle="#ffd447"; c.shadowColor="#ffd447"; c.shadowBlur=r*.2;
+   c.beginPath();
+   c.moveTo(-r*.32,-r*.85); c.lineTo(-r*.14,-r*1.1); c.lineTo(0,-r*.8); c.lineTo(r*.14,-r*1.1); c.lineTo(r*.32,-r*.85); c.lineTo(r*.26,-r*.6); c.lineTo(-r*.26,-r*.6); c.closePath(); c.fill();
+   c.fillStyle="#fff"; c.beginPath(); c.arc(0,-r*.72,r*.06,0,Math.PI*2); c.fill(); c.shadowBlur=0;
+   c.fillStyle="#ff4fd8"; c.strokeStyle="#fff"; c.lineWidth=r*.06;
+   c.beginPath(); c.arc(-r*.3,-r*.1,r*.12,0,Math.PI*2); c.fill(); c.stroke();
+   c.beginPath(); c.arc(r*.3,-r*.1,r*.12,0,Math.PI*2); c.fill(); c.stroke();
+   c.fillStyle="#1a0a2e"; c.beginPath(); c.arc(-r*.3,-r*.1,r*.04,0,Math.PI*2); c.arc(r*.3,-r*.1,r*.04,0,Math.PI*2); c.fill();
+   const t=(game.animTime||0)/160;
+   for(let i=0;i<10;i++){const ang=t+i*Math.PI/5;c.fillStyle=i%2?"#ff4fd8":"#ffd447";c.globalAlpha=.4+0.4*Math.sin(t+i);c.beginPath();c.arc(Math.cos(ang)*r*1.15,Math.sin(ang)*r*.9,r*.05,0,Math.PI*2);c.fill();}
+   c.globalAlpha=1; c.restore();
+ }
+ function drawGlitch(c,r){
+   c.save();
+   const t=(game.animTime||0)/80;
+   for(let layer=0;layer<3;layer++){
+     c.fillStyle=layer===0?"#0a0a1a":layer===1?"#ff4fd8":"#45e8ff";
+     c.globalAlpha=layer===0?1:.3;
+     const offX=layer>0?Math.sin(t*3+layer)*r*.08:0;
+     const offY=layer>0?Math.cos(t*3+layer)*r*.06:0;
+     c.beginPath(); c.ellipse(offX,offY+r*.05,r*.9,r*.66,0,0,Math.PI*2); c.fill();
+   }
+   c.globalAlpha=1;
+   c.strokeStyle="#fff"; c.lineWidth=r*.04;
+   for(let i=0;i<4;i++){const yy=-r*.4+i*r*.25;c.beginPath();c.moveTo(-r*.7+Math.sin(t+i)*r*.1,yy);c.lineTo(r*.7+Math.cos(t+i)*r*.1,yy);c.stroke();}
+   c.fillStyle="#ff4fd8"; c.shadowColor="#ff4fd8"; c.shadowBlur=r*.3;
+   c.beginPath(); c.arc(-r*.25,-r*.1,r*.1,0,Math.PI*2); c.fill();
+   c.fillStyle="#45e8ff";
+   c.beginPath(); c.arc(r*.25,-r*.1,r*.1,0,Math.PI*2); c.fill(); c.shadowBlur=0;
+   c.globalAlpha=.5+0.3*Math.sin(t*4); c.fillStyle="#fff";
+   c.fillRect(-r*.08,-r*.5,r*.16,r*.08); c.fillRect(-r*.08,r*.35,r*.16,r*.08);
+   c.globalAlpha=1; c.restore();
+ }
 function drawBaconBaron(c,r){
   c.save();
   const pulse=0.5+0.5*Math.sin((game.animTime||0)/150);
@@ -1834,23 +2093,38 @@ function draw(){
     else{ctx.fillStyle=game.world?.obstacle||"#8f5a33";ctx.fillRect(o.x,0,o.width,top);ctx.fillRect(o.x,bottom,o.width,H-bottom);drawSpikeRow(o.x,o.width,top,1);drawSpikeRow(o.x,o.width,bottom,-1)}
   }
   for(const c of game.coins){ctx.save();ctx.shadowColor="#ffd447";ctx.shadowBlur=Math.min(14,Math.min(W,H)<=800?6:14);ctx.fillStyle="#ffd447";ctx.beginPath();ctx.arc(c.x,c.y,c.r,0,Math.PI*2);ctx.fill();ctx.restore();ctx.fillStyle="#fff5a6";ctx.font="bold 14px Arial";ctx.textAlign="center";ctx.textBaseline="middle";ctx.fillText("$",c.x,c.y)}
-  const s=skins.find(x=>x.id===state.selectedSkin)||skins[0];
-  ctx.save();
-  ctx.translate(game.player.x,game.player.y);
-  ctx.rotate(game.player.rot);
-  if(s.id==="johnbacon"){drawBaconBaronTrail(ctx,game.player.r);}
-  if(s.id!=="johnbacon")drawSkinRarityAura(ctx,s.rarity||"basic",s.type==="jeszx"?game.player.r*.78:game.player.r);
-  const visualR=s.id==="johnbacon"?game.player.r*.84:(s.type==="jeszx"?game.player.r*.78:game.player.r);
-  drawSkin(ctx,s.type,0,0,visualR);
-  ctx.restore();
-  drawEventVisuals(performance.now());
-}
+   const s=skins.find(x=>x.id===state.selectedSkin)||skins[0];
+   ctx.save();
+   ctx.translate(game.player.x,game.player.y);
+   ctx.rotate(game.player.rot);
+   if(s.id==="johnbacon"){drawBaconBaronTrail(ctx,game.player.r);}
+   if(["shadow_phoenix","neon_reaper","admin_overlord","glitch_king"].includes(s.id)){
+     ctx.globalAlpha=.5;ctx.fillStyle=s.id==="shadow_phoenix"?"#ff4f12":s.id==="neon_reaper"?"#5ee7ff":s.id==="admin_overlord"?"#ff4fd8":"#45e8ff";
+     for(let i=1;i<=3;i++){ctx.beginPath();ctx.ellipse(-i*r*.4,0,r*.8,r*.5,0,0,Math.PI*2);ctx.fill();ctx.globalAlpha*=.5;}
+   }
+   if(s.id==="flyyyy_owner"){
+     const pulse=.5+.5*Math.sin((game.animTime||0)/150);
+     ctx.globalAlpha=.3+pulse*.3;
+     ctx.fillStyle="rgba(255,212,71,.4)";
+     ctx.beginPath();ctx.ellipse(0,0,game.player.r*(1.5+pulse*.3),game.player.r*(1.5+pulse*.3),0,0,Math.PI*2);ctx.fill();
+     ctx.globalAlpha=1;
+   }
+   if(s.id!=="johnbacon")drawSkinRarityAura(ctx,s.rarity||"basic",s.type==="jeszx"?game.player.r*.78:game.player.r);
+   const visualR=s.id==="johnbacon"?game.player.r*.84:(s.type==="jeszx"?game.player.r*.78:game.player.r);
+   drawSkin(ctx,s.type,0,0,visualR);
+   ctx.restore();
+   drawEventVisuals(performance.now());
+   drawSecretHuntFigure();
+   drawSecretPortals();
+   drawBossHealthBar();
+   drawXPRushIndicator();
+  }
 
 const LUCKY_COST=1000;
 const luckySegmentColors=["#f4f6fb","#6df5a3","#5ee7ff","#b58cff","#ff6374","#ffd447","#8bd3ff","#ffe58a"];
 let luckyRotation=0,luckySpinning=false,luckyPaid=false,luckyPool=[];
 function makeLuckyPool(){
-  const normalSkins=skins.filter(x=>x.id!=="johnbacon"&&x.rarity!=="basic"&&!state.ownedSkins.includes(x.id));
+  const normalSkins=skins.filter(x=>x.id!=="johnbacon"&&x.rarity!=="basic"&&!state.ownedSkins.includes(x.id)&&!x.owner&&!x.secret&&!x.secretShop);
   const johnBacon=skins.find(x=>x.id==="johnbacon");
   const availableAbilities=[];
   for(const sk of skins){for(const aid of (sk.abilities||[])){if(!hasAbilityForSkin(sk,aid))availableAbilities.push({skin:sk,ability:getAbility(aid)});}}
@@ -1986,20 +2260,88 @@ function isNewShopItem(id){ensureShopNewState();return NEW_SHOP_ITEMS.has(id)&&s
 function markShopNewSeen(id){ensureShopNewState();if(!NEW_SHOP_ITEMS.has(id))return;state.shopNewSeen[id]=true;saveState();}
 function shopTabHasNew(id){if(id!=="skins")return false;ensureShopNewState();if(state.shopNewSeen.__tabViewed===true)return false;return Array.from(NEW_SHOP_ITEMS).some(isNewShopItem);}
 
-function tabs(container,items,active,cb){container.innerHTML="";items.forEach(i=>{const b=document.createElement("button");b.className="tab"+(active===i.id?" active":"");b.textContent=i.name;b.onclick=()=>cb(i.id);container.appendChild(b)})}
+function tabs(container,items,active,cb){container.innerHTML="";items.forEach(i=>{const b=document.createElement("button");b.className="tab"+(active===i.id?" active":"")+(i.extraClass?" "+i.extraClass:"");b.textContent=i.name;i.badge&&(b.innerHTML+=` <span class="tabNew">${i.badge}</span>`);b.onclick=()=>cb(i.id);container.appendChild(b)})}
 let shopTab="skins",inventoryTab="skins";
-function renderSoundShop(cards){sounds.forEach(s=>{const c=document.createElement("div");c.className="card";c.innerHTML=`<div class="preview"><div style="font-size:44px">${s.icon}</div></div><h3>${s.name}</h3><div class="price">${s.price?"🪙 "+s.price+" Coins":"Kostenlos"}</div>`;const t=document.createElement("button");t.className="smallbtn blue";t.textContent="▶ TESTEN";t.onclick=()=>jumpSound(s.type);c.appendChild(t);const b=document.createElement("button");b.className="smallbtn";if(state.ownedSounds.includes(s.id)){b.textContent=lang()==="en"?"✓ OWNED":"✓ Im Besitz";b.disabled=true}else{b.textContent=lang()==="en"?"BUY":"Kaufen";b.onclick=()=>buyItem(s,state.ownedSounds)}c.appendChild(b);cards.appendChild(c)})}
-function renderMusicShop(cards){getMusicTracks().filter(m=>!(m.file&&m.file.includes("no-copyright-music"))).forEach(m=>{const c=document.createElement("div");c.className="card";c.innerHTML=`<div class="preview"><div style="font-size:44px">${m.icon}</div></div><h3>${m.name}</h3><div class="price">${m.price?"🪙 "+m.price.toLocaleString("de-DE")+" Coins":"Kostenlos"}</div>`+(m.file?`<div class="tiny">🎧 MP3: ${m.file}</div>`:"");const t=document.createElement("button");t.className="smallbtn blue";t.textContent=isMp3Track(m)?"▶ PLAY":"▶ ANHÖREN";t.onclick=()=>previewMusic(m);c.appendChild(t);const b=document.createElement("button");b.className="smallbtn";if(state.ownedMusic.includes(m.id)){b.textContent=lang()==="en"?"✓ OWNED":"✓ Im Besitz";b.disabled=true}else{b.textContent=lang()==="en"?"BUY":"Kaufen";b.onclick=()=>buyItem(m,state.ownedMusic)}c.appendChild(b);cards.appendChild(c)})}
+function getActiveSecretShopItems(){
+  if(Array.isArray(state.secretShopItems)&&state.secretShopItems.length){
+    return state.secretShopItems.map(entry=>{
+      const skin=skins.find(s=>s.id===entry.skinId);
+      if(!skin)return null;
+      return {...skin,secretPrice:entry.price,offerExpiresAt:entry.offerExpiresAt,offerActive:entry.active!==false};
+    }).filter(Boolean);
+  }
+  return SECRET_SHOP_DEFAULTS.map(entry=>{
+    const skin=skins.find(s=>s.id===entry.skinId);
+    if(!skin)return null;
+    return {...skin,secretPrice:entry.price,offerExpiresAt:entry.offerExpiresAt,offerActive:entry.active!==false};
+  }).filter(Boolean);
+}
+function renderSecretShop(cards){
+  cards.innerHTML="";
+  const items=getActiveSecretShopItems();
+  if(!items.length){cards.innerHTML='<div class="leaderStatus">🔒 Keine Secret-Skins verfügbar.</div>';return}
+  items.forEach(item=>{
+    if(!item.offerActive)return;
+    const c=document.createElement("div");
+    const owned=state.ownedSkins.includes(item.id);
+    const isOffer=!!item.offerExpiresAt;
+    c.className="card secretShopCard"+(isOffer?" secretOfferCard":"")+(item.adminOnly?" secretAdminOnlyBadge":"");
+    const badge=document.createElement("div");
+    badge.className="secretShopBadge";
+    badge.textContent=item.adminOnly?"ADMIN":"SECRET";
+    c.appendChild(badge);
+    if(isOffer){
+      const cd=document.createElement("div");
+      cd.className="offerCountdown";
+      cd.id="secretOffer_"+item.id;
+      c.appendChild(cd);
+    }
+    const p=document.createElement("div");p.className="preview";
+    const cv=document.createElement("canvas");cv.width=240;cv.height=140;const g=cv.getContext("2d");
+    drawSkinRarityAura(g,item.rarity||"basic",32);drawSkin(g,item.type,120,70,30);
+    p.appendChild(cv);c.appendChild(p);
+    const h=document.createElement("h3");h.textContent=item.name;c.appendChild(h);
+    c.insertAdjacentHTML("beforeend",rarityBadge(item.rarity||"basic"));
+    const pr=document.createElement("div");pr.className="price";pr.textContent=`🪙 ${(item.secretPrice||item.price).toLocaleString("de-DE")} Coins`;c.appendChild(pr);
+    const b=document.createElement("button");b.className="smallbtn";
+    if(owned){b.textContent="✓ Im Besitz";b.disabled=true}
+    else if(item.adminOnly&&!isAdmin()){b.textContent="🔒 NUR ADMIN";b.disabled=true}
+    else{b.textContent="KAUFEN";b.onclick=()=>buySecretItem(item)}
+    c.appendChild(b);cards.appendChild(c);
+  });
+}
+function buySecretItem(item){
+  const price=item.secretPrice||item.price;
+  if(state.coins<price){showMessage("Nicht genug Coins!");return}
+  state.coins-=price;if(!state.ownedSkins.includes(item.id))state.ownedSkins.push(item.id);
+  saveState();renderShop();updateLobby();purchaseSound();
+  showMessage(`🔓 Secret-Skin "${item.name}" freigeschaltet!`);
+}
+function renderSecretShopCountdown(){
+  if(shopTab!=="secret")return;
+  const items=getActiveSecretShopItems();
+  items.forEach(item=>{
+    const el=$("secretOffer_"+item.id);
+    if(!el||!item.offerExpiresAt)return;
+    const remaining=Number(item.offerExpiresAt)-Date.now();
+    if(remaining<=0){el.textContent="ANGEBOT ABGELAUFEN";return}
+    const s=Math.floor(remaining/1000),m=Math.floor(s/60),sec=s%60;
+    el.textContent=`⏱️ ${m}:${String(sec).padStart(2,"0")}`;
+  });
+}
 function renderShop(){
   ensureShopNewState();
   shopCoins.textContent=state.coins;
-  const shopCategories=[
+  if(shopTab==="secret"&&!state.secretShopPublished){shopTab="skins"}
+  const cats=[
     {id:"skins",name:t("figures")},{id:"worlds",name:t("worlds")},{id:"sounds",name:t("sounds")},{id:"music",name:t("musicTab")},{id:"lucky",name:t("lucky")}
   ];
+  if(state.secretShopPublished){cats.splice(cats.length-1,0,{id:"secret",name:"🔒 SECRET",extraClass:"secretShopTab",badge:isAdmin()?"ADMIN":""})}
+  const shopCategories=cats;
   shopTabs.innerHTML="";
   shopCategories.forEach(cat=>{
     const b=document.createElement("button");
-    b.className="tab"+(shopTab===cat.id?" active":"");
+    b.className="tab"+(shopTab===cat.id?" active":"")+(cat.extraClass?" "+cat.extraClass:"");
     b.textContent=cat.name;
     if(shopTabHasNew(cat.id)){
       const n=document.createElement("span");
@@ -2009,7 +2351,6 @@ function renderShop(){
     }
     b.onclick=()=>{
       shopTab=cat.id;
-      // Sobald die neue Kategorie geöffnet wird, verschwindet der rote NEU-Hinweis am Tab.
       if(cat.id==="skins"){
         state.shopNewSeen.__tabViewed=true;
         saveState();
@@ -2022,7 +2363,8 @@ function renderShop(){
   if(shopTab==="lucky")return renderLuckyRad();
   if(shopTab==="sounds")return renderSoundShop(shopCards);
   if(shopTab==="music")return renderMusicShop(shopCards);
-  const items=(shopTab==="skins"?skins.filter(x=>!x.luckyOnly):worlds),owned=shopTab==="skins"?state.ownedSkins:state.ownedWorlds;
+  if(shopTab==="secret")return renderSecretShop(shopCards);
+  const items=(shopTab==="skins"?skins.filter(x=>!x.luckyOnly&&!x.secret&&!x.secretShop&&!x.owner):worlds),owned=shopTab==="skins"?state.ownedSkins:state.ownedWorlds;
   items.forEach(item=>{
     const c=document.createElement("div");
     const isNew=shopTab==="skins"&&isNewShopItem(item.id);
@@ -2081,7 +2423,7 @@ function renderInventory(){
   }
   if(inventoryTab==="sounds")return renderSoundInventory(inventoryCards);
   if(inventoryTab==="music")return renderMusicInventory(inventoryCards);
-  const items=inventoryTab==="skins"?skins.filter(x=>state.ownedSkins.includes(x.id)):worlds.filter(x=>state.ownedWorlds.includes(x.id));
+  const items=inventoryTab==="skins"?skins.filter(x=>state.ownedSkins.includes(x.id)&&(canUseOwnerSkin(x.id)||!isOwnerSkin(x.id))):worlds.filter(x=>state.ownedWorlds.includes(x.id));
   items.forEach(item=>{
     const c=document.createElement("div");c.className="card"+(inventoryTab==="skins"?` newSkinCard rarity-${item.rarity||"basic"}`:"")+(item.id==="johnbacon"?" baconBaronSpecial":"");
     const p=document.createElement("div");p.className="preview";
@@ -2102,7 +2444,9 @@ function renderInventory(){
       c.appendChild(list);
       const hint=document.createElement("div");hint.className="abilityHint";hint.textContent=selectedAbilityForSkin(item)?`⚡ Aktiv: ${selectedAbilityForSkin(item).name} · Taste T`:"⚡ Noch keine Fähigkeit dieses Skins freigeschaltet";c.appendChild(hint);
     }
-    const b=document.createElement("button");b.className="smallbtn";const sel=inventoryTab==="skins"?state.selectedSkin===item.id:state.selectedWorld===item.id;b.classList.toggle("selected",sel);b.textContent=sel?"✓ AUSGERÜSTET":"AUSRÜSTEN";b.onclick=()=>{if(inventoryTab==="skins"){state.selectedSkin=item.id;const active=selectedAbilityForSkin(item);state.selectedAbilityId=active?active.id:null;}else{state.selectedWorld=item.id;if(item.id!=="ice")state.lastNonIceWorld=item.id;}saveState();renderInventory();updateLobby();updateHUD()};c.appendChild(b);
+    const b=document.createElement("button");b.className="smallbtn";const sel=inventoryTab==="skins"?state.selectedSkin===item.id:state.selectedWorld===item.id;b.classList.toggle("selected",sel);    b.textContent=sel?"✓ AUSGERÜSTET":"AUSRÜSTEN";
+    if(isOwnerSkin(item.id)&&!canUseOwnerSkin(item.id)){b.disabled=true;b.textContent="🔒 OWNER ONLY"}
+    b.onclick=()=>{if(isOwnerSkin(item.id)&&!canUseOwnerSkin(item.id)){showMessage("🔒 Nur für Owner-Accounts.");return}if(inventoryTab==="skins"){state.selectedSkin=item.id;const active=selectedAbilityForSkin(item);state.selectedAbilityId=active?active.id:null;}else{state.selectedWorld=item.id;if(item.id!=="ice")state.lastNonIceWorld=item.id;}saveState();renderInventory();updateLobby();updateHUD()};c.appendChild(b);
     inventoryCards.appendChild(c);
   });
 }
@@ -2112,9 +2456,87 @@ function updateShopLobbyNewBadge(){
   badge.style.display=shopTabHasNew("skins")?"inline-flex":"none";
 }
 function xpForLevel(level){return 100+Math.max(0,level-1)*75+Math.pow(Math.max(0,level-1),2)*10}
-function normalizeProgress(){state.playerXP=Math.max(0,Number(state.playerXP||0));state.playerLevel=Math.max(1,Number(state.playerLevel||1));while(state.playerXP>=xpForLevel(state.playerLevel)){state.playerXP-=xpForLevel(state.playerLevel);state.playerLevel++;showMessage(`⭐ Level ${state.playerLevel} erreicht!`)}state.dailyStreak=Math.max(0,Number(state.dailyStreak||0));state.dailyRewardDate=typeof state.dailyRewardDate==="string"?state.dailyRewardDate:"";state.selectedGameMode=["classic","speedrun","hardcore"].includes(state.selectedGameMode)?state.selectedGameMode:"classic"}
-function renderProgression(){normalizeProgress();const need=xpForLevel(state.playerLevel);if(playerLevelEl)playerLevelEl.textContent=state.playerLevel;if(playerXpEl)playerXpEl.textContent=Math.floor(state.playerXP);if(playerXpNextEl)playerXpNextEl.textContent=need;if(playerXpFillEl)playerXpFillEl.style.width=Math.min(100,state.playerXP/need*100)+"%";if(dailyStreakEl)dailyStreakEl.textContent=Math.max(1,state.dailyStreak||1);if(gameModeSelect)gameModeSelect.value=state.selectedGameMode;const today=new Date().toISOString().slice(0,10);if(dailyRewardBtn){const claimed=state.dailyRewardDate===today;dailyRewardBtn.disabled=claimed;dailyRewardBtn.classList.toggle("claimed",claimed);dailyRewardBtn.textContent=claimed?"✅ HEUTE ABGEHOLT":"🎁 ABHOLEN"}}
-function addXP(amount){const n=Math.max(0,Math.floor(Number(amount)||0));if(!n)return;state.playerXP+=n;const before=state.playerLevel;normalizeProgress();saveState();renderProgression();if(state.playerLevel>before)showMessage(`⭐ Level ${state.playerLevel}!`)}
+const LEVEL_UP_REWARDS=[
+  {coins:50,msg:"🪙 50 Coins"},
+  {coins:100,msg:"🪙 100 Coins"},
+  {coins:150,msg:"🪙 150 Coins",xpBoost:true},
+  {coins:200,msg:"🪙 200 Coins"},
+  {coins:300,msg:"🪙 300 Coins",effect:"glow"},
+  {coins:400,msg:"🪙 400 Coins"},
+  {coins:500,msg:"🪙 500 Coins",rare:true},
+  {coins:750,msg:"🪙 750 Coins"},
+  {coins:1000,msg:"🪙 1.000 Coins",effect:"sparkle"},
+  {coins:1500,msg:"🪙 1.500 Coins",rare:true}
+];
+function getLevelUpReward(level){
+  const r=LEVEL_UP_REWARDS[(level-2)%LEVEL_UP_REWARDS.length]||{coins:100,msg:"🪙 100 Coins"};
+  const scaled={...r,coins:Math.floor(r.coins*(1+(level-2)*0.1))};
+  return scaled;
+}
+function normalizeProgress(){state.playerXP=Math.max(0,Number(state.playerXP||0));state.playerLevel=Math.max(1,Number(state.playerLevel||1));state.playerXPBoost=Number(state.playerXPBoost||0);state.playerXpEarnedTotal=Number(state.playerXpEarnedTotal||0);while(state.playerXP>=xpForLevel(state.playerLevel)){const reward=getLevelUpReward(state.playerLevel);state.playerXP-=xpForLevel(state.playerLevel);state.playerLevel++;state.levelRewardsPending=state.levelRewardsPending||[];state.levelRewardsPending.push({level:state.playerLevel,reward:reward,timestamp:Date.now()})}state.dailyStreak=Math.max(0,Number(state.dailyStreak||0));state.dailyRewardDate=typeof state.dailyRewardDate==="string"?state.dailyRewardDate:"";state.levelRewardsClaimed=state.levelRewardsClaimed||[]}
+function claimLevelRewards(){const pending=state.levelRewardsPending||[];if(pending.length===0)return false;let totalCoins=0;const effects=[];pending.forEach(lr=>{totalCoins+=lr.reward.coins;if(lr.reward.effect)effects.push(lr.reward.effect)});state.coins+=totalCoins;state.levelRewardsClaimed=[...(state.levelRewardsClaimed||[]),...pending.map(p=>p.level)];state.levelRewardsPending=[];saveState();updateLobby();return {totalCoins,effects,levels:pending.map(p=>p.level)}}
+function renderLevelUpAnimation(levelData){
+  const div=document.createElement("div");
+  div.style.cssText="position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(0,0,0,.7);animation:fadeIn .4s ease";
+  div.innerHTML=`<div style="font-size:clamp(48px,12vw,96px);animation:bounceIn .6s ease">⭐</div>
+    <div style="font-size:clamp(24px,5vw,42px);font-weight:900;color:#ffd700;text-shadow:0 0 20px rgba(255,215,0,.6);margin-top:12px">LEVEL ${levelData.levels[levelData.levels.length-1]}!</div>
+    <div style="font-size:clamp(16px,3vw,24px);color:#fff;margin-top:16px">+${levelData.totalCoins} Coins</div>
+    ${levelData.effects.length>0?`<div style="font-size:14px;color:#88ff88;margin-top:8px">✨ ${levelData.effects.join(", ")} Effekt freigeschaltet!</div>`:""}
+    <div style="margin-top:24px;padding:12px 32px;background:linear-gradient(135deg,#6366f1,#8b5cf6);border-radius:12px;color:#fff;font-weight:700;cursor:pointer" id="levelClaimBtn">🎉 BELOHNUNG ABHOLEN</div>`;
+  document.body.appendChild(div);
+  if(!document.getElementById("levelUpStyles")){
+    const s=document.createElement("style");
+    s.id="levelUpStyles";
+    s.textContent="@keyframes fadeIn{from{opacity:0}to{opacity:1}}@keyframes bounceIn{0%{transform:scale(0)}50%{transform:scale(1.2)}100%{transform:scale(1)}}@keyframes sparkle{0%,100%{filter:brightness(1)}50%{filter:brightness(1.5)}}";
+    document.head.appendChild(s)}
+  document.getElementById("levelClaimBtn").onclick=()=>{div.remove();showMessage(`🎉 +${levelData.totalCoins} Coins!`)}}
+function renderProgression(){
+  normalizeProgress();
+  const pending=state.levelRewardsPending||[];
+  const need=xpForLevel(state.playerLevel);
+  if(playerLevelEl)playerLevelEl.textContent=state.playerLevel;
+  if(playerXpEl)playerXpEl.textContent=Math.floor(state.playerXP);
+  if(playerXpNextEl)playerXpNextEl.textContent=need;
+  if(playerXpFillEl)playerXpFillEl.style.width=Math.min(100,state.playerXP/need*100)+"%";
+  if(dailyStreakEl)dailyStreakEl.textContent=Math.max(1,state.dailyStreak||1);
+  const today=new Date().toISOString().slice(0,10);
+  if(dailyRewardBtn){const claimed=state.dailyRewardDate===today;dailyRewardBtn.disabled=claimed;dailyRewardBtn.classList.toggle("claimed",claimed);dailyRewardBtn.textContent=claimed?"✅ HEUTE ABGEHOLT":"🎁 ABHOLEN"}
+}
+function addXP(amount){
+  const n=Math.max(0,Math.floor(Number(amount)||0));
+  if(!n)return;
+  const boost=1+(Number(state.playerXPBoost||0)/100);
+  const finalAmount=Math.floor(n*boost);
+  state.playerXP+=finalAmount;
+  state.playerXpEarnedTotal=(Number(state.playerXpEarnedTotal)||0)+finalAmount;
+  const before=state.playerLevel;
+  normalizeProgress();
+  saveState();
+  renderProgression();
+  if(state.playerLevel>before){
+    const reward=claimLevelRewards();
+    if(renderLevelUpAnimation)renderLevelUpAnimation(reward);
+    if(typeof playLevelUpSound==="function")playLevelUpSound();
+  }
+}
+function playLevelUpSound(){
+  if(!state.sfxEnabled)return;
+  initAudio();
+  if(!ACtx)return;
+  const now=ACtx.currentTime;
+  [523,659,784,1047].forEach((freq,i)=>{
+    const osc=ACtx.createOscillator();
+    const gain=ACtx.createGain();
+    osc.type="triangle";
+    osc.frequency.value=freq;
+    gain.gain.setValueAtTime(.15,now+i*0.12);
+    gain.gain.exponentialRampToValueAtTime(.001,now+i*0.12+0.3);
+    osc.connect(gain);
+    gain.connect(ACtx.destination);
+    osc.start(now+i*0.12);
+    osc.stop(now+i*0.12+0.3);
+  });
+}
 function claimDailyReward(){const today=new Date().toISOString().slice(0,10);if(state.dailyRewardDate===today){showMessage("🎁 Heute schon abgeholt!");return}const yesterday=new Date(Date.now()-86400000).toISOString().slice(0,10);state.dailyStreak=state.dailyRewardDate===yesterday?Math.min(7,Math.max(1,state.dailyStreak||1)+1):1;const rewards=[100,150,200,300,400,600,1000];const reward=rewards[state.dailyStreak-1]||100;state.coins+=reward;state.dailyRewardDate=today;state.dailyRewardCycle=(Number(state.dailyRewardCycle||1)%7)+1;addXP(25+state.dailyStreak*5);saveState();updateLobby();showMessage(`🎁 +${reward} Coins · 🔥 Tag ${state.dailyStreak}`);}
 function updateLobby(){lobbyCoins.textContent=state.coins;lobbyBest.textContent=state.best;musicToggleBtn.textContent=state.musicEnabled?"🎵 Musik: AN":"🔇 Musik: AUS";updateShopLobbyNewBadge();renderProgression()}
 
@@ -2146,6 +2568,25 @@ let notificationListenerStop=null;
 let adminActiveEventsList=$("adminActiveEventsList");
 let adminSelfRewardBtn=$("adminSelfRewardBtn");
 let adminRewardAllBtn=$("adminRewardAllBtn");
+let secretShopInterval=null;
+let secretHuntFigure=null;
+let secretPortals=[];
+let bossLocalHealth=100;
+let bossMaxHealth=100;
+let bossActive=false;
+let bossListenerStop=null;
+let removeBossListener=null;
+let bossTransactionInProgress=false;
+let bossRewardClaimed=false;
+let bossDamageTracker={};
+let bossEventEnded=false;
+let chaosModeEndsAt=0;
+let secretHuntCooldown=0;
+let abuseLog=[];
+let bossRewardListenerStop=null;
+let johnInvasionFigures=[];
+let discoParticles=[];
+let screenShakeActive=false;
 
 async function getAdminFunctions(){
   if(adminFunctions) return adminFunctions;
@@ -2157,7 +2598,8 @@ async function getAdminFunctions(){
     adjustCoins:httpsCallable(functions,"adminAdjustCoins"),
     banUser:httpsCallable(functions,"adminBanUser"),
     deleteUser:httpsCallable(functions,"adminDeleteUser"),
-    sendBroadcast:httpsCallable(functions,"adminSendBroadcast")
+    sendBroadcast:httpsCallable(functions,"adminSendBroadcast"),
+     manageSecretShop:httpsCallable(functions,"adminManageSecretShop")
   };
   return adminFunctions;
 }
@@ -2223,6 +2665,9 @@ async function activateAdmin(){
      await adminRefreshActiveEventsList();
      populateRewardItemSelect();
      populateFreeGiveItemSelect();
+     await loadSecretShopFromFirebase();
+     renderAdminSecretShop();
+     renderAdminAbuseLog();
      await loadAdminUsers();
      return;
    }
@@ -2240,6 +2685,7 @@ async function activateAdmin(){
   finally{adminUnlockBtn.disabled=false}
 }
 async function requireAdmin(){if(adminLocal)return true;if(!currentUser){showMessage("🔐 Bitte zuerst anmelden.");return false}const ok=adminUnlocked && await hasAdminClaim(false);if(!ok){showMessage("🔒 Adminrechte sind nicht aktiv.");return false}return true}
+function isAdmin(){return adminLocal||(adminUnlocked&&currentUser)}
 function formatDate(v){if(!v)return "-";try{return new Date(v).toLocaleString("de-DE")}catch{return "-"}}
 function adminUserCard(u){
   const card=document.createElement("div");card.className="adminUserCard";
@@ -2282,14 +2728,16 @@ async function adminAdjust(uid,delta){if(!await requireAdmin())return;if(!delta)
 async function adminBan(uid,minutes){if(!await requireAdmin())return;try{const f=await getAdminFunctions();await f.banUser({uid,durationMinutes:minutes});showMessage(minutes===0?"✅ Spieler entsperrt.":minutes===-1?"🚫 Spieler dauerhaft gesperrt.":`🚫 Spieler für ${minutes} Minuten gesperrt.`);await loadAdminUsers()}catch(e){console.error(e);showMessage("❌ Sperre konnte nicht geändert werden.")}}
 async function adminDelete(u){if(!await requireAdmin())return;if(u.uid===currentUser.uid){showMessage("❌ Deinen eigenen Admin-Account nicht löschen.");return}if(!confirm(`Account ${u.email||u.uid} wirklich löschen? Dieser Vorgang kann nicht rückgängig gemacht werden.`))return;try{const f=await getAdminFunctions();await f.deleteUser({uid:u.uid});showMessage("🗑️ Account gelöscht.");await loadAdminUsers()}catch(e){console.error(e);showMessage("❌ Account konnte nicht gelöscht werden.")}}
 
-const adminTabItems=[{id:"users",name:"👥 Spieler"},{id:"events",name:"🎁 Events"},{id:"rewards",name:"🎁 Belohnungen"},{id:"freegive",name:"💝 Kostenlos geben"},{id:"chat",name:"🔇 Chat-Bans"}];
+const adminTabItems=[{id:"users",name:"👥 Spieler"},{id:"events",name:"🎁 Events"},{id:"rewards",name:"🎁 Belohnungen"},{id:"freegive",name:"💝 Kostenlos geben"},{id:"secretshop",name:"🔒 Secret Shop"},{id:"abuselog",name:"📋 Abuse Log"},{id:"chat",name:"🔇 Chat-Bans"}];
 function renderAdminTabs(){tabs($("adminTabs"),adminTabItems,adminTab,tabId=>{adminTab=tabId;showAdminTab(tabId)})}
 function showAdminTab(tabId){
   adminTab=tabId;
   document.querySelectorAll('.adminTabSection').forEach(s=>s.style.display="none");
-  const map={users:"adminUsersTab",events:"adminEventsTab",rewards:"adminRewardsTab",freegive:"adminFreeGiveTab",chat:"adminChatTab"};
+  const map={users:"adminUsersTab",events:"adminEventsTab",rewards:"adminRewardsTab",freegive:"adminFreeGiveTab",secretshop:"adminSecretShopTab",abuselog:"adminAbuseLogTab",chat:"adminChatTab"};
   const target=$(map[tabId]);
   if(target)target.style.display="block";
+  if(tabId==="secretshop")renderAdminSecretShop();
+  if(tabId==="abuselog")renderAdminAbuseLog();
 }
 
 function populateAdminEventSelect(){
@@ -2329,10 +2777,9 @@ async function adminStartEvent(){
   if(adminLocal && !db){showMessage("🔴 Keine Firebase-Verbindung. Event kann nicht online gestartet werden.");return}
   try{
     const {d}=await loadFirebase();
-    // One shared Firebase event node = global event for every connected player (including anonymous guests).
-    const eventData={id:ev.id,name:ev.name,description:ev.description,category:ev.category,active:true,startedAt:d.serverTimestamp(),startedBy:currentUser?.uid||"local-admin"};
+    const duration=ev.duration||600;
+    const eventData={id:ev.id,name:ev.name,description:ev.description,category:ev.category,active:true,startedAt:d.serverTimestamp(),startedBy:currentUser?.uid||"local-admin",duration:duration,expiresAt:Date.now()+duration*1000};
     if(ev.musicFile)eventData.musicFile=ev.musicFile;
-    if(ev.duration)eventData.expiresAt=Date.now()+ev.duration*1000;
     await d.set(d.ref(db,"events/active/"+ev.id),eventData);
     showMessage(`▶️ Event "${ev.name}" gestartet!`);
     await adminRefreshEventStatus();
@@ -2601,6 +3048,559 @@ async function loadAdminChatBans(){
 }
 async function findPlayerByName(name){if(!db)return null;const target=String(name||"").toLowerCase().trim();if(!target)return null;try{const {d}=await loadFirebase();const lbSnap=await d.get(d.ref(db,"leaderboard"));let data={};if(lbSnap.exists())data=lbSnap.val();try{const psSnap=await d.get(d.ref(db,"playerStates"));if(psSnap.exists()){const ps=psSnap.val();for(const [uid,v] of Object.entries(ps)){if(!data[uid])data[uid]=v}}}catch(e){console.error("findPlayerByName playerStates",e)}const exactUid=Object.entries(data).find(([uid])=>uid.toLowerCase()===target);if(exactUid)return {uid:exactUid[0],state:exactUid[1]};const nameMatch=Object.entries(data).find(([uid,v])=>safeName(v?.name||"Spieler").toLowerCase().includes(target));if(nameMatch)return {uid:nameMatch[0],state:nameMatch[1]};const exactName=Object.entries(data).find(([uid,v])=>safeName(v?.name||"Spieler").toLowerCase()===target);if(exactName)return {uid:exactName[0],state:exactName[1]};return null}catch(e){console.error(e);return null}}
 
+// ===== SECRET SHOP ADMIN FUNCTIONS =====
+function renderAdminSecretShop(){
+  const list=$("adminSecretShopList"),status=$("adminSecretShopStatus"),offerSel=$("adminSecretOfferSkin");
+  if(!list)return;
+  if(status)status.innerHTML=`<span style="color:${state.secretShopPublished?"#58ff9c":"#ff4f86"}">${state.secretShopPublished?"🟢 Secret Shop ist ÖFFENTLICH":"🔴 Secret Shop ist VERSTECKT"}</span>`;
+  if(offerSel){
+    offerSel.innerHTML="";
+    skins.filter(s=>s.secretShop||s.secret).forEach(s=>{
+      const opt=document.createElement("option");opt.value=s.id;opt.textContent=`${s.name} (${rarityMeta[s.rarity]?.name||s.rarity})`;offerSel.appendChild(opt);
+    });
+  }
+  const pubDiv=document.createElement("div");
+  pubDiv.style.cssText="display:flex;gap:8px;margin-bottom:12px";
+  const pubBtn=document.createElement("button");pubBtn.className="btn green";pubBtn.textContent="🔓 Veröffentlichen";pubBtn.onclick=()=>adminPublishSecretShop(true);
+  const unpubBtn=document.createElement("button");unpubBtn.className="btn red";unpubBtn.textContent="🔒 Verstecken";unpubBtn.onclick=()=>adminPublishSecretShop(false);
+  pubDiv.append(pubBtn,unpubBtn);
+  list.innerHTML="";list.appendChild(pubDiv);
+  items.forEach(entry=>{
+    const skin=skins.find(s=>s.id===entry.skinId);
+    if(!skin)return;
+    const card=document.createElement("div");card.className="adminUserCard";card.style.padding="10px";
+    const left=document.createElement("div");left.className="adminUserTop";
+    const title=document.createElement("div");title.className="adminUserEmail";title.textContent=`${skin.name} – ${(entry.price||skin.price).toLocaleString("de-DE")} Coins`;
+    const meta=document.createElement("div");meta.className="adminMeta";
+    meta.innerHTML=`<span class="rarity-badge ${rarityMeta[skin.rarity]?.className||"rarity-basic"}">${rarityMeta[skin.rarity]?.name||skin.rarity}</span> · ${entry.active===false?"🔴 DEAKTIVIERT":"🟢 AKTIV"}`;
+    if(entry.offerExpiresAt){const rem=Math.max(0,Math.floor((entry.offerExpiresAt-Date.now())/1000));meta.innerHTML+=` · ⏱️ ${Math.floor(rem/60)}:${String(rem%60).padStart(2,"0")}`}
+    left.append(title,meta);
+    const right=document.createElement("div");
+    const priceInput=document.createElement("input");priceInput.className="authInput";priceInput.type="number";priceInput.value=entry.price||skin.price;priceInput.style.width="100px";priceInput.style.marginRight="6px";
+    const saveBtn=document.createElement("button");saveBtn.className="btn blue";saveBtn.textContent="💾";saveBtn.style.fontSize="11px";saveBtn.style.padding="6px 8px";
+    saveBtn.onclick=()=>adminSaveSecretPrice(entry.skinId,Number(priceInput.value));
+    const toggleBtn=document.createElement("button");toggleBtn.className="btn "+(entry.active===false?"green":"red");toggleBtn.textContent=entry.active===false?"✅ Aktivieren":"⏸ Deaktivieren";toggleBtn.style.fontSize="11px";toggleBtn.style.padding="6px 8px";toggleBtn.style.marginLeft="4px";
+    toggleBtn.onclick=()=>adminToggleSecret(entry.skinId);
+    right.append(priceInput,saveBtn,toggleBtn);
+    left.appendChild(right);card.appendChild(left);list.appendChild(card);
+  });
+}
+async function adminSaveSecretPrice(skinId,price){
+  if(!await requireAdmin())return;
+  if(price<=0){showMessage("Preis muss größer als 0 sein.");return}
+  if(!state.secretShopItems.length)state.secretShopItems=SECRET_SHOP_DEFAULTS.map(e=>({...e}));
+  const entry=state.secretShopItems.find(e=>e.skinId===skinId);
+  if(entry)entry.price=price;
+  else state.secretShopItems.push({skinId,price,active:true,offerExpiresAt:null});
+  saveState();
+  try{const {d}=await loadFirebase();await d.set(d.ref(db,"secretShop/config"),state.secretShopItems)}catch(e){console.error("saveSecretShop",e)}
+  showMessage(`✅ Preis für ${skinId} gespeichert: ${price.toLocaleString("de-DE")} Coins`);
+  renderAdminSecretShop();
+}
+async function adminToggleSecret(skinId){
+  if(!await requireAdmin())return;
+  if(!state.secretShopItems.length)state.secretShopItems=SECRET_SHOP_DEFAULTS.map(e=>({...e}));
+  const entry=state.secretShopItems.find(e=>e.skinId===skinId);
+  if(entry)entry.active=!entry.active;
+  else state.secretShopItems.push({skinId,price:skins.find(s=>s.id===skinId)?.price||10000,active:true,offerExpiresAt:null});
+  saveState();
+  try{const {d}=await loadFirebase();await d.set(d.ref(db,"secretShop/config"),state.secretShopItems)}catch(e){console.error("toggleSecretShop",e)}
+  showMessage(`✅ Secret-Skin ${skinId} ${entry?.active?"aktiviert":"deaktiviert"}`);
+  renderAdminSecretShop();
+}
+async function adminCreateSecretOffer(){
+  if(!await requireAdmin())return;
+  const skinId=$("adminSecretOfferSkin")?.value;
+  const minutes=Number($("adminSecretOfferDuration")?.value||0);
+  if(!skinId){showMessage("Bitte Skin wählen.");return}
+  if(minutes<=0){showMessage("Bitte Dauer in Minuten angeben.");return}
+  if(!state.secretShopItems.length)state.secretShopItems=SECRET_SHOP_DEFAULTS.map(e=>({...e}));
+  const entry=state.secretShopItems.find(e=>e.skinId===skinId);
+  if(entry){entry.offerExpiresAt=Date.now()+minutes*60000;entry.active=true}
+  else{const skin=skins.find(s=>s.id===skinId);state.secretShopItems.push({skinId,price:skin?.price||10000,active:true,offerExpiresAt:Date.now()+minutes*60000})}
+  saveState();
+  try{const {d}=await loadFirebase();await d.set(d.ref(db,"secretShop/config"),state.secretShopItems)}catch(e){console.error("createSecretOffer",e)}
+  showMessage(`⏱️ Angebot für ${skinId} erstellt: ${minutes} Minuten`);
+  logAbuseAction("CREATE_OFFER",{skinId,minutes});
+  renderAdminSecretShop();
+}
+async function adminPublishSecretShop(publish){
+  if(!await requireAdmin())return;
+  state.secretShopPublished=!!publish;
+  saveState();
+  try{
+    const {d}=await loadFirebase();
+    await d.set(d.ref(db,"secretShop/published"),state.secretShopPublished);
+  }catch(e){console.error("publishSecretShop",e)}
+  showMessage(state.secretShopPublished?"✅ Secret Shop ist jetzt öffentlich!":"🔒 Secret Shop ist jetzt versteckt.");
+  logAbuseAction(publish?"SHOP_PUBLISH":"SHOP_UNPUBLISH",{});
+  renderAdminSecretShop();
+  renderShop();
+}
+async function loadSecretShopFromFirebase(){
+  if(!db){state.secretShopItems=SECRET_SHOP_DEFAULTS.slice();state.secretShopPublished=false;return}
+  try{
+    const {d}=await loadFirebase();
+    const pubSnap=await d.get(d.ref(db,"secretShop/published"));
+    state.secretShopPublished=pubSnap.exists()?!!pubSnap.val():false;
+    const snap=await d.get(d.ref(db,"secretShop/config"));
+    if(snap.exists()&&Array.isArray(snap.val())){state.secretShopItems=snap.val().filter(e=>e&&e.skinId)}
+    else{state.secretShopItems=SECRET_SHOP_DEFAULTS.map(e=>({...e}));await d.set(d.ref(db,"secretShop/config"),state.secretShopItems)}
+  }catch(e){console.error("loadSecretShop",e);state.secretShopItems=SECRET_SHOP_DEFAULTS.map(e=>({...e}));state.secretShopPublished=false}
+}
+
+// ===== ADMIN ABUSE EVENT FUNCTIONS =====
+function logAbuseAction(action,data){
+  abuseLog.unshift({action,data,timestamp:Date.now(),admin:getPlayerName()||"ADMIN"});
+  if(abuseLog.length>100)abuseLog.pop();
+  renderAdminAbuseLog();
+}
+function renderAdminAbuseLog(){
+  const log=$("adminAbuseLog"),status=$("adminAbuseLogStatus");
+  if(!log)return;
+  if(!abuseLog.length){if(status)status.textContent="Keine Einträge.";log.innerHTML="";return}
+  if(status)status.textContent=`${abuseLog.length} Einträge`;
+  log.innerHTML=abuseLog.map(e=>{
+    const time=new Date(e.timestamp).toLocaleTimeString("de-DE");
+    const dataStr=e.data?JSON.stringify(e.data):"";
+    return `<div class="logEntry"><strong>[${time}]</strong> ${e.action} ${e.admin?`von ${e.admin}`:""} ${dataStr?`<span style="color:var(--muted)">${dataStr}</span>`:""}</div>`;
+  }).join("");
+}
+function spawnSecretHuntFigure(){
+  if(!game.running||game.paused)return;
+  secretHuntFigure={x:W*.3+Math.random()*.4*W,y:H*.2+Math.random()*.5*H,spawnAt:Date.now(),lifespan:8000+Math.random()*4000};
+  showMessage("🕵️ Secret Hunt – finde die geheimnisvolle Figur!");
+}
+function drawSecretHuntFigure(){
+  if(!secretHuntFigure||!game.running)return;
+  const elapsed=Date.now()-secretHuntFigure.spawnAt;
+  if(elapsed>secretHuntFigure.lifespan){secretHuntFigure=null;return}
+  const fig=$("secretHuntFigureEl");
+  if(!fig){
+    const el=document.createElement("div");el.id="secretHuntFigureEl";el.className="secretHuntFigure";
+    el.onclick=()=>catchSecretHunt();document.body.appendChild(el);
+  }
+  const el=$("secretHuntFigureEl");
+  el.style.display="block";el.style.left=secretHuntFigure.x+"px";el.style.top=secretHuntFigure.y+"px";
+}
+function catchSecretHunt(){
+  if(!secretHuntFigure)return;
+  const reward=50+Math.floor(Math.random()*200);
+  state.coins+=reward;state.secretHuntFound++;saveState();
+  showSecretRewardPopup("🕵️",`+${reward} Coins`,"Secret Hunt gefunden!");
+  logAbuseAction("SECRET_HUNT",{reward});
+  const el=$("secretHuntFigureEl");if(el)el.style.display="none";
+  secretHuntFigure=null;secretHuntCooldown=Date.now()+15000;
+  if(db&&currentUser){
+    const huntId="hunt_"+Date.now();
+    loadFirebase().then(({d})=>{
+      d.set(d.ref(db,"events/secretHunt/claimed/"+currentUser.uid),{huntId:huntId,reward:reward,timestamp:Date.now()}).catch(()=>{});
+    }).catch(()=>{});
+  }
+}
+function spawnSecretPortal(){
+  if(!game.running||game.paused||secretPortals.length>=3)return;
+  const portal={x:W+50,y:H*.2+Math.random()*.5*H,vx:-120-Math.random()*60,reward: pick(["coins","skin_fragment","rare"])};
+  if(portal.reward==="coins")portal.amount=30+Math.random()*100;
+  secretPortals.push(portal);
+}
+function drawSecretPortals(){
+  secretPortals.forEach(p=>{
+    let el=$("portal_"+p.x.toFixed(0)+"_"+p.y.toFixed(0));
+    if(!el){el=document.createElement("div");el.id="portal_"+p.x.toFixed(0)+"_"+p.y.toFixed(0);el.className="secretPortal";el.style.zIndex="30";el.onclick=()=>collectPortal(p);document.body.appendChild(el)}
+    el.style.display="block";el.style.left=p.x+"px";el.style.top=p.y+"px";
+  });
+}
+function collectPortal(portal){
+  const mult=eventRewardMult();
+  if(portal.reward==="coins"){const amt=Math.round(portal.amount*(1+Math.random())*mult);state.coins+=amt;showSecretRewardPopup("🌀",`+${amt} Coins`,"Portal gesammelt!")}
+  else if(portal.reward==="skin_fragment"){state.coins+=25*mult;showSecretRewardPopup("🧩","Skin-Fragment!","+25 Coins Bonus")}
+  else{state.coins+=75*mult;showSecretRewardPopup("💎","Rare Drop!","+75 Coins!")}
+  saveState();
+  logAbuseAction("PORTAL_COLLECT",{type:portal.reward});
+  secretPortals=secretPortals.filter(p=>p!==portal);
+}
+function activateChaosMode(){chaosModeEndsAt=Date.now()+180000;showMessage("🌪️ CHAOS MODE aktiviert!");logAbuseAction("CHAOS_START",{});}
+function deactivateChaosMode(){chaosModeEndsAt=0;showMessage("🌪️ Chaos Mode beendet.");}
+function isChaosActive(){return Date.now()<chaosModeEndsAt;}
+// ===== FIREBASE-SYNCED ADMIN BOSS (PERSISTENT) =====
+function spawnBossEvent(){
+  bossActive=true;bossLocalHealth=200;bossMaxHealth=200;bossEventEnded=false;bossRewardClaimed=false;
+  showMessage("👹 ADMIN BOSS ist erschienen! Gemeinsam bekämpfen!");
+  logAbuseAction("BOSS_SPAWN",{maxHealth:bossMaxHealth});
+  if(removeBossListener){removeBossListener();removeBossListener=null}
+  setupBossListener();
+  setupBossRewardChecker();
+}
+async function loadBossStateFromFirebase(){
+  if(!db)return;
+  try{
+    const {d}=await loadFirebase();
+    const snap=await d.get(d.ref(db,"events/boss/health"));
+    if(snap.exists()){
+      const v=snap.val();
+      bossLocalHealth=Number(v.hp??200);
+      bossMaxHealth=Number(v.maxHp??200);
+      if(v.defeated===true||bossLocalHealth<=0){
+        bossLocalHealth=0;
+        bossActive=false;
+        bossEventEnded=true;
+        const bar=$("bossHealthBar");if(bar)bar.style.display="none";
+      }else if(eventVisualActive("admin_boss")){
+        bossActive=true;
+        setupBossListener();
+      }
+    }
+    if(currentUser){
+      const claimedSnap=await d.get(d.ref(db,"events/boss/claimed/"+currentUser.uid));
+      if(claimedSnap.exists()&&claimedSnap.val()&&claimedSnap.val().claimed===true){
+        bossRewardClaimed=true;
+      }
+      const dmgSnap=await d.get(d.ref(db,"events/boss/damage/"+currentUser.uid));
+      if(dmgSnap.exists()&&dmgSnap.val()){
+        state.bossDamageDealt=Number(dmgSnap.val().damage||0);
+      }
+    }
+  }catch(e){console.error("loadBossStateFromFirebase",e)}
+}
+function setupBossListener(){
+  if(!db)return;
+  loadFirebase().then(({d})=>{
+    try{
+      if(bossListenerStop)bossListenerStop();
+      const hpRef=d.ref(db,"events/boss/health");
+      bossListenerStop=d.onValue(hpRef,snap=>{
+        if(snap.exists()){
+          const v=snap.val();
+          bossLocalHealth=Number(v.hp??bossLocalHealth);
+          bossMaxHealth=Number(v.maxHp??bossMaxHealth);
+          if(v.defeated===true||bossLocalHealth<=0){
+            bossLocalHealth=0;
+            checkBossDeath();
+          }
+        }
+      });
+      d.get(hpRef).then(snap=>{
+        if(!snap.exists()){
+          d.set(hpRef,{hp:bossLocalHealth,maxHp:bossMaxHealth,defeated:false,startedAt:Date.now()}).catch(()=>{});
+        }else{
+          const v=snap.val();
+          bossLocalHealth=Number(v.hp??200);
+          bossMaxHealth=Number(v.maxHp??200);
+          if(v.defeated===true){
+            bossLocalHealth=0;
+            bossEventEnded=true;
+          }
+        }
+      }).catch(()=>{});
+    }catch(e){console.error("setupBossListener inner",e)}
+  }).catch(e=>console.error("setupBossListener",e));
+}
+function setupBossRewardChecker(){
+  if(!db||!currentUser)return;
+  loadFirebase().then(({d})=>{
+    d.get(d.ref(db,"events/boss/claimed/"+currentUser.uid)).then(snap=>{
+      if(snap.exists()&&snap.val()&&snap.val().claimed===true){
+        bossRewardClaimed=true;
+      }
+    }).catch(()=>{});
+  }).catch(()=>{});
+}
+async function damageBoss(amount){
+  if(!bossActive||bossEventEnded)return;
+  try{
+    const {d}=await loadFirebase();
+    if(bossTransactionInProgress)return;
+    bossTransactionInProgress=true;
+    await d.runTransaction(d.ref(db,"events/boss/health"),current=>{
+      if(!current)return current;
+      if(current.defeated===true)return current;
+      const hp=Math.max(0,Number(current.hp??bossLocalHealth)-amount);
+      const defeated=hp<=0;
+      return {hp,maxHp:Number(current.maxHp??bossMaxHealth),defeated:defeated,timestamp:Date.now()};
+    });
+    if(currentUser){
+      const playerName=getPlayerName()||"Spieler";
+      const damageRef=d.ref(db,"events/boss/damage/"+currentUser.uid);
+      await d.runTransaction(damageRef,current=>{
+        const prev=current&&current.damage?Number(current.damage):0;
+        const entries=current&&Array.isArray(current.entries)?current.entries:[];
+        return {damage:prev+amount,name:playerName,uid:currentUser.uid,entries:[...entries,{amount,timestamp:Date.now()}],lastActive:Date.now()};
+      });
+      state.bossDamageDealt=(state.bossDamageDealt||0)+amount;
+    }
+    bossTransactionInProgress=false;
+  }catch(e){
+    console.error("damageBoss",e);
+    bossTransactionInProgress=false;
+    bossLocalHealth=Math.max(0,bossLocalHealth-amount);
+    state.bossDamageDealt=(state.bossDamageDealt||0)+amount;
+    checkBossDeath();
+  }
+}
+function checkBossDeath(){
+  if(!bossActive||bossEventEnded)return;
+  if(bossLocalHealth<=0){
+    bossActive=false;
+    bossEventEnded=true;
+    markBossDefeated();
+    showBossKillAnimation();
+  }
+}
+async function markBossDefeated(){
+  try{
+    const {d}=await loadFirebase();
+    await d.set(d.ref(db,"events/boss/health"),{hp:0,maxHp:bossMaxHealth,defeated:true,defeatedAt:Date.now()});
+    logAbuseAction("BOSS_DEFEATED_PERMANENT",{maxHp:bossMaxHealth});
+  }catch(e){console.error("markBossDefeated",e)}
+}
+function showBossKillAnimation(){
+  const overlay=document.createElement("div");overlay.id="bossKillOverlay";overlay.className="bossKillOverlay";
+  overlay.innerHTML=`<div style="text-align:center"><div class="bossKillFigure">👹</div><div id="bossKillReward" class="bossKillReward"></div></div>`;
+  document.body.appendChild(overlay);
+  logAbuseAction("BOSS_DEFEAT_ANIM",{});
+  setTimeout(()=>{
+    if(!bossRewardClaimed){
+      const reward=300+Math.floor(Math.random()*500);
+      state.coins+=reward;saveState();
+      claimBossReward(reward);
+      const rewardEl=$("bossKillReward");
+      if(rewardEl)rewardEl.innerHTML=`🎉 BOSS BESIEGT! 🎉<br>+${reward.toLocaleString("de-DE")} Coins`;
+      showSecretRewardPopup("👹","BOSS BESIEGT!",`+${reward} Coins!`);
+      logAbuseAction("BOSS_REWARD_CLAIMED",{reward});
+    }else{
+      const rewardEl=$("bossKillReward");
+      if(rewardEl)rewardEl.innerHTML=`🎉 BOSS BESIEGT! 🎉<br>(Belohnung bereits erhalten)`;
+    }
+    grantAllPlayersReward(reward);
+  },2200);
+  setTimeout(()=>{
+    overlay.remove();
+    showBossDamageLeaderboard();
+  },4500);
+}
+async function claimBossReward(reward){
+  if(!db||!currentUser||bossRewardClaimed)return;
+  bossRewardClaimed=true;
+  try{
+    const {d}=await loadFirebase();
+    await d.set(d.ref(db,"events/boss/claimed/"+currentUser.uid),{claimed:true,reward:reward,timestamp:Date.now(),name:getPlayerName()||"Spieler"});
+  }catch(e){console.error("claimBossReward",e)}
+}
+function showBossDamageLeaderboard(){
+  if(!db)return;
+  loadFirebase().then(({d})=>{
+    d.get(d.ref(db,"events/boss/damage")).then(snap=>{
+      if(!snap.exists()){endBossEvent();return}
+      const data=snap.val()||{};
+      const entries=Object.values(data).sort((a,b)=>Number(b.damage||0)-Number(a.damage||0));
+      const overlay=document.createElement("div");overlay.id="bossDamageLbOverlay";overlay.className="bossKillOverlay";
+      let html=`<div style="text-align:center;max-width:90vw"><h2 style="font-size:28px;color:#ffd447;margin-bottom:16px">🏆 BOSS DAMAGE RANGLISTE</h2>`;
+      html+=`<div style="background:rgba(0,0,0,.5);border-radius:16px;padding:16px;max-height:50vh;overflow-y:auto">`;
+      entries.slice(0,10).forEach((e,i)=>{
+        const medal=i===0?"🥇":i===1?"🥈":i===2?"🥉":`#${i+1}`;
+        html+=`<div style="display:flex;justify-content:space-between;padding:8px 12px;border-bottom:1px solid rgba(255,255,255,.1)"><span>${medal} ${e.name||"Spieler"}</span><span style="color:#ff4f86;font-weight:900">${e.damage||0} DMG</span></div>`;
+      });
+      html+=`</div><div id="bossLbCountdown" style="margin-top:16px;font-size:18px;color:#45e8ff"></div></div>`;
+      overlay.innerHTML=html;
+      document.body.appendChild(overlay);
+      let countdown=5;
+      const timer=setInterval(()=>{
+        countdown--;
+        const el=$("bossLbCountdown");
+        if(el)el.textContent=`Zurück zur Lobby in ${countdown}...`;
+        if(countdown<=0){
+          clearInterval(timer);
+          overlay.remove();
+          endBossEvent();
+        }
+      },1000);
+    }).catch(()=>endBossEvent());
+  }).catch(()=>endBossEvent());
+}
+function grantAllPlayersReward(reward){
+  if(!db)return;
+  try{
+    loadFirebase().then(({d})=>{
+      const rewardRef=d.ref(db,"events/boss/globalReward");
+      const rewardId="boss_"+Date.now();
+      d.set(rewardRef,{rewardId:rewardId,amount:reward,timestamp:Date.now(),type:"boss_kill",active:true}).catch(()=>{});
+      d.get(d.ref(db,"playerStates")).then(snap=>{
+        if(!snap.exists())return;
+        const players=snap.val()||{};
+        Object.keys(players).forEach(uid=>{
+          if(uid==="undefined"||uid==="null")return;
+          d.set(d.ref(db,"events/boss/playerRewards/"+uid),{rewardId:rewardId,amount:reward,claimed:false,timestamp:Date.now()}).catch(()=>{});
+        });
+      }).catch(()=>{});
+    });
+  }catch(e){console.error("grantAllPlayersReward",e)}
+}
+function checkGlobalBossReward(){
+  if(!db||!currentUser)return;
+  loadFirebase().then(({d})=>{
+    d.get(d.ref(db,"events/boss/playerRewards/"+currentUser.uid)).then(snap=>{
+      if(!snap.exists())return;
+      const data=snap.val();
+      if(!data||data.claimed===true||!data.amount)return;
+      const alreadyClaimed=(state.bossGlobalRewardsClaimed||[]).includes(data.rewardId);
+      if(alreadyClaimed)return;
+      const reward=Number(data.amount)||0;
+      if(reward<=0)return;
+      state.coins+=reward;
+      state.bossGlobalRewardsClaimed=[...(state.bossGlobalRewardsClaimed||[]),data.rewardId];
+      saveState();
+      updateLobby();
+      d.set(d.ref(db,"events/boss/playerRewards/"+currentUser.uid),{...data,claimed:true,claimedAt:Date.now()}).catch(()=>{});
+      showMessage(`🎉 Boss-Belohnung: +${reward} Coins!`);
+    }).catch(()=>{});
+  }).catch(()=>{});
+}
+function endBossEvent(){
+  if(removeBossListener){removeBossListener();removeBossListener=null}
+  bossActive=false;
+  bossEventEnded=true;
+  const bar=$("bossHealthBar");if(bar)bar.style.display="none";
+  if(game.running){returnLobby()}
+  logAbuseAction("BOSS_EVENT_END",{});
+}
+function drawBossHealthBar(){
+  if(!bossActive||!game.running)return;
+  let bar=$("bossHealthBar");
+  if(!bar){
+    bar=document.createElement("div");bar.id="bossHealthBar";bar.className="bossHealthBar";
+    bar.innerHTML=`<div id="bossHealthFill" class="bossHealthFill"></div><div id="bossHealthLabel" class="bossHealthLabel">👹 ADMIN BOSS</div>`;
+    document.body.appendChild(bar);
+  }
+  bar.style.display="block";
+  const fill=$("bossHealthFill"),label=$("bossHealthLabel");
+  const pct=Math.max(0,bossLocalHealth/bossMaxHealth*100);
+  if(fill){
+    fill.style.width=pct+"%";
+    fill.style.background=pct>50?"linear-gradient(90deg,#ff4f86,#ff3b4e)":pct>25?"linear-gradient(90deg,#ff9b3d,#ff4f86)":"linear-gradient(90deg,#ff3b4e,#ff0000)";
+  }
+  if(label)label.textContent=`👹 ADMIN BOSS – ${Math.round(bossLocalHealth)}/${bossMaxHealth}`;
+}
+function drawXPRushIndicator(){
+  if(!isXPRushActive||!game.running)return;
+  let el=$("xpRushIndicator");
+  if(!el){
+    el=document.createElement("div");
+    el.id="xpRushIndicator";
+    el.style.cssText="position:fixed;top:80px;left:50%;transform:translateX(-50%);z-index:40;background:linear-gradient(135deg,#7c3aed,#3b82f6);color:#fff;padding:8px 20px;border-radius:20px;font-weight:700;font-size:14px;box-shadow:0 4px 20px rgba(124,58,237,.4);animation:pulse 1s infinite";
+    document.body.appendChild(el);
+  }
+  el.style.display="block";
+  el.textContent="⚡ XP RUSH AKTIV! 1 Coin = 10 XP!";
+}
+function hideXPRushIndicator(){
+  const el=$("xpRushIndicator");
+  if(el)el.style.display="none";
+}
+function checkAbuseEvents(){
+  const hunt=eventVisualActive("secret_hunt");
+  const chaos=eventVisualActive("chaos_mode");
+  const portals=eventVisualActive("secret_portals");
+  const invasion=eventVisualActive("john_bacon_invasion");
+  const boss=eventVisualActive("admin_boss");
+  const disco=eventVisualActive("disco");
+  const fragmentRain=eventVisualActive("fragment_rain");
+  const xpRush=eventVisualActive("xp_rush");
+  if(hunt&&game.running&&!game.paused&&Date.now()>secretHuntCooldown&&!secretHuntFigure&&Math.random()<.003){spawnSecretHuntFigure()}
+  if(chaos){if(!isChaosActive())activateChaosMode()}else if(isChaosActive())deactivateChaosMode()
+  if(portals&&game.running&&!game.paused&&Math.random()<.004){spawnSecretPortal()}
+  if(fragmentRain&&game.running&&!game.paused&&Math.random()<.005){spawnFragmentDrop()}
+  if(invasion){if(johnInvasionFigures.length<6)spawnJohnInvasionFigure();if(game.world?.id!=="johnbacon"&&state.selectedWorld!=="johnbacon"){game.world=worlds.find(w=>w.id==="johnbacon")||game.world;worldHud.textContent=game.world.name;}}
+  else if(johnInvasionFigures.length>0){johnInvasionFigures=[];document.querySelectorAll(".johnInvasionFigure,.johnInvasionParticle").forEach(el=>el.remove());if(game.world?.id==="johnbacon"&&state.selectedWorld!=="johnbacon"){game.world=worlds.find(w=>w.id===state.selectedWorld)||worlds[0];worldHud.textContent=game.world.name;}}
+  if(boss&&!bossActive)spawnBossEvent();
+  if(!boss&&bossActive){bossActive=false;const bar=$("bossHealthBar");if(bar)bar.style.display="none";}
+  if(disco&&game.running){spawnDiscoParticles()}
+  if(!disco){document.querySelectorAll(".discoParticle,.discoRay,.discoFlash").forEach(el=>el.remove());}
+  if(xpRush){drawXPRushIndicator()}else{hideXPRushIndicator()}
+}
+function spawnJohnInvasionFigure(){
+  if(!game.running||!eventVisualActive("john_bacon_invasion"))return;
+  const fig={id:"johnFig_"+Date.now()+"_"+Math.random().toString(36).slice(2,6),x:W*.1+Math.random()*.8*W,y:H*.15+Math.random()*.7*H,vx:(Math.random()-.5)*60,vy:(Math.random()-.5)*40,size:30+Math.random()*20,phase:Math.random()*Math.PI*2,createdAt:Date.now(),lifespan:6000+Math.random()*4000};
+  johnInvasionFigures.push(fig);
+}
+function drawJohnInvasion(){
+  if(!eventVisualActive("john_bacon_invasion")&&johnInvasionFigures.length>0){johnInvasionFigures=[];document.querySelectorAll(".johnInvasionFigure").forEach(el=>el.remove());return}
+  const now=Date.now();
+  johnInvasionFigures.forEach(fig=>{
+    const el=$(fig.id);
+    let div=el;
+    if(!div){div=document.createElement("div");div.id=fig.id;div.className="johnInvasionFigure";div.style.width=fig.size+"px";div.style.height=fig.size+"px";div.style.fontSize=(fig.size*.7)+"px";div.style.display="flex";div.style.alignItems="center";div.style.justifyContent="center";div.textContent="🐷";document.body.appendChild(div)}
+    const bob=Math.sin((now-fig.createdAt)/400+fig.phase)*8;
+    div.style.left=fig.x+"px";div.style.top=(fig.y+bob)+"px";
+    if(Math.random()<.01){spawnJohnParticle(fig.x+fig.size/2,fig.y)}
+  });
+  johnInvasionFigures=johnInvasionFigures.filter(fig=>{
+    if(now-fig.createdAt>fig.lifespan){const el=$(fig.id);if(el)el.remove();return false}
+    return true;
+  });
+}
+function spawnJohnParticle(x,y){
+  const p=document.createElement("div");p.className="johnInvasionParticle";p.style.left=x+"px";p.style.top=y+"px";p.style.width="12px";p.style.height="12px";p.style.background=Math.random()<.5?"#ff9b9b":"#ffd447";p.style.borderRadius="50%";document.body.appendChild(p);setTimeout(()=>p.remove(),1800);
+}
+function triggerScreenShake(){
+  if(screenShakeActive)return;
+  screenShakeActive=true;document.body.classList.add("screenShake");setTimeout(()=>{document.body.classList.remove("screenShake");screenShakeActive=false},300);
+}
+function spawnFragmentDrop(){
+  if(!game.running||game.paused)return;
+  const drop={x:W*.2+Math.random()*.6*W,y:-30,reward:pick(["coins","fragment","skin"]),amount:10+Math.floor(Math.random()*50),id:"frag_"+Date.now()+Math.random().toString(36).slice(2,5)};
+  secretPortals.push({x:drop.x,y:drop.y,vx:0,vy:80+Math.random()*60,reward:drop.reward,amount:drop.amount,isFragment:true});
+}
+function spawnDiscoParticles(){
+  if(discoParticles.length>40)return;
+  for(let i=0;i<3;i++){
+    discoParticles.push({x:Math.random()*W,y:H+20,vx:(Math.random()-.5)*100,vy:-150-Math.random()*200,r:3+Math.random()*6,life:1.6+Math.random()*.8,color:["#ff4fd8","#45e8ff","#ffe45e","#58ff9c","#ff9b3d"][Math.floor(Math.random()*5)],born:Date.now()});
+  }
+  if(Math.random()<.03){
+    const ray=document.createElement("div");ray.className="discoRay";ray.style.left=(Math.random()*80+10)+"%";ray.style.bottom="0";ray.style.width="120px";ray.style.height=H+"px";ray.style.background="linear-gradient(to top,transparent,"+["rgba(255,79,216,.5)","rgba(69,232,255,.5)","rgba(255,228,94,.5)"][Math.floor(Math.random()*3)]+",transparent)";document.body.appendChild(ray);setTimeout(()=>ray.remove(),3000);
+  }
+  if(Math.random()<.008){
+    const flash=document.createElement("div");flash.className="discoFlash";flash.style.background=["rgba(255,79,216,.4)","rgba(69,232,255,.4)","rgba(255,228,94,.4)"][Math.floor(Math.random()*3)];document.body.appendChild(flash);setTimeout(()=>flash.remove(),400);
+  }
+}
+function drawDiscoParticles(){
+  discoParticles=discoParticles.filter(p=>{
+    const age=(Date.now()-p.born)/1000;
+    if(age>p.life)return false;
+    const el=$("discoP_"+Math.round(p.born*100+p.x));
+    let div=el;
+    if(!div){div=document.createElement("div");div.id="discoP_"+Math.round(p.born*100+p.x);div.className="discoParticle";document.body.appendChild(div)}
+    div.style.left=p.x+"px";div.style.top=p.y+"px";div.style.width=p.r*2+"px";div.style.height=p.r*2+"px";div.style.background=p.color;
+    div.style.opacity=1-age/p.life;p.x+=p.vx*.016;p.y+=p.vy*.016;p.vy+=120*.016;
+    return true;
+  });
+}
+function updateAbuseGameMechanics(dt){
+  if(isChaosActive()){game.speed=Math.min(280,game.speed+120*dt)}
+  secretPortals.forEach(p=>{p.x+=p.vx*dt;p.y+=p.vy*dt;if(!p.isFragment)p.y+=Math.sin(Date.now()/400+p.x*.01)*40*dt});
+  secretPortals=secretPortals.filter(p=>{
+    if(p.x<-80||p.y>H+80){const el=$("portal_"+p.x.toFixed(0)+"_"+p.y.toFixed(0));if(el)el.remove();return false}
+    if(game.running&&Math.hypot(p.x-game.player.x,p.y-game.player.y)<game.player.r+25){collectPortal(p);return false}
+    return true;
+  });
+  if(secretHuntFigure&&game.running){const fig=$("secretHuntFigureEl");if(fig&&Math.hypot(secretHuntFigure.x-game.player.x,secretHuntFigure.y-game.player.y)<game.player.r+30){catchSecretHunt()}}
+  if(johnInvasionFigures.length>0){johnInvasionFigures.forEach(fig=>{fig.x+=fig.vx*dt;fig.y+=fig.vy*dt;if(fig.x<0||fig.x>W)fig.vx*=-1;if(fig.y<0||fig.y>H)fig.vy*=-1})}
+  if(game.running&&!game.paused){drawJohnInvasion();drawDiscoParticles()}
+  if(bossActive&&game.running&&!game.paused){if(Math.random()<.002)triggerScreenShake()}
+}
+function resetAbuseState(){
+  secretHuntFigure=null;secretPortals=[];bossActive=false;bossLocalHealth=100;chaosModeEndsAt=0;secretHuntCooldown=0;
+  johnInvasionFigures=[];discoParticles=[];bossEventEnded=false;bossDamageTracker={};bossRewardClaimed=false;
+  const fig=$("secretHuntFigureEl");if(fig)fig.remove();
+  const bar=$("bossHealthBar");if(bar)bar.remove();
+  const bossOverlay=$("bossKillOverlay");if(bossOverlay)bossOverlay.remove();
+  const bossLbOverlay=$("bossDamageLbOverlay");if(bossLbOverlay)bossLbOverlay.remove();
+  document.querySelectorAll(".secretPortal,.johnInvasionFigure,.johnInvasionParticle,.discoParticle,.discoRay,.discoFlash,#secretRewardPopup").forEach(el=>el.remove());
+  document.body.classList.remove("screenShake");screenShakeActive=false;
+  if(bossListenerStop){bossListenerStop();bossListenerStop=null}
+  if(removeBossListener){removeBossListener();removeBossListener=null}
+}
+
 function populateRewardItemSelect(){
   const type=$("adminRewardType")?.value;
   const sel=$("adminRewardItem");
@@ -2760,6 +3760,8 @@ adminLoginBtn.onclick=openAdminLogin;adminUnlockBtn.onclick=activateAdmin;adminB
 $("adminEventStartBtn")?.addEventListener("click",adminStartEvent);$("adminEventStopBtn")?.addEventListener("click",adminStopEvent);
 $("adminRewardType")?.addEventListener("change",populateRewardItemSelect);$("adminRewardGiveBtn")?.addEventListener("click",adminGiveReward);$("adminSelfRewardBtn")?.addEventListener("click",adminSelfReward);$("adminRewardAllBtn")?.addEventListener("click",adminRewardAll);
 $("adminFreeGiveCategory")?.addEventListener("change",populateFreeGiveItemSelect);$("adminFreeGiveBtn")?.addEventListener("click",adminFreeGive);
+$("adminSecretShopRefreshBtn")?.addEventListener("click",renderAdminSecretShop);$("adminSecretOfferBtn")?.addEventListener("click",adminCreateSecretOffer);
+$("adminAbuseLogRefreshBtn")?.addEventListener("click",renderAdminAbuseLog);
 $("adminChatBanBtn")?.addEventListener("click",adminBanPlayer);$("adminChatRefreshBtn")?.addEventListener("click",loadAdminChatBans);
 
 let globalBroadcastStop=null;
@@ -2956,18 +3958,27 @@ async function startEventListener(){
       // Events live in Firebase/events/active, so every connected client receives the same event state.
       // Guests are anonymously authenticated by setupFirebase(), therefore login is not required.
       updateEventHUD();
-      for(const id of newIds){
-        if(!prevIds.includes(id)){
-          showMessage("🔴 EVENT AKTIV: "+(newEvents[id].name||id));
-        }
-      }
       for(const id of prevIds){
         if(!newEvents[id]){
           showMessage(`⏹️ Event "${id}" wurde beendet.`);
         }
       }
       checkMusicEvent();
-      if(eventVisualOverlay) eventVisualOverlay.classList.toggle("active",!!newEvents.disco);
+      if(eventVisualOverlay){
+        const showVisual=newEvents.disco||newEvents.john_bacon_invasion||newEvents.chaos_mode;
+        eventVisualOverlay.classList.toggle("active",!!showVisual);
+        let inner="";
+        if(newEvents.disco)inner='<div class="discoOverlay"></div>';
+        if(newEvents.john_bacon_invasion)inner='<div class="discoOverlay" style="background:radial-gradient(circle at 50% 50%,rgba(255,150,100,.25),transparent 55%),conic-gradient(from 0deg,rgba(255,80,80,.5),rgba(255,200,100,.45),rgba(200,50,50,.5),rgba(255,80,80,.5))"></div>';
+        if(newEvents.chaos_mode)inner='<div class="chaosModeVignette"></div>';
+        eventVisualOverlay.innerHTML=inner;
+      }
+      for(const id of newIds){
+        if(!prevIds.includes(id)&&newEvents[id]?.category==="abuse"){
+          showMessage("⚠️ ADMIN ABUSE EVENT: "+(newEvents[id].name||id));
+          if(typeof logAbuseAction==="function")logAbuseAction("EVENT_START",{id,name:newEvents[id].name});
+        }
+      }
     },err=>console.error("event listener",err));
    }catch(e){console.error("startEventListener",e)}
 }
@@ -3029,6 +4040,7 @@ function applyNotification(v){
     showMessage(`🪙 +${Number(v.amount||0)} Coins erhalten!`);
   }
   else if(v.type==="skin"){
+    if(isOwnerSkin(v.itemId)){console.warn("Blocked owner: "+v.itemId);return}
     if(!state.ownedSkins.includes(v.itemId)){state.ownedSkins.push(v.itemId);showMessage(`🪽 Skin "${getSkinById(v.itemId).name}" erhalten!`);}
     saveState();
     renderShop();
@@ -3158,25 +4170,18 @@ canvas.addEventListener("pointerdown",e=>{e.preventDefault();flap()});addEventLi
 
 
 
-// ===== FLYYYY PROGRESSION / MODES =====
-const __flyyyyStartGame=startGame;
-startGame=function(online=false){
-  __flyyyyStartGame(online);
-  game.mode=state.selectedGameMode||"classic";
-  if(game.mode==="speedrun") game.speed=215;
-  if(game.mode==="hardcore") game.speed=185;
-  updateHUD();
-};
+// ===== FLYYYY PROGRESSION =====
 const __flyyyyEndGame=endGame;
 endGame=async function(){
   const scoreBefore=Math.max(0,Number(game.score)||0);
   const coinsBefore=Math.max(0,Number(game.runCoins)||0);
-  if(game.mode==="hardcore" && scoreBefore>=50){state.wins=Number(state.wins||0)+1}
-  addXP(Math.min(250,Math.floor(scoreBefore*2+coinsBefore*3+(game.mode==="speedrun"?20:0))));
+  let xpAmount=Math.floor(scoreBefore*2+coinsBefore*3);
+  if(typeof xpRushGameBonus==="function"){xpAmount=Math.floor(xpAmount*xpRushGameBonus())}
+  addXP(Math.min(500,xpAmount));
   return __flyyyyEndGame();
 };
-if(gameModeSelect)gameModeSelect.onchange=()=>{state.selectedGameMode=gameModeSelect.value;saveState();showMessage(`🎮 ${gameModeSelect.options[gameModeSelect.selectedIndex].text} ausgewählt`) };
 if(dailyRewardBtn)dailyRewardBtn.onclick=claimDailyReward;
+setInterval(()=>{if(typeof updateEventCountdown==="function")updateEventCountdown()},1000);
 
 (()=>{
   try{ensureShopNewState();}catch(e){console.error(e)};try{applyLanguage()}catch(e){console.error("applyLanguage",e)}
@@ -3193,6 +4198,7 @@ if(dailyRewardBtn)dailyRewardBtn.onclick=claimDailyReward;
   try{updateSeasonUI();}catch(e){console.error(e)}
   try{startSeasonTimer();}catch(e){console.error(e)}
       try{setupFirebase();}catch(e){console.error("setupFirebase",e)}
+      try{setInterval(()=>{if(typeof checkGlobalBossReward==="function")checkGlobalBossReward()},10000);}catch(e){console.error(e)}
      ["pointerdown","keydown","touchstart"].forEach(ev=>window.addEventListener(ev,()=>{syncMusicAfterInteraction()},{once:false,passive:true}));
 })();
 
@@ -3236,11 +4242,45 @@ legalClose?.addEventListener("click",closeLegalPage);
 legalOverlay?.addEventListener("click",e=>{if(e.target===legalOverlay)closeLegalPage()});
 window.addEventListener("keydown",e=>{if(e.key==="Escape")closeLegalPage()});
 
+/* ===== FOOTER LEGAL LINKS ===== */
+var footerImprintBtn=document.getElementById("footerImprintBtn");
+var footerPrivacyBtn=document.getElementById("footerPrivacyBtn");
+var footerTermsBtn=document.getElementById("footerTermsBtn");
+var footerPurchaseBtn=document.getElementById("footerPurchaseBtn");
+if(footerImprintBtn)footerImprintBtn.addEventListener("click",function(){openLegalPage("imprint")});
+if(footerPrivacyBtn)footerPrivacyBtn.addEventListener("click",function(){openLegalPage("privacy")});
+if(footerTermsBtn)footerTermsBtn.addEventListener("click",function(){openLegalPage("terms")});
+if(footerPurchaseBtn)footerPurchaseBtn.addEventListener("click",function(){openLegalPage("purchase")});
+
+/* ===== COOKIE CONSENT ===== */
+var cookieBanner=document.getElementById("cookieBanner");
+var cookieAcceptBtn=document.getElementById("cookieAcceptBtn");
+function showCookieBanner(){if(cookieBanner&&!localStorage.getItem("flyyyy_cookie_consent"))cookieBanner.classList.add("active")}
+function acceptCookies(){localStorage.setItem("flyyyy_cookie_consent","1");if(cookieBanner)cookieBanner.classList.remove("active")}
+if(cookieAcceptBtn)cookieAcceptBtn.addEventListener("click",acceptCookies);
+if(window.requestIdleCallback)requestIdleCallback(showCookieBanner);else setTimeout(showCookieBanner,800);
+
 </script>
 
-<!-- ===== COPYRIGHT ===== -->
+<!-- ===== COPYRIGHT FOOTER ===== -->
 <div id="copyrightFooter">
-  <span id="copyrightText">© 2026 FLYYYY — Alle Rechte vorbehalten.</span>
+  <span id="copyrightText" style="color:rgba(201,195,223,.5)">© 2026 FLYYYY</span>
+  <span class="sep">·</span>
+  <button class="legalLink" id="footerImprintBtn" type="button">Impressum</button>
+  <span class="sep">·</span>
+  <button class="legalLink" id="footerPrivacyBtn" type="button">Datenschutz</button>
+  <span class="sep">·</span>
+  <button class="legalLink" id="footerTermsBtn" type="button">Nutzungsbedingungen</button>
+  <span class="sep">·</span>
+  <button class="legalLink" id="footerPurchaseBtn" type="button">Kaufhinweise</button>
+</div>
+
+<!-- ===== COOKIE CONSENT ===== -->
+<div id="cookieBanner" role="dialog" aria-label="Cookie-Einwilligung">
+  <div class="cookieText">🍪 FLYYYY nutzt Cookies und ähnliche Technien (z.B. LocalStorage, Firebase) für Login, Spielstand und Online-Funktionen. Mit dem Spielen stimmst du der Nutzung zu.</div>
+  <div class="cookieBtns">
+    <button id="cookieAcceptBtn" class="btn green" style="font-size:13px;padding:8px 14px">Verstanden</button>
+  </div>
 </div>
 </body>
 </html>
