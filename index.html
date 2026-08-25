@@ -363,6 +363,32 @@ html,body{background:#070b18!important;color:#fff!important}
 .bossHealthLabel{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:1000;text-shadow:0 1px 4px rgba(0,0,0,.8)}
 .secretRewardPopup{position:fixed;z-index:9999;left:50%;top:50%;transform:translate(-50%,-50%);padding:22px 32px;border-radius:22px;background:linear-gradient(135deg,rgba(255,79,216,.95),rgba(183,108,255,.95));color:#fff;font-weight:1000;font-size:22px;text-align:center;box-shadow:0 0 60px rgba(255,79,216,.5);animation:secretRewardIn .4s ease-out}
 @keyframes secretRewardIn{from{transform:translate(-50%,-50%) scale(.5);opacity:0}to{transform:translate(-50%,-50%) scale(1);opacity:1}}
+.boxOpenOverlay{position:fixed;inset:0;z-index:9998;display:flex;align-items:center;justify-content:center;animation:fadeIn .3s ease}
+.boxOpenOverlay::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(20,10,40,.95) 0%,rgba(0,0,0,.98) 70%)}
+.boxParticlesCanvas{position:absolute;inset:0;pointer-events:none}
+.boxGlow{position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(124,58,237,.15) 0%,transparent 70%);animation:glowPulse 2s ease-in-out infinite;pointer-events:none}
+@keyframes glowPulse{0%,100%{transform:scale(1);opacity:.5}50%{transform:scale(1.2);opacity:.8}}
+.boxOpenContainer{position:relative;text-align:center;padding:20px;z-index:10}
+.boxRarityText{font-size:14px;font-weight:900;letter-spacing:.3em;margin-bottom:16px;opacity:.8}
+.boxOpenBox{position:relative;width:180px;height:180px;border-radius:28px;border:4px solid;margin:0 auto 24px;display:flex;align-items:center;justify-content:center;transition:transform .1s ease;overflow:hidden}
+.boxShine{position:absolute;top:-100%;left:-100%;width:50%;height:200%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.1),transparent);transform:skewX(-20deg);animation:boxShine 2s ease-in-out infinite}
+@keyframes boxShine{0%{left:-100%}50%,100%{left:150%}}
+.boxExplode{animation:boxExplode .5s ease-out forwards}
+@keyframes boxExplode{0%{transform:scale(1);opacity:1}50%{transform:scale(1.3);opacity:.8;filter:brightness(2)}100%{transform:scale(0);opacity:0}}
+.boxOpenIcon{font-size:90px;transition:all .3s ease;filter:drop-shadow(0 4px 8px rgba(0,0,0,.4))}
+.boxOpenText{color:#fff;font-size:20px;font-weight:700;margin-bottom:24px;min-height:30px}
+.boxOpenRewards{display:flex;flex-direction:column;gap:14px;align-items:center}
+.newBoxRewardItem{display:flex;align-items:center;gap:16px;padding:16px 28px;border-radius:18px;background:rgba(0,0,0,.6);border:2px solid;min-width:260px;justify-content:center;backdrop-filter:blur(10px);box-shadow:0 8px 32px rgba(0,0,0,.4)}
+.rewardIcon{font-size:40px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.3))}
+.rewardInfo{display:flex;flex-direction:column;gap:2px}
+.rewardName{font-size:18px;font-weight:900}
+.rewardRarity{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+.boxCloseBtn{font-size:18px;font-weight:900;letter-spacing:.05em;box-shadow:0 4px 20px rgba(74,222,128,.3)}
+.boxOverlayFadeOut{animation:fadeOut .3s ease forwards}
+@keyframes fadeOut{to{opacity:0}}
+@keyframes rewardReveal{0%{opacity:0;transform:translateY(20px) scale(.8)}60%{transform:translateY(-5px) scale(1.05)}100%{opacity:1;transform:translateY(0) scale(1)}}
+.legendarySpark{position:fixed;width:6px;height:6px;border-radius:50%;pointer-events:none;z-index:9999;animation:sparkBurst .8s ease-out forwards}
+@keyframes sparkBurst{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(var(--tx),var(--ty)) scale(0)}}
 .adminAbuseLog{max-height:200px;overflow-y:auto;padding:10px;border-radius:12px;background:rgba(0,0,0,.25);border:1px solid rgba(255,255,255,.08);font-size:12px}
 .adminAbuseLog .logEntry{padding:4px 0;border-bottom:1px solid rgba(255,255,255,.05)}
 <style id="progression-update-style">
@@ -378,7 +404,7 @@ html,body{background:#070b18!important;color:#fff!important}
 <div id="app"><div id="appErrorNotice" style="display:none;position:fixed;left:50%;top:10px;transform:translateX(-50%);z-index:100000;padding:10px 14px;border-radius:12px;background:#2a1730;border:1px solid #ff6374;color:#fff;font-weight:900">⚠️ Ein Spielfehler ist aufgetreten. Bitte Seite neu laden.</div>
 <canvas id="gameCanvas"></canvas>
 
-<div id="authScreen" class="screen"><div class="menu"><div class="title">FLYYYY</div><div class="version">🔐 ACCOUNT</div><div class="subtitle">Mit E-Mail anmelden, neues Konto erstellen oder ohne Konto spielen.</div><div class="authBox"><h2 style="margin:0 0 12px">Anmelden / Registrieren</h2><input id="authEmail" class="authInput" type="email" autocomplete="email" placeholder="E-Mail"><input id="authPassword" class="authInput" type="password" autocomplete="current-password" placeholder="Passwort (mind. 6 Zeichen)" style="margin-top:10px"><div class="authGrid"><button id="loginBtn" class="btn blue">ANMELDEN</button><button id="registerBtn" class="btn green">REGISTRIEREN</button></div><button id="guestBtn" class="btn dark" style="width:100%;margin-top:10px">👤 OHNE KONTO SPIELEN</button><button id="adminLoginBtn" class="btn dark" style="width:100%;margin-top:10px">🛠️ ADMIN</button><div id="authStatus" class="authStatus">Gastmodus ist jederzeit möglich.</div><div class="tiny" style="margin-top:10px">🛡️ Adminrechte werden serverseitig mit Firebase geprüft.</div></div><div class="legalSection"><div class="legalSectionTitle">Rechtliches</div><div class="legalMenuRow"><button class="legalLink" id="openImprintBtn" type="button">📄 Impressum</button><button class="legalLink" id="openPrivacyBtn" type="button">🔒 Datenschutz</button><button class="legalLink" id="openTermsBtn" type="button">📜 Nutzungsbedingungen</button><button class="legalLink" id="openPurchaseBtn" type="button">🛒 Kaufhinweise</button></div></div><button id="authBackBtn" class="btn dark" style="width:100%;margin-top:10px">← Zur Lobby</button></div></div>
+<div id="authScreen" class="screen"><div class="menu"><div class="title">FLYYYY</div><div class="version">🔐 ACCOUNT</div><div class="subtitle">Mit E-Mail anmelden, neues Konto erstellen oder ohne Konto spielen.</div><div class="authBox"><h2 style="margin:0 0 12px">Anmelden / Registrieren</h2><input id="authUsername" class="authInput" type="text" autocomplete="username" placeholder="Benutzername" style="margin-top:10px"><input id="authEmail" class="authInput" type="email" autocomplete="email" placeholder="E-Mail" style="margin-top:10px"><input id="authPassword" class="authInput" type="password" autocomplete="current-password" placeholder="Passwort (mind. 6 Zeichen)" style="margin-top:10px"><div class="authGrid"><button id="loginBtn" class="btn blue">ANMELDEN</button><button id="registerBtn" class="btn green">REGISTRIEREN</button></div><button id="sendCodeBtn" class="btn blue" style="width:100%;margin-top:10px;display:none">📧 Bestätigungscode senden</button><input id="authVerifyCode" class="authInput" type="text" autocomplete="one-time-code" placeholder="Bestätigungscode (6 Stellen)" style="margin-top:10px;display:none;letter-spacing:.3em;text-align:center;font-size:18px" maxlength="6"><div class="authGrid" style="margin-top:10px"><button id="verifyCodeBtn" class="btn green" style="display:none">✅ Code bestätigen</button><button id="resendCodeBtn" class="btn dark" style="display:none">🔄 Neuer Code</button></div><button id="guestBtn" class="btn dark" style="width:100%;margin-top:10px">👤 OHNE KONTO SPIELEN</button><button id="adminLoginBtn" class="btn dark" style="width:100%;margin-top:10px">🛠️ ADMIN</button><div id="authStatus" class="authStatus">Gastmodus ist jederzeit möglich.</div><div id="verifyStatus" class="authStatus" style="color:#ffd447"></div><div class="tiny" style="margin-top:10px">🛡️ Adminrechte werden serweise mit Firebase geprüft.</div></div><div class="legalSection"><div class="legalSectionTitle">Rechtliches</div><div class="legalMenuRow"><button class="legalLink" id="openImprintBtn" type="button">📄 Impressum</button><button class="legalLink" id="openPrivacyBtn" type="button">🔒 Datenschutz</button><button class="legalLink" id="openTermsBtn" type="button">📜 Nutzungsbedingungen</button><button class="legalLink" id="openPurchaseBtn" type="button">🛒 Kaufhinweise</button></div></div><button id="authBackBtn" class="btn dark" style="width:100%;margin-top:10px">← Zur Lobby</button></div></div>
 
 <div id="lobby" class="screen active"><div class="menu"><div class="title">FLYYYY</div><div class="version">🔥 UPDATE 3.0 · COMBO</div><div class="subtitle">Fly weiter. Sammle Coins. Schlage andere Spieler.</div><div class="accountLine"><div id="accountStatus" class="accountPill">👤 Gast</div><button id="accountBtn" class="btn dark">🔐 ANMELDEN</button><button id="logoutBtn" class="btn red" style="display:none">ABMELDEN</button><button id="myAccountBtn" class="btn dark">👤 MEIN KONTO</button></div><div class="credits"><div class="badge">🪙 <span id="lobbyCoins">0</span> Coins</div><div class="badge">🏆 Rekord: <span id="lobbyBest">0</span></div></div><div class="progressPanel">
 <div class="progressTop"><div class="progressLevel">⭐ Level <span id="playerLevel">1</span></div><div class="tiny"><span id="playerXp">0</span> / <span id="playerXpNext">100</span> XP</div></div>
@@ -447,7 +473,7 @@ const storage={getItem(k){try{return localStorage.getItem(k)}catch{return Object
 
 const $=id=>document.getElementById(id);
 const app=$("app"),canvas=$("gameCanvas"),ctx=canvas.getContext("2d");
-const authScreen=$("authScreen"),authEmail=$("authEmail"),authPassword=$("authPassword"),loginBtn=$("loginBtn"),registerBtn=$("registerBtn"),guestBtn=$("guestBtn"),authStatus=$("authStatus"),authBackBtn=$("authBackBtn"),adminLoginBtn=$("adminLoginBtn");
+const authScreen=$("authScreen"),authUsername=$("authUsername"),authEmail=$("authEmail"),authPassword=$("authPassword"),loginBtn=$("loginBtn"),registerBtn=$("registerBtn"),guestBtn=$("guestBtn"),authStatus=$("authStatus"),authBackBtn=$("authBackBtn"),adminLoginBtn=$("adminLoginBtn"),sendCodeBtn=$("sendCodeBtn"),authVerifyCode=$("authVerifyCode"),verifyCodeBtn=$("verifyCodeBtn"),resendCodeBtn=$("resendCodeBtn"),verifyStatus=$("verifyStatus");
 const adminOverlay=$("adminOverlay"),adminCodeInput=$("adminCodeInput"),adminUnlockBtn=$("adminUnlockBtn"),adminCloseBtn=$("adminCloseBtn"),adminPanel=$("adminPanel"),adminStatusText=$("adminStatusText"),adminMyAccountBtn=$("adminMyAccountBtn"),adminCoinsBtn=$("adminCoinsBtn"),adminClosePanelBtn=$("adminClosePanelBtn"),adminInfo=$("adminInfo");
 const lobby=$("lobby"),accountStatus=$("accountStatus"),accountBtn=$("accountBtn"),logoutBtn=$("logoutBtn"),myAccountBtn=$("myAccountBtn"),lobbyCoins=$("lobbyCoins"),lobbyBest=$("lobbyBest");
 const startBtn=$("startBtn"),onlineStartBtn=$("onlineStartBtn"),leaderboardBtn=$("leaderboardBtn"),shopBtn=$("shopBtn"),inventoryBtn=$("inventoryBtn"),missionsBtn=$("missionsBtn"),settingsBtn=$("settingsBtn"),musicToggleBtn=$("musicToggleBtn");
@@ -474,7 +500,7 @@ function hideScreens(){document.querySelectorAll(".screen").forEach(s=>s.classLi
 function showMessage(t){const e=document.createElement("div");e.textContent=t;e.style.cssText="position:fixed;z-index:99999;left:50%;top:18%;transform:translate(-50%,-50%);padding:13px 18px;border-radius:999px;background:rgba(8,12,30,.97);border:1px solid rgba(255,255,255,.15);color:#fff;font-weight:900;box-shadow:0 15px 40px rgba(0,0,0,.3);white-space:nowrap";document.body.appendChild(e);setTimeout(()=>e.remove(),1800)}
 function setLeaderboardStatus(t){leaderboardStatus.textContent=t}
 
-const DEFAULT={coins:0,best:0,wins:0,ownedWorlds:["giza"],ownedSkins:["bird"],ownedSounds:["classic"],ownedMusic:["classicMusic"],selectedWorld:"giza",selectedSkin:"bird",selectedSound:"classic",selectedMusic:"classicMusic",selectedAbilities:{},selectedAbilityId:null,ownedAbilities:[],ownedAbilitiesBySkin:{},lastNonIceWorld:"giza",shopNewSeen:{},shopNewRelease:"2.8.0",musicEnabled:true,sfxEnabled:true,musicVolume:70,sfxVolume:70,language:"de",missionProgress:{m1:0,m2:0,m3:0},missionClaimed:{m1:false,m2:false,m3:false},activeMissions:null,missionCycle:1,lastMissionIds:[],luckySpins:0,luckyLastResult:null,seasonScore:0,currentSeasonId:2,seasonRewardPending:null,seasonRewardClaimed:false,flyOwner1000Granted:false,playerXP:0,playerLevel:1,playerXPBoost:0,playerXpEarnedTotal:0,levelRewardsPending:[],levelRewardsClaimed:[],dailyRewardDate:"",dailyStreak:0,dailyRewardCycle:1,secretShopItems:[],secretShopPublished:false,secretHuntFound:0,bossDamageDealt:0,bossGlobalRewardsClaimed:[]};
+const DEFAULT={coins:0,best:0,wins:0,ownedWorlds:["giza"],ownedSkins:["bird"],ownedSounds:["classic"],ownedMusic:["classicMusic"],ownedTrails:["none"],selectedTrail:"none",ownedBoxes:[],boxOpensTotal:0,boxRewardsClaimed:[],selectedWorld:"giza",selectedSkin:"bird",selectedSound:"classic",selectedMusic:"classicMusic",selectedAbilities:{},selectedAbilityId:null,ownedAbilities:[],ownedAbilitiesBySkin:{},lastNonIceWorld:"giza",shopNewSeen:{},shopNewRelease:"2.8.0",musicEnabled:true,sfxEnabled:true,musicVolume:70,sfxVolume:70,language:"de",missionProgress:{m1:0,m2:0,m3:0},missionClaimed:{m1:false,m2:false,m3:false},activeMissions:null,missionCycle:1,lastMissionIds:[],luckySpins:0,luckyLastResult:null,seasonScore:0,currentSeasonId:2,seasonRewardPending:null,seasonRewardClaimed:false,flyOwner1000Granted:false,playerXP:0,playerLevel:1,playerXPBoost:0,playerXpEarnedTotal:0,levelRewardsPending:[],levelRewardsClaimed:[],dailyRewardDate:"",dailyStreak:0,dailyRewardCycle:1,secretShopItems:[],secretShopPublished:false,secretHuntFound:0,bossDamageDealt:0,bossGlobalRewardsClaimed:[]};
 const SAVEKEYS=["FLYYYY_UPDATE14_SAVE","FLYYYY_UPDATE13_SAVE","FLYYYY_UPDATE12_SAVE","FLYYYY_UPDATE11_SAVE","flyyyy_save"];
 function defaultState(){return JSON.parse(JSON.stringify(DEFAULT))}
 function loadState(){for(const k of SAVEKEYS){const raw=storage.getItem(k);if(raw){try{const d=JSON.parse(raw),b=defaultState();return {...b,...d,ownedWorlds:Array.isArray(d.ownedWorlds)?d.ownedWorlds:b.ownedWorlds,ownedSkins:Array.isArray(d.ownedSkins)?d.ownedSkins:b.ownedSkins,ownedSounds:Array.isArray(d.ownedSounds)?d.ownedSounds:b.ownedSounds,ownedMusic:Array.isArray(d.ownedMusic)?d.ownedMusic:b.ownedMusic,missionProgress:{...b.missionProgress,...(d.missionProgress||{})},missionClaimed:{...b.missionClaimed,...(d.missionClaimed||{})},activeMissions:Array.isArray(d.activeMissions)?d.activeMissions:null,shopNewSeen:(d.shopNewSeen&&typeof d.shopNewSeen==="object")?d.shopNewSeen:{}}}catch{}}}return defaultState()}
@@ -1015,6 +1041,27 @@ const SECRET_SHOP_DEFAULTS=[
 ];
 const sounds=[{id:"classic",name:"Classic",price:0,icon:"🔔",type:"classic"},{id:"arcade",name:"Arcade",price:50,icon:"👾",type:"arcade"},{id:"laser",name:"Laser",price:100,icon:"⚡",type:"laser"},{id:"bubble",name:"Bubble",price:150,icon:"🫧",type:"bubble"},{id:"power",name:"Power",price:200,icon:"🔥",type:"power"}];
 const musicTracks=[{id:"classicMusic",name:"Classic",price:0,icon:"🎵",melody:[261.63,329.63,392,523.25,392,329.63,293.66,349.23,440,523.25,440,349.23,392,329.63,261.63,293.66],bass:[130.81,130.81,164.81,164.81,146.83,146.83,174.61,174.61],tempo:380},{id:"arcadeMusic",name:"Arcade",price:50,icon:"👾",melody:[392,392,523.25,659.25,523.25,392,329.63,392,440,523.25,659.25,783.99,659.25,523.25,440,392],bass:[196,196,261.63,261.63,220,220,174.61,196],tempo:300},{id:"speedMusic",name:"Speed",price:100,icon:"⚡",melody:[329.63,392,493.88,659.25,493.88,392,329.63,493.88,392,493.88,587.33,783.99,587.33,493.88,392,329.63],bass:[164.81,196,164.81,196,146.83,174.61,164.61,196],tempo:250},{id:"spaceMusic",name:"Space",price:150,icon:"🚀",melody:[220,261.63,329.63,392,493.88,392,329.63,261.63,246.94,293.66,369.99,440,554.37,440,369.99,293.66],bass:[110,110,130.81,130.81,146.83,146.83,123.47,123.47],tempo:420},{id:"chillMusic",name:"Chill",price:200,icon:"🌙",melody:[261.63,329.63,392,329.63,293.66,349.23,440,349.23,261.63,329.63,392,493.88,440,392,329.63,293.66],bass:[130.81,130.81,146.83,146.83,110,110,123.47,123.47],tempo:500},{id:"finalMusic",name:"Final Boss",price:250,icon:"🔥",melody:[196,246.94,293.66,392,293.66,246.94,220,329.63,261.63,329.63,392,523.25,392,329.63,293.66,246.94],bass:[98,98,123.47,123.47,110,110,146.83,146.83],tempo:280}];let dynamicMusicTracks=[];let musicManifestLoaded=false;async function loadMusicManifest(){if(musicManifestLoaded)return;try{const resp=await fetch("./assets/music/manifest.json",{cache:"no-store"});if(!resp.ok)return;const data=await resp.json();if(Array.isArray(data)){dynamicMusicTracks=data.map(t=>({id:t.id||"",name:t.name||t.id,price:Number(t.price||150),icon:t.icon||"🎵",file:t.file||"",genre:t.genre||"Unknown"}));musicManifestLoaded=true}}catch(e){console.error("loadMusicManifest",e)}}
+const trails=[
+  {id:"none",name:"Keiner",price:0,icon:"🚫",rarity:"basic",colors:[]},
+  {id:"fire",name:"Feuer",price:100,icon:"🔥",rarity:"common",colors:["#ff4500","#ff6b35","#ffa500","#ffcc00"],speed:3,count:12},
+  {id:"lightning",name:"Blitz",price:250,icon:"⚡",rarity:"rare",colors:["#00bfff","#1e90ff","#ffffff","#87ceeb"],speed:5,count:8},
+  {id:"ice",name:"Eis",price:300,icon:"❄️",rarity:"rare",colors:["#00ffff","#87ceeb","#ffffff","#b0e0e6"],speed:2,count:15},
+  {id:"neon",name:"Neon",price:500,icon:"💜",rarity:"epic",colors:["#ff00ff","#00ff00","#ffff00","#00ffff"],speed:4,count:10},
+  {id:"rainbow",name:"Regenbogen",price:1000,icon:"🌈",rarity:"epic",colors:["#ff0000","#ff7f00","#ffff00","#00ff00","#0000ff","#4b0082","#9400d3"],speed:2,count:20},
+  {id:"galaxy",name:"Galaxie",price:2000,icon:"🌌",rarity:"legendary",colors:["#4b0082","#8a2be2","#ff1493","#00ced1","#ffd700"],speed:1.5,count:25},
+  {id:"shadow",name:"Schatten",price:1500,icon:"🌑",rarity:"legendary",colors:["#1a1a2e","#16213e","#0f3460","#533483"],speed:2,count:18},
+  {id:"candy",name:"Candy",price:350,icon:"🍬",rarity:"rare",colors:["#ff69b4","#ff1493","#ffb6c1","#ffc0cb"],speed:3,count:14},
+  {id:"gold",name:"Gold",price:3000,icon:"✨",rarity:"legendary",colors:["#ffd700","#ffb347","#daa520","#f0e68c"],speed:2,count:16}
+];
+const TRAIL_RARITY_META={basic:{name:"Basic",color:"#888",bg:"rgba(136,136,136,.15)"},common:{name:"Common",color:"#4ade80",bg:"rgba(74,222,128,.15)"},rare:{name:"Rare",color:"#60a5fa",bg:"rgba(96,165,250,.15)"},epic:{name:"Epic",color:"#c084fc",bg:"rgba(192,132,252,.15)"},legendary:{name:"Legendary",color:"#fbbf24",bg:"rgba(251,191,36,.2)"}};
+const boxes=[
+  {id:"box_common",name:"Common Box",price:500,icon:"📦",rarity:"common",color:"#4ade80",bg:"linear-gradient(135deg,#1a3a1a,#2d5a2d)",rewards:{coins:[50,150],trails:["fire","ice","candy"],trailChance:.3,skinChance:.05}},
+  {id:"box_rare",name:"Rare Box",price:1500,icon:"🎁",rarity:"rare",color:"#60a5fa",bg:"linear-gradient(135deg,#1a2a4a,#2d4a7a)",rewards:{coins:[200,500],trails:["lightning","ice","candy"],trailChance:.5,skinChance:.15}},
+  {id:"box_epic",name:"Epic Box",price:4000,icon:"💎",rarity:"epic",color:"#c084fc",bg:"linear-gradient(135deg,#2a1a3a,#4a2d6a)",rewards:{coins:[500,1500],trails:["neon","rainbow"],trailChance:.7,skinChance:.3}},
+  {id:"box_legendary",name:"Legendary Box",price:10000,icon:"👑",rarity:"legendary",color:"#fbbf24",bg:"linear-gradient(135deg,#3a2a1a,#6a4a2d)",rewards:{coins:[2000,5000],trails:["galaxy","shadow","gold"],trailChance:.9,skinChance:.5}},
+  {id:"box_event",name:"Event Box",price:2500,icon:"🌟",rarity:"event",color:"#f472b6",bg:"linear-gradient(135deg,#3a1a2a,#6a2d4a)",rewards:{coins:[300,1000],trails:["rainbow","galaxy"],trailChance:.6,skinChance:.25},eventOnly:true}
+];
+const BOX_RARITY_WEIGHTS={common:50,rare:30,epic:15,legendary:4,event:1};
 const missionPool=[{id:"obstacles10",name:"Überfliege 10 Hindernisse",target:10,reward:20,source:"score",icon:"🚧"},{id:"obstacles25",name:"Überfliege 25 Hindernisse",target:25,reward:40,source:"score",icon:"🚧"},{id:"obstacles40",name:"Überfliege 40 Hindernisse",target:40,reward:60,source:"score",icon:"🔥"},{id:"bonus5",name:"Sammle 5 Bonus-Coins in einem Lauf",target:5,reward:25,source:"bonus",icon:"🪙"},{id:"bonus10",name:"Sammle 10 Bonus-Coins in einem Lauf",target:10,reward:50,source:"bonus",icon:"💰"},{id:"score20",name:"Erreiche 20 Punkte in einem Lauf",target:20,reward:30,source:"score",icon:"⭐"},{id:"score35",name:"Erreiche 35 Punkte in einem Lauf",target:35,reward:55,source:"score",icon:"🏆"},{id:"jumps15",name:"Fliege 15-mal",target:15,reward:20,source:"jumps",icon:"🪽"},{id:"jumps30",name:"Fliege 30-mal",target:30,reward:35,source:"jumps",icon:"🪽"},{id:"score50",name:"Schaffe 50 Punkte in einem Lauf",target:50,reward:80,source:"score",icon:"👑"}];
 const ADMIN_EVENTS=[
   {id:"double_coins",name:"🪙 2x Coins",description:"Im Lauf doppelte Bonus-Coins sammeln",category:"coins"},
@@ -1510,6 +1557,8 @@ function abilitySpeedMultiplier(){
 function abilityActive(effect){return game.abilityActiveUntil>Date.now()&&game.abilityActiveEffect===effect}
 function updateGame(dt){
   game.animTime+=dt*1000;
+  if(game.scrollOffset===undefined)game.scrollOffset=0;
+  game.scrollOffset+=game.speed*dt*speedRunMult();
   const p=game.player;
   const now=Date.now();
   const spdMul=speedRunMult();
@@ -1589,10 +1638,14 @@ function updateGame(dt){
     if(game.abilityShield>0){game.abilityShield--;breakCombo("🛡️ Randtreffer");p.y=Math.max(hr+4,Math.min(H-hr-4,p.y));p.vy=-220;}else{breakCombo();endGame();return}
   }
   if(game.score>state.best){state.best=game.score;saveState()}
-  updateMissionProgress();updateHUD();
+updateMissionProgress();updateHUD();
    if(typeof checkAbuseEvents==="function")checkAbuseEvents();
    if(typeof updateAbuseGameMechanics==="function")updateAbuseGameMechanics(dt);
- }
+   if(typeof updateTrailParticles==="function")updateTrailParticles(dt);
+   if(typeof spawnTrailParticles==="function"&&game.running&&!game.paused&&Math.random()<.3){
+     spawnTrailParticles();
+   }
+  }
 function startGame(online=false){stopLobbyMusic();if(online&&!currentUser){showMessage("🔐 Für den Online-Modus musst du angemeldet sein.");showScreen("authScreen");return}game.onlineRun=!!online;initAudio();startMusic();hideScreens();canvas.style.display="block";gameHud.style.display="block";pauseOverlay.classList.remove("active");gameOverOverlay.classList.remove("active");game.running=true;game.paused=false;game.over=false;game.score=0;game.runCoins=0;game.jumpCount=0;game.bonusCoinsRun=0;game.combo=0;game.comboMultiplier=1;game.comboMilestones={};game.speed=165;game.spawnTimer=.9;game.obstacles=[];game.coins=[];game.player={x:W*.24,y:H*.45,vy:0,r:22,hitR:skinHitRadius(state.selectedSkin),rot:0};game.abilityActiveUntil=0;game.abilityCooldownUntil=0;game.abilityShield=0;game.abilityUsed=false;game.abilityActiveEffect=null;game.abilityBaseHitR=skinHitRadius(state.selectedSkin);game.player.hitR=game.abilityBaseHitR;game.baseWorldId=state.selectedWorld==="ice"?(state.lastNonIceWorld||"giza"):state.selectedWorld;game.iceReturnWorldId=game.baseWorldId;game.iceActive=state.selectedWorld==="ice";game.iceTriggered=game.iceActive;game.iceLevelsRemaining=game.iceActive?10:0;game.world=worlds.find(w=>w.id===state.selectedWorld)||worlds.find(w=>w.id===game.baseWorldId)||worlds[0];worldHud.textContent=game.world.name;musicHud.textContent=selectedMusic().name;updateHUD();loadBossStateFromFirebase();game.last=performance.now();flap();requestAnimationFrame(gameLoop)}
 async function endGame(){
   if(game.over)return;
@@ -2007,6 +2060,93 @@ function drawBaconBaronTrail(c,r){
   drawBaconStrip(c,-len*.9,r*.08,len,th,game.animTime/180);
   c.restore();
 }
+const trailPool=[];
+function getTrailParticle(){
+  return trailPool.length>0?trailPool.pop():{x:0,y:0,vx:0,vy:0,life:0,maxLife:1,size:0,color:"#fff",alpha:0,type:"circle"};
+}
+function recycleTrailParticle(p){
+  if(trailPool.length<500)trailPool.push(p);
+}
+function updateTrailParticles(dt){
+  if(!game.trailParticles)game.trailParticles=[];
+  for(let i=game.trailParticles.length-1;i>=0;i--){
+    const p=game.trailParticles[i];
+    p.life+=dt;
+    if(p.life>=p.maxLife){
+      recycleTrailParticle(p);
+      game.trailParticles.splice(i,1);
+      continue;
+    }
+    p.x+=p.vx*dt;
+    p.y+=p.vy*dt;
+    p.vy+=200*dt;
+  }
+}
+function spawnTrailParticles(){
+  const trailId=state.selectedTrail||"none";
+  if(trailId==="none")return;
+  const trail=trails.find(t=>t.id===trailId);
+  if(!trail||trail.id==="none")return;
+  if(!game.trailParticles)game.trailParticles=[];
+  const px=game.player.x;
+  const py=game.player.y;
+  const now=performance.now();
+  const count=trail.rarity==="legendary"?5:trail.rarity==="epic"?4:3;
+  const baseSize=game.player.r*.5;
+  for(let i=0;i<count;i++){
+    const p=getTrailParticle();
+    p.x=px+(Math.random()-.5)*game.player.r*.6;
+    p.y=py+(Math.random()-.5)*game.player.r*.4;
+    p.vx=-(100+Math.random()*150*(trail.speed||2));
+    p.vy=(Math.random()-.5)*80;
+    p.life=0;
+    p.maxLife=.8+Math.random()*1.2;
+    p.size=baseSize*(.5+Math.random()*.5);
+    p.alpha=1;
+    p.type=trail.type||"circle";
+    const ci=Math.floor(Math.random()*trail.colors.length);
+    p.color=trail.colors[ci];
+    p.trailId=trailId;
+    p.phase=Math.random()*Math.PI*2;
+    game.trailParticles.push(p);
+  }
+}
+function drawTrailParticles(c){
+  if(!game.trailParticles||game.trailParticles.length===0)return;
+  const trailId=state.selectedTrail||"none";
+  const trail=trails.find(t=>t.id===trailId);
+  if(!trail)return;
+  const animT=game.animTime||0;
+  c.save();
+  for(const p of game.trailParticles){
+    const progress=p.life/p.maxLife;
+    const alpha=(1-progress)*.9;
+    const size=p.size*(1-progress*.5);
+    if(alpha<.01)continue;
+    c.globalAlpha=alpha;
+    if(p.trailId==="rainbow"){
+      const hue=(animT*.2+p.phase*60)%360;
+      c.fillStyle=`hsl(${hue},100%,60%)`;
+    }else if(p.trailId==="neon"){
+      const neonHues=[300,180,60,240];
+      const hue=neonHues[Math.floor((animT*.15+p.phase)%neonHues.length)];
+      c.fillStyle=`hsl(${hue},100%,60%)`;
+    }else{
+      c.fillStyle=p.color;
+    }
+    c.beginPath();
+    c.arc(p.x,p.y,size,0,Math.PI*2);
+    c.fill();
+    c.globalAlpha=alpha*.3;
+    c.beginPath();
+    c.arc(p.x,p.y,size*1.8,0,Math.PI*2);
+    c.fill();
+  }
+  c.restore();
+}
+function drawPlayerTrail(c,r){
+  drawTrailParticles(c);
+}
 function drawBaconCloud(c,x,y,len,thickness,alpha=1){
   c.save();c.globalAlpha=alpha;c.lineCap="round";c.lineJoin="round";
   c.strokeStyle="#b84b3b";c.lineWidth=Math.max(8,thickness);
@@ -2094,6 +2234,7 @@ function draw(){
   }
   for(const c of game.coins){ctx.save();ctx.shadowColor="#ffd447";ctx.shadowBlur=Math.min(14,Math.min(W,H)<=800?6:14);ctx.fillStyle="#ffd447";ctx.beginPath();ctx.arc(c.x,c.y,c.r,0,Math.PI*2);ctx.fill();ctx.restore();ctx.fillStyle="#fff5a6";ctx.font="bold 14px Arial";ctx.textAlign="center";ctx.textBaseline="middle";ctx.fillText("$",c.x,c.y)}
    const s=skins.find(x=>x.id===state.selectedSkin)||skins[0];
+   drawPlayerTrail(ctx,game.player.r);
    ctx.save();
    ctx.translate(game.player.x,game.player.y);
    ctx.rotate(game.player.rot);
@@ -2334,7 +2475,7 @@ function renderShop(){
   shopCoins.textContent=state.coins;
   if(shopTab==="secret"&&!state.secretShopPublished){shopTab="skins"}
   const cats=[
-    {id:"skins",name:t("figures")},{id:"worlds",name:t("worlds")},{id:"sounds",name:t("sounds")},{id:"music",name:t("musicTab")},{id:"lucky",name:t("lucky")}
+    {id:"skins",name:t("figures")},{id:"worlds",name:t("worlds")},{id:"sounds",name:t("sounds")},{id:"music",name:t("musicTab")},{id:"boxes",name:"📦 Boxen"},{id:"lucky",name:t("lucky")}
   ];
   if(state.secretShopPublished){cats.splice(cats.length-1,0,{id:"secret",name:"🔒 SECRET",extraClass:"secretShopTab",badge:isAdmin()?"ADMIN":""})}
   const shopCategories=cats;
@@ -2364,6 +2505,7 @@ function renderShop(){
   if(shopTab==="sounds")return renderSoundShop(shopCards);
   if(shopTab==="music")return renderMusicShop(shopCards);
   if(shopTab==="secret")return renderSecretShop(shopCards);
+  if(shopTab==="boxes")return renderBoxShop(shopCards);
   const items=(shopTab==="skins"?skins.filter(x=>!x.luckyOnly&&!x.secret&&!x.secretShop&&!x.owner):worlds),owned=shopTab==="skins"?state.ownedSkins:state.ownedWorlds;
   items.forEach(item=>{
     const c=document.createElement("div");
@@ -2394,11 +2536,443 @@ function renderShop(){
 }
 
 function buyItem(item,owned){if(state.coins<item.price){showMessage("Nicht genug Coins!");return}state.coins-=item.price;owned.push(item.id);saveState();renderShop();updateLobby();purchaseSound()}
+function renderTrailInventory(cards){
+  cards.innerHTML="";
+  const ownedTrails=trails.filter(t=>state.ownedTrails.includes(t.id));
+  if(ownedTrails.length<=1){
+    const e=document.createElement("div");e.className="leaderStatus";e.textContent="✨ Du hast noch keine Trails. Kaufe Boxen oder gewinne sie!";cards.appendChild(e);
+  }
+  ownedTrails.forEach(tr=>{
+    const meta=TRAIL_RARITY_META[tr.rarity]||TRAIL_RARITY_META.basic;
+    const c=document.createElement("div");c.className="card trailCard";
+    c.style.borderColor=meta.color;
+    c.style.background=`linear-gradient(135deg,${meta.bg},rgba(0,0,0,.4))`;
+    const previewCanvas=document.createElement("canvas");previewCanvas.width=200;previewCanvas.height=80;
+    const ctx=previewCanvas.getContext("2d");
+    drawTrailPreview(ctx,tr,200,80);
+    const p=document.createElement("div");p.className="preview";p.appendChild(previewCanvas);c.appendChild(p);
+    const h=document.createElement("h3");h.textContent=tr.icon+" "+tr.name;c.appendChild(h);
+    const badge=document.createElement("span");badge.className="rarityBadge";badge.style.background=meta.color;badge.textContent=meta.name;c.appendChild(badge);
+    const b=document.createElement("button");b.className="smallbtn";
+    if(state.selectedTrail===tr.id){b.classList.add("selected");b.textContent="✓ AUSGERÜSTET";b.disabled=true}
+    else{b.textContent="AUSRÜSTEN";b.onclick=()=>{state.selectedTrail=tr.id;saveState();renderInventory();showMessage(`✨ ${tr.name} ausgerüstet!`)}}
+    c.appendChild(b);
+    cards.appendChild(c);
+  });
+}
+function drawTrailPreview(ctx,tr,w,h){
+  if(tr.id==="none"){ctx.fillStyle="#666";ctx.font="20px Arial";ctx.textAlign="center";ctx.fillText("Keiner",w/2,h/2);return}
+  const grd=ctx.createLinearGradient(0,0,w,0);
+  tr.colors.forEach((col,i)=>grd.addColorStop(i/(tr.colors.length-1),col));
+  ctx.fillStyle=grd;
+  ctx.beginPath();
+  for(let i=0;i<6;i++){
+    const x=w*.1+i*(w*.8/5);
+    const y=h/2+Math.sin(i)*10;
+    ctx.moveTo(x,y-15);
+    ctx.quadraticCurveTo(x+10,y,x,y+15);
+    ctx.quadraticCurveTo(x-10,y,x,y-15);
+  }
+  ctx.fill();
+  ctx.fillStyle="rgba(255,255,255,.8)";
+  ctx.beginPath();ctx.arc(w*.1,h/2,12,0,Math.PI*2);ctx.fill();
+}
+function renderBoxShop(cards){
+  cards.innerHTML="";
+  boxes.forEach(box=>{
+    if(box.eventOnly&&!isEventActive("box_event"))return;
+    const c=document.createElement("div");c.className="card boxCard";
+    c.style.background=box.bg;c.style.borderColor=box.color;
+    c.innerHTML=`<div class="boxIcon" style="font-size:64px;text-align:center;padding:10px 0">${box.icon}</div>
+      <h3 style="text-align:center;color:${box.color}">${box.name}</h3>
+      <div class="boxPrice" style="text-align:center;font-size:24px;font-weight:900;padding:10px 0">🪙 ${box.price.toLocaleString("de-DE")}</div>
+      <div class="boxChances" style="font-size:11px;text-align:center;opacity:.8;padding:0 10px">
+        ${box.rewards.coins[0]}-${box.rewards.coins[1]} Coins<br>
+        ${(box.rewards.trailChance*100).toFixed(0)}% Trail · ${(box.rewards.skinChance*100).toFixed(0)}% Skin
+      </div>`;
+    const b=document.createElement("button");b.className="smallbtn";b.style.width="100%";b.style.marginTop="10px";
+    b.textContent="📦 KAUFEN & ÖFFNEN";
+    b.onclick=()=>openBox(box);
+    c.appendChild(b);
+    cards.appendChild(c);
+  });
+}
+const PROTECTED_SKINS=["flyyyy_owner","aj_owner","admin_overlord","glitch_king"];
+const PROTECTED_TRAILS=[];
+function isRewardValid(reward){
+  if(reward.type==="skin"&&PROTECTED_SKINS.includes(reward.skin?.id||reward.skinId))return false;
+  if(reward.type==="trail"&&PROTECTED_TRAILS.includes(reward.trail?.id||reward.trailId))return false;
+  if(reward.type==="skin"){
+    const skinId=reward.skin?.id||reward.skinId;
+    if(["bird"].includes(skinId))return false;
+  }
+  return true;
+}
+async function validateRewardServer(rewardType,itemId){
+  try{
+    const {d}=await loadFirebase();
+    if(!d||!currentUser)return {valid:isRewardValid({type:rewardType,[rewardType==="skin"?"skinId":"trailId"]:itemId})};
+    return {valid:true};
+  }catch(e){
+    return {valid:isRewardValid({type:rewardType,[rewardType==="skin"?"skinId":"trailId"]:itemId})};
+  }
+}
+function openBox(box){
+  if(state.coins<box.price){showMessage("❌ Nicht genug Coins!");return}
+  showBoxOpeningAnimation(box);
+  if(currentUser&&db){
+    openBoxServer(box);
+  }else{
+    state.coins-=box.price;
+    state.boxOpensTotal=(state.boxOpensTotal||0)+1;
+    const rewards=generateBoxRewards(box);
+    applyBoxRewards(rewards);
+    currentBoxRewards=rewards;
+  }
+}
+async function openBoxServer(box){
+  try{
+    const {d}=await loadFirebase();
+    state.coins-=box.price;
+    saveState();
+    const result=await fetchBoxOpen(box.id);
+    if(result&&result.rewards){
+      const validatedRewards=result.rewards.filter(r=>isRewardValid(r));
+      currentBoxRewards=validatedRewards;
+      applyBoxRewards(validatedRewards);
+      if(result.coinBalance!==undefined){
+        state.coins=result.coinBalance;
+        saveState();
+      }
+    }else{
+      state.coins+=box.price;
+      saveState();
+      showMessage("❌ Fehler beim Öffnen. Coins zurückgegeben.");
+      const overlay=document.getElementById("boxOpenOverlay");
+      if(overlay)overlay.remove();
+    }
+  }catch(e){
+    console.error("openBoxServer error:",e);
+    state.coins+=box.price;
+    saveState();
+    showMessage("❌ Fehler beim Öffnen.");
+    const overlay=document.getElementById("boxOpenOverlay");
+    if(overlay)overlay.remove();
+  }
+}
+async function fetchBoxOpen(boxId){
+  return new Promise((resolve,reject)=>{
+    const timeout=setTimeout(()=>reject(new Error("timeout")),5000);
+    try{
+      const result={rewards:generateBoxRewards(boxes.find(b=>b.id===boxId)),coinBalance:state.coins};
+      clearTimeout(timeout);
+      resolve(result);
+    }catch(e){
+      clearTimeout(timeout);
+      reject(e);
+    }
+  });
+}
+let currentBoxRewards=[];
+function showBoxOpeningAnimation(box){
+  const overlay=document.createElement("div");
+  overlay.id="boxOpenOverlay";
+  overlay.className="boxOpenOverlay";
+  overlay.innerHTML=`<canvas id="boxParticles" class="boxParticlesCanvas"></canvas>
+    <div class="boxGlow"></div>
+    <div class="boxOpenContainer">
+      <div class="boxRarityText" style="color:${box.color}">${(box.rarity||"").toUpperCase()}</div>
+      <div class="boxOpenBox" id="boxOpenBox" style="background:${box.bg};border-color:${box.color};box-shadow:0 0 60px ${box.color}40,0 0 120px ${box.color}20">
+        <div class="boxOpenIcon" id="boxOpenIcon">${box.icon}</div>
+        <div class="boxShine"></div>
+      </div>
+      <div class="boxOpenText" id="boxOpenText">${box.name}</div>
+      <div class="boxOpenRewards" id="boxOpenRewards"></div>
+    </div>`;
+  document.body.appendChild(overlay);
+  playBoxShakeSound();
+  initBoxParticles(box);
+  const boxEl=$("boxOpenBox");
+  const iconEl=$("boxOpenIcon");
+  let frame=0;
+  const shakeAnim=()=>{
+    frame++;
+    const intensity=Math.min(frame/10,1);
+    const shakeX=Math.sin(frame*.8)*8*intensity;
+    const shakeY=Math.cos(frame*.6)*6*intensity;
+    const scale=1+Math.sin(frame*.3)*.05*intensity;
+    boxEl.style.transform=`translate(${shakeX}px,${shakeY}px) rotate(${shakeX*.5}deg) scale(${scale})`;
+    boxEl.style.boxShadow=`0 0 ${60+frame*2}px ${box.color}${Math.floor(40+frame*.5).toString(16)},0 0 ${120+frame*3}px ${box.color}20`;
+    iconEl.style.transform=`scale(${1+Math.sin(frame*.4)*.1})`;
+    if(frame<60){requestAnimationFrame(shakeAnim)}
+    else{openBoxFinale(box,overlay)}
+  };
+  requestAnimationFrame(shakeAnim);
+}
+function openBoxFinale(box,overlay){
+  playBoxOpenSound();
+  const boxEl=$("boxOpenBox");
+  const iconEl=$("boxOpenIcon");
+  const textEl=$("boxOpenText");
+  boxEl.classList.add("boxExplode");
+  iconEl.style.transform="scale(0)";
+  iconEl.style.opacity="0";
+  createBoxBurstParticles(box);
+  setTimeout(()=>{
+    textEl.innerHTML=`<span style="font-size:32px">🎉 DEINE BELOHNUNGEN 🎉</span>`;
+    textEl.style.color="#ffd700";
+    revealBoxReward(box,overlay);
+  },600);
+}
+function revealBoxReward(box,overlay){
+  const rewards=currentBoxRewards&&currentBoxRewards.length>0?currentBoxRewards:generateBoxRewards(box);
+  const rewardsEl=$("boxOpenRewards");
+  rewardsEl.innerHTML="";
+  let validIndex=0;
+  rewards.forEach((r)=>{
+    if(!isRewardValid(r))return;
+    setTimeout(()=>{
+      const rEl=document.createElement("div");
+      rEl.className="boxRewardItem newBoxRewardItem";
+      let content="";
+      if(r.type==="coins"){
+        content=`<div class="rewardIcon">🪙</div><div class="rewardInfo"><div class="rewardName" style="color:#ffd700">+${Number(r.amount).toLocaleString("de-DE")} Coins</div><div class="rewardRarity" style="color:#888">Währung</div></div>`;
+      }else if(r.type==="trail"){
+        const trail=trails.find(t=>t.id===r.trailId||t.id===r.trail?.id)||r.trail;
+        const meta=TRAIL_RARITY_META[trail?.rarity]||TRAIL_RARITY_META.common;
+        content=`<div class="rewardIcon">${trail?.icon||"✨"}</div><div class="rewardInfo"><div class="rewardName" style="color:${meta.color}">${trail?.name||"Trail"}</div><div class="rewardRarity" style="color:${meta.color}">${meta.name} Trail</div></div>`;
+      }else if(r.type==="skin"){
+        const skin=skins.find(s=>s.id===r.skinId||s.id===r.skin?.id)||r.skin;
+        const meta=rarityMeta[skin?.rarity]||rarityMeta.basic;
+        content=`<div class="rewardIcon">${skin?.icon||"🪽"}</div><div class="rewardInfo"><div class="rewardName" style="color:${meta.color}">${skin?.name||"Skin"}</div><div class="rewardRarity" style="color:${meta.color}">${meta.name} Skin</div></div>`;
+      }
+      rEl.innerHTML=content;
+      rEl.style.borderColor=r.type==="coins"?"#ffd700":r.type==="trail"?TRAIL_RARITY_META[trails.find(t=>t.id===r.trailId||t.id===r.trail?.id)?.rarity]?.color:rarityMeta[skins.find(s=>s.id===r.skinId||s.id===r.skin?.id)?.rarity]?.color;
+      rEl.style.animation=`rewardReveal .6s ease ${validIndex*.4}s both`;
+      rewardsEl.appendChild(rEl);
+      if(r.type==="skin"&&(skin?.rarity==="legendary"||skin?.rarity==="mythic"||skin?.rarity==="epic")){
+        createLegendaryBurst(rEl);
+      }
+      playRewardSound(r);
+      validIndex++;
+    },validIndex*500);
+  });
+  setTimeout(()=>{
+    const btn=document.createElement("button");
+    btn.className="btn green boxCloseBtn";
+    btn.textContent="✨ SAMMELN ✨";
+    btn.onclick=()=>{
+      overlay.classList.add("boxOverlayFadeOut");
+      setTimeout(()=>{overlay.remove();renderShop();updateLobby()},300);
+    };
+    rewardsEl.appendChild(btn);
+  },validIndex*500+400);
+  currentBoxRewards=[];
+}
+function initBoxParticles(box){
+  const canvas=$("boxParticles");
+  if(!canvas)return;
+  const ctx=canvas.getContext("2d");
+  canvas.width=window.innerWidth;
+  canvas.height=window.innerHeight;
+  const particles=[];
+  const particleCount=window.innerWidth<600?30:60;
+  for(let i=0;i<particleCount;i++){
+    particles.push({
+      x:Math.random()*canvas.width,
+      y:Math.random()*canvas.height,
+      vx:(Math.random()-.5)*2,
+      vy:(Math.random()-.5)*2-1,
+      size:Math.random()*3+1,
+      color:box.color,
+      alpha:Math.random()*.5+.2,
+      pulse:Math.random()*Math.PI*2
+    });
+  }
+  const animateParticles=()=>{
+    if(!document.getElementById("boxOpenOverlay"))return;
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    particles.forEach(p=>{
+      p.x+=p.vx;
+      p.y+=p.vy;
+      p.pulse+=.05;
+      p.alpha=.2+Math.abs(Math.sin(p.pulse))*.4;
+      if(p.x<0)p.x=canvas.width;
+      if(p.x>canvas.width)p.x=0;
+      if(p.y<0)p.y=canvas.height;
+      if(p.y>canvas.height)p.y=0;
+      ctx.globalAlpha=p.alpha;
+      ctx.fillStyle=p.color;
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+      ctx.fill();
+    });
+    ctx.globalAlpha=1;
+    requestAnimationFrame(animateParticles);
+  };
+  animateParticles();
+}
+function createBoxBurstParticles(box){
+  const canvas=$("boxParticles");
+  if(!canvas)return;
+  const ctx=canvas.getContext("2d");
+  const cx=canvas.width/2;
+  const cy=canvas.height/2;
+  for(let i=0;i<80;i++){
+    const angle=(i/80)*Math.PI*2;
+    const speed=Math.random()*10+5;
+    ctx.globalAlpha=.8;
+    ctx.fillStyle=box.color;
+    ctx.beginPath();
+    ctx.arc(cx+Math.cos(angle)*speed*2,cy+Math.sin(angle)*speed*2,Math.random()*4+2,0,Math.PI*2);
+    ctx.fill();
+  }
+  ctx.globalAlpha=1;
+}
+function createLegendaryBurst(el){
+  const rect=el.getBoundingClientRect();
+  const cx=rect.left+rect.width/2;
+  const cy=rect.top+rect.height/2;
+  for(let i=0;i<20;i++){
+    const spark=document.createElement("div");
+    spark.className="legendarySpark";
+    spark.style.left=cx+"px";
+    spark.style.top=cy+"px";
+    const angle=Math.random()*Math.PI*2;
+    const dist=Math.random()*100+50;
+    spark.style.setProperty("--tx",Math.cos(angle)*dist+"px");
+    spark.style.setProperty("--ty",Math.sin(angle)*dist+"px");
+    spark.style.background=`hsl(${Math.random()*60+30},100%,60%)`;
+    document.body.appendChild(spark);
+    setTimeout(()=>spark.remove(),1000);
+  }
+}
+function playBoxShakeSound(){
+  if(!state.sfxEnabled)return;
+  initAudio();
+  if(!ACtx)return;
+  const osc=ACtx.createOscillator();
+  const gain=ACtx.createGain();
+  osc.type="sawtooth";
+  osc.frequency.value=80;
+  osc.frequency.linearRampToValueAtTime(40,ACtx.currentTime+1);
+  gain.gain.setValueAtTime(.15,ACtx.currentTime);
+  gain.gain.linearRampToValueAtTime(.05,ACtx.currentTime+1);
+  osc.connect(gain);
+  gain.connect(ACtx.destination);
+  osc.start();
+  osc.stop(ACtx.currentTime+1);
+}
+function playBoxOpenSound(){
+  if(!state.sfxEnabled)return;
+  initAudio();
+  if(!ACtx)return;
+  const now=ACtx.currentTime;
+  [200,400,800,1200].forEach((freq,i)=>{
+    const osc=ACtx.createOscillator();
+    const gain=ACtx.createGain();
+    osc.type="sine";
+    osc.frequency.value=freq;
+    gain.gain.setValueAtTime(.2,now+i*.1);
+    gain.gain.exponentialRampToValueAtTime(.001,now+i*.1+.3);
+    osc.connect(gain);
+    gain.connect(ACtx.destination);
+    osc.start(now+i*.1);
+    osc.stop(now+i*.1+.3);
+  });
+}
+function playRewardSound(reward){
+  if(!state.sfxEnabled)return;
+  initAudio();
+  if(!ACtx)return;
+  const now=ACtx.currentTime;
+  const isLegendary=reward.type==="skin"&&(reward.skin.rarity==="legendary"||reward.skin.rarity==="mythic");
+  const isEpic=reward.type==="skin"&&reward.skin.rarity==="epic";
+  if(isLegendary){
+    [523,659,784,1047,1319].forEach((freq,i)=>{
+      const osc=ACtx.createOscillator();
+      const gain=ACtx.createGain();
+      osc.type="triangle";
+      osc.frequency.value=freq;
+      gain.gain.setValueAtTime(.15,now+i*.08);
+      gain.gain.exponentialRampToValueAtTime(.001,now+i*.08+.4);
+      osc.connect(gain);
+      gain.connect(ACtx.destination);
+      osc.start(now+i*.08);
+      osc.stop(now+i*.08+.4);
+    });
+  }else if(isEpic){
+    [440,554,659].forEach((freq,i)=>{
+      const osc=ACtx.createOscillator();
+      const gain=ACtx.createGain();
+      osc.type="sine";
+      osc.frequency.value=freq;
+      gain.gain.setValueAtTime(.12,now+i*.1);
+      gain.gain.exponentialRampToValueAtTime(.001,now+i*.1+.25);
+      osc.connect(gain);
+      gain.connect(ACtx.destination);
+      osc.start(now+i*.1);
+      osc.stop(now+i*.1+.25);
+    });
+  }else{
+    const osc=ACtx.createOscillator();
+    const gain=ACtx.createGain();
+    osc.type="sine";
+    osc.frequency.value=880;
+    gain.gain.setValueAtTime(.1,now);
+    gain.gain.exponentialRampToValueAtTime(.001,now+.15);
+    osc.connect(gain);
+    gain.connect(ACtx.destination);
+    osc.start(now);
+    osc.stop(now+.15);
+  }
+}
+function generateBoxRewards(box){
+  const rewards=[];
+  const r=box.rewards;
+  const coinAmount=Math.floor(r.coins[0]+Math.random()*(r.coins[1]-r.coins[0]));
+  rewards.push({type:"coins",amount:coinAmount});
+  if(Math.random()<r.trailChance){
+    const availableTrails=r.trails.filter(tid=>!state.ownedTrails.includes(tid)&&trails.find(t=>t.id===tid&&t.rarity!=="legendary"));
+    const legendaryTrails=r.trails.filter(tid=>!state.ownedTrails.includes(tid)&&trails.find(t=>t.id===tid&&t.rarity==="legendary"));
+    let pool=[];
+    if(box.rarity==="legendary"&&legendaryTrails.length>0&&Math.random()<.4){pool=legendaryTrails}
+    else if(box.rarity==="epic"&&legendaryTrails.length>0&&Math.random()<.15){pool=legendaryTrails}
+    if(pool.length===0)pool=availableTrails;
+    if(pool.length>0){
+      const trailId=pool[Math.floor(Math.random()*pool.length)];
+      const trail=trails.find(t=>t.id===trailId);
+      if(trail)rewards.push({type:"trail",trail});
+    }
+  }
+  if(Math.random()<r.skinChance){
+    const PROTECTED_SKINS=["flyyyy_owner","aj_owner","admin_overlord","glitch_king"];
+    let unownedSkins=skins.filter(s=>!state.ownedSkins.includes(s.id)&&!s.owner&&!s.secret&&!s.secretShop&&!s.luckyOnly&&!PROTECTED_SKINS.includes(s.id));
+    if(unownedSkins.length>0){
+      const pool=unownedSkins.filter(s=>{
+        if(box.rarity==="legendary")return s.rarity==="epic"||s.rarity==="rare";
+        if(box.rarity==="epic")return s.rarity==="rare"||s.rarity==="common";
+        return s.rarity==="common"||s.rarity==="rare";
+      });
+      const skin=pool.length>0?pool[Math.floor(Math.random()*pool.length)]:unownedSkins[Math.floor(Math.random()*unownedSkins.length)];
+      rewards.push({type:"skin",skin});
+    }
+  }
+  return rewards;
+}
+function applyBoxRewards(rewards){
+  rewards.forEach(r=>{
+    if(r.type==="coins")state.coins+=r.amount;
+    else if(r.type==="trail"&&!state.ownedTrails.includes(r.trail.id))state.ownedTrails.push(r.trail.id);
+    else if(r.type==="skin"&&!state.ownedSkins.includes(r.skin.id))state.ownedSkins.push(r.skin.id);
+  });
+  saveState();
+}
 function renderSoundInventory(cards){sounds.filter(x=>state.ownedSounds.includes(x.id)).forEach(s=>{const c=document.createElement("div");c.className="card";c.innerHTML=`<div class="preview"><div style="font-size:44px">${s.icon}</div></div><h3>${s.name}</h3>`;const t=document.createElement("button");t.className="smallbtn blue";t.textContent="▶ TESTEN";t.onclick=()=>jumpSound(s.type);c.appendChild(t);const b=document.createElement("button");b.className="smallbtn";const sel=state.selectedSound===s.id;b.classList.toggle("selected",sel);b.textContent=sel?t("equipped"):t("equip");b.onclick=()=>{state.selectedSound=s.id;saveState();renderInventory()};c.appendChild(b);cards.appendChild(c)})}
 function renderMusicInventory(cards){getMusicTracks().filter(x=>state.ownedMusic.includes(x.id)).forEach(m=>{const c=document.createElement("div");c.className="card";c.innerHTML=`<div class="preview"><div style="font-size:44px">${m.icon}</div></div><h3>${m.name}</h3>`+(m.file?`<div class="tiny">🎧 MP3</div>`:"");const t=document.createElement("button");t.className="smallbtn blue";t.textContent=isMp3Track(m)?"▶ PLAY":"▶ ANHÖREN";t.onclick=()=>previewMusic(m);c.appendChild(t);const b=document.createElement("button");b.className="smallbtn";const sel=state.selectedMusic===m.id;b.classList.toggle("selected",sel);b.textContent=sel?"✓ AUSGERÜSTET":"AUSRÜSTEN";b.onclick=()=>{state.selectedMusic=m.id;saveState();renderInventory();musicHud.textContent=m.name;if(game.running)startMusic()};c.appendChild(b);cards.appendChild(c)})}
 function renderInventory(){
   ensureAbilitySelection();
-  tabs(inventoryTabs,[{id:"skins",name:t("figures")},{id:"abilities",name:t("abilities")},{id:"worlds",name:t("worlds")},{id:"sounds",name:t("sounds")},{id:"music",name:t("musicTab")}],inventoryTab,id=>{inventoryTab=id;renderInventory()});
+  tabs(inventoryTabs,[{id:"skins",name:t("figures")},{id:"abilities",name:t("abilities")},{id:"trails",name:"Trails"},{id:"worlds",name:t("worlds")},{id:"sounds",name:t("sounds")},{id:"music",name:t("musicTab")}],inventoryTab,id=>{inventoryTab=id;renderInventory()});
   inventoryCards.innerHTML="";
   if(inventoryTab==="abilities"){
     const owned=state.ownedAbilities.map(getAbility).filter(Boolean);
@@ -2421,6 +2995,7 @@ function renderInventory(){
     });
     return;
   }
+  if(inventoryTab==="trails")return renderTrailInventory(inventoryCards);
   if(inventoryTab==="sounds")return renderSoundInventory(inventoryCards);
   if(inventoryTab==="music")return renderMusicInventory(inventoryCards);
   const items=inventoryTab==="skins"?skins.filter(x=>state.ownedSkins.includes(x.id)&&(canUseOwnerSkin(x.id)||!isOwnerSkin(x.id))):worlds.filter(x=>state.ownedWorlds.includes(x.id));
@@ -2473,7 +3048,7 @@ function getLevelUpReward(level){
   const scaled={...r,coins:Math.floor(r.coins*(1+(level-2)*0.1))};
   return scaled;
 }
-function normalizeProgress(){state.playerXP=Math.max(0,Number(state.playerXP||0));state.playerLevel=Math.max(1,Number(state.playerLevel||1));state.playerXPBoost=Number(state.playerXPBoost||0);state.playerXpEarnedTotal=Number(state.playerXpEarnedTotal||0);while(state.playerXP>=xpForLevel(state.playerLevel)){const reward=getLevelUpReward(state.playerLevel);state.playerXP-=xpForLevel(state.playerLevel);state.playerLevel++;state.levelRewardsPending=state.levelRewardsPending||[];state.levelRewardsPending.push({level:state.playerLevel,reward:reward,timestamp:Date.now()})}state.dailyStreak=Math.max(0,Number(state.dailyStreak||0));state.dailyRewardDate=typeof state.dailyRewardDate==="string"?state.dailyRewardDate:"";state.levelRewardsClaimed=state.levelRewardsClaimed||[]}
+function normalizeProgress(){state.playerXP=Math.max(0,Number(state.playerXP||0));state.playerLevel=Math.max(1,Number(state.playerLevel||1));state.playerXPBoost=Number(state.playerXPBoost||0);state.playerXpEarnedTotal=Number(state.playerXpEarnedTotal||0);while(state.playerXP>=xpForLevel(state.playerLevel)){const reward=getLevelUpReward(state.playerLevel);state.playerXP-=xpForLevel(state.playerLevel);state.playerLevel++;state.levelRewardsPending=state.levelRewardsPending||[];state.levelRewardsPending.push({level:state.playerLevel,reward:reward,timestamp:Date.now()})}state.dailyStreak=Math.max(0,Number(state.dailyStreak||0));state.dailyRewardDate=typeof state.dailyRewardDate==="string"?state.dailyRewardDate:"";state.levelRewardsClaimed=state.levelRewardsClaimed||[];state.ownedTrails=Array.isArray(state.ownedTrails)?state.ownedTrails:["none"];state.selectedTrail=state.selectedTrail||"none";state.ownedBoxes=Array.isArray(state.ownedBoxes)?state.ownedBoxes:[];state.boxOpensTotal=Number(state.boxOpensTotal||0);state.boxRewardsClaimed=Array.isArray(state.boxRewardsClaimed)?state.boxRewardsClaimed:[];state.bossGlobalRewardsClaimed=Array.isArray(state.bossGlobalRewardsClaimed)?state.bossGlobalRewardsClaimed:[]}
 function claimLevelRewards(){const pending=state.levelRewardsPending||[];if(pending.length===0)return false;let totalCoins=0;const effects=[];pending.forEach(lr=>{totalCoins+=lr.reward.coins;if(lr.reward.effect)effects.push(lr.reward.effect)});state.coins+=totalCoins;state.levelRewardsClaimed=[...(state.levelRewardsClaimed||[]),...pending.map(p=>p.level)];state.levelRewardsPending=[];saveState();updateLobby();return {totalCoins,effects,levels:pending.map(p=>p.level)}}
 function renderLevelUpAnimation(levelData){
   const div=document.createElement("div");
@@ -4111,6 +4686,100 @@ async function sendGlobalBroadcast(){
   btn.disabled=false;
 }
 
+let verifyState={email:null,codeHash:null,expiresAt:0,attempts:0,resendCooldown:0,verified:false};
+const VERIFY_CODE_LENGTH=6;
+const VERIFY_CODE_TTL=600;
+const VERIFY_MAX_ATTEMPTS=5;
+const VERIFY_RESEND_COOLDOWN=60;
+
+function generateVerifyCode(){
+  let code="";
+  for(let i=0;i<VERIFY_CODE_LENGTH;i++){code+=Math.floor(Math.random()*10).toString()}
+  return code;
+}
+function hashCode(code){
+  let hash=0;
+  for(let i=0;i<code.length;i++){const chr=code.charCodeAt(i);hash=((hash<<5)-hash)+chr;hash|=0}
+  return Math.abs(hash).toString(36);
+}
+async function sendVerificationCode(email,username){
+  try{
+    const {d}=await loadFirebase();
+    const code=generateVerifyCode();
+    const codeHash=hashCode(code);
+    const expiresAt=Date.now()+VERIFY_CODE_TTL*1000;
+    const ref=d.ref(db,"emailVerification/"+email.replace(/\./g,","));
+    await d.set(ref,{codeHash,expiresAt,attempts:0,username:username||"",createdAt:Date.now()});
+    const sent=await callSendEmailFunction(email,code,username);
+    return {success:sent,message:sent?"📧 Code gesendet!":"❌ E-Mail konnte nicht gesendet werden."};
+  }catch(e){
+    console.error("sendVerificationCode error:",e);
+    return {success:false,message:"❌ Fehler beim Senden: "+e.message};
+  }
+}
+async function callSendEmailFunction(email,code,username){
+  try{
+    if(typeof __flyyyySendEmail==="function"){
+      return await __flyyyySendEmail(email,code,username);
+    }
+    const resp=await fetch("https://us-central1-flyyyy.cloudfunctions.net/sendVerificationEmail",{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({email,code,username})
+    });
+    if(!resp.ok)return false;
+    const data=await resp.json();
+    return data.success===true;
+  }catch(e){
+    console.error("callSendEmailFunction error:",e);
+    return false;
+  }
+}
+async function verifyCode(email,inputCode){
+  try{
+    const {d}=await loadFirebase();
+    const ref=d.ref(db,"emailVerification/"+email.replace(/\./g,","));
+    const snap=await d.get(ref);
+    if(!snap.exists())return {success:false,message:"❌ Kein Code gefunden. Bitte neu senden."};
+    const data=snap.val();
+    if(Date.now()>data.expiresAt){
+      await d.remove(ref);
+      return {success:false,message:"❌ Code abgelaufen. Bitte neu senden."};
+    }
+    if((data.attempts||0)>=VERIFY_MAX_ATTEMPTS){
+      await d.remove(ref);
+      return {success:false,message:"❌ Zu viele Versuche. Bitte neuen Code anfordern."};
+    }
+    const inputHash=hashCode(inputCode);
+    if(inputHash!==data.codeHash){
+      await d.update(ref,{attempts:(data.attempts||0)+1});
+      const remaining=VERIFY_MAX_ATTEMPTS-(data.attempts||0)-1;
+      return {success:false,message:`❌ Falscher Code. Noch ${remaining} Versuche.`};
+    }
+    const username=data.username||"";
+    await d.remove(ref);
+    return {success:true,message:"✅ E-Mail bestätigt!",username};
+  }catch(e){
+    console.error("verifyCode error:",e);
+    return {success:false,message:"❌ Fehler bei der Prüfung."};
+  }
+}
+function resetVerifyUI(){
+  sendCodeBtn.style.display="none";
+  authVerifyCode.style.display="none";
+  verifyCodeBtn.style.display="none";
+  resendCodeBtn.style.display="none";
+  verifyStatus.textContent="";
+  authVerifyCode.value="";
+  verifyState={email:null,codeHash:null,expiresAt:0,attempts:0,resendCooldown:0,verified:false};
+}
+function showVerifyUI(){
+  sendCodeBtn.style.display="";
+  authVerifyCode.style.display="";
+  verifyCodeBtn.style.display="";
+  resendCodeBtn.style.display="";
+}
+
 accountBtn.onclick=()=>showScreen("authScreen");
 myAccountBtn.onclick=()=>{authStatus.textContent=currentUser?"✅ Du bist angemeldet. Hier kannst du deinen Account verwalten.":"🔐 Bitte mit E-Mail und Passwort anmelden oder registrieren.";showScreen("authScreen");};authBackBtn.onclick=()=>showScreen("lobby");guestBtn.onclick=()=>{showScreen("lobby");showMessage("👤 Gastmodus aktiviert.")};
 loginBtn.onclick=async()=>{
@@ -4137,25 +4806,125 @@ loginBtn.onclick=async()=>{
 registerBtn.onclick=async()=>{
   registerBtn.disabled=true;
   try{
+    const username=authUsername.value.trim();
     const email=authEmail.value.trim().toLowerCase();
     const pw=authPassword.value;
-    authStatus.textContent="🔄 Konto wird erstellt...";
+    if(!username){authStatus.textContent="Bitte Benutzernamen eingeben.";return}
     if(!email||!pw){authStatus.textContent="Bitte E-Mail und Passwort eingeben.";return}
     if(pw.length<6){authStatus.textContent="Passwort: mindestens 6 Zeichen.";return}
-    const {a}=await initFirebaseCore();
-    await waitForAuthReady();
-    await a.createUserWithEmailAndPassword(auth,email,pw);
-    storage.setItem("FLYYYY_PLAYER_NAME",defaultNameForUser(auth.currentUser));
-    authStatus.textContent="✅ Konto erstellt!";
-    showScreen("lobby");
-    showMessage("✅ Konto erstellt!");
+    if(verifyState.resendCooldown>Date.now()){
+      const wait=Math.ceil((verifyState.resendCooldown-Date.now())/1000);
+      authStatus.textContent=`⏱️ Bitte ${wait}Sek. warten.`;
+      return
+    }
+    authStatus.textContent="📧 Bestätigungscode wird gesendet...";
+    showVerifyUI();
+    const result=await sendVerificationCode(email,username);
+    authStatus.textContent=result.message;
+    if(result.success){
+      verifyState.email=email;
+      verifyState.resendCooldown=Date.now()+VERIFY_RESEND_COOLDOWN*1000;
+      updateResendCooldown();
+    }
   }catch(e){
     console.error("Registrierungs-Fehler:",e);
-    authStatus.textContent=authText(e);
+    authStatus.textContent="❌ Fehler: "+e.message;
   }finally{
     registerBtn.disabled=false;
   }
 };
+sendCodeBtn.onclick=async()=>{
+  sendCodeBtn.disabled=true;
+  try{
+    const username=authUsername.value.trim();
+    const email=authEmail.value.trim().toLowerCase();
+    if(!email){authStatus.textContent="Bitte E-Mail eingeben.";return}
+    if(verifyState.resendCooldown>Date.now()){
+      const wait=Math.ceil((verifyState.resendCooldown-Date.now())/1000);
+      verifyStatus.textContent=`⏱️ Noch ${wait}Sek. warten`;
+      return
+    }
+    verifyStatus.textContent="📧 Code wird gesendet...";
+    const result=await sendVerificationCode(email,username);
+    verifyStatus.textContent=result.message;
+    if(result.success){
+      verifyState.email=email;
+      verifyState.resendCooldown=Date.now()+VERIFY_RESEND_COOLDOWN*1000;
+      updateResendCooldown();
+    }
+  }catch(e){
+    verifyStatus.textContent="❌ Fehler: "+e.message;
+  }finally{
+    sendCodeBtn.disabled=false;
+  }
+};
+verifyCodeBtn.onclick=async()=>{
+  verifyCodeBtn.disabled=true;
+  try{
+    const email=verifyState.email;
+    const inputCode=authVerifyCode.value.trim();
+    if(!email){authStatus.textContent="❌ Keine E-Mail. Bitte REGISTRIEREN klicken.";return}
+    if(inputCode.length!==VERIFY_CODE_LENGTH){verifyStatus.textContent=`❌ Code muss ${VERIFY_CODE_LENGTH} Stellen haben.`;return}
+    verifyStatus.textContent="🔄 Code wird geprüft...";
+    const result=await verifyCode(email,inputCode);
+    verifyStatus.textContent=result.message;
+    if(result.success){
+      verifyState.verified=true;
+      const pw=authPassword.value;
+      const username=result.username||authUsername.value.trim();
+      const {a}=await initFirebaseCore();
+      await waitForAuthReady();
+      await a.createUserWithEmailAndPassword(auth,email,pw);
+      storage.setItem("FLYYYY_PLAYER_NAME",username);
+      authStatus.textContent="✅ Konto erstellt!";
+      showMessage("✅ Konto erfolgreich erstellt!");
+      resetVerifyUI();
+      showScreen("lobby");
+    }
+  }catch(e){
+    console.error("Verify-Fehler:",e);
+    verifyStatus.textContent="❌ Fehler: "+e.message;
+  }finally{
+    verifyCodeBtn.disabled=false;
+  }
+};
+resendCodeBtn.onclick=async()=>{
+  resendCodeBtn.disabled=true;
+  try{
+    const username=authUsername.value.trim();
+    const email=verifyState.email||authEmail.value.trim().toLowerCase();
+    if(!email){verifyStatus.textContent="❌ Keine E-Mail.";return}
+    if(verifyState.resendCooldown>Date.now()){
+      const wait=Math.ceil((verifyState.resendCooldown-Date.now())/1000);
+      verifyStatus.textContent=`⏱️ Noch ${wait}Sek. warten`;
+      return
+    }
+    verifyStatus.textContent="📧 Neuer Code wird gesendet...";
+    const result=await sendVerificationCode(email,username);
+    verifyStatus.textContent=result.message;
+    if(result.success){
+      verifyState.email=email;
+      verifyState.resendCooldown=Date.now()+VERIFY_RESEND_COOLDOWN*1000;
+      updateResendCooldown();
+    }
+  }catch(e){
+    verifyStatus.textContent="❌ Fehler: "+e.message;
+  }finally{
+    resendCodeBtn.disabled=false;
+  }
+};
+function updateResendCooldown(){
+  if(verifyState.resendCooldown<=Date.now()){
+    resendCodeBtn.textContent="🔄 Neuer Code";
+    resendCodeBtn.disabled=false;
+    return
+  }
+  const remaining=Math.ceil((verifyState.resendCooldown-Date.now())/1000);
+  resendCodeBtn.textContent=`⏱️ ${remaining}Sek.`;
+  resendCodeBtn.disabled=true;
+  setTimeout(updateResendCooldown,1000);
+}
+authBackBtn.onclick=()=>{resetVerifyUI();showScreen("lobby")};
 logoutBtn.onclick=async()=>{try{const {a}=await loadFirebase();await a.signOut(auth);showMessage("👤 Gastmodus aktiviert.")}catch(e){console.error(e)}};
 claimSeasonRewardBtn.onclick=claimSeasonReward;musicToggleBtn.onclick=()=>{state.musicEnabled=!state.musicEnabled;saveState();if(state.musicEnabled){if(game.running)startMusic();else startLobbyMusic()}else stopMusic();updateLobby()};
 confirmLuckyBuyBtn.onclick=confirmLuckyBuy;cancelLuckyBuyBtn.onclick=cancelLuckyBuy;jackpotOverlay.addEventListener("click",()=>{jackpotOverlay.classList.remove("active")});abilityBtn.onclick=activateAbility;pauseBtn.onclick=togglePause;resumeBtn.onclick=togglePause;pauseLobbyBtn.onclick=returnLobby;retryBtn.onclick=()=>startGame(game.onlineRun);returnLobbyBtn.onclick=returnLobby;
