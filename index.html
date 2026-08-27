@@ -1009,6 +1009,7 @@ const skins=[
 
   // GENAU 3 neue Skins für dieses Update
   {id:"voltfrog",name:"VoltFrog",price:2000,type:"voltfrog",rarity:"rare",abilities:["volt_double_coin","volt_quick_flap","volt_coin_echo"]},
+  {id:"voltfrog_variant",name:"VoltFrog V2 – Mecha",price:2500,type:"voltfrog_variant",rarity:"rare",abilities:["volt_double_coin","volt_quick_flap","volt_coin_echo"]},
   {id:"stormowl",name:"StormOwl",price:4000,type:"stormowl",rarity:"epic",abilities:["storm_time_brake","storm_ghost_flight","storm_score_surge"]},
   {id:"astrion",name:"Astrion",price:10000,type:"astrion",rarity:"legendary",abilities:["astrion_time_rift","astrion_royal_shield","astrion_coin_storm"]},
    {id:"johnbacon",name:"Bacon Baron",price:10000,type:"baconbaron",rarity:"legendary",original:true,abilities:["bacon_baron_truffle","bacon_baron_mud_wallow","bacon_baron_oomph"]},
@@ -1701,7 +1702,7 @@ async function endGame(){
 }
 function gameLoop(ts){if(!game.running){draw();return}const dt=Math.min(.033,(ts-game.last)/1000);game.last=ts;if(!game.paused)updateGame(dt);draw();if(typeof renderSecretShopCountdown==="function")renderSecretShopCountdown();if(game.running)requestAnimationFrame(gameLoop)}function togglePause(){if(!game.running||game.over)return;game.paused=!game.paused;pauseOverlay.classList.toggle("active",game.paused);if(!game.paused)game.last=performance.now()}function returnLobby(){game.running=false;game.paused=false;game.over=false;game.combo=0;game.comboMultiplier=1;game.comboMilestones={};canvas.style.display="none";gameHud.style.display="none";document.querySelectorAll(".overlay").forEach(x=>x.classList.remove("active"));closeAdminLogin();showScreen("lobby");updateLobby();if(typeof resetAbuseState==="function")resetAbuseState()}
 
-function drawSkin(c,type,x,y,r){c.save();c.translate(x,y);if(type==="bird")drawBird(c,r);else if(type==="dino")drawDino(c,r);else if(type==="pen")drawPen(c,r);else if(type==="carrot")drawCarrot(c,r);else if(type==="apple")drawApple(c,r);else if(type==="jeszx")drawDonkey(c,r);else if(type==="paperjet")drawPaperJet(c,r);else if(type==="voltfrog")drawVoltFrog(c,r);else if(type==="cyberfox")drawCyberFox(c,r);else if(type==="stormowl")drawStormOwl(c,r);else if(type==="magmoth")drawMagmaWing(c,r);else if(type==="astrion")drawAstrion(c,r);else if(type==="neonbat")drawNeonBat(c,r);else if(type==="aquaray")drawAquaRay(c,r);else if(type==="shadowcat")drawShadowCat(c,r);else if(type==="baconbaron")drawBaconBaron(c,r);else if(type==="phoenix")drawPhoenix(c,r);else if(type==="reaper")drawReaper(c,r);else if(type==="overlord")drawOverlord(c,r);else if(type==="glitch")drawGlitch(c,r);else if(type==="owner")drawOwnerSkin(c,r,state.selectedSkin);c.restore()}
+function drawSkin(c,type,x,y,r){c.save();c.translate(x,y);if(type==="bird")drawBird(c,r);else if(type==="dino")drawDino(c,r);else if(type==="pen")drawPen(c,r);else if(type==="carrot")drawCarrot(c,r);else if(type==="apple")drawApple(c,r);else if(type==="jeszx")drawDonkey(c,r);else if(type==="paperjet")drawPaperJet(c,r);else if(type==="voltfrog")drawVoltFrog(c,r);else if(type==="voltfrog_variant")drawVoltFrogVariant(c,r);else if(type==="cyberfox")drawCyberFox(c,r);else if(type==="stormowl")drawStormOwl(c,r);else if(type==="magmoth")drawMagmaWing(c,r);else if(type==="astrion")drawAstrion(c,r);else if(type==="neonbat")drawNeonBat(c,r);else if(type==="aquaray")drawAquaRay(c,r);else if(type==="shadowcat")drawShadowCat(c,r);else if(type==="baconbaron")drawBaconBaron(c,r);else if(type==="phoenix")drawPhoenix(c,r);else if(type==="reaper")drawReaper(c,r);else if(type==="overlord")drawOverlord(c,r);else if(type==="glitch")drawGlitch(c,r);else if(type==="owner")drawOwnerSkin(c,r,state.selectedSkin);c.restore()}
 function drawBird(c,r){c.fillStyle="#ffd13b";c.beginPath();c.ellipse(0,0,r*1.05,r*.82,0,0,Math.PI*2);c.fill();c.fillStyle="#fff";c.beginPath();c.arc(r*.35,-r*.3,r*.21,0,Math.PI*2);c.fill();c.fillStyle="#17204a";c.beginPath();c.arc(r*.4,-r*.3,r*.08,0,Math.PI*2);c.fill();c.fillStyle="#ff7733";c.beginPath();c.moveTo(r*.9,-r*.05);c.lineTo(r*1.45,r*.1);c.lineTo(r*.9,r*.28);c.closePath();c.fill()}
 function drawDino(c,r){c.fillStyle="#58d26b";c.beginPath();c.ellipse(0,0,r*1.05,r*.72,0,0,Math.PI*2);c.fill();c.fillStyle="#4baa59";c.beginPath();c.moveTo(-r*.7,-r*.25);c.lineTo(-r*1.4,-r*.05);c.lineTo(-r*.8,r*.3);c.closePath();c.fill();c.fillStyle="#fff";c.beginPath();c.arc(r*.4,-r*.2,r*.2,0,Math.PI*2);c.fill();c.fillStyle="#17204a";c.beginPath();c.arc(r*.45,-r*.2,r*.08,0,Math.PI*2);c.fill()}
 function drawPen(c,r){c.rotate(-.35);c.fillStyle="#ffdf4e";c.fillRect(-r*.25,-r*1.1,r*.5,r*1.6);c.fillStyle="#4d75ff";c.fillRect(-r*.25,-r*1.1,r*.5,r*.35);c.fillStyle="#e9bd91";c.beginPath();c.moveTo(-r*.25,r*.5);c.lineTo(0,r*1.05);c.lineTo(r*.25,r*.5);c.closePath();c.fill()}
@@ -1738,6 +1739,67 @@ function drawVoltFrog(c,r){
   c.fillStyle="#d9fff0";c.beginPath();c.ellipse(0,r*.2,r*.55,r*.22,0,0,Math.PI*2);c.fill();
   c.fillStyle="#39c9ea";c.fillRect(-r*.14,-r*.1,r*.28,r*.18);
   c.restore();
+}
+function drawVoltFrogVariant(c,r){
+  c.save();
+  const t=(game.animTime||0)/160;
+  const bob=Math.sin(t)*r*.045;
+  const armSwing=Math.sin(t*1.25)*r*.12;
+  const eyePulse=.7+.3*(.5+.5*Math.sin(t*2.2));
+  c.translate(0,bob);
+  c.rotate(Math.sin(t*.75)*.025);
+  c.shadowColor="#39ff9c";c.shadowBlur=r*(.45+.12*Math.sin(t));
+
+  // Blue-green body, closely based on the hand-drawn VoltFrog variant.
+  c.fillStyle="#79cfd0";
+  c.beginPath();c.ellipse(0,r*.12,r*1.12,r*.72,0,0,Math.PI*2);c.fill();
+  c.fillStyle="#67b9bf";
+  c.beginPath();c.moveTo(-r*.98,-r*.02);c.quadraticCurveTo(-r*.62,-r*.7,r*.15,-r*.55);c.quadraticCurveTo(r*.72,-r*.48,r*.86,r*.22);c.quadraticCurveTo(r*.35,r*.7,-r*.72,r*.58);c.closePath();c.fill();
+
+  // Big top-left circular module.
+  c.fillStyle="#9ad9d7";c.strokeStyle="#496a73";c.lineWidth=Math.max(2,r*.06);
+  c.beginPath();c.arc(-r*.62,-r*.55,r*.42,0,Math.PI*2);c.fill();c.stroke();
+  c.strokeStyle="rgba(73,106,115,.45)";c.lineWidth=Math.max(1,r*.035);
+  c.beginPath();c.moveTo(-r*.62,-r*.96);c.lineTo(-r*.62,-r*.14);c.moveTo(-r*1.03,-r*.55);c.lineTo(-r*.21,-r*.55);c.stroke();
+  c.fillStyle="#33464f";c.beginPath();c.arc(-r*.62,-r*.55,r*.09,0,Math.PI*2);c.fill();
+  c.fillStyle="#bceceb";c.beginPath();c.arc(-r*.65,-r*.58,r*.025,0,Math.PI*2);c.fill();
+
+  // Raised mechanical eye / camera.
+  c.save();c.translate(r*.34,-r*.73);c.rotate(Math.sin(t)*.04);
+  c.fillStyle="#8ea9ad";c.strokeStyle="#536a70";c.lineWidth=Math.max(2,r*.06);
+  c.beginPath();c.arc(0,0,r*.34,0,Math.PI*2);c.fill();c.stroke();
+  c.fillStyle="#263238";c.beginPath();c.arc(0,0,r*.22,0,Math.PI*2);c.fill();
+  c.fillStyle=`rgba(255,65,95,${eyePulse})`;c.shadowColor="#ff405f";c.shadowBlur=r*.2;
+  c.beginPath();c.arc(0,0,r*.105,0,Math.PI*2);c.fill();c.restore();
+
+  // Segmented metal side panel.
+  c.fillStyle="#8caaae";c.strokeStyle="#536a70";c.lineWidth=Math.max(2,r*.045);
+  c.beginPath();c.moveTo(r*.48,-r*.42);c.quadraticCurveTo(r*.92,-r*.32,r*.88,r*.35);c.quadraticCurveTo(r*.72,r*.55,r*.48,r*.28);c.closePath();c.fill();c.stroke();
+  for(let i=0;i<4;i++){const yy=-r*.25+i*r*.17;c.strokeStyle="#536a70";c.beginPath();c.moveTo(r*.53,yy);c.lineTo(r*.84,yy+r*.025);c.stroke();}
+
+  // Grinning mouth with blocky teeth.
+  c.fillStyle="#d8efeb";c.strokeStyle="#536a70";c.lineWidth=Math.max(2,r*.045);
+  c.beginPath();c.ellipse(0,r*.34,r*.58,r*.27,0,0,Math.PI*2);c.fill();c.stroke();
+  c.strokeStyle="#6b858a";c.lineWidth=Math.max(1,r*.025);
+  for(let i=-2;i<=2;i++){c.beginPath();c.moveTo(i*r*.18,r*.13);c.lineTo(i*r*.18,r*.54);c.stroke();}
+  c.fillStyle="#5bbfc3";c.beginPath();c.ellipse(0,r*.18,r*.18,r*.055,0,0,Math.PI*2);c.fill();
+
+  // Mechanical arms from the drawing, with a gentle idle swing.
+  c.save();c.translate(-r*.92,r*.1);c.rotate(-.55+armSwing/r);
+  c.strokeStyle="#62bfc5";c.lineWidth=r*.16;c.lineCap="round";c.beginPath();c.moveTo(0,0);c.lineTo(-r*.52,r*.4);c.lineTo(-r*.2,r*.62);c.stroke();
+  c.fillStyle="#8faeb2";c.beginPath();c.arc(-r*.2,r*.62,r*.13,0,Math.PI*2);c.fill();c.restore();
+  c.save();c.translate(r*.87,r*.12);c.rotate(.42-armSwing/r);
+  c.strokeStyle="#596d72";c.lineWidth=r*.13;c.beginPath();c.moveTo(0,0);c.lineTo(r*.48,r*.15);c.lineTo(r*.7,r*.02);c.stroke();
+  c.fillStyle="#202a2e";c.beginPath();c.moveTo(r*.62,-r*.03);c.lineTo(r*.92,-r*.1);c.lineTo(r*.88,r*.1);c.lineTo(r*.62,r*.07);c.closePath();c.fill();
+  c.fillStyle="#ffd447";c.beginPath();c.moveTo(r*.88,-r*.1);c.lineTo(r*1.05,-r*.02);c.lineTo(r*.88,r*.03);c.closePath();c.fill();c.restore();
+
+  // Red energy cable.
+  c.strokeStyle="#ff5364";c.lineWidth=r*.065;c.beginPath();c.moveTo(r*.72,r*.32);c.lineTo(r*1.08,r*.72);c.stroke();
+  c.fillStyle="#ffd447";c.beginPath();c.arc(r*1.1,r*.75,r*.07,0,Math.PI*2);c.fill();
+
+  // Small floating sparks make the variant feel alive.
+  for(let i=0;i<5;i++){const a=t*.9+i*Math.PI*2/5;const d=r*(1.05+.1*Math.sin(t+i));c.globalAlpha=.35+.35*(.5+.5*Math.sin(t*2+i));c.fillStyle=i%2?"#5ee7ff":"#39ff9c";c.beginPath();c.arc(Math.cos(a)*d,Math.sin(a)*d*.7,r*.035,0,Math.PI*2);c.fill();}
+  c.globalAlpha=1;c.restore();
 }
 function drawCyberFox(c,r){
   c.save();
@@ -2388,7 +2450,7 @@ function spinLuckyRad(){
   },4900);
 }
 
-const NEW_SHOP_ITEMS=new Set(["voltfrog","stormowl","astrion","johnbacon"]);
+const NEW_SHOP_ITEMS=new Set(["voltfrog","voltfrog_variant","stormowl","astrion","johnbacon"]);
 function ensureShopNewState(){
   if(!state.shopNewSeen||typeof state.shopNewSeen!=="object") state.shopNewSeen={};
   if(state.shopNewRelease!=="2.8.0"){
