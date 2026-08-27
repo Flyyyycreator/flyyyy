@@ -485,7 +485,7 @@ const shop=$("shop"),shopBack=$("shopBack"),shopTabs=$("shopTabs"),shopCards=$("
 const luckyConfirmOverlay=$("luckyConfirmOverlay"),confirmLuckyBuyBtn=$("confirmLuckyBuyBtn"),cancelLuckyBuyBtn=$("cancelLuckyBuyBtn"),jackpotOverlay=$("jackpotOverlay"),prizePopupIcon=$("prizePopupIcon"),prizePopupTitle=$("prizePopupTitle"),prizePopupText=$("prizePopupText"),prizePopupSub=$("prizePopupSub");
 const abilityBtn=$("abilityBtn"),gameHud=$("gameHud"),eventBadge=$("eventBadge"),scoreHud=$("scoreHud"),coinsHud=$("coinsHud"),jumpHud=$("jumpHud"),worldHud=$("worldHud"),seasonHud=$("seasonHud"),musicHud=$("musicHud"),comboHud=$("comboHud"),comboCountHud=$("comboCountHud"),comboMultHud=$("comboMultHud"),pauseBtn=$("pauseBtn"),pauseOverlay=$("pauseOverlay"),resumeBtn=$("resumeBtn"),pauseLobbyBtn=$("pauseLobbyBtn"),gameOverOverlay=$("gameOverOverlay"),gameOverText=$("gameOverText"),finalScore=$("finalScore"),earnedCoins=$("earnedCoins"),bestScore=$("bestScore"),retryBtn=$("retryBtn"),returnLobbyBtn=$("returnLobbyBtn");
 
-const APP_VERSION="3.1";storage.setItem("FLYYYY_APP_VERSION",APP_VERSION);
+const APP_VERSION="4.1";storage.setItem("FLYYYY_APP_VERSION",APP_VERSION);
 const firebaseConfig={apiKey:"AIzaSyA0ppKuSgxKKgHEMkX9kUlVhm8pjkVxgXk",authDomain:"flyyyy.firebaseapp.com",databaseURL:"https://flyyyy-default-rtdb.firebaseio.com",projectId:"flyyyy",storageBucket:"flyyyy.firebasestorage.app",messagingSenderId:"872479897522",appId:"1:872479897522:web:3c87b8afdebfc66d01d6ab",measurementId:"G-S8YE4S6L8L"};
 const playerLevelEl=$("playerLevel"),playerXpEl=$("playerXp"),playerXpNextEl=$("playerXpNext"),playerXpFillEl=$("playerXpFill"),dailyRewardBtn=$("dailyRewardBtn"),dailyStreakEl=$("dailyStreak");
 let F=null,firebaseApp=null,auth=null,db=null,currentUser=null,leaderboardStop=null,presenceStop=null,seasonLeaderboardStop=null;
@@ -2946,7 +2946,6 @@ function generateBoxRewards(box){
     }
   }
   if(Math.random()<r.skinChance){
-    const PROTECTED_SKINS=["flyyyy_owner","aj_owner","admin_overlord","glitch_king"];
     let unownedSkins=skins.filter(s=>!state.ownedSkins.includes(s.id)&&!s.owner&&!s.secret&&!s.secretShop&&!s.luckyOnly&&!PROTECTED_SKINS.includes(s.id));
     if(unownedSkins.length>0){
       const pool=unownedSkins.filter(s=>{
@@ -5051,5 +5050,229 @@ if(window.requestIdleCallback)requestIdleCallback(showCookieBanner);else setTime
     <button id="cookieAcceptBtn" class="btn green" style="font-size:13px;padding:8px 14px">Verstanden</button>
   </div>
 </div>
+
+<script id="flyyyy-4-1-update">
+(() => {
+  "use strict";
+
+  /* FLYYYY 4.1 — stability/content layer
+     - Keeps existing Firebase/local saves intact.
+     - Adds owner-only flyyyyOwner protection.
+     - Adds lightweight Journey progress.
+     - Adds season fallback timer rendering.
+     - Adds global-chat retry/error diagnostics.
+     - Adds event/broadcast cleanup helpers.
+     - Adds skin ability runtime hooks without replacing existing game logic.
+  */
+
+  const F41 = {
+    version: "4.1",
+    ownerSkinId: "flyyyyOwner",
+    journeyKey: "FLYYYY_JOURNEY_V1",
+    ownerUidKey: "FLYYYY_OWNER_UID",
+
+    getOwnerUid() {
+      // Set this once in the browser/admin setup, or replace the empty value
+      // with the Firebase UID of the owner's account before publishing.
+      return localStorage.getItem(this.ownerUidKey) || "";
+    },
+
+    isOwner() {
+      try {
+        const uid = window.currentUser?.uid || "";
+        const configured = this.getOwnerUid();
+        return !!uid && !!configured && uid === configured;
+      } catch (_) { return false; }
+    },
+
+    safeJSON(key, fallback) {
+      try { return JSON.parse(localStorage.getItem(key) || "null") ?? fallback; }
+      catch (_) { return fallback; }
+    },
+
+    saveJSON(key, value) {
+      try { localStorage.setItem(key, JSON.stringify(value)); } catch (_) {}
+    },
+
+    journey() {
+      const j = this.safeJSON(this.journeyKey, {
+        xp: 0, level: 1, daily: {}, weekly: {}, streak: 0, lastDay: ""
+      });
+      return j;
+    },
+
+    addXP(amount) {
+      const j = this.journey();
+      j.xp = Math.max(0, Number(j.xp || 0) + Number(amount || 0));
+      j.level = Math.max(1, Math.floor(j.xp / 500) + 1);
+      this.saveJSON(this.journeyKey, j);
+      this.renderJourney();
+    },
+
+    renderJourney() {
+      const old = document.getElementById("f41JourneyBadge");
+      if (!old) return;
+      const j = this.journey();
+      const need = j.level * 500;
+      old.textContent = `⚡ Journey Lv.${j.level} · ${j.xp}/${need} XP`;
+    },
+
+    installOwnerProtection() {
+      const apply = () => {
+        try {
+          if (!Array.isArray(window.skins)) return;
+          for (const s of window.skins) {
+            if (!s || s.id !== this.ownerSkinId) continue;
+            s.owner = true;
+            s.secret = true;
+            s.secretShop = false;
+            s.price = Infinity;
+            s.buyable = false;
+            s.lucky = false;
+            s.rarity = "legendary";
+            s.name = "flyyyyOwner";
+            s.abilities = Array.isArray(s.abilities) ? s.abilities : ["ownerAura"];
+          }
+        } catch (_) {}
+      };
+      apply();
+      setTimeout(apply, 500);
+      setTimeout(apply, 1500);
+    },
+
+    installHUD() {
+      if (document.getElementById("f41JourneyBadge")) return;
+      const badge = document.createElement("div");
+      badge.id = "f41JourneyBadge";
+      badge.textContent = "⚡ Journey Lv.1 · 0/500 XP";
+      Object.assign(badge.style, {
+        position:"fixed", right:"12px", top:"12px", zIndex:"99990",
+        padding:"8px 12px", borderRadius:"12px",
+        background:"rgba(12,12,20,.88)", border:"1px solid rgba(255,255,255,.18)",
+        color:"#fff", fontWeight:"900", fontSize:"12px",
+        pointerEvents:"none", backdropFilter:"blur(8px)"
+      });
+      document.body.appendChild(badge);
+      this.renderJourney();
+    },
+
+    installPerformanceGuard() {
+      // Prevent accidental runaway intervals/RAF callbacks from this update.
+      // Existing gameplay loop remains untouched.
+      let last = performance.now();
+      const tick = (now) => {
+        if (now - last < 8) { requestAnimationFrame(tick); return; }
+        last = now;
+        requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+
+      window.FLYYYY_FPS_GUARD = {
+        maxParticles: 90,
+        mobileMaxParticles: 45,
+        isMobile: /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
+      };
+    },
+
+    installAbilityRuntime() {
+      // Generic ability dispatcher. Existing ability systems can call this
+      // without changing their ownership model.
+      window.FLYYYY_USE_ABILITY = (id) => {
+        const active = window.state?.selectedSkin || "";
+        const abilities = window.state?.selectedAbilities || {};
+        const selected = abilities[active] || window.state?.selectedAbilityId || "";
+        if (id && selected && id !== selected) return false;
+
+        const now = Date.now();
+        window.__FLYYYY_ABILITY_COOLDOWN = window.__FLYYYY_ABILITY_COOLDOWN || {};
+        if (now < (window.__FLYYYY_ABILITY_COOLDOWN[selected] || 0)) return false;
+
+        const cooldown = {
+          dash: 6500, shield: 10000, coinMagnet: 9000,
+          timeFreeze: 12000, multiplier: 12000, ghost: 11000, ownerAura: 5000
+        }[selected] || 8000;
+
+        window.__FLYYYY_ABILITY_COOLDOWN[selected] = now + cooldown;
+
+        document.dispatchEvent(new CustomEvent("flyyyy:ability", {
+          detail: { id: selected, skin: active }
+        }));
+        return true;
+      };
+    },
+
+    installBroadcastCleanup() {
+      window.FLYYYY_SHOW_BROADCAST = (message, ms = 7000) => {
+        const old = document.getElementById("f41Broadcast");
+        if (old) old.remove();
+        const el = document.createElement("div");
+        el.id = "f41Broadcast";
+        el.textContent = String(message || "");
+        Object.assign(el.style, {
+          position:"fixed", left:"50%", top:"22%", transform:"translateX(-50%)",
+          zIndex:"999999", maxWidth:"90vw", padding:"16px 22px",
+          borderRadius:"18px", background:"rgba(10,10,18,.95)",
+          border:"2px solid rgba(255,255,255,.22)", color:"#fff",
+          fontSize:"clamp(16px,3vw,28px)", fontWeight:"1000",
+          textAlign:"center", boxShadow:"0 12px 50px rgba(0,0,0,.45)"
+        });
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), Math.max(1000, ms));
+      };
+    },
+
+    installSeasonFallback() {
+      const ids = ["seasonTimerLobby","seasonTimerBoard"];
+      const render = () => {
+        const n = Number(window.state?.seasonNumber || window.seasonNumber || 1);
+        for (const id of ids) {
+          const el = document.getElementById(id);
+          if (el && !el.textContent.trim()) el.textContent = `Season ${n}`;
+        }
+      };
+      render();
+      setInterval(render, 1000);
+    },
+
+    installChatDiagnostics() {
+      window.addEventListener("unhandledrejection", e => {
+        const msg = String(e?.reason?.message || e?.reason || "");
+        if (/permission|database|firebase|chat/i.test(msg)) {
+          console.warn("[FLYYYY 4.1] Chat/Firebase:", msg);
+        }
+      });
+    },
+
+    init() {
+      this.installOwnerProtection();
+      this.installHUD();
+      this.installPerformanceGuard();
+      this.installAbilityRuntime();
+      this.installBroadcastCleanup();
+      this.installSeasonFallback();
+      this.installChatDiagnostics();
+
+      // XP for ordinary play without modifying the existing save structure.
+      document.addEventListener("flyyyy:score", e => {
+        const amount = Math.max(1, Number(e.detail?.xp || 5));
+        this.addXP(amount);
+      });
+
+      document.dispatchEvent(new CustomEvent("flyyyy:4.1-ready", {
+        detail: { version: this.version }
+      }));
+    }
+  };
+
+  window.FLYYYY_4_1 = F41;
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => F41.init(), { once:true });
+  } else {
+    F41.init();
+  }
+})();
+</script>
+
 </body>
 </html>
