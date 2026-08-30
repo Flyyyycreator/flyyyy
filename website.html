@@ -1593,14 +1593,17 @@ class="button primary">
 </footer>
 
 <!-- CONSENT BANNER (Vorbereitung für Google AdSense) -->
-<div id="consentBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#0a0c14;border-top:1px solid #ffffff15;padding:20px 24px;z-index:250;text-align:center">
-<p style="color:#9ca3b4;margin-bottom:15px;font-size:14px">
-Diese Website wird bald Google AdSense nutzen, um anzeigenbasierte Werbung einzublenden. Google verwendet Cookies zur Personalisierung von Anzeigen. Sie können der Nutzung zustimmen oder ablehnen.
+<div id="consentBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#0a0c14;border-top:1px solid #ffffff15;padding:20px 24px;z-index:250;box-shadow:0 -10px 40px rgba(0,0,0,.5)">
+<div style="max-width:900px;margin:auto">
+<p style="color:#fff;margin-bottom:8px;font-weight:900;font-size:16px">🍪 Cookie-Einwilligung</p>
+<p style="color:#9ca3b4;margin-bottom:15px;font-size:14px;line-height:1.6">
+Diese Website wird bald Google AdSense nutzen, um anzeigenbasierte Werbung einzublenden. Google verwendet Cookies zur Personalisierung von Anzeigen und zur Messung der Werbeleistung. Mit dem Klick auf „Akzeptieren" stimmen Sie der Verwendung dieser Cookies zu. Sie können Ihre Einwilligung jederzeit widerrufen.
 </p>
-<div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-<button onclick="handleConsent(true)" class="button primary" style="padding:12px 24px">Akzeptieren</button>
-<button onclick="handleConsent(false)" class="button secondary" style="padding:12px 24px">Ablehnen</button>
-<a href="#datenschutz" onclick="showLegal('datenschutz');document.getElementById('consentBanner').style.display='none'" style="color:#00eaff;font-size:14px;display:flex;align-items:center">Mehr erfahren</a>
+<div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+<button onclick="handleConsent(true)" class="button primary" style="padding:12px 24px;font-size:14px">Akzeptieren</button>
+<button onclick="handleConsent(false)" class="button secondary" style="padding:12px 24px;font-size:14px">Nur notwendige</button>
+<a href="#datenschutz" onclick="showLegal('datenschutz');return false" style="color:#00eaff;font-size:14px;margin-left:10px">Mehr erfahren</a>
+</div>
 </div>
 </div>
 
@@ -1637,8 +1640,9 @@ function showLegal(type){
         36100 Petersberg-Fulda<br>
         Deutschland</p>
         <h2>Kontakt</h2>
-        <p>E-Mail: <a href="mailto:noelbond75@gmail.com">noelbond75@gmail.com</a></p>
-        <h2>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
+        <p>E-Mail: <a href="mailto:noelbond75@gmail.com">noelbond75@gmail.com</a><br>
+        Telefon: +49 1525 8974704</p>
+        <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
         <p>Noel Bond<br>
         Goedelerstraße 47<br>
         36100 Petersberg-Fulda</p>
@@ -1668,21 +1672,23 @@ function showLegal(type){
         <h2>2. Erhebung und Verarbeitung personenbezogener Daten</h2>
         <p>Wir erheben und verwenden personenbezogene Daten nur, soweit dies für die Bereitstellung der Website und unseres Spiels erforderlich ist oder gesetzlich erlaubt ist.</p>
 
-        <h2>3. Welche Daten werden erhoben?</h2>
+        <h2>3. Welche Daten werden erhoben und Rechtsgrundlagen</h2>
+        <p>Wir verarbeiten folgende Daten mit den jeweiligen Rechtsgrundlagen gemäß Art. 6 DSGVO:</p>
         <ul>
-        <li><strong>Lokale Spielstände:</strong> Spielerfortschritt, Coins, freigeschaltete Skins und Einstellungen werden lokal im Browser (LocalStorage) gespeichert.</li>
-        <li><strong>Leaderboard-Einträge:</strong> Wenn Sie angemeldet sind, werden Ihr Spielername, Score und Siege auf unseren Firebase-Servern gespeichert.</li>
-        <li><strong>Kontodaten:</strong> Bei Registrierung werden E-Mail-Adresse, Passwort-Hash und Spielername gespeichert (über Firebase Authentication).</li>
-        <li><strong>Server-Logs:</strong> Beim Besuch der werden IP-Adresse, Zugriffszeitpunkt, Browser-Typ und Referrer-URL protokolliert.</li>
+        <li><strong>Lokale Spielstände (LocalStorage):</strong> Spielerfortschritt, Coins, freigeschaltete Skins und Einstellungen werden lokal im Browser gespeichert.<br><em>Rechtsgrundlage:</em> Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung) bzw. Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Bereitstellung des Spiels).</li>
+        <li><strong>Leaderboard-Einträge:</strong> Spielername, Score und Siege auf Firebase-Servern, soweit Sie angemeldet sind und die Teilnahme wählen.<br><em>Rechtsgrundlage:</em> Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung) bzw. Art. 6 Abs. 1 lit. a DSGVO (Einwilligung bei Registrierung).</li>
+        <li><strong>Kontodaten (Firebase Authentication):</strong> E-Mail-Adresse, Passwort-Hash und Spielername bei Registrierung.<br><em>Rechtsgrundlage:</em> Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung).</li>
+        <li><strong>Server-Logs:</strong> IP-Adresse, Zugriffszeitpunkt, Browser-Typ und Referrer-URL.<br><em>Rechtsgrundlage:</em> Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Sicherheit und Bereitstellung der Website).</li>
         </ul>
 
-        <h2>4. Firebase (Google)</h2>
+        <h2>4. Firebase (Google) und Auftragsverarbeitung</h2>
         <p>Wir nutzen Firebase von Google Ireland Limited für:</p>
         <ul>
         <li><strong>Firebase Realtime Database</strong> — Speicherung von Leaderboard-Daten und Spielerfortschritt</li>
         <li><strong>Firebase Authentication</strong> — Benutzerkonten und Anmeldung</li>
         </ul>
-        <p>Google verarbeitet Daten in den USA. Die Datenschutzbestimmungen von Google finden Sie unter: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">https://policies.google.com/privacy</a></p>
+        <p>Mit Google liegt ein Auftragsverarbeitungsvertrag (AVV) gemäß Art. 28 DSGVO vor. Die Datenübermittlung in die USA erfolgt auf Grundlage der Standardvertragsklauseln (SCC) der EU-Kommission.</p>
+        <p>Die Datenschutzbestimmungen von Google finden Sie unter: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">https://policies.google.com/privacy</a></p>
 
         <h2>5. Hosting (GitHub Pages)</h2>
         <p>Diese Website wird gehostet bei GitHub Inc. (USA). GitHub kann technische Daten wie IP-Adressen und Zugriffszeiten verarbeiten. Datenschutzerklärung: <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">GitHub Privacy Statement</a></p>
@@ -1711,7 +1717,16 @@ function showLegal(type){
         <h2>9. Leaderboard und öffentliche Spielerdaten</h2>
         <p>Wenn Sie ein Konto erstellen und am Leaderboard teilnehmen, sind Ihr Spielername und Ihre Scores öffentlich einsehbar. Die Teilnahme ist freiwillig.</p>
 
-        <h2>10. Speicherdauer</h2>
+        <h2>10. Datensicherheit</h2>
+        <p>Wir setzen angemessene technische und organisatorische Maßnahmen ein, um Ihre Daten gegen unbefugten Zugriff, Verlust oder Missbrauch zu schützen. Dazu gehören:</p>
+        <ul>
+        <li>Verschlüsselte Übertragung (HTTPS/TLS)</li>
+        <li>Zugriffskontrolle auf Server</li>
+        <li>Regelmäßige Sicherheitsupdates</li>
+        </ul>
+        <p>Trotz aller Maßnahmen kann eine 100-prozentige Sicherheit nicht garantiert werden.</p>
+
+        <h2>11. Speicherdauer</h2>
         <ul>
         <li><strong>Lokale Spielstände:</strong> Bis zur manuellen Löschung im Browser</li>
         <li><strong>Kontodaten:</strong> Bis zur Löschung des Kontos</li>
@@ -1719,28 +1734,41 @@ function showLegal(type){
         <li><strong>Server-Logs:</strong> Maximal 30 Tage</li>
         </ul>
 
-        <h2>11. Ihre Rechte nach DSGVO</h2>
+        <h2>12. Ihre Rechte nach DSGVO</h2>
         <ul>
         <li>Recht auf Auskunft (Art. 15 DSGVO)</li>
         <li>Recht auf Berichtigung (Art. 16 DSGVO)</li>
         <li>Recht auf Löschung (Art. 17 DSGVO)</li>
         <li>Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
         <li>Recht auf Datenübertragbarkeit (Art. 20 DSGVO)</li>
-        <li>Widerspruchsrecht (Art. 21 DSGVO)</li>
+        <li>Widerspruchsrecht (Art. 21 DSGVO) – Sie können der Verarbeitung Ihrer Daten aus Gründen, die sich aus Ihrer besonderen Situation ergeben, jederzeit widersprechen</li>
         <li>Recht auf Beschwerde bei einer Aufsichtsbehörde (Art. 77 DSGVO)</li>
         </ul>
-        <p>Um Ihre Reauszuüben, kontaktieren Sie uns bitte unter: <a href="mailto:noelbond75@gmail.com">noelbond75@gmail.com</a></p>
+        <p><strong>Widerspruchsrecht gegen Direktmarketing:</strong> Wenn wir Ihre Daten für Direktmarketing verarbeiten, haben Sie das Recht, jederzeit Widerspruch einzulegen. Nach Eingang Ihres Widerspruchs werden wir Ihre Daten nicht mehr für diesen Zweck verarbeiten.</p>
+        <p><strong>Automatisierte Entscheidungen/Profiling:</strong> Wir treffen keine ausschließlich automatisierungen Entscheidungen, die Ihnen rechtliche Wirkung entfalten oder Sie erheblich beeinträchtigen.</p>
+        <p>Um Ihre Rechte auszuüben, kontaktieren Sie uns bitte unter: <a href="mailto:noelbond75@gmail.com">noelbond75@gmail.com</a></p>
 
-        <h2>12. Jugendschutz</h2>
+        <h2>13. Aufsichtsbehörde</h2>
+        <p>Zuständige Aufsichtsbehörde für Datenschutzbeschwerden:<br>
+        <strong>Hessischer Beauftragte für Datenschutz und Informationsfreiheit</strong><br>
+        Postfach 3144, 65021 Wiesbaden<br>
+        E-Mail: poststelle@datenschutz.hessen.de<br>
+        Website: <a href="https://datenschutz.hessen.de" target="_blank" rel="noopener noreferrer">https://datenschutz.hessen.de</a></p>
+
+        <h2>14. Jugendschutz</h2>
         <p>Das Spiel und die Website richten sich an Altersgruppen. Minderjährige sollten die Einwilligung ihrer Eltern oder Erziehungsberechtigten einholen, bevor sie ein Konto erstellen. Wir erheben wissentlich keine personenbezogenen Daten von Kindern unter 16 Jahren ohne elterliche Einwilligung.</p>
 
-        <h2>13. Änderungen der Datenschutzerklärung</h2>
-        <p>Wir behalten uns vor, diese Datenschutzerklärung bei Änderungen unserer Dienste oder gesetzlicher Anforderungen anzupassen. Die aktuelle Version ist auf dieser Website verfügbar.</p>
+        <h2>15. Widerruf von Einwilligungen</h2>
+        <p>Wenn Sie uns eine Einwilligung in die Datenverarbeitung erteilt haben, können Sie diese jederzeit mit Wirkung für die Zukunft widerrufen. Die Rechtmäßigkeit der bis zum Widerruf erfolgten Verarbeitung bleibt hiervon unberührt.</p>
 
-        <h2>14. Kontakt</h2>
+        <h2>16. Änderungen der Datenschutzerklärung</h2>
+        <p>Wir behalten uns vor, diese Datenschutzerklärung bei Änderungen unserer Dienste oder gesetzlicher Anforderungen anzupassen. Die aktuelle Version ist auf dieser Website verfügbar. Bei wesentlichen Änderungen werden wir Sie auf der Website darauf hinweisen.</p>
+
+        <h2>17. Kontakt</h2>
         <p>Bei Fragen zum Datenschutz:<br>
         <strong>Noel Bond</strong><br>
-        E-Mail: <a href="mailto:noelbond75@gmail.com">noelbond75@gmail.com</a></p>
+        E-Mail: <a href="mailto:noelbond75@gmail.com">noelbond75@gmail.com</a><br>
+        Telefon: +49 1525 8974704</p>
         `;
     } else if(type==='nutzungsbedingungen'){
         html=`
@@ -1790,10 +1818,13 @@ function showLegal(type){
         <h2>10. Kündigung</h2>
         <p>Wir behalten uns vor, bei Verstößen gegen diese Nutzungsbedingungen Konten zu sperren oder zu löschen.</p>
 
-        <h2>11. Anwendbares Recht</h2>
-        <p>Es gilt deutsches Recht. Gerichtsstand ist soweit gesetzlich zulässig Fulda.</p>
+        <h2>11. Anwendbares Recht und Gerichtsstand</h2>
+        <p>Es gilt deutsches Recht. Gerichtsstand ist, soweit gesetzlich zulässig, Fulda. Diese Gerichtsbestimmung gilt ausschließlich gegenüber Kaufleuten, juristischen Personen des öffentlichen Rechts oder öffentlich-rechtlichen Sondervermögen. Gegenüber Verbrauchern bleibt es bei den gesetzlichen Gerichtsständen.</p>
 
-        <h2>12. Kontakt</h2>
+        <h2>12. Salvatorische Klausel</h2>
+        <p>Sollte eine Bestimmung dieser Nutzungsbedingungen unwirksam sein oder werden, bleibt die Wirksamkeit der übrigen Bestimmungen unberührt. Die unwirksame Bestimmung ist durch eine wirksame Bestimmung zu ersetzen, die dem wirtschaftlichen Zweck der unwirksamen Bestimmung am nächsten kommt.</p>
+
+        <h2>13. Kontakt</h2>
         <p>Bei Fragen: <a href="mailto:noelbond75@gmail.com">noelbond75@gmail.com</a></p>
         `;
     } else if(type==='kaufhinweise'){
@@ -1829,8 +1860,16 @@ function showLegal(type){
         <h2>6. Verfügbarkeit</h2>
         <p>Alle virtuellen Gegenstände sind solange verfügbar, wie FLYYYY betrieben wird. Wir garantieren keine unbegrenzte Verfügbarkeit.</p>
 
-        <h2>7. Kontakt</h2>
-        <p>Bei Fragen zum Shop: <a href="mailto:noelbond75@gmail.com">noelbond75@gmail.com</a></p>
+        <h2>7. Verfügbarkeit</h2>
+        <p>Alle virtuellen Gegenstände sind solange verfügbar, wie FLYYYY betrieben wird. Wir garantieren keine unbegrenzte Verfügbarkeit.</p>
+
+        <h2>8. Haftung</h2>
+        <p>Wir haften nicht für den Verlust virtueller Gegenstände aufgrund von Serverproblemen, Updates oder Löschung des Kontos durch den Nutzer.</p>
+
+        <h2>9. Kontakt</h2>
+        <p>Bei Fragen zum Shop:<br>
+        E-Mail: <a href="mailto:noelbond75@gmail.com">noelbond75@gmail.com</a><br>
+        Telefon: +49 1525 8974704</p>
         `;
     }
 
@@ -1851,15 +1890,22 @@ document.getElementById('legalModal').addEventListener('click',function(e){
 // ===== CONSENT MANAGEMENT (Vorbereitung für AdSense) =====
 
 function handleConsent(accepted){
-    localStorage.setItem('flyyyy_consent', accepted ? 'accepted' : 'rejected');
+    const consent={
+        accepted:accepted,
+        timestamp:Date.now(),
+        version:'1.0'
+    };
+    localStorage.setItem('flyyyy_consent',JSON.stringify(consent));
     document.getElementById('consentBanner').style.display='none';
-    // Hier wird später Google AdSense Consent-Signal übergeben
+    // Hier wird später Google AdSense Consent-Signal übergeben:
+    // if(typeof gtag==='function'){gtag('consent','update',{'ad_user_data':accepted?'granted':'denied','ad_personalization':accepted?'granted':'denied','ad_storage':accepted?'granted':'denied','analytics_storage':accepted?'granted':'denied'});}
 }
 
 function checkConsent(){
-    const consent=localStorage.getItem('flyyyy_consent');
+    let consent=null;
+    try{consent=JSON.parse(localStorage.getItem('flyyyy_consent'));}catch(e){}
     if(!consent){
-        // Banner anzeigen - aktiviert wenn AdSense live geht
+        // Banner anzeigen - wird aktiviert wenn AdSense live geht
         // document.getElementById('consentBanner').style.display='block';
     }
 }
