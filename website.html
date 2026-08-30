@@ -1,0 +1,2061 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FLYYYY — Fly. Dodge. Survive.</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#05060a;
+    color:white;
+    overflow-x:hidden;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-2;
+    background:
+        radial-gradient(circle at 15% 15%,#00eaff22,transparent 30%),
+        radial-gradient(circle at 85% 20%,#7657ff25,transparent 30%),
+        radial-gradient(circle at 50% 100%,#00ffaa15,transparent 35%);
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    opacity:.08;
+    background-image:
+        linear-gradient(#fff 1px,transparent 1px),
+        linear-gradient(90deg,#fff 1px,transparent 1px);
+    background-size:55px 55px;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+/* NAVIGATION */
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:100;
+    padding:18px 5%;
+    background:#05060acc;
+    backdrop-filter:blur(20px);
+    border-bottom:1px solid #ffffff10;
+}
+
+.nav{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:1000;
+    letter-spacing:5px;
+    background:linear-gradient(
+        90deg,
+        #00eaff,
+        #7657ff,
+        #00ffaa
+    );
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+nav{
+    display:flex;
+    align-items:center;
+    gap:28px;
+}
+
+nav a{
+    color:#aeb6c6;
+    font-size:14px;
+    font-weight:800;
+    transition:.2s;
+}
+
+nav a:hover{
+    color:white;
+}
+
+.play-nav{
+    background:white;
+    color:#05060a!important;
+    padding:11px 18px;
+    border-radius:12px;
+}
+
+.discord-nav{
+    background:#5865F2;
+    color:#fff!important;
+    padding:11px 18px;
+    border-radius:12px;
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:140px 20px 80px;
+}
+
+.hero-content{
+    max-width:950px;
+}
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    padding:9px 16px;
+    border-radius:50px;
+    border:1px solid #00eaff45;
+    background:#00eaff0b;
+    color:#91f5ff;
+    font-size:13px;
+    font-weight:bold;
+    margin-bottom:30px;
+}
+
+.dot{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:#00ffaa;
+    box-shadow:0 0 15px #00ffaa;
+}
+
+h1{
+    font-size:clamp(80px,15vw,175px);
+    line-height:.8;
+    letter-spacing:-9px;
+    font-weight:1000;
+    background:
+        linear-gradient(
+            135deg,
+            white 10%,
+            #8cefff 40%,
+            #7657ff 70%,
+            #00ffaa
+        );
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.hero h2{
+    margin-top:28px;
+    font-size:clamp(25px,4vw,45px);
+}
+
+.hero p{
+    max-width:650px;
+    margin:25px auto 35px;
+    color:#9ca3b4;
+    line-height:1.7;
+    font-size:17px;
+}
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    gap:14px;
+    flex-wrap:wrap;
+}
+
+.button{
+    display:inline-block;
+    padding:16px 28px;
+    border-radius:14px;
+    font-weight:900;
+    border:1px solid #ffffff15;
+    transition:.25s;
+}
+
+.primary{
+    background:linear-gradient(135deg,#00eaff,#7657ff);
+    box-shadow:0 15px 50px #00bfff25;
+}
+
+.primary:hover{
+    transform:translateY(-4px) scale(1.02);
+}
+
+.secondary{
+    background:#ffffff09;
+}
+
+.secondary:hover{
+    background:#ffffff15;
+}
+
+.discord-btn{
+    background:#5865F2;
+    box-shadow:0 15px 50px #5865F225;
+}
+
+.discord-btn:hover{
+    transform:translateY(-4px) scale(1.02);
+    background:#4752C4;
+}
+
+/* STATS */
+
+.stats{
+    max-width:850px;
+    margin:60px auto 0;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+}
+
+.stat{
+    padding:22px;
+    border:1px solid #202638;
+    border-radius:18px;
+    background:#ffffff07;
+}
+
+.stat strong{
+    display:block;
+    font-size:27px;
+}
+
+.stat span{
+    color:#80899b;
+    font-size:13px;
+}
+
+/* SECTIONS */
+
+section{
+    padding:110px 24px;
+}
+
+.container{
+    max-width:1150px;
+    margin:auto;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:55px;
+}
+
+.section-title span{
+    color:#00eaff;
+    letter-spacing:3px;
+    font-size:12px;
+    font-weight:900;
+}
+
+.section-title h2{
+    font-size:clamp(38px,6vw,68px);
+    letter-spacing:-3px;
+    margin-top:10px;
+}
+
+.section-title p{
+    max-width:620px;
+    margin:16px auto;
+    color:#9ca3b4;
+    line-height:1.7;
+}
+
+/* FEATURES */
+
+.features{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.card{
+    padding:30px;
+    border:1px solid #202638;
+    border-radius:24px;
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff0b,
+            #ffffff03
+        );
+    transition:.25s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    border-color:#00eaff50;
+}
+
+.icon{
+    font-size:30px;
+    margin-bottom:20px;
+}
+
+.card h3{
+    font-size:21px;
+    margin-bottom:11px;
+}
+
+.card p{
+    color:#8d96a8;
+    line-height:1.7;
+}
+
+/* GAME */
+
+.preview{
+    min-height:430px;
+    border:1px solid #202638;
+    border-radius:30px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            #00eaff18,
+            transparent 35%
+        ),
+        linear-gradient(145deg,#111622,#08090d);
+}
+
+.preview::before{
+    content:"";
+    position:absolute;
+    width:390px;
+    height:390px;
+    border:1px solid #00eaff22;
+    border-radius:50%;
+    animation:pulse 4s infinite;
+}
+
+.preview-content{
+    position:relative;
+    z-index:2;
+}
+
+.bird{
+    font-size:90px;
+    animation:float 2.3s ease-in-out infinite;
+}
+
+.preview h3{
+    font-size:43px;
+    margin:12px;
+}
+
+.preview p{
+    color:#9ca3b4;
+    margin-bottom:25px;
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0) rotate(-3deg);
+    }
+    50%{
+        transform:translateY(-18px) rotate(4deg);
+    }
+}
+
+@keyframes pulse{
+    0%,100%{
+        transform:scale(.8);
+        opacity:.15;
+    }
+    50%{
+        transform:scale(1.1);
+        opacity:.45;
+    }
+}
+
+/* WORLDS */
+
+.worlds{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.world{
+    height:220px;
+    border:1px solid #202638;
+    border-radius:24px;
+    padding:25px;
+    display:flex;
+    align-items:end;
+    position:relative;
+    overflow:hidden;
+    background:linear-gradient(145deg,#141a26,#08090d);
+    transition:.25s;
+}
+
+.world:hover{
+    transform:translateY(-6px);
+}
+
+.world::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        radial-gradient(
+            circle at 75% 20%,
+            #00eaff35,
+            transparent 35%
+        );
+}
+
+.world:nth-child(2)::before{
+    background:
+        radial-gradient(
+            circle at 75% 20%,
+            #7657ff45,
+            transparent 35%
+        );
+}
+
+.world:nth-child(3)::before{
+    background:
+        radial-gradient(
+            circle at 75% 20%,
+            #00ffaa35,
+            transparent 35%
+        );
+}
+
+.world-content{
+    position:relative;
+}
+
+.world h3{
+    font-size:25px;
+}
+
+.world p{
+    color:#8d96a8;
+    margin-top:5px;
+}
+
+/* DISCORD SECTION */
+
+.discord-section{
+    text-align:center;
+    padding:100px 20px;
+}
+
+.discord-box{
+    max-width:800px;
+    margin:auto;
+    padding:60px 40px;
+    border-radius:30px;
+    border:1px solid #5865F240;
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            #5865F220,
+            transparent 50%
+        ),
+        #ffffff05;
+}
+
+.discord-box h2{
+    font-size:clamp(35px,5vw,55px);
+    letter-spacing:-2px;
+    margin-bottom:15px;
+}
+
+.discord-box p{
+    color:#9ca3b4;
+    margin-bottom:30px;
+    font-size:17px;
+}
+
+/* CTA */
+
+.cta{
+    text-align:center;
+    padding:120px 20px;
+}
+
+.cta-box{
+    max-width:950px;
+    margin:auto;
+    padding:75px 25px;
+    border-radius:35px;
+    border:1px solid #00eaff30;
+    background:
+        radial-gradient(
+            circle at 50% 0,
+            #00eaff20,
+            transparent 55%
+        ),
+        #ffffff05;
+}
+
+.cta h2{
+    font-size:clamp(45px,7vw,80px);
+    letter-spacing:-4px;
+}
+
+.cta p{
+    color:#9ca3b4;
+    margin:20px 0 30px;
+}
+
+/* FOOTER */
+
+footer{
+    border-top:1px solid #ffffff0d;
+    padding:45px 24px;
+}
+
+.footer{
+    max-width:1150px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:25px;
+}
+
+.footer strong{
+    letter-spacing:4px;
+}
+
+.footer p{
+    color:#737d90;
+    font-size:13px;
+    margin-top:6px;
+}
+
+.footer-links{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.footer-links a{
+    color:#737d90;
+    font-size:13px;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+    nav{
+        display:none;
+    }
+
+    .stats,
+    .features,
+    .worlds{
+        grid-template-columns:1fr;
+    }
+
+    .footer{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    section{
+        padding:80px 18px;
+    }
+
+    h1{
+        letter-spacing:-5px;
+    }
+
+    .hero{
+        padding-top:120px;
+    }
+
+    .button{
+        width:100%;
+    }
+
+    .legal-content{
+        padding:30px 20px;
+    }
+}
+
+/* LEGAL PAGES */
+
+.legal-section{
+    padding:140px 24px 80px;
+}
+
+.legal-content{
+    max-width:800px;
+    margin:auto;
+    padding:50px;
+    border:1px solid #202638;
+    border-radius:24px;
+    background:linear-gradient(145deg,#ffffff0b,#ffffff03);
+}
+
+.legal-content h2{
+    font-size:32px;
+    margin:30px 0 15px;
+    color:#00eaff;
+}
+
+.legal-content h2:first-child{
+    margin-top:0;
+}
+
+.legal-content p,
+.legal-content li{
+    color:#9ca3b4;
+    line-height:1.8;
+    margin-bottom:12px;
+}
+
+.legal-content ul{
+    padding-left:20px;
+    margin-bottom:20px;
+}
+
+.legal-content a{
+    color:#00eaff;
+}
+
+.back-btn{
+    display:inline-block;
+    margin-top:30px;
+    color:#9ca3b4;
+    font-weight:800;
+    transition:.2s;
+}
+
+.back-btn:hover{
+    color:white;
+}
+
+/* EXTRA ANIMATIONS */
+
+@keyframes fadeInUp{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes glow{
+    0%,100%{
+        box-shadow:0 0 20px #00eaff30;
+    }
+    50%{
+        box-shadow:0 0 40px #00eaff60;
+    }
+}
+
+.card,
+.world,
+.stat{
+    animation:fadeInUp .6s ease-out backwards;
+}
+
+.card:nth-child(2),
+.world:nth-child(2),
+.stat:nth-child(2){
+    animation-delay:.1s;
+}
+
+.card:nth-child(3),
+.world:nth-child(3),
+.stat:nth-child(3){
+    animation-delay:.2s;
+}
+
+.card:nth-child(4){
+    animation-delay:.3s;
+}
+
+.card:nth-child(5){
+    animation-delay:.4s;
+}
+
+.card:nth-child(6){
+    animation-delay:.5s;
+}
+
+/* GLOW EFFECT FOR PRIMARY BUTTON */
+
+.primary{
+    animation:glow 3s ease-in-out infinite;
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-track{
+    background:#05060a;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#202638;
+    border-radius:5px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:#303648;
+}
+
+/* FOOTER IMPROVED */
+
+footer{
+    border-top:1px solid #ffffff0d;
+    padding:45px 24px;
+    background:linear-gradient(180deg,transparent,#ffffff03);
+}
+
+.footer-brand{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.footer-columns{
+    display:flex;
+    gap:50px;
+    flex-wrap:wrap;
+}
+
+.footer-col h4{
+    font-size:14px;
+    letter-spacing:2px;
+    color:#00eaff;
+    margin-bottom:15px;
+}
+
+.footer-col a{
+    display:block;
+    color:#737d90;
+    font-size:13px;
+    padding:5px 0;
+    transition:.2s;
+}
+
+.footer-col a:hover{
+    color:white;
+}
+
+.footer-bottom{
+    max-width:1150px;
+    margin:30px auto 0;
+    padding-top:25px;
+    border-top:1px solid #ffffff0d;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.footer-bottom span{
+    color:#737d90;
+    font-size:12px;
+}
+
+/* LEADERBOARD PREVIEW */
+
+.leaderboard-preview{
+    max-width:600px;
+    margin:40px auto 0;
+}
+
+.leaderboard-row{
+    display:flex;
+    align-items:center;
+    padding:14px 20px;
+    border:1px solid #ffffff0d;
+    border-radius:14px;
+    margin-bottom:10px;
+    background:#ffffff05;
+    transition:.2s;
+}
+
+.leaderboard-row:hover{
+    background:#ffffff0b;
+    border-color:#00eaff30;
+}
+
+.leaderboard-rank{
+    font-size:22px;
+    font-weight:1000;
+    width:45px;
+    color:#00eaff;
+}
+
+.leaderboard-rank.gold{color:#ffd447}
+.leaderboard-rank.silver{color:#c0c0c0}
+.leaderboard-rank.bronze{color:#cd7f32}
+
+.leaderboard-name{
+    flex:1;
+    font-weight:800;
+}
+
+.leaderboard-score{
+    color:#9ca3b4;
+    font-weight:800;
+}
+
+/* SEASONS */
+
+.season-card{
+    padding:35px;
+    border:1px solid #202638;
+    border-radius:24px;
+    background:linear-gradient(145deg,#ffffff0b,#ffffff03);
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+}
+
+.season-card::before{
+    content:"";
+    position:absolute;
+    top:-50%;
+    left:-50%;
+    width:200%;
+    height:200%;
+    background:conic-gradient(from 0deg,transparent,#00eaff15,transparent,#7657ff15,transparent);
+    animation:rotate 8s linear infinite;
+}
+
+@keyframes rotate{
+    to{transform:rotate(360deg)}
+}
+
+.season-content{
+    position:relative;
+    z-index:2;
+}
+
+.season-badge{
+    display:inline-block;
+    padding:6px 14px;
+    border-radius:50px;
+    background:#00eaff15;
+    color:#00eaff;
+    font-size:12px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:15px;
+}
+
+/* EVENT TAGS */
+
+.event-tag{
+    display:inline-block;
+    padding:4px 10px;
+    border-radius:8px;
+    font-size:11px;
+    font-weight:900;
+    letter-spacing:1px;
+    margin-left:8px;
+}
+
+.event-tag.live{
+    background:#ff3b3b20;
+    color:#ff3b3b;
+    animation:pulse-tag 1.5s infinite;
+}
+
+.event-tag.new{
+    background:#00ffaa15;
+    color:#00ffaa;
+}
+
+@keyframes pulse-tag{
+    0%,100%{opacity:1}
+    50%{opacity:.6}
+}
+
+/* SKIN SHOWCASE */
+
+.skin-showcase{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:15px;
+    margin-top:30px;
+}
+
+.skin-item{
+    padding:25px 15px;
+    border:1px solid #202638;
+    border-radius:18px;
+    background:#ffffff05;
+    text-align:center;
+    transition:.3s;
+    cursor:pointer;
+}
+
+.skin-item:hover{
+    transform:translateY(-6px) scale(1.03);
+    border-color:#00eaff50;
+    background:#ffffff0b;
+}
+
+.skin-item .skin-icon{
+    font-size:45px;
+    margin-bottom:10px;
+}
+
+.skin-item .skin-name{
+    font-size:13px;
+    font-weight:800;
+}
+
+.skin-item .skin-rarity{
+    font-size:10px;
+    letter-spacing:1px;
+    margin-top:5px;
+    padding:3px 8px;
+    border-radius:50px;
+    display:inline-block;
+}
+
+.skin-rarity.basic{background:#ffffff15;color:#9ca3b4}
+.skin-rarity.rare{background:#5ee7ff15;color:#5ee7ff}
+.skin-rarity.epic{background:#b58cff20;color:#b58cff}
+.skin-rarity.legendary{background:#ffd44720;color:#ffd447}
+
+/* HAMBURGER MENU */
+
+.hamburger{
+    display:none;
+    flex-direction:column;
+    gap:5px;
+    cursor:pointer;
+    padding:5px;
+}
+
+.hamburger span{
+    width:25px;
+    height:3px;
+    background:white;
+    border-radius:3px;
+    transition:.3s;
+}
+
+@media(max-width:800px){
+    .hamburger{
+        display:flex;
+    }
+
+    .footer-columns{
+        gap:30px;
+    }
+}
+
+/* MOBILE NAV */
+
+.mobile-nav{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background:#05060af5;
+    z-index:200;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:25px;
+}
+
+.mobile-nav.active{
+    display:flex;
+}
+
+.mobile-nav a{
+    font-size:22px;
+    font-weight:800;
+    color:#aeb6c6;
+    transition:.2s;
+}
+
+.mobile-nav a:hover{
+    color:white;
+}
+
+.mobile-nav .close-btn{
+    position:absolute;
+    top:20px;
+    right:25px;
+    font-size:30px;
+    cursor:pointer;
+}
+
+/* LEADERBOARD TABS */
+
+.seasonTab.active{
+    border-color:#00eaff50!important;
+    background:#00eaff15!important;
+    color:#00eaff!important;
+}
+
+.seasonTab:hover{
+    border-color:#ffffff30!important;
+}
+
+/* SEASON BADGE */
+
+#seasonBadgeWeb{
+    font-family:monospace;
+    letter-spacing:1px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="nav">
+
+<a href="#" class="logo">FLYYYY</a>
+
+<nav>
+<a href="#features">Features</a>
+<a href="#game">Game</a>
+<a href="#worlds">Welten</a>
+<a href="#leaderboard">Leaderboard</a>
+<a href="#about">Über FLYYYY</a>
+
+<a
+href="https://discord.gg/3NR5cXeDxr"
+target="_blank"
+rel="noopener noreferrer"
+class="discord-nav">
+💬 DISCORD
+</a>
+
+<a
+href="index.html"
+target="_blank"
+class="play-nav">
+🎮 JETZT SPIELEN
+</a>
+
+</nav>
+
+<div class="hamburger" onclick="toggleMobileNav()">
+<span></span>
+<span></span>
+<span></span>
+</div>
+
+</div>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+<a href="#features" onclick="toggleMobileNav()">Features</a>
+<a href="#game" onclick="toggleMobileNav()">Game</a>
+<a href="#worlds" onclick="toggleMobileNav()">Welten</a>
+<a href="#leaderboard" onclick="toggleMobileNav()">Leaderboard</a>
+<a href="#about" onclick="toggleMobileNav()">Über FLYYYY</a>
+<a href="https://discord.gg/3NR5cXeDxr" target="_blank" rel="noopener noreferrer">💬 Discord</a>
+<a href="index.html" target="_blank">🎮 Jetzt spielen</a>
+<span class="close-btn" onclick="toggleMobileNav()">✕</span>
+</div>
+
+
+<main>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<div class="badge">
+<span class="dot"></span>
+FLYYYY 4.0 — JETZT ONLINE
+</div>
+
+<h1>FLYYYY</h1>
+
+<h2>Fly. Dodge. Survive.</h2>
+
+<p>
+Fliege durch die Welt von FLYYYY, weiche Hindernissen aus,
+sammle Coins und kämpfe um die besten Scores. Entdecke
+<span style="color:#00eaff">10+ Welten</span>,
+<span style="color:#7657ff">50+ Skins</span> und
+<span style="color:#00ffaa">tägliche Events</span>.
+</p>
+
+<div class="buttons">
+
+<a
+href="index.html"
+target="_blank"
+class="button primary">
+🎮 JETZT SPIELEN
+</a>
+
+<a
+href="https://discord.gg/3NR5cXeDxr"
+target="_blank"
+rel="noopener noreferrer"
+class="button discord-btn">
+💬 FLYYYY DISCORD
+</a>
+
+</div>
+
+<div class="stats">
+
+<div class="stat">
+<strong>🏆</strong>
+<span>Leaderboard</span>
+</div>
+
+<div class="stat">
+<strong>🪙</strong>
+<span>Coins & Shop</span>
+</div>
+
+<div class="stat">
+<strong>⚡</strong>
+<span>Events & Seasons</span>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FEATURES -->
+
+<section id="features">
+
+<div class="container">
+
+<div class="section-title">
+
+<span>FEATURES</span>
+
+<h2>Deine Challenge.</h2>
+
+<p>
+Entdecke die wichtigsten Bereiche von FLYYYY.
+</p>
+
+</div>
+
+<div class="features">
+
+<div class="card">
+<div class="icon">🎮</div>
+<h3>Online spielen</h3>
+<p>
+FLYYYY direkt im Browser starten und sofort losfliegen. Kein Download nötig.
+</p>
+</div>
+
+<div class="card">
+<div class="icon">🏆</div>
+<h3>Leaderboard</h3>
+<p>
+Verbessere deinen Score und kämpfe um die besten Plätze im globalen Ranking.
+</p>
+</div>
+
+<div class="card">
+<div class="icon">🛒</div>
+<h3>Shop & Inventar</h3>
+<p>
+Entdecke Items, Skins und Fähigkeiten. Verwalte deine Sammlung.
+</p>
+</div>
+
+<div class="card">
+<div class="icon">🎯</div>
+<h3>Missionen</h3>
+<p>
+Erfülle tägliche und saisonale Herausforderungen für exklusive Rewards.
+</p>
+</div>
+
+<div class="card">
+<div class="icon">🎡</div>
+<h3>Lucky Wheel</h3>
+<p>
+Drehe das Glücksrad für Skins, Fähigkeiten und Coins.
+</p>
+</div>
+
+<div class="card">
+<div class="icon">⚡</div>
+<h3>Events & Seasons</h3>
+<p>
+Erlebe besondere Events und saisonale Inhalte mit einzigartigen Belohnungen.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- GAME -->
+
+<section id="game">
+
+<div class="container">
+
+<div class="section-title">
+
+<span>PLAY NOW</span>
+
+<h2>Bereit zu fliegen?</h2>
+
+<p>
+Starte FLYYYY direkt im Browser.
+</p>
+
+</div>
+
+<div class="preview">
+
+<div class="preview-content">
+
+<div class="bird">🐦</div>
+
+<h3>FLYYYY</h3>
+
+<p>
+Deine nächste Runde wartet.
+</p>
+
+<a
+href="index.html"
+target="_blank"
+class="button primary">
+🚀 SPIEL STARTEN
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- WORLDS -->
+
+<section id="worlds">
+
+<div class="container">
+
+<div class="section-title">
+
+<span>WORLDS</span>
+
+<h2>Entdecke die Welten.</h2>
+
+<p>
+Fliege durch verschiedene Umgebungen mit einzigartigen Hindernissen und Atmosphäre.
+</p>
+
+</div>
+
+<div class="worlds">
+
+<div class="world">
+<div class="world-content">
+<h3>🏜️ Gizeh</h3>
+<p>Der Start deiner Reise.</p>
+</div>
+</div>
+
+<div class="world">
+<div class="world-content">
+<h3>🏔️ Berge</h3>
+<p>Höher hinaus.</p>
+</div>
+</div>
+
+<div class="world">
+<div class="world-content">
+<h3>🌊 Unterwasser</h3>
+<p>Eine völlig andere Welt.</p>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- LEADERBOARD -->
+
+<section id="leaderboard">
+
+<div class="container">
+
+<div class="section-title">
+
+<span>LEADERBOARD</span>
+
+<h2>Die besten Spieler<span class="event-tag live">LIVE</span></h2>
+
+<p>
+Siege die Spitze und werde Teil der FLYYYY Hall of Fame.
+</p>
+
+</div>
+
+<div class="seasonTabs" style="display:flex;gap:10px;justify-content:center;margin-bottom:25px">
+<button id="seasonTabBtn" class="seasonTab active" style="padding:12px 24px;border-radius:12px;border:1px solid #00eaff50;background:#00eaff15;color:#00eaff;font-weight:900;cursor:pointer">🌐 Season</button>
+<button id="allTimeTabBtn" class="seasonTab" style="padding:12px 24px;border-radius:12px;border:1px solid #ffffff15;background:#ffffff09;color:#9ca3b4;font-weight:900;cursor:pointer">⭐ Allzeit</button>
+</div>
+
+<div style="text-align:center;margin-bottom:20px;color:#9ca3b4;font-size:14px" id="seasonTimerWeb">⏱️ Lade Season...</div>
+
+<div id="leaderboardStatusWeb" style="text-align:center;padding:20px;color:#9ca3b4">Lade Leaderboard...</div>
+
+<div class="leaderboard-preview" id="leaderboardListWeb"></div>
+
+<div style="text-align:center;margin-top:30px">
+<a href="index.html#leaderboard" target="_blank" class="button secondary">
+🏆 Vollständiges Leaderboard im Spiel
+</a>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- SEASONS -->
+
+<section id="seasons" style="background:#ffffff03">
+
+<div class="container">
+
+<div class="section-title">
+
+<span id="seasonTitleWeb">SEASON 1</span>
+
+<h2>Galaktischer Sturm</h2>
+
+<p>
+Die aktuelle Season bringt exklusive Belohnungen, neue Challenges und das Weltraum-Set.
+</p>
+
+</div>
+
+<div class="season-card">
+
+<div class="season-content">
+
+<div class="season-badge" id="seasonBadgeWeb">⏱️ LADE SEASON...</div>
+
+<h3 style="font-size:32px;margin:15px 0">Belohnungen der Season</h3>
+
+<p style="color:#9ca3b4;max-width:500px;margin:auto">
+Sammle Season-XP durch das Spielen und Missions. Schalte
+exklusive Skins, Trails, Coins und Lucky-Wheel-Coupons frei.
+</p>
+
+<div class="skin-showcase">
+
+<div class="skin-item">
+<div class="skin-icon">🚀</div>
+<div class="skin-name">Astro Pilot</div>
+<div class="skin-rarity legendary">LEGENDARY</div>
+</div>
+
+<div class="skin-item">
+<div class="skin-icon">🌌</div>
+<div class="skin-name">Galaxy Trail</div>
+<div class="skin-rarity epic">EPIC</div>
+</div>
+
+<div class="skin-item">
+<div class="skin-icon">⚡</div>
+<div class="skin-name">Plasma Burst</div>
+<div class="skin-rarity rare">RARE</div>
+</div>
+
+<div class="skin-item">
+<div class="skin-icon">🪙</div>
+<div class="skin-name">2500 Coins</div>
+<div class="skin-rarity basic">BASIC</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- DISCORD -->
+
+<section id="discord" class="discord-section">
+
+<div class="container">
+
+<div class="discord-box">
+
+<h2>Werde Teil der Community!</h2>
+
+<p>
+Trete dem offiziellen FLYYYY Discord bei, verabrede dich mit anderen Spielern,
+erhalte Neuigkeiten und nimm an Events teil.
+</p>
+
+<a
+href="https://discord.gg/3NR5cXeDxr"
+target="_blank"
+rel="noopener noreferrer"
+class="button discord-btn">
+💬 FLYYYY DISCORD
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+<div class="container">
+
+<div class="section-title">
+
+<span>ABOUT FLYYYY</span>
+
+<h2>Fly. Dodge. Survive.</h2>
+
+<p>
+FLYYY ist dein browserbasiertes Flying Game.
+Spiele deine Runde, verbessere deinen Score und
+kämpfe dich an die Spitze des Leaderboards.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CTA -->
+
+<section class="cta">
+
+<div class="cta-box">
+
+<h2>LET'S FLYYYY.</h2>
+
+<p>
+Starte jetzt deine nächste Runde.
+</p>
+
+<a
+href="index.html"
+target="_blank"
+class="button primary">
+🎮 FLYYYY SPIELEN
+</a>
+
+</div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+<div class="footer">
+
+<div class="footer-brand">
+
+<strong>FLYYYY</strong>
+
+<p>
+© 2026 FLYYYY. Alle Rechte vorbehalten.
+</p>
+
+</div>
+
+<div class="footer-columns">
+
+<div class="footer-col">
+
+<h4>GAME</h4>
+
+<a href="index.html" target="_blank">Jetzt spielen</a>
+<a href="#features">Features</a>
+<a href="#worlds">Welten</a>
+<a href="#leaderboard">Leaderboard</a>
+<a href="#seasons">Seasons</a>
+
+</div>
+
+<div class="footer-col">
+
+<h4>COMMUNITY</h4>
+
+<a href="https://discord.gg/3NR5cXeDxr" target="_blank" rel="noopener noreferrer">Discord</a>
+
+</div>
+
+<div class="footer-col">
+
+<h4>LEGAL</h4>
+
+<a href="#impressum" onclick="showLegal('impressum')">Impressum</a>
+<a href="#datenschutz" onclick="showLegal('datenschutz')">Datenschutz</a>
+<a href="#nutzungsbedingungen" onclick="showLegal('nutzungsbedingungen')">Nutzungsbedingungen</a>
+<a href="#kaufhinweise" onclick="showLegal('kaufhinweise')">Kaufhinweise</a>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="footer-bottom">
+
+<span>Made with ❤️ by FLYYYY</span>
+<span>Version 4.0 · 2026</span>
+
+</div>
+
+</footer>
+
+<!-- CONSENT BANNER (Vorbereitung für Google AdSense) -->
+<div id="consentBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#0a0c14;border-top:1px solid #ffffff15;padding:20px 24px;z-index:250;text-align:center">
+<p style="color:#9ca3b4;margin-bottom:15px;font-size:14px">
+Diese Website wird bald Google AdSense nutzen, um anzeigenbasierte Werbung einzublenden. Google verwendet Cookies zur Personalisierung von Anzeigen. Sie können der Nutzung zustimmen oder ablehnen.
+</p>
+<div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+<button onclick="handleConsent(true)" class="button primary" style="padding:12px 24px">Akzeptieren</button>
+<button onclick="handleConsent(false)" class="button secondary" style="padding:12px 24px">Ablehnen</button>
+<a href="#datenschutz" onclick="showLegal('datenschutz');document.getElementById('consentBanner').style.display='none'" style="color:#00eaff;font-size:14px;display:flex;align-items:center">Mehr erfahren</a>
+</div>
+</div>
+
+<!-- LEGAL MODAL -->
+
+<div id="legalModal" style="display:none;position:fixed;inset:0;background:#05060af5;z-index:300;align-items:center;justify-content:center;padding:20px;overflow-y:auto">
+
+<div class="legal-content" id="legalContent">
+
+<div id="legalText"></div>
+
+<a href="#" class="back-btn" onclick="closeLegal()">← Zurück zur Website</a>
+
+</div>
+
+</div>
+
+<script>
+function toggleMobileNav(){
+    document.getElementById('mobileNav').classList.toggle('active');
+}
+
+function showLegal(type){
+    const modal=document.getElementById('legalModal');
+    const text=document.getElementById('legalText');
+    let html='';
+
+    if(type==='impressum'){
+        html=`
+        <h2>Impressum</h2>
+        <p>Angaben gemäß § 5 TMG:</p>
+        <p><strong>Noel Bond</strong><br>
+        Goedelerstraße 47<br>
+        36100 Petersberg-Fulda<br>
+        Deutschland</p>
+        <h2>Kontakt</h2>
+        <p>E-Mail: <a href="mailto:noelbond75@gmail.com">noelbond75@gmail.com</a></p>
+        <h2>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
+        <p>Noel Bond<br>
+        Goedelerstraße 47<br>
+        36100 Petersberg-Fulda</p>
+        <h2>Online-Streitbeilegung</h2>
+        <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a></p>
+        <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+        <h2>Haftung für Inhalte</h2>
+        <p>Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
+        <h2>Haftung für Links</h2>
+        <p>Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.</p>
+        <h2>Urheberrecht</h2>
+        <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.</p>
+        `;
+    } else if(type==='datenschutz'){
+        html=`
+        <h2>Datenschutzerklärung</h2>
+        <p>Verantwortlicher im Sinne der Datenschutzgesetze ist:</p>
+        <p><strong>Noel Bond</strong><br>
+        Goedelerstraße 47<br>
+        36100 Petersberg-Fulda<br>
+        Deutschland<br>
+        E-Mail: <a href="mailto:noelbond75@gmail.com">noelbond75@gmail.com</a></p>
+
+        <h2>1. Allgemeine Informationen</h2>
+        <p>Der Schutz Ihrer persönlichen Daten ist uns wichtig. Wir verarbeiten personenbezogene Daten nur, soweit dies gesetzlich erlaubt ist oder Sie in die Datenerhebung einwilligen.</p>
+
+        <h2>2. Erhebung und Verarbeitung personenbezogener Daten</h2>
+        <p>Wir erheben und verwenden personenbezogene Daten nur, soweit dies für die Bereitstellung der Website und unseres Spiels erforderlich ist oder gesetzlich erlaubt ist.</p>
+
+        <h2>3. Welche Daten werden erhoben?</h2>
+        <ul>
+        <li><strong>Lokale Spielstände:</strong> Spielerfortschritt, Coins, freigeschaltete Skins und Einstellungen werden lokal im Browser (LocalStorage) gespeichert.</li>
+        <li><strong>Leaderboard-Einträge:</strong> Wenn Sie angemeldet sind, werden Ihr Spielername, Score und Siege auf unseren Firebase-Servern gespeichert.</li>
+        <li><strong>Kontodaten:</strong> Bei Registrierung werden E-Mail-Adresse, Passwort-Hash und Spielername gespeichert (über Firebase Authentication).</li>
+        <li><strong>Server-Logs:</strong> Beim Besuch der werden IP-Adresse, Zugriffszeitpunkt, Browser-Typ und Referrer-URL protokolliert.</li>
+        </ul>
+
+        <h2>4. Firebase (Google)</h2>
+        <p>Wir nutzen Firebase von Google Ireland Limited für:</p>
+        <ul>
+        <li><strong>Firebase Realtime Database</strong> — Speicherung von Leaderboard-Daten und Spielerfortschritt</li>
+        <li><strong>Firebase Authentication</strong> — Benutzerkonten und Anmeldung</li>
+        </ul>
+        <p>Google verarbeitet Daten in den USA. Die Datenschutzbestimmungen von Google finden Sie unter: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">https://policies.google.com/privacy</a></p>
+
+        <h2>5. Hosting (GitHub Pages)</h2>
+        <p>Diese Website wird gehostet bei GitHub Inc. (USA). GitHub kann technische Daten wie IP-Adressen und Zugriffszeiten verarbeiten. Datenschutzerklärung: <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">GitHub Privacy Statement</a></p>
+
+        <h2>6. Cookies und LocalStorage</h2>
+        <p>Wir verwenden:</p>
+        <ul>
+        <li><strong>Technisch notwendige Storage:</strong> LocalStorage für Einstellungen und Spielstände</li>
+        <li><strong>Keine Tracking-Cookies</strong> derzeit</li>
+        </ul>
+        <p>Sie können die Speicherung im Browser jederzeit löschen. Bitte beachten Sie, dass gelöschte Spielstände nicht wiederherstellbar sind.</p>
+
+        <h2>7. Werbung / Google AdSense</h2>
+        <p>Diese Website wird bald Google AdSense nutzen, um anzeigenbasierte Werbung einzublenden. Google AdSense verwendet Cookies zur Anzeigenpersonalisierung.</p>
+        <p><strong>Bereitschaftshinweis:</strong> Wir bereiten derzeit einen Consent-Mechanismus vor, der vor Aktivierung von Google AdSense eingeführt wird. Sie werden dann die Möglichkeit haben, der Datennutzung für personalisierte Werbung zuzustimmen oder diese abzulehnen.</p>
+        <p>Datenschutzerklärung von Google: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">https://policies.google.com/privacy</a><br>
+        Google Ads-Datenschutzhinweise: <a href="https://www.google.com/policies/technologies/ads/" target="_blank" rel="noopener noreferrer">https://www.google.com/policies/technologies/ads/</a></p>
+
+        <h2>8. Externe Links und Dienste</h2>
+        <p>Wir verlinken auf folgende externe Dienste:</p>
+        <ul>
+        <li><strong>Discord</strong> — Community-Plattform (<a href="https://discord.gg/3NR5cXeDxr" target="_blank" rel="noopener noreferrer">https://discord.gg/3NR5cXeDxr</a>)</li>
+        </ul>
+        <p>Wir sind nicht für die Datenschutzpraktiken externer Dienste verantwortlich.</p>
+
+        <h2>9. Leaderboard und öffentliche Spielerdaten</h2>
+        <p>Wenn Sie ein Konto erstellen und am Leaderboard teilnehmen, sind Ihr Spielername und Ihre Scores öffentlich einsehbar. Die Teilnahme ist freiwillig.</p>
+
+        <h2>10. Speicherdauer</h2>
+        <ul>
+        <li><strong>Lokale Spielstände:</strong> Bis zur manuellen Löschung im Browser</li>
+        <li><strong>Kontodaten:</strong> Bis zur Löschung des Kontos</li>
+        <li><strong>Leaderboard-Einträge:</strong> Bis zur Löschung des Kontos oder der Saison</li>
+        <li><strong>Server-Logs:</strong> Maximal 30 Tage</li>
+        </ul>
+
+        <h2>11. Ihre Rechte nach DSGVO</h2>
+        <ul>
+        <li>Recht auf Auskunft (Art. 15 DSGVO)</li>
+        <li>Recht auf Berichtigung (Art. 16 DSGVO)</li>
+        <li>Recht auf Löschung (Art. 17 DSGVO)</li>
+        <li>Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
+        <li>Recht auf Datenübertragbarkeit (Art. 20 DSGVO)</li>
+        <li>Widerspruchsrecht (Art. 21 DSGVO)</li>
+        <li>Recht auf Beschwerde bei einer Aufsichtsbehörde (Art. 77 DSGVO)</li>
+        </ul>
+        <p>Um Ihre Reauszuüben, kontaktieren Sie uns bitte unter: <a href="mailto:noelbond75@gmail.com">noelbond75@gmail.com</a></p>
+
+        <h2>12. Jugendschutz</h2>
+        <p>Das Spiel und die Website richten sich an Altersgruppen. Minderjährige sollten die Einwilligung ihrer Eltern oder Erziehungsberechtigten einholen, bevor sie ein Konto erstellen. Wir erheben wissentlich keine personenbezogenen Daten von Kindern unter 16 Jahren ohne elterliche Einwilligung.</p>
+
+        <h2>13. Änderungen der Datenschutzerklärung</h2>
+        <p>Wir behalten uns vor, diese Datenschutzerklärung bei Änderungen unserer Dienste oder gesetzlicher Anforderungen anzupassen. Die aktuelle Version ist auf dieser Website verfügbar.</p>
+
+        <h2>14. Kontakt</h2>
+        <p>Bei Fragen zum Datenschutz:<br>
+        <strong>Noel Bond</strong><br>
+        E-Mail: <a href="mailto:noelbond75@gmail.com">noelbond75@gmail.com</a></p>
+        `;
+    } else if(type==='nutzungsbedingungen'){
+        html=`
+        <h2>Nutzungsbedingungen</h2>
+        <p>Mit der Nutzung von FLYYYY erklären Sie sich mit diesen Nutzungsbedingungen einverstanden.</p>
+
+        <h2>1. Geltungsbereich</h2>
+        <p>Diese Bedingungen gelten für die Nutzung der Website und des Spiels FLYYYY, betrieben von Noel Bond.</p>
+
+        <h2>2. Nutzungsrechte</h2>
+        <p>FLYYYY wird Ihnen für die private, nicht-kommerzielle Nutzung zur Verfügung gestellt. Sie erhalten ein einfaches, nicht übertragbares Recht, das Spiel gemäß diesen Bedingungen zu nutzen.</p>
+
+        <h2>3. Altersvorschriften</h2>
+        <p>Die Nutzung des Spiels ist für alle Altersgruppen geeignet. Für die Erstellung eines Kontos gelten die gesetzlichen Altersvorschriften. Minderjährige benötigen die Einwilligung ihrer Eltern oder Erziehungsberechtigten.</p>
+
+        <h2>4. Verbotene Handlungen</h2>
+        <ul>
+        <li>Manipulation des Spiels oder der Server</li>
+        <li>Verwendung von Cheats, Hacks, Bots oder Automation</li>
+        <li>Erstellung mehrerer Konten zum Vorteil</li>
+        <li>Verstoß gegen geltende Gesetze</li>
+        <li>Belästigung oder Beleidigung anderer Spieler</li>
+        <li>Verbreitung illegaler Inhalte über Leaderboard-Namen</li>
+        </ul>
+
+        <h2>5. Konten und Anmeldung</h2>
+        <p>Sie sind für die Sicherheit Ihres Kontos verantwortlich. Bitte wählen Sie ein sicheres Passwort und geben Sie Ihre Zugangsdaten nicht an Dritte weiter.</p>
+
+        <h2>6. Inhalte und Urheberrecht</h2>
+        <p>Alle Inhalte von FLYYYY (Grafiken, Sounds, Code, Design) sind urheberrechtlich geschützt. Eine Vervielfältigung, Verbreitung oder Bearbeitung ist nicht gestattet.</p>
+
+        <h2>7. Leaderboard</h2>
+        <p>Die Teilnahme am Leaderboard ist freiwillig. Ihr Spielername und Ihre Scores werden öffentlich angezeigt. Wir behalten uns vor, unangemessene Spielernamen zu entfernen.</p>
+
+        <h2>8. Haftung</h2>
+        <p>FLYYY wird "wie besehen" bereitgestellt. Wir übernehmen keine Haftung für:</p>
+        <ul>
+        <li>Verlust von Spielständen</li>
+        <li>Unterbrechung des Dienstes</li>
+        <li>Schäden durch die Nutzung</li>
+        <li>Inhalte externer Links</li>
+        </ul>
+
+        <h2>9. Änderungen</h2>
+        <p>Wir behalten uns vor, diese Bedingungen jederzeit zu ändern. Die fortgesetzte Nutzung gilt als Zustimmung. Bei wichtigen Änderungen werden wir Sie informieren.</p>
+
+        <h2>10. Kündigung</h2>
+        <p>Wir behalten uns vor, bei Verstößen gegen diese Nutzungsbedingungen Konten zu sperren oder zu löschen.</p>
+
+        <h2>11. Anwendbares Recht</h2>
+        <p>Es gilt deutsches Recht. Gerichtsstand ist soweit gesetzlich zulässig Fulda.</p>
+
+        <h2>12. Kontakt</h2>
+        <p>Bei Fragen: <a href="mailto:noelbond75@gmail.com">noelbond75@gmail.com</a></p>
+        `;
+    } else if(type==='kaufhinweise'){
+        html=`
+        <h2>Kaufhinweise</h2>
+
+        <h2>1. Art des Shops</h2>
+        <p>Der FLYYYY-Shop bietet ausschließlich <strong>virtuelle In-Game-Gegenstände</strong>, die mit <strong>In-Game-Coins</strong> erworben werden.</p>
+        <p><strong>Es werden keine Echtgeldkäufe angeboten.</strong></p>
+
+        <h2>2. In-Game-Coins</h2>
+        <ul>
+        <li>In-Game-Coins können durch Spielen, Missions und Lucky Wheel verdient werden</li>
+        <li>In-Game-Coins haben keinen realen Geldwert</li>
+        <li>In-Game-Coins sind nicht übertragbar und nicht auszahlbar</li>
+        </ul>
+
+        <h2>3. Virtuelle Gegenstände</h2>
+        <ul>
+        <li>Skins (Erscheinungsbild des Spielers)</li>
+        <li>Welten (Spielumgebungen)</li>
+        <li>Sounds und Musik</li>
+        <li>Trails (Spur-Effekte)</li>
+        <li>Lucky-Wheel-Dreh-Coupons</li>
+        </ul>
+
+        <h2>4. Keine Echtgeld-Zahlung</h2>
+        <p>Derzeit ist keine Echtgeldzahlung möglich. Falls in Zukunft Echtgeldkäufe eingeführt werden, werden diese Nutzungsbedingungen entsprechend aktualisiert und Sie werden informiert.</p>
+
+        <h2>5. Kein Widerrufsrecht bei virtuellen Inhalten</h2>
+        <p>Da derzeit keine Echtgeldkäufe angeboten werden, ist kein Widerrufsrecht erforderlich. Falls Echtgeldkäufe eingeführt werden, werden Sie über Ihr Widerrufsrecht informiert.</p>
+
+        <h2>6. Verfügbarkeit</h2>
+        <p>Alle virtuellen Gegenstände sind solange verfügbar, wie FLYYYY betrieben wird. Wir garantieren keine unbegrenzte Verfügbarkeit.</p>
+
+        <h2>7. Kontakt</h2>
+        <p>Bei Fragen zum Shop: <a href="mailto:noelbond75@gmail.com">noelbond75@gmail.com</a></p>
+        `;
+    }
+
+    text.innerHTML=html;
+    modal.style.display='flex';
+    document.body.style.overflow='hidden';
+}
+
+function closeLegal(){
+    document.getElementById('legalModal').style.display='none';
+    document.body.style.overflow='';
+}
+
+document.getElementById('legalModal').addEventListener('click',function(e){
+    if(e.target===this) closeLegal();
+});
+
+// ===== CONSENT MANAGEMENT (Vorbereitung für AdSense) =====
+
+function handleConsent(accepted){
+    localStorage.setItem('flyyyy_consent', accepted ? 'accepted' : 'rejected');
+    document.getElementById('consentBanner').style.display='none';
+    // Hier wird später Google AdSense Consent-Signal übergeben
+}
+
+function checkConsent(){
+    const consent=localStorage.getItem('flyyyy_consent');
+    if(!consent){
+        // Banner anzeigen - aktiviert wenn AdSense live geht
+        // document.getElementById('consentBanner').style.display='block';
+    }
+}
+
+// Consent beim Laden prüfen
+if(document.readyState==="loading"){
+    document.addEventListener('DOMContentLoaded',checkConsent);
+}else{
+    checkConsent();
+}
+
+// ===== FIREBASE LEADERBOARD INTEGRATION =====
+
+const firebaseConfig={
+    apiKey:"AIzaSyA0ppKuSgxKKgHEMkX9kUlVhm8pjkVxgXk",
+    authDomain:"flyyyy.firebaseapp.com",
+    databaseURL:"https://flyyyy-default-rtdb.firebaseio.com",
+    projectId:"flyyyy",
+    storageBucket:"flyyyy.firebasestorage.app",
+    messagingSenderId:"872479897522",
+    appId:"1:872479897522:web:3c87b8afdebfc66d01d6ab",
+    measurementId:"G-S8YE4S6L8L"
+};
+
+const SEASON_LENGTH_MS=7*24*60*60*1000;
+const SEASON_RELEASE_MS=Date.parse("2026-08-21T23:03:58+02:00");
+
+let currentSeasonInfo={id:2,startsAt:SEASON_RELEASE_MS,endsAt:SEASON_RELEASE_MS+SEASON_LENGTH_MS};
+let currentLeaderboardMode="season";
+let allTimeData=[];
+let seasonData=[];
+
+function safeName(n){
+    return String(n||"").replace(/[<>]/g,"").replace(/\s+/g," ").trim().slice(0,20);
+}
+
+function formatSeasonTime(ms){
+    const safe=Math.max(0,Number(ms)||0);
+    const total=Math.floor(safe/1000);
+    const d=Math.floor(total/86400);
+    const h=Math.floor((total%86400)/3600);
+    const m=Math.floor((total%3600)/60);
+    const s=total%60;
+    return `${d}T ${String(h).padStart(2,"0")}Std ${String(m).padStart(2,"0")}Min ${String(s).padStart(2,"0")}Sek`;
+}
+
+function updateSeasonTimer(){
+    const left=Math.max(0,Number(currentSeasonInfo.endsAt||0)-Date.now());
+    const txt=formatSeasonTime(left);
+    document.getElementById('seasonTimerWeb').textContent=`⏱️ Season ${currentSeasonInfo.id} endet in: ${txt}`;
+}
+
+function renderLeaderboardRows(data){
+    const list=document.getElementById('leaderboardListWeb');
+    const status=document.getElementById('leaderboardStatusWeb');
+    list.innerHTML="";
+
+    if(!data||!data.length){
+        status.textContent="Noch keine Spieler vorhanden.";
+        status.style.display="block";
+        return;
+    }
+
+    status.style.display="none";
+
+    const limited=data.slice(0,50);
+
+    limited.forEach((p,i)=>{
+        const row=document.createElement('div');
+        row.className='leaderboard-row';
+
+        const rank=document.createElement('div');
+        rank.className='leaderboard-rank';
+        if(i===0){rank.classList.add('gold');rank.textContent="🥇"}
+        else if(i===1){rank.classList.add('silver');rank.textContent="🥈"}
+        else if(i===2){rank.classList.add('bronze');rank.textContent="🥉"}
+        else{rank.textContent="#"+(i+1)}
+
+        const name=document.createElement('div');
+        name.className='leaderboard-name';
+        name.textContent=p.name;
+
+        const score=document.createElement('div');
+        score.className='leaderboard-score';
+        score.textContent="⭐ "+(p.score||0).toLocaleString("de-DE");
+
+        row.append(rank,name,score);
+        list.appendChild(row);
+    });
+}
+
+function switchMode(mode){
+    currentLeaderboardMode=mode;
+    document.getElementById('seasonTabBtn').classList.toggle('active',mode==="season");
+    document.getElementById('allTimeTabBtn').classList.toggle('active',mode==="alltime");
+
+    if(mode==="season"){
+        renderLeaderboardRows(seasonData);
+    }else{
+        renderLeaderboardRows(allTimeData);
+    }
+}
+
+async function loadFirebaseAndLeaderboard(){
+    try{
+        const appMod=(await import("https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js"));
+        const dbMod=(await import("https://www.gstatic.com/firebasejs/12.16.0/firebase-database.js"));
+
+        const app=appMod.getApps().length?appMod.getApp():appMod.initializeApp(firebaseConfig);
+        const db=dbMod.getDatabase(app);
+        const d=dbMod;
+
+        // Load season info
+        try{
+            const seasonSnap=await d.get(d.ref(db,"season/current"));
+            if(seasonSnap.exists()){
+                const cur=seasonSnap.val()||{};
+                currentSeasonInfo={
+                    id:Number(cur.id||2),
+                    startsAt:Number(cur.startsAt||SEASON_RELEASE_MS),
+                    endsAt:Number(cur.endsAt||SEASON_RELEASE_MS+SEASON_LENGTH_MS)
+                };
+            }
+        }catch(e){console.error("season load error",e)}
+
+// Update season timer
+updateSeasonTimer();
+setInterval(updateSeasonTimer,1000);
+
+// Update season section UI
+const seasonBadge=document.getElementById('seasonBadgeWeb');
+const seasonTitleEl=document.getElementById('seasonTitleWeb');
+if(seasonBadge&&currentSeasonInfo){
+    const left=Math.max(0,Number(currentSeasonInfo.endsAt||0)-Date.now());
+    const txt=formatSeasonTime(left);
+    seasonBadge.textContent=`⏱️ NOCH ${txt}`;
+}
+if(seasonTitleEl){
+    seasonTitleEl.textContent=`SEASON ${currentSeasonInfo.id||1}`;
+}
+
+// Load leaderboard data
+        const lbRef=d.ref(db,"leaderboard");
+        const lbSnap=await d.get(lbRef);
+        const raw=lbSnap.val()||{};
+
+        const seasonId=Number(currentSeasonInfo.id||2);
+
+        // All-Time data: filter by update19ResetDone===true
+        allTimeData=Object.entries(raw)
+            .filter(([uid,v])=>v&&v.update19ResetDone===true)
+            .map(([uid,v])=>({
+                name:safeName(v.name||"Spieler"),
+                score:Number(v.score||0),
+                wins:Number(v.wins||0)
+            }))
+            .sort((a,b)=>b.score-a.score||b.wins-a.wins||a.name.localeCompare(b.name));
+
+        // Season data: get from seasonScores
+        seasonData=Object.entries(raw)
+            .map(([uid,v])=>{
+                const season=v?.seasonScores?.[seasonId];
+                if(!season)return null;
+                const updatedAt=Number(season.updatedAt||0);
+                const startsAt=Number(currentSeasonInfo.startsAt||0);
+                return {
+                    name:safeName(season.name||v?.name||"Spieler"),
+                    score:updatedAt>=startsAt?Number(season.score||0):0
+                };
+            })
+            .filter(Boolean)
+            .sort((a,b)=>b.score-a.score||a.name.localeCompare(b.name));
+
+        // Render initial mode
+        if(currentLeaderboardMode==="season"){
+            renderLeaderboardRows(seasonData);
+        }else{
+            renderLeaderboardRows(allTimeData);
+        }
+
+    }catch(e){
+        console.error("Firebase error",e);
+        document.getElementById('leaderboardStatusWeb').textContent="🔴 Leaderboard konnte nicht geladen werden. Bitte später erneut versuchen.";
+    }
+}
+
+document.getElementById('seasonTabBtn').addEventListener('click',()=>switchMode('season'));
+document.getElementById('allTimeTabBtn').addEventListener('click',()=>switchMode('alltime'));
+
+// Start loading when page is ready
+if(document.readyState==="loading"){
+    document.addEventListener('DOMContentLoaded',loadFirebaseAndLeaderboard);
+}else{
+    loadFirebaseAndLeaderboard();
+}
+</script>
+
+</body>
+</html>
