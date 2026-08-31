@@ -399,9 +399,6 @@ html,body{background:#070b18!important;color:#fff!important}
 .progressPanel{margin:14px 0;padding:16px;border-radius:20px;background:linear-gradient(135deg,rgba(255,212,71,.10),rgba(94,231,255,.08));border:1px solid rgba(255,255,255,.12)}
 .progressTop{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}.progressLevel{font-size:20px;font-weight:1000}.xpBar{height:10px;border-radius:999px;background:rgba(255,255,255,.09);overflow:hidden;margin:10px 0}.xpFill{height:100%;width:0%;background:linear-gradient(90deg,#ffd447,#5ee7ff,#b76cff);transition:width .25s ease}.progressGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.progressCard{padding:12px;border-radius:15px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.08)}.modeRow{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:end}.modeSelect{width:100%;min-height:48px;border-radius:14px;border:1px solid rgba(255,255,255,.15);background:#111a3b;color:#fff;padding:10px;font-weight:900}.dailyBtn.claimed{opacity:.6}.dailyStreak{color:#ffd447;font-weight:1000}@media(max-width:650px){.progressGrid,.modeRow{grid-template-columns:1fr}}
 </style></style>
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6975397479223316"
-     crossorigin="anonymous"></script>
 <style id="flyyyy-ability-ad-ui">
 .adDashCard{border-color:rgba(94,231,255,.35)!important;box-shadow:0 0 28px rgba(94,231,255,.12)!important}.adEarnCard{border-color:rgba(255,212,71,.45)!important;box-shadow:0 0 30px rgba(255,212,71,.12)!important}.adEarnCard .price{color:#ffd447!important}
 #adDashOverlay{position:fixed;inset:0;z-index:35;pointer-events:none;display:none;overflow:hidden}
@@ -414,6 +411,41 @@ html,body{background:#070b18!important;color:#fff!important}
 .adReviveHint{font-size:12px;color:var(--muted);margin-top:6px}
 @media(max-width:600px){.adReviveBox{padding:12px}}
 </style>
+
+<style id="flyyyy-adsense-content-style">
+  /* ===== FLYYYY CONTENT / ADSENSE REVIEW PAGE ===== */
+  #flyyyyContentScreen .menu{padding:28px}
+  #flyyyyContentScreen .contentHero{padding:22px;border-radius:22px;background:linear-gradient(135deg,rgba(94,231,255,.10),rgba(183,108,255,.10));border:1px solid rgba(255,255,255,.13);margin-bottom:18px}
+  #flyyyyContentScreen .contentHero h1{margin:0 0 10px;font-size:clamp(30px,5vw,48px)}
+  #flyyyyContentScreen .contentHero p{margin:0;color:var(--muted);line-height:1.7;font-size:16px}
+  #flyyyyContentScreen .contentGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+  #flyyyyContentScreen .contentCard{padding:18px;border-radius:18px;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.035));border:1px solid rgba(255,255,255,.12)}
+  #flyyyyContentScreen .contentCard h2{margin:0 0 9px;font-size:20px}
+  #flyyyyContentScreen .contentCard p,#flyyyyContentScreen .contentCard li{color:var(--muted);line-height:1.65;font-size:14px}
+  #flyyyyContentScreen .contentCard ul{padding-left:20px;margin-bottom:0}
+  #flyyyyContentScreen .contentWide{grid-column:1/-1}
+  #flyyyyContentScreen .contentNav{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px}
+  #flyyyyContentScreen .contentNav button{border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:#fff;border-radius:999px;padding:9px 13px;font-weight:900}
+  #flyyyyContentScreen .contentAdArea{margin:18px 0;padding:14px;border-radius:18px;background:rgba(255,255,255,.035);border:1px dashed rgba(255,255,255,.16);text-align:center}
+  #flyyyyContentScreen .contentAdLabel{font-size:11px;color:rgba(201,195,223,.6);margin-bottom:8px}
+  #flyyyyContentScreen .contentAdArea .adsbygoogle{display:block;min-height:90px}
+  #flyyyyContentScreen .contentFooterNote{margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.08);color:rgba(201,195,223,.65);font-size:12px;line-height:1.6}
+  @media(max-width:700px){
+    #flyyyyContentScreen .menu{padding:16px}
+    #flyyyyContentScreen .contentGrid{grid-template-columns:1fr}
+    #flyyyyContentScreen .contentWide{grid-column:auto}
+    #flyyyyContentScreen .contentHero p{font-size:14px}
+  }
+</style>
+
+
+<style id="flyyyy-ad-placement-guard">
+  /* Google ads must be associated with publisher content, not game controls/navigation. */
+  #gameHud .adsbygoogle,#pauseOverlay .adsbygoogle,#gameOverOverlay .adsbygoogle,
+  #authScreen .adsbygoogle,#shop .adsbygoogle,#inventory .adsbygoogle,#settings .adsbygoogle,
+  #leaderboard .adsbygoogle,#missions .adsbygoogle,#adminOverlay .adsbygoogle{display:none!important}
+</style>
+
 </head>
 <body>
 <div id="globalBroadcastOverlay" class="broadcastOverlay" aria-live="polite"><div class="broadcastHeader"><span>📢 GLOBAL BROADCAST</span><span id="globalBroadcastTime"></span></div><div id="globalBroadcastText" class="broadcastBody"></div><div id="globalBroadcastSender" class="broadcastSender"></div></div>
@@ -427,7 +459,143 @@ html,body{background:#070b18!important;color:#fff!important}
 <div class="xpBar"><div id="playerXpFill" class="xpFill"></div></div>
 <div class="progressGrid">
 <div class="progressCard"><div class="tiny">🎁 Tagesbelohnung</div><div class="dailyStreak">🔥 Tag <span id="dailyStreak">1</span></div><button id="dailyRewardBtn" class="btn green dailyBtn" style="width:100%;margin-top:8px">🎁 ABHOLEN</button></div>
-</div></div><div class="seasonPanel"><div class="seasonTop"><div class="seasonTitle">🌐 SEASON <span id="seasonNumberLobby">1</span></div><div class="seasonTimer" id="seasonTimerLobby">⏱️ Lädt...</div></div><div class="seasonSub">7-Tage-Season</div><div class="tiny">🥇 1.000 Coins · 🥈 500 Coins · 🥉 300 Coins · Platz 4–10: 100 · Platz 11–25: 50</div></div><div class="button-grid"><button id="startBtn" class="btn">START</button><button id="onlineStartBtn" class="btn blue">🌐 ONLINE-SEASON SPIELEN</button><button id="leaderboardBtn" class="btn blue">🏆 LEADERBOARD</button><button id="shopBtn" class="btn blue">🛒 SHOP <span id="shopLobbyNewBadge" class="newBadge">NEU</span></button><button id="inventoryBtn" class="btn blue">🎒 INVENTAR</button><button id="missionsBtn" class="btn blue">🎯 MISSIONEN</button><button id="settingsBtn" class="btn dark">⚙️ EINSTELLUNGEN</button><button id="websiteBtn" class="btn blue">💬 DISCORD</button></div><div class="notice">✅ Season-Punkte sind getrennt vom Allzeit-Highscore. Nur die aktuelle Season entscheidet über die Season-Belohnung.</div><div class="tiny" style="margin-top:8px;text-align:center;opacity:.82">🌐 Online-Modus: Season-Score wird über Firebase gespeichert. Anmeldung erforderlich.</div></div></div>
+</div></div><div class="seasonPanel"><div class="seasonTop"><div class="seasonTitle">🌐 SEASON <span id="seasonNumberLobby">1</span></div><div class="seasonTimer" id="seasonTimerLobby">⏱️ Lädt...</div></div><div class="seasonSub">7-Tage-Season</div><div class="tiny">🥇 1.000 Coins · 🥈 500 Coins · 🥉 300 Coins · Platz 4–10: 100 · Platz 11–25: 50</div></div><div class="button-grid"><button id="startBtn" class="btn">START</button><button id="onlineStartBtn" class="btn blue">🌐 ONLINE-SEASON SPIELEN</button><button id="leaderboardBtn" class="btn blue">🏆 LEADERBOARD</button><button id="shopBtn" class="btn blue">🛒 SHOP <span id="shopLobbyNewBadge" class="newBadge">NEU</span></button><button id="inventoryBtn" class="btn blue">🎒 INVENTAR</button><button id="missionsBtn" class="btn blue">🎯 MISSIONEN</button><button id="settingsBtn" class="btn dark">⚙️ EINSTELLUNGEN</button><button id="flyyyyContentBtn" class="btn dark">📚 ÜBER FLYYYY</button></div><div class="notice">✅ Season-Punkte sind getrennt vom Allzeit-Highscore. Nur die aktuelle Season entscheidet über die Season-Belohnung.</div><div class="tiny" style="margin-top:8px;text-align:center;opacity:.82">🌐 Online-Modus: Season-Score wird über Firebase gespeichert. Anmeldung erforderlich.</div></div></div>
+
+
+<div id="flyyyyContentScreen" class="screen">
+  <div class="menu">
+    <div class="topbar">
+      <div><h2>📚 Über FLYYYY</h2><div class="tiny">Spiel, Welten, Funktionen und aktuelle Informationen</div></div>
+      <button id="flyyyyContentBack" class="btn dark">← Zurück</button>
+    </div>
+
+    <div class="contentHero">
+      <h1>FLYYYY – Das kostenlose Online-Arcade-Spiel</h1>
+      <p>
+        FLYYYY ist ein browserbasiertes Arcade-Spiel, bei dem du durch verschiedene Welten fliegst,
+        Hindernissen ausweichst, Punkte und Coins sammelst und deinen persönlichen Rekord verbesserst.
+        Je nach Spielmodus kannst du entspannt spielen, einen Speedrun versuchen oder dich in Seasons
+        mit anderen Spielern messen.
+      </p>
+    </div>
+
+    <div class="contentNav">
+      <button type="button" data-content-anchor="how">🎮 So funktioniert es</button>
+      <button type="button" data-content-anchor="worlds">🌍 Welten</button>
+      <button type="button" data-content-anchor="modes">⚡ Modi</button>
+      <button type="button" data-content-anchor="progress">🏆 Fortschritt</button>
+      <button type="button" data-content-anchor="faq">❓ FAQ</button>
+    </div>
+
+    <div class="contentGrid">
+      <section id="content-how" class="contentCard">
+        <h2>🎮 So funktioniert FLYYYY</h2>
+        <p>
+          Dein Ziel ist es, möglichst lange zu fliegen und Hindernissen auszuweichen. Jeder erfolgreiche
+          Abschnitt bringt Fortschritt. Während eines Laufs kannst du Coins sammeln, Combos aufbauen
+          und deinen Highscore erhöhen.
+        </p>
+        <p>
+          Auf dem Computer kannst du mit Klick oder Leertaste fliegen. Auf Mobilgeräten funktioniert
+          die Steuerung über Tippen. Die genaue Steuerung wird zusätzlich direkt im Spiel angezeigt.
+        </p>
+      </section>
+
+      <section id="content-worlds" class="contentCard">
+        <h2>🌍 Die FLYYYY-Welten</h2>
+        <p>FLYYYY bietet unterschiedliche Umgebungen, die das Spiel optisch verändern und für Abwechslung sorgen.</p>
+        <ul>
+          <li>🏜️ Gizeh – die Startwelt</li>
+          <li>⛰️ Berge – eine höher gelegene Landschaft</li>
+          <li>🌊 Unterwasser – eine besondere Unterwasser-Umgebung</li>
+          <li>🌴 Dschungel – eine grüne und abwechslungsreiche Welt</li>
+          <li>🚀 Weltraum – eine futuristische Umgebung</li>
+          <li>❄️ Eiswelt – eine winterliche Spielumgebung</li>
+        </ul>
+      </section>
+
+      <section id="content-modes" class="contentCard">
+        <h2>⚡ Spielmodi</h2>
+        <p>
+          Neben dem klassischen Spiel stehen weitere Modi zur Verfügung. Im Speedrun-Modus geht es
+          darum, besonders schnell Fortschritt zu erzielen. Der Hardcore-Modus richtet sich an Spieler,
+          die eine anspruchsvollere Herausforderung suchen.
+        </p>
+      </section>
+
+      <section id="content-progress" class="contentCard">
+        <h2>🏆 Rangliste, Seasons & Fortschritt</h2>
+        <p>
+          FLYYYY verbindet persönliche Rekorde mit einem Season-System. Season-Punkte werden getrennt
+          vom Allzeit-Highscore betrachtet. Zusätzlich gibt es XP und Level, Missionen, Tagesbelohnungen
+          sowie verschiedene Spielgegenstände.
+        </p>
+        <p>
+          Im Online-Modus können Season-Daten über Firebase gespeichert werden. Für die Nutzung
+          bestimmter Online-Funktionen ist ein FLYYYY-Konto erforderlich.
+        </p>
+      </section>
+
+      <section class="contentCard">
+        <h2>🛍️ Shop & Inventar</h2>
+        <p>
+          Im Shop können innerhalb des Spiels verschiedene Skins, Welten und Fähigkeiten freigeschaltet
+          werden. Gekaufte Gegenstände werden im Inventar verwaltet und können dort – sofern vorgesehen –
+          ausgerüstet oder aktiviert werden.
+        </p>
+        <p>
+          Die virtuelle Spielwährung ist Bestandteil des Spiels. Informationen zu aktuell aktivierten
+          Kauf- und Monetarisierungsfunktionen werden in den Kaufhinweisen beschrieben.
+        </p>
+      </section>
+
+      <section class="contentCard">
+        <h2>🎯 Missionen & Belohnungen</h2>
+        <p>
+          Missionen geben dir zusätzliche Ziele neben dem normalen Fliegen. Durch das Erfüllen von
+          Aufgaben kannst du weitere Coins und Fortschritt erhalten. Tagesbelohnungen sorgen für
+          zusätzliche Anreize, regelmäßig zurückzukehren.
+        </p>
+      </section>
+
+      <section id="content-faq" class="contentCard contentWide">
+        <h2>❓ Häufige Fragen</h2>
+        <h3>Ist FLYYYY kostenlos?</h3>
+        <p>Das Spiel kann grundsätzlich kostenlos im Browser gespielt werden. Welche Funktionen und Inhalte aktuell verfügbar sind, wird direkt auf der Website angezeigt.</p>
+        <h3>Kann ich FLYYYY auf dem Handy spielen?</h3>
+        <p>Ja. Die Oberfläche und Steuerung sind für Touch-Geräte optimiert. Auf kleineren Bildschirmen wird die Darstellung automatisch angepasst.</p>
+        <h3>Wie kann ich meinen Rekord verbessern?</h3>
+        <p>Weiche Hindernissen aus, halte deinen Lauf möglichst lange aufrecht und nutze die verfügbaren Spielmechaniken sinnvoll. Combos und Fähigkeiten können je nach Spielstand zusätzliche Möglichkeiten bieten.</p>
+        <h3>Was sind Seasons?</h3>
+        <p>Seasons sind zeitlich begrenzte Wettbewerbsabschnitte. Season-Punkte werden separat vom Allzeit-Rekord geführt und können für Season-Belohnungen relevant sein.</p>
+        <h3>Wo finde ich Datenschutz und Impressum?</h3>
+        <p>Die rechtlichen Informationen sind über die entsprechenden Links im Footer sowie im Bereich Einstellungen erreichbar.</p>
+      </section>
+
+      <section class="contentCard contentWide">
+        <h2>🔐 Datenschutz & verantwortungsvoller Umgang</h2>
+        <p>
+          FLYYYY verwendet für bestimmte Online-Funktionen technische Dienste wie Firebase und kann
+          lokale Browser-Speicherung verwenden. Nutzer sollten im Chat keine sensiblen persönlichen
+          Informationen veröffentlichen. Die konkreten Datenschutzinformationen und der aktuelle
+          technische Stand sind in der Datenschutzerklärung beschrieben.
+        </p>
+      </section>
+    </div>
+
+    <div class="contentAdArea" id="flyyyyContentAdArea">
+      <div class="contentAdLabel">ANZEIGE</div>
+      <!-- AdSense: Einen echten Anzeigenblock erst hier einsetzen, nachdem in AdSense eine konkrete
+           Ad-Unit erstellt wurde. Keine Anzeige auf Lobby, Login, Pause, Shop, Navigation oder HUD setzen. -->
+    </div>
+
+    <div class="contentFooterNote">
+      FLYYYY ist ein eigenständiges Browser-Spiel. Inhalte, Funktionen und technische Dienste können
+      weiterentwickelt werden. Für rechtliche und datenschutzbezogene Fragen gelten die jeweils
+      veröffentlichten Informationen auf dieser Website.
+    </div>
+  </div>
+</div>
 
 <div id="leaderboard" class="screen"><div class="menu"><div class="topbar"><div><h2>Leaderboard</h2><div class="tiny">Season und Allzeit werden getrennt angezeigt.</div></div><button id="leaderboardBack" class="btn dark">← Zurück</button></div><div class="seasonTabs"><button id="seasonTabBtn" class="seasonTab active">🌐 Season</button><button id="allTimeTabBtn" class="seasonTab">⭐ Allzeit</button></div><div class="seasonPanel"><div class="seasonTop"><div class="seasonTitle">SEASON <span id="seasonNumberBoard">1</span></div><div class="seasonTimer" id="seasonTimerBoard">⏱️ Lädt...</div></div><div class="seasonSub" id="seasonBoardSub">🌐 Nur Season-Punkte</div></div><div id="leaderboardStatus" class="leaderStatus">Lade Leaderboard...</div><div class="nameBox"><input id="playerName" class="nameInput" maxlength="20" placeholder="Dein Spielername"><button id="saveNameBtn" class="btn">NAME SPEICHERN</button></div><div id="leaderboardList" class="leaderboard"></div></div></div>
 
@@ -499,7 +667,7 @@ const app=$("app"),canvas=$("gameCanvas"),ctx=canvas.getContext("2d");
 const authScreen=$("authScreen"),authUsername=$("authUsername"),authEmail=$("authEmail"),authPassword=$("authPassword"),loginBtn=$("loginBtn"),registerBtn=$("registerBtn"),guestBtn=$("guestBtn"),authStatus=$("authStatus"),authBackBtn=$("authBackBtn"),adminLoginBtn=$("adminLoginBtn"),sendCodeBtn=$("sendCodeBtn"),authVerifyCode=$("authVerifyCode"),verifyCodeBtn=$("verifyCodeBtn"),resendCodeBtn=$("resendCodeBtn"),verifyStatus=$("verifyStatus");
 const adminOverlay=$("adminOverlay"),adminCodeInput=$("adminCodeInput"),adminUnlockBtn=$("adminUnlockBtn"),adminCloseBtn=$("adminCloseBtn"),adminPanel=$("adminPanel"),adminStatusText=$("adminStatusText"),adminMyAccountBtn=$("adminMyAccountBtn"),adminCoinsBtn=$("adminCoinsBtn"),adminClosePanelBtn=$("adminClosePanelBtn"),adminInfo=$("adminInfo");
 const lobby=$("lobby"),accountStatus=$("accountStatus"),accountBtn=$("accountBtn"),logoutBtn=$("logoutBtn"),myAccountBtn=$("myAccountBtn"),lobbyCoins=$("lobbyCoins"),lobbyBest=$("lobbyBest");
-const startBtn=$("startBtn"),onlineStartBtn=$("onlineStartBtn"),leaderboardBtn=$("leaderboardBtn"),shopBtn=$("shopBtn"),inventoryBtn=$("inventoryBtn"),missionsBtn=$("missionsBtn"),settingsBtn=$("settingsBtn"),musicToggleBtn=$("musicToggleBtn"),websiteBtn=$("websiteBtn");
+const startBtn=$("startBtn"),onlineStartBtn=$("onlineStartBtn"),leaderboardBtn=$("leaderboardBtn"),shopBtn=$("shopBtn"),inventoryBtn=$("inventoryBtn"),missionsBtn=$("missionsBtn"),settingsBtn=$("settingsBtn"),musicToggleBtn=$("musicToggleBtn");
 const settingsScreen=$("settings"),settingsBack=$("settingsBack"),langDeBtn=$("langDeBtn"),langEnBtn=$("langEnBtn"),musicVolumeRange=$("musicVolumeRange"),sfxVolumeRange=$("sfxVolumeRange"),musicVolumeValue=$("musicVolumeValue"),sfxVolumeValue=$("sfxVolumeValue");
 const leaderboard=$("leaderboard"),leaderboardBack=$("leaderboardBack"),leaderboardStatus=$("leaderboardStatus"),playerName=$("playerName"),saveNameBtn=$("saveNameBtn"),leaderboardList=$("leaderboardList");
 const seasonNumberLobby=$("seasonNumberLobby"),seasonTimerLobby=$("seasonTimerLobby"),seasonNumberBoard=$("seasonNumberBoard"),seasonTimerBoard=$("seasonTimerBoard"),seasonBoardSub=$("seasonBoardSub"),seasonTabBtn=$("seasonTabBtn"),allTimeTabBtn=$("allTimeTabBtn");
@@ -3402,7 +3570,7 @@ shopBtn.onclick=()=>{
   saveState();
   updateShopLobbyNewBadge();
   renderShop();
-};shopBack.onclick=()=>showScreen("lobby");inventoryBtn.onclick=()=>{renderInventory();showScreen("inventory")};inventoryBack.onclick=()=>showScreen("lobby");missionsBtn.onclick=()=>{renderMissions();showScreen("missions")};missionsBack.onclick=()=>showScreen("lobby");websiteBtn.onclick=()=>window.open("https://discord.com/channels/1538868851641688117/1538928912921268294","_blank","noopener,noreferrer");
+};shopBack.onclick=()=>showScreen("lobby");inventoryBtn.onclick=()=>{renderInventory();showScreen("inventory")};inventoryBack.onclick=()=>showScreen("lobby");missionsBtn.onclick=()=>{renderMissions();showScreen("missions")};missionsBack.onclick=()=>showScreen("lobby");
 /* ===== SERVER-SIDE ADMIN MANAGER ===== */
 const ADMIN_CODE="Flyyyy-Admin-7391-X";
 let adminUnlocked=false;
@@ -5302,6 +5470,31 @@ setInterval(()=>{if(typeof updateEventCountdown==="function")updateEventCountdow
       try{setupFirebase();}catch(e){console.error("setupFirebase",e)}
       try{setInterval(()=>{if(typeof checkGlobalBossReward==="function")checkGlobalBossReward()},10000);}catch(e){console.error(e)}
      ["pointerdown","keydown","touchstart"].forEach(ev=>window.addEventListener(ev,()=>{syncMusicAfterInteraction()},{once:false,passive:true}));
+})();
+
+
+/* ===== FLYYYY CONTENT / INFORMATION PAGE ===== */
+(function(){
+  const contentScreen=document.getElementById("flyyyyContentScreen");
+  const contentBtn=document.getElementById("flyyyyContentBtn");
+  const contentBack=document.getElementById("flyyyyContentBack");
+  function showContentPage(){
+    document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+    contentScreen?.classList.add("active");
+    contentScreen?.querySelector(".menu")?.scrollTo({top:0,behavior:"auto"});
+  }
+  function backToLobby(){
+    document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+    document.getElementById("lobby")?.classList.add("active");
+  }
+  contentBtn?.addEventListener("click",showContentPage);
+  contentBack?.addEventListener("click",backToLobby);
+  document.querySelectorAll("[data-content-anchor]").forEach(btn=>{
+    btn.addEventListener("click",()=>{
+      const target=document.getElementById("content-"+btn.dataset.contentAnchor);
+      target?.scrollIntoView({behavior:"smooth",block:"start"});
+    });
+  });
 })();
 
 /* ===== FLYYYY LEGAL PAGES =====
