@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="de">
 <head>
 <meta charset="UTF-8">
@@ -417,6 +417,16 @@ html,body{background:#070b18!important;color:#fff!important}
 
 <style>
 .flyyyyContentSection{margin:24px 0;padding:22px;border-radius:24px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.11);text-align:left}.flyyyyContentSection h2{margin:0 0 8px;font-size:28px}.flyyyyContentIntro{margin:0 0 18px;color:var(--muted,#aab);line-height:1.65}.flyyyyContentGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.flyyyyContentCard{padding:16px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)}.flyyyyContentCard h3{margin:0 0 8px;font-size:17px}.flyyyyContentCard p,.flyyyyContentCard li{color:var(--muted,#aab);font-size:13px;line-height:1.6}.flyyyyContentCard ul{margin:8px 0 0;padding-left:20px}.flyyyyContentWide{grid-column:1/-1}@media(max-width:700px){.flyyyyContentGrid{grid-template-columns:1fr}.flyyyyContentSection{padding:16px}}
+
+/* ===== Floating Discord Button — rechts mittig ===== */
+.discord-float{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:3000;display:flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#5865F2,#4752C4);border:2px solid rgba(255,255,255,.15);box-shadow:0 8px 32px rgba(88,101,242,.45),0 0 0 4px rgba(255,255,255,.1);cursor:pointer;transition:transform .28s cubic-bezier(.175,.885,.32,1.275),box-shadow .28s ease,border-color .3s ease,background .28s ease;will-change:transform,box-shadow}
+.discord-float:hover{transform:translateY(-50%) scale(1.15);box-shadow:0 0 0 8px rgba(88,101,242,.25),0 12px 48px rgba(88,101,242,.65),0 0 32px rgba(255,212,71,.3)}
+.discord-float::before{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 50% 50%,rgba(255,255,255,.2),transparent 65%);opacity:0;transition:opacity .28s ease;pointer-events:none}
+.discord-float:hover::before{opacity:1}
+.discord-icon{font-size:28px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.4))}
+.discord-tooltip{position:absolute;right:68px;background:rgba(15,15,30,.92);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.12);color:#fff;padding:8px 14px;border-radius:10px;font-size:13px;font-weight:700;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .28s ease;box-shadow:0 8px 32px rgba(0,0,0,.4);letter-spacing:.04em}
+.discord-float:hover .discord-tooltip{opacity:1}
+@media(max-width:760px){.discord-float{right:16px;top:auto;bottom:24px;transform:none;width:50px;height:50px}.discord-float:hover{transform:scale(1.15)}.discord-icon{font-size:24px}.discord-tooltip{right:64px;bottom:4px;font-size:12px;padding:7px 12px}}
 </style>
 </head>
 <body>
@@ -465,6 +475,12 @@ html,body{background:#070b18!important;color:#fff!important}
 <div class="settingsCard settingsLegalCard"><h3>📚 Rechtliches</h3><div class="tiny">Alle rechtlichen Informationen findest du hier, damit die Startseite übersichtlich bleibt.</div><div class="legalMenuRow settingsLegalRow"><button class="legalLink" id="settingsImprintBtn" type="button">📄 Impressum</button><button class="legalLink" id="settingsPrivacyBtn" type="button">🔒 Datenschutz</button><button class="legalLink" id="settingsTermsBtn" type="button">📜 Nutzungsbedingungen</button><button class="legalLink" id="settingsPurchaseBtn" type="button">🛒 Kaufhinweise</button></div></div></div></div></div>
 
 <div id="eventVisualOverlay" class="eventFlashOverlay"></div><div id="gameHud"><div id="creatorTag">@FlyyyyGame</div><div id="eventBadge" class="hud-pill" style="display:none"></div><div class="hud-left"><div class="hud-pill">⭐ <span id="scoreHud">0</span></div><div class="hud-pill comboHud" id="comboHud">🔥 Combo <span id="comboCountHud">0</span> · x<span id="comboMultHud">1</span></div><div class="hud-pill">🪙 <span id="coinsHud">0</span></div><div class="hud-pill">🪽 Jumps: <span id="jumpHud">0</span></div></div><div class="hud-right"><div class="hud-pill">🌐 Season <span id="seasonHud">1</span></div><div class="hud-pill">🌍 <span id="worldHud">Gizeh</span></div><div class="hud-pill">🎵 <span id="musicHud">Classic</span></div><button id="abilityBtn" class="abilityHudBtn" disabled>⚡ Keine Fähigkeit</button><button id="pauseBtn" class="pause-btn">Ⅱ Pause</button></div><div class="tip">Klicken / Tippen / Leertaste = Fliegen · T/F = Fähigkeit</div></div>
+
+<!-- Floating Discord Button (rechts mittig) -->
+<button id="discordFloatBtn" class="discord-float" aria-label="Join our Discord 🚀" title="Join our Discord 🚀">
+  <span class="discord-icon">💬</span>
+  <span class="discord-tooltip">Join our Discord 🚀</span>
+</button>
 
 <div id="pauseOverlay" class="overlay"><div class="dialog"><h2>PAUSE</h2><p>Dein Lauf wurde angehalten.</p><div class="button-grid"><button id="resumeBtn" class="btn">▶ WEITER</button><button id="pauseLobbyBtn" class="btn dark">🏠 ZUR LOBBY</button></div></div></div>
 <div id="gameOverOverlay" class="overlay"><div class="dialog"><h2>GAME OVER</h2><p id="gameOverText">Gut geflogen!</p><div class="stats"><div class="stat"><div class="tiny">Punkte</div><strong id="finalScore">0</strong></div><div class="stat"><div class="tiny">Coins</div><strong id="earnedCoins">0</strong></div><div class="stat"><div class="tiny">Rekord</div><strong id="bestScore">0</strong></div></div><div class="button-grid"><button id="retryBtn" class="btn green">🔄 NOCHMAL</button><button id="returnLobbyBtn" class="btn blue">🏠 ZUR LOBBY</button></div>
@@ -527,6 +543,7 @@ const seasonRewardOverlay=$("seasonRewardOverlay"),seasonRewardRank=$("seasonRew
 const shop=$("shop"),shopBack=$("shopBack"),shopTabs=$("shopTabs"),shopCards=$("shopCards"),shopCoins=$("shopCoins"),inventory=$("inventory"),inventoryBack=$("inventoryBack"),inventoryTabs=$("inventoryTabs"),inventoryCards=$("inventoryCards"),missionsScreen=$("missions"),missionsBack=$("missionsBack"),missionList=$("missionList");
 const luckyConfirmOverlay=$("luckyConfirmOverlay"),confirmLuckyBuyBtn=$("confirmLuckyBuyBtn"),cancelLuckyBuyBtn=$("cancelLuckyBuyBtn"),jackpotOverlay=$("jackpotOverlay"),prizePopupIcon=$("prizePopupIcon"),prizePopupTitle=$("prizePopupTitle"),prizePopupText=$("prizePopupText"),prizePopupSub=$("prizePopupSub");
 const adDashOverlay=$("adDashOverlay"),adReviveBox=$("adReviveBox"),adReviveBtn=$("adReviveBtn"),adminSettingsBtn=$("adminSettingsBtn"),abilityBtn=$("abilityBtn"),gameHud=$("gameHud"),eventBadge=$("eventBadge"),scoreHud=$("scoreHud"),coinsHud=$("coinsHud"),jumpHud=$("jumpHud"),worldHud=$("worldHud"),seasonHud=$("seasonHud"),musicHud=$("musicHud"),comboHud=$("comboHud"),comboCountHud=$("comboCountHud"),comboMultHud=$("comboMultHud"),pauseBtn=$("pauseBtn"),pauseOverlay=$("pauseOverlay"),resumeBtn=$("resumeBtn"),pauseLobbyBtn=$("pauseLobbyBtn"),gameOverOverlay=$("gameOverOverlay"),gameOverText=$("gameOverText"),finalScore=$("finalScore"),earnedCoins=$("earnedCoins"),bestScore=$("bestScore"),retryBtn=$("retryBtn"),returnLobbyBtn=$("returnLobbyBtn");
+const discordFloatBtn=$("discordFloatBtn");
 
 const APP_VERSION="4.2";storage.setItem("FLYYYY_APP_VERSION",APP_VERSION);
 const firebaseConfig={apiKey:"AIzaSyA0ppKuSgxKKgHEMkX9kUlVhm8pjkVxgXk",authDomain:"flyyyy.firebaseapp.com",databaseURL:"https://flyyyy-default-rtdb.firebaseio.com",projectId:"flyyyy",storageBucket:"flyyyy.firebasestorage.app",messagingSenderId:"872479897522",appId:"1:872479897522:web:3c87b8afdebfc66d01d6ab",measurementId:"G-S8YE4S6L8L"};
@@ -5221,7 +5238,7 @@ function updateResendCooldown(){
 authBackBtn.onclick=()=>{resetVerifyUI();showScreen("lobby")};
 logoutBtn.onclick=async()=>{try{const {a}=await loadFirebase();await a.signOut(auth);showMessage("👤 Gastmodus aktiviert.")}catch(e){console.error(e)}};
 claimSeasonRewardBtn.onclick=claimSeasonReward;musicToggleBtn.onclick=()=>{state.musicEnabled=!state.musicEnabled;saveState();if(state.musicEnabled){if(game.running)startMusic();else startLobbyMusic()}else stopMusic();updateLobby()};
-confirmLuckyBuyBtn.onclick=confirmLuckyBuy;cancelLuckyBuyBtn.onclick=cancelLuckyBuy;jackpotOverlay.addEventListener("click",()=>{jackpotOverlay.classList.remove("active")});abilityBtn.onclick=activateAbility;pauseBtn.onclick=togglePause;resumeBtn.onclick=togglePause;pauseLobbyBtn.onclick=returnLobby;retryBtn.onclick=()=>startGame(game.onlineRun);returnLobbyBtn.onclick=returnLobby;
+confirmLuckyBuyBtn.onclick=confirmLuckyBuy;cancelLuckyBuyBtn.onclick=cancelLuckyBuy;jackpotOverlay.addEventListener("click",()=>{jackpotOverlay.classList.remove("active")});abilityBtn.onclick=activateAbility;abilityBtn.addEventListener("pointerdown",e=>{e.preventDefault();activateAbility()});pauseBtn.onclick=togglePause;resumeBtn.onclick=togglePause;pauseLobbyBtn.onclick=returnLobby;retryBtn.onclick=()=>startGame(game.onlineRun);returnLobbyBtn.onclick=returnLobby;discordFloatBtn.addEventListener("click",()=>{window.open("https://discord.gg/U3DGFwgeQe","_blank","noopener,noreferrer")});
 canvas.addEventListener("pointerdown",e=>{e.preventDefault();flap()});addEventListener("keydown",e=>{
   const tag=(e.target?.tagName||"").toLowerCase();
   const typing=tag==="input"||tag==="textarea"||tag==="select"||e.target?.isContentEditable;
