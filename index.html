@@ -73,6 +73,10 @@ input{min-height:44px}
 .wheelLabel:nth-child(8){transform:rotate(337.5deg) translateY(calc(-1 * var(--wheelR)))}
 .luckyInfo{min-width:0}
 .luckyInfoBox,.luckyMainPrize{overflow-wrap:anywhere}
+.creatorCodeBox{margin-top:16px;padding:14px;border-radius:16px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08)}
+.creatorCodeBox h3{margin:0 0 8px;font-size:15px}
+.creatorCodeInput{width:100%;padding:10px 12px;border:1px solid rgba(255,255,255,.14);border-radius:12px;outline:none;background:rgba(255,255,255,.07);color:#fff;font-weight:700;text-align:center;letter-spacing:.05em;text-transform:uppercase}
+.creatorCodeBox .btn{margin-top:8px}
 #shopCards{min-width:0}
 #shopCards>*{min-width:0}
 #gameHud{padding-top:env(safe-area-inset-top,0)}
@@ -235,6 +239,23 @@ body:before{content:"";position:fixed;inset:-30%;z-index:-1;pointer-events:none;
 .adCurrencyBadge{background:rgba(94,231,255,.12);border-color:rgba(94,231,255,.35)!important}
 .settingsLegalCard{margin-top:18px}.settingsLegalRow{justify-content:flex-start;border-top:0;padding-top:8px}.settingsLegalRow .legalLink{border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.06);color:var(--muted);font-weight:900;font-size:12px;cursor:pointer;text-decoration:none;padding:9px 12px;border-radius:12px}
 @media(max-width:600px){.settingsLegalCard{margin-top:26px}.settingsLegalRow{gap:6px}.settingsLegalRow .legalLink{font-size:11px;padding:8px 9px}.cards{grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch}.card{min-height:170px}.preview{height:92px}}
+
+/* ===== Clean, simple FLYYYY UI ===== */
+.menu{background:#151a2e;border:1px solid #2a3150;border-radius:16px;box-shadow:0 12px 35px rgba(0,0,0,.28);backdrop-filter:none}
+.title{text-shadow:none;letter-spacing:.04em}
+.version{background:#1d2540;border:1px solid #30395e}
+.btn{background:#ffd447;box-shadow:0 3px 0 #c49c22;border-radius:10px;transition:.12s}
+.btn.blue{background:#5ee7ff;box-shadow:0 3px 0 #299db5}
+.btn.green{background:#6df5a3;box-shadow:0 3px 0 #369f68}
+.btn.red{background:#ff6374;box-shadow:0 3px 0 #a53c49}
+.btn.dark{background:#222943;border:1px solid #353e61;box-shadow:none}
+.card{border-radius:12px;background:#1a2037;border:1px solid #2b3351;box-shadow:none}
+.preview{border-radius:10px;background:#202742;border:1px solid #30395a}
+.tab,.seasonTab{border-radius:9px;background:#1d243c;border:1px solid #30395a}
+.tab.active,.seasonTab.active{background:#fff;color:#17204a;border-color:#fff}
+.authBox,.leaderStatus{background:#1a2037;border:1px solid #2b3351;border-radius:12px}
+.badge,.accountPill{background:#252b43;border:1px solid #363e5c;border-radius:9px}
+.topbar{margin-bottom:14px}
 </style>
 
 <style id="flyyyy-minimal-design">
@@ -418,23 +439,63 @@ html,body{background:#070b18!important;color:#fff!important}
 <style>
 .flyyyyContentSection{margin:24px 0;padding:22px;border-radius:24px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.11);text-align:left}.flyyyyContentSection h2{margin:0 0 8px;font-size:28px}.flyyyyContentIntro{margin:0 0 18px;color:var(--muted,#aab);line-height:1.65}.flyyyyContentGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.flyyyyContentCard{padding:16px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)}.flyyyyContentCard h3{margin:0 0 8px;font-size:17px}.flyyyyContentCard p,.flyyyyContentCard li{color:var(--muted,#aab);font-size:13px;line-height:1.6}.flyyyyContentCard ul{margin:8px 0 0;padding-left:20px}.flyyyyContentWide{grid-column:1/-1}@media(max-width:700px){.flyyyyContentGrid{grid-template-columns:1fr}.flyyyyContentSection{padding:16px}}
 
-/* ===== Floating Discord Button — rechts mittig ===== */
-.discord-float{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:3000;display:flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#5865F2,#4752C4);border:2px solid rgba(255,255,255,.15);box-shadow:0 8px 32px rgba(88,101,242,.45),0 0 0 4px rgba(255,255,255,.1);cursor:pointer;transition:transform .28s cubic-bezier(.175,.885,.32,1.275),box-shadow .28s ease,border-color .3s ease,background .28s ease;will-change:transform,box-shadow}
-.discord-float:hover{transform:translateY(-50%) scale(1.15);box-shadow:0 0 0 8px rgba(88,101,242,.25),0 12px 48px rgba(88,101,242,.65),0 0 32px rgba(255,212,71,.3)}
-.discord-float::before{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 50% 50%,rgba(255,255,255,.2),transparent 65%);opacity:0;transition:opacity .28s ease;pointer-events:none}
-.discord-float:hover::before{opacity:1}
-.discord-icon{font-size:28px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.4))}
-.discord-tooltip{position:absolute;right:68px;background:rgba(15,15,30,.92);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.12);color:#fff;padding:8px 14px;border-radius:10px;font-size:13px;font-weight:700;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .28s ease;box-shadow:0 8px 32px rgba(0,0,0,.4);letter-spacing:.04em}
+/* ===== Discord Button ===== */
+.discord-float{position:fixed;right:18px;top:18px;z-index:3000;display:flex;align-items:center;justify-content:center;width:48px;height:48px;padding:0;border-radius:12px;background:#5865F2;border:1px solid rgba(255,255,255,.18);box-shadow:0 4px 14px rgba(0,0,0,.25);transition:transform .15s ease,background .15s ease}
+.discord-float:hover{transform:translateY(-1px);background:#4752C4}
+.discord-float:active{transform:translateY(1px)}
+.discord-icon{width:26px;height:26px;display:flex;align-items:center;justify-content:center}
+.discord-icon svg{width:26px;height:26px;display:block;fill:#fff}
+.discord-tooltip{position:absolute;right:58px;top:50%;transform:translateY(-50%);background:#171a24;border:1px solid rgba(255,255,255,.12);color:#fff;padding:7px 10px;border-radius:8px;font-size:12px;font-weight:700;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .15s ease}
 .discord-float:hover .discord-tooltip{opacity:1}
-@media(max-width:760px){.discord-float{right:16px;top:auto;bottom:24px;transform:none;width:50px;height:50px}.discord-float:hover{transform:scale(1.15)}.discord-icon{font-size:24px}.discord-tooltip{right:64px;bottom:4px;font-size:12px;padding:7px 12px}}
+@media(max-width:760px){.discord-float{right:14px;top:14px;width:46px;height:46px}.discord-icon,.discord-icon svg{width:24px;height:24px}.discord-tooltip{right:54px;font-size:11px}}
 </style>
+
+<style id="elegant-flyyyy-overrides">
+/* FLYYYY – clean, elegant UI */
+:root{
+  --accent:#7dd3fc;
+  --accent-soft:rgba(125,211,252,.14);
+  --panel:rgba(15,23,42,.88);
+  --panel-border:rgba(255,255,255,.09);
+  --text:#f8fafc;
+  --muted:#94a3b8;
+}
+body{
+  letter-spacing:0;
+}
+button,.btn{
+  border-radius:12px !important;
+  box-shadow:none !important;
+  text-shadow:none !important;
+  transition:transform .16s ease, background .16s ease, border-color .16s ease, opacity .16s ease !important;
+}
+button:hover,.btn:hover{
+  transform:translateY(-1px);
+}
+.card,.panel,.menu-card,.modal,.shop-card{
+  border-radius:16px !important;
+  border:1px solid var(--panel-border) !important;
+  box-shadow:0 12px 35px rgba(0,0,0,.22) !important;
+  backdrop-filter:blur(14px);
+}
+h1,h2,h3{
+  text-shadow:none !important;
+  letter-spacing:-.02em;
+}
+#journeyXP,#journeyXp,.journey-xp,.journeyXp,.journey-card,
+[id*="journey" i],[class*="journey" i],
+[id*="journeyXP" i],[class*="journeyXP" i]{
+  display:none !important;
+}
+</style>
+
 </head>
 <body>
 <div id="globalBroadcastOverlay" class="broadcastOverlay" aria-live="polite"><div class="broadcastHeader"><span>📢 GLOBAL BROADCAST</span><span id="globalBroadcastTime"></span></div><div id="globalBroadcastText" class="broadcastBody"></div><div id="globalBroadcastSender" class="broadcastSender"></div></div>
 <div id="app"><div id="appErrorNotice" style="display:none;position:fixed;left:50%;top:10px;transform:translateX(-50%);z-index:100000;padding:10px 14px;border-radius:12px;background:#2a1730;border:1px solid #ff6374;color:#fff;font-weight:900">⚠️ Ein Spielfehler ist aufgetreten. Bitte Seite neu laden.</div>
 <canvas id="gameCanvas"></canvas><div id="adDashOverlay" aria-hidden="true"></div>
 
-<div id="authScreen" class="screen"><div class="menu"><div class="title">FLYYYY</div><div class="version">🔐 ACCOUNT</div><div class="subtitle">Mit E-Mail anmelden, neues Konto erstellen oder ohne Konto spielen.</div><div class="authBox"><h2 style="margin:0 0 12px">Anmelden / Registrieren</h2><input id="authUsername" class="authInput" type="text" autocomplete="username" placeholder="Benutzername" style="margin-top:10px"><input id="authEmail" class="authInput" type="email" autocomplete="email" placeholder="E-Mail" style="margin-top:10px"><input id="authPassword" class="authInput" type="password" autocomplete="current-password" placeholder="Passwort (mind. 6 Zeichen)" style="margin-top:10px"><div class="authGrid"><button id="loginBtn" class="btn blue">ANMELDEN</button><button id="registerBtn" class="btn green">REGISTRIEREN</button></div><button id="sendCodeBtn" class="btn blue" style="width:100%;margin-top:10px;display:none">📧 Bestätigungscode senden</button><input id="authVerifyCode" class="authInput" type="text" autocomplete="one-time-code" placeholder="Bestätigungscode (6 Stellen)" style="margin-top:10px;display:none;letter-spacing:.3em;text-align:center;font-size:18px" maxlength="6"><div class="authGrid" style="margin-top:10px"><button id="verifyCodeBtn" class="btn green" style="display:none">✅ Code bestätigen</button><button id="resendCodeBtn" class="btn dark" style="display:none">🔄 Neuer Code</button></div><button id="guestBtn" class="btn dark" style="width:100%;margin-top:10px">👤 OHNE KONTO SPIELEN</button><button id="adminLoginBtn" class="btn dark" style="width:100%;margin-top:10px">🛠️ ADMIN</button><div id="authStatus" class="authStatus">Gastmodus ist jederzeit möglich.</div><div id="verifyStatus" class="authStatus" style="color:#ffd447"></div><div class="tiny" style="margin-top:10px">🛡️ Adminrechte werden serweise mit Firebase geprüft.</div></div><button id="authBackBtn" class="btn dark" style="width:100%;margin-top:10px">← Zur Lobby</button></div></div>
+<div id="authScreen" class="screen"><div class="menu"><div class="title">FLYYYY</div><div class="version">🔐 ACCOUNT</div><div class="subtitle">Mit E-Mail anmelden, neues Konto erstellen oder ohne Konto spielen.</div><div class="authBox"><h2 style="margin:0 0 12px">Anmelden / Registrieren</h2><input id="authUsername" class="authInput" type="text" autocomplete="username" placeholder="Benutzername" style="margin-top:10px"><input id="authEmail" class="authInput" type="email" autocomplete="email" placeholder="E-Mail" style="margin-top:10px"><input id="authPassword" class="authInput" type="password" autocomplete="current-password" placeholder="Passwort (mind. 6 Zeichen)" style="margin-top:10px"><div class="authGrid"><button id="loginBtn" class="btn blue">ANMELDEN</button><button id="registerBtn" class="btn green">REGISTRIEREN</button></div><button id="guestBtn" class="btn dark" style="width:100%;margin-top:10px">👤 OHNE KONTO SPIELEN</button><button id="adminLoginBtn" class="btn dark" style="width:100%;margin-top:10px">🛠️ ADMIN</button><div id="authStatus" class="authStatus">Gastmodus ist jederzeit möglich.</div><div class="tiny" style="margin-top:10px">🛡️ Adminrechte werden serweise mit Firebase geprüft.</div></div><button id="authBackBtn" class="btn dark" style="width:100%;margin-top:10px">← Zur Lobby</button></div></div>
 
 <div id="lobby" class="screen active"><div class="menu"><div class="title">FLYYYY</div><div class="version">🔥 UPDATE 3.0 · COMBO</div><div class="subtitle">Fly weiter. Sammle Coins. Schlage andere Spieler.</div><div class="credits"><div class="badge">🪙 <span id="lobbyCoins">0</span> Coins</div><div class="badge adCurrencyBadge">🎬 <span id="lobbyAdCoins">0</span> Ad-Coins</div><div class="badge">🏆 Rekord: <span id="lobbyBest">0</span></div></div><div class="progressPanel">
 <div class="progressTop"><div class="progressLevel">⭐ Level <span id="playerLevel">1</span></div><div class="tiny"><span id="playerXp">0</span> / <span id="playerXpNext">100</span> XP</div></div>
@@ -477,9 +538,13 @@ html,body{background:#070b18!important;color:#fff!important}
 <div id="eventVisualOverlay" class="eventFlashOverlay"></div><div id="gameHud"><div id="creatorTag">@FlyyyyGame</div><div id="eventBadge" class="hud-pill" style="display:none"></div><div class="hud-left"><div class="hud-pill">⭐ <span id="scoreHud">0</span></div><div class="hud-pill comboHud" id="comboHud">🔥 Combo <span id="comboCountHud">0</span> · x<span id="comboMultHud">1</span></div><div class="hud-pill">🪙 <span id="coinsHud">0</span></div><div class="hud-pill">🪽 Jumps: <span id="jumpHud">0</span></div></div><div class="hud-right"><div class="hud-pill">🌐 Season <span id="seasonHud">1</span></div><div class="hud-pill">🌍 <span id="worldHud">Gizeh</span></div><div class="hud-pill">🎵 <span id="musicHud">Classic</span></div><button id="abilityBtn" class="abilityHudBtn" disabled>⚡ Keine Fähigkeit</button><button id="pauseBtn" class="pause-btn">Ⅱ Pause</button></div><div class="tip">Klicken / Tippen / Leertaste = Fliegen · T/F = Fähigkeit</div></div>
 
 <!-- Floating Discord Button (rechts mittig) -->
-<button id="discordFloatBtn" class="discord-float" aria-label="Join our Discord 🚀" title="Join our Discord 🚀">
-  <span class="discord-icon">💬</span>
-  <span class="discord-tooltip">Join our Discord 🚀</span>
+<button id="discordFloatBtn" class="discord-float" aria-label="Discord öffnen" title="Discord öffnen">
+  <span class="discord-icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24" role="img">
+      <path d="M19.54 4.15A16.3 16.3 0 0 0 15.58 3l-.48.98a14.5 14.5 0 0 0-4.2 0L10.42 3a16.4 16.4 0 0 0-3.96 1.15C3.95 7.75 3.27 11.27 3.61 14.74a16.2 16.2 0 0 0 4.86 2.45l1.18-1.62c-.65-.24-1.28-.55-1.86-.92l.46-.35c3.59 1.68 7.48 1.68 11.03 0l.46.35c-.58.37-1.21.68-1.86.92l1.18 1.62a16.2 16.2 0 0 0 4.86-2.45c.4-4.02-.68-7.5-2.38-10.59ZM9.31 13.08c-1.08 0-1.96-.99-1.96-2.2s.86-2.2 1.96-2.2 1.97.99 1.96 2.2c0 1.21-.86 2.2-1.96 2.2Zm5.38 0c-1.08 0-1.96-.99-1.96-2.2s.86-2.2 1.96-2.2 1.97.99 1.96 2.2c0 1.21-.86 2.2-1.96 2.2Z"/>
+    </svg>
+  </span>
+  <span class="discord-tooltip">Discord</span>
 </button>
 
 <div id="pauseOverlay" class="overlay"><div class="dialog"><h2>PAUSE</h2><p>Dein Lauf wurde angehalten.</p><div class="button-grid"><button id="resumeBtn" class="btn">▶ WEITER</button><button id="pauseLobbyBtn" class="btn dark">🏠 ZUR LOBBY</button></div></div></div>
@@ -498,7 +563,7 @@ html,body{background:#070b18!important;color:#fff!important}
 <div class="broadcastGrid"><textarea id="adminBroadcastInput" class="broadcastInput" maxlength="240" placeholder="Nachricht für alle Spieler …"></textarea><button id="adminBroadcastSendBtn" class="btn broadcastSend">📢 BROADCAST SENDEN</button></div>
 <div id="adminBroadcastStatus" class="broadcastStatus"></div>
 </div>
-<div id="adminInfo" class="notice">Nur als Admin sichtbar.</div><div id="adminSecretShopTab" class="adminTabSection"><div class="leaderStatus">🔒 Secret Shop verwalten – Skins hinzufügen, Preise festlegen, Angebote aktivieren/deaktivieren.</div><div id="adminSecretShopStatus" class="leaderStatus" style="margin-top:10px">Lade Secret Shop...</div><div id="adminSecretShopList" class="leaderboard" style="margin-top:12px"></div><div style="margin-top:16px;padding:14px;border-radius:14px;background:rgba(255,79,216,.08);border:1px solid rgba(255,79,216,.2)"><h4 style="margin:0 0 8px">⏱️ Zeitliches Angebot erstellen</h4><div style="display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center"><select id="adminSecretOfferSkin" class="authInput"></select><input id="adminSecretOfferDuration" class="authInput" type="number" min="1" max="1440" placeholder="Minuten" style="width:90px"><button id="adminSecretOfferBtn" class="btn green">⏱️ Angebot erstellen</button></div><button id="adminSecretShopRefreshBtn" class="btn blue" style="margin-top:12px;width:100%">↻ Secret Shop aktualisieren</button></div></div><div id="adminAbuseLogTab" class="adminTabSection"><div class="leaderStatus">📋 Admin-Abuse Event Protokoll – zeigt aktive Events und vergangene Aktionen.</div><div id="adminAbuseLogStatus" class="leaderStatus" style="margin-top:10px">Keine Einträge.</div><div id="adminAbuseLog" class="adminAbuseLog" style="margin-top:12px"></div><button id="adminAbuseLogRefreshBtn" class="btn blue" style="margin-top:10px;width:100%">↻ Protokoll aktualisieren</button></div><div id="adminChatTab" class="adminTabSection"><div class="leaderStatus">Gesperrte Spieler verwalten.</div><div style="display:grid;grid-template-columns:minmax(140px,1fr) auto;gap:10px;margin:12px 0"><input id="adminChatBanName" class="authInput" placeholder="Spielername (oder UID)"><input id="adminChatBanReason" class="authInput" placeholder="Grund (optional)"><button id="adminChatBanBtn" class="btn red">🔇 Sperren (10 Min)</button></div><button id="adminChatRefreshBtn" class="btn blue" style="margin-bottom:12px">↻ Aktualisieren</button><div id="adminChatBanList" class="leaderboard"></div></div></div></div></div>
+<div id="adminInfo" class="notice">Nur als Admin sichtbar.</div><div id="adminSecretShopTab" class="adminTabSection"><div class="leaderStatus">🔒 Secret Shop verwalten – Skins hinzufügen, Preise festlegen, Angebote aktivieren/deaktivieren.</div><div id="adminSecretShopStatus" class="leaderStatus" style="margin-top:10px">Lade Secret Shop...</div><div id="adminSecretShopList" class="leaderboard" style="margin-top:12px"></div><div style="margin-top:16px;padding:14px;border-radius:14px;background:rgba(255,79,216,.08);border:1px solid rgba(255,79,216,.2)"><h4 style="margin:0 0 8px">⏱️ Zeitliches Angebot erstellen</h4><div style="display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center"><select id="adminSecretOfferSkin" class="authInput"></select><input id="adminSecretOfferDuration" class="authInput" type="number" min="1" max="1440" placeholder="Minuten" style="width:90px"><button id="adminSecretOfferBtn" class="btn green">⏱️ Angebot erstellen</button></div><button id="adminSecretShopRefreshBtn" class="btn blue" style="margin-top:12px;width:100%">↻ Secret Shop aktualisieren</button></div></div><div id="adminAbuseLogTab" class="adminTabSection"><div class="leaderStatus">📋 Admin-Abuse Event Protokoll – zeigt aktive Events und vergangene Aktionen.</div><div id="adminAbuseLogStatus" class="leaderStatus" style="margin-top:10px">Keine Einträge.</div><div id="adminAbuseLog" class="adminAbuseLog" style="margin-top:12px"></div><button id="adminAbuseLogRefreshBtn" class="btn blue" style="margin-top:10px;width:100%">↻ Protokoll aktualisieren</button></div><div id="adminChatTab" class="adminTabSection"><div class="leaderStatus">Gesperrte Spieler verwalten.</div><div style="display:grid;grid-template-columns:minmax(140px,1fr) auto;gap:10px;margin:12px 0"><input id="adminChatBanName" class="authInput" placeholder="Spielername (oder UID)"><input id="adminChatBanReason" class="authInput" placeholder="Grund (optional)"><button id="adminChatBanBtn" class="btn red">🔇 Sperren (10 Min)</button></div><button id="adminChatRefreshBtn" class="btn blue" style="margin-bottom:12px">↻ Aktualisieren</button><div id="adminChatBanList" </div><div id="adminCreatorCodesTab" class="adminTabSection"><div class="leaderStatus">👑 Creator Codes – welcher Spieler hat welchen Code eingetragen.</div><div style="margin:12px 0"><input id="adminCreatorCodeSearch" class="authInput" placeholder="🔎 Code oder Spielername"><button id="adminCreatorRefreshBtn" class="btn blue">↻ AKTUALISIEREN</button></div><div id="adminCreatorCodesStatus" class="leaderStatus">Lade Creator Codes...</div><div id="adminCreatorCodesList" class="leaderboard"></div></div></div></div></div>
 </div>
 
 
@@ -532,7 +597,7 @@ const storage={getItem(k){try{return localStorage.getItem(k)}catch{return Object
 
 const $=id=>document.getElementById(id);
 const app=$("app"),canvas=$("gameCanvas"),ctx=canvas.getContext("2d");
-const authScreen=$("authScreen"),authUsername=$("authUsername"),authEmail=$("authEmail"),authPassword=$("authPassword"),loginBtn=$("loginBtn"),registerBtn=$("registerBtn"),guestBtn=$("guestBtn"),authStatus=$("authStatus"),authBackBtn=$("authBackBtn"),adminLoginBtn=$("adminLoginBtn"),sendCodeBtn=$("sendCodeBtn"),authVerifyCode=$("authVerifyCode"),verifyCodeBtn=$("verifyCodeBtn"),resendCodeBtn=$("resendCodeBtn"),verifyStatus=$("verifyStatus");
+const authScreen=$("authScreen"),authUsername=$("authUsername"),authEmail=$("authEmail"),authPassword=$("authPassword"),loginBtn=$("loginBtn"),registerBtn=$("registerBtn"),guestBtn=$("guestBtn"),authStatus=$("authStatus"),authBackBtn=$("authBackBtn"),adminLoginBtn=$("adminLoginBtn");
 const adminOverlay=$("adminOverlay"),adminCodeInput=$("adminCodeInput"),adminUnlockBtn=$("adminUnlockBtn"),adminCloseBtn=$("adminCloseBtn"),adminPanel=$("adminPanel"),adminStatusText=$("adminStatusText"),adminMyAccountBtn=$("adminMyAccountBtn"),adminCoinsBtn=$("adminCoinsBtn"),adminClosePanelBtn=$("adminClosePanelBtn"),adminInfo=$("adminInfo");
 const lobby=$("lobby"),accountStatus=$("accountStatus"),accountBtn=$("accountBtn"),logoutBtn=$("logoutBtn"),myAccountBtn=$("myAccountBtn"),lobbyCoins=$("lobbyCoins"),lobbyBest=$("lobbyBest");
 const startBtn=$("startBtn"),onlineStartBtn=$("onlineStartBtn"),leaderboardBtn=$("leaderboardBtn"),shopBtn=$("shopBtn"),inventoryBtn=$("inventoryBtn"),missionsBtn=$("missionsBtn"),settingsBtn=$("settingsBtn"),musicToggleBtn=$("musicToggleBtn");
@@ -560,7 +625,7 @@ function hideScreens(){document.querySelectorAll(".screen").forEach(s=>s.classLi
 function showMessage(t){const e=document.createElement("div");e.textContent=t;e.style.cssText="position:fixed;z-index:99999;left:50%;top:18%;transform:translate(-50%,-50%);padding:13px 18px;border-radius:999px;background:rgba(8,12,30,.97);border:1px solid rgba(255,255,255,.15);color:#fff;font-weight:900;box-shadow:0 15px 40px rgba(0,0,0,.3);white-space:nowrap";document.body.appendChild(e);setTimeout(()=>e.remove(),1800)}
 function setLeaderboardStatus(t){leaderboardStatus.textContent=t}
 
-const DEFAULT={coins:0,best:0,wins:0,ownedWorlds:["giza"],ownedSkins:["bird"],ownedSounds:["classic"],ownedMusic:["classicMusic"],ownedTrails:["none"],selectedTrail:"none",ownedBoxes:[],boxOpensTotal:0,boxRewardsClaimed:[],selectedWorld:"giza",selectedSkin:"bird",selectedSound:"classic",selectedMusic:"classicMusic",selectedAbilities:{},selectedAbilityId:null,ownedAbilities:[],ownedAbilitiesBySkin:{},lastNonIceWorld:"giza",shopNewSeen:{},shopNewRelease:"2.8.0",musicEnabled:true,sfxEnabled:true,musicVolume:70,sfxVolume:70,language:"de",missionProgress:{m1:0,m2:0,m3:0},missionClaimed:{m1:false,m2:false,m3:false},activeMissions:null,missionCycle:1,lastMissionIds:[],luckySpins:0,luckyLastResult:null,seasonScore:0,currentSeasonId:2,seasonRewardPending:null,seasonRewardClaimed:false,flyOwner1000Granted:false,playerXP:0,playerLevel:1,playerXPBoost:0,playerXpEarnedTotal:0,levelRewardsPending:[],levelRewardsClaimed:[],dailyRewardDate:"",dailyStreak:0,dailyRewardCycle:1,secretShopItems:[],secretShopPublished:false,secretHuntFound:0,bossDamageDealt:0,bossGlobalRewardsClaimed:[],adRevivesUsed:0,adCoins:0,adAdsWatched:0,adDashUses:0};
+const DEFAULT={coins:0,best:0,wins:0,ownedWorlds:["giza"],ownedSkins:["bird"],ownedSounds:["classic"],ownedMusic:["classicMusic"],ownedTrails:["none"],selectedTrail:"none",ownedBoxes:[],boxOpensTotal:0,boxRewardsClaimed:[],selectedWorld:"giza",selectedSkin:"bird",selectedSound:"classic",selectedMusic:"classicMusic",selectedAbilities:{},selectedAbilityId:null,ownedAbilities:[],ownedAbilitiesBySkin:{},lastNonIceWorld:"giza",shopNewSeen:{},shopNewRelease:"2.8.0",musicEnabled:true,sfxEnabled:true,musicVolume:70,sfxVolume:70,language:"de",missionProgress:{m1:0,m2:0,m3:0},missionClaimed:{m1:false,m2:false,m3:false},activeMissions:null,missionCycle:1,lastMissionIds:[],luckySpins:0,luckyLastResult:null,seasonScore:0,currentSeasonId:2,seasonRewardPending:null,seasonRewardClaimed:false,flyOwner1000Granted:false,playerXP:0,playerLevel:1,playerXPBoost:0,playerXpEarnedTotal:0,levelRewardsPending:[],levelRewardsClaimed:[],dailyRewardDate:"",dailyStreak:0,dailyRewardCycle:1,secretShopItems:[],secretShopPublished:false,secretHuntFound:0,bossDamageDealt:0,bossGlobalRewardsClaimed:[],adRevivesUsed:0,adCoins:0,adAdsWatched:0,adDashUses:0,creatorCode:"",creatorCodeClaimed:false};
 const SAVEKEYS=["FLYYYY_UPDATE14_SAVE","FLYYYY_UPDATE13_SAVE","FLYYYY_UPDATE12_SAVE","FLYYYY_UPDATE11_SAVE","flyyyy_save"];
 function defaultState(){return JSON.parse(JSON.stringify(DEFAULT))}
 function loadState(){for(const k of SAVEKEYS){const raw=storage.getItem(k);if(raw){try{const d=JSON.parse(raw),b=defaultState();return {...b,...d,ownedWorlds:Array.isArray(d.ownedWorlds)?d.ownedWorlds:b.ownedWorlds,ownedSkins:Array.isArray(d.ownedSkins)?d.ownedSkins:b.ownedSkins,ownedSounds:Array.isArray(d.ownedSounds)?d.ownedSounds:b.ownedSounds,ownedMusic:Array.isArray(d.ownedMusic)?d.ownedMusic:b.ownedMusic,missionProgress:{...b.missionProgress,...(d.missionProgress||{})},missionClaimed:{...b.missionClaimed,...(d.missionClaimed||{})},activeMissions:Array.isArray(d.activeMissions)?d.activeMissions:null,shopNewSeen:(d.shopNewSeen&&typeof d.shopNewSeen==="object")?d.shopNewSeen:{}}}catch{}}}return defaultState()}
@@ -2401,6 +2466,7 @@ function draw(){
   }
 
 const LUCKY_COST=1000;
+const CREATOR_CODES={"flyyyyowner":{name:"FLYYYY Owner",reward:"🪙 5% Bonus Coins in Season"}};
 const luckySegmentColors=["#f4f6fb","#6df5a3","#5ee7ff","#b58cff","#ff6374","#ffd447","#8bd3ff","#ffe58a"];
 let luckyRotation=0,luckySpinning=false,luckyPaid=false,luckyPool=[];
 function makeLuckyPool(){
@@ -2443,16 +2509,49 @@ function confirmLuckyBuy(){if(state.coins<LUCKY_COST){showMessage("🪙 Du brauc
 function rarityBadge(r){const m=rarityMeta[r]||rarityMeta.basic;return `<span class="rarity-badge ${m.className}">${m.name}</span>`}
 function luckyEntryText(e){if(e.kind==="skin")return `${e.icon} ${e.item.name}`;if(e.kind==="ability")return `${e.icon} ${e.item.name} · ${e.skin.name}`;if(e.kind==="coins")return `🪙 +${e.amount}`;return `${e.icon} ${e.item?.name||e.label}`}
 function renderLuckyPrizeList(){return luckyPool.map((e,i)=>`<div class="luckyPrizeLine"><span class="luckyPrizeDot" style="background:${rarityMeta[e.rarity||"basic"].color}"></span><div><div class="luckyPrizeName">${luckyEntryText(e)}</div><div class="tiny">${e.kind==="ability"?"Fähigkeit für "+e.skin.name:e.kind==="skin"?"Skin":e.kind.toUpperCase()}</div></div><div class="luckyPrizeMeta">${e.kind==="skin"||e.kind==="ability"?rarityMeta[e.rarity].name:"Preis"}</div></div>`).join("")}
+function setCreatorCode(){
+  const input=$("creatorCodeInput");
+  if(!input)return;
+  const code=input.value.trim().toLowerCase();
+  if(!code){showMessage("Bitte gib einen Creator Code ein.");return}
+  const creator=CREATOR_CODES[code];
+  if(!creator){
+    input.value="";
+    input.placeholder="Creator Code nicht gefunden";
+    showMessage("❌ Creator Code nicht gefunden!");
+    setTimeout(()=>{input.placeholder="z.B. flyyyyOwner"},3000);
+    return
+  }
+  state.creatorCode=code;
+  state.creatorCodeClaimed=false;
+  saveState();
+  if(currentUser&&db){
+    (async()=>{
+      try{
+        const {d}=await loadFirebase();
+        const ref=d.ref(db,"creatorCodeClaims/"+currentUser.uid);
+        await d.set(ref,{code,creatorName:creator.name,email:currentUser.email||"",uid:currentUser.uid,claimed:false,claimedAt:0,setAt:d.serverTimestamp()});
+        showMessage(`👑 Creator Code gesetzt: ${creator.name} · Online gespeichert!`);
+      }catch(e){
+        console.error(e);
+        showMessage(`👑 Creator Code gesetzt: ${creator.name} (lokal gespeichert)`);
+      }
+    })();
+  }else{
+    showMessage(`👑 Creator Code gesetzt: ${creator.name}`);
+  }
+  renderLuckyRad();
+}
 function renderLuckyRad(){
   shopCoins.textContent=state.coins;
   if(!luckyPaid){
-    shopCards.innerHTML=`<div class="luckyWrap"><div class="luckyWheelCard"><div style="font-size:76px">🎡</div><h2 style="margin:8px 0">Lucky Rad</h2><p class="subtitle" style="margin-bottom:16px">Drehe für 1000 Coins. Die konkreten Gewinne werden jedes Mal neu gemischt.</p><div class="luckyMainPrize"><strong>🎁 GEWINNE IN DIESEM RAD</strong><div class="luckyOdds">Skins und Fähigkeiten sind <strong>Einzelgewinne</strong>. Neue Inhalte landen nur im Lucky Rad.</div></div><button id="buyLuckyBtn" class="btn green spinBtn" style="margin-top:16px">🪙 FÜR 1000 COINS KAUFEN</button></div><div class="luckyInfo"><div class="luckyInfoBox"><h3>🎁 Dieses Rad enthält</h3><div class="luckyPrizeList">${renderLuckyPrizeList()}</div></div><div class="luckyInfoBox"><h3>📊 Raritäten</h3><div class="luckyOdds">⚪ Basic 55 % · 🟢 Rare 25 % · 🔵 Ultra 12 % · 🟣 Epic 5 % · 🔴 Mythic 2,5 % · 🟡 Legendary 0,5 %</div></div></div></div>`;
-    $("buyLuckyBtn").onclick=openLuckyRad;return;
+     shopCards.innerHTML=`<div class="luckyWrap"><div class="luckyWheelCard"><div style="font-size:76px">🎡</div><h2 style="margin:8px 0">Lucky Rad</h2><p class="subtitle" style="margin-bottom:16px">Drehe für 1000 Coins. Die konkreten Gewinne werden jedes Mal neu gemischt.</p><div class="luckyMainPrize"><strong>🎁 GEWINNE IN DIESEM RAD</strong><div class="luckyOdds">Skins und Fähigkeiten sind <strong>Einzelgewinne</strong>. Neue Inhalte landen nur im Lucky Rad.</div></div><button id="buyLuckyBtn" class="btn green spinBtn" style="margin-top:16px">🪙 FÜR 1000 COINS KAUFEN</button></div><div class="luckyInfo"><div class="luckyInfoBox"><h3>🎁 Dieses Rad enthält</h3><div class="luckyPrizeList">${renderLuckyPrizeList()}</div></div><div class="luckyInfoBox"><h3>💡 So funktioniert es</h3><div class="tiny">Skins und Fähigkeiten werden einzeln gewonnen. Nach dem Dreh wird das Lucky Rad komplett neu zusammengestellt.</div></div><div class="creatorCodeBox"><h3>👑 Creator Code</h3><input id="creatorCodeInput" class="creatorCodeInput" type="text" maxlength="20" placeholder="z.B. flyyyyOwner"><button id="setCreatorBtn" class="btn blue" style="width:100%">Creator Code setzen</button></div></div></div>`;
+    $("buyLuckyBtn").onclick=openLuckyRad;$("setCreatorBtn").onclick=setCreatorCode;return;
   }
   const labels=luckyPool.map((e,i)=>`<div class="wheelLabel" data-index="${i}">${e.icon} ${e.kind==="coins"?`+${e.amount}`:e.kind==="skin"?e.item.name:e.kind==="ability"?e.item.name:e.item?.name||e.label}</div>`).join("");
   const gradient=luckyPool.map((e,i)=>`${rarityMeta[e.rarity||"basic"].color} ${i*45}deg ${(i+1)*45}deg`).join(",");
-  shopCards.innerHTML=`<div class="luckyWrap"><div class="luckyWheelCard"><div class="wheelStage"><div class="wheelPointer">▼</div><div class="luckyWheel"><div id="luckyWheelInner" class="luckyWheelInner" style="background:conic-gradient(${gradient})"><div class="wheelLabels">${labels}</div></div></div></div><button id="luckySpinBtn" class="btn green spinBtn">🎡 DREHEN</button><div id="luckyResult" class="luckyResult">Bereit für deinen Dreh.</div></div><div class="luckyInfo"><div class="luckyInfoBox"><h3>🎁 Im aktuellen Rad</h3><div class="luckyPrizeList">${renderLuckyPrizeList()}</div></div><div class="luckyInfoBox"><h3>💡 So funktioniert es</h3><div class="tiny">Skins und Fähigkeiten werden einzeln gewonnen. Nach dem Dreh wird das Lucky Rad komplett neu zusammengestellt.</div></div></div></div>`;
-  $("luckySpinBtn").onclick=spinLuckyRad;
+  shopCards.innerHTML=`<div class="luckyWrap"><div class="luckyWheelCard"><div class="wheelStage"><div class="wheelPointer">▼</div><div class="luckyWheel"><div id="luckyWheelInner" class="luckyWheelInner" style="background:conic-gradient(${gradient})"><div class="wheelLabels">${labels}</div></div></div></div><button id="luckySpinBtn" class="btn green spinBtn">🎡 DREHEN</button><div id="luckyResult" class="luckyResult">Bereit für deinen Dreh.</div></div><div class="luckyInfo"><div class="luckyInfoBox"><h3>🎁 Im aktuellen Rad</h3><div class="luckyPrizeList">${renderLuckyPrizeList()}</div></div><div class="luckyInfoBox"><h3>💡 So funktioniert es</h3><div class="tiny">Skins und Fähigkeiten werden einzeln gewonnen. Nach dem Dreh wird das Lucky Rad komplett neu zusammengestellt.</div></div><div class="creatorCodeBox"><h3>👑 Creator Code</h3><p class="tiny" style="margin:4px 0 8px">Unterstütze deinen Lieblings-Streamer!</p><input id="creatorCodeInput" class="creatorCodeInput" type="text" maxlength="20" placeholder="z.B. flyyyyOwner"><button id="setCreatorBtn" class="btn blue" style="width:100%">${state.creatorCode&&CREATOR_CODES[state.creatorCode]?`✅ ${CREATOR_CODES[state.creatorCode].name}`:"Creator Code setzen"}</button></div></div></div>`;
+  $("luckySpinBtn").onclick=spinLuckyRad;$("setCreatorBtn").onclick=setCreatorCode;
 }
 function chooseLuckyResult(){
   if(!Array.isArray(luckyPool)||!luckyPool.length)return null;
@@ -3613,17 +3712,20 @@ async function loadAdminUsers(){
 async function adminAdjust(uid,delta){if(!await requireAdmin())return;if(!delta){showMessage("Bitte eine Coin-Anzahl eingeben.");return}try{const f=await getAdminFunctions();const r=await f.adjustCoins({uid,delta});showMessage(`🪙 Neuer Kontostand: ${Number(r.data?.coins||0).toLocaleString("de-DE")}`);await loadAdminUsers()}catch(e){console.error(e);showMessage("❌ Coins konnten nicht geändert werden.")}}
 async function adminBan(uid,minutes){if(!await requireAdmin())return;try{const f=await getAdminFunctions();await f.banUser({uid,durationMinutes:minutes});showMessage(minutes===0?"✅ Spieler entsperrt.":minutes===-1?"🚫 Spieler dauerhaft gesperrt.":`🚫 Spieler für ${minutes} Minuten gesperrt.`);await loadAdminUsers()}catch(e){console.error(e);showMessage("❌ Sperre konnte nicht geändert werden.")}}
 async function adminDelete(u){if(!await requireAdmin())return;if(u.uid===currentUser.uid){showMessage("❌ Deinen eigenen Admin-Account nicht löschen.");return}if(!confirm(`Account ${u.email||u.uid} wirklich löschen? Dieser Vorgang kann nicht rückgängig gemacht werden.`))return;try{const f=await getAdminFunctions();await f.deleteUser({uid:u.uid});showMessage("🗑️ Account gelöscht.");await loadAdminUsers()}catch(e){console.error(e);showMessage("❌ Account konnte nicht gelöscht werden.")}}
+async function loadAdminCreatorCodes(){if(!await requireAdmin())return;const list=$("adminCreatorCodesList"),status=$("adminCreatorCodesStatus");list.innerHTML="";if(adminLocal&&!db){status.textContent="📱 Lokaler Admin-Modus (keine Firebase-Verbindung)";return}status.textContent="🔄 Lade Creator Codes...";try{const {d}=await loadFirebase();const snap=await d.get(d.ref(db,"creatorCodeClaims"));if(!snap.exists()){status.textContent="👑 Keine Creator Code Einträge.";return}const data=snap.val();const entries=[];Object.entries(data).forEach(([uid,info])=>{if(info&&info.code){entries.push({uid,email:info.email||"-",code:info.code,claimed:info.claimed||false,claimedAt:info.claimedAt||0})}});const q=($("adminCreatorCodeSearch")?.value||"").trim().toLowerCase();const filtered=entries.filter(e=>e.code.toLowerCase().includes(q)||e.uid.toLowerCase().includes(q)||e.email.toLowerCase().includes(q));status.textContent=`👑 ${filtered.length} Creator Code Einträge`;filtered.forEach(e=>list.appendChild(creatorCodeCard(e)))}catch(e){console.error(e);status.textContent="🔴 "+(e?.message||"Creator Codes konnten nicht geladen werden.")}}
+function creatorCodeCard(e){const card=document.createElement("div");card.className="leaderRow";const dot=document.createElement("div");dot.className="leaderRank";dot.textContent="👑";const name=document.createElement("div");name.className="leaderName";name.textContent=`${e.code} · ${CREATOR_CODES[e.code]?.name||e.code}`;const meta=document.createElement("div");meta.className="leaderMeta";meta.innerHTML=`${e.email}<br><small>${e.claimed?"✅ eingelöst":"⌛ offen"}</small>`;card.append(dot,name,meta);return card}
 
-const adminTabItems=[{id:"users",name:"👥 Spieler"},{id:"events",name:"🎁 Events"},{id:"rewards",name:"🎁 Belohnungen"},{id:"freegive",name:"💝 Kostenlos geben"},{id:"secretshop",name:"🔒 Secret Shop"},{id:"abuselog",name:"📋 Abuse Log"},{id:"chat",name:"🔇 Chat-Bans"}];
+const adminTabItems=[{id:"users",name:"👥 Spieler"},{id:"events",name:"🎁 Events"},{id:"rewards",name:"🎁 Belohnungen"},{id:"freegive",name:"💝 Kostenlos geben"},{id:"secretshop",name:"🔒 Secret Shop"},{id:"abuselog",name:"📋 Abuse Log"},{id:"creatorcodes",name:"👑 Creator Codes"},{id:"chat",name:"🔇 Chat-Bans"}];
 function renderAdminTabs(){tabs($("adminTabs"),adminTabItems,adminTab,tabId=>{adminTab=tabId;showAdminTab(tabId)})}
 function showAdminTab(tabId){
   adminTab=tabId;
   document.querySelectorAll('.adminTabSection').forEach(s=>s.style.display="none");
-  const map={users:"adminUsersTab",events:"adminEventsTab",rewards:"adminRewardsTab",freegive:"adminFreeGiveTab",secretshop:"adminSecretShopTab",abuselog:"adminAbuseLogTab",chat:"adminChatTab"};
+  const map={users:"adminUsersTab",events:"adminEventsTab",rewards:"adminRewardsTab",freegive:"adminFreeGiveTab",secretshop:"adminSecretShopTab",abuselog:"adminAbuseLogTab",creatorcodes:"adminCreatorCodesTab",chat:"adminChatTab"};
   const target=$(map[tabId]);
   if(target)target.style.display="block";
   if(tabId==="secretshop")renderAdminSecretShop();
   if(tabId==="abuselog")renderAdminAbuseLog();
+  if(tabId==="creatorcodes")loadAdminCreatorCodes();
 }
 
 function populateAdminEventSelect(){
@@ -4642,7 +4744,7 @@ async function adminFreeGive(){
     showMessage(`✅ Gegenstand verschickt.`);
   }catch(e){console.error(e);if(status)status.textContent="❌ Fehler: "+(e?.message||"unbekannt")}
 }
-adminLoginBtn.onclick=openAdminLogin;adminUnlockBtn.onclick=activateAdmin;adminBroadcastSendBtn?.addEventListener("click",sendGlobalBroadcast);adminBroadcastInput?.addEventListener("keydown",e=>{if((e.ctrlKey||e.metaKey)&&e.key==="Enter")sendGlobalBroadcast()});adminCloseBtn.onclick=closeAdminLogin;adminClosePanelBtn.onclick=closeAdminLogin;adminMyAccountBtn.onclick=async()=>{if(await requireAdmin())adminInfo.textContent=`Firebase UID: ${currentUser.uid} · E-Mail: ${currentUser.email||"-"}`};$("adminRefreshUsersBtn").onclick=loadAdminUsers;$("adminUserSearch").addEventListener("input",()=>loadAdminUsers());adminCodeInput.addEventListener("keydown",e=>{if(e.key==="Enter")activateAdmin();if(e.key==="Escape")closeAdminLogin()});
+adminLoginBtn.onclick=openAdminLogin;adminUnlockBtn.onclick=activateAdmin;adminBroadcastSendBtn?.addEventListener("click",sendGlobalBroadcast);adminBroadcastInput?.addEventListener("keydown",e=>{if((e.ctrlKey||e.metaKey)&&e.key==="Enter")sendGlobalBroadcast()});adminCloseBtn.onclick=closeAdminLogin;adminClosePanelBtn.onclick=closeAdminLogin;adminMyAccountBtn.onclick=async()=>{if(await requireAdmin())adminInfo.textContent=`Firebase UID: ${currentUser.uid} · E-Mail: ${currentUser.email||"-"}`};$("adminRefreshUsersBtn").onclick=loadAdminUsers;$("adminUserSearch").addEventListener("input",()=>loadAdminUsers());$("adminCreatorRefreshBtn").onclick=loadAdminCreatorCodes;$("adminCreatorCodeSearch").addEventListener("input",()=>loadAdminCreatorCodes());adminCodeInput.addEventListener("keydown",e=>{if(e.key==="Enter")activateAdmin();if(e.key==="Escape")closeAdminLogin()});
 $("adminEventStartBtn")?.addEventListener("click",adminStartEvent);$("adminEventStopBtn")?.addEventListener("click",adminStopEvent);
 $("adminRewardType")?.addEventListener("change",populateRewardItemSelect);$("adminRewardGiveBtn")?.addEventListener("click",adminGiveReward);$("adminSelfRewardBtn")?.addEventListener("click",adminSelfReward);$("adminRewardAllBtn")?.addEventListener("click",adminRewardAll);
 $("adminFreeGiveCategory")?.addEventListener("change",populateFreeGiveItemSelect);$("adminFreeGiveBtn")?.addEventListener("click",adminFreeGive);
@@ -4997,100 +5099,6 @@ async function sendGlobalBroadcast(){
   btn.disabled=false;
 }
 
-let verifyState={email:null,codeHash:null,expiresAt:0,attempts:0,resendCooldown:0,verified:false};
-const VERIFY_CODE_LENGTH=6;
-const VERIFY_CODE_TTL=600;
-const VERIFY_MAX_ATTEMPTS=5;
-const VERIFY_RESEND_COOLDOWN=60;
-
-function generateVerifyCode(){
-  let code="";
-  for(let i=0;i<VERIFY_CODE_LENGTH;i++){code+=Math.floor(Math.random()*10).toString()}
-  return code;
-}
-function hashCode(code){
-  let hash=0;
-  for(let i=0;i<code.length;i++){const chr=code.charCodeAt(i);hash=((hash<<5)-hash)+chr;hash|=0}
-  return Math.abs(hash).toString(36);
-}
-async function sendVerificationCode(email,username){
-  try{
-    const {d}=await loadFirebase();
-    const code=generateVerifyCode();
-    const codeHash=hashCode(code);
-    const expiresAt=Date.now()+VERIFY_CODE_TTL*1000;
-    const ref=d.ref(db,"emailVerification/"+email.replace(/\./g,","));
-    await d.set(ref,{codeHash,expiresAt,attempts:0,username:username||"",createdAt:Date.now()});
-    const sent=await callSendEmailFunction(email,code,username);
-    return {success:sent,message:sent?"📧 Code gesendet!":"❌ E-Mail konnte nicht gesendet werden."};
-  }catch(e){
-    console.error("sendVerificationCode error:",e);
-    return {success:false,message:"❌ Fehler beim Senden: "+e.message};
-  }
-}
-async function callSendEmailFunction(email,code,username){
-  try{
-    if(typeof __flyyyySendEmail==="function"){
-      return await __flyyyySendEmail(email,code,username);
-    }
-    const resp=await fetch("https://us-central1-flyyyy.cloudfunctions.net/sendVerificationEmail",{
-      method:"POST",
-      headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({email,code,username})
-    });
-    if(!resp.ok)return false;
-    const data=await resp.json();
-    return data.success===true;
-  }catch(e){
-    console.error("callSendEmailFunction error:",e);
-    return false;
-  }
-}
-async function verifyCode(email,inputCode){
-  try{
-    const {d}=await loadFirebase();
-    const ref=d.ref(db,"emailVerification/"+email.replace(/\./g,","));
-    const snap=await d.get(ref);
-    if(!snap.exists())return {success:false,message:"❌ Kein Code gefunden. Bitte neu senden."};
-    const data=snap.val();
-    if(Date.now()>data.expiresAt){
-      await d.remove(ref);
-      return {success:false,message:"❌ Code abgelaufen. Bitte neu senden."};
-    }
-    if((data.attempts||0)>=VERIFY_MAX_ATTEMPTS){
-      await d.remove(ref);
-      return {success:false,message:"❌ Zu viele Versuche. Bitte neuen Code anfordern."};
-    }
-    const inputHash=hashCode(inputCode);
-    if(inputHash!==data.codeHash){
-      await d.update(ref,{attempts:(data.attempts||0)+1});
-      const remaining=VERIFY_MAX_ATTEMPTS-(data.attempts||0)-1;
-      return {success:false,message:`❌ Falscher Code. Noch ${remaining} Versuche.`};
-    }
-    const username=data.username||"";
-    await d.remove(ref);
-    return {success:true,message:"✅ E-Mail bestätigt!",username};
-  }catch(e){
-    console.error("verifyCode error:",e);
-    return {success:false,message:"❌ Fehler bei der Prüfung."};
-  }
-}
-function resetVerifyUI(){
-  sendCodeBtn.style.display="none";
-  authVerifyCode.style.display="none";
-  verifyCodeBtn.style.display="none";
-  resendCodeBtn.style.display="none";
-  verifyStatus.textContent="";
-  authVerifyCode.value="";
-  verifyState={email:null,codeHash:null,expiresAt:0,attempts:0,resendCooldown:0,verified:false};
-}
-function showVerifyUI(){
-  sendCodeBtn.style.display="";
-  authVerifyCode.style.display="";
-  verifyCodeBtn.style.display="";
-  resendCodeBtn.style.display="";
-}
-
 accountBtn.onclick=()=>showScreen("authScreen");
 myAccountBtn.onclick=()=>{authStatus.textContent=currentUser?"✅ Du bist angemeldet. Hier kannst du deinen Account verwalten.":"🔐 Bitte mit E-Mail und Passwort anmelden oder registrieren.";showScreen("authScreen");};authBackBtn.onclick=()=>showScreen("lobby");guestBtn.onclick=()=>{showScreen("lobby");showMessage("👤 Gastmodus aktiviert.")};
 loginBtn.onclick=async()=>{
@@ -5117,125 +5125,28 @@ loginBtn.onclick=async()=>{
 registerBtn.onclick=async()=>{
   registerBtn.disabled=true;
   try{
-    const username=authUsername.value.trim();
+    const username=authUsername.value.trim()||"Spieler";
     const email=authEmail.value.trim().toLowerCase();
     const pw=authPassword.value;
-    if(!username){authStatus.textContent="Bitte Benutzernamen eingeben.";return}
     if(!email||!pw){authStatus.textContent="Bitte E-Mail und Passwort eingeben.";return}
     if(pw.length<6){authStatus.textContent="Passwort: mindestens 6 Zeichen.";return}
-    if(verifyState.resendCooldown>Date.now()){
-      const wait=Math.ceil((verifyState.resendCooldown-Date.now())/1000);
-      authStatus.textContent=`⏱️ Bitte ${wait}Sek. warten.`;
-      return
-    }
-    authStatus.textContent="📧 Bestätigungscode wird gesendet...";
-    showVerifyUI();
-    const result=await sendVerificationCode(email,username);
-    authStatus.textContent=result.message;
-    if(result.success){
-      verifyState.email=email;
-      verifyState.resendCooldown=Date.now()+VERIFY_RESEND_COOLDOWN*1000;
-      updateResendCooldown();
-    }
+    authStatus.textContent="📧 Registriere Konto...";
+    const {a}=await initFirebaseCore();
+    await waitForAuthReady();
+    await a.createUserWithEmailAndPassword(auth,email,pw);
+    storage.setItem("FLYYYY_PLAYER_NAME",username);
+    autoGrantOwnerSkin();
+    authStatus.textContent="✅ Konto erstellt!";
+    showMessage("✅ Konto erfolgreich erstellt!");
+    showScreen("lobby");
   }catch(e){
     console.error("Registrierungs-Fehler:",e);
-    authStatus.textContent="❌ Fehler: "+e.message;
+    authStatus.textContent="❌ Fehler: "+authText(e);
   }finally{
     registerBtn.disabled=false;
   }
 };
-sendCodeBtn.onclick=async()=>{
-  sendCodeBtn.disabled=true;
-  try{
-    const username=authUsername.value.trim();
-    const email=authEmail.value.trim().toLowerCase();
-    if(!email){authStatus.textContent="Bitte E-Mail eingeben.";return}
-    if(verifyState.resendCooldown>Date.now()){
-      const wait=Math.ceil((verifyState.resendCooldown-Date.now())/1000);
-      verifyStatus.textContent=`⏱️ Noch ${wait}Sek. warten`;
-      return
-    }
-    verifyStatus.textContent="📧 Code wird gesendet...";
-    const result=await sendVerificationCode(email,username);
-    verifyStatus.textContent=result.message;
-    if(result.success){
-      verifyState.email=email;
-      verifyState.resendCooldown=Date.now()+VERIFY_RESEND_COOLDOWN*1000;
-      updateResendCooldown();
-    }
-  }catch(e){
-    verifyStatus.textContent="❌ Fehler: "+e.message;
-  }finally{
-    sendCodeBtn.disabled=false;
-  }
-};
-verifyCodeBtn.onclick=async()=>{
-  verifyCodeBtn.disabled=true;
-  try{
-    const email=verifyState.email;
-    const inputCode=authVerifyCode.value.trim();
-    if(!email){authStatus.textContent="❌ Keine E-Mail. Bitte REGISTRIEREN klicken.";return}
-    if(inputCode.length!==VERIFY_CODE_LENGTH){verifyStatus.textContent=`❌ Code muss ${VERIFY_CODE_LENGTH} Stellen haben.`;return}
-    verifyStatus.textContent="🔄 Code wird geprüft...";
-    const result=await verifyCode(email,inputCode);
-    verifyStatus.textContent=result.message;
-    if(result.success){
-      verifyState.verified=true;
-      const pw=authPassword.value;
-      const username=result.username||authUsername.value.trim();
-      const {a}=await initFirebaseCore();
-      await waitForAuthReady();
-      await a.createUserWithEmailAndPassword(auth,email,pw);
-      storage.setItem("FLYYYY_PLAYER_NAME",username);
-      authStatus.textContent="✅ Konto erstellt!";
-      showMessage("✅ Konto erfolgreich erstellt!");
-      resetVerifyUI();
-      showScreen("lobby");
-    }
-  }catch(e){
-    console.error("Verify-Fehler:",e);
-    verifyStatus.textContent="❌ Fehler: "+e.message;
-  }finally{
-    verifyCodeBtn.disabled=false;
-  }
-};
-resendCodeBtn.onclick=async()=>{
-  resendCodeBtn.disabled=true;
-  try{
-    const username=authUsername.value.trim();
-    const email=verifyState.email||authEmail.value.trim().toLowerCase();
-    if(!email){verifyStatus.textContent="❌ Keine E-Mail.";return}
-    if(verifyState.resendCooldown>Date.now()){
-      const wait=Math.ceil((verifyState.resendCooldown-Date.now())/1000);
-      verifyStatus.textContent=`⏱️ Noch ${wait}Sek. warten`;
-      return
-    }
-    verifyStatus.textContent="📧 Neuer Code wird gesendet...";
-    const result=await sendVerificationCode(email,username);
-    verifyStatus.textContent=result.message;
-    if(result.success){
-      verifyState.email=email;
-      verifyState.resendCooldown=Date.now()+VERIFY_RESEND_COOLDOWN*1000;
-      updateResendCooldown();
-    }
-  }catch(e){
-    verifyStatus.textContent="❌ Fehler: "+e.message;
-  }finally{
-    resendCodeBtn.disabled=false;
-  }
-};
-function updateResendCooldown(){
-  if(verifyState.resendCooldown<=Date.now()){
-    resendCodeBtn.textContent="🔄 Neuer Code";
-    resendCodeBtn.disabled=false;
-    return
-  }
-  const remaining=Math.ceil((verifyState.resendCooldown-Date.now())/1000);
-  resendCodeBtn.textContent=`⏱️ ${remaining}Sek.`;
-  resendCodeBtn.disabled=true;
-  setTimeout(updateResendCooldown,1000);
-}
-authBackBtn.onclick=()=>{resetVerifyUI();showScreen("lobby")};
+authBackBtn.onclick=()=>showScreen("lobby");
 logoutBtn.onclick=async()=>{try{const {a}=await loadFirebase();await a.signOut(auth);showMessage("👤 Gastmodus aktiviert.")}catch(e){console.error(e)}};
 claimSeasonRewardBtn.onclick=claimSeasonReward;musicToggleBtn.onclick=()=>{state.musicEnabled=!state.musicEnabled;saveState();if(state.musicEnabled){if(game.running)startMusic();else startLobbyMusic()}else stopMusic();updateLobby()};
 confirmLuckyBuyBtn.onclick=confirmLuckyBuy;cancelLuckyBuyBtn.onclick=cancelLuckyBuy;jackpotOverlay.addEventListener("click",()=>{jackpotOverlay.classList.remove("active")});abilityBtn.onclick=activateAbility;abilityBtn.addEventListener("pointerdown",e=>{e.preventDefault();activateAbility()});pauseBtn.onclick=togglePause;resumeBtn.onclick=togglePause;pauseLobbyBtn.onclick=returnLobby;retryBtn.onclick=()=>startGame(game.onlineRun);returnLobbyBtn.onclick=returnLobby;discordFloatBtn.addEventListener("click",()=>{window.open("https://discord.gg/U3DGFwgeQe","_blank","noopener,noreferrer")});
