@@ -5833,7 +5833,7 @@ registerBtn.onclick=async()=>{
 authBackBtn.onclick=()=>showScreen("lobby");
 logoutBtn.onclick=async()=>{try{const {a}=await loadFirebase();await a.signOut(auth);showMessage("👤 Gastmodus aktiviert.")}catch(e){console.error(e)}};
 claimSeasonRewardBtn.onclick=claimSeasonReward;musicToggleBtn.onclick=()=>{state.musicEnabled=!state.musicEnabled;saveState();if(state.musicEnabled){if(game.running)startMusic();else startLobbyMusic()}else stopMusic();updateLobby()};
-confirmLuckyBuyBtn.onclick=confirmLuckyBuy;cancelLuckyBuyBtn.onclick=cancelLuckyBuy;jackpotOverlay.addEventListener("click",()=>{jackpotOverlay.classList.remove("active")});abilityBtn.onclick=activateAbility;abilityBtn.addEventListener("pointerdown",e=>{e.preventDefault();activateAbility()});pauseBtn.onclick=togglePause;resumeBtn.onclick=togglePause;pauseLobbyBtn.onclick=returnLobby;retryBtn.onclick=()=>startGame(game.onlineRun);returnLobbyBtn.onclick=returnLobby;discordFloatBtn.addEventListener("click",()=>{window.open("https://discord.gg/U3DGFwgeQe","_blank","noopener,noreferrer")});const siteFloatBtn=document.getElementById("siteFloatBtn");if(siteFloatBtn)siteFloatBtn.addEventListener("click",()=>{window.open("./assets/flyyyy.html","_blank","noopener,noreferrer")});
+confirmLuckyBuyBtn.onclick=confirmLuckyBuy;cancelLuckyBuyBtn.onclick=cancelLuckyBuy;jackpotOverlay.addEventListener("click",()=>{jackpotOverlay.classList.remove("active")});abilityBtn.onclick=activateAbility;abilityBtn.addEventListener("pointerdown",e=>{e.preventDefault();activateAbility()});pauseBtn.onclick=togglePause;resumeBtn.onclick=togglePause;pauseLobbyBtn.onclick=returnLobby;retryBtn.onclick=()=>startGame(game.onlineRun);returnLobbyBtn.onclick=returnLobby;discordFloatBtn.addEventListener("click",()=>{window.open("https://discord.gg/XJtzgPV9wB","_blank","noopener,noreferrer")});const siteFloatBtn=document.getElementById("siteFloatBtn");if(siteFloatBtn)siteFloatBtn.addEventListener("click",()=>{window.open("./assets/flyyyy.html","_blank","noopener,noreferrer")});
 canvas.addEventListener("pointerdown",e=>{e.preventDefault();flap()});addEventListener("keydown",e=>{
   const tag=(e.target?.tagName||"").toLowerCase();
   const typing=tag==="input"||tag==="textarea"||tag==="select"||e.target?.isContentEditable;
@@ -6223,7 +6223,7 @@ if(window.requestIdleCallback)requestIdleCallback(showCookieBanner);else setTime
         detail: { version: this.version }
       }));
     }
-  };
+  };L
 
   window.FLYYYY_4_1 = F41;
 
