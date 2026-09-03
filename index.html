@@ -7,7 +7,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <meta name="theme-color" content="#0d1430">
-<title>FLYYYY 4.0</title>
+<title>FLYYYY 4.3</title>
 <style>
 :root{--bg:#0d1430;--panel:#121a3d;--text:#fff;--muted:#b9c5ef;--yellow:#ffd447;--blue:#5ee7ff;--green:#6df5a3;--red:#ff6374}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{width:100%;height:100%;margin:0;overflow:hidden;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:#fff}button,input{font:inherit}button{cursor:pointer}
@@ -126,7 +126,7 @@ input{min-height:44px}
   .prizeTitle{font-size:clamp(34px,10vw,60px)}
   .prizeText{font-size:clamp(22px,7vw,38px)}
   .prizeSub{font-size:14px}
-  
+ 
   .hud-left{left:7px;right:120px;top:8px;gap:5px}
   .hud-right{right:7px;top:8px;max-width:108px;gap:5px}
   .hud-left .hud-pill,.hud-right .hud-pill,.pause-btn{padding:7px 8px;font-size:11px}
@@ -164,7 +164,7 @@ input{min-height:44px}
 /* ===== FLYYYY 2.9.2 NEON VISUAL OVERHAUL ===== */
 :root{--bg:#070711;--panel:#10101f;--panel2:#171329;--text:#fff;--muted:#c9c3df;--yellow:#ffe45e;--blue:#45e8ff;--green:#58ff9c;--red:#ff4f86;--purple:#b76cff;--pink:#ff4fd8;--orange:#ff9b3d;--cyan:#31f4ff}
 html,body{background:radial-gradient(circle at 15% 15%,rgba(255,79,216,.16),transparent 30%),radial-gradient(circle at 85% 20%,rgba(69,232,255,.16),transparent 30%),radial-gradient(circle at 50% 100%,rgba(183,108,255,.16),transparent 35%),#070711;color:#fff}
-body:before{content:"";position:fixed;inset:-30%;z-index:-1;pointer-events:none;background:conic-gradient(from 0deg,rgba(255,79,216,.10),rgba(69,232,255,.10),rgba(88,255,156,.08),rgba(255,228,94,.08),rgba(183,108,255,.10),rgba(255,79,216,.10));filter:blur(70px);animation:neonSpin 18s linear infinite}
+body:before{content:"";position:fixed;inset:-30%;z-index:-1;pointer-events:none;background:radial-gradient(circle at 50% 50%,rgba(74,168,255,.06),transparent 55%);animation:none}
 @keyframes neonSpin{to{transform:rotate(360deg)}}
 #app{background:transparent}
 .menu{background:linear-gradient(145deg,rgba(15,12,31,.96),rgba(20,13,38,.94));border:1px solid rgba(255,255,255,.16);box-shadow:0 0 0 1px rgba(255,79,216,.08),0 25px 80px rgba(0,0,0,.55),0 0 55px rgba(69,232,255,.12)}
@@ -259,74 +259,327 @@ body:before{content:"";position:fixed;inset:-30%;z-index:-1;pointer-events:none;
 </style>
 
 <style id="flyyyy-minimal-design">
-/* ===== FLYYYY 2.9.2 — NEON COLOR DESIGN ===== */
+/* ===== FLYYYY — CLEAN BLUE + BLACK + WHITE ===== */
 :root{
-  --bg:#070b18;--panel:#10182f;--panel2:#151f3d;--text:#fff;--muted:#b9c5ef;
-  --yellow:#ffd447;--blue:#5ee7ff;--green:#6df5a3;--red:#ff6374;--pink:#ff4fd8;--purple:#a970ff;
+  --bg:#02060f;--bg2:#06122a;--panel:#08172f;--panel2:#0c1f44;--text:#ffffff;--muted:#9fb3d8;
+  --blue:#1e6cff;--blue-2:#3a8bff;--blue-3:#62a6ff;--blue-soft:rgba(74,140,255,.18);--blue-glow:rgba(74,140,255,.55);
+  --white:#fff;--black:#000;--border:rgba(255,255,255,.08);--border-2:rgba(98,166,255,.35);
+  --radius:16px;--radius-lg:22px;
 }
-html,body{background:#070b18!important;color:#fff!important}
-#app{background:radial-gradient(circle at 50% 0%,#192b59 0%,#0d1430 34%,#070b18 100%)!important}
-.menu{background:linear-gradient(180deg,rgba(13,20,48,.97),rgba(18,28,67,.97))!important;border:1px solid rgba(94,231,255,.25)!important;box-shadow:0 24px 80px rgba(0,0,0,.55),0 0 45px rgba(94,231,255,.08)!important}
-.title{color:#fff!important;text-shadow:0 6px 0 rgba(0,0,0,.2),0 0 12px rgba(94,231,255,.45),0 0 32px rgba(255,79,216,.3)!important;animation:neonTitle 3.2s ease-in-out infinite alternate}
-@keyframes neonTitle{from{text-shadow:0 6px 0 rgba(0,0,0,.2),0 0 10px rgba(94,231,255,.35),0 0 22px rgba(255,79,216,.22)}to{text-shadow:0 6px 0 rgba(0,0,0,.2),0 0 18px rgba(94,231,255,.72),0 0 40px rgba(255,79,216,.46)}}
-.version{background:linear-gradient(90deg,rgba(94,231,255,.12),rgba(255,79,216,.12))!important;border-color:rgba(94,231,255,.32)!important;color:#fff!important;box-shadow:0 0 20px rgba(94,231,255,.12)}
-.subtitle{color:#b9c5ef!important}
-.badge,.accountPill{background:linear-gradient(90deg,rgba(255,212,71,.12),rgba(255,79,216,.10))!important;border-color:rgba(255,212,71,.32)!important;color:#fff!important;box-shadow:0 0 18px rgba(255,212,71,.08)}
-.card,.authBox,.seasonPanel,.luckyWheelCard,.luckyInfoBox,.luckyMainPrize,.adminUserCard,.leaderStatus,.leaderRow,.mission,.notice{
-  background:linear-gradient(180deg,rgba(255,255,255,.085),rgba(255,255,255,.035))!important;
-  border:1px solid rgba(255,255,255,.13)!important;
-  box-shadow:0 12px 35px rgba(0,0,0,.18),inset 0 0 30px rgba(94,231,255,.025)!important;
+*{scroll-behavior:smooth}
+html,body{
+  background:
+    radial-gradient(1100px 600px at 12% -10%,rgba(58,139,255,.18),transparent 60%),
+    radial-gradient(900px 500px at 95% 0%,rgba(30,108,255,.18),transparent 60%),
+    radial-gradient(800px 600px at 50% 110%,rgba(58,139,255,.12),transparent 60%),
+    linear-gradient(180deg,#02060f,#04091a 60%,#02060f);
+  color:#fff;
+}
+body:before{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.18;
+  background-image:
+    linear-gradient(rgba(98,166,255,.10) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(98,166,255,.10) 1px,transparent 1px);
+  background-size:46px 46px,46px 46px;
+  mask-image:radial-gradient(ellipse at 50% 30%,#000 30%,transparent 75%);
+  -webkit-mask-image:radial-gradient(ellipse at 50% 30%,#000 30%,transparent 75%);
+}
+#app{background:transparent}
+.screen{padding:18px}
+.menu{
+  position:relative;
+  background:linear-gradient(180deg,rgba(8,23,47,.92),rgba(6,18,40,.92))!important;
+  backdrop-filter:blur(14px) saturate(140%);
+  -webkit-backdrop-filter:blur(14px) saturate(140%);
+  border:1px solid rgba(98,166,255,.28)!important;
+  border-radius:var(--radius-lg)!important;
+  box-shadow:
+    0 0 0 1px rgba(98,166,255,.10) inset,
+    0 30px 80px rgba(0,0,0,.65),
+    0 0 0 1px rgba(74,140,255,.18),
+    0 0 40px rgba(74,140,255,.18)!important;
+  overflow:auto;
+  scrollbar-width:thin;
+  scrollbar-color:rgba(98,166,255,.55) rgba(255,255,255,.04);
+}
+.menu::-webkit-scrollbar{width:10px;height:10px}
+.menu::-webkit-scrollbar-track{background:rgba(255,255,255,.04);border-radius:8px}
+.menu::-webkit-scrollbar-thumb{background:linear-gradient(180deg,rgba(98,166,255,.7),rgba(58,139,255,.55));border-radius:8px;border:2px solid transparent;background-clip:padding-box}
+.menu::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,rgba(122,180,255,.9),rgba(98,166,255,.75));background-clip:padding-box;border:2px solid transparent}
+.menu::after{
+  content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;padding:1px;
+  background:linear-gradient(135deg,rgba(98,166,255,.7),rgba(74,140,255,0) 40%,rgba(98,166,255,0) 60%,rgba(98,166,255,.7));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
+  opacity:.55;
+}
+.title{
+  color:#fff!important;
+  background:linear-gradient(180deg,#fff 0%,#cfe1ff 60%,#62a6ff 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  text-shadow:0 0 18px rgba(98,166,255,.45);
+  letter-spacing:.06em;
+  font-weight:1000;
+  position:relative;
+}
+.version{
+  background:rgba(8,23,47,.7)!important;border:1px solid rgba(98,166,255,.4)!important;color:#fff!important;
+  box-shadow:0 0 18px rgba(74,140,255,.25),inset 0 0 14px rgba(98,166,255,.18);
+}
+.subtitle{color:#bcd0ee!important}
+.badge,.accountPill{
+  background:rgba(8,23,47,.7)!important;border:1px solid rgba(98,166,255,.3)!important;color:#fff!important;
+  box-shadow:inset 0 0 12px rgba(74,140,255,.10);
+}
+.adCurrencyBadge{border-color:rgba(98,166,255,.6)!important;box-shadow:0 0 14px rgba(74,140,255,.3)!important}
+.card,.authBox,.seasonPanel,.luckyWheelCard,.luckyInfoBox,.luckyMainPrize,.adminUserCard,.leaderStatus,.leaderRow,.mission,.notice,.progressCard,.creatorCodeBox,.settingsCard{
+  background:linear-gradient(180deg,rgba(10,28,58,.78),rgba(8,23,47,.78))!important;
+  border:1px solid rgba(98,166,255,.22)!important;
+  border-radius:var(--radius)!important;
+  box-shadow:inset 0 0 24px rgba(74,140,255,.05),0 12px 30px rgba(0,0,0,.45),0 0 22px rgba(74,140,255,.08)!important;
+  transition:transform .15s ease,box-shadow .2s ease,border-color .2s ease;
+}
+.card:hover,.luckyInfoBox:hover,.settingsCard:hover{
+  transform:translateY(-2px);
+  border-color:rgba(98,166,255,.55)!important;
+  box-shadow:0 18px 40px rgba(0,0,0,.55),0 0 30px rgba(74,140,255,.22)!important;
 }
 .button-grid{gap:12px!important;max-width:520px;margin-left:auto;margin-right:auto}
-.btn,.smallbtn,.tab,.seasonTab,.pause-btn,.abilityHudBtn{border-radius:999px!important;min-height:48px!important;transition:transform .12s ease,filter .15s ease,box-shadow .15s ease!important}
-.btn{width:100%;padding:13px 18px!important;border:1px solid rgba(255,255,255,.16)!important;color:#fff!important;background:rgba(255,255,255,.07)!important;box-shadow:0 8px 22px rgba(0,0,0,.18)!important}
-.btn:hover,.smallbtn:hover,.tab:hover,.seasonTab:hover{filter:brightness(1.12);transform:translateY(-1px)!important}
-.btn:active,.smallbtn:active,.tab:active,.seasonTab:active{transform:translateY(2px)!important}
-.btn.blue{background:linear-gradient(180deg,#69efff,#32c4ea)!important;border-color:#7cf2ff!important;color:#071324!important;box-shadow:0 0 18px rgba(94,231,255,.25),0 8px 22px rgba(0,0,0,.18)!important}
-.btn.green{background:linear-gradient(180deg,#8bffbf,#3fe794)!important;border-color:#9affca!important;color:#072018!important;box-shadow:0 0 20px rgba(109,245,163,.22),0 8px 22px rgba(0,0,0,.18)!important}
-.btn.red{background:linear-gradient(180deg,#ff8796,#ff4d68)!important;border-color:#ff9baa!important;color:#fff!important;box-shadow:0 0 20px rgba(255,99,116,.24),0 8px 22px rgba(0,0,0,.18)!important}
-.btn.dark{background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.035))!important;color:#fff!important;border-color:rgba(255,255,255,.18)!important}
-#startBtn{background:linear-gradient(135deg,#ffd447,#ff9f32)!important;border-color:#ffe47b!important;color:#211400!important;box-shadow:0 0 26px rgba(255,212,71,.38),0 8px 24px rgba(0,0,0,.2)!important}
-
-#startBtn:hover{box-shadow:0 0 36px rgba(255,212,71,.55),0 10px 28px rgba(0,0,0,.25)!important}
-
-.smallbtn{background:linear-gradient(180deg,#fff,#e7efff)!important;color:#17204a!important;border:1px solid rgba(255,255,255,.55)!important;box-shadow:0 0 12px rgba(94,231,255,.08)!important}
-.smallbtn.blue{background:linear-gradient(180deg,#6ceeff,#39c9ea)!important;color:#071324!important}
-.smallbtn.selected{background:linear-gradient(180deg,#8effc4,#4de89b)!important;color:#072018!important}
-.tab,.seasonTab{border:1px solid rgba(255,255,255,.15)!important;background:rgba(255,255,255,.065)!important;color:#fff!important}
-.tab.active,.seasonTab.active{background:linear-gradient(90deg,#5ee7ff,#8f7bff)!important;color:#071324!important;border-color:#b5f7ff!important;box-shadow:0 0 18px rgba(94,231,255,.22)!important}
-.authInput,.nameInput,.adminActions input,.adminActions select,.broadcastInput{background:rgba(7,11,24,.78)!important;border:1px solid rgba(94,231,255,.22)!important;color:#fff!important}
-.authInput:focus,.nameInput:focus,.broadcastInput:focus{border-color:#ff55db!important;box-shadow:0 0 0 3px rgba(255,79,216,.16),0 0 20px rgba(255,79,216,.1)!important}
-
-
-
-.newBadge,.tabNew{background:linear-gradient(90deg,#ff3b4e,#ff55db)!important;color:#fff!important;box-shadow:0 0 18px rgba(255,59,78,.42)!important;animation:newBlink .8s ease-in-out infinite alternate!important}
-.rarity-basic{color:#e9edf7!important}.rarity-rare{color:#6df5a3!important}.rarity-ultra{color:#5ee7ff!important}.rarity-epic{color:#b58cff!important}.rarity-mythic{color:#ff6374!important}.rarity-legendary{color:#ffd447!important}
-.rarity-glow-basic{box-shadow:0 0 14px rgba(233,237,247,.15)!important}.rarity-glow-rare{box-shadow:0 0 18px rgba(109,245,163,.18)!important}.rarity-glow-ultra{box-shadow:0 0 20px rgba(94,231,255,.22)!important}.rarity-glow-epic{box-shadow:0 0 24px rgba(181,140,255,.24)!important}.rarity-glow-mythic{box-shadow:0 0 28px rgba(255,99,116,.28)!important}.rarity-glow-legendary{box-shadow:0 0 34px rgba(255,212,71,.35)!important}
-.comboHud{background:linear-gradient(180deg,rgba(76,54,8,.9),rgba(24,20,8,.82))!important;border-color:rgba(255,212,71,.46)!important;box-shadow:0 0 24px rgba(255,212,71,.22)!important}
-.comboHud.mega{background:linear-gradient(180deg,rgba(92,20,31,.92),rgba(30,11,17,.84))!important;border-color:rgba(255,99,116,.62)!important;box-shadow:0 0 30px rgba(255,99,116,.3)!important}
-.abilityHudBtn{background:linear-gradient(180deg,rgba(63,45,12,.95),rgba(27,21,8,.95))!important;border-color:rgba(255,212,71,.4)!important;box-shadow:0 0 20px rgba(255,212,71,.15)!important;color:#fff!important}
+.btn,.smallbtn,.tab,.seasonTab,.pause-btn,.abilityHudBtn,.settingsLangBtn,.settingsRange{
+  border-radius:14px!important;min-height:48px!important;
+  transition:transform .14s ease,box-shadow .2s ease,background .2s ease,color .2s ease,border-color .2s ease;
+}
+.btn,.smallbtn{
+  background:linear-gradient(180deg,#0d2a5a,#082046)!important;
+  color:#fff!important;
+  border:1px solid rgba(98,166,255,.45)!important;
+  box-shadow:0 0 0 1px rgba(98,166,255,.10) inset,0 10px 24px rgba(0,0,0,.45),0 0 18px rgba(74,140,255,.20)!important;
+  letter-spacing:.02em;
+}
+.btn:hover,.smallbtn:hover{
+  background:linear-gradient(180deg,#133c80,#0a2a60)!important;
+  border-color:rgba(98,166,255,.8)!important;
+  box-shadow:0 0 0 1px rgba(98,166,255,.25) inset,0 12px 28px rgba(0,0,0,.6),0 0 30px rgba(74,140,255,.45)!important;
+  transform:translateY(-1px);
+}
+.btn:active,.smallbtn:active{transform:translateY(2px)!important}
+.btn.blue,.smallbtn.blue{
+  background:linear-gradient(180deg,#1e6cff,#0b3fb3)!important;
+  border-color:#62a6ff!important;color:#fff!important;
+  box-shadow:0 0 0 1px rgba(98,166,255,.4) inset,0 10px 26px rgba(0,0,0,.55),0 0 28px rgba(74,140,255,.55)!important;
+}
+.btn.blue:hover,.smallbtn.blue:hover{
+  background:linear-gradient(180deg,#2f7bff,#0e4cd0)!important;
+  box-shadow:0 0 0 1px rgba(98,166,255,.55) inset,0 12px 30px rgba(0,0,0,.6),0 0 36px rgba(74,140,255,.75)!important;
+}
+.btn.green,.smallbtn.selected{
+  background:linear-gradient(180deg,#fff,#dde7ff)!important;
+  color:#06122a!important;border-color:#fff!important;
+  box-shadow:0 0 0 1px rgba(255,255,255,.5) inset,0 10px 24px rgba(0,0,0,.5),0 0 26px rgba(74,140,255,.45)!important;
+}
+.btn.red{
+  background:linear-gradient(180deg,#0d2a5a,#082046)!important;
+  border-color:rgba(120,160,210,.5)!important;color:#fff!important;
+  box-shadow:0 0 0 1px rgba(98,166,255,.15) inset,0 10px 24px rgba(0,0,0,.5),0 0 18px rgba(74,140,255,.2)!important;
+}
+.btn.dark{background:rgba(8,23,47,.7)!important;border-color:rgba(98,166,255,.3)!important;color:#fff!important}
+#startBtn{
+  background:linear-gradient(135deg,#1e6cff,#3a8bff,#62a6ff)!important;
+  color:#fff!important;border-color:#9bc4ff!important;
+  box-shadow:0 0 0 1px rgba(98,166,255,.5) inset,0 12px 28px rgba(0,0,0,.55),0 0 32px rgba(74,140,255,.7)!important;
+  text-shadow:0 0 10px rgba(255,255,255,.35);
+}
+#startBtn:hover{
+  background:linear-gradient(135deg,#2f7bff,#4a99ff,#7ab6ff)!important;
+  box-shadow:0 0 0 1px rgba(255,255,255,.4) inset,0 14px 34px rgba(0,0,0,.65),0 0 44px rgba(74,140,255,.85)!important;
+}
+.tab,.seasonTab{
+  background:rgba(8,23,47,.6)!important;border:1px solid rgba(98,166,255,.3)!important;color:#fff!important;
+  box-shadow:inset 0 0 12px rgba(74,140,255,.06);
+}
+.tab:hover,.seasonTab:hover{border-color:rgba(98,166,255,.6)!important;color:#fff!important;box-shadow:0 0 16px rgba(74,140,255,.3)!important}
+.tab.active,.seasonTab.active{
+  background:linear-gradient(135deg,#1e6cff,#3a8bff)!important;
+  color:#fff!important;border-color:#9bc4ff!important;
+  box-shadow:0 0 0 1px rgba(255,255,255,.3) inset,0 8px 22px rgba(0,0,0,.45),0 0 22px rgba(74,140,255,.55)!important;
+}
+.authInput,.nameInput,.adminActions input,.adminActions select,.broadcastInput{
+  background:rgba(2,8,22,.78)!important;border:1px solid rgba(98,166,255,.35)!important;color:#fff!important;
+  border-radius:14px!important;
+  box-shadow:inset 0 0 18px rgba(74,140,255,.06);
+}
+.authInput:focus,.nameInput:focus,.broadcastInput:focus{
+  border-color:#62a6ff!important;
+  box-shadow:0 0 0 3px rgba(74,140,255,.25),0 0 22px rgba(74,140,255,.35)!important;outline:none!important;
+}
+.newBadge,.tabNew{
+  background:linear-gradient(135deg,#1e6cff,#62a6ff)!important;color:#fff!important;border:1px solid #9bc4ff!important;
+  box-shadow:0 0 14px rgba(74,140,255,.6)!important;animation:none!important;
+}
+.rarity-basic{color:#fff!important}.rarity-rare{color:#bcd0ee!important}.rarity-ultra{color:#62a6ff!important}
+.rarity-epic{color:#9bc4ff!important}.rarity-mythic{color:#fff!important;text-shadow:0 0 10px rgba(98,166,255,.7)!important}
+.rarity-legendary{color:#fff!important;text-shadow:0 0 12px rgba(98,166,255,.85)!important}
+.rarity-glow-basic,.rarity-glow-rare,.rarity-glow-ultra,.rarity-glow-epic,.rarity-glow-mythic,.rarity-glow-legendary{
+  box-shadow:0 0 0 1px rgba(98,166,255,.35),0 0 22px rgba(74,140,255,.3)!important;
+}
+.rarity-legendary .rarity-badge,.rarity-mythic .rarity-badge{box-shadow:0 0 14px rgba(74,140,255,.55)!important}
+.comboHud{
+  background:rgba(2,8,22,.85)!important;border:1px solid rgba(98,166,255,.6)!important;color:#fff!important;
+  box-shadow:0 0 0 1px rgba(98,166,255,.25) inset,0 0 18px rgba(74,140,255,.4)!important;
+}
+.comboHud.mega{
+  background:rgba(2,8,22,.95)!important;border-color:#fff!important;color:#fff!important;
+  box-shadow:0 0 0 1px rgba(255,255,255,.4) inset,0 0 22px rgba(255,255,255,.35),0 0 30px rgba(74,140,255,.5)!important;
+}
+.abilityHudBtn{
+  background:rgba(2,8,22,.9)!important;border:1px solid rgba(98,166,255,.6)!important;color:#fff!important;
+  box-shadow:0 0 0 1px rgba(98,166,255,.25) inset,0 0 16px rgba(74,140,255,.4)!important;
+}
 .abilityHudBtn.ready{animation:abilityPulse 1.2s ease-in-out infinite!important}
-.seasonTimer{color:#6df5a3!important;text-shadow:0 0 12px rgba(109,245,163,.35)}
-.wheelStage .luckyWheel{filter:saturate(1.2)!important;box-shadow:0 15px 45px rgba(0,0,0,.35),0 0 35px rgba(255,212,71,.24)!important}
-.jackpotBox,.rewardBox,.dialog{background:linear-gradient(180deg,#132042,#19295b)!important;border-color:rgba(255,255,255,.16)!important;box-shadow:0 25px 80px rgba(0,0,0,.55),0 0 35px rgba(94,231,255,.08)!important}
-.prizeTitle{color:#ffd447!important;text-shadow:0 0 25px rgba(255,212,71,.55)!important}
-.rewardCoins{color:#ffd447!important;text-shadow:0 0 16px rgba(255,212,71,.35)!important}
-.broadcastComposer{background:linear-gradient(135deg,rgba(94,231,255,.08),rgba(255,79,216,.08))!important;border-color:rgba(255,255,255,.15)!important;box-shadow:0 0 25px rgba(94,231,255,.06)!important}
-.broadcastSend{background:linear-gradient(135deg,#ff55db,#8f5cff)!important;color:#fff!important;border-color:#ff9fea!important;box-shadow:0 0 24px rgba(255,79,216,.32)!important}
-.broadcastOverlay{position:fixed;top:24px;left:50%;transform:translateX(-50%);z-index:9999;pointer-events:none;opacity:0;transition:opacity .4s ease-in-out,transform .4s ease-in-out}
-.broadcastOverlay.show{opacity:1;pointer-events:none;transform:translateX(-50%) scale(1)}
-.broadcastOverlay.hiding{opacity:0;transform:translateX(-50%) scale(.96)}
-.broadcastOverlay .broadcastHeader{display:none}
-.broadcastOverlay .broadcastBody{font-size:clamp(22px,6vw,36px);font-weight:800;text-align:center;color:#fff;padding:14px 32px;border-radius:18px;background:linear-gradient(90deg,rgba(255,79,216,.92),rgba(69,232,255,.92));box-shadow:0 0 20px rgba(255,79,216,.45),0 0 30px rgba(69,232,255,.35);white-space:nowrap;animation:broadcastSlideIn .5s ease-out}
-.broadcastOverlay .broadcastSender{color:#ffe066;font-size:14px;font-weight:700;margin-top:5px;display:block;text-shadow:0 0 8px rgba(255,224,102,.4)}
-@keyframes broadcastPulse{from{filter:brightness(1)}to{filter:brightness(1.08) drop-shadow(0 0 20px rgba(255,79,216,.4)) drop-shadow(0 0 30px rgba(69,232,255,.3))}}
-@keyframes broadcastSlideIn{from{opacity:0;transform:translateY(-20px) scale(.9)}to{opacity:1;transform:translateY(0) scale(1)}}
-.broadcastOverlay .broadcastBody{animation:broadcastSlideIn .5s ease-out,broadcastPulse 1s ease-in-out .5s infinite alternate}
-.tip{box-shadow:0 0 18px rgba(94,231,255,.08)}
-/* Remove the temporary monochrome line-icon layer. Emojis remain visible. */
+.seasonTimer{color:#fff!important;text-shadow:0 0 12px rgba(98,166,255,.85)}
+.wheelStage .luckyWheel{
+  filter:grayscale(.95) contrast(1.05);
+  box-shadow:0 0 0 4px #fff,0 0 0 6px rgba(98,166,255,.7),0 0 40px rgba(74,140,255,.7),0 18px 45px rgba(0,0,0,.7)!important;
+  background:#02060f!important;
+}
+.jackpotBox,.rewardBox,.dialog{
+  background:linear-gradient(180deg,rgba(8,23,47,.95),rgba(6,18,40,.95))!important;
+  border:1px solid rgba(98,166,255,.5)!important;
+  border-radius:var(--radius-lg)!important;
+  box-shadow:0 0 0 1px rgba(98,166,255,.18) inset,0 25px 80px rgba(0,0,0,.7),0 0 40px rgba(74,140,255,.45)!important;
+  backdrop-filter:blur(14px) saturate(140%);
+}
+.prizeTitle{color:#fff!important;text-shadow:0 0 22px rgba(98,166,255,.85)!important}
+.rewardCoins{color:#fff!important;text-shadow:0 0 18px rgba(98,166,255,.7)!important}
+.broadcastComposer{
+  background:rgba(8,23,47,.85)!important;border:1px solid rgba(98,166,255,.4)!important;
+  box-shadow:inset 0 0 22px rgba(74,140,255,.08)!important;border-radius:var(--radius)!important;
+}
+.broadcastSend{
+  background:linear-gradient(135deg,#1e6cff,#3a8bff)!important;color:#fff!important;border:1px solid #9bc4ff!important;
+  box-shadow:0 0 24px rgba(74,140,255,.55)!important;
+}
+.broadcastOverlay .broadcastBody{
+  background:rgba(2,8,22,.92)!important;color:#fff!important;
+  border:1px solid rgba(98,166,255,.65)!important;border-radius:16px!important;
+  box-shadow:0 0 0 1px rgba(98,166,255,.25) inset,0 0 28px rgba(74,140,255,.55),0 0 50px rgba(74,140,255,.35)!important;
+  backdrop-filter:blur(10px);
+}
+.broadcastOverlay .broadcastSender{color:#9bc4ff!important;text-shadow:0 0 8px rgba(98,166,255,.7)}
+.tip{background:rgba(2,8,22,.85)!important;border:1px solid rgba(98,166,255,.35)!important;color:#fff!important;
+  box-shadow:0 0 14px rgba(74,140,255,.25)!important;border-radius:999px!important}
 [data-icon]::before{display:none!important}
+.discord-float{
+  background:rgba(8,23,47,.9)!important;border:1px solid rgba(98,166,255,.55)!important;
+  box-shadow:0 0 22px rgba(74,140,255,.45)!important;color:#62a6ff!important;border-radius:16px!important;
+  backdrop-filter:blur(8px);
+}
+.discord-tooltip{background:#02060f!important;border:1px solid rgba(98,166,255,.55)!important;color:#fff!important;border-radius:10px!important}
+#creatorTag{background:rgba(2,8,22,.85)!important;border:1px solid rgba(98,166,255,.5)!important;color:#fff!important;
+  box-shadow:0 0 18px rgba(74,140,255,.4)!important;border-radius:999px!important;backdrop-filter:blur(8px)}
+#chatOverlay{background:linear-gradient(180deg,rgba(2,8,22,.95),rgba(6,18,40,.95))!important;
+  border:1px solid rgba(98,166,255,.45)!important;border-radius:18px!important;
+  box-shadow:0 20px 60px rgba(0,0,0,.7),0 0 28px rgba(74,140,255,.35)!important;backdrop-filter:blur(14px)}
+.chatMsg{background:rgba(8,23,47,.7)!important;border:1px solid rgba(98,166,255,.25)!important;color:#fff!important;border-radius:12px!important}
+.chatMsg.sender{color:#9bc4ff!important;text-shadow:0 0 8px rgba(98,166,255,.6)}
+#chatSendBtn{background:linear-gradient(135deg,#1e6cff,#3a8bff)!important;color:#fff!important;
+  border:1px solid #9bc4ff!important;box-shadow:0 0 14px rgba(74,140,255,.5)!important;border-radius:12px!important}
+.chatToggle{background:rgba(8,23,47,.9)!important;border:1px solid rgba(98,166,255,.6)!important;
+  box-shadow:0 0 18px rgba(74,140,255,.5)!important;color:#62a6ff!important;border-radius:999px!important;backdrop-filter:blur(8px)}
+.adminBadge{background:rgba(8,23,47,.7)!important;color:#fff!important;border:1px solid rgba(98,166,255,.3)!important}
+.adminBadge.ok{background:linear-gradient(135deg,#1e6cff,#3a8bff)!important;color:#fff!important;border-color:#9bc4ff!important;
+  box-shadow:0 0 12px rgba(74,140,255,.55)!important}
+.adminBadge.banned{background:rgba(8,23,47,.7)!important;color:#fff!important;border-color:rgba(120,160,210,.5)!important}
+.luckyPrizeLine{background:rgba(8,23,47,.65)!important;border:1px solid rgba(98,166,255,.22)!important;color:#fff!important;border-radius:12px!important}
+.luckyPrizeDot{background:#fff!important;box-shadow:0 0 8px rgba(98,166,255,.85)!important}
+.progressFill,.xpFill{
+  background:linear-gradient(90deg,#1e6cff,#62a6ff,#fff)!important;
+  box-shadow:0 0 14px rgba(74,140,255,.7)!important;
+}
+.legalLink{color:#9fb3d8!important}
+.legalLink:hover{color:#fff!important;text-shadow:0 0 8px rgba(98,166,255,.7)}
+.legalNote{background:rgba(8,23,47,.7)!important;border:1px solid rgba(98,166,255,.35)!important;color:#fff!important;border-radius:14px!important}
+#copyrightFooter{background:rgba(2,8,22,.92)!important;border-top:1px solid rgba(98,166,255,.25)!important;color:#9fb3d8!important;backdrop-filter:blur(8px)}
+#copyrightFooter .legalLink:hover{color:#fff!important;text-shadow:0 0 8px rgba(98,166,255,.7)}
+#cookieBanner{background:rgba(2,8,22,.95)!important;border:1px solid rgba(98,166,255,.5)!important;color:#fff!important;
+  box-shadow:0 10px 40px rgba(0,0,0,.8),0 0 28px rgba(74,140,255,.4)!important;border-radius:16px!important;backdrop-filter:blur(12px)}
+#cookieBanner .cookieText{color:#fff!important}
+.hud-pill{background:rgba(2,8,22,.78)!important;border:1px solid rgba(98,166,255,.4)!important;color:#fff!important;
+  backdrop-filter:blur(10px);border-radius:999px!important;
+  box-shadow:0 0 14px rgba(74,140,255,.18)!important}
+.hud-pill:hover{border-color:rgba(98,166,255,.7)!important;box-shadow:0 0 18px rgba(74,140,255,.45)!important}
+.pause-btn{background:rgba(2,8,22,.85)!important;border:1px solid rgba(98,166,255,.6)!important;color:#fff!important;
+  box-shadow:0 0 14px rgba(74,140,255,.35)!important}
+.pause-btn:hover{box-shadow:0 0 22px rgba(74,140,255,.6)!important;border-color:#9bc4ff!important}
+.settingsRange{accent-color:#62a6ff}
+.settingsLangBtn{background:rgba(8,23,47,.7)!important;color:#fff!important;border:1px solid rgba(98,166,255,.3)!important;border-radius:14px!important}
+.settingsLangBtn.selected{background:linear-gradient(135deg,#1e6cff,#3a8bff)!important;color:#fff!important;
+  border-color:#9bc4ff!important;box-shadow:0 0 22px rgba(74,140,255,.55)!important}
+.settingsRow{border-bottom:1px solid rgba(98,166,255,.18)!important}
+.settingsValue{color:#fff!important;text-shadow:0 0 10px rgba(98,166,255,.6)}
+button,input,select,textarea{transition:border-color .2s ease,box-shadow .2s ease,background .2s ease}
+input[type="range"]{background:transparent!important}
+input[type="range"]::-webkit-slider-runnable-track{background:linear-gradient(90deg,#1e6cff,#62a6ff)!important;height:6px;border-radius:999px;box-shadow:0 0 10px rgba(74,140,255,.55)}
+input[type="range"]::-webkit-slider-thumb{appearance:none;-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:#fff;border:2px solid #62a6ff;margin-top:-6px;box-shadow:0 0 10px rgba(74,140,255,.8);cursor:pointer}
+input[type="range"]::-moz-range-track{background:linear-gradient(90deg,#1e6cff,#62a6ff);height:6px;border-radius:999px;box-shadow:0 0 10px rgba(74,140,255,.55)}
+input[type="range"]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:#fff;border:2px solid #62a6ff;box-shadow:0 0 10px rgba(74,140,255,.8);cursor:pointer}
+.topbar h2{letter-spacing:.02em}
+button:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(98,166,255,.45),0 0 22px rgba(74,140,255,.45)!important}
 @media(max-width:600px){.menu{padding:18px!important;border-radius:20px!important}.button-grid{gap:9px!important}.btn{min-height:46px!important}.title{font-size:clamp(48px,15vw,64px)!important}}
+
+/* ===== EXTRAS — Polish, micro-interactions ===== */
+.menu::before{
+  content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;pointer-events:none;
+  background:conic-gradient(from var(--ang,0deg),transparent 0deg,rgba(98,166,255,.5) 60deg,transparent 120deg,transparent 240deg,rgba(98,166,255,.4) 300deg,transparent 360deg);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
+  opacity:.6;
+  animation:borderSpin 12s linear infinite;
+}
+@keyframes borderSpin{to{--ang:360deg}}
+@property --ang{syntax:"<angle>";inherits:false;initial-value:0deg}
+.title::after{
+  content:attr(data-text);
+  position:absolute;left:50%;top:0;transform:translateX(-50%);
+  color:transparent;background:linear-gradient(90deg,transparent,#9bc4ff,transparent);
+  -webkit-background-clip:text;background-clip:text;
+  filter:blur(18px);opacity:.55;pointer-events:none;
+}
+.title{position:relative;display:inline-block}
+.subtitle{position:relative;letter-spacing:.01em}
+.badge{position:relative;overflow:hidden}
+.badge::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(98,166,255,.18),transparent);transform:translateX(-100%);transition:transform .8s ease}
+.badge:hover::before{transform:translateX(100%)}
+.tab,.seasonTab{position:relative;overflow:hidden}
+.tab::after,.seasonTab::after{content:"";position:absolute;left:50%;bottom:6px;height:2px;width:0;background:linear-gradient(90deg,#1e6cff,#62a6ff);transition:width .25s ease,left .25s ease;border-radius:2px;box-shadow:0 0 8px rgba(74,140,255,.7)}
+.tab.active::after,.seasonTab.active::after{left:20%;width:60%}
+.hud-pill{transition:transform .15s ease,box-shadow .2s ease,border-color .2s ease}
+.hud-pill:hover{transform:translateY(-1px)}
+.dialog,.rewardBox,.jackpotBox{position:relative}
+.dialog::before,.rewardBox::before,.jackpotBox::before{
+  content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;pointer-events:none;
+  background:conic-gradient(from var(--ang2,0deg),rgba(98,166,255,.55),transparent 25%,transparent 75%,rgba(98,166,255,.55));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
+  animation:borderSpin2 9s linear infinite;
+  opacity:.7;
+}
+@keyframes borderSpin2{to{--ang2:360deg}}
+@property --ang2{syntax:"<angle>";inherits:false;initial-value:0deg}
+.btn,.smallbtn{position:relative;overflow:hidden}
+.btn::after,.smallbtn::after{content:"";position:absolute;top:0;left:-120%;width:60%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);
+  transform:skewX(-18deg);transition:left .55s ease}
+.btn:hover::after,.smallbtn:hover::after{left:130%}
+select,input,textarea{font-weight:600;letter-spacing:.01em}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:rgba(2,8,22,.6);border-radius:999px}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#1e6cff,#62a6ff);border-radius:999px;border:2px solid rgba(2,8,22,.6);box-shadow:0 0 10px rgba(74,140,255,.5)}
+::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,#3a8bff,#9bc4ff)}
+::selection{background:rgba(98,166,255,.35);color:#fff}
 </style>
 <style id="flyyyy-settings-and-performance">
 .settingsGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:14px}
@@ -416,10 +669,11 @@ html,body{background:#070b18!important;color:#fff!important}
 @keyframes sparkBurst{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(var(--tx),var(--ty)) scale(0)}}
 .adminAbuseLog{max-height:200px;overflow-y:auto;padding:10px;border-radius:12px;background:rgba(0,0,0,.25);border:1px solid rgba(255,255,255,.08);font-size:12px}
 .adminAbuseLog .logEntry{padding:4px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+</style>
 <style id="progression-update-style">
 .progressPanel{margin:14px 0;padding:16px;border-radius:20px;background:linear-gradient(135deg,rgba(255,212,71,.10),rgba(94,231,255,.08));border:1px solid rgba(255,255,255,.12)}
 .progressTop{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}.progressLevel{font-size:20px;font-weight:1000}.xpBar{height:10px;border-radius:999px;background:rgba(255,255,255,.09);overflow:hidden;margin:10px 0}.xpFill{height:100%;width:0%;background:linear-gradient(90deg,#ffd447,#5ee7ff,#b76cff);transition:width .25s ease}.progressGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.progressCard{padding:12px;border-radius:15px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.08)}.modeRow{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:end}.modeSelect{width:100%;min-height:48px;border-radius:14px;border:1px solid rgba(255,255,255,.15);background:#111a3b;color:#fff;padding:10px;font-weight:900}.dailyBtn.claimed{opacity:.6}.dailyStreak{color:#ffd447;font-weight:1000}@media(max-width:650px){.progressGrid,.modeRow{grid-template-columns:1fr}}
-</style></style>
+</style>
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6975397479223316"
      crossorigin="anonymous"></script>
@@ -491,86 +745,91 @@ h1,h2,h3{
 
 </head>
 <body>
-<div id="globalBroadcastOverlay" class="broadcastOverlay" aria-live="polite"><div class="broadcastHeader"><span>📢 GLOBAL BROADCAST</span><span id="globalBroadcastTime"></span></div><div id="globalBroadcastText" class="broadcastBody"></div><div id="globalBroadcastSender" class="broadcastSender"></div></div>
-<div id="app"><div id="appErrorNotice" style="display:none;position:fixed;left:50%;top:10px;transform:translateX(-50%);z-index:100000;padding:10px 14px;border-radius:12px;background:#2a1730;border:1px solid #ff6374;color:#fff;font-weight:900">⚠️ Ein Spielfehler ist aufgetreten. Bitte Seite neu laden.</div>
+<div id="globalBroadcastOverlay" class="broadcastOverlay" aria-live="polite" style="position:fixed;left:0;right:0;top:0;z-index:55;display:none;pointer-events:none"><div class="broadcastHeader"><span>GLOBAL BROADCAST</span><span id="globalBroadcastTime"></span></div><div id="globalBroadcastText" class="broadcastBody"></div><div id="globalBroadcastSender" class="broadcastSender"></div></div>
+<div id="app"><div id="appErrorNotice" style="display:none;position:fixed;left:50%;top:10px;transform:translateX(-50%);z-index:100000;padding:10px 14px;border-radius:12px;background:rgba(2,8,22,.96);border:1px solid rgba(98,166,255,.55);color:#fff;font-weight:900;box-shadow:0 0 22px rgba(74,140,255,.35)">A game error occurred. Please reload the page.</div>
 <canvas id="gameCanvas"></canvas><div id="adDashOverlay" aria-hidden="true"></div>
 
-<div id="authScreen" class="screen"><div class="menu"><div class="title">FLYYYY</div><div class="version">🔐 ACCOUNT</div><div class="subtitle">Mit E-Mail anmelden, neues Konto erstellen oder ohne Konto spielen.</div><div class="authBox"><h2 style="margin:0 0 12px">Anmelden / Registrieren</h2><input id="authUsername" class="authInput" type="text" autocomplete="username" placeholder="Benutzername" style="margin-top:10px"><input id="authEmail" class="authInput" type="email" autocomplete="email" placeholder="E-Mail" style="margin-top:10px"><input id="authPassword" class="authInput" type="password" autocomplete="current-password" placeholder="Passwort (mind. 6 Zeichen)" style="margin-top:10px"><div class="authGrid"><button id="loginBtn" class="btn blue">ANMELDEN</button><button id="registerBtn" class="btn green">REGISTRIEREN</button></div><button id="guestBtn" class="btn dark" style="width:100%;margin-top:10px">👤 OHNE KONTO SPIELEN</button><button id="adminLoginBtn" class="btn dark" style="width:100%;margin-top:10px">🛠️ ADMIN</button><div id="authStatus" class="authStatus">Gastmodus ist jederzeit möglich.</div><div class="tiny" style="margin-top:10px">🛡️ Adminrechte werden serweise mit Firebase geprüft.</div></div><button id="authBackBtn" class="btn dark" style="width:100%;margin-top:10px">← Zur Lobby</button></div></div>
+<div id="authScreen" class="screen"><div class="menu"><div class="title">FLYYYY</div><div class="version">ACCOUNT</div><div class="subtitle">Mit E-Mail anmelden, neues Konto erstellen oder ohne Konto spielen.</div><div class="authBox"><h2 style="margin:0 0 12px">Anmelden / Registrieren</h2><input id="authUsername" class="authInput" type="text" autocomplete="username" placeholder="Benutzername" style="margin-top:10px"><input id="authEmail" class="authInput" type="email" autocomplete="email" placeholder="E-Mail" style="margin-top:10px"><input id="authPassword" class="authInput" type="password" autocomplete="current-password" placeholder="Passwort (mind. 6 Zeichen)" style="margin-top:10px"><div class="authGrid"><button id="loginBtn" class="btn blue">ANMELDEN</button><button id="registerBtn" class="btn green">REGISTRIEREN</button></div><button id="guestBtn" class="btn dark" style="width:100%;margin-top:10px">OHNE KONTO SPIELEN</button><button id="adminLoginBtn" class="btn dark" style="width:100%;margin-top:10px">ADMIN</button><div id="authStatus" class="authStatus">Gastmodus ist jederzeit möglich.</div><div class="tiny" style="margin-top:10px">Adminrechte werden serweise mit Firebase geprüft.</div></div><button id="authBackBtn" class="btn dark" style="width:100%;margin-top:10px">← Zur Lobby</button></div></div>
 
-<div id="lobby" class="screen active"><div class="menu"><div class="title">FLYYYY</div><div class="version">🔥 UPDATE 3.0 · COMBO</div><div class="subtitle">Fly weiter. Sammle Coins. Schlage andere Spieler.</div><div class="credits"><div class="badge">🪙 <span id="lobbyCoins">0</span> Coins</div><div class="badge adCurrencyBadge">🎬 <span id="lobbyAdCoins">0</span> Ad-Coins</div><div class="badge">🏆 Rekord: <span id="lobbyBest">0</span></div></div><div class="progressPanel">
-<div class="progressTop"><div class="progressLevel">⭐ Level <span id="playerLevel">1</span></div><div class="tiny"><span id="playerXp">0</span> / <span id="playerXpNext">100</span> XP</div></div>
+<div id="lobby" class="screen active"><div class="menu"><div class="title">FLYYYY</div><div class="version">UPDATE 4.3 · COMBO</div><div class="subtitle">Fly weiter. Sammle Coins. Schlage andere Spieler.</div><div class="credits"><div class="badge"><span id="lobbyCoins">0</span> Coins</div><div class="badge adCurrencyBadge"><span id="lobbyAdCoins">0</span> Ad-Coins</div><div class="badge">Rekord: <span id="lobbyBest">0</span></div></div><div class="progressPanel">
+<div class="progressTop"><div class="progressLevel">Level <span id="playerLevel">1</span></div><div class="tiny"><span id="playerXp">0</span> / <span id="playerXpNext">100</span> XP</div></div>
 <div class="xpBar"><div id="playerXpFill" class="xpFill"></div></div>
 <div class="progressGrid">
-<div class="progressCard"><div class="tiny">🎁 Tagesbelohnung</div><div class="dailyStreak">🔥 Tag <span id="dailyStreak">1</span></div><button id="dailyRewardBtn" class="btn green dailyBtn" style="width:100%;margin-top:8px">🎁 ABHOLEN</button></div>
-</div></div><div class="seasonPanel"><div class="seasonTop"><div class="seasonTitle">🌐 SEASON <span id="seasonNumberLobby">1</span></div><div class="seasonTimer" id="seasonTimerLobby">⏱️ Lädt...</div></div><div class="seasonSub">7-Tage-Season</div><div class="tiny">🥇 1.000 Coins · 🥈 500 Coins · 🥉 300 Coins · Platz 4–10: 100 · Platz 11–25: 50</div></div><div class="button-grid"><button id="startBtn" class="btn">START</button><button id="onlineStartBtn" class="btn blue">🌐 ONLINE-SEASON SPIELEN</button><button id="leaderboardBtn" class="btn blue">🏆 LEADERBOARD</button><button id="shopBtn" class="btn blue">🛒 SHOP <span id="shopLobbyNewBadge" class="newBadge">NEU</span></button><button id="inventoryBtn" class="btn blue">🎒 INVENTAR</button><button id="missionsBtn" class="btn blue">🎯 MISSIONEN</button><button id="settingsBtn" class="btn dark">⚙️ EINSTELLUNGEN</button></div><div class="notice">✅ Season-Punkte sind getrennt vom Allzeit-Highscore. Nur die aktuelle Season entscheidet über die Season-Belohnung.</div>
+<div class="progressCard"><div class="tiny">Tagesbelohnung</div><div class="dailyStreak">Tag <span id="dailyStreak">1</span></div><button id="dailyRewardBtn" class="btn green dailyBtn" style="width:100%;margin-top:8px">ABHOLEN</button></div>
+</div></div><div class="seasonPanel"><div class="seasonTop"><div class="seasonTitle">SEASON <span id="seasonNumberLobby">1</span></div><div class="seasonTimer" id="seasonTimerLobby">Lädt...</div></div><div class="seasonSub">7-Tage-Season</div><div class="tiny">1.000 Coins · 500 Coins · 300 Coins · Platz 4–10: 100 · Platz 11–25: 50</div></div><div class="button-grid"><button id="startBtn" class="btn">START</button><button id="onlineStartBtn" class="btn blue">ONLINE-SEASON SPIELEN</button><button id="leaderboardBtn" class="btn blue">LEADERBOARD</button><button id="shopBtn" class="btn blue">SHOP <span id="shopLobbyNewBadge" class="newBadge">NEU</span></button><button id="inventoryBtn" class="btn blue">INVENTAR</button><button id="missionsBtn" class="btn blue">MISSIONEN</button><button id="storyModeBtn" class="btn dark">STORY MODE</button><button id="settingsBtn" class="btn dark">EINSTELLUNGEN</button></div><div class="notice">Season-Punkte sind getrennt vom Allzeit-Highscore. Nur die aktuelle Season entscheidet über die Season-Belohnung.</div>
 <div class="flyyyyContentSection" id="flyyyyInfoContent">
-<h2>🎮 Über FLYYYY</h2>
+<h2>Über FLYYYY</h2>
 <p class="flyyyyContentIntro">FLYYYY ist ein kostenloses Browser-Flugspiel. Fliege durch Hindernisse, sammle Coins, verbessere deinen Rekord und schalte neue Spielinhalte frei. Du kannst im Gastmodus spielen oder dich für Online-Funktionen anmelden.</p>
 <div class="flyyyyContentGrid">
-<div class="flyyyyContentCard"><h3>🪽 So spielst du FLYYYY</h3><p>Steuere deine Figur durch die Hindernisse und bleibe möglichst lange im Spiel. Überwundene Hindernisse bringen Punkte. Sammle Coins und versuche, deinen Highscore zu verbessern.</p><ul><li><strong>PC:</strong> Linksklick oder Leertaste.</li><li><strong>Mobil:</strong> Tippen auf den Bildschirm.</li><li><strong>Fähigkeiten:</strong> über die Fähigkeitsschaltfläche im HUD, sofern ausgerüstet.</li><li><strong>Pause:</strong> über die Pause-Schaltfläche.</li></ul></div>
-<div class="flyyyyContentCard"><h3>🌍 Welten</h3><p>FLYYYY bietet verschiedene Themenwelten, darunter Gizeh, Berge, Unterwasser, Dschungel, Weltraum und Eiswelt. Je nach Spielversion können weitere Welten und Inhalte hinzukommen.</p></div>
-<div class="flyyyyContentCard"><h3>🎯 Spielmodi</h3><p>Der klassische Modus konzentriert sich auf den persönlichen Highscore. Weitere Modi wie Speedrun oder Hardcore können zusätzliche Regeln und Herausforderungen bieten.</p></div>
-<div class="flyyyyContentCard"><h3>🏆 Seasons &amp; Leaderboard</h3><p>Season-Punkte werden getrennt vom Allzeit-Highscore geführt. Das Leaderboard zeigt Platzierungen und kann je nach Funktion Online-Daten verwenden.</p></div>
-<div class="flyyyyContentCard"><h3>🪙 Coins &amp; Ad-Coins</h3><p><strong>Coins</strong> und <strong>Ad-Coins</strong> sind virtuelle Spielwährungen. Sie haben keinen Auszahlungs- oder Geldwert. Ad-Coins sind keine Echtgeldwährung.</p></div>
-<div class="flyyyyContentCard"><h3>🛒 Shop &amp; Inventar</h3><p>Virtuelle Spielinhalte wie Skins, Welten oder Fähigkeiten können mit der jeweils im Spiel angegebenen virtuellen Währung freigeschaltet werden. Ausgerüstete Inhalte können über das Inventar ausgewählt werden.</p></div>
-<div class="flyyyyContentCard"><h3>⚡ Fähigkeiten</h3><p>Ausgerüstete Fähigkeiten können während eines Laufs besondere Effekte aktivieren. Die konkrete Wirkung und Verfügbarkeit wird im Spiel angezeigt.</p></div>
-<div class="flyyyyContentCard"><h3>🎯 Missionen &amp; Fortschritt</h3><p>Missionen geben zusätzliche Ziele und können je nach Aufgabe Belohnungen bringen. Erfahrung und Level zeigen deinen Fortschritt.</p></div>
-<div class="flyyyyContentCard flyyyyContentWide"><h3>❓ Häufige Fragen</h3><ul><li><strong>Ist FLYYYY kostenlos?</strong> Ja, das Spiel kann grundsätzlich kostenlos gespielt werden.</li><li><strong>Kann ich ohne Konto spielen?</strong> Ja, der Gastmodus ist möglich; bestimmte Online-Funktionen benötigen ein Konto.</li><li><strong>Haben Coins einen echten Geldwert?</strong> Nein. Virtuelle Coins und Ad-Coins sind nicht auszahlbar.</li><li><strong>Wie funktioniert eine Rewarded Ad?</strong> Falls eine Rewarded-Ad-Funktion technisch aktiviert ist, wird die freiwillige Aktion und die vorgesehene Belohnung vorab angezeigt.</li><li><strong>Muss ich Anzeigen anklicken?</strong> Nein. FLYYYY fordert nicht zum Klicken auf Anzeigen auf.</li><li><strong>Wo finde ich rechtliche Informationen?</strong> In den Einstellungen im Bereich Rechtliches findest du Impressum, Datenschutz, Nutzungsbedingungen und Kaufhinweise.</li></ul></div>
-<div class="flyyyyContentCard flyyyyContentWide"><h3>ℹ️ Über die Website</h3><p>FLYYYY wird fortlaufend weiterentwickelt. Spielinhalte, Events, Welten und virtuelle Preise können durch Updates geändert oder ergänzt werden. Änderungen werden innerhalb der Website nachvollziehbar kommuniziert.</p></div>
+<div class="flyyyyContentCard"><h3>So spielst du FLYYYY</h3><p>Steuere deine Figur durch die Hindernisse und bleibe möglichst lange im Spiel. Überwundene Hindernisse bringen Punkte. Sammle Coins und versuche, deinen Highscore zu verbessern.</p><ul><li><strong>PC:</strong> Linksklick oder Leertaste.</li><li><strong>Mobil:</strong> Tippen auf den Bildschirm.</li><li><strong>Fähigkeiten:</strong> über die Fähigkeitsschaltfläche im HUD, sofern ausgerüstet.</li><li><strong>Pause:</strong> über die Pause-Schaltfläche.</li></ul></div>
+<div class="flyyyyContentCard"><h3>Welten</h3><p>FLYYYY bietet verschiedene Themenwelten, darunter Gizeh, Berge, Unterwasser, Dschungel, Weltraum und Eiswelt. Je nach Spielversion können weitere Welten und Inhalte hinzukommen.</p></div>
+<div class="flyyyyContentCard"><h3>Spielmodi</h3><p>Der klassische Modus konzentriert sich auf den persönlichen Highscore. Weitere Modi wie Speedrun oder Hardcore können zusätzliche Regeln und Herausforderungen bieten.</p></div>
+<div class="flyyyyContentCard"><h3>Seasons &amp; Leaderboard</h3><p>Season-Punkte werden getrennt vom Allzeit-Highscore geführt. Das Leaderboard zeigt Platzierungen und kann je nach Funktion Online-Daten verwenden.</p></div>
+<div class="flyyyyContentCard"><h3>Coins &amp; Ad-Coins</h3><p><strong>Coins</strong> und <strong>Ad-Coins</strong> sind virtuelle Spielwährungen. Sie haben keinen Auszahlungs- oder Geldwert. Ad-Coins sind keine Echtgeldwährung.</p></div>
+<div class="flyyyyContentCard"><h3>Shop &amp; Inventar</h3><p>Virtuelle Spielinhalte wie Skins, Welten oder Fähigkeiten können mit der jeweils im Spiel angegebenen virtuellen Währung freigeschaltet werden. Ausgerüstete Inhalte können über das Inventar ausgewählt werden.</p></div>
+<div class="flyyyyContentCard"><h3>Fähigkeiten</h3><p>Ausgerüstete Fähigkeiten können während eines Laufs besondere Effekte aktivieren. Die konkrete Wirkung und Verfügbarkeit wird im Spiel angezeigt.</p></div>
+<div class="flyyyyContentCard"><h3>Missionen &amp; Fortschritt</h3><p>Missionen geben zusätzliche Ziele und können je nach Aufgabe Belohnungen bringen. Erfahrung und Level zeigen deinen Fortschritt.</p></div>
+<div class="flyyyyContentCard flyyyyContentWide"><h3>Häufige Fragen</h3><ul><li><strong>Ist FLYYYY kostenlos?</strong> Ja, das Spiel kann grundsätzlich kostenlos gespielt werden.</li><li><strong>Kann ich ohne Konto spielen?</strong> Ja, der Gastmodus ist möglich; bestimmte Online-Funktionen benötigen ein Konto.</li><li><strong>Haben Coins einen echten Geldwert?</strong> Nein. Virtuelle Coins und Ad-Coins sind nicht auszahlbar.</li><li><strong>Wie funktioniert eine Rewarded Ad?</strong> Falls eine Rewarded-Ad-Funktion technisch aktiviert ist, wird die freiwillige Aktion und die vorgesehene Belohnung vorab angezeigt.</li><li><strong>Muss ich Anzeigen anklicken?</strong> Nein. FLYYYY fordert nicht zum Klicken auf Anzeigen auf.</li><li><strong>Wo finde ich rechtliche Informationen?</strong> In den Einstellungen im Bereich Rechtliches findest du Impressum, Datenschutz, Nutzungsbedingungen und Kaufhinweise.</li></ul></div>
+<div class="flyyyyContentCard flyyyyContentWide"><h3>Über die Website</h3><p>FLYYYY wird fortlaufend weiterentwickelt. Spielinhalte, Events, Welten und virtuelle Preise können durch Updates geändert oder ergänzt werden. Änderungen werden innerhalb der Website nachvollziehbar kommuniziert.</p></div>
 </div></div>
-<div class="tiny" style="margin-top:8px;text-align:center;opacity:.82">🌐 Online-Modus: Season-Score wird über Firebase gespeichert. Anmeldung erforderlich.</div></div></div>
+<div class="tiny" style="margin-top:8px;text-align:center;opacity:.82">Online-Modus: Season-Score wird über Firebase gespeichert. Anmeldung erforderlich.</div></div></div>
 
-<div id="leaderboard" class="screen"><div class="menu"><div class="topbar"><div><h2>Leaderboard</h2><div class="tiny">Season und Allzeit werden getrennt angezeigt.</div></div><button id="leaderboardBack" class="btn dark">← Zurück</button></div><div class="seasonTabs"><button id="seasonTabBtn" class="seasonTab active">🌐 Season</button><button id="allTimeTabBtn" class="seasonTab">⭐ Allzeit</button></div><div class="seasonPanel"><div class="seasonTop"><div class="seasonTitle">SEASON <span id="seasonNumberBoard">1</span></div><div class="seasonTimer" id="seasonTimerBoard">⏱️ Lädt...</div></div><div class="seasonSub" id="seasonBoardSub">🌐 Nur Season-Punkte</div></div><div id="leaderboardStatus" class="leaderStatus">Lade Leaderboard...</div><div class="nameBox"><input id="playerName" class="nameInput" maxlength="20" placeholder="Dein Spielername"><button id="saveNameBtn" class="btn">NAME SPEICHERN</button></div><div id="leaderboardList" class="leaderboard"></div></div></div>
+<div id="leaderboard" class="screen"><div class="menu"><div class="topbar"><div><h2>Leaderboard</h2><div class="tiny">Season und Allzeit werden getrennt angezeigt.</div></div><button id="leaderboardBack" class="btn dark">← Zurück</button></div><div class="seasonTabs"><button id="seasonTabBtn" class="seasonTab active">Season</button><button id="allTimeTabBtn" class="seasonTab">Allzeit</button></div><div class="seasonPanel"><div class="seasonTop"><div class="seasonTitle">SEASON <span id="seasonNumberBoard">1</span></div><div class="seasonTimer" id="seasonTimerBoard">Lädt...</div></div><div class="seasonSub" id="seasonBoardSub">Nur Season-Punkte</div></div><div id="leaderboardStatus" class="leaderStatus">Lade Leaderboard...</div><div class="nameBox"><input id="playerName" class="nameInput" maxlength="20" placeholder="Dein Spielername"><button id="saveNameBtn" class="btn">NAME SPEICHERN</button></div><div id="leaderboardList" class="leaderboard"></div></div></div>
 
-<div id="shop" class="screen"><div class="menu"><div class="topbar"><div><h2>🛒 Shop</h2><div class="tiny">🪙 <span id="shopCoins">0</span> Coins · 🎬 <span id="shopAdCoins">0</span> Ad-Coins</div></div><button id="shopBack" class="btn dark">← Zurück</button></div><div id="shopTabs" class="tabs"></div><div id="shopCards" class="cards"></div></div></div>
-<div id="inventory" class="screen"><div class="menu"><div class="topbar"><div><h2>🎒 Inventar</h2><div class="tiny">Deine gekauften Gegenstände.</div></div><button id="inventoryBack" class="btn dark">← Zurück</button></div><div id="inventoryTabs" class="tabs"></div><div id="inventoryCards" class="cards"></div></div></div>
-<div id="missions" class="screen"><div class="menu"><div class="topbar"><div><h2>🎯 Missionen</h2><div class="tiny">Schließe Aufgaben ab und verdiene Coins.</div></div><button id="missionsBack" class="btn dark">← Zurück</button></div><div id="missionList" class="missionList"></div></div></div>
-<div id="settings" class="screen"><div class="menu"><div class="topbar"><div><h2 id="settingsTitle">⚙️ Einstellungen</h2><div class="tiny" id="settingsSubtitle">Sprache, Musik und Effekte</div></div><button id="settingsBack" class="btn dark">← Zurück</button></div>
+<div id="shop" class="screen"><div class="menu"><div class="topbar"><div><h2>Shop</h2><div class="tiny"><span id="shopCoins">0</span> Coins · <span id="shopAdCoins">0</span> Ad-Coins</div></div><button id="shopBack" class="btn dark">← Zurück</button></div><div id="shopTabs" class="tabs"></div><div id="shopCards" class="cards"></div></div></div>
+<div id="inventory" class="screen"><div class="menu"><div class="topbar"><div><h2>Inventar</h2><div class="tiny">Deine gekauften Gegenstände.</div></div><button id="inventoryBack" class="btn dark">← Zurück</button></div><div id="inventoryTabs" class="tabs"></div><div id="inventoryCards" class="cards"></div></div></div>
+<div id="missions" class="screen"><div class="menu"><div class="topbar"><div><h2>Missionen</h2><div class="tiny">Schließe Aufgaben ab und verdiene Coins.</div></div><button id="missionsBack" class="btn dark">← Zurück</button></div><div id="missionList" class="missionList"></div></div></div>
+<div id="settings" class="screen"><div class="menu"><div class="topbar"><div><h2 id="settingsTitle">Einstellungen</h2><div class="tiny" id="settingsSubtitle">Sprache, Musik und Effekte</div></div><button id="settingsBack" class="btn dark">← Zurück</button></div>
 <div class="settingsGrid">
-<div class="settingsCard settingsAccountCard"><h3>👤 Konto</h3><div class="accountLine" style="justify-content:flex-start;margin:8px 0 12px"><div id="accountStatus" class="accountPill">👤 Gast</div></div><div class="button-grid"><button id="accountBtn" class="btn dark">🔐 ANMELDEN</button><button id="logoutBtn" class="btn red" style="display:none">ABMELDEN</button><button id="myAccountBtn" class="btn dark">👤 MEIN KONTO</button></div></div>
-<div class="settingsCard settingsAccountCard"><h3>🛠️ Sonstiges</h3><div class="tiny">Kontofunktionen und weitere Optionen findest du jetzt gesammelt hier.</div><button id="adminSettingsBtn" class="btn dark" style="margin-top:12px">🛠️ ADMIN</button></div>
-<div class="settingsCard"><h3 id="settingsLanguageTitle">🌐 Sprache</h3><div class="tiny" id="settingsLanguageHint">Die Sprache wird sofort geändert und gespeichert.</div><div class="settingsLangGrid" style="margin-top:12px"><button id="langDeBtn" class="settingsLangBtn">🇩🇪 Deutsch</button><button id="langEnBtn" class="settingsLangBtn">🇬🇧 English</button></div></div>
-<div class="settingsCard"><h3 id="settingsAudioTitle">🔊 Lautstärke</h3><div class="settingsRow"><div><strong id="musicVolumeLabel">🎵 Musik</strong><div class="tiny">0–100 %</div></div><div class="settingsValue" id="musicVolumeValue">70 %</div></div><input id="musicVolumeRange" class="settingsRange" type="range" min="0" max="100" step="1" value="70"><div class="settingsRow"><div><strong id="sfxVolumeLabel">🔔 Sounds / Effekte</strong><div class="tiny">0–100 %</div></div><div class="settingsValue" id="sfxVolumeValue">70 %</div></div><input id="sfxVolumeRange" class="settingsRange" type="range" min="0" max="100" step="1" value="70"></div>
-<div class="settingsCard"><h3 id="settingsGameTitle">🎮 Spiel</h3><button id="musicToggleBtn" class="btn dark" style="margin:10px 0;width:100%">🎵 Musik: AN</button><div class="settingsRow"><div><strong id="settingsPerformanceLabel">📱 Handy-Optimierung</strong><div class="tiny" id="settingsPerformanceHint">Reduziertes Rendering unnötiger Effekte auf kleinen Geräten.</div></div><div class="settingsValue">AUTO</div></div><div class="notice" id="settingsSaveNotice">✅ Einstellungen werden automatisch gespeichert.</div></div>
-<div class="settingsCard"><h3 id="settingsInfoTitle">💾 Speicherung</h3><div class="tiny" id="settingsInfoText">Sprache und Lautstärke bleiben nach dem Neuladen erhalten.</div></div>
-<div class="settingsCard settingsLegalCard"><h3>📚 Rechtliches</h3><div class="tiny">Alle rechtlichen Informationen findest du hier, damit die Startseite übersichtlich bleibt.</div><div class="legalMenuRow settingsLegalRow"><button class="legalLink" id="settingsImprintBtn" type="button">📄 Impressum</button><button class="legalLink" id="settingsPrivacyBtn" type="button">🔒 Datenschutz</button><button class="legalLink" id="settingsTermsBtn" type="button">📜 Nutzungsbedingungen</button><button class="legalLink" id="settingsPurchaseBtn" type="button">🛒 Kaufhinweise</button></div></div></div></div></div>
+<div class="settingsCard settingsAccountCard"><h3>Konto</h3><div class="accountLine" style="justify-content:flex-start;margin:8px 0 12px"><div id="accountStatus" class="accountPill">Gast</div></div><div class="button-grid"><button id="accountBtn" class="btn dark">ANMELDEN</button><button id="logoutBtn" class="btn red" style="display:none">ABMELDEN</button><button id="myAccountBtn" class="btn dark">MEIN KONTO</button></div></div>
+<div class="settingsCard settingsAccountCard"><h3>Sonstiges</h3><div class="tiny">Kontofunktionen und weitere Optionen findest du jetzt gesammelt hier.</div><button id="adminSettingsBtn" class="btn dark" style="margin-top:12px">ADMIN</button></div>
+<div class="settingsCard"><h3 id="settingsLanguageTitle">Sprache</h3><div class="tiny" id="settingsLanguageHint">Die Sprache wird sofort geändert und gespeichert.</div><div class="settingsLangGrid" style="margin-top:12px"><button id="langDeBtn" class="settingsLangBtn">Deutsch</button><button id="langEnBtn" class="settingsLangBtn">English</button></div></div>
+<div class="settingsCard"><h3 id="settingsAudioTitle">Lautstärke</h3><div class="settingsRow"><div><strong id="musicVolumeLabel">Musik</strong><div class="tiny">0–100 %</div></div><div class="settingsValue" id="musicVolumeValue">70 %</div></div><input id="musicVolumeRange" class="settingsRange" type="range" min="0" max="100" step="1" value="70"><div class="settingsRow"><div><strong id="sfxVolumeLabel">Sounds / Effekte</strong><div class="tiny">0–100 %</div></div><div class="settingsValue" id="sfxVolumeValue">70 %</div></div><input id="sfxVolumeRange" class="settingsRange" type="range" min="0" max="100" step="1" value="70"></div>
+<div class="settingsCard"><h3 id="settingsGameTitle">Spiel</h3><button id="musicToggleBtn" class="btn dark" style="margin:10px 0;width:100%">Musik: AN</button><div class="settingsRow"><div><strong id="settingsPerformanceLabel">Handy-Optimierung</strong><div class="tiny" id="settingsPerformanceHint">Reduziertes Rendering unnötiger Effekte auf kleinen Geräten.</div></div><div class="settingsValue">AUTO</div></div><div class="notice" id="settingsSaveNotice">Einstellungen werden automatisch gespeichert.</div></div>
+<div class="settingsCard"><h3 id="settingsInfoTitle">Speicherung</h3><div class="tiny" id="settingsInfoText">Sprache und Lautstärke bleiben nach dem Neuladen erhalten.</div></div>
+<div class="settingsCard settingsLegalCard"><h3>Rechtliches</h3><div class="tiny">Alle rechtlichen Informationen findest du hier, damit die Startseite übersichtlich bleibt.</div><div class="legalMenuRow settingsLegalRow"><button class="legalLink" id="settingsImprintBtn" type="button" onclick="openLegalPage('imprint')">Impressum</button><button class="legalLink" id="settingsPrivacyBtn" type="button" onclick="openLegalPage('privacy')">Datenschutz</button><button class="legalLink" id="settingsTermsBtn" type="button" onclick="openLegalPage('terms')">Nutzungsbedingungen</button><button class="legalLink" id="settingsPurchaseBtn" type="button" onclick="openLegalPage('purchase')">Kaufhinweise</button></div></div></div></div></div>
 
-<div id="eventVisualOverlay" class="eventFlashOverlay"></div><div id="gameHud"><div id="creatorTag">@FlyyyyGame</div><div id="eventBadge" class="hud-pill" style="display:none"></div><div class="hud-left"><div class="hud-pill">⭐ <span id="scoreHud">0</span></div><div class="hud-pill comboHud" id="comboHud">🔥 Combo <span id="comboCountHud">0</span> · x<span id="comboMultHud">1</span></div><div class="hud-pill">🪙 <span id="coinsHud">0</span></div><div class="hud-pill">🪽 Jumps: <span id="jumpHud">0</span></div></div><div class="hud-right"><div class="hud-pill">🌐 Season <span id="seasonHud">1</span></div><div class="hud-pill">🌍 <span id="worldHud">Gizeh</span></div><div class="hud-pill">🎵 <span id="musicHud">Classic</span></div><button id="abilityBtn" class="abilityHudBtn" disabled>⚡ Keine Fähigkeit</button><button id="pauseBtn" class="pause-btn">Ⅱ Pause</button></div><div class="tip">Klicken / Tippen / Leertaste = Fliegen · T/F = Fähigkeit</div></div>
+<div id="eventVisualOverlay" class="eventFlashOverlay"></div><div id="gameHud"><div id="creatorTag">@FlyyyyGame</div><div id="eventBadge" class="hud-pill" style="display:none"></div><div class="hud-left"><div class="hud-pill"><span id="scoreHud">0</span></div><div class="hud-pill comboHud" id="comboHud">Combo <span id="comboCountHud">0</span> · x<span id="comboMultHud">1</span></div><div class="hud-pill"><span id="coinsHud">0</span></div><div class="hud-pill">Jumps: <span id="jumpHud">0</span></div></div><div class="hud-right"><div class="hud-pill">Season <span id="seasonHud">1</span></div><div class="hud-pill"><span id="worldHud">Gizeh</span></div><div class="hud-pill"><span id="musicHud">Classic</span></div><button id="abilityBtn" class="abilityHudBtn" disabled>Keine Fähigkeit</button><button id="pauseBtn" class="pause-btn">Pause</button></div><div class="tip">Klicken / Tippen / Leertaste = Fliegen · T/F = Fähigkeit</div></div>
 
 <!-- Floating Discord Button (rechts mittig) -->
-<button id="discordFloatBtn" class="discord-float" aria-label="Discord öffnen" title="Discord öffnen">
+<button id="discordFloatBtn" class="discord-float" aria-label="Open Discord" title="Open Discord">
   <span class="discord-icon" aria-hidden="true">
     <svg viewBox="0 0 24 24" role="img">
-      <path d="M19.54 4.15A16.3 16.3 0 0 0 15.58 3l-.48.98a14.5 14.5 0 0 0-4.2 0L10.42 3a16.4 16.4 0 0 0-3.96 1.15C3.95 7.75 3.27 11.27 3.61 14.74a16.2 16.2 0 0 0 4.86 2.45l1.18-1.62c-.65-.24-1.28-.55-1.86-.92l.46-.35c3.59 1.68 7.48 1.68 11.03 0l.46.35c-.58.37-1.21.68-1.86.92l1.18 1.62a16.2 16.2 0 0 0 4.86-2.45c.4-4.02-.68-7.5-2.38-10.59ZM9.31 13.08c-1.08 0-1.96-.99-1.96-2.2s.86-2.2 1.96-2.2 1.97.99 1.96 2.2c0 1.21-.86 2.2-1.96 2.2Zm5.38 0c-1.08 0-1.96-.99-1.96-2.2s.86-2.2 1.96-2.2 1.97.99 1.96 2.2c0 1.21-.86 2.2-1.96 2.2Z"/>
+      <path d="M19.54 4.15A16.3 16.3 0 0 0 15.58 3l-.48.98a14.5 14.5 0 0 0-4.2 0L10.42 3a16.4 16.3 0 0 0-3.96 1.15C3.95 7.75 3.27 11.27 3.61 14.74a16.2 16.2 0 0 0 4.86 2.45l1.18-1.62c-.65-.24-1.28-.55-1.86-.92l.46-.35c3.59 1.68 7.48 1.68 11.03 0l.46.35c-.58.37-1.21.68-1.86.92l1.18 1.62a16.2 16.2 0 0 0 4.86-2.45c.4-4.02-.68-7.5-2.38-10.59ZM9.31 13.08c-1.08 0-1.96-.99-1.96-2.2s.86-2.2 1.96-2.2 1.97.99 1.96 2.2c0 1.21-.86 2.2-1.96 2.2Zm5.38 0c-1.08 0-1.96-.99-1.96-2.2s.86-2.2 1.96-2.2 1.97.99 1.96 2.2c0 1.21-.86 2.2-1.96 2.2Z"/>
     </svg>
   </span>
   <span class="discord-tooltip">Discord</span>
 </button>
+<button id="siteFloatBtn" class="discord-float" aria-label="Open Website" title="Open Website" style="right:74px;background:#111827;border-color:rgba(255,255,255,.18)">
+  <span class="discord-icon" aria-hidden="true" style="font-weight:1000;font-size:18px;line-height:1">W</span>
+  <span class="discord-tooltip">Website</span>
+</button>
 
-<div id="pauseOverlay" class="overlay"><div class="dialog"><h2>PAUSE</h2><p>Dein Lauf wurde angehalten.</p><div class="button-grid"><button id="resumeBtn" class="btn">▶ WEITER</button><button id="pauseLobbyBtn" class="btn dark">🏠 ZUR LOBBY</button></div></div></div>
-<div id="gameOverOverlay" class="overlay"><div class="dialog"><h2>GAME OVER</h2><p id="gameOverText">Gut geflogen!</p><div class="stats"><div class="stat"><div class="tiny">Punkte</div><strong id="finalScore">0</strong></div><div class="stat"><div class="tiny">Coins</div><strong id="earnedCoins">0</strong></div><div class="stat"><div class="tiny">Rekord</div><strong id="bestScore">0</strong></div></div><div class="button-grid"><button id="retryBtn" class="btn green">🔄 NOCHMAL</button><button id="returnLobbyBtn" class="btn blue">🏠 ZUR LOBBY</button></div>
+
+<div id="pauseOverlay" class="overlay"><div class="dialog"><h2>PAUSE</h2><p>Dein Lauf wurde angehalten.</p><div class="button-grid"><button id="resumeBtn" class="btn">WEITER</button><button id="pauseLobbyBtn" class="btn dark">ZUR LOBBY</button></div></div></div>
+<div id="gameOverOverlay" class="overlay"><div class="dialog"><h2>GAME OVER</h2><p id="gameOverText">Gut geflogen!</p><div class="stats"><div class="stat"><div class="tiny">Punkte</div><strong id="finalScore">0</strong></div><div class="stat"><div class="tiny">Coins</div><strong id="earnedCoins">0</strong></div><div class="stat"><div class="tiny">Rekord</div><strong id="bestScore">0</strong></div></div><div class="button-grid"><button id="retryBtn" class="btn green">NOCHMAL</button><button id="returnLobbyBtn" class="btn blue">ZUR LOBBY</button></div>
 <div id="adReviveBox" class="adReviveBox" style="display:none">
-  <div><strong>📺 Weiterfliegen durch Werbung</strong></div>
-  <div class="adReviveHint">Nach einer echten, erfolgreich abgeschlossenen Rewarded Ad wirst du wiederbelebt und erhältst 5 Sekunden 💨 Dash.</div>
-  <button id="adReviveBtn" class="btn green" style="width:100%;margin-top:10px">📺 WERBUNG ANSEHEN & WEITERFLIEGEN</button>
+  <div><strong>Weiterfliegen durch Werbung</strong></div>
+  <div class="adReviveHint">Nach einer echten, erfolgreich abgeschlossenen Rewarded Ad wirst du wiederbelebt und erhältst 5 Sekunden Dash.</div>
+  <button id="adReviveBtn" class="btn green" style="width:100%;margin-top:10px">WERBUNG ANSEHEN & WEITERFLIEGEN</button>
 </div></div></div>
-<div id="luckyConfirmOverlay" class="overlay"><div class="dialog"><h2>🎡 LUCKY RAD</h2><p>Ein Dreh kostet <strong>🪙 1000 Coins</strong>.</p><p class="tiny">Nach dem Kauf öffnet sich sofort das Lucky Rad.</p><div class="button-grid"><button id="confirmLuckyBuyBtn" class="btn green">🪙 KAUFEN & ÖFFNEN</button><button id="cancelLuckyBuyBtn" class="btn dark">ABBRECHEN</button></div></div></div>
-<div id="jackpotOverlay" class="jackpotOverlay"><div class="jackpotBox"><div id="prizePopupIcon" class="prizeIcon">🎁</div><div id="prizePopupTitle" class="prizeTitle">DEIN PREIS!</div><div id="prizePopupText" class="prizeText">Preis</div><div id="prizePopupSub" class="prizeSub">Der Preis wurde deinem Konto gutgeschrieben.</div></div></div>
-<div id="seasonRewardOverlay" class="rewardOverlay"><div class="rewardBox"><div style="font-size:72px">🏆</div><h2>SEASON BEENDET!</h2><div id="seasonRewardRank" class="rewardRank">Platz 1</div><div id="seasonRewardCoins" class="rewardCoins">🪙 +1.000</div><p id="seasonRewardText">Deine persönliche Season-Belohnung wartet auf dich.</p><button id="claimSeasonRewardBtn" class="btn green" style="width:100%;margin-top:10px">🎁 BELOHNUNG ABHOLEN</button></div></div>
-<div id="adminOverlay" class="overlay"><div class="dialog" style="width:min(1100px,96vw);max-height:92vh;overflow:auto;text-align:left"><h2 style="font-size:42px;margin-bottom:6px">🛠️ ADMIN</h2><p id="adminStatusText">Bitte mit deinem FLYYYY-Konto anmelden.</p><div id="adminUnlockArea"><input id="adminCodeInput" class="authInput" type="password" autocomplete="off" placeholder="Admin-Aktivierungscode eingeben"><div class="button-grid" style="margin-top:12px"><button id="adminUnlockBtn" class="btn green">🔓 AKTIVIEREN</button><button id="adminCloseBtn" class="btn dark">← SCHLIESSEN</button></div></div><div id="adminPanel" style="display:none;margin-top:18px"><div class="notice">✅ Serverseitige Adminrechte aktiv. Personenbezogene Daten nur für die Administration verwenden.</div><div id="adminTabs" class="tabs"></div><div id="adminUsersTab" class="adminTabSection"><div style="display:grid;grid-template-columns:minmax(180px,1fr) auto;gap:10px;margin:12px 0"><input id="adminUserSearch" class="authInput" placeholder="🔎 E-Mail oder UID suchen"><button id="adminRefreshUsersBtn" class="btn blue">↻ AKTUALISIEREN</button></div><div id="adminUsersStatus" class="leaderStatus">Lade Spieler...</div><div id="adminUsersList" class="leaderboard"></div></div><div id="adminEventsTab" class="adminTabSection"><div class="leaderStatus">Wähle ein Event und starte es für alle Spieler. Mehrere Events können gleichzeitig aktiv sein!</div><div style="margin:14px 0"><select id="adminEventSelect" class="authInput"></select></div><div class="button-grid" style="margin-bottom:14px"><button id="adminEventStartBtn" class="btn green">▶️ EVENT STARTEN</button><button id="adminEventStopBtn" class="btn red">⏹️ EVENT BEENDEN</button></div><div id="adminEventStatus" class="leaderStatus">Kein Event aktiv.</div><div id="adminActiveEventsList" class="leaderboard" style="margin-top:14px"></div></div><div id="adminRewardsTab" class="adminTabSection"><div class="leaderStatus">Wähle einen Spieler und eine Belohnung.</div><input id="adminRewardPlayerName" class="authInput" placeholder="Spielername (aus Leaderboard)" style="margin:14px 0"><select id="adminRewardType" class="authInput" style="margin-bottom:14px"><option value="coins">🪙 Coins</option><option value="skin">🪽 Skin</option><option value="ability">⚡ Fähigkeit</option><option value="world">🌍 Welt</option><option value="sound">🔊 Sound</option><option value="music">🎵 Musik</option></select><input id="adminRewardAmount" type="number" min="1" max="1000000000" class="authInput" placeholder="Menge (für Coins)" style="margin-bottom:10px"><select id="adminRewardItem" class="authInput" style="margin-bottom:10px"></select><div class="button-grid" style="margin-top:14px"><button id="adminRewardGiveBtn" class="btn green">🎁 GEBEN</button></div><div class="button-grid" style="margin-top:10px"><button id="adminSelfRewardBtn" class="btn blue">💝 AN MICH SELBST GEBEN</button><button id="adminRewardAllBtn" class="btn red">🌍 ALLEN SPIELERN GEBEN</button></div><div id="adminRewardStatus" class="leaderStatus" style="margin-top:10px">Bereit.</div></div><div id="adminFreeGiveTab" class="adminTabSection"><div class="leaderStatus">Gib einen Shop-Gegenstand kostenlos an einen Spieler.</div><input id="adminFreeGivePlayerName" class="authInput" placeholder="Spielername (aus Leaderboard)" style="margin:14px 0"><select id="adminFreeGiveCategory" class="authInput" style="margin-bottom:14px"><option value="skins">🪽 Skins</option><option value="worlds">🌍 Welten</option><option value="sounds">🔊 Sounds</option><option value="music">🎵 Musik</option><option value="abilities">⚡ Fähigkeiten</option></select><select id="adminFreeGiveItem" class="authInput" style="margin-bottom:10px"></select><input id="adminFreeGiveAmount" type="number" min="1" max="999" class="authInput" placeholder="Menge" style="margin-bottom:10px"><div class="button-grid" style="margin-top:14px"><button id="adminFreeGiveBtn" class="btn green">🎁 KOSTENLOS GEBEN</button></div><div id="adminFreeGiveStatus" class="leaderStatus" style="margin-top:10px">Bereit.</div></div><div class="button-grid" style="margin-top:14px"><button id="adminMyAccountBtn" class="btn dark">👤 MEIN KONTO</button><button id="adminClosePanelBtn" class="btn dark">🔒 SCHLIESSEN</button></div><div class="broadcastComposer">
-<h3>📢 Global Broadcast</h3>
+<div id="luckyConfirmOverlay" class="overlay"><div class="dialog"><h2>LUCKY RAD</h2><p>Ein Dreh kostet <strong>1000 Coins</strong>.</p><p class="tiny">Nach dem Kauf öffnet sich sofort das Lucky Rad.</p><div class="button-grid"><button id="confirmLuckyBuyBtn" class="btn green">KAUFEN & ÖFFNEN</button><button id="cancelLuckyBuyBtn" class="btn dark">ABBRECHEN</button></div></div></div>
+<div id="jackpotOverlay" class="jackpotOverlay"><div class="jackpotBox"><div id="prizePopupIcon" class="prizeIcon"></div><div id="prizePopupTitle" class="prizeTitle">DEIN PREIS!</div><div id="prizePopupText" class="prizeText">Preis</div><div id="prizePopupSub" class="prizeSub">Der Preis wurde deinem Konto gutgeschrieben.</div></div></div>
+<div id="seasonRewardOverlay" class="rewardOverlay"><div class="rewardBox"><div style="font-size:72px">TROPHY</div><h2>SEASON BEENDET!</h2><div id="seasonRewardRank" class="rewardRank">Platz 1</div><div id="seasonRewardCoins" class="rewardCoins">+1.000</div><p id="seasonRewardText">Deine persönliche Season-Belohnung wartet auf dich.</p><button id="claimSeasonRewardBtn" class="btn green" style="width:100%;margin-top:10px">BELOHNUNG ABHOLEN</button></div></div>
+<div id="adminOverlay" class="overlay"><div class="dialog" style="width:min(1100px,96vw);max-height:92vh;overflow:auto;text-align:left"><h2 style="font-size:42px;margin-bottom:6px">ADMIN</h2><p id="adminStatusText">Bitte mit deinem FLYYYY-Konto anmelden.</p><div id="adminUnlockArea"><input id="adminCodeInput" class="authInput" type="password" autocomplete="off" placeholder="Admin-Aktivierungscode eingeben"><div class="button-grid" style="margin-top:12px"><button id="adminUnlockBtn" class="btn green">AKTIVIEREN</button><button id="adminCloseBtn" class="btn dark">SCHLIESSEN</button></div></div><div id="adminPanel" style="display:none;margin-top:18px"><div class="notice">Serverseitige Adminrechte aktiv. Personenbezogene Daten nur für die Administration verwenden.</div><div id="adminTabs" class="tabs"></div><div id="adminUsersTab" class="adminTabSection"><div style="display:grid;grid-template-columns:minmax(180px,1fr) auto;gap:10px;margin:12px 0"><input id="adminUserSearch" class="authInput" placeholder="E-Mail oder UID suchen"><button id="adminRefreshUsersBtn" class="btn blue">AKTUALISIEREN</button></div><div id="adminUsersStatus" class="leaderStatus">Lade Spieler...</div><div id="adminUsersList" class="leaderboard"></div></div><div id="adminEventsTab" class="adminTabSection"><div class="leaderStatus">Wähle ein Event und starte es für alle Spieler. Mehrere Events können gleichzeitig aktiv sein!</div><div style="margin:14px 0"><select id="adminEventSelect" class="authInput"></select></div><div class="button-grid" style="margin-bottom:14px"><button id="adminEventStartBtn" class="btn green">EVENT STARTEN</button><button id="adminEventStopBtn" class="btn red">EVENT BEENDEN</button></div><div id="adminEventStatus" class="leaderStatus">Kein Event aktiv.</div><div id="adminActiveEventsList" class="leaderboard" style="margin-top:14px"></div></div><div id="adminRewardsTab" class="adminTabSection"><div class="leaderStatus">Wähle einen Spieler und eine Belohnung.</div><input id="adminRewardPlayerName" class="authInput" placeholder="Spielername (aus Leaderboard)" style="margin:14px 0"><select id="adminRewardType" class="authInput" style="margin-bottom:14px"><option value="coins">Coins</option><option value="skin">Skin</option><option value="ability">Fähigkeit</option><option value="world">Welt</option><option value="sound">Sound</option><option value="music">Musik</option></select><input id="adminRewardAmount" type="number" min="1" max="1000000000" class="authInput" placeholder="Menge (für Coins)" style="margin-bottom:10px"><select id="adminRewardItem" class="authInput" style="margin-bottom:10px"></select><div class="button-grid" style="margin-top:14px"><button id="adminRewardGiveBtn" class="btn green">GEBEN</button></div><div class="button-grid" style="margin-top:10px"><button id="adminSelfRewardBtn" class="btn blue">AN MICH SELBST GEBEN</button><button id="adminRewardAllBtn" class="btn red">ALLEN SPIELERN GEBEN</button></div><div id="adminRewardStatus" class="leaderStatus" style="margin-top:10px">Bereit.</div></div><div id="adminFreeGiveTab" class="adminTabSection"><div class="leaderStatus">Gib einen Shop-Gegenstand kostenlos an einen Spieler.</div><input id="adminFreeGivePlayerName" class="authInput" placeholder="Spielername (aus Leaderboard)" style="margin:14px 0"><select id="adminFreeGiveCategory" class="authInput" style="margin-bottom:14px"><option value="skins">Skins</option><option value="worlds">Welten</option><option value="sounds">Sounds</option><option value="music">Musik</option><option value="abilities">Fähigkeiten</option></select><select id="adminFreeGiveItem" class="authInput" style="margin-bottom:10px"></select><input id="adminFreeGiveAmount" type="number" min="1" max="999" class="authInput" placeholder="Menge" style="margin-bottom:10px"><div class="button-grid" style="margin-top:14px"><button id="adminFreeGiveBtn" class="btn green">KOSTENLOS GEBEN</button></div><div id="adminFreeGiveStatus" class="leaderStatus" style="margin-top:10px">Bereit.</div></div><div class="button-grid" style="margin-top:14px"><button id="adminMyAccountBtn" class="btn dark">MEIN KONTO</button><button id="adminClosePanelBtn" class="btn dark">SCHLIESSEN</button></div><div class="broadcastComposer">
+<h3>Global Broadcast</h3>
 <p>Nachricht hier eingeben. Sie wird über Firebase an alle aktiven Spieler verteilt.</p>
-<div class="broadcastGrid"><textarea id="adminBroadcastInput" class="broadcastInput" maxlength="240" placeholder="Nachricht für alle Spieler …"></textarea><button id="adminBroadcastSendBtn" class="btn broadcastSend">📢 BROADCAST SENDEN</button></div>
+<div class="broadcastGrid"><textarea id="adminBroadcastInput" class="broadcastInput" maxlength="240" placeholder="Nachricht für alle Spieler …"></textarea><button id="adminBroadcastSendBtn" class="btn broadcastSend">BROADCAST SENDEN</button></div>
 <div id="adminBroadcastStatus" class="broadcastStatus"></div>
 </div>
-<div id="adminInfo" class="notice">Nur als Admin sichtbar.</div><div id="adminSecretShopTab" class="adminTabSection"><div class="leaderStatus">🔒 Secret Shop verwalten – Skins hinzufügen, Preise festlegen, Angebote aktivieren/deaktivieren.</div><div id="adminSecretShopStatus" class="leaderStatus" style="margin-top:10px">Lade Secret Shop...</div><div id="adminSecretShopList" class="leaderboard" style="margin-top:12px"></div><div style="margin-top:16px;padding:14px;border-radius:14px;background:rgba(255,79,216,.08);border:1px solid rgba(255,79,216,.2)"><h4 style="margin:0 0 8px">⏱️ Zeitliches Angebot erstellen</h4><div style="display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center"><select id="adminSecretOfferSkin" class="authInput"></select><input id="adminSecretOfferDuration" class="authInput" type="number" min="1" max="1440" placeholder="Minuten" style="width:90px"><button id="adminSecretOfferBtn" class="btn green">⏱️ Angebot erstellen</button></div><button id="adminSecretShopRefreshBtn" class="btn blue" style="margin-top:12px;width:100%">↻ Secret Shop aktualisieren</button></div></div><div id="adminAbuseLogTab" class="adminTabSection"><div class="leaderStatus">📋 Admin-Abuse Event Protokoll – zeigt aktive Events und vergangene Aktionen.</div><div id="adminAbuseLogStatus" class="leaderStatus" style="margin-top:10px">Keine Einträge.</div><div id="adminAbuseLog" class="adminAbuseLog" style="margin-top:12px"></div><button id="adminAbuseLogRefreshBtn" class="btn blue" style="margin-top:10px;width:100%">↻ Protokoll aktualisieren</button></div><div id="adminChatTab" class="adminTabSection"><div class="leaderStatus">Gesperrte Spieler verwalten.</div><div style="display:grid;grid-template-columns:minmax(140px,1fr) auto;gap:10px;margin:12px 0"><input id="adminChatBanName" class="authInput" placeholder="Spielername (oder UID)"><input id="adminChatBanReason" class="authInput" placeholder="Grund (optional)"><button id="adminChatBanBtn" class="btn red">🔇 Sperren (10 Min)</button></div><button id="adminChatRefreshBtn" class="btn blue" style="margin-bottom:12px">↻ Aktualisieren</button><div id="adminChatBanList" </div><div id="adminCreatorCodesTab" class="adminTabSection"><div class="leaderStatus">👑 Creator Codes – welcher Spieler hat welchen Code eingetragen.</div><div style="margin:12px 0"><input id="adminCreatorCodeSearch" class="authInput" placeholder="🔎 Code oder Spielername"><button id="adminCreatorRefreshBtn" class="btn blue">↻ AKTUALISIEREN</button></div><div id="adminCreatorCodesStatus" class="leaderStatus">Lade Creator Codes...</div><div id="adminCreatorCodesList" class="leaderboard"></div></div></div></div></div>
+<div id="adminInfo" class="notice">Nur als Admin sichtbar.</div><div id="adminSecretShopTab" class="adminTabSection"><div class="leaderStatus">Secret Shop verwalten – Skins hinzufügen, Preise festlegen, Angebote aktivieren/deaktivieren.</div><div id="adminSecretShopStatus" class="leaderStatus" style="margin-top:10px">Lade Secret Shop...</div><div id="adminSecretShopList" class="leaderboard" style="margin-top:12px"></div><div style="margin-top:16px;padding:14px;border-radius:14px;background:rgba(30,108,255,.10);border:1px solid rgba(98,166,255,.25)"><h4 style="margin:0 0 8px">Zeitliches Angebot erstellen</h4><div style="display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center"><select id="adminSecretOfferSkin" class="authInput"></select><input id="adminSecretOfferDuration" class="authInput" type="number" min="1" max="1440" placeholder="Minuten" style="width:90px"><button id="adminSecretOfferBtn" class="btn green">Angebot erstellen</button></div><button id="adminSecretShopRefreshBtn" class="btn blue" style="margin-top:12px;width:100%">Secret Shop aktualisieren</button></div></div><div id="adminAbuseLogTab" class="adminTabSection"><div class="leaderStatus">Admin-Abuse Event Protokoll – zeigt aktive Events und vergangene Aktionen.</div><div id="adminAbuseLogStatus" class="leaderStatus" style="margin-top:10px">Keine Einträge.</div><div id="adminAbuseLog" class="adminAbuseLog" style="margin-top:12px"></div><button id="adminAbuseLogRefreshBtn" class="btn blue" style="margin-top:10px;width:100%">Protokoll aktualisieren</button></div><div id="adminChatTab" class="adminTabSection"><div class="leaderStatus">Gesperrte Spieler verwalten.</div><div style="display:grid;grid-template-columns:minmax(140px,1fr) minmax(140px,1fr) auto;gap:10px;margin:12px 0"><input id="adminChatBanName" class="authInput" placeholder="Spielername (oder UID)"><input id="adminChatBanReason" class="authInput" placeholder="Grund (optional)"><button id="adminChatBanBtn" class="btn red">Sperren</button></div><div id="adminChatBanList" class="leaderboard" style="margin-top:12px"></div><button id="adminChatRefreshBtn" class="btn blue" style="margin-top:10px;width:100%">Chat-Bans aktualisieren</button></div><div id="adminCreatorCodesTab" class="adminTabSection"><div class="leaderStatus">Creator-Code-Einträge und Zuordnungen verwalten.</div><div style="display:grid;grid-template-columns:minmax(180px,1fr) auto;gap:10px;margin:12px 0"><input id="adminCreatorCodeSearch" class="authInput" placeholder="Code, UID oder E-Mail suchen"><button id="adminCreatorRefreshBtn" class="btn blue">AKTUALISIEREN</button></div><div id="adminCreatorCodesStatus" class="leaderStatus">Lade Creator Codes...</div><div id="adminCreatorCodesList" class="leaderboard" style="margin-top:12px"></div></div>
 </div>
 
 
 <!-- ===== FLYYYY IMPRESSUM / DATENSCHUTZ ===== -->
 <div id="legalOverlay" role="dialog" aria-modal="true" aria-labelledby="legalTitle">
   <div id="legalDialog">
-    <button id="legalClose" type="button" aria-label="Fenster schließen">✕</button>
+    <button id="legalClose" type="button" aria-label="Fenster schließen">X</button>
     <h2 id="legalTitle">Impressum</h2>
     <div id="legalContent"></div>
   </div>
@@ -582,14 +841,16 @@ h1,h2,h3{
 <audio id="mp3Audio" preload="auto" loop></audio>
 <audio id="eventMusic" preload="auto" loop></audio>
 
-<div id="chatOverlay"><div id="chatMessages"></div><div id="chatInputRow"><input id="chatInput" maxlength="300" placeholder="Nachricht ..."><button id="chatSendBtn" class="btn blue">➤</button></div></div>
-<div id="chatToggle" class="chatToggle">💬</div>
+<div id="chatOverlay"><div id="chatMessages"></div><div id="chatInputRow"><input id="chatInput" maxlength="300" placeholder="Message ..."><button id="chatSendBtn" class="btn blue">SEND</button></div></div>
+<div id="chatToggle" class="chatToggle"></div>
+
+<footer id="copyrightFooter" aria-label="Rechtliche Hinweise"><span id="copyrightText">© 2026 FLYYYY — All rights reserved.</span><span class="sep">·</span><button id="footerImprintBtn" class="legalLink" type="button">Impressum</button><span class="sep">·</span><button id="footerPrivacyBtn" class="legalLink" type="button">Datenschutz</button><span class="sep">·</span><button id="footerTermsBtn" class="legalLink" type="button">Nutzungsbedingungen</button><span class="sep">·</span><button id="footerPurchaseBtn" class="legalLink" type="button">Kaufhinweise</button></footer>
 
 <script type="module">
 window.addEventListener("error",e=>{
   console.error("FLYYYY JS Fehler:",e.error||e.message);
   const box=document.getElementById("appErrorNotice");
-  if(box){box.textContent="⚠️ Ein Spielfehler ist aufgetreten. Bitte Seite neu laden.";box.style.display="block";}
+  if(box){box.textContent="A game error occurred. Please reload the page.";box.style.display="block";}
 });
 
 const _memoryStore=Object.create(null);
@@ -598,9 +859,9 @@ const storage={getItem(k){try{return localStorage.getItem(k)}catch{return Object
 const $=id=>document.getElementById(id);
 const app=$("app"),canvas=$("gameCanvas"),ctx=canvas.getContext("2d");
 const authScreen=$("authScreen"),authUsername=$("authUsername"),authEmail=$("authEmail"),authPassword=$("authPassword"),loginBtn=$("loginBtn"),registerBtn=$("registerBtn"),guestBtn=$("guestBtn"),authStatus=$("authStatus"),authBackBtn=$("authBackBtn"),adminLoginBtn=$("adminLoginBtn");
-const adminOverlay=$("adminOverlay"),adminCodeInput=$("adminCodeInput"),adminUnlockBtn=$("adminUnlockBtn"),adminCloseBtn=$("adminCloseBtn"),adminPanel=$("adminPanel"),adminStatusText=$("adminStatusText"),adminMyAccountBtn=$("adminMyAccountBtn"),adminCoinsBtn=$("adminCoinsBtn"),adminClosePanelBtn=$("adminClosePanelBtn"),adminInfo=$("adminInfo");
+const adminOverlay=$("adminOverlay"),adminCodeInput=$("adminCodeInput"),adminUnlockBtn=$("adminUnlockBtn"),adminCloseBtn=$("adminCloseBtn"),adminPanel=$("adminPanel"),adminStatusText=$("adminStatusText"),adminMyAccountBtn=$("adminMyAccountBtn"),adminClosePanelBtn=$("adminClosePanelBtn"),adminInfo=$("adminInfo");
 const lobby=$("lobby"),accountStatus=$("accountStatus"),accountBtn=$("accountBtn"),logoutBtn=$("logoutBtn"),myAccountBtn=$("myAccountBtn"),lobbyCoins=$("lobbyCoins"),lobbyBest=$("lobbyBest");
-const startBtn=$("startBtn"),onlineStartBtn=$("onlineStartBtn"),leaderboardBtn=$("leaderboardBtn"),shopBtn=$("shopBtn"),inventoryBtn=$("inventoryBtn"),missionsBtn=$("missionsBtn"),settingsBtn=$("settingsBtn"),musicToggleBtn=$("musicToggleBtn");
+const startBtn=$("startBtn"),onlineStartBtn=$("onlineStartBtn"),leaderboardBtn=$("leaderboardBtn"),shopBtn=$("shopBtn"),inventoryBtn=$("inventoryBtn"),missionsBtn=$("missionsBtn"),storyModeBtn=$("storyModeBtn"),settingsBtn=$("settingsBtn"),musicToggleBtn=$("musicToggleBtn");
 const settingsScreen=$("settings"),settingsBack=$("settingsBack"),langDeBtn=$("langDeBtn"),langEnBtn=$("langEnBtn"),musicVolumeRange=$("musicVolumeRange"),sfxVolumeRange=$("sfxVolumeRange"),musicVolumeValue=$("musicVolumeValue"),sfxVolumeValue=$("sfxVolumeValue");
 const leaderboard=$("leaderboard"),leaderboardBack=$("leaderboardBack"),leaderboardStatus=$("leaderboardStatus"),playerName=$("playerName"),saveNameBtn=$("saveNameBtn"),leaderboardList=$("leaderboardList");
 const seasonNumberLobby=$("seasonNumberLobby"),seasonTimerLobby=$("seasonTimerLobby"),seasonNumberBoard=$("seasonNumberBoard"),seasonTimerBoard=$("seasonTimerBoard"),seasonBoardSub=$("seasonBoardSub"),seasonTabBtn=$("seasonTabBtn"),allTimeTabBtn=$("allTimeTabBtn");
@@ -620,12 +881,12 @@ function startOnlineSimulate(){}
 function updateSimulatedOnline(){}
 function safeName(n){return String(n||"").replace(/[<>]/g,"").replace(/\s+/g," ").trim().slice(0,20)}
 function defaultNameForUser(u){return safeName((u?.email||"Spieler").split("@")[0].replace(/[^a-zA-Z0-9äöüÄÖÜß._-]/g,"").slice(0,20)||"Spieler")}
-function showScreen(id){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));$(id)?.classList.add("active")}
+function showScreen(id){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));const el=$(id);if(el){el.classList.add("active");app.style.overflow="auto"}}
 function hideScreens(){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"))}
 function showMessage(t){const e=document.createElement("div");e.textContent=t;e.style.cssText="position:fixed;z-index:99999;left:50%;top:18%;transform:translate(-50%,-50%);padding:13px 18px;border-radius:999px;background:rgba(8,12,30,.97);border:1px solid rgba(255,255,255,.15);color:#fff;font-weight:900;box-shadow:0 15px 40px rgba(0,0,0,.3);white-space:nowrap";document.body.appendChild(e);setTimeout(()=>e.remove(),1800)}
 function setLeaderboardStatus(t){leaderboardStatus.textContent=t}
 
-const DEFAULT={coins:0,best:0,wins:0,ownedWorlds:["giza"],ownedSkins:["bird"],ownedSounds:["classic"],ownedMusic:["classicMusic"],ownedTrails:["none"],selectedTrail:"none",ownedBoxes:[],boxOpensTotal:0,boxRewardsClaimed:[],selectedWorld:"giza",selectedSkin:"bird",selectedSound:"classic",selectedMusic:"classicMusic",selectedAbilities:{},selectedAbilityId:null,ownedAbilities:[],ownedAbilitiesBySkin:{},lastNonIceWorld:"giza",shopNewSeen:{},shopNewRelease:"2.8.0",musicEnabled:true,sfxEnabled:true,musicVolume:70,sfxVolume:70,language:"de",missionProgress:{m1:0,m2:0,m3:0},missionClaimed:{m1:false,m2:false,m3:false},activeMissions:null,missionCycle:1,lastMissionIds:[],luckySpins:0,luckyLastResult:null,seasonScore:0,currentSeasonId:2,seasonRewardPending:null,seasonRewardClaimed:false,flyOwner1000Granted:false,playerXP:0,playerLevel:1,playerXPBoost:0,playerXpEarnedTotal:0,levelRewardsPending:[],levelRewardsClaimed:[],dailyRewardDate:"",dailyStreak:0,dailyRewardCycle:1,secretShopItems:[],secretShopPublished:false,secretHuntFound:0,bossDamageDealt:0,bossGlobalRewardsClaimed:[],adRevivesUsed:0,adCoins:0,adAdsWatched:0,adDashUses:0,creatorCode:"",creatorCodeClaimed:false};
+const DEFAULT={coins:0,best:0,wins:0,ownedWorlds:["giza"],ownedSkins:["bird"],ownedSounds:["classic"],ownedMusic:["classicMusic"],ownedTrails:["none"],selectedTrail:"none",ownedBoxes:[],boxOpensTotal:0,boxRewardsClaimed:[],selectedWorld:"giza",selectedSkin:"bird",selectedSound:"classic",selectedMusic:"classicMusic",selectedAbilities:{},selectedAbilityId:null,ownedAbilities:[],ownedAbilitiesBySkin:{},lastNonIceWorld:"giza",shopNewSeen:{},shopNewRelease:"2.8.0",musicEnabled:true,sfxEnabled:true,musicVolume:70,sfxVolume:70,language:"en",missionProgress:{m1:0,m2:0,m3:0},missionClaimed:{m1:false,m2:false,m3:false},activeMissions:null,missionCycle:1,lastMissionIds:[],luckySpins:0,luckyLastResult:null,seasonScore:0,currentSeasonId:2,seasonRewardPending:null,seasonRewardClaimed:false,flyOwner1000Granted:false,playerXP:0,playerLevel:1,playerXPBoost:0,playerXpEarnedTotal:0,levelRewardsPending:[],levelRewardsClaimed:[],dailyRewardDate:"",dailyStreak:0,dailyRewardCycle:1,secretShopItems:[],secretShopPublished:false,secretHuntFound:0,bossDamageDealt:0,bossGlobalRewardsClaimed:[],adRevivesUsed:0,adCoins:0,adAdsWatched:0,adDashUses:0,creatorCode:"",creatorCodeClaimed:false};
 const SAVEKEYS=["FLYYYY_UPDATE14_SAVE","FLYYYY_UPDATE13_SAVE","FLYYYY_UPDATE12_SAVE","FLYYYY_UPDATE11_SAVE","flyyyy_save"];
 function defaultState(){return JSON.parse(JSON.stringify(DEFAULT))}
 function loadState(){for(const k of SAVEKEYS){const raw=storage.getItem(k);if(raw){try{const d=JSON.parse(raw),b=defaultState();return {...b,...d,ownedWorlds:Array.isArray(d.ownedWorlds)?d.ownedWorlds:b.ownedWorlds,ownedSkins:Array.isArray(d.ownedSkins)?d.ownedSkins:b.ownedSkins,ownedSounds:Array.isArray(d.ownedSounds)?d.ownedSounds:b.ownedSounds,ownedMusic:Array.isArray(d.ownedMusic)?d.ownedMusic:b.ownedMusic,missionProgress:{...b.missionProgress,...(d.missionProgress||{})},missionClaimed:{...b.missionClaimed,...(d.missionClaimed||{})},activeMissions:Array.isArray(d.activeMissions)?d.activeMissions:null,shopNewSeen:(d.shopNewSeen&&typeof d.shopNewSeen==="object")?d.shopNewSeen:{}}}catch{}}}return defaultState()}
@@ -647,7 +908,7 @@ function syncLocalSeasonScore(id){const sid=Number(id||2);if(Number(state.season
 let allTimeLeaderboardCache=[],seasonLeaderboardCache=[],lastLeaderboard=[];
 function rewardForRank(rank){if(rank===1)return 1000;if(rank===2)return 500;if(rank===3)return 300;if(rank>=4&&rank<=10)return 100;if(rank>=11&&rank<=25)return 50;return 0}
 function formatSeasonTime(ms){const safe=Math.max(0,Number(ms)||0),total=Math.floor(safe/1000),d=Math.floor(total/86400),h=Math.floor((total%86400)/3600),m=Math.floor((total%3600)/60),s=total%60;return `${d}T ${String(h).padStart(2,"0")}Std ${String(m).padStart(2,"0")}Min ${String(s).padStart(2,"0")}Sek`}
-function updateSeasonUI(){const left=Math.max(0,Number(seasonInfo.endsAt||0)-Date.now());const txt=formatSeasonTime(left);seasonNumberLobby.textContent=seasonInfo.id;seasonNumberBoard.textContent=seasonInfo.id;seasonTimerLobby.textContent=`⏱️ ${txt}`;seasonTimerBoard.textContent=`⏱️ ${txt}`;if(seasonHud)seasonHud.textContent=seasonInfo.id}
+function updateSeasonUI(){const left=Math.max(0,Number(seasonInfo.endsAt||0)-Date.now());const txt=formatSeasonTime(left);seasonNumberLobby.textContent=seasonInfo.id;seasonNumberBoard.textContent=seasonInfo.id;seasonTimerLobby.textContent=txt;seasonTimerBoard.textContent=txt;if(seasonHud)seasonHud.textContent=seasonInfo.id}
 function startSeasonTimer(){clearInterval(seasonInterval);seasonInterval=setInterval(updateSeasonUI,1000);updateSeasonUI();updateEventHUD()}
 
 async function ensureSeason(forceCheck=false){
@@ -724,8 +985,8 @@ function renderLeaderboard(arr){
     const r=document.createElement("div");r.className="leaderRank";r.textContent=i===0?"🥇":i===1?"🥈":i===2?"🥉":"#"+(i+1);
     const n=document.createElement("div");n.className="leaderName";n.textContent=p.name;
     const meta=document.createElement("div");meta.className="leaderMeta";
-    const sc=document.createElement("div");sc.className="leaderScore";sc.textContent=`⭐ ${p.score||0}`;
-    const wins=document.createElement("div");wins.className="leaderWins";wins.textContent=`🏆 ${p.wins||0} Siege`;
+    const sc=document.createElement("div");sc.className="leaderScore";sc.textContent=`${p.score||0}`;
+    const wins=document.createElement("div");wins.className="leaderWins";wins.textContent=`${p.wins||0} Siege`;
     meta.append(sc,wins);row.append(r,n,meta);leaderboardList.appendChild(row);
   });
 }
@@ -770,7 +1031,7 @@ async function startSeasonLeaderboardListener(){
 
 async function startLeaderboardListener(){if(!db)return;try{const {d}=await loadFirebase();if(leaderboardStop){leaderboardStop();leaderboardStop=null}const ref=d.ref(db,"leaderboard");leaderboardStop=d.onValue(ref,s=>{const raw=s.val()||{};allTimeLeaderboardCache=Object.entries(raw).filter(([uid,v])=>v&&v.update19ResetDone===true).map(([uid,v])=>({uid,name:safeName(v.name||"Spieler"),score:Number(v.score||0),wins:Number(v.wins||0),updatedAt:Number(v.updatedAt||0)})).sort((a,b)=>b.score-a.score||b.wins-a.wins||a.name.localeCompare(b.name));if(seasonMode==="alltime")renderLeaderboard(allTimeLeaderboardCache.slice(0,200))},e=>{console.error(e);setLeaderboardStatus("🔴 Allzeit-Leaderboard konnte nicht geladen werden.")})}catch(e){console.error(e)}}
 
-function updateAccountUI(){if(currentUser){accountStatus.textContent="✅ "+(currentUser.email||"Konto");accountBtn.style.display="none";logoutBtn.style.display=""}else{accountStatus.textContent="👤 Gast";accountBtn.style.display="";logoutBtn.style.display="none"}}
+function updateAccountUI(){if(currentUser){accountStatus.textContent=(currentUser.email||"Konto");accountBtn.style.display="none";logoutBtn.style.display=""}else{accountStatus.textContent="Gast";accountBtn.style.display="";logoutBtn.style.display="none"}}
 function authText(e){
   const m={
     "auth/email-already-in-use":"Diese E-Mail ist bereits registriert.",
@@ -853,7 +1114,7 @@ async function claimSeasonReward(){
   if(!currentUser||!db||!state.seasonRewardPending)return;
   claimSeasonRewardBtn.disabled=true;
   try{const {d}=await loadFirebase();const r=state.seasonRewardPending;const ref=d.ref(db,"seasonHistory/"+r.seasonId+"/winners/"+currentUser.uid);const snap=await d.get(ref);if(!snap.exists()){seasonRewardOverlay.classList.remove("active");return}const w=snap.val()||{};if(w.claimed===true){seasonRewardOverlay.classList.remove("active");return}await d.update(ref,{claimed:true,claimedAt:d.serverTimestamp()});state.coins+=Number(w.reward||0);state.seasonRewardPending=null;state.seasonRewardClaimed=true;saveState();await savePlayerStateCloud();updateLobby();showMessage(`🏆 Season-Belohnung +${Number(w.reward||0)} Coins!`);seasonRewardOverlay.classList.remove("active")}catch(e){console.error(e);showMessage("🔴 Belohnung konnte nicht abgeholt werden.")}finally{claimSeasonRewardBtn.disabled=false}}
-async function checkSeasonReward(seasonId){if(!currentUser||!db)return;try{const {d}=await loadFirebase();const ref=d.ref(db,"seasonHistory/"+seasonId+"/winners/"+currentUser.uid),snap=await d.get(ref);if(!snap.exists())return;const w=snap.val()||{};if(w.claimed===true)return;if(Number(w.reward||0)<=0)return;state.seasonRewardPending={seasonId:Number(seasonId),rank:Number(w.rank||0),reward:Number(w.reward||0)};saveStateLocalOnly();seasonRewardRank.textContent=`🥇 Platz ${state.seasonRewardPending.rank}`;seasonRewardCoins.textContent=`🪙 +${Number(w.reward).toLocaleString("de-DE")} Coins`;seasonRewardText.textContent=`Deine Belohnung aus Season ${seasonId} ist bereit.`;seasonRewardOverlay.classList.add("active")}catch(e){console.error(e)}}
+async function checkSeasonReward(seasonId){if(!currentUser||!db)return;try{const {d}=await loadFirebase();const ref=d.ref(db,"seasonHistory/"+seasonId+"/winners/"+currentUser.uid),snap=await d.get(ref);if(!snap.exists())return;const w=snap.val()||{};if(w.claimed===true)return;if(Number(w.reward||0)<=0)return;state.seasonRewardPending={seasonId:Number(seasonId),rank:Number(w.rank||0),reward:Number(w.reward||0)};saveStateLocalOnly();seasonRewardRank.textContent=`Platz ${state.seasonRewardPending.rank}`;seasonRewardCoins.textContent=`+${Number(w.reward).toLocaleString("de-DE")} Coins`;seasonRewardText.textContent=`Deine Belohnung aus Season ${seasonId} ist bereit.`;seasonRewardOverlay.classList.add("active")}catch(e){console.error(e)}}
 
 async function finalizeExpiredSeason(cur){
   try{
@@ -1119,7 +1380,8 @@ function ensureAbilitySelection(){
   const active=selectedAbilityForSkin(getSkinById(state.selectedSkin));
   state.selectedAbilityId=active?active.id:null;
 }
-const worlds=[{id:"giza",name:"Gizeh",price:0,sky1:"#f8c875",sky2:"#69c6d8",ground:"#d48b3b",obstacle:"#8f5a33"},{id:"mountains",name:"Berge",price:50,sky1:"#8ad8ff",sky2:"#5469c8",ground:"#527951",obstacle:"#365c4b"},{id:"ocean",name:"Unterwasser",price:100,sky1:"#29d6e5",sky2:"#174b9e",ground:"#157c86",obstacle:"#17566e"},{id:"jungle",name:"Dschungel",price:150,sky1:"#8ae17c",sky2:"#1f6e53",ground:"#244f2a",obstacle:"#2f7339"},{id:"space",name:"Weltraum",price:200,sky1:"#22103f",sky2:"#090d27",ground:"#20183e",obstacle:"#3a2b61"},{id:"ice",name:"Eiswelt",price:250,sky1:"#c9f6ff",sky2:"#5da9d4",ground:"#b3e5ff",obstacle:"#72b1d2"},{id:"lava",name:"Lavawelt",price:300,sky1:"#ff9a55",sky2:"#8f1f2b",ground:"#5f171d",obstacle:"#3d1118"},{id:"johnbacon",name:"Baconwelt",price:500,sky1:"#2a1f5e",sky2:"#14102a",ground:"#8d6a4f",obstacle:"#6d4a2f"}];
+const worlds=[{id:"giza",name:"Gizeh",nameEn:"Giza",price:0,sky1:"#f8c875",sky2:"#69c6d8",ground:"#d48b3b",obstacle:"#8f5a33"},{id:"mountains",name:"Berge",nameEn:"Mountains",price:50,sky1:"#8ad8ff",sky2:"#5469c8",ground:"#527951",obstacle:"#365c4b"},{id:"ocean",name:"Unterwasser",nameEn:"Underwater",price:100,sky1:"#29d6e5",sky2:"#174b9e",ground:"#157c86",obstacle:"#17566e"},{id:"jungle",name:"Dschungel",nameEn:"Jungle",price:150,sky1:"#8ae17c",sky2:"#1f6e53",ground:"#244f2a",obstacle:"#2f7339"},{id:"space",name:"Weltraum",nameEn:"Space",price:200,sky1:"#22103f",sky2:"#090d27",ground:"#20183e",obstacle:"#3a2b61"},{id:"ice",name:"Eiswelt",nameEn:"Ice World",price:250,sky1:"#c9f6ff",sky2:"#5da9d4",ground:"#b3e5ff",obstacle:"#72b1d2"},{id:"lava",name:"Lavawelt",nameEn:"Lava World",price:300,sky1:"#ff9a55",sky2:"#8f1f2b",ground:"#5f171d",obstacle:"#3d1118"},{id:"johnbacon",name:"Baconwelt",nameEn:"Bacon World",price:500,sky1:"#2a1f5e",sky2:"#14102a",ground:"#8d6a4f",obstacle:"#6d4a2f"}];
+function worldName(w){return lang()==="en"&&w&&w.nameEn?w.nameEn:(w.name||"")}
 const rarityMeta={
   basic:{name:"Basic",color:"#e9edf7",className:"rarity-basic",chance:55},
   rare:{name:"Rare",color:"#6df5a3",className:"rarity-rare",chance:25},
@@ -1275,11 +1537,11 @@ function renderMissions(){
     const claimed=!!state.missionClaimed[key];
     const card=document.createElement("div");
     card.className="mission"+(done?" done":"");
-    card.innerHTML=`<div class="missionTop"><strong>${m.icon} ${m.name}</strong><span>🪙 ${m.reward}</span></div><div class="tiny">${claimed?"✅ Abgeholt":cur+" / "+m.target}</div><div class="missionProgress"><div class="missionFill" style="width:${Math.min(100,cur/m.target*100)}%"></div></div>`;
+    card.innerHTML=`<div class="missionTop"><strong>${m.icon} ${m.name}</strong><span>${m.reward}</span></div><div class="tiny">${claimed?"Abgeholt":cur+" / "+m.target}</div><div class="missionProgress"><div class="missionFill" style="width:${Math.min(100,cur/m.target*100)}%"></div></div>`;
     if(done&&!claimed){
       const b=document.createElement("button");
       b.className="smallbtn selected";
-      b.textContent="🪙 BELOHNUNG ABHOLEN";
+      b.textContent="BELOHNUNG ABHOLEN";
       b.onclick=()=>{
         state.coins+=m.reward;
         state.missionClaimed[key]=true;
@@ -1525,7 +1787,7 @@ const UI_TRANSLATIONS={
   "FÄHIGKEIT FREIGESCHALTET!":"ABILITY UNLOCKED!","🎵 Event-Musik aktiv":"🎵 Event music active","🎵 Normale Musik wird fortgesetzt.":"🎵 Normal music resumed.",
   "🌐 Season-Score gespeichert.":"🌐 Season score saved.","🌐 Season-Score wird gespeichert...":"🌐 Saving season score...",
   "🔴 Season-Leaderboard konnte nicht geladen werden.":"🔴 Season leaderboard could not be loaded.","🔴 Allzeit-Leaderboard konnte nicht geladen werden.":"🔴 All-time leaderboard could not be loaded.",
-  "🧊 EISWELT! 10 Level, danach zurück zu deiner Welt.":"🧊 ICE WORLD! 10 levels, then back to your world.",
+  "EISWELT! 10 Level, danach zurück zu deiner Welt.":"ICE WORLD! 10 levels, then back to your world.",
   "Eiswelt": "Ice World", "7-Tage-Season":"7-Day Season", "Lade Spieler...":"Loading players...",
   "Season-Belohnung":"Season reward","Deine persönliche Season-Belohnung wartet auf dich.":"Your personal season reward is waiting for you.",
   "Der Preis wurde deinem Konto gutgeschrieben.":"The prize has been credited to your account."
@@ -1536,18 +1798,435 @@ function translateRuntimeText(text){
   const clean=text.trim();
   if(lang()==="en" && UI_TRANSLATIONS[clean]) return text.replace(clean,UI_TRANSLATIONS[clean]);
   if(lang()==="de" && UI_TRANSLATIONS_REV[clean]) return text.replace(clean,UI_TRANSLATIONS_REV[clean]);
+  let out=text.replace(/[\u{1F000}-\u{1FFFF}\u{2600}-\u{27BF}\u{2300}-\u{23FF}\u{2B00}-\u{2BFF}\u{1F1E6}-\u{1F1FF}]/gu,"");
+  out=out.replace(/[\u2700-\u27BF]/g,"");
   if(lang()==="en"){
-    return text
-      .replace(/Nicht genug Coins!/g,"Not enough coins!")
-      .replace(/Heute schon abgeholt!/g,"Already claimed today!")
-      .replace(/Spieler nicht gefunden/g,"Player not found")
-      .replace(/Keine Spieler gefunden/g,"No players found")
-      .replace(/Season-Score gespeichert/g,"Season score saved")
-      .replace(/Season-Score wird gespeichert/g,"Saving season score")
-      .replace(/Gesperrt bis:/g,"Banned until:")
-      .replace(/Dauerhaft/g,"Permanent")
-      .replace(/Spieler/g,"Players")
-      .replace(/Coins/g,"Coins");
+    const subs=[
+      ["Eiswelt","Ice World"],["Lavawelt","Lava World"],["Baconwelt","Bacon World"],
+      ["Eiswelt ·","Ice World ·"],["Eiswelt!","Ice World!"],
+      ["Gizeh","Giza"],["Berge","Mountains"],["Unterwasser","Underwater"],["Dschungel","Jungle"],["Weltraum","Space"],
+      ["Platz 1","Place 1"],["Platz","Place"],
+      ["Platz 4–10: 100 · Platz 11–25: 50","Places 4–10: 100 · Places 11–25: 50"],
+      ["1.000 Coins · 500 Coins · 300 Coins","1,000 Coins · 500 Coins · 300 Coins"],
+      ["Fliege durch Hindernisse, sammle Coins, verbessere deinen Rekord und schalte neue Spielinhalte frei.","Fly through obstacles, collect coins, improve your best score and unlock new game content."],
+      ["FLYYYY ist ein kostenloses Browser-Flugspiel.","FLYYYY is a free browser flying game."],
+      ["Du kannst im Gastmodus spielen oder dich für Online-Funktionen anmelden.","You can play as a guest or sign in for online features."],
+      ["So spielst du FLYYYY","How to play FLYYYY"],
+      ["Steuere deine Figur durch die Hindernisse und bleibe möglichst lange im Spiel.","Steer your character through the obstacles and stay alive as long as possible."],
+      ["Überwundene Hindernisse bringen Punkte.","Cleared obstacles give you points."],
+      ["Sammle Coins und versuche, deinen Highscore zu verbessern.","Collect coins and try to beat your high score."],
+      ["PC:","PC:"],["Linksklick oder Leertaste.","Left-click or Spacebar."],["Mobil:","Mobile:"],["Tippen auf den Bildschirm.","Tap on the screen."],
+      ["Fähigkeiten:","Abilities:"],["über die Fähigkeitsschaltfläche im HUD, sofern ausgerüstet.","via the ability button in the HUD, when equipped."],
+      ["Pause:","Pause:"],["über die Pause-Schaltfläche.","via the pause button."],
+      ["Welten","Worlds"],
+      ["FLYYYY bietet verschiedene Themenwelten, darunter Gizeh, Berge, Unterwasser, Dschungel, Weltraum und Eiswelt.","FLYYYY offers several themed worlds including Giza, Mountains, Underwater, Jungle, Space and Ice World."],
+      ["Je nach Spielversion können weitere Welten und Inhalte hinzukommen.","More worlds and content may be added in future updates."],
+      ["Spielmodi","Game Modes"],
+      ["Der klassische Modus konzentriert sich auf den persönlichen Highscore.","Classic mode focuses on your personal high score."],
+      ["Weitere Modi wie Speedrun oder Hardcore können zusätzliche Regeln und Herausforderungen bieten.","Other modes like Speedrun or Hardcore add extra rules and challenges."],
+      ["Seasons & Leaderboard","Seasons & Leaderboard"],
+      ["Season-Punkte werden getrennt vom Allzeit-Highscore geführt.","Season points are tracked separately from the all-time high score."],
+      ["Das Leaderboard zeigt Platzierungen und kann je nach Funktion Online-Daten verwenden.","The leaderboard shows rankings and may use online data depending on the feature."],
+      ["Coins & Ad-Coins","Coins & Ad-Coins"],
+      ["Coins und Ad-Coins sind virtuelle Spielwährungen.","Coins and Ad-Coins are virtual game currencies."],
+      ["Sie haben keinen Auszahlungs- oder Geldwert.","They have no cash or payout value."],
+      ["Ad-Coins sind keine Echtgeldwährung.","Ad-Coins are not real currency."],
+      ["Shop & Inventar","Shop & Inventory"],
+      ["Virtuelle Spielinhalte wie Skins, Welten oder Fähigkeiten können mit der jeweils im Spiel angegebenen virtuellen Währung freigeschaltet werden.","Virtual content such as skins, worlds or abilities can be unlocked with the in-game virtual currency."],
+      ["Ausgerüstete Inhalte können über das Inventar ausgewählt werden.","Equipped content can be selected from the inventory."],
+      ["Fähigkeiten","Abilities"],
+      ["Ausgerüstete Fähigkeiten können während eines Laufs besondere Effekte aktivieren.","Equipped abilities can trigger special effects during a run."],
+      ["Die konkrete Wirkung und Verfügbarkeit wird im Spiel angezeigt.","The actual effect and availability are shown in-game."],
+      ["Missionen & Fortschritt","Missions & Progress"],
+      ["Missionen geben zusätzliche Ziele und können je nach Aufgabe Belohnungen bringen.","Missions give you extra goals and may grant rewards."],
+      ["Erfahrung und Level zeigen deinen Fortschritt.","Experience and level show your progress."],
+      ["Häufige Fragen","FAQ"],
+      ["Ist FLYYYY kostenlos?","Is FLYYYY free?"],
+      ["Ja, das Spiel kann grundsätzlich kostenlos gespielt werden.","Yes, the game is generally free to play."],
+      ["Kann ich ohne Konto spielen?","Can I play without an account?"],
+      ["Ja, der Gastmodus ist möglich; bestimmte Online-Funktionen benötigen ein Konto.","Yes, guest mode is available; certain online features require an account."],
+      ["Haben Coins einen echten Geldwert?","Do coins have real money value?"],
+      ["Nein. Virtuelle Coins und Ad-Coins sind nicht auszahlbar.","No. Virtual coins and Ad-Coins cannot be paid out."],
+      ["Wie funktioniert eine Rewarded Ad?","How does a rewarded ad work?"],
+      ["Falls eine Rewarded-Ad-Funktion technisch aktiviert ist, wird die freiwillige Aktion und die vorgesehene Belohnung vorab angezeigt.","If a rewarded ad feature is technically enabled, the voluntary action and the intended reward are shown upfront."],
+      ["Muss ich Anzeigen anklicken?","Do I have to click ads?"],
+      ["Nein. FLYYYY fordert nicht zum Klicken auf Anzeigen auf.","No. FLYYYY never asks you to click ads."],
+      ["Wo finde ich rechtliche Informationen?","Where can I find legal info?"],
+      ["In den Einstellungen im Bereich Rechtliches findest du Impressum, Datenschutz, Nutzungsbedingungen und Kaufhinweise.","In Settings under Legal you will find Imprint, Privacy, Terms and Purchase info."],
+      ["Über die Website","About this site"],
+      ["FLYYYY wird fortlaufend weiterentwickelt.","FLYYYY is continuously evolving."],
+      ["Spielinhalte, Events, Welten und virtuelle Preise können durch Updates geändert oder ergänzt werden.","Content, events, worlds and virtual prizes may change or be added via updates."],
+      ["Änderungen werden innerhalb der Website nachvollziehbar kommuniziert.","Changes will be communicated within the site."],
+      ["Über FLYYYY","About FLYYYY"],
+      ["FLYYYY 4.3","FLYYYY 4.3"],
+      ["UPDATE 4.3 · COMBO","UPDATE 4.3 · COMBO"],
+      ["Fly weiter. Sammle Coins. Schlage andere Spieler.","Fly farther. Collect coins. Beat other players."],
+      ["Coins","Coins"],
+      ["Ad-Coins","Ad-Coins"],
+      ["Rekord:","Best:"],
+      ["Rekord:","Best:"],
+      ["Rekord","Best"],
+      ["Punkte","Score"],
+      ["Coins","Coins"],
+      ["Level","Level"],
+      ["XP","XP"],
+      ["Tagesbelohnung","Daily Reward"],
+      ["Tag","Day"],
+      ["ABHOLEN","CLAIM"],
+      ["✅ HEUTE ABGEHOLT","✅ CLAIMED TODAY"],
+      ["SEASON","SEASON"],
+      ["SEASON","SEASON"],
+      ["7-Tage-Season","7-Day Season"],
+      ["🥇 1.000 Coins · 🥈 500 Coins · 🥉 300 Coins","🥇 1,000 Coins · 🥈 500 Coins · 🥉 300 Coins"],
+      ["Platz 4–10: 100 · Platz 11–25: 50","Places 4–10: 100 · Places 11–25: 50"],
+      ["START","START"],
+      ["ONLINE-SEASON SPIELEN","PLAY ONLINE SEASON"],
+      ["LEADERBOARD","LEADERBOARD"],
+      ["SHOP","SHOP"],
+      ["NEU","NEW"],
+      ["INVENTAR","INVENTORY"],
+      ["MISSIONEN","MISSIONS"],
+      ["STORY MODE","STORY MODE"],
+      ["EINSTELLUNGEN","SETTINGS"],
+      ["Season-Punkte sind getrennt vom Allzeit-Highscore. Nur die aktuelle Season entscheidet über die Season-Belohnung.","Season points are separate from the all-time high score. Only the current season determines the season reward."],
+      ["Online-Modus: Season-Score wird über Firebase gespeichert. Anmeldung erforderlich.","Online mode: Season score is saved via Firebase. Sign-in required."],
+      ["Leaderboard","Leaderboard"],
+      ["Season und Allzeit werden getrennt angezeigt.","Season and all-time are shown separately."],
+      ["← Zurück","← Back"],
+      ["Season","Season"],
+      ["Allzeit","All-Time"],
+      ["Nur Season-Punkte","Season points only"],
+      ["Lade Leaderboard...","Loading leaderboard..."],
+      ["Dein Spielername","Your player name"],
+      ["NAME SPEICHERN","SAVE NAME"],
+      ["Shop","Shop"],
+      ["Deine gekauften Gegenstände.","Your purchased items."],
+      ["Inventar","Inventory"],
+      ["Missionen","Missions"],
+      ["Schließe Aufgaben ab und verdiene Coins.","Complete tasks and earn coins."],
+      ["Einstellungen","Settings"],
+      ["Sprache, Musik und Effekte","Language, music and effects"],
+      ["Sprache","Language"],
+      ["Die Sprache wird sofort geändert und gespeichert.","Changes apply immediately and are saved."],
+      ["Lautstärke","Volume"],
+      ["Spiel","Game"],
+      ["Handy-Optimierung","Mobile optimization"],
+      ["Reduziertes Rendering unnötiger Effekte auf kleinen Geräten.","Reduces unnecessary rendering effects on small devices."],
+      ["Einstellungen werden automatisch gespeichert.","Settings are saved automatically."],
+      ["Speicherung","Storage"],
+      ["Sprache und Lautstärke bleiben nach dem Neuladen erhalten.","Language and volume stay saved after reloading."],
+      ["0–100 %","0–100 %"],
+      ["AUTO","AUTO"],
+      ["Konto","Account"],
+      ["Gast","Guest"],
+      ["ANMELDEN","SIGN IN"],
+      ["ABMELDEN","LOG OUT"],
+      ["MEIN KONTO","MY ACCOUNT"],
+      ["Sonstiges","More"],
+      ["Kontofunktionen und weitere Optionen findest du jetzt gesammelt hier.","Account functions and other options are now collected here."],
+      ["ADMIN","ADMIN"],
+      ["Deutsch","German"],["English","English"],
+      ["Rechtliches","Legal"],
+      ["Alle rechtlichen Informationen findest du hier, damit die Startseite übersichtlich bleibt.","All legal information is collected here to keep the start screen clean."],
+      ["Impressum","Legal Notice"],
+      ["Datenschutz","Privacy Policy"],
+      ["Nutzungsbedingungen","Terms of Use"],
+      ["Kaufhinweise","Purchase Info"],
+      ["Mit E-Mail anmelden, neues Konto erstellen oder ohne Konto spielen.","Sign in with email, create a new account, or play without an account."],
+      ["ACCOUNT","ACCOUNT"],
+      ["Anmelden / Registrieren","Sign in / Register"],
+      ["Benutzername","Username"],
+      ["E-Mail","Email"],
+      ["Passwort (mind. 6 Zeichen)","Password (min. 6 characters)"],
+      ["ANMELDEN","SIGN IN"],
+      ["REGISTRIEREN","REGISTER"],
+      ["OHNE KONTO SPIELEN","PLAY WITHOUT ACCOUNT"],
+      ["Gastmodus ist jederzeit möglich.","Guest mode is always available."],
+      ["🛡️ Adminrechte werden serweise mit Firebase geprüft.","🛡️ Admin privileges are verified server-side with Firebase."],
+      ["← Zur Lobby","← Back to Lobby"],
+      ["DEIN PREIS!","YOUR PRIZE!"],
+      ["Preis","Prize"],
+      ["Der Preis wurde deinem Konto gutgeschrieben.","The prize has been credited to your account."],
+      ["LUCKY RAD","LUCKY WHEEL"],
+      ["Ein Dreh kostet","One spin costs"],
+      ["Nach dem Kauf öffnet sich sofort das Lucky Rad.","The Lucky Wheel opens immediately after purchase."],
+      ["KAUFEN & ÖFFNEN","BUY & OPEN"],
+      ["ABBRECHEN","CANCEL"],
+      ["PAUSE","PAUSE"],
+      ["Dein Lauf wurde angehalten.","Your run has been paused."],
+      ["▶ WEITER","▶ RESUME"],
+      ["🏠 ZUR LOBBY","🏠 BACK TO LOBBY"],
+      ["GAME OVER","GAME OVER"],
+      ["Gut geflogen!","Well flown!"],
+      ["🔄 NOCHMAL","🔄 RETRY"],
+      ["📺 Weiterfliegen durch Werbung","📺 Keep flying with an ad"],
+      ["Nach einer echten, erfolgreich abgeschlossenen Rewarded Ad wirst du wiederbelebt und erhältst 5 Sekunden 💨 Dash.","After a real, successfully completed rewarded ad you revive and get a 5-second 💨 Dash."],
+      ["📺 WERBUNG ANSEHEN & WEITERFLIEGEN","📺 WATCH AD & KEEP FLYING"],
+      ["⏳ WERBUNG LÄDT...","⏳ LOADING AD..."],
+      ["❌ Werbung konnte nicht abgeschlossen werden.","❌ Ad could not be completed."],
+      ["📺 Werbung ist noch nicht eingerichtet.","📺 Ads are not configured yet."],
+      ["⚠️ Ein Spielfehler ist aufgetreten. Bitte Seite neu laden.","⚠️ A game error occurred. Please reload the page."],
+      ["EISWELT! 10 Level, danach zurück zu deiner Welt.","ICE WORLD! 10 levels, then back to your world."],
+      ["Eiswelt!","Ice World!"],
+      ["Eiswelt","Ice World"],
+      ["🌍 Eiswelt geschafft! Zurück in","🌍 Ice World cleared! Back to"],
+      ["🌍 Eiswelt geschafft!","🌍 Ice World cleared!"],
+      ["Zurück in","Back to"],
+      ["Eiswelt · ","Ice World · "],
+      ["Eiswelt ·","Ice World ·"],
+      [" Level"," levels"],
+      ["SEASON BEENDET!","SEASON ENDED!"],
+      ["Deine persönliche Season-Belohnung wartet auf dich.","Your personal season reward is waiting for you."],
+      ["🎁 BELOHNUNG ABHOLEN","🎁 CLAIM REWARD"],
+      ["🏆 Season-Belohnung","🏆 Season reward"],
+      ["🔴 Belohnung konnte nicht abgeholt werden.","🔴 Reward could not be claimed."],
+      ["Deine Belohnung aus Season","Your reward from Season"],
+      ["ist bereit.","is ready."],
+      ["Bitte einen Namen eingeben.","Please enter a name."],
+      ["💾 Lokal gespeichert.","💾 Saved locally."],
+      ["✅ ","✅ "],
+      [" gespeichert."," saved."],
+      ["🔴 Speichern fehlgeschlagen.","🔴 Save failed."],
+      ["Lade Spieler...","Loading players..."],
+      ["Keine Spieler vorhanden.","No players yet."],
+      ["Siege","Wins"],
+      ["📢 Global Broadcast","📢 Global Broadcast"],
+      ["Nachricht hier eingeben. Sie wird über Firebase an alle aktiven Spieler verteilt.","Enter your message here. It is distributed via Firebase to all active players."],
+      ["Nachricht für alle Spieler …","Message for all players …"],
+      ["📢 BROADCAST SENDEN","📢 SEND BROADCAST"],
+      ["Nur als Admin sichtbar.","Visible to admins only."],
+      ["🔒 Secret Shop verwalten – Skins hinzufügen, Preise festlegen, Angebote aktivieren/deaktivieren.","🔒 Manage Secret Shop – add skins, set prices, enable/disable offers."],
+      ["Lade Secret Shop...","Loading Secret Shop..."],
+      ["⏱️ Zeitliches Angebot erstellen","⏱️ Create time-limited offer"],
+      ["Minuten","Minutes"],
+      ["⏱️ Angebot erstellen","⏱️ Create offer"],
+      ["↻ Secret Shop aktualisieren","↻ Refresh Secret Shop"],
+      ["📋 Admin-Abuse Event Protokoll – zeigt aktive Events und vergangene Aktionen.","📋 Admin abuse event log — shows active events and past actions."],
+      ["Keine Einträge.","No entries."],
+      ["↻ Protokoll aktualisieren","↻ Refresh log"],
+      ["Gesperrte Spieler verwalten.","Manage banned players."],
+      ["Spielername (oder UID)","Player name (or UID)"],
+      ["Grund (optional)","Reason (optional)"],
+      ["🔇 Sp","🔇 B"],
+      ["🔇 Sperren (10 Min)","🔇 Ban (10 min)"],
+      ["🔇 Sperren","🔇 Ban"],
+      ["⏱️","⏱️"],
+      ["🔎 E-Mail oder UID suchen","🔎 Search email or UID"],
+      ["↻ AKTUALISIEREN","↻ REFRESH"],
+      ["Wähle ein Event und starte es für alle Spieler. Mehrere Events können gleichzeitig aktiv sein!","Choose an event and start it for all players. Multiple events can be active at once!"],
+      ["▶️ EVENT STARTEN","▶️ START EVENT"],
+      ["⏹️ EVENT BEENDEN","⏹️ STOP EVENT"],
+      ["Kein Event aktiv.","No event active."],
+      ["Wähle einen Spieler und eine Belohnung.","Choose a player and a reward."],
+      ["Spielername (aus Leaderboard)","Player name (from leaderboard)"],
+      ["Menge (für Coins)","Amount (for coins)"],
+      ["🎁 GEBEN","🎁 GIVE"],
+      ["💝 AN MICH SELBST GEBEN","💝 GIVE TO MYSELF"],
+      ["🌍 ALLEN SPIELERN GEBEN","🌍 GIVE TO ALL PLAYERS"],
+      ["Gib einen Shop-Gegenstand kostenlos an einen Spieler.","Give a shop item to a player for free."],
+      ["Menge","Amount"],
+      ["🎁 KOSTENLOS GEBEN","🎁 GIVE FOR FREE"],
+      ["Bitte mit deinem FLYYYY-Konto anmelden.","Please sign in with your FLYYYY account."],
+      ["Admin-Aktivierungscode eingeben","Enter admin activation code"],
+      ["🔓 AKTIVIEREN","🔓 ACTIVATE"],
+      ["← SCHLIESSEN","← CLOSE"],
+      ["🔒 SCHLIESSEN","🔒 CLOSE"],
+      ["✅ Serverseitige Adminrechte aktiv. Personenbezogene Daten nur für die Administration verwenden.","✅ Server-side admin privileges active. Use personal data only for administration."],
+      ["Bereit.","Ready."],
+      ["Noch keine Spieler vorhanden.","No players yet."],
+      ["Spieler","Players"],
+      ["Klicken / Tippen / Leertaste = Fliegen · T/F = Fähigkeit","Click / Tap / Space = Fly · T/F = Ability"],
+      ["Klicken / Tippen / Leertaste = Fliegen","Click / Tap / Space = Fly"],
+      ["· T/F = Fähigkeit","· T/F = Ability"],
+      [" · T = Fähigkeit"," · T = Ability"],
+      ["= Fliegen","= Fly"],
+      ["= Fähigkeit","= Ability"],
+      ["Tip:","Tip:"],
+      ["📺 Werbung ist noch nicht eingerichtet.","📺 Ads are not configured yet."],
+      ["🪙 Coins erhalten!","🪙 Coins received!"],
+      ["🪙 +","🪙 +"],
+      ["Coins erhalten","coins received"],
+      ["🎁 Heute schon abgeholt!","🎁 Already claimed today!"],
+      ["🔐 Für den Online-Modus musst du angemeldet sein.","🔐 You must be signed in to play online."],
+      ["🔐 Bitte anmelden.","🔐 Please sign in."],
+      ["🔐 Bitte zuerst anmelden.","🔐 Please sign in first."],
+      ["Bitte den Admin-Code eingeben.","Please enter the admin code."],
+      ["Bitte E-Mail und Passwort eingeben.","Please enter email and password."],
+      ["Passwort: mindestens 6 Zeichen.","Password: at least 6 characters."],
+      ["🔄 Anmeldung läuft...","🔄 Signing in..."],
+      ["🔄 Konto wird erstellt...","🔄 Creating account..."],
+      ["✅ Konto erstellt!","✅ Account created!"],
+      ["✅ Angemeldet!","✅ Signed in!"],
+      ["👤 Gastmodus aktiviert.","👤 Guest mode activated."],
+      ["❌ Spieler nicht gefunden.","❌ Player not found."],
+      ["❌ Keine Spieler gefunden.","❌ No players found."],
+      ["❌ Nicht genug Coins!","❌ Not enough coins!"],
+      ["Nicht genug Coins!","Not enough coins!"],
+      ["🔴 Allzeit-Leaderboard konnte nicht geladen werden.","🔴 All-time leaderboard could not be loaded."],
+      ["🔴 Season-Leaderboard konnte nicht geladen werden.","🔴 Season leaderboard could not be loaded."],
+      ["🎵 Event-Musik aktiv","🎵 Event music active"],
+      ["🎵 Normale Musik wird fortgesetzt.","🎵 Normal music resumed."],
+      ["🌐 Season-Score gespeichert.","🌐 Season score saved."],
+      ["🌐 Season-Score wird gespeichert...","🌐 Saving season score..."],
+      ["FÄHIGKEIT FREIGESCHALTET!","ABILITY UNLOCKED!"],
+      ["Nur für ","Only for "],
+      [" freigeschaltet."," unlocked."],
+      ["Im Inventar unter ⚡ Fähigkeiten auswählen.","Select it in Inventory under ⚡ Abilities."],
+      ["⚡ Aktuell sind keine kaufbaren Fähigkeiten verfügbar.","⚡ No buyable abilities are currently available."],
+      ["Melde dich an, damit dein Highscore online gespeichert wird.","Sign in so your high score is saved online."],
+      ["🔐 Melde dich an, damit dein Highscore online gespeichert wird.","🔐 Sign in so your high score is saved online."],
+      ["Gesperrt bis:","Banned until:"],
+      ["Dauerhaft","Permanent"],
+      ["Deutsch","German"],
+      ["🪙 Level 20!","🪙 Level 20!"],
+      ["Level 20! +","Level 20! +"],
+      [" Coins!"," Coins!"],
+      ["🔥 COMBO","🔥 COMBO"],
+      ["💥 Combo verloren · x","💥 Combo lost · x"],
+      ["💥 Combo verloren","💥 Combo lost"],
+      ["🛡️ Treffer","🛡️ Hit"],
+      ["🛡️ Treffer geschützt!","🛡️ Hit protected!"],
+      [" Schild(e) übrig"," shield(s) left"],
+      ["Schild verbraucht","Shield used up"],
+      ["🛡️ Randtreffer","🛡️ Edge hit"],
+      ["💥 -","💥 -"],
+      [" Boss HP!"," Boss HP!"],
+      ["🪙 +","🪙 +"],
+      [" Bonus-Coin"," Bonus Coin"],
+      [" Bonus-Coins!"," Bonus Coins!"],
+      ["1000 Coins","1000 Coins"],
+      ["🎡 DREHEN","🎡 SPIN"],
+      ["Bereit für deinen Dreh.","Ready for your spin."],
+      ["🎁 Im aktuellen Rad","🎁 In the current wheel"],
+      ["🎁 Dieses Rad enthält","🎁 This wheel contains"],
+      ["💡 So funktioniert es","💡 How it works"],
+      ["Skins und Fähigkeiten werden einzeln gewonnen.","Skins and abilities are won individually."],
+      ["Nach dem Dreh wird das Lucky Rad komplett neu zusammengestellt.","After a spin the Lucky Wheel is reshuffled completely."],
+      ["Skins und Fähigkeiten sind","Skins and abilities are"],
+      ["Einzelgewinne","individual prizes"],
+      ["Neue Inhalte landen nur im Lucky Rad.","New content only appears in the Lucky Wheel."],
+      ["GEWINNE IN DIESEM RAD","PRIZES IN THIS WHEEL"],
+      ["Drehe für 1000 Coins. Die konkreten Gewinne werden jedes Mal neu gemischt.","Spin for 1000 Coins. The prizes are reshuffled every time."],
+      ["🪙 FÜR 1000 COINS KAUFEN","🪙 BUY FOR 1000 COINS"],
+      ["👑 Creator Code","👑 Creator Code"],
+      ["Creator Code setzen","Set creator code"],
+      ["z.B. flyyyyOwner","e.g. flyyyyOwner"],
+      ["Unterstütze deinen Lieblings-Streamer!","Support your favorite streamer!"],
+      ["⚡ Keine Fähigkeit","⚡ No ability"],
+      ["⚡ Keine Fähigkeit freigeschaltet.","⚡ No ability unlocked."],
+      ["💨 Werbe-Dash · AUS","💨 Ad-Dash · OFF"],
+      ["💨 Werbe-Dash ·","💨 Ad-Dash ·"],
+      [" übrig"," left"],
+      [" Werbe-Dash · "," Ad-Dash · "],
+      ["💨 ","💨 "],
+      ["Werbe-Dash","Ad-Dash"],
+      ["T = Fähigkeit","T = Ability"],
+      ["T","T"],
+      ["· T","· T"],
+      ["✓ AUSGERÜSTET","✓ EQUIPPED"],
+      ["AUSRÜSTEN","EQUIP"],
+      ["✓ AKTIV","✓ ACTIVE"],
+      ["⚡ AKTIVIEREN","⚡ ACTIVATE"],
+      ["🔒 GESPERRT","🔒 LOCKED"],
+      ["▶ TESTEN","▶ TEST"],
+      ["▶ ANHÖREN","▶ LISTEN"],
+      ["▶ PLAY","▶ PLAY"],
+      ["Kaufen","Buy"],
+      ["Kostenlos","Free"],
+      ["Im Besitz","Owned"],
+      ["🪙 1000","🪙 1000"],
+      ["Discord öffnen","Open Discord"],
+      ["Discord","Discord"],
+      ["🎵 Musik: AN","🎵 Music: ON"],
+      ["🔇 Musik: AUS","🔇 Music: OFF"],
+      ["🍪 FLYYYY nutzt Cookies und ähnliche Techniken (z.B. LocalStorage, Firebase) für Login, Spielstand und Online-Funktionen. Mit dem Spielen stimmst du der Nutzung zu.","🍪 FLYYYY uses cookies and similar technologies (e.g. LocalStorage, Firebase) for login, game progress and online features. By playing you agree to this use."],
+      ["Verstanden","Got it"],
+      ["COMING SOON","COMING SOON"],
+      ["Sprache geändert","Language changed"],
+      ["Language changed","Language changed"],
+      ["🌐 Nur ","🌐 Only "],
+      [" Punkte"," points"],
+      ["Nicht genug Coins!","Not enough coins!"],
+      ["Keine Events aktiv","No events active"],
+      ["Lade Events...","Loading events..."],
+      ["❌ Fehler beim Laden der Events.","❌ Failed to load events."],
+      ["✅ Event gestartet!","✅ Event started!"],
+      ["Event gestartet!","Event started!"],
+      ["Event beendet!","Event ended!"],
+      ["✅ Event beendet!","✅ Event ended!"],
+      ["Belohnung gesendet!","Reward sent!"],
+      ["✅ Belohnung gesendet!","✅ Reward sent!"],
+      ["🌍 An alle Spieler gesendet!","🌍 Sent to all players!"],
+      ["Item gesendet!","Item sent!"],
+      ["✅ Item gesendet!","✅ Item sent!"],
+      ["Eingabe ungültig.","Invalid input."],
+      ["Lade Belohnungen...","Loading rewards..."],
+      ["🎁 Belohnung","🎁 Reward"],
+      ["Belohnung erfolgreich","Reward successful"],
+      ["Admin-Aktivierungscode","Admin activation code"],
+      ["Admin-Code aktiviert","Admin code activated"],
+      ["🔓 Code akzeptiert!","🔓 Code accepted!"],
+      ["Admin-Modus aktiv","Admin mode active"],
+      ["Kein Event ausgewählt.","No event selected."],
+      ["Wähle ein Event aus.","Select an event."],
+      ["Broadcast gesendet.","Broadcast sent."],
+      ["⏱️ Cooldown...","⏱️ Cooldown..."],
+      ["Bot-Schutz","Bot protection"],
+      ["Chat gesperrt","Chat banned"],
+      ["Spieler ist gesperrt.","Player is banned."],
+      ["Spieler ist","Player is"],
+      ["Verbannt.","Banned."],
+      ["Comming soon","Coming soon"],
+      ["🪙 +1.000","🪙 +1,000"],
+      ["Eiswelt · 10 Level","Ice World · 10 levels"],
+      ["Eiswelt · ","Ice World · "],
+      [" Level"," levels"],
+      [" 10 Level"," 10 levels"],
+      [" 1 Level"," 1 level"],
+      ["Platz 1","Place 1"],
+      ["Platz","Place"],
+      ["🔥 ","🔥 "],
+      ["Lobby","Lobby"],
+      ["FLYYYY FLYYYY","FLYYYY FLYYYY"],
+      ["Sicherheitslücke:","Security issue:"],
+      ["Werbung","Ad"],
+      ["Rewarded Ad","Rewarded Ad"],
+      ["💎","💎"],
+      ["🌟","🌟"],
+      ["Ad-Dash","Ad-Dash"],
+      ["Anzeige","Ad"],
+      ["Coins Coins","Coins"],
+      ["Coins Coin","Coin"],
+      ["Anmelden, um zu chatten.","Sign in to chat."],
+      ["FLYYYY ist noch in Entwicklung.","FLYYYY is still in development."],
+      [" FLYYYY "," FLYYYY "],
+      ["Verbleibend","Remaining"],
+      ["Coins ","Coins "],
+      ["Coins.","Coins."],
+      ["Spielername","Player name"],
+      ["derzeit","currently"],
+      ["FLYYYY © ","FLYYYY © "],
+      ["Alle Rechte vorbehalten.","All rights reserved."],
+      ["© 2026 FLYYYY — Alle Rechte vorbehalten.","© 2026 FLYYYY — All rights reserved."],
+      ["Ad-Coins ","Ad-Coins "],
+      ["derzeit nicht verfügbar","currently not available"],
+      ["Drehen","Spin"],
+      [" Coins"," Coins"],
+      ["Coins.","Coins."],
+      ["COMING SOON","COMING SOON"]
+    ];
+    for(const [a,b] of subs){if(out.includes(a))out=out.split(a).join(b)}
+    return out;
+  }
+  if(lang()==="de"){
+    let out=text.replace(/[\u{1F000}-\u{1FFFF}\u{2600}-\u{27BF}\u{2300}-\u{23FF}\u{2B00}-\u{2BFF}\u{1F1E6}-\u{1F1FF}]/gu,"");
+    out=out.replace(/[\u2700-\u27BF]/g,"");
+    const subs=[
+      ["Eiswelt","Eiswelt"],["Berge","Berge"],["Unterwasser","Unterwasser"],["Dschungel","Dschungel"],["Weltraum","Weltraum"],
+      ["Platz 4–10: 100 · Platz 11–25: 50","Platz 4–10: 100 · Platz 11–25: 50"],
+    ];
+    for(const [a,b] of subs){if(out.includes(a))out=out.split(a).join(b)}
+    return out;
   }
   return text;
 }
@@ -1573,9 +2252,8 @@ function applyLanguage(){
   if(typeof renderShop==="function")renderShop();if(typeof renderInventory==="function")renderInventory();if(typeof renderMissions==="function")renderMissions();
   const copyrightText=$("copyrightText");if(copyrightText)copyrightText.textContent=lang()==="en"?"© 2026 FLYYYY — All rights reserved.":"© 2026 FLYYYY — Alle Rechte vorbehalten.";
   translateDOM();
-  if(typeof legalOverlay!=="undefined"&&legalOverlay?.classList.contains("active")&&typeof openLegalPage==="function"&&typeof currentLegalType!=="undefined")openLegalPage(currentLegalType);
 }
-function setLanguage(v){state.language=v==="en"?"en":"de";saveState();applyLanguage();showMessage(state.language==="en"?"🇬🇧 Language changed":"🇩🇪 Sprache geändert")}
+function setLanguage(v){state.language=v==="en"?"en":"de";window.__flyyyyLang=state.language;saveState();applyLanguage();showMessage(state.language==="en"?"Language changed":"Sprache geändert")}
 
 const __flyyyyShowMessage=showMessage;
 showMessage=function(text){return __flyyyyShowMessage(translateRuntimeText(String(text)));}
@@ -1583,6 +2261,7 @@ const __flyyyySetLeaderboardStatus=setLeaderboardStatus;
 setLeaderboardStatus=function(text){return __flyyyySetLeaderboardStatus(translateRuntimeText(String(text)));}
 
 const __flyyyyTranslateObserver=new MutationObserver(()=>{if(window.__flyyyyTranslating)return;window.__flyyyyTranslating=true;requestAnimationFrame(()=>{try{translateDOM()}finally{window.__flyyyyTranslating=false}})});
+window.__flyyyyLang="en";
 __flyyyyTranslateObserver.observe(document.body,{subtree:true,childList:true,characterData:true});
 function setMusicVolume(v){state.musicVolume=Math.max(0,Math.min(100,Number(v)||0));saveState();applyAudioVolumes();if(musicVolumeValue)musicVolumeValue.textContent=`${state.musicVolume} %`}
 function setSfxVolume(v){state.sfxVolume=Math.max(0,Math.min(100,Number(v)||0));saveState();if(sfxVolumeValue)sfxVolumeValue.textContent=`${state.sfxVolume} %`}
@@ -1593,12 +2272,13 @@ function currentEquippedAbility(){const skin=getSkinById(state.selectedSkin);ret
 function updateAbilityHUD(){
   if(!abilityBtn)return;
   const a=currentEquippedAbility();
-  if(!a){abilityBtn.disabled=true;abilityBtn.className="abilityHudBtn";abilityBtn.textContent="⚡ Keine Fähigkeit";return}
-  if(a.effect==="adDash"&&Number(state.adDashUses||0)<=0){abilityBtn.disabled=true;abilityBtn.className="abilityHudBtn cooling";abilityBtn.textContent="💨 Werbe-Dash · AUS";return}
-  if(a.effect==="adDash"&&game.adDashUsedThisRound){abilityBtn.disabled=true;abilityBtn.className="abilityHudBtn cooling";abilityBtn.textContent=`💨 Werbe-Dash · ${Number(state.adDashUses||0)} übrig`;return}
+  const en=lang()==="en";
+  if(!a){abilityBtn.disabled=true;abilityBtn.className="abilityHudBtn";abilityBtn.textContent=en?"No ability":"Keine Fähigkeit";return}
+  if(a.effect==="adDash"&&Number(state.adDashUses||0)<=0){abilityBtn.disabled=true;abilityBtn.className="abilityHudBtn cooling";abilityBtn.textContent=en?"Ad-Dash · OFF":"Werbe-Dash · AUS";return}
+  if(a.effect==="adDash"&&game.adDashUsedThisRound){abilityBtn.disabled=true;abilityBtn.className="abilityHudBtn cooling";abilityBtn.textContent=en?`Ad-Dash · ${Number(state.adDashUses||0)} left`:`Werbe-Dash · ${Number(state.adDashUses||0)} übrig`;return}
   const left=Math.max(0,Number(game.abilityCooldownUntil||0)-Date.now());
   if(left>0){abilityBtn.disabled=true;abilityBtn.className="abilityHudBtn cooling";abilityBtn.textContent=`${a.icon} ${a.name} · ${Math.ceil(left/1000)}s`;return}
-  abilityBtn.disabled=!game.running||game.paused||game.over;abilityBtn.className="abilityHudBtn ready";abilityBtn.title="Fähigkeit benutzen: T oder F";abilityBtn.textContent=a.effect==="adDash"?`💨 ${a.name} · ${Number(state.adDashUses||0)} · T`:`${a.icon} ${a.name} · T`;
+  abilityBtn.disabled=!game.running||game.paused||game.over;abilityBtn.className="abilityHudBtn ready";abilityBtn.title=en?"Use ability: T or F":"Fähigkeit benutzen: T oder F";abilityBtn.textContent=a.effect==="adDash"?`${a.name} · ${Number(state.adDashUses||0)} · T`:`${a.icon} ${a.name} · T`;
 }
 function comboMultiplierFor(count){if(count>=30)return 5;if(count>=20)return 4;if(count>=10)return 3;if(count>=5)return 2;return 1}
 function updateComboHUD(){if(!comboHud)return;const c=Math.max(0,Number(game.combo||0)),m=comboMultiplierFor(c);game.comboMultiplier=m;comboCountHud.textContent=c;comboMultHud.textContent=m;comboHud.classList.toggle("hot",c>=5&&c<30);comboHud.classList.toggle("mega",c>=30)}
@@ -1711,8 +2391,8 @@ function updateGame(dt){
     game.iceTriggered=true;
     game.iceLevelsRemaining=10;
     game.world=worlds.find(w=>w.id==="ice")||worlds[0];
-    worldHud.textContent="Eiswelt · 10 Level";
-    showMessage("🧊 EISWELT! 10 Level, danach zurück zu deiner Welt.");
+    worldHud.textContent=lang()==="en"?"Ice World · 10 levels":"Eiswelt · 10 Level";
+    showMessage(lang()==="en"?"ICE WORLD! 10 levels, then back to your world.":"EISWELT! 10 Level, danach zurück zu deiner Welt.");
     startMusic();
   }
   const ice=game.iceActive;
@@ -1746,11 +2426,11 @@ function updateGame(dt){
           game.iceActive=false;
           const returnId=game.iceReturnWorldId||game.baseWorldId||state.lastNonIceWorld||"giza";
           game.world=worlds.find(w=>w.id===returnId)||worlds[0];
-          worldHud.textContent=game.world.name;
-          showMessage(`🌍 Eiswelt geschafft! Zurück in ${game.world.name}.`);
+          worldHud.textContent=worldName(game.world);
+          showMessage(lang()==="en"?`🌍 Ice World cleared! Back to ${worldName(game.world)}.`:`🌍 Eiswelt geschafft! Zurück in ${game.world.name}.`);
           startMusic();
         }else{
-          worldHud.textContent=`Eiswelt · ${game.iceLevelsRemaining} Level`;
+          worldHud.textContent=lang()==="en"?`Ice World · ${game.iceLevelsRemaining} levels`:`Eiswelt · ${game.iceLevelsRemaining} Level`;
         }
       }
     }
@@ -1788,7 +2468,7 @@ updateMissionProgress();updateHUD();
      spawnTrailParticles();
    }
   }
-function startGame(online=false){stopLobbyMusic();if(online&&!currentUser){showMessage("🔐 Für den Online-Modus musst du angemeldet sein.");showScreen("authScreen");return}game.onlineRun=!!online;initAudio();startMusic();hideScreens();canvas.style.display="block";gameHud.style.display="block";pauseOverlay.classList.remove("active");gameOverOverlay.classList.remove("active");if(adReviveBox)adReviveBox.style.display="none";if(adDashOverlay)adDashOverlay.classList.remove("active");game.running=true;game.paused=false;game.over=false;game.score=0;game.runCoins=0;game.jumpCount=0;game.bonusCoinsRun=0;game.combo=0;game.comboMultiplier=1;game.comboMilestones={};game.speed=165;game.spawnTimer=.9;game.obstacles=[];game.coins=[];game.player={x:W*.24,y:H*.45,vy:0,r:22,hitR:skinHitRadius(state.selectedSkin),rot:0};game.abilityActiveUntil=0;game.abilityCooldownUntil=0;game.abilityShield=0;game.abilityUsed=false;game.abilityActiveEffect=null;game.adDashUsedThisRound=false;game.abilityBaseHitR=skinHitRadius(state.selectedSkin);game.player.hitR=game.abilityBaseHitR;game.baseWorldId=state.selectedWorld==="ice"?(state.lastNonIceWorld||"giza"):state.selectedWorld;game.iceReturnWorldId=game.baseWorldId;game.iceActive=state.selectedWorld==="ice";game.iceTriggered=game.iceActive;game.iceLevelsRemaining=game.iceActive?10:0;game.world=worlds.find(w=>w.id===state.selectedWorld)||worlds.find(w=>w.id===game.baseWorldId)||worlds[0];worldHud.textContent=game.world.name;musicHud.textContent=selectedMusic().name;updateHUD();loadBossStateFromFirebase();game.last=performance.now();flap();requestAnimationFrame(gameLoop)}
+function startGame(online=false){stopLobbyMusic();if(online&&!currentUser){showMessage("🔐 Für den Online-Modus musst du angemeldet sein.");showScreen("authScreen");return}game.onlineRun=!!online;initAudio();startMusic();hideScreens();canvas.style.display="block";gameHud.style.display="block";pauseOverlay.classList.remove("active");gameOverOverlay.classList.remove("active");if(adReviveBox)adReviveBox.style.display="none";if(adDashOverlay)adDashOverlay.classList.remove("active");game.running=true;game.paused=false;game.over=false;game.score=0;game.runCoins=0;game.jumpCount=0;game.bonusCoinsRun=0;game.combo=0;game.comboMultiplier=1;game.comboMilestones={};game.speed=165;game.spawnTimer=.9;game.obstacles=[];game.coins=[];game.player={x:W*.24,y:H*.45,vy:0,r:22,hitR:skinHitRadius(state.selectedSkin),rot:0};game.abilityActiveUntil=0;game.abilityCooldownUntil=0;game.abilityShield=0;game.abilityUsed=false;game.abilityActiveEffect=null;game.adDashUsedThisRound=false;game.abilityBaseHitR=skinHitRadius(state.selectedSkin);game.player.hitR=game.abilityBaseHitR;game.baseWorldId=state.selectedWorld==="ice"?(state.lastNonIceWorld||"giza"):state.selectedWorld;game.iceReturnWorldId=game.baseWorldId;game.iceActive=state.selectedWorld==="ice";game.iceTriggered=game.iceActive;game.iceLevelsRemaining=game.iceActive?10:0;game.world=worlds.find(w=>w.id===state.selectedWorld)||worlds.find(w=>w.id===game.baseWorldId)||worlds[0];worldHud.textContent=worldName(game.world);musicHud.textContent=selectedMusic().name;updateHUD();loadBossStateFromFirebase();game.last=performance.now();flap();requestAnimationFrame(gameLoop)}
 async function endGame(){
   if(game.over)return;
   game.over=true;
@@ -3466,7 +4146,7 @@ function renderLevelUpAnimation(levelData){
     <div style="font-size:clamp(24px,5vw,42px);font-weight:900;color:#ffd700;text-shadow:0 0 20px rgba(255,215,0,.6);margin-top:12px">LEVEL ${levelData.levels[levelData.levels.length-1]}!</div>
     <div style="font-size:clamp(16px,3vw,24px);color:#fff;margin-top:16px">+${levelData.totalCoins} Coins</div>
     ${levelData.effects.length>0?`<div style="font-size:14px;color:#88ff88;margin-top:8px">✨ ${levelData.effects.join(", ")} Effekt freigeschaltet!</div>`:""}
-    <div style="margin-top:24px;padding:12px 32px;background:linear-gradient(135deg,#6366f1,#8b5cf6);border-radius:12px;color:#fff;font-weight:700;cursor:pointer" id="levelClaimBtn">🎉 BELOHNUNG ABHOLEN</div>`;
+    <div style="margin-top:24px;padding:12px 32px;background:linear-gradient(135deg,#1e6cff,#3a8bff);border-radius:12px;color:#fff;font-weight:700;cursor:pointer" id="levelClaimBtn">BELOHNUNG ABHOLEN</div>`;
   document.body.appendChild(div);
   if(!document.getElementById("levelUpStyles")){
     const s=document.createElement("style");
@@ -3527,7 +4207,7 @@ function updateLobby(){
 
 startBtn.onclick=()=>startGame(false);onlineStartBtn.onclick=()=>startGame(true);
 leaderboardBtn.onclick=async()=>{loadPlayerName();showScreen("leaderboard");await ensureSeason();await startSeasonLeaderboardListener();switchLeaderboardMode("season")};
-leaderboardBack.onclick=()=>showScreen("lobby");saveNameBtn.onclick=savePlayerName;settingsBtn.onclick=()=>{showScreen("settings");applyLanguage()};document.getElementById("settingsImprintBtn")?.addEventListener("click",()=>openLegalPage("imprint"));document.getElementById("settingsPrivacyBtn")?.addEventListener("click",()=>openLegalPage("privacy"));document.getElementById("settingsTermsBtn")?.addEventListener("click",()=>openLegalPage("terms"));document.getElementById("settingsPurchaseBtn")?.addEventListener("click",()=>openLegalPage("purchase"));settingsBack.onclick=()=>showScreen("lobby");adminSettingsBtn?.addEventListener("click",openAdminLogin);langDeBtn.onclick=()=>setLanguage("de");langEnBtn.onclick=()=>setLanguage("en");musicVolumeRange.oninput=e=>setMusicVolume(e.target.value);sfxVolumeRange.oninput=e=>setSfxVolume(e.target.value);
+leaderboardBack.onclick=()=>showScreen("lobby");saveNameBtn.onclick=savePlayerName;settingsBtn.onclick=()=>{showScreen("settings");applyLanguage()};settingsBack.onclick=()=>showScreen("lobby");adminSettingsBtn?.addEventListener("click",openAdminLogin);langDeBtn.onclick=()=>setLanguage("de");langEnBtn.onclick=()=>setLanguage("en");musicVolumeRange.oninput=e=>setMusicVolume(e.target.value);sfxVolumeRange.oninput=e=>setSfxVolume(e.target.value);if(storyModeBtn)storyModeBtn.onclick=()=>showMessage("COMING SOON");
 seasonTabBtn.onclick=async()=>{await startSeasonLeaderboardListener();switchLeaderboardMode("season")};allTimeTabBtn.onclick=()=>switchLeaderboardMode("alltime");
 shopBtn.onclick=()=>{
   ensureShopNewState();
@@ -3726,6 +4406,7 @@ function showAdminTab(tabId){
   if(tabId==="secretshop")renderAdminSecretShop();
   if(tabId==="abuselog")renderAdminAbuseLog();
   if(tabId==="creatorcodes")loadAdminCreatorCodes();
+  if(tabId==="chat")loadAdminChatBans();
 }
 
 function populateAdminEventSelect(){
@@ -3980,7 +4661,7 @@ async function adminBanPlayer(){
       bannedBy:getPlayerName()||"ADMIN",
       reason:reason,
       bannedAt:d.serverTimestamp(),
-      expiresAt:d.serverTimestamp()+(10*60*1000)
+      expiresAt:Date.now()+(10*60*1000)
     });
     if(status)status.textContent=`✅ Spieler "${name}" für 10 Min gesperrt.`;
     showMessage("🔇 Spieler gesperrt.");
@@ -4752,6 +5433,9 @@ $("adminSecretShopRefreshBtn")?.addEventListener("click",renderAdminSecretShop);
 $("adminAbuseLogRefreshBtn")?.addEventListener("click",renderAdminAbuseLog);
 $("adminChatBanBtn")?.addEventListener("click",adminBanPlayer);$("adminChatRefreshBtn")?.addEventListener("click",loadAdminChatBans);
 
+adminMyAccountBtn.onclick=async()=>{if(await requireAdmin())adminInfo.textContent=`Firebase UID: ${currentUser.uid} · E-Mail: ${currentUser.email||"-"}`};
+$("adminRefreshUsersBtn").onclick=loadAdminUsers;$("adminUserSearch").addEventListener("input",()=>loadAdminUsers());$("adminCreatorRefreshBtn").onclick=loadAdminCreatorCodes;$("adminCreatorCodeSearch").addEventListener("input",()=>loadAdminCreatorCodes());
+
 let globalBroadcastStop=null;
 let lastBroadcastId=storage.getItem("FLYYYY_LAST_BROADCAST")||null;
 let broadcastHideTimer=null;
@@ -4846,7 +5530,7 @@ async function startChatListener(){
             bannedBy:"system",
             reason:"inappropriate",
             bannedAt:d.serverTimestamp(),
-            expiresAt:d.serverTimestamp()+(10*60*1000)
+            expiresAt:Date.now()+(10*60*1000)
           });
           chatBanUntil=Date.now()+(10*60*1000);
         }
@@ -4884,7 +5568,7 @@ async function sendChatMessage(){
         bannedBy:"system",
         reason:"inappropriate",
         bannedAt:d.serverTimestamp(),
-        expiresAt:d.serverTimestamp()+(10*60*1000)
+        expiresAt:Date.now()+(10*60*1000)
       });
     }catch(e){console.error(e)}
     if(chatInput)chatInput.value="";
@@ -5149,7 +5833,7 @@ registerBtn.onclick=async()=>{
 authBackBtn.onclick=()=>showScreen("lobby");
 logoutBtn.onclick=async()=>{try{const {a}=await loadFirebase();await a.signOut(auth);showMessage("👤 Gastmodus aktiviert.")}catch(e){console.error(e)}};
 claimSeasonRewardBtn.onclick=claimSeasonReward;musicToggleBtn.onclick=()=>{state.musicEnabled=!state.musicEnabled;saveState();if(state.musicEnabled){if(game.running)startMusic();else startLobbyMusic()}else stopMusic();updateLobby()};
-confirmLuckyBuyBtn.onclick=confirmLuckyBuy;cancelLuckyBuyBtn.onclick=cancelLuckyBuy;jackpotOverlay.addEventListener("click",()=>{jackpotOverlay.classList.remove("active")});abilityBtn.onclick=activateAbility;abilityBtn.addEventListener("pointerdown",e=>{e.preventDefault();activateAbility()});pauseBtn.onclick=togglePause;resumeBtn.onclick=togglePause;pauseLobbyBtn.onclick=returnLobby;retryBtn.onclick=()=>startGame(game.onlineRun);returnLobbyBtn.onclick=returnLobby;discordFloatBtn.addEventListener("click",()=>{window.open("https://discord.gg/U3DGFwgeQe","_blank","noopener,noreferrer")});
+confirmLuckyBuyBtn.onclick=confirmLuckyBuy;cancelLuckyBuyBtn.onclick=cancelLuckyBuy;jackpotOverlay.addEventListener("click",()=>{jackpotOverlay.classList.remove("active")});abilityBtn.onclick=activateAbility;abilityBtn.addEventListener("pointerdown",e=>{e.preventDefault();activateAbility()});pauseBtn.onclick=togglePause;resumeBtn.onclick=togglePause;pauseLobbyBtn.onclick=returnLobby;retryBtn.onclick=()=>startGame(game.onlineRun);returnLobbyBtn.onclick=returnLobby;discordFloatBtn.addEventListener("click",()=>{window.open("https://discord.gg/U3DGFwgeQe","_blank","noopener,noreferrer")});const siteFloatBtn=document.getElementById("siteFloatBtn");if(siteFloatBtn)siteFloatBtn.addEventListener("click",()=>{window.open("./assets/flyyyy.html","_blank","noopener,noreferrer")});
 canvas.addEventListener("pointerdown",e=>{e.preventDefault();flap()});addEventListener("keydown",e=>{
   const tag=(e.target?.tagName||"").toLowerCase();
   const typing=tag==="input"||tag==="textarea"||tag==="select"||e.target?.isContentEditable;
@@ -5257,13 +5941,19 @@ setInterval(()=>{if(typeof updateEventCountdown==="function")updateEventCountdow
 */
 const FLYYYY_LEGAL_ADDRESS="Goerdeler Straße 47, 36037 Fulda, Deutschland";
 const FLYYYY_EMAIL="noelbond75@gmail.com";
-const legalOverlay=document.getElementById("legalOverlay");
-const legalTitle=document.getElementById("legalTitle");
-const legalContent=document.getElementById("legalContent");
-const legalClose=document.getElementById("legalClose");
+let legalOverlay=null,legalTitle=null,legalContent=null,legalClose=null,legalDialog=null;
+function initLegalElements(){
+  legalOverlay=document.getElementById("legalOverlay");
+  legalTitle=document.getElementById("legalTitle");
+  legalContent=document.getElementById("legalContent");
+  legalClose=document.getElementById("legalClose");
+  legalDialog=document.getElementById("legalDialog");
+}
+initLegalElements();
 
 let currentLegalType="privacy";
 function openLegalPage(type){
+  initLegalElements();
   currentLegalType=type;
   if(!legalOverlay||!legalContent)return;
   const en=lang()==="en";
@@ -5284,23 +5974,25 @@ function openLegalPage(type){
   legalDialog.scrollTop=0;
 }
 function closeLegalPage(){legalOverlay?.classList.remove("active")}
-document.getElementById("openImprintBtn")?.addEventListener("click",()=>openLegalPage("imprint"));
-document.getElementById("openPrivacyBtn")?.addEventListener("click",()=>openLegalPage("privacy"));
-document.getElementById("openTermsBtn")?.addEventListener("click",()=>openLegalPage("terms"));
-document.getElementById("openPurchaseBtn")?.addEventListener("click",()=>openLegalPage("purchase"));
-legalClose?.addEventListener("click",closeLegalPage);
-legalOverlay?.addEventListener("click",e=>{if(e.target===legalOverlay)closeLegalPage()});
+// Settings uses inline onclick handlers, so expose these module functions globally.
+window.openLegalPage=openLegalPage;
+window.closeLegalPage=closeLegalPage;
+function initLegalBindings(){
+  initLegalElements();
+  document.getElementById("openImprintBtn")?.addEventListener("click",()=>openLegalPage("imprint"));
+  document.getElementById("openPrivacyBtn")?.addEventListener("click",()=>openLegalPage("privacy"));
+  document.getElementById("openTermsBtn")?.addEventListener("click",()=>openLegalPage("terms"));
+  document.getElementById("openPurchaseBtn")?.addEventListener("click",()=>openLegalPage("purchase"));
+  legalClose?.addEventListener("click",closeLegalPage);
+  legalOverlay?.addEventListener("click",e=>{if(e.target===legalOverlay)closeLegalPage()});
+  document.getElementById("footerImprintBtn")?.addEventListener("click",()=>openLegalPage("imprint"));
+  document.getElementById("footerPrivacyBtn")?.addEventListener("click",()=>openLegalPage("privacy"));
+  document.getElementById("footerTermsBtn")?.addEventListener("click",()=>openLegalPage("terms"));
+  document.getElementById("footerPurchaseBtn")?.addEventListener("click",()=>openLegalPage("purchase"));
+}
+if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",initLegalBindings,{once:true});
+else initLegalBindings();
 window.addEventListener("keydown",e=>{if(e.key==="Escape")closeLegalPage()});
-
-/* ===== FOOTER LEGAL LINKS ===== */
-var footerImprintBtn=document.getElementById("footerImprintBtn");
-var footerPrivacyBtn=document.getElementById("footerPrivacyBtn");
-var footerTermsBtn=document.getElementById("footerTermsBtn");
-var footerPurchaseBtn=document.getElementById("footerPurchaseBtn");
-if(footerImprintBtn)footerImprintBtn.addEventListener("click",function(){openLegalPage("imprint")});
-if(footerPrivacyBtn)footerPrivacyBtn.addEventListener("click",function(){openLegalPage("privacy")});
-if(footerTermsBtn)footerTermsBtn.addEventListener("click",function(){openLegalPage("terms")});
-if(footerPurchaseBtn)footerPurchaseBtn.addEventListener("click",function(){openLegalPage("purchase")});
 
 /* ===== COOKIE CONSENT ===== */
 var cookieBanner=document.getElementById("cookieBanner");
@@ -5313,10 +6005,10 @@ if(window.requestIdleCallback)requestIdleCallback(showCookieBanner);else setTime
 </script>
 
 <!-- ===== COOKIE CONSENT ===== -->
-<div id="cookieBanner" role="dialog" aria-label="Cookie-Einwilligung">
-  <div class="cookieText">🍪 FLYYYY nutzt Cookies und ähnliche Technien (z.B. LocalStorage, Firebase) für Login, Spielstand und Online-Funktionen. Mit dem Spielen stimmst du der Nutzung zu.</div>
+<div id="cookieBanner" role="dialog" aria-label="Cookie consent">
+  <div class="cookieText" data-i18n>FLYYYY uses cookies and similar technologies (e.g. LocalStorage, Firebase) for login, game progress and online features. By playing you agree to this use.</div>
   <div class="cookieBtns">
-    <button id="cookieAcceptBtn" class="btn green" style="font-size:13px;padding:8px 14px">Verstanden</button>
+    <button id="cookieAcceptBtn" class="btn green" style="font-size:13px;padding:8px 14px" data-i18n>Got it</button>
   </div>
 </div>
 
@@ -5541,6 +6233,7 @@ if(window.requestIdleCallback)requestIdleCallback(showCookieBanner);else setTime
     F41.init();
   }
 })();
+
 </script>
 
 </body>
