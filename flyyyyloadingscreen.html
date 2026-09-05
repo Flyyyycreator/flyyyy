@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FLYYYY.COM</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #07111f;
+    font-family: "Press Start 2P", monospace;
+}
+
+/* =====================================================
+   BACKGROUND
+===================================================== */
+
+.loading-screen {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    background:
+        linear-gradient(
+            180deg,
+            #071a35 0%,
+            #0b4f78 35%,
+            #24a6c7 70%,
+            #063d50 100%
+        );
+}
+
+/* Sonnen-Glow */
+
+.sun {
+    position: absolute;
+    width: 230px;
+    height: 230px;
+    top: 7%;
+    right: 8%;
+
+    background: #ffe66b;
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 30px #ffe66b,
+        0 0 90px rgba(255,230,107,.6),
+        0 0 180px rgba(255,190,70,.3);
+
+    animation: sunFloat 5s ease-in-out infinite alternate;
+}
+
+@keyframes sunFloat {
+    from {
+        transform: translateY(0) scale(1);
+    }
+    to {
+        transform: translateY(12px) scale(1.05);
+    }
+}
+
+/* =====================================================
+   STARS / PARTICLES
+===================================================== */
+
+.stars {
+    position: absolute;
+    inset: 0;
+}
+
+.star {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: white;
+    image-rendering: pixelated;
+    opacity: .6;
+    animation: starBlink 2s infinite alternate;
+}
+
+@keyframes starBlink {
+    from { opacity: .2; }
+    to { opacity: 1; }
+}
+
+/* =====================================================
+   CLOUDS
+===================================================== */
+
+.cloud {
+    position: absolute;
+    width: 170px;
+    height: 38px;
+    background: rgba(255,255,255,.75);
+    border-radius: 8px;
+    filter: blur(.3px);
+}
+
+.cloud::before,
+.cloud::after {
+    content: "";
+    position: absolute;
+    background: inherit;
+    border-radius: 50%;
+}
+
+.cloud::before {
+    width: 65px;
+    height: 65px;
+    left: 25px;
+    bottom: 0;
+}
+
+.cloud::after {
+    width: 85px;
+    height: 80px;
+    right: 20px;
+    bottom: 0;
+}
+
+.cloud.one {
+    top: 17%;
+    left: -220px;
+    animation: cloudMove 30s linear infinite;
+}
+
+.cloud.two {
+    top: 32%;
+    left: -350px;
+    transform: scale(.7);
+    animation: cloudMove 42s linear infinite;
+    animation-delay: 7s;
+}
+
+.cloud.three {
+    top: 10%;
+    left: -400px;
+    transform: scale(.5);
+    animation: cloudMove 50s linear infinite;
+    animation-delay: 15s;
+}
+
+@keyframes cloudMove {
+    from {
+        transform: translateX(0) scale(1);
+    }
+    to {
+        transform: translateX(140vw) scale(1);
+    }
+}
+
+/* =====================================================
+   PIXEL MOUNTAINS
+===================================================== */
+
+.mountains {
+    position: absolute;
+    bottom: 18%;
+    left: 0;
+    width: 100%;
+    height: 40%;
+}
+
+.mountain {
+    position: absolute;
+    bottom: 0;
+
+    width: 0;
+    height: 0;
+
+    border-left: 190px solid transparent;
+    border-right: 190px solid transparent;
+    border-bottom: 290px solid #176a82;
+
+    filter: drop-shadow(10px 10px 0 rgba(0,0,0,.12));
+}
+
+.mountain::before {
+    content: "";
+    position: absolute;
+
+    left: -45px;
+    top: 50px;
+
+    width: 0;
+    height: 0;
+
+    border-left: 45px solid transparent;
+    border-right: 45px solid transparent;
+    border-bottom: 90px solid #d8f3ef;
+}
+
+.mountain.one {
+    left: 2%;
+}
+
+.mountain.two {
+    left: 33%;
+    transform: scale(1.35);
+}
+
+.mountain.three {
+    right: 0;
+    transform: scale(.9);
+}
+
+/* =====================================================
+   OCEAN
+===================================================== */
+
+.ocean {
+    position: absolute;
+    bottom: 13%;
+    width: 100%;
+    height: 20%;
+
+    background:
+        repeating-linear-gradient(
+            0deg,
+            rgba(255,255,255,.06) 0px,
+            rgba(255,255,255,.06) 4px,
+            transparent 4px,
+            transparent 16px
+        );
+
+    animation: oceanMove 5s linear infinite;
+}
+
+@keyframes oceanMove {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 100px 0;
+    }
+}
+
+/* =====================================================
+   GROUND
+===================================================== */
+
+.ground {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 14%;
+
+    background:
+        repeating-linear-gradient(
+            0deg,
+            #362015 0px,
+            #362015 12px,
+            #482b1b 12px,
+            #482b1b 24px
+        );
+
+    border-top: 9px solid #36c932;
+}
+
+.grass {
+    position: absolute;
+    top: -18px;
+    width: 100%;
+    height: 17px;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            #25a928 0px,
+            #25a928 12px,
+            #58dc35 12px,
+            #58dc35 25px
+        );
+}
+
+/* =====================================================
+   PIPES
+===================================================== */
+
+.pipe {
+    position: absolute;
+    width: 90px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #126c13,
+            #4bd629 35%,
+            #7df53a 50%,
+            #2ba91c 70%,
+            #116a10
+        );
+
+    border: 5px solid #092f0b;
+
+    box-shadow:
+        inset 8px 0 rgba(255,255,255,.15),
+        8px 8px 0 rgba(0,0,0,.2);
+
+    z-index: 2;
+}
+
+.pipe.top {
+    left: 10%;
+    top: -15px;
+    height: 190px;
+}
+
+.pipe.bottom {
+    right: 9%;
+    bottom: 13%;
+    height: 175px;
+}
+
+/* =====================================================
+   BIRD
+===================================================== */
+
+.bird {
+    position: absolute;
+
+    width: 85px;
+    height: 60px;
+
+    left: 50%;
+    top: 19%;
+
+    z-index: 8;
+
+    animation:
+        birdFloat 1.1s ease-in-out infinite alternate,
+        birdMove 6s ease-in-out infinite;
+}
+
+.body {
+    position: absolute;
+
+    width: 62px;
+    height: 47px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffe83d,
+            #ffbd18
+        );
+
+    border: 5px solid #111;
+
+    border-radius: 48% 55% 48% 45%;
+
+    box-shadow:
+        5px 5px 0 rgba(0,0,0,.2);
+}
+
+.wing {
+    position: absolute;
+
+    width: 31px;
+    height: 22px;
+
+    left: 7px;
+    top: 27px;
+
+    background: #e99c0d;
+
+    border: 4px solid #111;
+    border-radius: 50%;
+
+    transform-origin: right center;
+
+    animation: wingFlap .22s infinite alternate;
+}
+
+.eye {
+    position: absolute;
+
+    width: 20px;
+    height: 20px;
+
+    right: 8px;
+    top: 7px;
+
+    background: white;
+    border: 4px solid #111;
+    border-radius: 50%;
+}
+
+.eye::after {
+    content: "";
+
+    position: absolute;
+
+    width: 6px;
+    height: 6px;
+
+    background: #111;
+    border-radius: 50%;
+
+    right: 1px;
+    top: 3px;
+}
+
+.beak {
+    position: absolute;
+
+    width: 30px;
+    height: 18px;
+
+    right: -21px;
+    top: 27px;
+
+    background: #ff7034;
+
+    border: 4px solid #111;
+    border-radius: 4px;
+}
+
+@keyframes birdFloat {
+    from {
+        transform: translateY(-8px) rotate(-4deg);
+    }
+
+    to {
+        transform: translateY(14px) rotate(4deg);
+    }
+}
+
+@keyframes birdMove {
+    0%,100% {
+        margin-left: -40px;
+    }
+
+    50% {
+        margin-left: 40px;
+    }
+}
+
+@keyframes wingFlap {
+    from {
+        transform: rotate(8deg);
+    }
+
+    to {
+        transform: rotate(-22deg);
+    }
+}
+
+/* Fluglinien */
+
+.speed-line {
+    position: absolute;
+
+    height: 4px;
+
+    background: white;
+    opacity: .65;
+
+    right: 80px;
+
+    animation: speedLine .8s linear infinite;
+}
+
+.speed-line.one {
+    width: 55px;
+    top: 15px;
+}
+
+.speed-line.two {
+    width: 80px;
+    top: 31px;
+    animation-delay: .15s;
+}
+
+.speed-line.three {
+    width: 40px;
+    top: 47px;
+    animation-delay: .3s;
+}
+
+@keyframes speedLine {
+    from {
+        transform: translateX(0);
+        opacity: .8;
+    }
+
+    to {
+        transform: translateX(-90px);
+        opacity: 0;
+    }
+}
+
+/* =====================================================
+   MAIN UI
+===================================================== */
+
+.content {
+    position: absolute;
+    z-index: 20;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: min(850px, 92%);
+
+    text-align: center;
+}
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+.logo {
+    font-family: Impact, "Arial Black", sans-serif;
+
+    font-size: clamp(55px, 10vw, 125px);
+
+    font-weight: 900;
+
+    letter-spacing: 7px;
+
+    color: #ffd51c;
+
+    -webkit-text-stroke: 4px #111;
+
+    text-shadow:
+        7px 7px 0 #111,
+        12px 12px 0 rgba(0,0,0,.25);
+
+    animation: logoBounce 2.5s ease-in-out infinite;
+}
+
+.logo .com {
+    font-family: "Press Start 2P";
+    font-size: .23em;
+
+    color: white;
+
+    -webkit-text-stroke: 1px #111;
+
+    vertical-align: middle;
+}
+
+@keyframes logoBounce {
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+/* =====================================================
+   LOADING CARD
+===================================================== */
+
+.card {
+    margin: 20px auto 0;
+
+    width: min(720px, 100%);
+
+    padding: 30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(4,20,32,.88),
+            rgba(6,36,51,.82)
+        );
+
+    border: 3px solid rgba(255,255,255,.2);
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 20px 70px rgba(0,0,0,.45),
+        inset 0 1px rgba(255,255,255,.12);
+
+    backdrop-filter: blur(8px);
+}
+
+/* =====================================================
+   TEXT
+===================================================== */
+
+.loading-title {
+    color: white;
+
+    font-size: clamp(14px, 2.5vw, 22px);
+
+    text-shadow:
+        3px 3px 0 #000;
+
+    margin-bottom: 22px;
+}
+
+.dots {
+    display: inline-block;
+    width: 35px;
+    text-align: left;
+}
+
+/* =====================================================
+   PROGRESS
+===================================================== */
+
+.progress-wrapper {
+    position: relative;
+
+    width: 100%;
+    height: 48px;
+
+    padding: 5px;
+
+    background: #07131e;
+
+    border: 4px solid #111;
+
+    border-radius: 12px;
+
+    box-shadow:
+        inset 0 4px 8px rgba(0,0,0,.5);
+}
+
+.progress {
+    width: 0%;
+    height: 100%;
+
+    border-radius: 5px;
+
+    background:
+        repeating-linear-gradient(
+            135deg,
+            #31d72d 0px,
+            #31d72d 12px,
+            #75f83c 12px,
+            #75f83c 24px
+        );
+
+    box-shadow:
+        0 0 15px rgba(65,255,55,.65);
+
+    transition: width .15s linear;
+
+    position: relative;
+    overflow: hidden;
+}
+
+.progress::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.5),
+            transparent
+        );
+
+    animation: progressShine 1s linear infinite;
+}
+
+@keyframes progressShine {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(100%);
+    }
+}
+
+.progress-info {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-top: 12px;
+
+    color: #dcefff;
+
+    font-size: 11px;
+}
+
+/* =====================================================
+   TIP
+===================================================== */
+
+.tip-box {
+    margin-top: 25px;
+
+    min-height: 42px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: #cdeeff;
+
+    font-size: 10px;
+
+    line-height: 1.8;
+
+    transition:
+        opacity .4s,
+        transform .4s;
+}
+
+.tip-box strong {
+    color: #ffd51c;
+}
+
+/* =====================================================
+   STATUS ICONS
+===================================================== */
+
+.stats {
+    display: flex;
+
+    justify-content: center;
+    gap: 45px;
+
+    margin-top: 22px;
+
+    color: #8ddcf4;
+
+    font-size: 8px;
+}
+
+.stat {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.stat-icon {
+    font-size: 18px;
+}
+
+/* =====================================================
+   FADE OUT
+===================================================== */
+
+.loading-screen.finished {
+    animation: fadeOut .9s forwards;
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .sun {
+        width: 110px;
+        height: 110px;
+        top: 5%;
+        right: 5%;
+    }
+
+    .pipe {
+        width: 60px;
+    }
+
+    .pipe.top {
+        height: 110px;
+        left: 1%;
+    }
+
+    .pipe.bottom {
+        height: 110px;
+        right: 1%;
+    }
+
+    .content {
+        top: 47%;
+    }
+
+    .card {
+        padding: 20px 15px;
+    }
+
+    .stats {
+        gap: 15px;
+        font-size: 6px;
+    }
+
+    .stat-icon {
+        font-size: 14px;
+    }
+
+    .logo {
+        -webkit-text-stroke: 3px #111;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="loading-screen" id="loadingScreen">
+
+    <!-- Sonne -->
+    <div class="sun"></div>
+
+    <!-- Sterne -->
+    <div class="stars" id="stars"></div>
+
+    <!-- Wolken -->
+    <div class="cloud one"></div>
+    <div class="cloud two"></div>
+    <div class="cloud three"></div>
+
+    <!-- Berge -->
+    <div class="mountains">
+        <div class="mountain one"></div>
+        <div class="mountain two"></div>
+        <div class="mountain three"></div>
+    </div>
+
+    <!-- Wasser -->
+    <div class="ocean"></div>
+
+    <!-- Pipes -->
+    <div class="pipe top"></div>
+    <div class="pipe bottom"></div>
+
+    <!-- Vogel -->
+    <div class="bird">
+
+        <div class="speed-line one"></div>
+        <div class="speed-line two"></div>
+        <div class="speed-line three"></div>
+
+        <div class="body"></div>
+        <div class="wing"></div>
+        <div class="eye"></div>
+        <div class="beak"></div>
+
+    </div>
+
+    <!-- Hauptinhalt -->
+    <main class="content">
+
+        <div class="logo">
+            FLYYYY<span class="com">.COM</span>
+        </div>
+
+        <div class="card">
+
+            <div class="loading-title">
+                FLYYYY WIRD GELADEN<span class="dots" id="dots">...</span>
+            </div>
+
+            <div class="progress-wrapper">
+                <div
+                    class="progress"
+                    id="progress">
+                </div>
+            </div>
+
+            <div class="progress-info">
+                <span id="status">INITIALISIERE...</span>
+                <span id="percent">0%</span>
+            </div>
+
+            <div class="tip-box" id="tip">
+                💡 TIPP: ALLE 5 HINDERNISSE =
+                <strong>+10 COINS</strong>
+            </div>
+
+            <div class="stats">
+
+                <div class="stat">
+                    <span class="stat-icon">🪙</span>
+                    COINS
+                </div>
+
+                <div class="stat">
+                    <span class="stat-icon">🏆</span>
+                    HIGH SCORE
+                </div>
+
+                <div class="stat">
+                    <span class="stat-icon">🌍</span>
+                    WELTEN
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Boden -->
+    <div class="ground">
+        <div class="grass"></div>
+    </div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   STERNE ERSTELLEN
+===================================================== */
+
+const stars = document.getElementById("stars");
+
+for (let i = 0; i < 45; i++) {
+
+    const star = document.createElement("div");
+
+    star.className = "star";
+
+    star.style.left =
+        Math.random() * 100 + "%";
+
+    star.style.top =
+        Math.random() * 60 + "%";
+
+    star.style.animationDelay =
+        Math.random() * 2 + "s";
+
+    stars.appendChild(star);
+}
+
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+const progress = document.getElementById("progress");
+const percent = document.getElementById("percent");
+const status = document.getElementById("status");
+const screen = document.getElementById("loadingScreen");
+
+let value = 0;
+
+const statuses = [
+    "INITIALISIERE...",
+    "LADE WELTEN...",
+    "LADE SKINS...",
+    "LADE HINDERNISSE...",
+    "LADE COINS...",
+    "VERBINDE MIT SERVER...",
+    "LADE RANGLISTE...",
+    "FAST FERTIG..."
+];
+
+let statusIndex = 0;
+
+const loading = setInterval(() => {
+
+    value += Math.random() * 2.5;
+
+    if (value >= 100) {
+
+        value = 100;
+
+        clearInterval(loading);
+
+        progress.style.width = "100%";
+        percent.textContent = "100%";
+        status.textContent = "BEREIT!";
+
+        setTimeout(() => {
+
+            screen.classList.add("finished");
+
+            /*
+                HIER DEIN SPIEL STARTEN
+
+                Beispiel:
+
+                document.getElementById("menu").style.display = "block";
+
+                oder:
+
+                startGame();
+
+            */
+
+            setTimeout(() => {
+                console.log("🚀 FLYYYY.COM gestartet!");
+            }, 900);
+
+        }, 700);
+
+    }
+
+    progress.style.width = value + "%";
+    percent.textContent = Math.floor(value) + "%";
+
+}, 100);
+
+
+/* =====================================================
+   STATUS WECHSELN
+===================================================== */
+
+setInterval(() => {
+
+    if (value >= 100) return;
+
+    statusIndex++;
+
+    if (statusIndex >= statuses.length) {
+        statusIndex = 0;
+    }
+
+    status.style.opacity = "0";
+
+    setTimeout(() => {
+
+        status.textContent =
+            statuses[statusIndex];
+
+        status.style.opacity = "1";
+
+    }, 150);
+
+}, 950);
+
+
+/* =====================================================
+   TIPPS
+===================================================== */
+
+const tips = [
+
+    '💡 TIPP: ALLE 5 HINDERNISSE = <strong>+10 COINS</strong>',
+
+    '🐦 TIPP: BLEIB IN DER LUFT UND FLIEG WEITER!',
+
+    '🪙 TIPP: SAMMLE COINS UND SCHALTE NEUE SKINS FREI!',
+
+    '🌍 TIPP: ENTDECKE ALLE WELTEN VON FLYYYY!',
+
+    '🏆 TIPP: SCHLAGE DEINEN HIGH SCORE!',
+
+    '🔥 TIPP: JE LÄNGER DU FLIEGST, DESTO HÖHER DEIN SCORE!',
+
+    '⚡ TIPP: VERMEIDE DIE HINDERNISSE!'
+
+];
+
+const tip = document.getElementById("tip");
+
+let tipIndex = 0;
+
+setInterval(() => {
+
+    if (value >= 100) return;
+
+    tip.style.opacity = "0";
+    tip.style.transform = "translateY(8px)";
+
+    setTimeout(() => {
+
+        tipIndex++;
+
+        if (tipIndex >= tips.length) {
+            tipIndex = 0;
+        }
+
+        tip.innerHTML = tips[tipIndex];
+
+        tip.style.opacity = "1";
+        tip.style.transform = "translateY(0)";
+
+    }, 350);
+
+}, 3000);
+
+
+/* =====================================================
+   ANIMIERTE PUNKTE
+===================================================== */
+
+const dots = document.getElementById("dots");
+
+let dotCount = 0;
+
+setInterval(() => {
+
+    dotCount++;
+
+    if (dotCount > 3) {
+        dotCount = 0;
+    }
+
+    dots.textContent = ".".repeat(dotCount);
+
+}, 400);
+
+</script>
+
+</body>
+</html>

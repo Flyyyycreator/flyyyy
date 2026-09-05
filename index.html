@@ -514,7 +514,6 @@ body:before{
 #gameHud{filter:drop-shadow(0 4px 8px rgba(0,0,0,.25))}
 .gameOverlayVignette{position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(180deg,rgba(2,8,22,.28) 0%,transparent 22%,transparent 78%,rgba(2,8,22,.4) 100%),radial-gradient(ellipse at 50% 50%,transparent 50%,rgba(0,0,0,.42) 100%)}
 .pause-btn{background:rgba(2,8,22,.62)!important;border:1px solid rgba(98,166,255,.35)!important;color:#fff!important;border-radius:999px!important;backdrop-filter:blur(10px);box-shadow:0 6px 18px rgba(0,0,0,.35)!important;padding:7px 12px!important;font-size:12px!important}
-  box-shadow:0 0 14px rgba(74,140,255,.35)!important}
 .pause-btn:hover{box-shadow:0 0 22px rgba(74,140,255,.6)!important;border-color:#9bc4ff!important}
 .settingsRange{accent-color:#62a6ff}
 .settingsLangBtn{background:rgba(8,23,47,.7)!important;color:#fff!important;border:1px solid rgba(98,166,255,.3)!important;border-radius:14px!important}
@@ -762,6 +761,117 @@ h1,h2,h3{
 
 </head>
 <body>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+.flyyyy-loader{position:fixed;inset:0;z-index:2147483600;overflow:hidden;background:linear-gradient(180deg,#071a35 0%,#0b4f78 35%,#24a6c7 70%,#063d50 100%);font-family:"Press Start 2P",monospace;color:#fff}
+.flyyyy-loader .sun{position:absolute;width:230px;height:230px;top:7%;right:8%;background:#ffe66b;border-radius:50%;box-shadow:0 0 30px #ffe66b,0 0 90px rgba(255,230,107,.6),0 0 180px rgba(255,190,70,.3);animation:flyyysunFloat 5s ease-in-out infinite alternate}
+@keyframes flyyysunFloat{from{transform:translateY(0) scale(1)}to{transform:translateY(12px) scale(1.05)}}
+.flyyyy-loader .stars{position:absolute;inset:0;pointer-events:none}
+.flyyyy-loader .star{position:absolute;width:4px;height:4px;background:#fff;image-rendering:pixelated;opacity:.6;animation:flyyystarBlink 2s infinite alternate}
+@keyframes flyyystarBlink{from{opacity:.2}to{opacity:1}}
+.flyyyy-loader .cloud{position:absolute;background:linear-gradient(180deg,#fff,#e3f0ff);border:4px solid #111;border-radius:18px;box-shadow:6px 6px 0 rgba(0,0,0,.18);z-index:3}
+.flyyyy-loader .cloud::before,.flyyyy-loader .cloud::after{content:"";position:absolute;background:inherit;border:inherit;border-radius:18px}
+.flyyyy-loader .cloud.one{width:140px;height:36px;top:14%;left:-160px;animation:flyyycloudDrift 38s linear infinite}
+.flyyyy-loader .cloud.two{width:180px;height:42px;top:24%;left:-200px;animation:flyyycloudDrift 52s linear infinite;animation-delay:-12s}
+.flyyyy-loader .cloud.three{width:120px;height:30px;top:9%;right:-160px;animation:flyyycloudDriftR 44s linear infinite}
+.flyyyy-loader .cloud.one::before{width:50px;height:50px;top:-22px;left:24px}
+.flyyyy-loader .cloud.one::after{width:36px;height:36px;top:-16px;left:74px}
+.flyyyy-loader .cloud.two::before{width:60px;height:60px;top:-30px;left:30px}
+.flyyyy-loader .cloud.two::after{width:44px;height:44px;top:-22px;left:96px}
+.flyyyy-loader .cloud.three::before{width:44px;height:44px;top:-20px;left:22px}
+.flyyyy-loader .cloud.three::after{width:32px;height:32px;top:-14px;left:62px}
+@keyframes flyyycloudDrift{from{left:-200px}to{left:110%}}
+@keyframes flyyycloudDriftR{from{right:-200px}to{right:110%}}
+.flyyyy-loader .mountains{position:absolute;bottom:18%;left:0;right:0;height:160px;z-index:1}
+.flyyyy-loader .mountain{position:absolute;bottom:0;width:0;height:0;border-style:solid;border-width:0 90px 160px 90px;border-color:transparent transparent #0e2f4a transparent;filter:drop-shadow(0 -4px 0 #07203a)}
+.flyyyy-loader .mountain.one{left:8%;transform:scale(1.1)}
+.flyyyy-loader .mountain.two{left:38%;transform:scale(1.4)}
+.flyyyy-loader .mountain.three{right:8%;transform:scale(1.2)}
+.flyyyy-loader .mountain::after{content:"";position:absolute;top:0;left:-90px;width:0;height:0;border-style:solid;border-width:0 30px 50px 30px;border-color:transparent transparent rgba(255,255,255,.7) transparent}
+.flyyyy-loader .ocean{position:absolute;bottom:0;left:0;right:0;height:18%;background:linear-gradient(180deg,#1a6f97 0%,#0d3a55 100%);border-top:4px solid #051d2d;z-index:2}
+.flyyyy-loader .ocean::before{content:"";position:absolute;top:8px;left:0;right:0;height:2px;background:repeating-linear-gradient(90deg,transparent 0 20px,rgba(255,255,255,.4) 20px 60px);animation:flyyywave 3.4s linear infinite}
+@keyframes flyyywave{from{background-position:0 0}to{background-position:200px 0}}
+.flyyyy-loader .ground{position:absolute;bottom:0;left:0;right:0;height:14%;background:linear-gradient(180deg,#7df53a 0%,#2ba91c 50%,#116a10 100%);border-top:5px solid #092f0b;z-index:2}
+.flyyyy-loader .ground::before{content:"";position:absolute;top:-10px;left:0;right:0;height:10px;background:repeating-linear-gradient(90deg,#7df53a 0 12px,#5fc920 12px 24px);border-top:3px solid #092f0b}
+.flyyyy-loader .pipe{position:absolute;width:90px;background:linear-gradient(180deg,#7df53a 0%,#2ba91c 50%,#116a10 100%);border:5px solid #092f0b;box-shadow:inset 8px 0 rgba(255,255,255,.15),8px 8px 0 rgba(0,0,0,.2);z-index:4}
+.flyyyy-loader .pipe.top{left:10%;top:-15px;height:190px}
+.flyyyy-loader .pipe.bottom{right:9%;bottom:14%;height:175px}
+.flyyyy-loader .bird{position:absolute;width:85px;height:60px;left:50%;top:19%;z-index:8;animation:flyyybirdFloat 1.1s ease-in-out infinite alternate,flyyybirdMove 6s ease-in-out infinite}
+.flyyyy-loader .bird .body{position:absolute;width:62px;height:47px;background:linear-gradient(180deg,#ffe83d,#ffbd18);border:5px solid #111;border-radius:48% 55% 48% 45%;box-shadow:5px 5px 0 rgba(0,0,0,.2)}
+.flyyyy-loader .bird .wing{position:absolute;width:31px;height:22px;left:7px;top:27px;background:#e99c0d;border:4px solid #111;border-radius:50%;transform-origin:right center;animation:flyyywingFlap .22s infinite alternate}
+.flyyyy-loader .bird .eye{position:absolute;width:20px;height:20px;right:8px;top:7px;background:#fff;border:4px solid #111;border-radius:50%}
+.flyyyy-loader .bird .eye::after{content:"";position:absolute;width:6px;height:6px;background:#111;border-radius:50%;right:1px;top:3px}
+.flyyyy-loader .bird .beak{position:absolute;width:30px;height:18px;right:-21px;top:27px;background:#ff7034;border:4px solid #111;border-radius:4px}
+@keyframes flyyybirdFloat{from{transform:translateY(-8px) rotate(-4deg)}to{transform:translateY(14px) rotate(4deg)}}
+@keyframes flyyybirdMove{0%,100%{margin-left:-40px}50%{margin-left:40px}}
+@keyframes flyyywingFlap{from{transform:rotate(8deg)}to{transform:rotate(-22deg)}}
+.flyyyy-loader .speed-line{position:absolute;height:4px;background:#fff;opacity:.65;right:80px;animation:flyyyspeedLine .8s linear infinite}
+.flyyyy-loader .speed-line.one{width:55px;top:15px}
+.flyyyy-loader .speed-line.two{width:80px;top:31px;animation-delay:.15s}
+.flyyyy-loader .speed-line.three{width:40px;top:47px;animation-delay:.3s}
+@keyframes flyyyspeedLine{from{transform:translateX(0);opacity:.8}to{transform:translateX(-90px);opacity:0}}
+.flyyyy-loader .content{position:absolute;z-index:20;left:50%;top:50%;transform:translate(-50%,-50%);width:min(850px,92%);text-align:center}
+.flyyyy-loader .logo{font-family:Impact,"Arial Black",sans-serif;font-size:clamp(55px,10vw,125px);font-weight:900;letter-spacing:7px;color:#ffd51c;-webkit-text-stroke:4px #111;text-shadow:7px 7px 0 #111,12px 12px 0 rgba(0,0,0,.25);animation:flyyylogoBounce 2.5s ease-in-out infinite}
+.flyyyy-loader .logo .com{font-family:"Press Start 2P";font-size:.23em;color:#fff;-webkit-text-stroke:1px #111;vertical-align:middle}
+@keyframes flyyylogoBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.flyyyy-loader .card{margin:20px auto 0;width:min(720px,100%);padding:30px;background:linear-gradient(145deg,rgba(4,20,32,.88),rgba(6,36,51,.82));border:3px solid rgba(255,255,255,.2);border-radius:20px;box-shadow:0 20px 70px rgba(0,0,0,.45),inset 0 1px rgba(255,255,255,.12);backdrop-filter:blur(8px)}
+.flyyyy-loader .loading-title{color:#fff;font-size:clamp(14px,2.5vw,22px);text-shadow:3px 3px 0 #000;margin-bottom:22px}
+.flyyyy-loader .dots{display:inline-block;width:35px;text-align:left}
+.flyyyy-loader .progress-wrapper{position:relative;width:100%;height:48px;padding:5px;background:#07131e;border:4px solid #111;border-radius:12px;box-shadow:inset 0 4px 8px rgba(0,0,0,.5)}
+.flyyyy-loader .progress{width:0%;height:100%;border-radius:5px;background:repeating-linear-gradient(135deg,#31d72d 0 12px,#75f83c 12px 24px);box-shadow:0 0 15px rgba(65,255,55,.65);transition:width .15s linear;position:relative;overflow:hidden}
+.flyyyy-loader .progress::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent);animation:flyyyprogressShine 1s linear infinite}
+@keyframes flyyyprogressShine{from{transform:translateX(-100%)}to{transform:translateX(100%)}}
+.flyyyy-loader .progress-info{display:flex;justify-content:space-between;margin-top:12px;color:#dcefff;font-size:11px}
+.flyyyy-loader .tip-box{margin-top:25px;min-height:42px;display:flex;align-items:center;justify-content:center;color:#cdeeff;font-size:10px;line-height:1.8;transition:opacity .4s,transform .4s}
+.flyyyy-loader .tip-box strong{color:#ffd51c}
+.flyyyy-loader .stats{display:flex;justify-content:center;gap:45px;margin-top:22px;color:#8ddcf4;font-size:8px}
+.flyyyy-loader .stat{display:flex;align-items:center;gap:8px}
+.flyyyy-loader .stat-icon{font-size:18px}
+.flyyyy-loader.finished{animation:flyyyfadeOut .9s forwards}
+@keyframes flyyyfadeOut{to{opacity:0;visibility:hidden}}
+.flyyyy-loader .skip-btn{position:absolute;bottom:24px;right:24px;z-index:30;padding:8px 14px;border:3px solid #111;border-radius:10px;background:rgba(4,20,32,.85);color:#fff;font-family:"Press Start 2P",monospace;font-size:9px;letter-spacing:.08em;cursor:pointer;text-transform:uppercase}
+.flyyyy-loader .skip-btn:hover{background:rgba(6,36,51,.95)}
+@media (max-width:600px){
+.flyyyy-loader .sun{width:110px;height:110px;top:5%;right:5%}
+.flyyyy-loader .pipe{width:60px}
+.flyyyy-loader .pipe.top{height:110px;left:1%}
+.flyyyy-loader .pipe.bottom{height:110px;right:1%}
+.flyyyy-loader .content{top:47%}
+.flyyyy-loader .card{padding:20px 15px}
+.flyyyy-loader .stats{gap:15px;font-size:6px}
+.flyyyy-loader .stat-icon{font-size:14px}
+.flyyyy-loader .logo{-webkit-text-stroke:3px #111}
+.flyyyy-loader .skip-btn{font-size:7px;padding:6px 10px;bottom:14px;right:14px}
+}
+</style>
+<div id="flyyyyLoader" class="flyyyy-loader" aria-hidden="false">
+<div class="sun"></div>
+<div class="stars" id="flyyyyLoaderStars"></div>
+<div class="cloud one"></div>
+<div class="cloud two"></div>
+<div class="cloud three"></div>
+<div class="mountains"><div class="mountain one"></div><div class="mountain two"></div><div class="mountain three"></div></div>
+<div class="ocean"></div>
+<div class="pipe top"></div>
+<div class="pipe bottom"></div>
+<div class="bird"><div class="speed-line one"></div><div class="speed-line two"></div><div class="speed-line three"></div><div class="body"></div><div class="wing"></div><div class="eye"></div><div class="beak"></div></div>
+<main class="content">
+<div class="logo">FLYYYY<span class="com">.COM</span></div>
+<div class="card">
+<div class="loading-title">FLYYYY WIRD GELADEN<span class="dots" id="flyyyyLoaderDots">...</span></div>
+<div class="progress-wrapper"><div class="progress" id="flyyyyLoaderProgress"></div></div>
+<div class="progress-info"><span id="flyyyyLoaderStatus">INITIALISIERE...</span><span id="flyyyyLoaderPercent">0%</span></div>
+<div class="tip-box" id="flyyyyLoaderTip">💡 TIPP: ALLE 5 HINDERNISSE = <strong>+10 COINS</strong></div>
+<div class="stats">
+<div class="stat"><span class="stat-icon">🪙</span>COINS</div>
+<div class="stat"><span class="stat-icon">🏆</span>HIGH SCORE</div>
+<div class="stat"><span class="stat-icon">🌍</span>WELTEN</div>
+</div>
+</div>
+</main>
+<div class="ground"></div>
+<button type="button" class="skip-btn" id="flyyyyLoaderSkip">ÜBERSPRINGEN</button>
+</div>
 <div id="globalBroadcastOverlay" class="broadcastOverlay" aria-live="polite" style="position:fixed;left:0;right:0;top:0;z-index:55;display:none;pointer-events:none"><div class="broadcastHeader"><span>GLOBAL BROADCAST</span><span id="globalBroadcastTime"></span></div><div id="globalBroadcastText" class="broadcastBody"></div><div id="globalBroadcastSender" class="broadcastSender"></div></div>
 <div id="app"><div id="appErrorNotice" style="display:none;position:fixed;left:50%;top:10px;transform:translateX(-50%);z-index:100000;padding:10px 14px;border-radius:12px;background:rgba(2,8,22,.96);border:1px solid rgba(98,166,255,.55);color:#fff;font-weight:900;box-shadow:0 0 22px rgba(74,140,255,.35)">A game error occurred. Please reload the page.</div>
 <canvas id="gameCanvas"></canvas><div class="gameOverlayVignette" aria-hidden="true"></div><div id="adDashOverlay" aria-hidden="true"></div>
@@ -874,6 +984,69 @@ window.addEventListener("error",e=>{
   const box=document.getElementById("appErrorNotice");
   if(box){box.textContent="A game error occurred. Please reload the page.";box.style.display="block";}
 });
+
+/* ===== FLYYYY Loading Screen ===== */
+(function initFlyyyyLoader(){
+  const loader=document.getElementById("flyyyyLoader");
+  if(!loader)return;
+  const starsBox=document.getElementById("flyyyyLoaderStars");
+  if(starsBox){
+    for(let i=0;i<45;i++){
+      const s=document.createElement("div");
+      s.className="star";
+      s.style.left=(Math.random()*100)+"%";
+      s.style.top=(Math.random()*60)+"%";
+      s.style.animationDelay=(Math.random()*2)+"s";
+      starsBox.appendChild(s);
+    }
+  }
+  const progress=document.getElementById("flyyyyLoaderProgress");
+  const percent=document.getElementById("flyyyyLoaderPercent");
+  const status=document.getElementById("flyyyyLoaderStatus");
+  const tip=document.getElementById("flyyyyLoaderTip");
+  const dots=document.getElementById("flyyyyLoaderDots");
+  const skipBtn=document.getElementById("flyyyyLoaderSkip");
+  const statuses=["INITIALISIERE...","LADE WELTEN...","LADE SKINS...","LADE HINDERNISSE...","LADE COINS...","VERBINDE MIT SERVER...","LADE RANGLISTE...","FAST FERTIG..."];
+  const tips=[
+    '💡 TIPP: ALLE 5 HINDERNISSE = <strong>+10 COINS</strong>',
+    '🐦 TIPP: BLEIB IN DER LUFT UND FLIEG WEITER!',
+    '🪙 TIPP: SAMMLE COINS UND SCHALTE NEUE SKINS FREI!',
+    '🌍 TIPP: ENTDECKE ALLE WELTEN VON FLYYYY!',
+    '🏆 TIPP: SCHLAGE DEINEN HIGH SCORE!',
+    '🔥 TIPP: JE LÄNGER DU FLIEGST, DESTO HÖHER DEIN SCORE!',
+    '⚡ TIPP: VERMEIDE DIE HINDERNISSE!'
+  ];
+  let value=0,statusIndex=0,tipIndex=0,dotCount=0;
+  let finished=false;
+  function finish(){
+    if(finished)return;
+    finished=true;
+    value=100;
+    if(progress)progress.style.width="100%";
+    if(percent)percent.textContent="100%";
+    if(status)status.textContent="BEREIT!";
+    setTimeout(()=>{
+      loader.classList.add("finished");
+      setTimeout(()=>{loader.style.display="none";loader.setAttribute("aria-hidden","true");},900);
+    },700);
+  }
+  skipBtn?.addEventListener("click",finish);
+  const loading=setInterval(()=>{
+    value+=Math.random()*2.5;
+    if(value>=100){value=100;clearInterval(loading);finish();}
+    if(progress)progress.style.width=value+"%";
+    if(percent)percent.textContent=Math.floor(value)+"%";
+  },100);
+  setInterval(()=>{if(finished)return;statusIndex++;if(statusIndex>=statuses.length)statusIndex=0;status.style.opacity="0";setTimeout(()=>{status.textContent=statuses[statusIndex];status.style.opacity="1";},150);},950);
+  setInterval(()=>{if(finished)return;tip.style.opacity="0";tip.style.transform="translateY(8px)";setTimeout(()=>{tipIndex++;if(tipIndex>=tips.length)tipIndex=0;tip.innerHTML=tips[tipIndex];tip.style.opacity="1";tip.style.transform="translateY(0)";},350);},3000);
+  setInterval(()=>{dotCount++;if(dotCount>3)dotCount=0;dots.textContent=".".repeat(dotCount);},400);
+  window.addEventListener("load",()=>{
+    setTimeout(()=>{
+      if(!finished){value=Math.max(value,70);}
+    },500);
+  });
+  setTimeout(()=>{if(!finished)finish();},15000);
+})();
 
 const _memoryStore=Object.create(null);
 const storage={getItem(k){try{return localStorage.getItem(k)}catch{return Object.prototype.hasOwnProperty.call(_memoryStore,k)?_memoryStore[k]:null}},setItem(k,v){try{localStorage.setItem(k,String(v))}catch{_memoryStore[k]=String(v)}},removeItem(k){try{localStorage.removeItem(k)}catch{delete _memoryStore[k]}}};
